@@ -1,0 +1,12 @@
+insert into mem(memn,name) values(1, '홍길동');
+insert into mem(memn,name) values(2, '임꺽정');
+insert into moim(moinmn,cont) values(1, '테스트모임');
+insert into href(memn,moinmn,name) values(1, 1, '홍길동');
+insert into href(memn,moinmn,name) values(2, 1, '임꺽정');
+insert into list(moinmn,locm,memn,addr,cont) values(1, 1, 1,'서울시', '설렁탕집');
+insert into list(moinmn,locm,memn,addr,cont) values(1, 1, 2,'서울시', '설렁탕집');
+insert into list(addr,cont,moinmn,memn) values('서울시', '설렁탕집', 1, 1);
+
+
+insert into list(moinmn,locm,memn,addr,cont) values(1, 1, 1,'서울시', '설렁탕집');
+insert into list(moinmn,locm,memn,addr,cont) values(1, 1, 2,'서울시', '설렁탕집');
