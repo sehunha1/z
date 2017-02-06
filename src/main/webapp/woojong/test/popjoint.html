@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+    <style>
+  div.backLayer {
+    display:none;
+    background-color:black; 
+    position:absolute;
+    left:0px;
+    top:0px;
+  }
+  div#testDiv{
+    background-color:skyblue;
+    display: none;
+    position: absolute;
+    width:500px;
+    height:300px;
+  }
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+  
+  //window onload
+   $(document).ready(function(){
+    // 배경 조절 버튼 클릭시 클릭 이벤트
+    $("#btn1").click(function(){
+      var width = $(window).width();
+      var height = $(window).height();
+      
+      //화면을 가리는 레이어의 사이즈 조정
+      $(".backLayer").width(width);
+      $(".backLayer").height(height);
+      
+      //화면을 가리는 레이어를 보여준다 (0.5초동안 30%의 농도의 투명도)
+      $(".backLayer").fadeTo(500, 0.3);
+      
+      //팝업 레이어 보이게
+      var testDivObj = $("#testDiv");
+           testDivObj.css("top", $(document).height()/2-150);
+                testDivObj.css("left",$(document).width()/2-150);
+                testDivObj.fadeIn(500);
+    });
+    
+   });
+   
+   //esc키 누르면 화면 잠김 해제
+    $(document).keydown(function(event){
+    if(event.which=='27'){
+      $("#testDiv").fadeOut(300);
+      $(".backLayer").fadeOut(1000);
+    }
+    });
+   
+   //윈도우가 resize될때마다 backLayer를 조정
+   $(window).resize(function(){
+    var width = $(window).width();
+    var height = $(window).height();
+    $(".backLayer").width(width).height(height);
+  });
+  </script>
+</head>
+<body>
+  <div class='backLayer' style='' > </div>
+  <form id="frm">
+  <input type="button" id="btn1" value="레이어"/>
+  </form>
+  <div id="testDiv">
+<form id="form" name="form" method="post">
+<h1>글쓰기 폼</h1>
+<p>기본적인 입력폼입니다.</p>
+
+<label>Name
+<span class="small">이름 입력</span>
+</label>
+<input type="text" name="name" id="name" />
+
+<label>Email
+<span class="small">이메일주소</span>
+</label>
+<input type="text" name="email" id="email" />
+
+<label>Password
+<span class="small">패스워드 6자 이상</span>
+</label>
+<input type="text" name="password" id="password" />
+
+<a href='http://www.naver.com'><button type="submit">Sign-up</button></a>
+<div class="spacer"></div>
+
+</form>
+</div>
+</body>
+</html>

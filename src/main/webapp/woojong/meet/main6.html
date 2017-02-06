@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Main</title>
+<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.css' />
+  <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.js'></script>
+  <script src='https://fullcalendar.io/js/home.js?3.1.0-1.5.0-4'></script>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+<script>
+$(document).ready(function(){
+    $("#conttext-btn").click(function(){
+        $(".conttext").show();
+        $(".board").hide();
+        $(".map").hide();
+        $(".calendar").hide();
+    });
+    $("#meet").click(function(){
+      	$(".conttext").hide();
+      	$(".board").hide();
+      	$(".map").hide();
+        $(".calendar").show();
+    });
+    $("#map").click(function(){
+        $(".conttext").hide();
+        $(".board").hide();
+        $(".map").show();
+        $(".calendar").hide();
+    });
+    $("#board").click(function(){
+        $(".conttext").hide();
+        $(".board").show();
+        $(".map").hide();
+        $(".calendar").hide();
+    });
+});
+</script>
+
+
+</head>
+<body>
+<div class='container'>
+<div id='header'></div>
+<div id='sidebar'></div>
+
+<div id="content-cal">
+<p class="bg-primary" style='height:30px; text-align:center;'><font size=5 style='family:본고딕;'>자바89 늦은 망년회</font>
+ <button id="conttext-btn" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+ </p>
+<div class='conttext' style='padding-left:180px;'>
+<font size='4'>| 늦은 망년회 겸 신년회를 하려고 합니다. 다들 투표해 주세요!</font>
+<br>|모임분류:회식 <font style='text-align:right;'> |모임시간:2시간 </font>
+<br>| 기간:1월중 |선택마감기한:1월25일까지 (D-3)</div>
+<p class="bg-primary" style='height:30px; text-align:center;'><font size=5 style='family:본고딕;'>일정투표</font>
+<button id="meet" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</p>
+
+<div class='calendar' id='calendar'  style='width:700px; height:500px; padding-left:180px; display:none;'>
+<!-- <button id="hide">Hide</button> -->
+</div>
+
+<!-- 지도 div 부분 -->
+<p class="bg-primary" style='height:30px; text-align:center;'><font size=5 style='family:본고딕;'>장소투표</font>
+<button id="map" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</p>
+
+<!-- 게시한 div 부분 -->
+<p class="bg-primary" style='height:30px; text-align:center;'><font size=5 style='family:본고딕;'>게시판</font>
+<button id="board" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</p>
+</div>
+<div id='footer'></div>
+</div>
+
+<script src="../js/bit.js"></script>
+<script src="../js/common.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

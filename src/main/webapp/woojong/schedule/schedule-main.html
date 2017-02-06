@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>학생관리-조회</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<div class='container'>
+<div id='header'></div>
+
+<div id="content-long">
+<p style='text-align:center;'><font size='20'>모임방 설정</font></p>
+<form class='form-horizontal'>
+  <div class="form-group">
+    <label for="email" class="col-sm-2 control-label">모임명</label>
+    <div class="col-sm-10">
+      <input id='name' type='text' class="form-control" placeholder='예)hong@test.com'>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="cont" class="col-sm-2 control-label">모임내용</label>
+    <div class="col-sm-10">
+      <textarea cols='30' rows='10' style='width:100%'></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">모임분류</label>
+    <div class="col-sm-10">
+      <a id='logout-btn' class="btn btn-default btn-xs" style='padding-top:5px; width:50px;'>
+      <font color='gray'>스터디</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='padding-top:5px; width:50px;'>
+      <font color='gray'>회식</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='padding-top:5px; width:50px;'>
+      <font color='gray'>모임</font></a>
+    </div>
+    <div class="col-sm-10">
+      <a id='logout-btn' class="btn btn-default btn-xs" style='margin-top:3px; padding-top:5px; width:50px;'>
+      <font color='gray'>친목</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='margin-top:3px; padding-top:5px; width:50px;'>
+      <font color='gray'>동창회</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='margin-top:3px; padding-top:5px; width:50px;'>
+      <font color='gray'>기타</font></a>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">기간설정</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">모임시간</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">선택마감기한</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">사진</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <a href='../meet/main.html'>
+      <button id='add-btn' type='button' class='new-form btn btn-primary' style='width:500px;'>
+모임만들기</button></a>
+    </div>
+  </div>
+</form>
+</div>
+
+<div id='footer'></div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../js/bit.js"></script>
+<script src="../js/common.js"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

@@ -1,0 +1,31 @@
+<head>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+    return this;
+}
+showPopup = function() {
+$("#popLayer").show();
+$("#popLayer").center();
+}
+</script>
+<style>
+#popLayer{
+  display: none;
+  width: 300px;
+  height: 350px;
+  border: 1px solid red;
+  background-color: black;
+}
+</style>
+</head>
+<body>
+<a href="javascript:;" onclick="javascript:showPopup()">팝업띄우기</a>
+</body>
+<div id="popLayer" style="display:none;">
+<div>팝업 레이어입니다.</div>
+<div>
