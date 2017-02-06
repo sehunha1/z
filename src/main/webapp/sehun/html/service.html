@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style/css/reset.css"/>
+  <link rel="stylesheet" href="../style/css/layout.css"/>
+  <link rel="stylesheet" href="../style/css/common.css"/>
+  <link rel="stylesheet" href="../style/css/view/service.css"/>
+</head>
+<body>
+  <div id="app">
+    <!-- 헤더 -->
+    <div id="header">
+      <div class="inner_header">
+        <!-- 로고 -->
+        <a href="#" class="logo">
+          <img src="../img/common/logo.png" alt="Schedule Maker"/>
+        </a>
+        <!--// 로고 -->
+
+        <!-- 유틸메뉴 -->
+        <div class="util">
+          <!-- [D] 활성화 상태시 .on 클래스 사용 -->
+          <div class="menu_info">
+            <div class="util_menu_info">
+              <!-- 유저 프로필 이미지 -->
+              <span class="user_image"></span>
+              <!--// 유저 프로필 이미지 -->
+
+              <!-- 유저 프로필 이미지 -->
+              <div class="user_name">꽃돌이</div>
+              <!--// 유저 프로필 이미지 -->
+            </div>
+
+            <!-- 메뉴 리스트 -->
+            <ul class="util_menu_list">
+              <li class="item"><a href="#">나의 모임</a></li>
+              <li class="item"><a href="#">나의 프로필</a></li>
+              <li class="item"><a href="#">로그아웃</a></li>
+            </ul>
+            <!--// 메뉴 리스트 -->
+          </div>
+        </div>
+        <!--// 유틸메뉴 -->
+      </div>
+    </div>
+    <!--// 헤더 -->
+
+    <div id="content">
+      <div class="side_menu">
+        <p class="tit">모임 멤버</p>
+        <ul class="member_list">
+          <li class="item">
+            <span class="user_profile">
+              <img src="../img/common/user_profile.jpg" alt=""/>
+            </span>
+            <span class="user_name">김부장</span>
+            <span class="vote_status done"></span>
+          </li>
+          <li class="item">
+            <span class="user_profile">
+              <img src="../img/common/user_profile.jpg" alt=""/>
+            </span>
+            <span class="user_name">김차장</span>
+            <span class="vote_status yet"></span>
+          </li>
+          <li class="item">
+            <span class="user_profile">
+              <img src="../img/common/user_profile.jpg" alt=""/>
+            </span>
+            <span class="user_name">한과장</span>
+            <span class="vote_status done"></span>
+          </li>
+        </ul>
+
+        <button type="button" class="add_member">+</button>
+
+        <div class="share">
+          <p class="tit">공유하기</p>
+          <ul class="share_list">
+            <li class="item kakao">
+              <a href="#"></a>
+            </li>
+            <li class="item facebook">
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service">
+        <ul class="schedule_function">
+          <!--[D]
+            색상 : {
+              .main : 에메랄드색
+            }
+            활성화 : {
+              .on : 열림
+            }
+          -->
+          <li class="item main_meeting on">
+            <div class="label">제목1</div>
+            <div class="container">
+              <p class="tit">늦은 망년회겸 신년회르 하려고 합니다 다들 투표해주세요.</p>
+              <ul class="info">
+                <li class="item">모인분류 : 회식</li>
+                <li class="item">모임시간 : 2시간</li>
+                <li class="item">기간 : 1월 중</li>
+                <li class="item">선택마감기한 : 1월 25일까지 (D-3)</li>
+              </ul>
+            </div>
+          </li>
+          <li class="item vote_schedule on">
+            <div class="label">제목2</div>
+            <div class="container">
+              <p class="date_info">2017. 02</p>
+              <table class="meeting_calendar">
+                  <caption class="blind">모임 캘린더</caption>
+                  <colgroup>
+
+                  </colgroup>
+                  <thead>
+                      <tr>
+                          <th scope="col"><span class="day_week day_sun" title="일">일</span></th>
+                          <th scope="col"><span class="day_week" title="월">월</span></th>
+                          <th scope="col"><span class="day_week" title="화">화</span></th>
+                          <th scope="col"><span class="day_week" title="수">수</span></th>
+                          <th scope="col"><span class="day_week" title="목">목</span></th>
+                          <th scope="col"><span class="day_week" title="금">금</span></th>
+                          <th scope="col"><span class="day_week day_sat" title="토">토</span></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="calendar-week">
+                        <td class="calendar-date calendar-prev-mon calendar-sun calendar-holiday select_area"><a href="#">29</a></td>
+                        <td class="calendar-date calendar-prev-mon calendar-holiday select_area"><a href="#">30</a></td>
+                        <td class="calendar-date calendar-prev-mon select_area"><a href="#">31</a></td>
+                        <td class="calendar-date select_area"><a href="#">1</a></td>
+                        <td class="calendar-date select_area"><a href="#">2</a></td>
+                        <td class="calendar-date select_area"><a href="#">3</a></td>
+                        <td class="calendar-date calendar-sat select_area"><a href="#">4</a></td>
+                    </tr>
+                    <tr class="calendar-week">
+                        <td class="calendar-date calendar-sun select_area"><a href="#">5</a></td>
+                        <td class="calendar-date select_area"><a href="#">6</a></td>
+                        <td class="calendar-date calendar-today"><a href="#">7</a></td>
+                        <td class="calendar-date select_area"><a href="#">8</a></td>
+                        <td class="calendar-date select_area"><a href="#">9</a></td>
+                        <td class="calendar-date select_area"><a href="#">10</a></td>
+                        <td class="calendar-date calendar-sat select_area"><a href="#">11</a></td>
+                    </tr>
+                    <tr class="calendar-week">
+                        <td class="calendar-date calendar-sun select_area"><a href="#">12</a></td>
+                        <td class="calendar-date select_area"><a href="#">13</a></td>
+                        <td class="calendar-date select_area"><a href="#">14</a></td>
+                        <td class="calendar-date select_area"><a href="#">15</a></td>
+                        <td class="calendar-date select_area"><a href="#">16</a></td>
+                        <td class="calendar-date select_area"><a href="#">17</a></td>
+                        <td class="calendar-date calendar-sat select_area"><a href="#">18</a></td>
+                    </tr>
+                    <tr class="calendar-week">
+                        <td class="calendar-date calendar-sun"><a href="#">19</a></td>
+                        <td class="calendar-date select_area"><a href="#">20</a></td>
+                        <td class="calendar-date select_area"><a href="#">21</a></td>
+                        <td class="calendar-date select_area"><a href="#">22</a></td>
+                        <td class="calendar-date select_area"><a href="#">23</a></td>
+                        <td class="calendar-date select_area"><a href="#">24</a></td>
+                        <td class="calendar-date calendar-sat"><a href="#">25</a></td>
+                    </tr>
+                    <tr class="calendar-week">
+                        <td class="calendar-date calendar-sun select_area"><a href="#">26</a></td>
+                        <td class="calendar-date select_area"><a href="#">27</a></td>
+                        <td class="calendar-date select_area"><a href="#">28</a></td>
+                        <td class="calendar-date calendar-next-mon calendar-holiday select_area"><a href="#">1</a></td>
+                        <td class="calendar-date calendar-next-mon select_area"><a href="#">2</a></td>
+                        <td class="calendar-date calendar-next-mon select_area"><a href="#">3</a></td>
+                        <td class="calendar-date calendar-next-mon calendar-sat select_area"><a href="#">4</a></td>
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+          </li>
+          <li class="item vote_place on">
+            <div class="label">제목3</div>
+            <div class="container">
+              <div id="map" style="width: 500px; height:400px;"></div>
+            </div>
+          </li>
+          <li class="item board on">
+            <div class="label">제목4</div>
+            <div class="container">
+              게시판
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="footer">
+
+    </div>
+  </div>
+  <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=1e639bb7fa6251699898a62a13e3add8"></script>
+  <script>
+    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+    var options = { //지도를 생성할 때 필요한 기본 옵션
+      center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+      level: 3 //지도의 레벨(확대, 축소 정도)
+    };
+    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+  </script>
+</body>
+</html>

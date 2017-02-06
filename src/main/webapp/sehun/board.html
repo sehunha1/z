@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 모임</title>
+<title>게시판</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <style>
   #page {
@@ -57,45 +57,21 @@
       </div>
     </div>
   </div>
-  <div id="name" style="float: left;">
-    <h2>내 모임 <img src="calendar.png" style="width:30px; height:30px;"></h2>
+  <div id="side" style="background-color: lightgray; float: left; border: 1px solid red; width: 200px; height: 600px; margin-top: 20px;">
+
   </div>
-  <div id="sort" style="float: right; padding-top: 20px;">
-    <p style="font-size: 20px;">정렬방법</p>
-    <div class="dropdown">
-      <img src="triangle.png" style="width:15px; height:15px;">
-      <div class="dropdown-content">
-        <p>최신순</p>
-        <p>진행중</p>
-        <p>완료</p>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both; border: 1px solid white;">
-    <ul>
-      <li>
-        <a>
-          <div>
-            <img src="girl.jpg" width="140px;" height="80px;">
-          </div>
-          <div>
-            <span></span>
-          </div>
-          <div class="">
-            <p>중국어</p>
-            <ul style="list-style-type: none;">
-              <li><span>날짜: </span><span>2017년 1월 27일</span></li>
-              <li><span>시간: </span><span>오후 8시</span></li>
-              <li><span>장소: </span><span>비트컴퓨터</span></li>
-            </ul>
-            <span>3/5</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <div id="map" style="width: 500px; height:400px;"></div>
 </div>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=1e639bb7fa6251699898a62a13e3add8"></script>
+<script>
+  var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+  var options = { //지도를 생성할 때 필요한 기본 옵션
+    center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+    level: 3 //지도의 레벨(확대, 축소 정도)
+  };
+  var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+</script>
 </body>
 </html>

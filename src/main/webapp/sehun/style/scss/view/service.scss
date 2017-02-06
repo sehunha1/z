@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+#app{
+  #content{
+    *zoom:1;
+    &:after{
+      content:'';
+      display:block;
+      clear:both;
+    }
+
+    .side_menu{
+      width:180px;
+      padding:0 10px;
+      height:100%;
+      float:left;
+      background-color:#ddd;
+      >.tit{
+        font-weight:bold;
+        text-align: center;
+        margin:20px 0;
+      }
+      .member_list{
+        margin-bottom:20px;
+        .item{
+          margin-bottom:10px;
+          &:last-child{
+            margin-bottom:0;
+          }
+          *zoom:1;
+          &:after{
+            content:'';
+            display:block;
+            clear:both;
+          }
+          .user_profile{
+            border-radius:50%;
+            display:block;
+            width:40px;
+            height:40px;
+            overflow:hidden;
+            img{
+              max-width:100%;
+            }
+            float:left;
+          }
+          .user_name{
+            float:left;
+            margin-left:5px;
+            line-height:42px;
+          }
+          .vote_status{
+            width:20px;
+            height:20px;
+            display:block;
+            float:left;
+            margin-top:10px;
+            border-radius:50%;
+            margin-left:5px;
+            &.done{
+              background-color:green;
+            }
+            &.yet{
+              background-color:red;
+            }
+          }
+        }
+      }
+      .add_member{
+          width:100%;
+          height:20px;
+          margin:10px 0;
+      }
+      .share{
+        width:100%;
+        >.tit{
+          text-align:center;
+          font-weight:bold;
+          margin:10px 0;
+        }
+        .share_list{
+          text-align: center;
+          .item{
+            width:50px;
+            height:50px;
+            background-color:gray;
+            display:inline-block;
+            &.kakao{
+
+            }
+            &.facebook{
+
+            }
+          }
+        }
+      }
+    }
+    .service{
+      width:730px;
+      padding:0 15px;
+      height:100%;
+      float:right;
+      .schedule_function{
+        .item{
+          &.on{
+            .container{
+              display:block;
+            }
+          }
+          .label{
+            color:#fff;
+            padding:10px;
+            text-align:center;
+            cursor:pointer;
+            background-color:navy;
+          }
+          .container{
+            padding:10px;
+            display:none;
+          }
+          &.main_meeting{
+            .label{
+              background-color:green;
+            }
+            .container{
+              >.tit{
+                font-weight:bold;
+                margin-bottom:10px;
+              }
+              >.info{
+                *zoom:1;
+                &:after{
+                  clear:both;
+                  content:'';
+                  display:block;
+                }
+                .item{
+                  float:left;
+                  padding:5px 0;
+                  width:50%;
+                }
+              }
+            }
+          }
+          &.vote_schedule{
+            .date_info{
+              text-align:center;
+              margin-bottom:5px;
+              font-weight:bold;
+            }
+            .meeting_calendar{
+              width:100%;
+              border:{
+                top:1px solid #ddd;
+                bottom:1px solid #ddd;
+              }
+              .day_week{
+                text-align:center;
+                display:block;
+                &.day_sun{
+                  color:red;
+                }
+                &.day_sat{
+                  color:blue;
+                }
+              }
+              tr{
+                .calendar-date{
+                  padding:5px;
+                  height:50px;
+                  position:relative;
+                  border-right:1px solid #ddd;
+                  border-top:1px solid #ddd;
+                  &:last-child{
+                    border-right:none;
+                  }
+                  a{
+                    display:block;
+                    width:100%;
+                    height:100%;
+                  }
+                  &.calendar-sun{
+                    a{
+                      color:red;
+                    }
+                  }
+                  &.calendar-prev-mon,
+                  &.calendar-next-mon{
+                    a{
+                      color:#ddd;
+                    }
+                  }
+                }
+                th{
+                  padding:5px;
+                  border-right:1px solid #ddd;
+                  &:last-child{
+                    border-right:none;
+                  }
+                }
+              }
+            }
+          }
+          &.vote_place{
+
+          }
+          &.board{
+
+          }
+        }
+      }
+    }
+  }
+}

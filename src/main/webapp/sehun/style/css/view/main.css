@@ -1,0 +1,64 @@
+#app #content .view_my_meeting {
+  margin-top: 20px; }
+  #app #content .view_my_meeting > .tit {
+    display: inline-block;
+    font-size: 18px;
+    color: #333;
+    position: relative;
+    margin-bottom: 15px; }
+    #app #content .view_my_meeting > .tit:after {
+      display: inline-block;
+      content: '';
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      right: -20px;
+      top: -2px;
+      background: url("../../../img/common/ico_calendar.png") no-repeat 50% 50%;
+      background-size: cover; }
+  #app #content .view_my_meeting .meeting_list {
+    *zoom: 1; }
+    #app #content .view_my_meeting .meeting_list:after {
+      content: '';
+      display: block;
+      clear: both; }
+    #app #content .view_my_meeting .meeting_list > .item {
+      width: 31.33%;
+      float: left;
+      background: #fff;
+      margin: 0 1% 20px; }
+      #app #content .view_my_meeting .meeting_list > .item > a {
+        display: block; }
+        #app #content .view_my_meeting .meeting_list > .item > a .meeting_image {
+          width: 100%;
+          height: 160px;
+          position: relative;
+          background-color: #ddd; }
+          #app #content .view_my_meeting .meeting_list > .item > a .meeting_image.default_a {
+            background: url("../../../img/common/bg_default_a.jpg") no-repeat 50% 50%; }
+          #app #content .view_my_meeting .meeting_list > .item > a .meeting_image.default_b {
+            background: url("../../../img/common/bg_default_b.jpg") no-repeat 50% 50%; }
+          #app #content .view_my_meeting .meeting_list > .item > a .meeting_image .meeting_owner {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            color: #fff; }
+        #app #content .view_my_meeting .meeting_list > .item > a .meeting_info {
+          padding: 15px; }
+          #app #content .view_my_meeting .meeting_list > .item > a .meeting_info > .tit {
+            color: #000;
+            font-size: 16px;
+            font-weight: bold; }
+          #app #content .view_my_meeting .meeting_list > .item > a .meeting_info .meeting_info_list {
+            border-top: 1px solid #ddd;
+            margin-top: 5px;
+            padding-top: 5px; }
+            #app #content .view_my_meeting .meeting_list > .item > a .meeting_info .meeting_info_list .item {
+              line-height: 1em;
+              margin: 5px 0;
+              font-size: 14px; }
+              #app #content .view_my_meeting .meeting_list > .item > a .meeting_info .meeting_info_list .item > .tit {
+                font-weight: bold;
+                color: #666; }
+
+/*# sourceMappingURL=main.css.map */

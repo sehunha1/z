@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+$full-width:100%;
+$max-width:960px;
+$margin-center:0 auto;
+
+#app{
+  #header{
+    width:$full-width;
+    .inner_header{
+      width:$max-width;
+      margin:$margin-center;
+    }
+  }
+  #content{
+    width:$max-width;
+    margin:$margin-center;
+  }
+  #footer{
+    width:$full-width;
+  }
+}

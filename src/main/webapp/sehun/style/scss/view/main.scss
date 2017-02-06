@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+#app{
+  #content{
+    .view_my_meeting{
+      margin-top:20px;
+      >.tit{
+        display:inline-block;
+        font-size:18px;
+        color:#333;
+        position:relative;
+        margin-bottom:15px;
+        &:after{
+          display:inline-block;
+          content:'';
+          width:18px;
+          height:18px;
+          position:absolute;
+          right:-20px;
+          top:-2px;
+          background:url('../../../img/common/ico_calendar.png') no-repeat 50% 50%;
+          background-size: cover;
+        }
+      }
+
+      .meeting_list{
+        *zoom:1;
+        &:after{
+          content:'';
+          display:block;
+          clear:both;
+        }
+        >.item{
+          width:31.33%;
+          float:left;
+          background:#fff;
+          margin:0 1% 20px;
+
+          >a{
+            display:block;
+            .meeting_image{
+              width:100%;
+              height:160px;
+              position:relative;
+              &.default_a{
+                background:url('../../../img/common/bg_default_a.jpg') no-repeat 50% 50%;
+              }
+              &.default_b{
+                background:url('../../../img/common/bg_default_b.jpg') no-repeat 50% 50%;
+              }
+              background-color:#ddd;
+              .meeting_owner{
+                position:absolute;
+                right:10px;
+                bottom:10px;
+                color:#fff;
+              }
+            }
+
+            .meeting_info{
+              padding:15px;
+              >.tit{
+                color:#000;
+                font-size:16px;
+                font-weight:bold;
+              }
+              .meeting_info_list{
+                border-top:1px solid #ddd;
+                margin-top:5px;
+                padding-top:5px;
+                .item{
+                  line-height:1em;
+                  margin:5px 0;
+                  font-size:14px;
+                  >.tit{
+                    font-weight:bold;
+                    color:#666;
+                  }
+                  .info{
+
+                  }
+                }
+              }
+              .participation_member_info{
+
+              }
+            }
+
+            .meeting_status{
+              &.ing{
+                .info{
+
+                }
+              }
+              &.finish{
+                .info{
+
+                }
+              }
+              &.wait{
+                .info{
+
+                }
+              }
+              &.new{
+                .info{
+
+                }
+              }
+
+              .info{
+
+              }
+            }
+          }
+
+          &.add_item{
+
+          }
+        }
+      }
+    }
+  }
+}

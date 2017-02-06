@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+html,body,#app{
+	height:100%;
+}
+
+#app {
+	#header {
+		border-bottom: 1px solid #ddd;
+		background-color:orange;
+		.inner_header{
+			*zoom: 1;
+
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		}
+
+		.logo {
+			display: block;
+			float: left;
+			width: 150px;
+			margin: {
+				top: 5px;
+				left: 10px;
+			}
+
+			> img {
+				width: 100%;
+			}
+		}
+
+		.util {
+			float: right;
+			padding: 15px 20px;
+
+			.menu_info {
+				position: relative;
+				cursor: pointer;
+
+				.util_menu_info {
+					*zoom: 1;
+
+					&:after {
+						content: '';
+						display: block;
+						clear: both;
+					}
+
+					.user_image {
+						float: left;
+						width: 30px;
+						height: 30px;
+						background: url('../../img/common/user_profile.jpg') no-repeat 50% 50%;
+						background-size: cover;
+						border-radius: 50%;
+						margin-right: 10px;
+					}
+
+					.user_name {
+						float: left;
+						line-height: 30px;
+					}
+				}
+
+				.util_menu_list {
+					display: none;
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 50px;
+
+					.item {
+						> a {
+							display: block;
+							padding: 5px;
+						}
+					}
+				}
+
+				&.on {
+					.util_menu_list {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+	#content{
+		height:100%;
+	}
+	#footer {}
+}
+
+.blind{
+	position:fixed;
+	top:-9999px;
+	left:-9999px;
+	width:1px;
+	height:1px;
+	opacity:0;
+}

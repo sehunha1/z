@@ -1,0 +1,66 @@
+html, body, #app {
+  height: 100%; }
+
+#app #header {
+  border-bottom: 1px solid #ddd;
+  background-color: orange; }
+  #app #header .inner_header {
+    *zoom: 1; }
+    #app #header .inner_header:after {
+      content: '';
+      display: block;
+      clear: both; }
+  #app #header .logo {
+    display: block;
+    float: left;
+    width: 150px;
+    margin-top: 5px;
+    margin-left: 10px; }
+    #app #header .logo > img {
+      width: 100%; }
+  #app #header .util {
+    float: right;
+    padding: 15px 20px; }
+    #app #header .util .menu_info {
+      position: relative;
+      cursor: pointer; }
+      #app #header .util .menu_info .util_menu_info {
+        *zoom: 1; }
+        #app #header .util .menu_info .util_menu_info:after {
+          content: '';
+          display: block;
+          clear: both; }
+        #app #header .util .menu_info .util_menu_info .user_image {
+          float: left;
+          width: 30px;
+          height: 30px;
+          background: url("../../img/common/user_profile.jpg") no-repeat 50% 50%;
+          background-size: cover;
+          border-radius: 50%;
+          margin-right: 10px; }
+        #app #header .util .menu_info .util_menu_info .user_name {
+          float: left;
+          line-height: 30px; }
+      #app #header .util .menu_info .util_menu_list {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50px; }
+        #app #header .util .menu_info .util_menu_list .item > a {
+          display: block;
+          padding: 5px; }
+      #app #header .util .menu_info.on .util_menu_list {
+        display: block; }
+#app #content {
+  height: 100%; }
+
+.blind {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0; }
+
+/*# sourceMappingURL=common.css.map */
