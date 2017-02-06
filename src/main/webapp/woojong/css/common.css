@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 body {
   font-family: '맑은 고딕', sans-serif;
-   
 }
 
 body > .container {
@@ -9,6 +8,8 @@ body > .container {
 }
 
 #header {
+	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
 	background-color:#0000FF; 
 	height:65px;
 	position:relative;
@@ -38,7 +39,7 @@ body > .container {
   color: white;
   padding: 10px 5px;
   margin: 0px;
-  background-color:#050505; 
+  background-color:#BBBBCC; 
   width:180px; 
   height:700px;
   /* border: 1px solid red; */
@@ -57,6 +58,8 @@ body > .container {
   /* 스크롤
   overflow-y:scroll;
   */
+  background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   height:500px;
   text-shadow:3px 3px 3px rgb(0,0,0);
   font-family: 'HanSans';
@@ -71,6 +74,8 @@ body > .container {
 	/* 스크롤
 	overflow-y:scroll;
 	*/
+	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
 	height:500px;
 	font-family: 'HanSans';
 	padding-top: 70px;
@@ -82,6 +87,8 @@ body > .container {
 
 #content-cal {
 	/* 스크롤 */
+	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   overflow-y:scroll;
   height:700px;
   padding-left: 500px;
@@ -92,17 +99,22 @@ body > .container {
 }
 
 #content-long {
-  /* 스크롤 */
-  overflow-y:scroll;
-  height:500px;
+  /* 스크롤 
+  overflow-y:scroll;*/
+  background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  height:700px;
   font-family: 'HanSans';
   padding-left: 70px; /* 190px; */
+  padding-right: 50px;
   min-height: 400px;
   background-color:#93C8AA;
   /* border: 1px solid red; */
 }
 
 #content-card {
+	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
 	height:500px;
 	padding-top: 1px;
 	padding-left: 500px;

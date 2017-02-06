@@ -5,6 +5,7 @@
 <title>학생관리-조회</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../css/common.css">
+    <script src="timeselect.js"></script>
 </head>
 <body>
 <div class='container'>
@@ -45,9 +46,14 @@
     </div>
   </div>
   <div class="form-group">
+  
     <label for="tel" class="col-sm-2 control-label">기간설정</label>
     <div class="col-sm-10">
-      <input id='time-set' type='text' class="form-control">
+        <input id='timepicker1' type='text' value='12:00 pm' size=8 maxlength=8
+    ONBLUR="validateDatePicker(this)">
+  <IMG SRC="http://www.blueb.co.kr/SRC/javascript/image4/timepicker.gif"
+    BORDER="0" ALT="Pick a Time!" ONCLICK="selectTime(this,timepicker1)"
+    STYLE="cursor: hand">
     </div>
   </div>
     <div class="form-group">
@@ -85,7 +91,6 @@
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../js/bit.js"></script>
 <script src="../js/common.js"></script>
-
 
 </body>
 </html>
