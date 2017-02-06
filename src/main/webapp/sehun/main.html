@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<style>
+  #page {
+    background-color: mediumseagreen;
+    width: 960px;
+    padding: 20px;
+    margin: 0px auto;
+  }
+  #right {
+    float: right;
+  }
+  #cont {
+    margin-top: 150px;
+    margin-left: 100px;
+    margin-bottom: 200px;
+  }
+  .shadow {
+    color: white;
+    text-shadow: 5px 5px 5px black;
+  }
+  #btn {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+</style>
+</head>
+<body>
+<div id="page">
+  <div id="menu">
+    <img src='menu_icon.png' style="width:30px; height:30px;"><b> SCHEDULE MAKER</b>
+  </div>
+  <div id="right">
+    <ul>
+      <li>로그인</li>
+      <li>회원가입</li>
+      <li>고객지원</li>
+    </ul>
+  </div>
+  <div id="cont">
+    <h3 class="shadow">Make Your Meeting Schedule!</h3>
+    <h2 class="shadow">When. Where.</h2>
+    <input type="text" size="50">  <input id="btn" type="submit" value="create schedule">
+  </div>
+</div>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
