@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Login Modal Dialog Window with CSS and jQuery</title>
+<link rel="stylesheet" type="text/css" href="./popup/css/login.css">
+<link rel="stylesheet" type="text/css" href="./login/login.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('a.login-window').click(function() {
+    
+    // Getting the variable's value from a link 
+    var loginBox = $(this).attr('href');
+
+    //Fade in the Popup and add close button
+    $(loginBox).fadeIn(300);
+    
+    //Set the center alignment padding + border
+    var popMargTop = ($(loginBox).height() + 24) / 2; 
+    var popMargLeft = ($(loginBox).width() + 24) / 2; 
+    
+    $(loginBox).css({ 
+      'margin-top' : -popMargTop,
+      'margin-left' : -popMargLeft
+    });
+    
+    // Add the mask to body
+    $('body').append('<div id="mask"></div>');
+    $('#mask').fadeIn(300);
+    
+    return false;
+  });
+  
+  // When clicking on the button close or the mask layer the popup closed
+  $('a.close, #mask').live('click', function() { 
+    $('#mask , .login-popup').fadeOut(300 , function() {
+    $('#mask').remove();  
+  }); 
+  return false;
+  });
+});
+</script>
+</head>
+<body>
+<div class="container">
+  <div id="content">    
+    <div class="post">      
+          <div class="btn-sign">        
+        <a href="#login-box" class="login-window"><img src="./popup/img/login_bt.gif" alt="로그인 버튼"></a>
+          </div>
+    </div>
+        
+        <div id="login-box" class="login-popup">
+        <div class="form">
+  <div class="form-toggle"></div>
+  <div class="form-panel one">
+    <div class="form-header">
+      <h1>로그인</h1>
+    </div>
+    <div class="form-content">
+      <form>
+        <div class="form-group">
+          <label for="username">이메일주소</label>
+          <input type="text" id="username" name="username" required="required"/>
+        </div>
+        <div class="form-group">
+          <label for="password">패스워드</label>
+          <input type="password" id="password" name="password" required="required"/>
+        </div>
+        <div class="form-group">
+          <label class="form-remember">
+            <input type="checkbox"/>기억하기
+          </label><a href="#" class="form-recovery">비밀번호를 잊어버리셨나요?</a>
+        </div>
+        <div class="form-group">
+          <a href='./mainslidemenu-login.html'><button type="button" style='width:450px;'>로그인</button></a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="form-panel two">
+    <div class="form-header">
+      <h1>회원가입</h1>
+    </div>
+    <div class="form-content">
+      <form>
+        <div class="form-group">
+          <label for="username">유저명</label>
+          <input type="text" id="username" name="username" required="required"/>
+        </div>
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" required="required"/>
+        </div>
+        <div class="form-group">
+          <label for="cpassword">비밀번호 확인</label>
+          <input type="password" id="cpassword" name="cpassword" required="required"/>
+        </div>
+        <div class="form-group">
+          <label for="email">이메일 주소</label>
+          <input type="email" id="email" name="email" required="required"/>
+        </div>
+        <div class="form-group">
+          <button type="button">회원가입</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+    </div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+  var panelOne = $('.form-panel.two').height(),
+    panelTwo = $('.form-panel.two')[0].scrollHeight;
+
+  $('.form-panel.two').not('.form-panel.two.active').on('click', function(e) {
+    e.preventDefault();
+
+    $('.form-toggle').addClass('visible');
+    $('.form-panel.one').addClass('hidden');
+    $('.form-panel.two').addClass('active');
+    $('.form').animate({
+      'height': panelTwo
+    }, 200);
+  });
+
+  $('.form-toggle').on('click', function(e) {
+    e.preventDefault();
+    $(this).removeClass('visible');
+    $('.form-panel.one').removeClass('hidden');
+    $('.form-panel.two').removeClass('active');
+    $('.form').animate({
+      'height': panelOne
+    }, 200);
+  });
+});
+</script>
+</body>
+</html>

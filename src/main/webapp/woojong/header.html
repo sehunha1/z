@@ -1,41 +1,88 @@
-<style type="text/css">
- a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>header</title>
+
+  <link rel="stylesheet" type="text/css" href="../test/popup/popup.css" />
+  <link rel="stylesheet" type="text/css" href="../test/login/login.css" />
+  <link rel="stylesheet" type="text/css" href="../test/login/login2.css" />
+  
+<style>
+  #header {
+    width:100%;
+    border-bottom: 1px solid #ddd;
+  }
+  #header .inner_header {
+    width: 960px;
+    margin: 0 auto;
+  }
+  #header .inner_header:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #header .logo img{
+    width:40px;
+    height:40px;
+    float:left;
+    margin-bottom:5px;
+  }
+  #header .svc_name {
+    float:left;
+    margin-top:6px;
+    font-size:25px;
+  }
+  #header .svc_name a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #join {
+    float:right;
+    margin-top:10px;
+    margin-left:20px;
+  }
+  #header #join a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #login {
+    float:right;
+    margin-top:10px;
+  }
+  #header #login a {
+    text-decoration:none;
+    color:black;
+  }
 </style>
-
-<div style='width:300px; height:38px; position:absolute; left:0px; top:0px;'>
-<button class="btn btn-default" type="button" style='float:left;'>
-  <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-</button>
-
-  <!--<img src='../image/logo.jpeg'  height='30' width='40' style='float:left; margin-top:6px; margin-left:6px; margin-right:10px;'>-->
-  <div style='color:black; float:left; font-weight:bold; margin-left:5px; padding-top:1px; font-family:HanSans; font-size:x-large;'>
-  <a href='../main/main.html'>SCHEDULE MAKER</a>
+</head>
+<body>
+<div id="header">
+  <div class="inner_header">
+    <a href="#" class="logo">
+      <img src="../image/logot.png" alt="Schedule Maker"></img>
+    </a>
+    <div class="svc_name">
+      <a href="#"><b>SCHEDULE MAKER</b></a>
+    </div>
+    <div id="join">
+      <a href="#" class='openMask'>회원가입</a>
+    </div>
+    <div id="login">
+      <a href="#" class='openMaskt'>로그인</a>
+    </div>
   </div>
 </div>
 
-<div id='logoff-div' style='height:30px; float:right; margin:5px;'>
- <a id='logout-btn' href='../main/test.html' class="btn btn-primary btn-xs"><font color='white'>로그인/회원가입</font></a>
-  <!--<a id='login-btn' href='./main-login.html' class="btn btn-primary btn-xs">로그인</a>-->
-  <!--<a href="./main-login.html" class="login-window">로그인</a> -->
-</div>
 
 
-<!-- 
-<div style='width:300px; height:55px; position:absolute; left:0px; top:0px;'>
-  <div style='color:black; font-weight:bold; margin-left:10px; padding-top:7px; font-family:HanSans; font-size:180%;'>
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="../test/menu/js/main.js"></script> <!-- Resource jQuery -->
+<script src="../test/popup/popup.js"> </script>
 
-  <button class="btn btn-default" type="button">
-    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-  </button>
 
-  SCHEDULE MAKER
-  </div>
 
-</div>
 
- -->
- 
- 
-  <!--  <img src='../image/logo.jpeg'  width='60' height='55' style='float:left; margin-top:6px; margin-left:6px; margin-right:6px;'>-->
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<meta charset="euc-kr">
+<title>Main</title>
+<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.css' />
+  <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.js'></script>
+  <script src='https://fullcalendar.io/js/home.js?3.1.0-1.5.0-4'></script>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+
+<link rel="stylesheet" href="../test/menu/css/reset.css"> <!-- CSS reset -->
+  <link rel="stylesheet" href="../test/menu/css/style.css"> <!-- Resource style -->
+  <script src="../test/menu/js/modernizr.js"></script> <!-- Modernizr -->
+
+<script>
+$(document).ready(function(){
+    $("#conttext-btn").click(function(){
+        $(".conttext").show();
+        $(".card").hide();
+        $(".file").hide();        
+        $(".map_view").hide();
+        $(".maplist").hide();
+        $(".calendar").hide();
+    });
+    $("#meet").click(function(){
+      	$(".conttext").hide();
+      	$(".card").hide();
+      	$(".file").hide();
+      	$(".map_view").hide();
+      	$(".maplist").hide();
+        $(".calendar").show();
+    });
+    $("#map").click(function(){
+        $(".conttext").hide();
+        $(".card").hide();
+        $(".file").hide();
+        $(".map_view").show();
+        $(".maplist").show();
+        $(".calendar").hide();
+    });
+    $("#board").click(function(){
+        $(".conttext").hide();
+        $(".card").show();
+        $(".file").show();
+        $(".map_view").hide();
+        $(".maplist").hide();
+        $(".calendar").hide();
+    });
+});
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Nuy1IwO7vpb556X56is6iQ9Nhct8YUM&callback=initMap"
+    async defer></script>
+  <script>
+    function initialize() {
+
+      /*
+        http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=서울특별시 강남구 강남대로 456
+                위와같이 링크에서 뒤에 주소를 적으면 x,y 값을 구할수 있습니다.
+      */
+      var Y_point     = 37.493692;    // Y 좌표
+      var X_point     = 127.028148;   // X 좌표
+
+      var zoomLevel   = 16;           // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+
+      var markerTitle   = "비트캠프";        // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+      var markerMaxWidth  = 300;            // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+
+      // 말풍선 내용
+      var contentString = '<div>' +
+      '<h2>비트캠프</h2>'+
+      //'<a href="http://www.daegu.go.kr" target="_blank">http://www.daegu.go.kr</a>'+ //링크도 넣을 수 있음
+      '</div>';
+
+      var myLatlng = new google.maps.LatLng(Y_point, X_point);
+      var mapOptions = {
+                zoom: zoomLevel,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById('map_view'), mapOptions);
+
+      var marker = new google.maps.Marker({
+                          position: myLatlng,
+                          map: map,
+                          title: markerTitle
+      });
+
+      var infowindow = new google.maps.InfoWindow(
+                            {
+                              content: contentString,
+                              maxWidth: markerMaxWidth
+                            }
+      );
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+
+</head>
+<body onload="initialize()">
+<header>
+    <a href='http://localhost:8080/Z-project/main/mainslidemenu-login.html'><img src='../image/logo.png' width='200' height='70'> </a>
+    <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text"><img src='../image/profile-default.png' width=30; height=30; style='align:center'>홍길동</span></a>
+    <!-- <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">회원</span> -->
+  </header>
+  <main class="cd-main-content">
+
+    <!-- put your content here -->
+
+  </main> <!-- cd-main-content -->
+
+  <nav id="cd-lateral-nav">
+    <ul class="cd-navigation">
+      <li class="item-has-children">
+        <a href="#0">서비스</a>
+        <ul class="sub-menu">
+          <li><a href="#0">Brand</a></li>
+          <li><a href="#0">Web Apps</a></li>
+          <li><a href="#0">Mobile Apps</a></li>
+        </ul>
+      </li> <!-- item-has-children -->
+
+      <li class="item-has-children">
+        <a href="#0">Sample</a>
+        <ul class="sub-menu">
+          <li><a href="#0">Product 1</a></li>
+          <li><a href="#0">Product 2</a></li>
+          <li><a href="#0">Product 3</a></li>
+          <li><a href="#0">Product 4</a></li>
+          <li><a href="#0">Product 5</a></li>
+        </ul>
+      </li> <!-- item-has-children -->
+    </ul> <!-- cd-navigation -->
+
+    <ul class="cd-navigation cd-single-item-wrapper">
+      <li><a href="#0">마이페이지</a></li>
+      <li><a href="#0">고객지원</a></li>
+    </ul> <!-- cd-single-item-wrapper -->
+
+    <ul class="cd-navigation cd-single-item-wrapper">
+      <li><a class="current" href="#0">Journal</a></li>
+      <li><a href="#0">FAQ</a></li>
+      <li><a href="#0">Terms &amp; Conditions</a></li>
+      <li><a href="#0">Careers</a></li>
+      <li><a href="#0">Students</a></li>
+    </ul> <!-- cd-single-item-wrapper -->
+
+    <div class="cd-navigation socials">
+      <a class="cd-twitter cd-img-replace" href="#0">Twitter</a>
+      <a class="cd-github cd-img-replace" href="#0">Git Hub</a>
+      <a class="cd-facebook cd-img-replace" href="#0">Facebook</a>
+      <a class="cd-google cd-img-replace" href="#0">Google Plus</a>
+    </div> <!-- socials -->
+  </nav>
+<div class='container'>
+<div id='sidebar'></div>
+
+<div id="content-cal">
+<p class="bg-primary" style='height:30px; text-align:center; background-color:red;'><font size=5 style='font-family:배달의민족 주아; margin-left:150px;'>자바89 늦은 망년회</font>
+ <button id="conttext-btn" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+ </p>
+<div class='conttext' style='padding-left:180px;'>
+<font size='6' style='font-family:tvN 즐거운이야기 Bold;'>| 늦은 망년회 겸 신년회를 하려고 합니다. 다들 투표해 주세요!</font>
+<br><font size=5 style='font-family:Sandoll 미생;'> |모임분류:회식  </font>
+<font size=5 style='text-align:right; font-family:Sandoll 미생; margin-left:300px;'> |모임시간:2시간 </font>
+<br><font size=5 style='font-family:Sandoll 미생;'>|기간:1월중 </font>
+<font size=5 style='text-align:right; font-family:Sandoll 미생; margin-left:315px;'> |선택마감기한:1월25일까지 <font color='red'><b>(D-3)</b></font> </font>
+</div>
+<p class="bg-primary" style='height:30px; text-align:center;'><font size=5 style='font-family:배달의민족 주아; margin-left:150px;'>일정투표</font>
+<button id="meet" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</p>
+
+<div class='calendar' id='calendar'  style='width:700px; height:500px; padding-left:180px;'>
+<!-- <button id="hide">Hide</button> -->
+</div>
+
+<p class="bg-primary" style='height:30px; text-align:center; background-color:green;'><font size=5 style='font-family:배달의민족 주아; margin-left:180px;'>장소투표</font>
+<button id="map" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</p>
+<!-- 지도 div 부분 -->
+<div class='maplist' style='overflow-y:scroll;
+  float:right;
+  font-color: black;
+  background-color:#FFFFFF; 
+  width:280px; 
+  height:300px;'> 
+<font color='black'>리스트</font>
+<p>
+<input type="checkbox" name="chk_info" value="HTML">본차로드
+<br><img src='../image/boncha.png' width=260px; height=100px;>
+<input type="checkbox" name="chk_info" value="HTML">설렁탕
+<br><img src='../image/sulung.png' width=260px; height=100px;>
+</div>
+
+<div class='map_view' id="map_view" style="width:450px; height:300px; margin-left:162px;"></div>
+
+<!-- 게시한 div 부분 -->
+<p class="bg-primary" style='height:30px; text-align:center; background-color:orange;'><font size=5 style='font-family:배달의민족 주아; margin-left:150px;'>게시판</font>
+<button id="board" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</p>
+
+<div id="content-card">
+
+<div class='file' style='height:30px; float:right; margin:5px; padding-right:10px;'>
+  <a id='fileall' class="btn btn-primary btn-large"><font color='white'>파일전체 다운받기</font></a>
+  <a id='filesel' class="btn btn-primary btn-large"><font color='white'>파일선택 다운받기</font></a>
+</div>
+
+<!-- 20rem -->
+<div class="card" style="width:13rem; background-color:#FFFFFF; margin-left:150px; font-size:22px; font-family:Sandoll 미생;">
+  <img class="card-img-top" src="../image/test.jpg" width=210 height=100 alt="Card image cap">
+  <input type="checkbox" name="chk_info" value="HTML" style='float:right;'>
+  <div class="card-block">
+    <h2 class="card-title">테스트:</h2>
+날짜: 170120-170131 <br>시간:투표중 <br>장소:투표중 <br><p align="right"><font size=5><b>3/5</b></font></p>
+  </div>
+  </div>
+<!-- 모임만들기 -->
+<div id='create-meet' style='height:30px; float:right; margin:5px; padding-right:350px;'>
+  <a id='c-meet' href='../mymeet/mymeet.html' class="btn btn-warning btn-large"><font color='white'>모임만들기</font></a>
+</div>
+</div>
+
+
+</div> <!-- content -->
+<div id='footer'></div>
+</div>
+
+<script src="../js/bit.js"></script>
+<script src="../js/common.js"></script>
+<script src="../test/menu/js/main.js"></script> <!-- Resource jQuery -->
+<script src="main.js"></script>
+
+</body>
+</html>

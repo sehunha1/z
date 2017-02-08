@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+#mask {  
+    position:absolute;  
+    z-index:9000;  
+    background-color:#000;  
+    display:none;  
+    left:0;
+    top:0;
+  }
+  .window{
+  /* 회원가입 창*/
+    display: none;
+    position:absolute;
+    top:5%;
+    left:35%;
+    z-index:10000;  
+    /*
+    left:100px;
+    top:100px;
+    z-index:10000;
+    */
+  }
+  
+  #maskt {
+  /* 로그인 창*/
+    position:absolute;  
+    z-index:9000;  
+    background-color:#000;  
+    display:none;  
+    left:0;
+    top:0;
+  }
+  .windowt{
+    display: none;
+    position:absolute;
+    top:15%;
+    left:35%;
+    z-index:10000;  
+    /*
+    left:100px;
+    top:100px;
+    z-index:10000;
+    */
+  }

@@ -24,6 +24,7 @@ body .backgroundTransition .image-bottom { z-index: -2; }
 body .backgroundTransition .image-top {
   z-index: -1;
   display: none;
+  width:100px;
 }
 
 #image-download { display: none; }

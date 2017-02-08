@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Main</title>
+<link rel="stylesheet" type="text/css" href="../test/slidingtest/style.css" />
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<div class='container'>
+<div id='header'></div>
+
+<div id="contents">
+ <div class="sl_examples">
+      <a href="#" id="example5" data-hover="ScheduleMaker">ScheduleMaker</a>
+    </div>
+<font size=35 color=white>Make your meetng schedule!</font>
+<br>
+<font size=30 color=white>When. Where.</font>
+  <br>
+    <span></span>
+    <div class="col-sm-10">
+      <input id='moim' type='text' style="width:500px; margin-top:20px; height:40px; float:left;" class="form-control">
+      <a href='../schedule/schedule-main.html'>
+      <button id='submit-btn' type='button' style="margin-top:20px; height:40px; margin-left:15px; font-size:large;" class="btn btn-primary">create schedule</button>
+      </a>
+    </div>
+</div>
+<div id='footer'></div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script type="text/javascript" src="../test/slidingtest/jquery.lettering.js"></script>
+    <script type="text/javascript" src="../test/slidingtest/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="../test/slidingtest/jquery.hoverwords.js"></script>
+    
+    <script type="text/javascript">
+      $(window).load(function(){
+        
+        $('#example1').hoverwords({ delay:50 });
+        $('#example2').hoverwords();
+        $('#example3').hoverwords();
+        $('#example4').hoverwords({ overlay:true});
+        $('#example5').hoverwords({ delay:60 });
+        
+      });
+    </script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../js/bit.js"></script>
+<script src="../js/common.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

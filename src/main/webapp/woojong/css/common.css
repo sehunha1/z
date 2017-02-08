@@ -8,11 +8,20 @@ body > .container {
 }
 
 #header {
+	width:100%;
+	/*
+  font-family: "Braxton", sans-serif;
+  
 	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-	background-color:#0000FF; 
+  
+  background-image: url('../image/header4.jpg');
+	background-color:#93C8AA; 
 	height:65px;
+	*/
 	position:relative;
+	background-size : 100% 100%;
+	font-color:white;
 }
 
 #header-sc {
@@ -39,9 +48,10 @@ body > .container {
   color: white;
   padding: 10px 5px;
   margin: 0px;
-  background-color:#BBBBCC; 
+  background-color:#EBD27E; 
   width:180px; 
   height:700px;
+  font-weight:500;
   /* border: 1px solid red; */
 }
 
@@ -87,8 +97,10 @@ body > .container {
 
 #content-cal {
 	/* 스크롤 */
+	/*
 	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  */
   overflow-y:scroll;
   height:700px;
   padding-left: 500px;
@@ -101,10 +113,8 @@ body > .container {
 #content-long {
   /* 스크롤 
   overflow-y:scroll;*/
-  background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
-  background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   height:700px;
-  font-family: 'HanSans';
+  font-family: '맑은 고딕';
   padding-left: 70px; /* 190px; */
   padding-right: 50px;
   min-height: 400px;
@@ -113,8 +123,10 @@ body > .container {
 }
 
 #content-card {
+	/*
 	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
+  */
 	height:500px;
 	padding-top: 1px;
 	padding-left: 500px;

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>학생관리-조회</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+
+<link rel="stylesheet" href="../test/menu/css/reset.css"> <!-- CSS reset -->
+  <link rel="stylesheet" href="../test/menu/css/style.css"> <!-- Resource style -->
+  <script src="../test/menu/js/modernizr.js"></script> <!-- Modernizr -->
+</head>
+<body>
+<header>
+<a href='http://localhost:8080/Z-project/main/mainslidemenu-login.html'><img src='../image/logo.png' width='200' height='70'> </a>
+    <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text"><img src='../image/profile-default.png' width=30; height=30; style='align:center'>홍길동</span></a>
+    <!-- <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">회원</span> -->
+  </header>
+  <main class="cd-main-content">
+
+    <!-- put your content here -->
+
+  </main> <!-- cd-main-content -->
+
+  <nav id="cd-lateral-nav">
+    <ul class="cd-navigation">
+      <li class="item-has-children">
+        <a href="#0">서비스</a>
+        <ul class="sub-menu">
+          <li><a href="#0">Brand</a></li>
+          <li><a href="#0">Web Apps</a></li>
+          <li><a href="#0">Mobile Apps</a></li>
+        </ul>
+      </li> <!-- item-has-children -->
+
+      <li class="item-has-children">
+        <a href="#0">Sample</a>
+        <ul class="sub-menu">
+          <li><a href="#0">Product 1</a></li>
+          <li><a href="#0">Product 2</a></li>
+          <li><a href="#0">Product 3</a></li>
+          <li><a href="#0">Product 4</a></li>
+          <li><a href="#0">Product 5</a></li>
+        </ul>
+      </li> <!-- item-has-children -->
+    </ul> <!-- cd-navigation -->
+
+    <ul class="cd-navigation cd-single-item-wrapper">
+      <li><a href="#0">마이페이지</a></li>
+      <li><a href="#0">고객지원</a></li>
+    </ul> <!-- cd-single-item-wrapper -->
+
+    <ul class="cd-navigation cd-single-item-wrapper">
+      <li><a class="current" href="#0">Journal</a></li>
+      <li><a href="#0">FAQ</a></li>
+      <li><a href="#0">Terms &amp; Conditions</a></li>
+      <li><a href="#0">Careers</a></li>
+      <li><a href="#0">Students</a></li>
+    </ul> <!-- cd-single-item-wrapper -->
+
+    <div class="cd-navigation socials">
+      <a class="cd-twitter cd-img-replace" href="#0">Twitter</a>
+      <a class="cd-github cd-img-replace" href="#0">Git Hub</a>
+      <a class="cd-facebook cd-img-replace" href="#0">Facebook</a>
+      <a class="cd-google cd-img-replace" href="#0">Google Plus</a>
+    </div> <!-- socials -->
+  </nav>
+<div class='container'>
+
+<div id="content-long">
+<p style='text-align:center;'><font size='20' style='font-family:배달의민족 주아;'>모임방 설정</font></p>
+<form class='form-horizontal'>
+  <div class="form-group">
+    <label for="email" class="col-sm-2 control-label">모임명</label>
+    <div class="col-sm-10">
+      <input id='name' type='text' class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="cont" class="col-sm-2 control-label">모임내용</label>
+    <div class="col-sm-10">
+      <textarea cols='30' rows='10' style='width:100%'></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">모임분류</label>
+    <div class="col-sm-10">
+      <a id='logout-btn' class="btn btn-default btn-xs" style='padding-top:5px; width:50px;'>
+      <font color='gray'>스터디</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='padding-top:5px; width:50px;'>
+      <font color='gray'>회식</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='padding-top:5px; width:50px;'>
+      <font color='gray'>모임</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='margin-top:3px; width:50px;'>
+      <font color='gray'>친목</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='margin-top:3px; width:50px;'>
+      <font color='gray'>동창회</font></a>
+      <a id='logout-btn' class="btn btn-default btn-xs" style='margin-top:3px; width:50px;'>
+      <font color='gray'>기타</font></a>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">기간설정</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">모임시간</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">선택마감기한</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">사진</label>
+    <div class="col-sm-10">
+      <input id='time-set' type='text' class="form-control">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <a href='../meet/mainch.html'>
+      <button id='add-btn' type='button' class='new-form btn btn-primary' style='width:500px;'>
+모임만들기</button></a>
+    </div>
+  </div>
+</form>
+</div>
+
+<div id='footer'></div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../test/menu/js/main.js"></script> <!-- Resource jQuery -->
+<script src="../js/bit.js"></script>
+<script src="../js/common.js"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

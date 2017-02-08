@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Main</title>
+<link rel="stylesheet"
+  href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="demo.css" />
+<link rel="stylesheet" type="text/css" href="backgroundTransition.css" />
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../test/menu/css/reset.css"> <!-- CSS reset -->
+  <link rel="stylesheet" href="../test/menu/css/style.css"> <!-- Resource style -->
+  <script src="../test/menu/js/modernizr.js"></script> <!-- Modernizr -->
+</head>
+<body>
+  <main class="cd-main-content">
+     <header>
+<a href='http://localhost:8080/Z-project/main/mainslidemenu-login.html'><img src='../image/logo.png' width='200' height='70'> </a>
+    <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text"><img src='../image/profile-default.png' width=30; height=30; style='align:center'>홍길동</span></a>
+    <!-- <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">회원</span> -->
+  </header>
+
+  </main> <!-- cd-main-content -->
+  <div id='header'></div>
+  <div class='container'>
+
+    <div class="backgroundTransition">
+      <div class="imgcontent" style='margin-top:100px;'>
+        <font size=35 color=white>Make your meetng schedule!</font> <br>
+        <font size=30 color=white>When. Where.</font> <br> <span></span>
+        <div class="col-sm-10">
+          <input id='moim' type='text'
+            style="width: 500px; margin-top: 20px; height: 40px; float: left; margin-right: 160px; position:absolute;"
+            class="form-control"> <a
+            href='../schedule/schedule-mainch.html'>
+            <button id='submit-btn' type='button'
+              style="margin-top: 20px; height: 40px; margin-left:520px; font-size: large; position:absolute; float:right;"
+              class="btn btn-primary">create schedule</button>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div id='footer'></div>
+  </div>
+
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="../test/menu/js/main.js"></script> <!-- Resource jQuery -->
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="../js/bit.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="main.js"></script>
+
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="backgroundTransition.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.backgroundTransition').backgroundTransition({
+        backgrounds : [ 
+          {src : '../image/meet3.jpg'},
+          {src : '../image/meet2.jpg'},
+          {src : '../image/meet1.jpg'}, 
+          ],
+        transitionDelay : 3,
+        animationSpeed : 800
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
