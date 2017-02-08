@@ -1,0 +1,63 @@
+<style>
+/*사이트*/
+.site {
+  width: 960px;
+  text-align: center;
+  display: inline-block;
+}
+
+.logo {
+  background-image: ../image/newlogo.png;
+  float: left;
+  width: 50px;
+}
+
+.sns {
+  float: right;
+}
+
+/*페이스북*/
+.facebook:before {
+  font-family:"FontAwesome";
+  content: "\f09a";
+  color:#b4b4b4;
+}
+.facebook:hover {
+  text-decoration: none;
+}
+.facebook:hover:before {
+  text-decoration: none;
+  color: #337AB7;
+}
+.facebook {
+  font-size: 32px;
+  text-decoration: none;
+}
+
+/*구글*/
+.google:before {
+  font-family:"FontAwesome";
+  content: "\f1a0";
+  color:#b4b4b4;
+}
+.google:hover {
+  text-decoration: none;
+}
+.google:hover:before {
+  text-decoration: none;
+  color: #EA4335;
+}
+.google {
+  font-size: 32px;
+  text-decoration: none;
+  margin-left: 5px;
+}
+</style>
+
+<div class='site'>
+  <a class='logo' href='main.html'><img class='logo' src='../image/newlogo.png'></a>
+  <span class='sns'>
+		<a class='facebook' href='http://www.facebook.com'></a>
+		<a class='google' href='http://www.google.com'></a>
+	</span>  
+</div>
