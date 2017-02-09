@@ -19,7 +19,7 @@
 }
 
 .logo {
-  background-image: ../../image/newlogo.png;
+  background-image: ../image/newlogo.png;
   float: left;
   width: 50px;
 }
