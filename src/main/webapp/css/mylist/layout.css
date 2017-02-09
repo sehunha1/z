@@ -1,12 +1,4 @@
-#app #header {
-  width: 100%; }
-  #app #header .inner_header {
-    width: 960px;
-    margin: 0 auto; }
-#app #content {
+#content {
   width: 960px;
-  margin: 0 auto; }
-#app #footer {
-  width: 100%; }
-
-/*# sourceMappingURL=layout.css.map */
+  margin: 0 auto;
+}
