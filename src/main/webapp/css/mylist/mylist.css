@@ -3,21 +3,31 @@
 }
 #content .view_my_meeting > .tit {
   display: inline-block;
-  font-size: 18px;
+  font-size: 30px;
   color: #333;
   position: relative;
+  margin-left:1%;
   margin-bottom: 15px;
 }
 #content .view_my_meeting > .tit:after {
   display: inline-block;
   content: '';
-  width: 18px;
-  height: 18px;
+  width: 35px;
+  height: 35px;
   position: absolute;
-  right: -20px;
-  top: -2px;
+  right: -40px;
+  top: -1px;
   background: url("../../image/mylist/ico_calendar.png") no-repeat 50% 50%;
   background-size: cover;
+}
+#content .view_my_meeting select {
+  float:right;
+  margin:25px 1% 0px 10px;
+}
+#content .view_my_meeting h4 {
+  float:right;
+  display:inline-block;
+  margin-top:25px;
 }
 #content .view_my_meeting .meeting_list {
   *zoom: 1;
@@ -35,6 +45,7 @@
 }
 #content .view_my_meeting .meeting_list > .item > a {
   display: block;
+  text-decoration: none;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_image {
   width: 100%;
@@ -57,10 +68,22 @@
 #content .view_my_meeting .meeting_list > .item > a .meeting_info {
   padding: 15px;
 }
+#content .view_my_meeting .meeting_list > .item > a .meeting_info.ing {
+  background-color: white;
+}
+#content .view_my_meeting .meeting_list > .item > a .meeting_info.wait {
+  background-color: #ff9999;
+}
+#content .view_my_meeting .meeting_list > .item > a .meeting_info.finish {
+  background-color: #cccccc;
+}
 #content .view_my_meeting .meeting_list > .item > a .meeting_info > .tit {
   color: #000;
   font-size: 16px;
   font-weight: bold;
+}
+#content .view_my_meeting .meeting_list > .item > a .meeting_info .participation_member_info {
+  text-align: right;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info .meeting_info_list {
   border-top: 1px solid #ddd;
