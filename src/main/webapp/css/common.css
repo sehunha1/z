@@ -1,0 +1,158 @@
+@CHARSET "UTF-8";
+
+    /* 풋터에서 사용하는 css import */
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
+    /* 헤더 css 시작 */
+#header {
+  width:100%;
+  border-bottom: 1px solid #ddd;
+}
+#header .inner_header {
+  width: 960px;
+  margin: 0 auto;
+  *zoom: 1;
+}
+#header .inner_header:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#header .logo img{
+  width:40px;
+  height:40px;
+  float:left;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+#header .svc_name {
+  float:left;
+  margin-top:6px;
+  font-size:25px;
+}
+#header .svc_name a {
+  text-decoration:none;
+  color:black;
+}
+#header #join {
+  float:right;
+  margin-top:15px;
+  margin-left:20px;
+}
+#header #join a {
+  text-decoration:none;
+  color:black;
+}
+#header #login {
+  float:right;
+  margin-top:15px;
+}
+#header #login a {
+  text-decoration:none;
+  color:black;
+}
+    /* 헤더 css 끝 */
+
+
+
+    /* 풋터 css 시작 */
+#div-header {
+  width: 100%;
+}
+
+#footer {
+  clear: left;
+  text-align: center;
+  background-color: #ECECEC;
+}
+
+/*사이트*/
+.site {
+  width: 960px;
+  text-align: center;
+  display: inline-block;
+}
+
+/*
+.logo {
+  background-image: ../../image/newlogo.png;
+  float: left;
+  width: 50px;
+}
+*/
+
+.site img {
+  float: left;
+  width: 35px;
+  height:35px;
+  margin-top:11px;
+}
+
+.sns {
+  float: right;
+  margin-top:5px;
+}
+
+/*페이스북*/
+.facebook:before {
+  font-family:"FontAwesome";
+  content: "\f09a";
+  color:#b4b4b4;
+}
+.facebook:hover {
+  text-decoration: none;
+}
+.facebook:hover:before {
+  text-decoration: none;
+  color: #337AB7;
+}
+.facebook {
+  font-size: 32px;
+  text-decoration: none;
+}
+
+/*구글*/
+.google:before {
+  font-family:"FontAwesome";
+  content: "\f1a0";
+  color:#b4b4b4;
+}
+.google:hover {
+  text-decoration: none;
+}
+.google:hover:before {
+  text-decoration: none;
+  color: #EA4335;
+}
+.google {
+  font-size: 32px;
+  text-decoration: none;
+  margin-left: 5px;
+}
+    /* 풋터 css 끝 */
+
+
+
+    /* 사이드바 css 시작 */
+#sidebar {
+  position: absolute;
+  float:left;
+  color: white;
+  padding: 10px 5px;
+  margin: 0px;
+  background-color:#EBD27E; 
+  width:180px; 
+  height:700px;
+  font-weight:500;
+  /* border: 1px solid red; */
+}
+
+#sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+#sidebar a:hover {
+  color: navy;
+}
+    /* 사이드바 css 끝 */
