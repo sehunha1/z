@@ -3,7 +3,6 @@
     /* 풋터에서 사용하는 css import */
 @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 
-
     /* 헤더 css 시작 */
 #header {
   width:100%;
@@ -141,7 +140,7 @@
   color: white;
   padding: 10px 5px;
   margin: 0px;
-  background-color:#EBD27E; 
+  background-color:#4D3948; 
   width:180px; 
   height:700px;
   font-weight:500;
