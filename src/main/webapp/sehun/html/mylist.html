@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>mylist</title>
+<style>
+  #header {
+    width:100%;
+    border-bottom: 1px solid #ddd;
+  }
+  #header .inner_header {
+    width: 960px;
+    margin: 0 auto;
+    *zoom: 1;
+  }
+  #header .inner_header:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #header .logo img{
+    width:40px;
+    height:40px;
+    float:left;
+    margin-bottom:5px;
+  }
+  #header .svc_name {
+    float:left;
+    margin-top:6px;
+    font-size:25px;
+  }
+  #header .svc_name a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #join {
+    float:right;
+    margin-top:10px;
+    margin-left:20px;
+  }
+  #header #join a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #login {
+    float:right;
+    margin-top:10px;
+  }
+  #header #login a {
+    text-decoration:none;
+    color:black;
+  }
+  #content {
+    width: 960px;
+    margin: 0 auto;
+    height: 100%;
+  }
+  #content .cont_head:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #content .cont_head h2 {
+    float:left;
+    margin-left:30px;
+    margin-right:10px;
+  }
+  #content .cont_head img {
+    width:30px;
+    height:30px;
+    float:left;
+    margin-top:17px;
+  }
+  #content .cont_head select {
+    float:right;
+    width:80px;
+    height:30px;
+    margin-left:10px;
+    margin-top:17px;
+  }
+  #content .cont_head span {
+    float:right;
+    margin-top:24px;
+  }
+  #content .view_my_meeting {
+    margin-top: 20px;
+  }
+  #content .view_my_meeting > .tit {
+    display: inline-block;
+    font-size: 18px;
+    color: #333;
+    position: relative;
+    margin-bottom: 15px;
+  }
+  #content .view_my_meeting > .tit:after {
+    display: inline-block;
+    content: '';
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: -30px;
+    top: 0px;
+    background: url("../img/mylist/cal.png") no-repeat 50% 50%;
+    background-size: cover;
+  }
+  #content .view_my_meeting .meeting_list {
+    *zoom: 1;
+  }
+  #content .view_my_meeting .meeting_list:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #content .view_my_meeting .meeting_list > .item {
+    width: 31.33%;
+    float: left;
+    background: #fff;
+    margin: 0 1% 20px;
+  }
+  #content .view_my_meeting .meeting_list > .item > a {
+    display: block;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_image {
+    width: 100%;
+    height: 160px;
+    position: relative;
+    background-color: #ddd;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_image.default_a {
+    background: url("../img/mylist/a.jpg") no-repeat 50% 50%;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_image.default_b {
+    background: url("../img/mylist/b.jpg") no-repeat 50% 50%;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_image .meeting_owner {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: #fff;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_info {
+    padding: 15px;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_info > .tit {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_info .meeting_info_list {
+    border-top: 1px solid #ddd;
+    margin-top: 5px;
+    padding-top: 5px;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_info .meeting_info_list .item {
+    line-height: 1em;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  #content .view_my_meeting .meeting_list > .item > a .meeting_info .meeting_info_list .item > .tit {
+    font-weight: bold;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="inner_header">
+    <a href="#" class="logo">
+      <img src="../img/header/logo.png" alt="Schedule Maker"></img>
+    </a>
+    <div class="svc_name">
+      <a href="#"><b>SCHEDULE MAKER</b></a>
+    </div>
+    <div id="join">
+      <a href="#">회원가입</a>
+    </div>
+    <div id="login">
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<div id="content">
+  <div class="view_my_meeting" style="border:1px solid blue;">
+    <h2 class="tit" style="border:1px solid red;">내 모임</h2>
+    <select name="sort" style="float:right; width:80px; height:30px; margin-top:12px; margin-left:10px;">
+      <option value="recent">최신순</option>
+      <option value="ing">진행중</option>
+      <option value="complete">완료</option>
+    </select>
+    <span style="float:right; margin-top:19px;">정렬방법</span>
+    <ul class="meeting_list">
+      <li class="item">
+        <a href="#">
+          <div class="meeting_image default_a">
+            <span class="meeting_owner">방장:꽃순이</span>
+          </div>
+          <div class="meeting_info">
+            <p class="tit">레고동호회</p>
+            <ul class="meeting_info_list">
+              <li class="item">
+                <span class="tit">날짜 : </span>
+                <span class="info">2017년 1월 24일</span>
+              </li>
+              <li class="item">
+                <span class="tit">시간 : </span>
+                <span class="info">투표중</span>
+              </li>
+              <li class="item">
+                <span class="tit">장소 : </span>
+                <span class="info">투표중</span>
+              </li>
+            </ul>
+            <div class="participation_member_info">3/4</div>
+          </div>
+          <div class="meeting_status ing">
+            <div class="info"></div>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <div class="meeting_image default_b">
+            <span class="meeting_owner">방장:꽃순이</span>
+          </div>
+          <div class="meeting_info">
+            <p class="tit">레고동호회</p>
+            <ul class="meeting_info_list">
+              <li class="item">
+                <span class="tit">날짜 : </span>
+                <span class="info">2017년 1월 24일</span>
+              </li>
+              <li class="item">
+                <span class="tit">시간 : </span>
+                <span class="info">투표중</span>
+              </li>
+              <li class="item">
+                <span class="tit">장소 : </span>
+                <span class="info">투표중</span>
+              </li>
+            </ul>
+            <div class="participation_member_info">3/4</div>
+          </div>
+          <div class="meeting_status ing">
+            <div class="info"></div>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <div class="meeting_image">
+            <span class="meeting_owner">방장:꽃순이</span>
+          </div>
+          <div class="meeting_info">
+            <p class="tit">레고동호회</p>
+            <ul class="meeting_info_list">
+              <li class="item">
+                <span class="tit">날짜 : </span>
+                <span class="info">2017년 1월 24일</span>
+              </li>
+              <li class="item">
+                <span class="tit">시간 : </span>
+                <span class="info">투표중</span>
+              </li>
+              <li class="item">
+                <span class="tit">장소 : </span>
+                <span class="info">투표중</span>
+              </li>
+            </ul>
+            <div class="participation_member_info">3/4</div>
+          </div>
+          <div class="meeting_status ing">
+            <div class="info"></div>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <div class="meeting_image">
+            <span class="meeting_owner">방장:꽃순이</span>
+          </div>
+          <div class="meeting_info">
+            <p class="tit">레고동호회</p>
+            <ul class="meeting_info_list">
+              <li class="item">
+                <span class="tit">날짜 : </span>
+                <span class="info">2017년 1월 24일</span>
+              </li>
+              <li class="item">
+                <span class="tit">시간 : </span>
+                <span class="info">투표중</span>
+              </li>
+              <li class="item">
+                <span class="tit">장소 : </span>
+                <span class="info">투표중</span>
+              </li>
+            </ul>
+            <div class="participation_member_info">3/4</div>
+          </div>
+          <div class="meeting_status ing">
+            <div class="info"></div>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

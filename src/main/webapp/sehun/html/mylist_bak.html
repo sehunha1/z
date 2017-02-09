@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>mylist</title>
+<style>
+  #header {
+    width:100%;
+    border-bottom: 1px solid #ddd;
+  }
+  #header .inner_header {
+    width: 960px;
+    margin: 0 auto;
+    *zoom: 1;
+  }
+  #header .inner_header:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #header .logo img{
+    width:40px;
+    height:40px;
+    float:left;
+    margin-bottom:5px;
+  }
+  #header .svc_name {
+    float:left;
+    margin-top:6px;
+    font-size:25px;
+  }
+  #header .svc_name a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #join {
+    float:right;
+    margin-top:10px;
+    margin-left:20px;
+  }
+  #header #join a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #login {
+    float:right;
+    margin-top:10px;
+  }
+  #header #login a {
+    text-decoration:none;
+    color:black;
+  }
+  #content {
+    width: 960px;
+    margin: 0 auto;
+    height: 100%;
+  }
+  #content .cont_head:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #content .cont_head h2 {
+    float:left;
+    margin-left:30px;
+    margin-right:10px;
+  }
+  #content .cont_head img {
+    width:30px;
+    height:30px;
+    float:left;
+    margin-top:17px;
+  }
+  #content .cont_head select {
+    float:right;
+    width:80px;
+    height:30px;
+    margin-left:10px;
+    margin-top:17px;
+  }
+  #content .cont_head span {
+    float:right;
+    margin-top:24px;
+  }
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="inner_header">
+    <a href="#" class="logo">
+      <img src="../img/header/logo.png" alt="Schedule Maker"></img>
+    </a>
+    <div class="svc_name">
+      <a href="#"><b>SCHEDULE MAKER</b></a>
+    </div>
+    <div id="join">
+      <a href="#">회원가입</a>
+    </div>
+    <div id="login">
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<div id="content">
+  <div class="cont_head">
+    <h2>내 모임</h2>
+    <a href="#"><img src="../img/mylist/cal.png" alt="calendar"></img></a>
+    <select name="sort">
+      <option value="recent">최신순</option>
+      <option value="ing">진행중</option>
+      <option value="complete">완료</option>
+    </select>
+    <span>정렬방법</span>
+  </div>
+  <div class="cont_cont">
+    <ul class="meeting_card" style="">
+      <li class="item">
+        <a href="#" style="text-decoration:none;">
+          <div class="meeting_photo" style="width:100px; height:70px; border:1px solid red;"></div>
+          <div class="meeting_info">
+            <p>html 동호회</p>
+            <ul>
+              <li><span>날짜 : </span><span>2017년 2월 8일</span></li>
+              <li><span>시간 : </span><span>오후 8시</span></li>
+              <li><span>장소 : </span><span>비트컴퓨터</span></li>
+            </ul>
+            <div class="meeting_memb_no">5/8</div>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <div class="meeting_photo"></div>
+          <div class="meeting_info">
+            <p>css 동호회</p>
+            <ul>
+              <li><span>날짜 : </span><span>2017년 2월 9일</span></li>
+              <li><span>시간 : </span><span>오후 8시</span></li>
+              <li><span>장소 : </span><span>비트컴퓨터</span></li>
+            </ul>
+            <div class="meeting_memb_no">2/8</div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

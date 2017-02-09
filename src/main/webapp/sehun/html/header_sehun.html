@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>header</title>
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<style>
+  #header {
+    width:100%;
+    border-bottom: 1px solid #ddd;
+  }
+  #header .inner_header {
+    width: 960px;
+    margin: 0 auto;
+    *zoom: 1;
+  }
+  #header .inner_header:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  #header .logo img{
+    width:40px;
+    height:40px;
+    float:left;
+    margin-top:5px;
+    margin-bottom:5px;
+  }
+  #header .svc_name {
+    float:left;
+    margin-top:6px;
+    font-size:25px;
+  }
+  #header .svc_name a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #join {
+    float:right;
+    margin-top:15px;
+    margin-left:20px;
+  }
+  #header #join a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #login {
+    float:right;
+    margin-top:15px;
+  }
+  #header #login a {
+    text-decoration:none;
+    color:black;
+  }
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="inner_header">
+    <a href="#" class="logo">
+      <img src="../../image/main/logo.png" alt="Schedule Maker"></img>
+    </a>
+    <div class="svc_name">
+      <a href="#"><b>SCHEDULE MAKER</b></a>
+    </div>
+    <div id="join">
+      <a href="#">회원가입</a>
+    </div>
+    <div id="login">
+      <a href="#">로그인</a>
+    </div>
+  </div>
+</div>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
