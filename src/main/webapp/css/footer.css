@@ -18,14 +18,24 @@
   display: inline-block;
 }
 
+/*
 .logo {
   background-image: ../../image/newlogo.png;
   float: left;
   width: 50px;
 }
+*/
+
+.site img {
+  float: left;
+  width: 35px;
+  height:35px;
+  margin-top:11px;
+}
 
 .sns {
   float: right;
+  margin-top:5px;
 }
 
 /*페이스북*/
