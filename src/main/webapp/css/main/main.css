@@ -12,3 +12,64 @@
   margin: 0 auto;
   *zoom: 1;
 }
+#content .space {
+  font-size: 50px;
+}
+#content .make {
+  margin-top:550px;
+  margin-left:150px;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px gray;
+  font-family: Noto Sans KR;
+  font-weight: bold;
+}
+#content .when {
+  padding-left: 150px;
+  font-size: 38px;
+  text-shadow: 3px 3px 3px gray;
+  font-weight: bold;
+}
+#content .korean {
+  font-size: 10px;
+}
+#content .schedule {
+  padding-left: 150px;
+  font-size: 9px;
+}
+#content .your {
+  padding-left: 1px;
+  font-size: 9px;
+  color: gray;
+}
+#content .clock_icon {
+  height:15px;
+  margin-left: 150px;
+}
+#content .clock_icon_pink {
+  height:30px;
+  padding-bottom: 10px;
+  padding-left: 1px;
+}
+#content .bg {
+  height:130px;
+  padding-left: 550px;
+}
+#content .form-group {
+  width: 860px;
+  padding-left: 150px;
+  margin-right: 5px;
+  padding-top: 10px;
+}
+#content #exampleInputEmail3 {
+  height: 25px;
+  width: 150px;
+  margin: 0px;
+  font-size: 9px;
+}
+#content #new-btn {
+  border-color: #3db394;
+  height: 23px;
+  width: 100px;
+  font-size: 9px;
+  background-color: #3db394;
+}
