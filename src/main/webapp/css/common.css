@@ -55,7 +55,7 @@
 
 
 
-    /* 풋터 css 시작 */
+    /* 풋터 css 시작 - 2017.02.08 김재녕*/
 #div-header {
   width: 100%;
 }
@@ -133,7 +133,7 @@
 
 
 
-    /* 사이드바 css 시작 */
+    /* 사이드바 css 시작*/
 #sidebar {
   position: absolute;
   float:left;
@@ -156,3 +156,55 @@
   color: navy;
 }
     /* 사이드바 css 끝 */
+    
+    
+    
+/* detail Page 시작 - 2017.02.09 김재녕 */
+
+.info {
+	margin: 0 auto;
+	height: 300px;
+}
+.info .headtitle {
+	margin: 0;
+	text-align: center;
+	height: 60px;
+	overflow: hidden;
+}
+.info .headtitle .stat-span {
+	margin: 0;
+	display: inline-block;
+	float: left;
+	line-height: 200%;
+	background-color: #42C299;
+	font-size: 32px;
+	width: 100px;
+	height: 60px;
+	text-align: center;
+}
+
+.info .headtitle .play-title {
+  margin: 0;
+  display: inline-block; 
+}
+
+.info > .picture-box {
+	display: inline-block;
+	width: 30%;
+	height: 240px;
+}
+
+.info > .detail-info {
+	/* display: inline-block; */
+}
+
+.member {
+	margin: 0 auto;
+	height: 200px;
+}
+
+.board {
+	margin: 0 auto;
+	height: 400px;
+}
+/* detail Page 끝 */
