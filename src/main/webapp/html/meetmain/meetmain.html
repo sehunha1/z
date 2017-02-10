@@ -14,59 +14,67 @@
     src: local('※'), url('/BMJUA_TTF.TTF') format('TTF');
 }
 
+
+#header-login {
+  width:100%;
+  border-bottom: 1px solid #ddd;
+}
+#header-login .inner_header {
+  width: 960px;
+  margin: 0 auto;
+  *zoom: 1;
+}
+#header-login .inner_header:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#header-login .logo img{
+  width:40px;
+  height:40px;
+  float:left;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+#header-login .svc_name {
+  float:left;
+  margin-top:6px;
+  font-size:25px;
+}
+#header-login .svc_name a {
+  text-decoration:none;
+  color:black;
+}
+#header-login #join {
+  float:right;
+  margin-top:15px;
+  margin-left:20px;
+}
+#header-login #join a {
+  text-decoration:none;
+  color:black;
+}
+#header-login #login {
+  float:right;
+  margin-top:15px;
+}
+#header-login #login a {
+  text-decoration:none;
+  color:black;
+}
+    /* 헤더 css 끝 */
 </style>
-<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.css' />
-  <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.js'></script>
-  <script src='https://fullcalendar.io/js/home.js?3.1.0-1.5.0-4'></script>
 <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet" href="../../css/meetmain/meetmain.css">
 
 
-<script type="text/javascript">
-
-$(function(){
- calendarEvent();
-});
-
-function calendarEvent(eventData){
- $("#calender").html("");
- var date = new Date();
- var d = date.getDate();
- var m = date.getMonth();
- var y = date.getFullYear();
- var calendar = $('#calender').fullCalendar({
-  header: {
-   left: "",
-   center: "title",
-//    right: "month,basicWeek,basicDay"
-   right: "today prev,next"
-   },
-   editable: true,
-   titleFormat: {
-   month: "yyyy년 MMMM",
-   week: "[yyyy] MMM dd일{ [yyyy] MMM dd일}",
-   day: "yyyy년 MMM d일 dddd"
-   },
-   allDayDefault: false,
-   defaultView: "month",
-   editable: false,
-   monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-   monthNamesShort: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-   dayNames: ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
-   dayNamesShort: ["일","월","화","수","목","금","토"],
-   buttonText: {
-   today : "오늘",
-   month : "월별",
-   week : "주별",
-   day : "일별",
-   },
-   events : eventData,
-   timeFormat : "HH:mm",
- });
-</script>
+<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.css' />
+  <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.js'></script>
+  <script src='https://fullcalendar.io/js/home.js?3.1.0-1.5.0-4'></script>
+  
 
 
 
@@ -189,8 +197,8 @@ $(document).ready(function(){
   </script>
 
 </head>
+<div id='header-login'></div>
 <body onload="initialize()">
-<div id='header'></div>
 <div class='container'>
 <div id='sidebar'></div>
 
@@ -204,18 +212,20 @@ $(document).ready(function(){
 <font size=3 style='font-family:맑은 고딕; margin-left:10px;'> |선택마감기한:1월25일까지 <font color='red'><b>(D-3)</b></font> </font>
 </div>
 <div style='height:30px; background-color:#CE125B;'>
-<font size=5 color='white' style='font-family:배달의민족 주아; margin-left:180px;'>일정투표</font>
+<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif; margin-left:180px;'>일정투표</font>
 <button id="meet" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
 </div>
 
 <!-- 달력 -->
 <!-- <button id="hide">Hide</button> -->
 
+<button type='button' style='float:right; background-color:green; border-radius: 5px;'>
+<font color='white' style='font-family:맑은 고딕;'>투표하기</font></button>
 <div class='calendar' id='calendar'  style='width:700px; height:500px; padding-left:180px; margin-top:10px;'>
 </div>
 
 <div style='height:30px; background-color:#DFA941;'>
-<font size=5 color='white' style='font-family:배달의민족 주아; margin-left:180px;'>장소투표</font>
+<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif; margin-left:180px;'>장소투표</font>
 <button id="map" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
 </div>
 <!-- 지도 div 부분 -->
@@ -226,18 +236,25 @@ $(document).ready(function(){
   width:280px; 
   height:300px;'> 
 <font color='black'>리스트</font>
-<p>
+<br>
 <input type="checkbox" name="chk_info" value="HTML">본차로드
 <br><img src='../../image/meetmain/boncha.png' width=260px; height=100px;>
 <input type="checkbox" name="chk_info" value="HTML">설렁탕
 <br><img src='../../image/meetmain/sulung.png' width=260px; height=100px;>
+
+<div id='maplistsub'>
+<div id='tttt' style='background-color:#E7DEBB; margin-top:30px; height:20px; position:absoulte;'>
+</div>
+<button type='button' style='width:100%; background-color:black;'>
+<font color='white'>투표완료</font></button>
+</div>
 </div>
 
 <div class='map_view' id="map_view" style="width:450px; height:300px; margin-left:162px;"></div>
 
 <!-- 게시한 div 부분 -->
 <div style='height:30px; background-color:#14870F;'>
-<font size=5 color='white' style='font-family:배달의민족 주아; margin-left:180px;'>게시판</font>
+<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif; margin-left:180px;'><b>게시판</b></font>
 <button id="board" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
 </div>
 
@@ -248,12 +265,14 @@ $(document).ready(function(){
   <a id='filesel' class="btn btn-primary btn-large"><font color='white'>파일선택 다운받기</font></a>
 </div>
 
-<div class="card" style="width: 20rem; background-color:#FFFFFF; margin-left:150px; font-size:22px; font-family:Sandoll 미생;">
-  <img class="card-img-top" src="../image/test.jpg" width=200 height=100 alt="Card image cap">
+<div class="card" 
+style="width: 20rem; background-color:#FFFFFF; margin-left:150px; 
+font-size:22px; font-family:맑은 고딕; margin-top:50px;">
+  <img class="card-img-top" src="../../image/mylist/bg_test.jpg" width=200 height=90 alt="Card image cap">
   <input type="checkbox" name="chk_info" value="HTML" style='float:right;'>
   <div class="card-block">
-    <h2 class="card-title">테스트:</h2>
-날짜: 170120-170131 <br>시간:투표중 <br>장소:투표중 <br><p align="right"><font size=5><b>3/5</b></font></p>
+    <h4 class="card-title">테스트:</h4>
+<font size='3'>날짜: 170120-170131 <br>시간:투표중 <br>장소:투표중 <br></font><p align="right"><font size=3><b>3/5</b></font></p>
   </div>
   </div>
 <!-- 모임만들기 -->
@@ -266,8 +285,9 @@ $(document).ready(function(){
 </div> <!-- content -->
 </div>
 <div id='footer'></div>
-
 <script src="../../js/meetmain/meetmain.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 </body>
 </html>
