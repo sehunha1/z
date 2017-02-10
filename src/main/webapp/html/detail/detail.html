@@ -4,28 +4,160 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>메인</title>
-<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<title>모임 상세 정보</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet"
+	href="../../node_modules/swiper/dist/css/swiper.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../../css/main/main.css">
+<link rel="stylesheet" href="../../css/common.css">
 <body>
-<div id="header"></div>
+	<div id="header"></div>
 
 	<div id="content">
-	
-	  <!-- 상단 모임 정보 -->
-	  <div>
-	  
-	  
-	  </div>
-	  
-	  <!--  -->
-	  <div>
-	  </div>
+
+		<!-- 상단 모임 정보 -->
+		<div class="detail-info">
+			<div class="headtitle">
+				<h1 class="stat-span">완료</h1>
+				<h1 class="play-title">모임명</h1>
+			</div>
+			<img class="title-photo" src="../../image/logo.png" alt="Image Error"
+				title="Image Error">
+			<p class="d-info">날짜: 2017년 02월 09일 목</p>
+			<p class="d-info">장소: 서울 강남</p>
+			<p class="d-info">시간: 18시</p>
+			<p class="d-info">설명: 앗농</p>
+		</div>
+
+		<!-- 멤버 -->
+		<div class="member">
+			<p class="d-info">멤버</p>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+					<div class="swiper-slide">
+						<img class="memb-photo" src="../../image/profile-default.png">
+					</div>
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+
+		<!-- 게시판 -->
+		<div class="board" style="border: 2px solid black;">
+			<div class="headtitle">
+				<p class="b-info">게시판</p>
+				<a id='all-down-btn' href='#' class="btn btn-primary btn-xs">전체
+					다운로드</a>
+			</div>
+
+			<!-- 		  <div class="board-box"> 
+		    <img class="board-photo" src="../../image/pencils.png">
+		    <p>설명글~~~~</p>
+		    <p>안녕</p>
+		  </div> -->
+
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="board-box">
+							<img class="board-photo" src="../../image/pencils.png">
+							<p>설명글~~~~</p>
+							<p>안녕</p>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="board-box">
+							<img class="board-photo" src="../../image/pencils.png">
+							<p>설명글~~~~</p>
+							<p>안녕</p>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="board-box">
+							<img class="board-photo" src="../../image/pencils.png">
+							<p>설명글~~~~</p>
+							<p>안녕</p>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="board-box">
+							<img class="board-photo" src="../../image/pencils.png">
+							<p>설명글~~~~</p>
+							<p>안녕</p>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="board-box">
+							<img class="board-photo" src="../../image/pencils.png">
+							<p>설명글~~~~</p>
+							<p>안녕</p>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="board-box">
+							<img class="board-photo" src="../../image/pencils.png">
+							<p>설명글~~~~</p>
+							<p>안녕</p>
+						</div>
+					</div>
+
+				</div>
+				<div class="swiper-pagination"></div>
+
+			</div>
+
+		</div>
+
+		<div id="footer"></div>
+		<script src="../../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+		<!-- Swiper JS -->
+		<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
+		<script src="../../js/common.js"></script>
+
+		<!-- Initialize Swiper -->
+		<script>
+			var swiper = new Swiper('.swiper-container', {
+				pagination : '.swiper-pagination',
+				slidesPerView : 6,
+				centeredSlides : true,
+				paginationClickable : true,
+				spaceBetween : 30
+			});
+		</script>
 		
-	</div>
-	
-<div id="footer"></div>
-	<script src="../../node_modules/jquery/dist/jquery.js"></script>
-	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>
