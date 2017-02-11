@@ -38,7 +38,6 @@
   float:right;
   margin-top:15px;
   margin-left:20px;
-  display:none;
 }
 #header #join a {
   text-decoration:none;
@@ -47,7 +46,6 @@
 #header #login {
   float:right;
   margin-top:15px;
-  display:none;
 }
 #header #login a {
   text-decoration:none;
@@ -56,6 +54,7 @@
 #header #logout {
   float:right;
   margin-top:9px;
+  display:none;
 }
 #header #logout .profile_photo {
   width:30px;
