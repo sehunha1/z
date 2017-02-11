@@ -11,6 +11,7 @@
 #header .inner_header {
   width: 960px;
   margin: 0 auto;
+  position:relative;
   *zoom: 1;
 }
 #header .inner_header:after {
@@ -71,6 +72,31 @@
   float:right;
   margin-top:3px;
   margin-left:5px;
+}
+sec-intext {
+  font-family: "Noto Sans KR", sans-serif;
+  @import
+  url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+}
+
+#sec2 {
+  font-color: #9E9E9E;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
+  @import
+  url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+}
+
+#sec3 {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+#sec4 {
+  font-weight: 500;
 }
     /* 헤더 css 끝 */
 
