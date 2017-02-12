@@ -1,123 +1,136 @@
 @CHARSET "UTF-8";
 
-    /* 풋터에서 사용하는 css import */
-@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+/* 풋터에서 사용하는 css import */
+@import
+	url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css")
+	;
 
-    /* 헤더 css 시작 */
+/* 헤더 css 시작 */
 #header {
-  width:100%;
-  border-bottom: 1px solid #ddd;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
 }
+
 #header .inner_header {
-  width: 960px;
-  margin: 0 auto;
-  position:relative;
-  *zoom: 1;
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	*zoom: 1;
 }
+
 #header .inner_header:after {
-  content: '';
-  display: block;
-  clear: both;
+	content: '';
+	display: block;
+	clear: both;
 }
-#header .logo img{
-  width:40px;
-  height:40px;
-  float:left;
-  margin-top:5px;
-  margin-bottom:5px;
+
+#header .logo img {
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
+
 #header .svc_name {
-  float:left;
-  margin-top:6px;
-  font-size:25px;
+	float: left;
+	margin-top: 6px;
+	font-size: 25px;
 }
+
 #header .svc_name a {
-  text-decoration:none;
-  color:black;
+	text-decoration: none;
+	color: black;
 }
+
 #header #join {
-  float:right;
-  margin-top:15px;
-  margin-left:20px;
-  display:none;
+	float: right;
+	margin-top: 15px;
+	margin-left: 20px;
+	display: none;
 }
+
 #header #join a {
-  text-decoration:none;
-  color:black;
+	text-decoration: none;
+	color: black;
 }
+
 #header #login {
-  float:right;
-  margin-top:15px;
-  display:none;
+	float: right;
+	margin-top: 15px;
+	display: none;
 }
+
 #header #login a {
-  text-decoration:none;
-  color:black;
+	text-decoration: none;
+	color: black;
 }
+
 #header #logout {
-  float:right;
-  margin-top:9px;
+	float: right;
+	margin-top: 9px;
 }
+
 #header #logout .profile_photo {
-  width:30px;
-  height:30px;
-  background: url("../image/user_profile.jpg") no-repeat 50% 50%;
-  background-size: cover;
-  border-radius: 50%;
-  float:right;
+	width: 30px;
+	height: 30px;
+	background: url("../image/user_profile.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	border-radius: 50%;
+	float: right;
 }
+
 #header #logout a {
-  text-decoration:none;
-  color:black;
-  float:right;
-  margin-top:3px;
-  margin-left:5px;
+	text-decoration: none;
+	color: black;
+	float: right;
+	margin-top: 3px;
+	margin-left: 5px;
 }
+
 sec-intext {
-  font-family: "Noto Sans KR", sans-serif;
-  @import
-  url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+	font-family: "Noto Sans KR", sans-serif;
+	@import
+	url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
 }
 
 #sec2 {
-  font-color: #9E9E9E;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: "Noto Sans KR", sans-serif;
-  @import
-  url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+	font-color: #9E9E9E;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: "Noto Sans KR", sans-serif;
+	@import
+	url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
 }
 
 #sec3 {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 0;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 0;
 }
 
 #sec4 {
-  font-weight: 500;
+	font-weight: 500;
 }
-    /* 헤더 css 끝 */
+/* 헤더 css 끝 */
 
-
-
-    /* 풋터 css 시작 - 2017.02.08 김재녕*/
+/* 풋터 css 시작 - 2017.02.08 김재녕*/
 #div-header {
-  width: 100%;
+	width: 100%;
 }
 
 #footer {
-  clear: left;
-  text-align: center;
-  background-color: #ECECEC;
+	clear: left;
+	text-align: center;
+	background-color: #ECECEC;
 }
 
 /*사이트*/
 .site {
-  width: 960px;
-  text-align: center;
-  display: inline-block;
+	width: 960px;
+	text-align: center;
+	display: inline-block;
 }
 
 /*
@@ -127,99 +140,100 @@ sec-intext {
   width: 50px;
 }
 */
-
 .site img {
-  float: left;
-  width: 35px;
-  height:35px;
-  margin-top:11px;
+	float: left;
+	width: 35px;
+	height: 35px;
+	margin-top: 11px;
 }
 
 .sns {
-  float: right;
-  margin-top:5px;
+	float: right;
+	margin-top: 5px;
 }
 
 /*페이스북*/
 .facebook:before {
-  font-family:"FontAwesome";
-  content: "\f09a";
-  color:#b4b4b4;
+	font-family: "FontAwesome";
+	content: "\f09a";
+	color: #b4b4b4;
 }
+
 .facebook:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
+
 .facebook:hover:before {
-  text-decoration: none;
-  color: #337AB7;
+	text-decoration: none;
+	color: #337AB7;
 }
+
 .facebook {
-  font-size: 32px;
-  text-decoration: none;
+	font-size: 32px;
+	text-decoration: none;
 }
 
 /*구글*/
 .google:before {
-  font-family:"FontAwesome";
-  content: "\f1a0";
-  color:#b4b4b4;
+	font-family: "FontAwesome";
+	content: "\f1a0";
+	color: #b4b4b4;
 }
+
 .google:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
+
 .google:hover:before {
-  text-decoration: none;
-  color: #EA4335;
+	text-decoration: none;
+	color: #EA4335;
 }
+
 .google {
-  font-size: 32px;
-  text-decoration: none;
-  margin-left: 5px;
+	font-size: 32px;
+	text-decoration: none;
+	margin-left: 5px;
 }
-    /* 풋터 css 끝 */
+/* 풋터 css 끝 */
 
-
-
-    /* 사이드바 css 시작*/
+/* 사이드바 css 시작*/
 #sidebar {
-  position: absolute;
-  float:left;
-  color: white;
-  padding: 10px 5px;
-  margin: 0px;
-  background-color:#4D3948; 
-  width:180px; 
-  height:700px;
-  font-weight:500;
-  /* border: 1px solid red; */
+	position: absolute;
+	float: left;
+	color: white;
+	padding: 10px 5px;
+	margin: 0px;
+	background-color: #4D3948;
+	width: 180px;
+	height: 700px;
+	font-weight: 500;
+	/* border: 1px solid red; */
 }
 
 #sidebar a {
-  color: white;
-  text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
 
 #sidebar a:hover {
-  color: navy;
+	color: navy;
 }
-    /* 사이드바 css 끝 */
-    
-    
-    
-/* detail Page 시작 - 2017.02.09 김재녕 */
+/* 사이드바 css 끝 */
 
+/* detail Page 시작 - 2017.02.09 김재녕 */
 .detail-info {
 	margin: 0 auto;
 	height: 300px;
 }
+
 .detail-info .headtitle {
-	margin: 10px;
 	text-align: center;
-	height: 60px;
+	height: 20%;
 	overflow: hidden;
 }
+
 .detail-info .headtitle .stat-span {
-	margin: 0;
+	margin: 0 auto;
 	display: inline-block;
 	float: left;
 	line-height: 200%;
@@ -228,19 +242,22 @@ sec-intext {
 	width: 100px;
 	height: 100%;
 	text-align: center;
+	border-radius: 10px 10px 10px 10px;
 }
 
 .detail-info .headtitle .play-title {
-  margin: 0;
-  display: inline-block;
+	margin: 0;
+	display: inline-block;
 }
 
-.detail-info > .title-photo {
+.detail-info>.title-photo {
 	margin: 0;
-	width: 30%;
+	margin-right: 5%; width : 30%;
 	height: 70%;
 	float: left;
 	overflow: hidden;
+	border-radius: 15px;
+	width: 30%;
 }
 
 .d-info {
@@ -256,73 +273,204 @@ sec-intext {
 
 .memb-photo {
 	margin: 0 auto;
-  width: 100px; height: 100px;
-  object-fit: cover;
-  object-position: top;
+	width: 80%;
+	height: 80%;
+	object-fit: cover;
+	object-position: top;
 	border-radius: 50%;
 }
 
-.swiper-container {
-  width: 100%;
-  height: 150px;
-  margin: 10px auto;
+.member .swiper-container {
+	width: 100%;
+	height: 150px;
+	margin: 10px auto;
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  width: 60%;
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
- }
-.swiper-slide:nth-child(2n) {
-  width: 40%;
-}
-.swiper-slide:nth-child(3n) {
-  width: 20%;
+.member .swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	width: 60%;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
 }
 
-.b-info {
-	display: inline-block;
-  margin: 0 auto;
-  font-size: large;
+.member .swiper-slide:nth-child(2n) {
+	width: 40%;
 }
 
-.all-down-btn {
-	display: inline-block;
+.member .swiper-slide:nth-child(3n) {
+	width: 20%;
+}
+
+.board .headtitle {
+	position: relative;
+	height: 15%;
+}
+
+.board .b-info {
+	margin: 0 auto;
+	font-size: large;
+	float: left;
 }
 
 .board {
 	margin: 0 auto;
 	height: 400px;
 	overflow: hidden;
+	vertical-align: middle;
+}
+
+.board .search-board {
+	margin: 0 auto;
+	float: right;
+	/* background: #7BA7AB; */
+	width: 40%;
+}
+
+.board .search-board form {
+  float: right;
+  width: auto;
+}
+
+.board .search-board:after {
+	content:"";
+	clear:both;
+	display:table
+}
+
+.board .search-board input {
+  width: 100px;
+  height: 42px;
+  padding-left: 15px;
+  border-radius: 42px;
+  border: 2px solid #324b4e;
+  background: #F9F0DA;
+  outline: none;
+  position: relative;
+  transition: .3s linear;
+}
+
+.board .search-board input:focus {
+  width: 300px;
+}
+
+.board .search-board button {
+  float:right;
+  margin: 0 auto;
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: none;
+  top: -2px;
+  right: 0;
+}
+
+.board .search-board button:before{
+  content: "\f002";
+  font-family: FontAwesome;
+  color: #324b4e;
+}
+
+.board .all-down-btn {
+	margin-right: 5px;
+  font-size: 32px;
+  text-decoration: none;
+  float: right;
+}
+
+.board .all-down-btn:before {
+  font-family: "FontAwesome";
+  content: "\f019";
+  color: #b4b4b4;
+}
+
+.board .all-down-btn:hover {
+  text-decoration: none;
+}
+
+.board .all-down-btn:hover:before {
+  text-decoration: none;
+  color: #EA4335;
 }
 
 .board .board-box {
+	bottom: 10%;
 	display: inline-block;
-	width: 20%;
-	height: 70%;
-	border: 2px solid black;
+	width: 90%;
+	height: 60%;
+	border: 1px solid black;
 	text-align: center;
+	border-radius: 15px 15px 15px 15px;
+}
+
+.board .board-box:HOVER {
+	cursor: pointer;
+}
+
+.board .board-box:ACTIVE {
+	
 }
 
 .board .board-box .board-photo {
-	width: 90%;
-	height: 50%;
-	border: 2px solid blue;
+	margin: 5% auto;
+	width: 80%;
+	height: 40%;
+	object-fit: cover;
+	object-position: top;
+	border-radius: 50%;
 }
 
+.board .swiper-container {
+	top: 10px;
+	width: 100%;
+	height: 80%;
+	margin-top: 0;
+	margin-bottom: 5%;
+}
+
+.board .swiper-wrapper {
+	margin: 0;
+}
+
+.board .swiper-slide {
+	margin: 0;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	width: 60%;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.board .swiper-slide:nth-child(2n) {
+	width: 100%;
+}
+
+.board .swiper-slide:nth-child(3n) {
+	width: 100%;
+}
 
 /* detail Page 끝 */

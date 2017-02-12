@@ -1,0 +1,173 @@
+@import
+	"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+	;
+
+.timechoice {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 325px;
+	color: #cccccc;
+	vertical-align: middle;
+	text-align: left;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.timechoice .placeholder {
+	position: relative;
+	display: block;
+	background-color: #393d41;
+	z-index: 1;
+	padding: 1em;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.timechoice .placeholder:hover {
+	background: #34383c;
+}
+
+.timechoice .placeholder:after {
+	position: absolute;
+	right: 1em;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	font-family: 'FontAwesome';
+	content: '\f078';
+	z-index: 10;
+}
+
+.timechoice.is-open .placeholder:after {
+	content: '\f077';
+}
+
+.timechoice.is-open ul {
+	display: block;
+}
+
+.timechoice ul {
+	border: 1px solid black;
+	display: none;
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	background: #fff;
+	border-radius: 2px;
+	top: 100%;
+	left: 0;
+	list-style: none;
+	margin: 5px 0 0 0;
+	padding: 0;
+	z-index: 100;
+}
+
+.timechoice ul li {
+	display: block;
+	text-align: left;
+	padding: 0.8em 1em 0.8em 1em;
+	color: #999;
+	cursor: pointer;
+}
+
+.timechoice ul li:hover {
+	background: #4ebbf0;
+	color: #fff;
+}
+
+#selecttime .timebtn {
+	background: #3db394;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3db394),
+		to(#3db394));
+	background: -webkit-linear-gradient(top, #3db394, #3db394);
+	background: -moz-linear-gradient(top, #3db394, #3db394);
+	background: -ms-linear-gradient(top, #3db394, #3db394);
+	background: -o-linear-gradient(top, #3db394, #3db394);
+	background-image: -ms-linear-gradient(top, #3db394 0%, #3db394 100%);
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset
+		rgba(255, 255, 255, 0.4) 0 1px 0;
+	-moz-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset
+		rgba(255, 255, 255, 0.4) 0 1px 0;
+	box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset
+		rgba(255, 255, 255, 0.4) 0 1px 0;
+	text-shadow: #7ea4bd 0 1px 0;
+	color: #ffffff;
+	font-family: helvetica, serif;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+#selecttime .timebtn:hover {
+	cursor: pointer;
+	text-shadow: #1e4158 0 1px 0;
+	background: #3db394;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3db394),
+		to(#3db394));
+	background: -webkit-linear-gradient(top, #3db394, #3db394);
+	background: -moz-linear-gradient(top, #3db394, #3db394);
+	background: -ms-linear-gradient(top, #3db394, #3db394);
+	background: -o-linear-gradient(top, #3db394, #3db394);
+	background-image: -ms-linear-gradient(top, #3db394 0%, #3db394 100%);
+	color: #000000;
+}
+
+#selecttime .timebtn:active {
+	text-shadow: #1e4158 0 1px 0;
+	background: #3db394;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3db394),
+		to(#3db394));
+	background: -webkit-linear-gradient(top, #3db394, #3db394);
+	background: -moz-linear-gradient(top, #3db394, #3db394);
+	background: -ms-linear-gradient(top, #3db394, #3db394);
+	background: -o-linear-gradient(top, #3db394, #3db394);
+	background-image: -ms-linear-gradient(top, #3db394 0%, #3db394 100%);
+	color: #fff;
+}
+
+#selecttime {
+	border: 1px solid #CECECE;
+	width: 300px;
+	height: 100%;
+	border-radius: 15px 15px 15px 15px;
+}
+
+#selecthead {
+	position: relative;
+	height: 25%;
+	margin: 10% auto;
+	text-align: center;
+}
+
+#selectcontent {
+	margin: 10% auto;
+	text-align: center;
+	height: 100%;
+}
+
+#time {
+	height: 10%;
+}
+
+#selectbutton {
+	margin: 10% auto;
+	text-align: center;
+	height: 25%;
+}
+
+#timeok {
+	padding: 9px 18px;
+}
+
+#timeclose {
+	overflow: hidden;
+	margin: 0 5%;
+	font-size: small;
+}
