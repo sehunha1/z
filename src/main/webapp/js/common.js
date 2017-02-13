@@ -19,4 +19,8 @@ $(function() {
       $("#userpopup").hide();
     }
   })
+  $("body").on("click", "#login", function(e) {
+    e.preventDefault();
+    $('#popup').bPopup();
+  })
 })
