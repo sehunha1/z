@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset='utf-8'>
+<title>tab example</title>
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/meetmain/meetmain.css">
+<link rel="stylesheet" href="tap.css">
+
+  <link rel="stylesheet" href="monthly.css">
+  <style type="text/css">
+    #mycalendar {
+      width: 100%;
+      margin: 2em auto 0 auto;
+      max-width: 80em;
+      border: 1px solid #666;
+    }
+  </style>
+  
+
+
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="monthly.js"></script>
+
+<script type="text/javascript">
+
+  var sampleEvents = {
+  "monthly": [
+    {
+    "id": 1,
+    "name": "Whole month event",
+    "startdate": "2016-10-01",
+    "enddate": "2016-10-31",
+    "starttime": "12:00",
+    "endtime": "2:00",
+    "color": "#99CCCC",
+    "url": ""
+    },
+    {
+    "id": 2,
+    "name": "Test encompasses month",
+    "startdate": "2016-10-29",
+    "enddate": "2016-12-02",
+    "starttime": "12:00",
+    "endtime": "2:00",
+    "color": "#CC99CC",
+    "url": ""
+    },
+    {
+    "id": 3,
+    "name": "Test single day",
+    "startdate": "2016-11-04",
+    "enddate": "",
+    "starttime": "",
+    "endtime": "",
+    "color": "#666699",
+    "url": "https://www.google.com/"
+    },
+    {
+    "id": 8,
+    "name": "Test single day",
+    "startdate": "2016-11-05",
+    "enddate": "",
+    "starttime": "",
+    "endtime": "",
+    "color": "#666699",
+    "url": "https://www.google.com/"
+    },
+    {
+    "id": 4,
+    "name": "Test single day with time",
+    "startdate": "2016-11-07",
+    "enddate": "",
+    "starttime": "12:00",
+    "endtime": "02:00",
+    "color": "#996666",
+    "url": ""
+    },
+    {
+    "id": 5,
+    "name": "Test splits month",
+    "startdate": "2016-11-25",
+    "enddate": "2016-12-04",
+    "starttime": "",
+    "endtime": "",
+    "color": "#999999",
+    "url": ""
+    },
+    {
+    "id": 6,
+    "name": "Test events on same day",
+    "startdate": "2016-11-25",
+    "enddate": "",
+    "starttime": "",
+    "endtime": "",
+    "color": "#99CC99",
+    "url": ""
+    },
+    {
+    "id": 7,
+    "name": "Test events on same day",
+    "startdate": "2016-11-25",
+    "enddate": "",
+    "starttime": "",
+    "endtime": "",
+    "color": "#669966",
+    "url": ""
+    },
+    {
+    "id": 9,
+    "name": "Test events on same day",
+    "startdate": "2016-11-25",
+    "enddate": "",
+    "starttime": "",
+    "endtime": "",
+    "color": "#999966",
+    "url": ""
+    }
+  ]
+  };
+
+  $(window).load( function() {
+    $('#mycalendar').monthly({
+      mode: 'event',
+      dataType: 'json',
+      events: sampleEvents
+    });
+  });
+</script>
+
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Nuy1IwO7vpb556X56is6iQ9Nhct8YUM&callback=initMap"
+  async defer></script>
+<script>
+  function initialize() {
+
+    /*
+      http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=서울특별시 강남구 강남대로 456
+              위와같이 링크에서 뒤에 주소를 적으면 x,y 값을 구할수 있습니다.
+     */
+    var Y_point = 37.493692; // Y 좌표
+    var X_point = 127.028148; // X 좌표
+
+    var zoomLevel = 16; // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+
+    var markerTitle = "비트캠프"; // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+    var markerMaxWidth = 300; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+
+    // 말풍선 내용
+    var contentString = '<div>' + '<h2>비트캠프</h2>' +
+    //'<a href="http://www.daegu.go.kr" target="_blank">http://www.daegu.go.kr</a>'+ //링크도 넣을 수 있음
+    '</div>';
+
+    var myLatlng = new google.maps.LatLng(Y_point, X_point);
+    var mapOptions = {
+      zoom : zoomLevel,
+      center : myLatlng,
+      mapTypeId : google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById('map_view'),
+        mapOptions);
+
+    var marker = new google.maps.Marker({
+      position : myLatlng,
+      map : map,
+      title : markerTitle
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      content : contentString,
+      maxWidth : markerMaxWidth
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+
+
+</head>
+<body onload="initialize()">
+	<div id='header-login'></div>
+	<div id='container' >
+		<div id='sidebar' style='position:relative;'></div>
+
+    <div style='border:solid 1px red;'>
+		<ul class="tab" style='border:solid 1px blue;'>
+			<li class="current" data-tab="tab1"><a href="#">일정투표</a></li>
+			<li data-tab="tab2"><a href="#">장소투표</a></li>
+			<li data-tab="tab3"><a href="#">게시판</a></li>
+		</ul>
+    </div>
+		<div id="tab1" class="tabcontent current">
+		   
+		   <div class="monthly" id="mycalendar" style='width:600px; height:500px; position:relative; margin-left:auto;'></div>
+ 
+     
+		</div>
+
+	</div>
+
+	<div id="tab2" class="tabcontent">
+		
+
+    
+    <!-- <div class='map_view' id="map_view" style="width:450px; height:300px; margin-left:162px;"></div>  -->
+    <div class='map_view' id="map_view" style="width:780px; height:300px; position:relative;"></div> 
+     
+
+    <div class='maplist' style='overflow-y:scroll;
+      font-color: black;
+      background-color:#FFFFFF; 
+      width:280px; 
+      height:300px;'> 
+    <font color='black'>리스트</font>
+    <br>
+    <input type="checkbox" name="chk_info" value="HTML">본차로드
+    <br><img src='../../image/meetmain/boncha.png' width=260px; height=100px;>
+    <input type="checkbox" name="chk_info" value="HTML">설렁탕
+    <br><img src='../../image/meetmain/sulung.png' width=260px; height=100px;>
+    
+    <div id='maplistsub'>
+    <div id='tttt' style='background-color:#E7DEBB; margin-top:30px; height:20px; position:absoulte;'>
+    </div>
+    <button type='button' style='width:100%; background-color:black;'>
+    <font color='white'>투표완료</font></button>
+    </div>
+    </div>
+    
+
+
+
+	</div>
+
+	<div id="tab3" class="tabcontent">
+		<h3>Contact</h3>
+		<p>It is a long established fact that a reader will be distracted
+			by the readable content of a page when looking at its layout. The
+			point of using Lorem Ipsum is that it has a more-or-less normal
+			distribution of letters, as opposed to using 'Content here, content
+			here', making it look like readable English. Many desktop publishing
+			packages and web page editors now use Lorem Ipsum as their default
+			model text, and a search for 'lorem ipsum' will uncover many web
+			sites still in their infancy. Various versions have evolved over the
+			years, sometimes by accident, sometimes on purpose (injected humour
+			and the like).</p>
+	</div>
+
+	<div id='footer'></div>
+
+	<script>
+		$(function() {
+			$('ul.tab li').click(function() {
+				var activeTab = $(this).attr('data-tab');
+				$('ul.tab li').removeClass('current');
+				$('.tabcontent').removeClass('current');
+				$(this).addClass('current');
+				$('#' + activeTab).addClass('current');
+			})
+		});
+	</script>
+	<script src="../../js/meetmain/meetmain.js"></script>
+	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

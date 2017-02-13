@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>New Meet</title>
+<link rel="stylesheet" href="../../css/meetmain/newmeet.css">
+</head>
+<body>
+    <div id="header-login"></div>
+    <div class='container'>
+    <div id="wrap">
+			<div id="sidebar">
+			</div>
+			<div id="section">
+			
+			
+			
+				<div class='conttext'>
+				<font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>신년회</b></font><br>
+				<font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">늦은 망년회 겸 신년회를 하려고 합니다. 다들 투표해 주세요!</font>
+				<br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:회식  </font>
+				<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px;  font-size:12px;'> |모임시간:2시간 </font>
+				<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'>|기간:1월중 </font>
+				<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:1월25일까지 <font color='red'><b>(D-3)</b></font> </font>
+				</div>
+				<div style='height:30px; background-color:#CE125B; margin-top:10px;'>
+				<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif;'><b>일정투표</b></font>
+				<button id="meet" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+				</div>
+				
+				<!-- 달력 -->
+				<!-- <button id="hide">Hide</button> -->
+				
+				<div class='calendar' id='calendar'  style='width:700px; height:500px; margin-top:10px;'>
+				</div>
+				
+				<div style='height:30px; background-color:#DFA941; margin-top:10px;'>
+				<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif; margin-top:10px;'><b>장소투표</b></font>
+				<button id="map" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+				</div>
+				<!-- 지도 div 부분 -->
+				
+				<!-- 
+				<div class='maplist' style='overflow-y:scroll;
+				  float:right;
+				  font-color: black;
+				  background-color:#FFFFFF; 
+				  width:280px; 
+				  height:300px;'> 
+				<font color='black'>리스트</font>
+				<br>
+				<input type="checkbox" name="chk_info" value="HTML">본차로드
+				<br><img src='../../image/meetmain/boncha.png' width=260px; height=100px;>
+				<input type="checkbox" name="chk_info" value="HTML">설렁탕
+				<br><img src='../../image/meetmain/sulung.png' width=260px; height=100px;>
+				 -->
+				 
+				 <div class='maplist' style='overflow-y:scroll;
+				  float:right;
+				  font-color: black;
+				  background-color:#FFFFFF; 
+				  width:280px; 
+				  height:300px; display:none;'> 
+				<font color='black' style='font-family:"Noto Sans KR", sans-serif;'>리스트</font>
+				<br>
+				<div style='height:100px; background-color:#FF5656;'>
+				<input type="checkbox" name="chk_info" value="HTML"/>
+				<font color='white' style='float:right; margin-top:70px; font-size:14px; font-family:"Noto Sans KR", sans-serif;'>1명</font>
+				</div>
+				<div style='height:100px; background-color:#2D66B2; margin-top:10px;'>
+				<input type="checkbox" name="chk_info" value="HTML"/>
+				<font color='white' style='float:right; margin-top:70px; font-size:14px; font-family:"Noto Sans KR", sans-serif;'>3명</font>
+				</div>
+				 
+				<div id='maplistsub'>
+				<div id='tttt' style='background-color:#E7DEBB; margin-top:30px; height:20px; position:absoulte; text-align:center;'>
+				<font style='font-size:11px; font-family: "Noto Sans KR", sans-serif;'>원하는 장소를 선택한 후 투표하기를 눌러 주세요</font>
+				</div>
+				<div style='width:100%; height:34px; background-color:black; text-align:center;'>
+				<font color='white' style='vertical-align:middle; font-size:17px; font-family: "Noto Sans KR", sans-serif;'>투표하기</font></div>
+				<!-- <button type='button' style='width:100%; background-color:black;'>
+				<font color='white'>투표완료</font></button> -->
+				</div>
+				</div>
+				
+				<div class='map_view' id="map_view" style="width:450px; height:300px; display:none;"></div>
+				
+				<!-- 게시한 div 부분 -->
+				<div style='height:30px; background-color:#14870F; margin-top:10px;'>
+				<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif;'><b>게시판</b></font>
+				
+				<button id="board" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+				</div>
+				
+				<div id="content-card">
+				
+				<div class='file' style='height:30px; float:right; margin:5px; padding-right:10px; display:none;'>
+				  <a id='fileall' class="btn btn-primary btn-large"><font color='white'>파일전체 다운받기</font></a>
+				  <a id='filesel' class="btn btn-primary btn-large"><font color='white'>파일선택 다운받기</font></a>
+				</div>
+				
+				<div class="card" 
+				style="width: 20rem; background-color:#FFFFFF; margin-left:150px; 
+				font-size:22px; font-family:Noto Sans KR, sans-serif; margin-top:50px; display:none;">
+				  <img class="card-img-top" src="../../image/mylist/bg_test.jpg" width=200 height=90 alt="Card image cap">
+				  <input type="checkbox" name="chk_info" value="HTML" style='float:right;'>
+				  <div class="card-block">
+				    <h4 class="card-title">테스트:</h4>
+				<font size='3'>날짜: 170120-170131 <br>시간:투표중 <br>장소:투표중 <br></font><p align="right"><font size=3><b>3/5</b></font></p>
+				  </div>
+				  </div>
+				<!-- 모임만들기 -->
+				  <!-- 
+				<div id='create-meet' style='height:30px; float:right; margin:5px; padding-right:350px; '>
+				  <a id='c-meet' href='../mymeet/mymeet.html' class="btn btn-warning btn-large"><font color='white'>모임만들기</font></a>
+				</div>
+				 -->
+				</div>
+				
+				
+				</div> <!-- content -->
+				</div>
+			</div>
+			
+			
+     <div id="footer"></div>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../js/meetmain/meetmain.js"></script> 
+</body>
+</html>
+
+
+
+
+
+
