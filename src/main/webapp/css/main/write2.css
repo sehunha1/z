@@ -1,0 +1,146 @@
+@CHARSET "UTF-8";
+
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
+div {
+	display: inline-block;
+	float: left;
+}
+.title {
+	font-family: 'Noto Sans KR';
+  font-size: 24px;
+  font-weight: bold;
+  font-color: grey;
+  margin-left: 20px;
+}
+.section{
+	font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-color: gray;
+  margin-left: 20px;
+  margin-top:20px;
+}
+.section2{
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-color: gray;
+  margin-left: 130px;
+  margin-top:20px;
+}
+.addemailbox {
+  height:40px;
+  width:340px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-color: #3ACBA3;
+  border-radius: 3px;
+
+}
+#plus-btn {
+	background-color : white;
+  color: #3498DB;
+  margin-left :290px;
+  border-color: #3498DB;
+  height: 30px;
+}
+
+#plus-btnn {
+  background-color : white;
+  color: #3498DB;
+  margin-left :10px;
+  border-color: #3498DB;
+  height: 20px; 
+  padding-bottom: 20px;
+  font: 15px;
+}
+#Go-btn {
+  border-radius: 10px;
+  border-style: solid;
+  border-width:2px;
+  border-color: grey;
+  background-color : #3ACBA3;
+  color: white;
+  font-size: 30px;
+  height:530px;
+  width:100px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right:1px;
+  margin-bottom: 20px;
+}
+
+#scheduleinfo {
+	border-radius: 10px;
+	border-style: solid;
+	border-width:1px;
+	border-color: grey;
+	height:530px;
+	width:380px;
+	margin-left: 20px;
+	margin-top: 20px;
+	margin-right:1px;
+	margin-bottom: 20px;
+}
+
+#scheduleinfo .form-control {	
+  height:40px;
+  width:340px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#scheduleinfo .form-control2 { 
+  display: inline-block;
+  position: relative;
+  height:40px;
+  width:150px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+ #schedulememb {
+  border-radius: 10px;
+  border-style: solid;
+  border-width:1px;
+  border-color: grey;
+  height:530px;
+  width:380px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right:1px;
+}
+
+#picarea {
+	height:60px;
+  width:340px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+  border-color: grey;
+  border-style: solid;
+  border-width:1px;
+}
+
+#schedulememb .form-control {
+  height:40px;
+  width:340px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.form-control-area {
+  height:80px;
+  width:340px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+}
+
+.flatpickr {
+  height:40px;
+  width:340px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+}
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>모임방설정</title>
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="../../css/main/write2.css">
+<body>
+
+<div id="header"></div><br>
+  <div id="scheduleinfo">
+  <span class="section"></span><br>
+   <span class="title">모임정보설정</span><br>
+   <span class="section"></span><br>
+   <span class="section">모임분류</span><br>
+   <select class="form-control">
+     <option>스터디</option>
+      <option>친목</option>
+     <option>회식</option>
+      <option>동창회</option>
+     <option>기타</option>
+   </select>
+   <span class="section"></span><br>
+   <span class="section">투표기간</span>
+   <span class="section2">참여가능시간대</span><br>
+   <select class="form-control2">
+     <option>1일</option>
+      <option>2일</option>
+     <option>3일</option>
+      <option>일주일</option>
+     <option>2주</option>
+   </select>
+   <select class="form-control2">
+     <option>아침</option>
+     <option>낮</option>
+     <option>저녁</option>
+     <option>밤</option>
+   </select>
+   <span class="section"></span><br>
+   <span class="section">모임기간설정</span><br>
+    <input class="flatpickr" type="text" placeholder="Select Date..">
+  
+   <div>
+     <span class="section"></span><br>
+	   <span class="section" >모임내용</span><br>
+	   <textarea class="form-control-area" rows="3" placeholder="   내용을 입력해주세요"></textarea>
+ 
+    <span class="section"></span><br>
+   <span class="section">사진추가</span><br>
+     <div id ="picarea">
+        <span class="section"></span><br>
+        <span class="section">사진을 추가해주세요</span>
+        <button type="button" id="plus-btnn" class="btn btn-defaultt">사진추가</button>
+     </div>
+   </div>
+  </div>
+
+  <div id ="schedulememb">
+  <span class="section"></span><br>
+  <span class="title">모임원초대</span><br>
+  <button type="button" id="plus-btn" class="btn btn-default">+email</button>
+  <input type="email"  class="addemailbox"  id="exampleInputEmail3" placeholder="   email을 입력해주세요">
+  </div>
+  
+  <div><button type="button" id="Go-btn" class="btn btn-go">Go!</button></div>
+
+<div id="footer"></div>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://unpkg.com/flatpickr"></script>
+<script src="../../js/common.js"></script>
+<script>
+$('#plus-btn').click(function() {
+	$('#schedulememb').append("<input type='email' class='addemailbox' placeholder='   email을 입력해주세요'>");
+  });
+</script>
+<script>
+
+flatpickr(".flatpickr");
+
+</script>
+</body>
+</html>
+
+
+
