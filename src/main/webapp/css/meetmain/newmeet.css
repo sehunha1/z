@@ -80,7 +80,7 @@ body > .container {
 #header #logout .profile_photo {
   width: 30px;
   height: 30px;
-  background: url("../image/user_profile.jpg") no-repeat 50% 50%;
+  background: url("../../image/user_profile.jpg") no-repeat 50% 50%;
   background-size: cover;
   border-radius: 50%;
   float: right;
@@ -92,6 +92,25 @@ body > .container {
   float: right;
   margin-top: 3px;
   margin-left: 5px;
+}
+
+.Pstyle {
+ opacity: 0;
+ display: none;
+ position: relative;
+ width: auto;
+ border: 5px solid #fff;
+ padding: 20px;
+ background-color: #fff;
+}
+
+.b-close {
+ position: absolute;
+ right: 5px;
+ top: 5px;
+ padding: 5px;
+ display: inline-block;
+ cursor: pointer;
 }
 
 sec-intext {
@@ -121,115 +140,9 @@ sec-intext {
 }
 /* 헤더 css 끝 */
 
-
-
-
-#header-login {
+/* 풋터 css 시작 - 2017.02.08 김재녕*/
+#div-header {
   width: 100%;
-  border-bottom: 1px solid #ddd;
-}
-
-#header-login .inner_header {
-  width: 960px;
-  margin: 0 auto;
-  position: relative;
-  *zoom: 1;
-}
-
-#header-login .inner_header:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-#header-login .logo img {
-  width: 40px;
-  height: 40px;
-  float: left;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-#header-login .svc_name {
-  float: left;
-  margin-top: 6px;
-  font-size: 25px;
-}
-
-#header-login .svc_name a {
-  text-decoration: none;
-  color: black;
-}
-
-#header-login #join {
-  float: right;
-  margin-top: 15px;
-  margin-left: 20px;
-  display: none;
-}
-
-#header-login #join a {
-  text-decoration: none;
-  color: black;
-}
-
-#header-login #login {
-  float: right;
-  margin-top: 15px;
-  display: none;
-}
-
-#header-login #login a {
-  text-decoration: none;
-  color: black;
-}
-
-#header-login #logout {
-  float: right;
-  margin-top: 9px;
-}
-
-#header-login #logout .profile_photo {
-  width: 30px;
-  height: 30px;
-  background: url("../image/user_profile.jpg") no-repeat 50% 50%;
-  background-size: cover;
-  border-radius: 50%;
-  float: right;
-}
-
-#header-login #logout a {
-  text-decoration: none;
-  color: black;
-  float: right;
-  margin-top: 3px;
-  margin-left: 5px;
-}
-
-sec-intext {
-  font-family: "Noto Sans KR", sans-serif;
-  @import
-  url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
-}
-
-#sec2 {
-  font-color: #9E9E9E;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: "Noto Sans KR", sans-serif;
-  @import
-  url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
-}
-
-#sec3 {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 0;
-}
-
-#sec4 {
-  font-weight: 500;
 }
 
 #sidebar {
@@ -259,6 +172,72 @@ sec-intext {
 #wrap {
   overflow: hidden;
 }
+
+
+/* 탭 시작 */
+
+ul.tabs {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 32px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    width: 100%;
+    font-family:"dotum";
+    font-size:12px;
+}
+ul.tabs li {
+    float: left;
+    text-align:center;
+    cursor: pointer;
+    width:82px;
+    height: 31px;
+    line-height: 31px;
+    border: 1px solid #eee;
+    border-left: none;
+    font-weight: bold;
+    background: #fafafa;
+    overflow: hidden;
+    position: relative;
+}
+ul.tabs li.active {
+    background: #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+}
+.tab_container {
+    border: 1px solid #eee;
+    border-top: none;
+    clear: both;
+    float: left;
+    width: 248px;
+    background: #FFFFFF;
+}
+.tab_content {
+    padding: 5px;
+    font-size: 12px;
+    display: none;
+}
+.tab_container .tab_content ul {
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+.tab_container .tab_content ul li {
+    padding:5px;
+    list-style:none
+}
+;
+ #tcontainer {
+    width: 249px;
+    margin: 0 auto;
+}
+
+
+/* 탭 종료*/
+
+
 
 /* 풋터 css 시작 - 2017.02.08 김재녕*/
 #div-header {
