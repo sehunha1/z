@@ -113,6 +113,29 @@ sec-intext {
 #sec4 {
 	font-weight: 500;
 }
+
+
+
+
+
+.Pstyle {
+ opacity: 0;
+ display: none;
+ position: relative;
+ width: auto;
+ border: 5px solid #fff;
+ padding: 20px;
+ background-color: #fff;
+}
+
+.b-close {
+ position: absolute;
+ right: 5px;
+ top: 5px;
+ padding: 5px;
+ display: inline-block;
+ cursor: pointer;
+}
 /* 헤더 css 끝 */
 
 /* 풋터 css 시작 - 2017.02.08 김재녕*/

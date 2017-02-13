@@ -23,4 +23,7 @@ $(function() {
     e.preventDefault();
     $('#popup').bPopup();
   })
+  $("body").on("click", "#login_btn", function(e) {
+    location.href = "main.html";
+  })
 })
