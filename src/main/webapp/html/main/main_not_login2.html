@@ -6,6 +6,40 @@
 <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../../css/main/main.css">
 <link rel="stylesheet" href="../../css/common_not_login.css">
+
+
+
+<script type="text/javascript">
+  function go_popup() {
+   
+    $('#popup').bPopup();
+   
+  };
+</script>
+
+
+<style type="text/css">
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
+.Pstyle {
+ opacity: 0;
+ display: none;
+ position: relative;
+ width: auto;
+ border: 5px solid #fff;
+ padding: 20px;
+ background-color: #fff;
+}
+
+.b-close {
+ position: absolute;
+ right: 5px;
+ top: 5px;
+ padding: 5px;
+ display: inline-block;
+ cursor: pointer;
+}
+</style>
 <body>
 <div id="header"></div>
 <div id="content">
@@ -26,7 +60,8 @@
   </form>
 </div>
 <div id="footer"></div>
-<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="jquery.bpopup.min.js"></script>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../js/common.js"></script>
 </body>
