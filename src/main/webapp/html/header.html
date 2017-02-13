@@ -1,5 +1,28 @@
 <meta charset='utf-8'>
+<script src="jquery.bpopup.min.js"></script>
 
+<style type="text/css">
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
+.Pstyle {
+ opacity: 0;
+ display: none;
+ position: relative;
+ width: auto;
+ border: 5px solid #fff;
+ padding: 20px;
+ background-color: #fff;
+}
+
+.b-close {
+ position: absolute;
+ right: 5px;
+ top: 5px;
+ padding: 5px;
+ display: inline-block;
+ cursor: pointer;
+}
+</style>
 
 <div class="inner_header">
   <a class="logo" href="../../html/main/main.html">
@@ -12,7 +35,7 @@
     <a href="#">회원가입</a>
   </div>
   <div id="login">
-    <a href="#" onclick='go_popup()'>로그인</a>
+    <a href="#">로그인</a>
   </div>
   <div id="logout">
     <a href="#">username</a>
@@ -58,14 +81,14 @@
  <div id="popup" class="Pstyle" style='border:gray 3px solid;'>
 
 
-  <div class="content" style="height: 430px; width: 470px;">
+  <div class="content_temp" style="height: 430px; width: 470px;">
     <div id='form_login'>
     <form style='display:inline;'>
         <div style='text-align:center; margin-bottom:10px; margin-top:20px;'>
           <span class="b-close"><img src='close.png' style='width:30px; height:30px;'></img></span>
           <font style='font-size:26px; font-family:Arial;'>로그인</font>
         </div>
-        <div id='login' style='vertical-align:middle; margin-top:40px;'>
+        <div id='login_temp' style='vertical-align:middle; margin-top:40px;'>
         <center>
           <input type='text' placeholder='E-mail' 
           style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-bottom:10px;'/></center>
