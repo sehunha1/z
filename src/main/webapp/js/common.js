@@ -35,4 +35,8 @@ $(function() {
     e.preventDefault();
     location.href = "../main/main_not_login.html";
   })
+  $("body").on("click", "#new-btn", function(e) {
+    e.preventDefault();
+    location.href = "write2.html";
+  });
 })

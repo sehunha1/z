@@ -75,7 +75,11 @@
 <script>
 $('#plus-btn').click(function() {
 	$('#schedulememb').append("<input type='email' class='addemailbox' placeholder='   email을 입력해주세요'>");
-  });
+});
+$("#Go-btn").click(function(e) {
+  e.preventDefault();
+  location.href = "../meetmain/newtap.html";
+});
 </script>
 <script>
 
