@@ -31,10 +31,8 @@ $(function() {
     e.preventDefault();
     location.href = "../mylist/mylist.html";
   })
-  
-  
-  
-//  $("#href_mylist").click(function(e) {
-//    location.href = "../mylist/mylist.html";
-//  })
+  $("body").on("click", "#href_out", function(e) {
+    e.preventDefault();
+    location.href = "../main/main_not_login.html";
+  })
 })
