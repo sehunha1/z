@@ -26,4 +26,15 @@ $(function() {
   $("body").on("click", "#login_btn", function(e) {
     location.href = "main.html";
   })
+  
+  $("body").on("click", "#href_mylist", function(e) {
+    e.preventDefault();
+    location.href = "../mylist/mylist.html";
+  })
+  
+  
+  
+//  $("#href_mylist").click(function(e) {
+//    location.href = "../mylist/mylist.html";
+//  })
 })
