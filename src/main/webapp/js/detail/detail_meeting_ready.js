@@ -12,4 +12,9 @@ $(function() {
     $('.place_result_list .item').removeClass('on');
     $(this).toggleClass('on');
   });
+  
+  $("#btn_back").on("click", function(e) {
+    e.preventDefault();
+    location.href = "../mylist/mylist.html";
+  });
 });
