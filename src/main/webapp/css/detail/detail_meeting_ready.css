@@ -93,7 +93,15 @@
 
 .member_list .item:nth-child(1),
 .member_list .item:nth-child(2),
-.member_list .item:nth-child(3) {
+.member_list .item:nth-child(3),
+.member_list .item:nth-child(4),
+.member_list .item:nth-child(5),
+.member_list .item:nth-child(6),
+.member_list .item:nth-child(7),
+.member_list .item:nth-child(8),
+.member_list .item:nth-child(9),
+.member_list .item:nth-child(10),
+.member_list .item:nth-child(11) {
   display:block;
 }
 
