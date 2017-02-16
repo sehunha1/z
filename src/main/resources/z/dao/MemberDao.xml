@@ -6,43 +6,59 @@
 <mapper namespace="z.dao.MemberDao">
 
   <resultMap type="member" id="member-map">
-    <id     column="mno"        property="memberNo"/>
+    <id     column="mnum"       property="memberNo"/>
     <result column="name"       property="name"/>
     <result column="email"      property="email"/>
     <result column="pwd"        property="password"/>
-    <result column="tel"        property="tel"/>
+    <result column="photo"      property="photo"/>
+    <result column="kakao"      property="kakao"/>
+    <result column="fcbk"       property="facebook"/>
   </resultMap>
   
-  <select id="count" parameterType="string" resultType="int">
-    select count(*) from memb where email=#{value}
+  <select id="getList" resultMap="member-map">
+  select * from memb;
   </select>
   
-  <select id="getOne" parameterType="string" resultMap="member-map">
+
+  <select id="getOne" parameterType="int" resultMap="member-map">
+    select *
+    from memb
+    where mnum=#{value};
+  </select>
+  
+    <select id="getOneByEmail" parameterType="string" resultMap="member-map">
     select 
-      mno, 
+      mnum, 
       name, 
-      tel, 
       email
     from memb
     where email=#{value}
   </select>
   
+  <insert id="insert" parameterType="member" 
+          useGeneratedKeys="true" keyColumn="mnum" keyProperty="memberNo">
+    insert into memb(name, email, pwd, kakao, fcbk)
+    values(#{name}, #{email}, password(#{password}), #{kakao}, #{facebook})
+  </insert> 
+
+  <select id="count" parameterType="string" resultType="int">
+    select count(*) from memb where email=#{value}
+  </select>
+  
   <select id="getOneByEmailPassword" parameterType="map" resultMap="member-map">
     select 
-      mno, 
+      mnum, 
       name, 
-      tel, 
-      email
+      email,
+      photo,
+      kakao,
+      fcbk
     from memb
     where email=#{email} 
       and pwd=password(#{password})
   </select>
-
-  <insert id="insert" parameterType="member" 
-          useGeneratedKeys="true" keyColumn="mno" keyProperty="memberNo">
-    insert into memb(name, email, tel, pwd)
-    values(#{name}, #{email}, #{tel}, password(#{password}))
-  </insert> 
+  
+  <!-- 
   
   <update id="update" parameterType="member">
     update memb set
@@ -56,4 +72,13 @@
   <delete id="delete" parameterType="int">
     delete from memb where mno=#{value}
   </delete>
+   -->
 </mapper>
+
+
+
+
+
+
+
+

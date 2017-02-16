@@ -1,4 +1,4 @@
-package z.control;
+/*package bitcamp.java89.ems2.control;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import z.domain.Member;
-import z.service.AuthService;
+import bitcamp.java89.ems2.domain.Member;
+import bitcamp.java89.ems2.service.AuthService;
 
 @Controller
 public class AuthControl {
@@ -59,3 +59,12 @@ public class AuthControl {
     return "redirect:loginform.do";
   }
 }
+
+
+
+
+
+
+
+
+*/
