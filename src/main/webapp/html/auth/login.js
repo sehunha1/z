@@ -7,7 +7,7 @@ $('#submit-btn').click(function() {
 	
 	$.post('login.json', param, function(ajaxResult) {
 		if (ajaxResult.status == "success") {
-			location.href = "afterlogin.html";	
+			location.href = "../main/main.html";	
 			return;
 		}
 		alert(ajaxResult.data);
