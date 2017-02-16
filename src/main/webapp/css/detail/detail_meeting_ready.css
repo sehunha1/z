@@ -202,8 +202,6 @@
   font-size:20px;
   width:120px;
   height:40px;
-  display:inline-block;
-  margin:50px 60px 40px 330px;
 }
 
 #meeting_ready #btn_back {
@@ -216,6 +214,4 @@
   font-size:20px;
   width:120px;
   height:40px;
-  display:inline-block;
-  margin:50px 0px 40px 0px;
 }
