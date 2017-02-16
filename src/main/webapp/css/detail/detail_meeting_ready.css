@@ -192,6 +192,11 @@
   float:right;
 }
 
+#meeting_ready .btn_ready {
+  width: 346px;
+  margin: 80px auto 50px auto;
+}
+
 #meeting_ready #btn_ok {
   border-radius: 10px;
   border-style: solid;
@@ -202,6 +207,7 @@
   font-size:20px;
   width:120px;
   height:40px;
+  margin-right: 100px;
 }
 
 #meeting_ready #btn_back {
