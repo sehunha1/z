@@ -7,8 +7,8 @@
 
   <resultMap type="member" id="member-map">
     <id     column="mnum"       property="memberNo"/>
-    <result column="name"       property="name"/>
     <result column="email"      property="email"/>
+    <result column="name"       property="name"/>
     <result column="pwd"        property="password"/>
     <result column="photo"      property="photo"/>
     <result column="kakao"      property="kakao"/>
@@ -37,8 +37,8 @@
   
   <insert id="insert" parameterType="member" 
           useGeneratedKeys="true" keyColumn="mnum" keyProperty="memberNo">
-    insert into memb(name, email, pwd, kakao, fcbk)
-    values(#{name}, #{email}, password(#{password}), #{kakao}, #{facebook})
+    insert into memb(email, name, pwd, kakao, fcbk)
+    values(#{email}, #{name}, password(#{password}), #{kakao}, #{facebook})
   </insert> 
 
   <select id="count" parameterType="string" resultType="int">

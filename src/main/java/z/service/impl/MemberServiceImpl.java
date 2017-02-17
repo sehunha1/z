@@ -37,6 +37,7 @@ public class MemberServiceImpl implements MemberService {
     */
     return memberDao.insert(member);
   }
+  
   /*
   public int delete(int no) throws Exception {
     if (studentDao.countByNo(no) == 0) {

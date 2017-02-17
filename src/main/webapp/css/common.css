@@ -47,7 +47,7 @@
 	float: right;
 	margin-top: 15px;
 	margin-left: 20px;
-	display: none;
+	/*display: none;*/
 }
 
 #header #join a {
@@ -58,7 +58,7 @@
 #header #login {
 	float: right;
 	margin-top: 15px;
-	display: none;
+	/*display: none;*/
 }
 
 #header #login a {

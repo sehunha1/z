@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="../../css/common.css">
 </head>
 <body>
+<div id='header'></div>
 <div class='container'>
 
-
-<div id="content">
+<!-- 
 <h1>회원가입 테스트</h1>
 <form>
       이메일<input id='email' type='text' class="form-control" placeholder='예)hong@test.com'>
@@ -19,15 +19,55 @@
   <button id='add-btn'>등록</button>
   </form>
 </div>
-
-</div>
-
+ -->
+ 
+ 
+ <div style='padding-top:10px; margin-bottom:10px; margin-top:20px;'>
+        <div id='login' style='text-align:center; vertical-align:middle;'>
+       <font style='font-size:26px; font-family:Arial; text-align:center;'>회원가입</font><br>
+       
+       
+        <input id='email' type='email' placeholder='E-mail' 
+          style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-top:10px; margin-bottom:10px;'/>
+          <button id='emailcheck' type='button' style='position:absolute; margin-top:10px; height:30px;'>중복확인</button>
+          <br>
+        <input id='names' type='text' placeholder='name' 
+          style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-top:10px; margin-bottom:10px;'/>  
+          <br>        
+        <input id='password' type='password' placeholder='password' 
+          style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-top:10px;'/>
+        
+        <center>
+        <input id='photo' type='file' 
+          style='text-align:center; vertical-align:middle; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-top:10px;'/>
+          </center>
+        </div>
+          
+      <div id='joinbutton' style='text-align:center; vertical-align:middle; margin-top:20px;'> 
+      <button id='add-btn' style='width:300px; height:38px; background-color:#3DB394'>
+      <font color='white' style='font-size:20px; font-family:Vernada; font-weight:500;'>join</font></button>
+      </div>
+    </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </div>
+<div id='footer'></div>
 <script src="../../node_modules/jquery/dist/jquery.js"></script>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../../js/bit.js"></script>
 <script src="../../js/common.js"></script>
 <script src="join.js"></script>
-
 </body>
 </html>
 
