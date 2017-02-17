@@ -16,11 +16,11 @@ public class AuthJsonControl {
   
   @Autowired AuthService authService;
   
-  @RequestMapping("/auth/login")
-  public AjaxResult login(String email, String password, String userType,
+  @RequestMapping("html/auth/login")
+  public AjaxResult login(String email, String password,
       HttpServletResponse response, HttpSession session, Model model) throws Exception {
     
-    Member member = authService.getMemberInfo(email, password, userType);
+    Member member = authService.getMemberInfo(email, password);
         
     if (member == null) {
       return new AjaxResult(AjaxResult.FAIL, "이메일 또는 암호가 틀리거나, 가입된 회원이 아닙니다.");
@@ -30,13 +30,13 @@ public class AuthJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "로그인 성공!");
   }
   
-  @RequestMapping("/auth/logout")
+  @RequestMapping("html/auth/logout")
   public AjaxResult logout(HttpSession session) throws Exception {
     session.invalidate(); // 기존 세션을 무효화시킨다.
     return new AjaxResult(AjaxResult.SUCCESS, "로그아웃 성공입니다.");
   }
   
-  @RequestMapping("/auth/loginUser")
+  @RequestMapping("html/auth/loginUser")
   public AjaxResult loginUser(HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
 
@@ -47,3 +47,4 @@ public class AuthJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, member);
   }
 }
+

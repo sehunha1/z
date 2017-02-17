@@ -1,6 +1,6 @@
 $("#Go-btn").click(function(e) {
 	e.preventDefault();
-	location.href = "../meetmain/newtap.html";
+	location.href = "../meetmain/meetmain.html";
 });
 
 function add_memb() {
