@@ -29,6 +29,9 @@ $(function() {
 			$('#logout #name').text(ajaxResult.data.name);
 			$('#sec-intext #name').text(ajaxResult.data.name);
 			$('#sec-intext #emailin').text(ajaxResult.data.email);
+			$('#profile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" height=30px; width=30px;/>');
+			$('#inprofile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+			//$('#profile_photo').text(ajaxResult.data.photo);
 			//$('#sec-intext #name').text(ajaxResult.data.name);
 
 			// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기

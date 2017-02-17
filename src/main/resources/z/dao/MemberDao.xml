@@ -37,8 +37,8 @@
   
   <insert id="insert" parameterType="member" 
           useGeneratedKeys="true" keyColumn="mnum" keyProperty="memberNo">
-    insert into memb(email, name, pwd, kakao, fcbk)
-    values(#{email}, #{name}, password(#{password}), #{kakao}, #{facebook})
+    insert into memb(email, name, pwd, photo, kakao, fcbk)
+    values(#{email}, #{name}, password(#{password}), #{photo}, #{kakao}, #{facebook})
   </insert> 
 
   <select id="count" parameterType="string" resultType="int">

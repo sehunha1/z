@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService {
   public int add(Member member) throws Exception {
     
     if (memberDao.count(member.getEmail()) > 0) {
-      throw new Exception("같은 학생의 이메일이 존재합니다. 등록을 취소합니다.");
+      //throw new Exception("같은 학생의 이메일이 존재합니다. 등록을 취소합니다.");
     }
     /*
     if (memberDao.count(member.getEmail()) == 0) { 

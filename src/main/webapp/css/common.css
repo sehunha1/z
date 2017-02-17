@@ -74,7 +74,8 @@
 #header #logout .profile_photo {
 	width: 30px;
 	height: 30px;
-	background: url("../image/user_profile.jpg") no-repeat 50% 50%;
+	/*background: url("../image/user_profile.jpg") no-repeat 50% 50%;*/
+	background: no-repeat 50% 50%;
 	background-size: cover;
 	border-radius: 50%;
 	float: right;

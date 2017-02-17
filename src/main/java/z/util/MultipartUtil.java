@@ -43,7 +43,7 @@ public class MultipartUtil {
         // 클라이언트가 보낸 파일은 이미 임시 폴더에 저장되어 있다.
         // 다음 write() 임시 저장된 파일을 지정된 경로의 파일명으로 옮기는 것이다.
         item.write(new File(request.getServletContext().getRealPath(
-            "/upload/" + filename)));
+            "/html/upload/" + filename)));
         map.put(item.getFieldName(), filename);
       }
     }

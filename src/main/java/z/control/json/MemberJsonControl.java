@@ -1,7 +1,5 @@
 package z.control.json;
 
-import java.io.File;
-
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import z.domain.Member;
 import z.service.MemberService;
-import z.util.MultipartUtil;
 
 //@Controller
 @RestController // 이 애노테이션을 붙이면, 스프링 설정 파일에 JSON 변환기 'MappingJackson2JsonView' 객체를 등록하지 않아도 된다.
@@ -38,6 +35,7 @@ public class MemberJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, member);
   }*/
   
+  /*
   @RequestMapping("html/auth/add")
   public AjaxResult add(Member member, MultipartFile photo) throws Exception {
     
@@ -48,25 +46,25 @@ public class MemberJsonControl {
     }
     
     // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.
-    memberService.add(member);
     
+    int count = memberService.add(member);
+    
+    if (count != 1) {
+        return new AjaxResult(AjaxResult.FAIL, "등록에 실패했습니다.");
+    } 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
+    
   }
-  /* 사진포함
-  @RequestMapping("/member/add")
+  */
+  
+  @RequestMapping("html/auth/add")
   public AjaxResult add(Member member, MultipartFile photo) throws Exception {
     
-    // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.
-    if (photo != null && photo.getSize() > 0) { 
-      String newFilename = MultipartUtil.generateFilename();
-      photo.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
-      member.setPhotoPath(newFilename);
-    }
     
     memberService.add(member);
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
-  }*/
+  }
 
   /*
   @RequestMapping("/member/delete")
