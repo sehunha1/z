@@ -10,7 +10,7 @@ $('#submit-btn').click(function() {
 			location.href = "../main/main.html";	
 			return;
 		}
-		alert(ajaxResult.data);
+		sweetAlert("로그인 실패", ajaxResult.data, "error");
 	}, 'json');
 	
 }); // click()
