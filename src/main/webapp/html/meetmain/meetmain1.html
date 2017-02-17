@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<meta charset="euc-kr">
+<title>Main</title>
+<style>
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
+@font-face {
+    font-family: 'JUA';
+    src: url('/BMJUA_TTF.TTF'); /*폰트 파일 주소*/
+    src: local('※'), url('/BMJUA_TTF.TTF') format('TTF');
+}
+
+html {
+  font-family:
+}
+
+#header-login {
+  width:100%;
+  border-bottom: 1px solid #ddd;
+}
+#header-login .inner_header {
+  width: 960px;
+  margin: 0 auto;
+  *zoom: 1;
+}
+#header-login .inner_header:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#header-login .logo img{
+  width:40px;
+  height:40px;
+  float:left;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+#header-login .svc_name {
+  float:left;
+  margin-top:6px;
+  font-size:25px;
+}
+#header-login .svc_name a {
+  text-decoration:none;
+  color:black;
+}
+#header-login #join {
+  float:right;
+  margin-top:15px;
+  margin-left:20px;
+}
+#header-login #join a {
+  text-decoration:none;
+  color:black;
+}
+#header-login #login {
+  float:right;
+  margin-top:15px;
+}
+#header-login #login a {
+  text-decoration:none;
+  color:black;
+}
+    /* 헤더 css 끝 */
+</style>
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/meetmain/meetmain.css">
+
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  
+
+
+
+<script>
+$(document).ready(function(){
+	
+/*
+	$("#meet").click(function() {
+
+	$(".calendar").slideUp();
+			if ($(this).next().is(":visible")) {
+				$(".calendar").slideDown();
+			}
+		});
+
+		$("#map").click(function() {
+			if (!$(this).next().is(":visible")) {
+				$(".conttext").hide();
+				$(".card").hide();
+				$(".file").hide();
+				$(".map_view").show();
+				$(".maplist").show();
+				$(".calendar").hide();
+			} else {
+				$(".conttext").show();
+				$(".card").show();
+				$(".file").show();
+				$(".map_view").hide();
+				$(".maplist").hide();
+				$(".calendar").show();
+			}
+		});
+		*/
+			$("#meet").click(function() {
+				$(".card").hide();
+				$(".file").hide();
+				$(".map_view").hide();
+				$(".maplist").hide();
+				$(".calendar").show();
+			});
+			$("#map").click(function() {
+				$(".card").hide();
+				$(".file").hide();
+				$(".map_view").show();
+				$(".maplist").show();
+				$(".calendar").hide();
+			});
+		$("#board").click(function() {
+			$(".card").show();
+			$(".file").show();
+			$(".map_view").hide();
+			$(".maplist").hide();
+			$(".calendar").hide();
+		});
+	});
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Nuy1IwO7vpb556X56is6iQ9Nhct8YUM&callback=initMap"
+    async defer></script>
+  <script>
+    function initialize() {
+
+      /*
+        http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=서울특별시 강남구 강남대로 456
+                위와같이 링크에서 뒤에 주소를 적으면 x,y 값을 구할수 있습니다.
+      */
+      var Y_point     = 37.493692;    // Y 좌표
+      var X_point     = 127.028148;   // X 좌표
+
+      var zoomLevel   = 16;           // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+
+      var markerTitle   = "비트캠프";        // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+      var markerMaxWidth  = 300;            // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+
+      // 말풍선 내용
+      var contentString = '<div>' +
+      '<h2>비트캠프</h2>'+
+      //'<a href="http://www.daegu.go.kr" target="_blank">http://www.daegu.go.kr</a>'+ //링크도 넣을 수 있음
+      '</div>';
+
+      var myLatlng = new google.maps.LatLng(Y_point, X_point);
+      var mapOptions = {
+                zoom: zoomLevel,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById('map_view'), mapOptions);
+
+      var marker = new google.maps.Marker({
+                          position: myLatlng,
+                          map: map,
+                          title: markerTitle
+      });
+
+      var infowindow = new google.maps.InfoWindow(
+                            {
+                              content: contentString,
+                              maxWidth: markerMaxWidth
+                            }
+      );
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+
+</head>
+<div id='header-login'></div>
+<body onload="initialize()">
+<div class='container'>
+<div id='sidebar' ></div>
+
+<div id="content-cal">
+<div class='conttext' style='padding-left:180px;'>
+<font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>신년회</b></font><br>
+<font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">늦은 망년회 겸 신년회를 하려고 합니다. 다들 투표해 주세요!</font>
+<br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:회식  </font>
+<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px;  font-size:12px;'> |모임시간:2시간 </font>
+<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'>|기간:1월중 </font>
+<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:1월25일까지 <font color='red'><b>(D-3)</b></font> </font>
+</div>
+<div style='height:30px; background-color:#CE125B; margin-top:10px;'>
+<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif; margin-left:180px;'><b>일정투표</b></font>
+<button id="meet" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</div>
+
+<!-- 달력 -->
+<!-- <button id="hide">Hide</button> -->
+
+<div class='calendar' id='calendar'  style='width:700px; height:500px; padding-left:180px; margin-top:10px;'>
+</div>
+
+<div style='height:30px; background-color:#DFA941; margin-top:10px;'>
+<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif; margin-left:180px; margin-top:10px;'><b>장소투표</b></font>
+<button id="map" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</div>
+<!-- 지도 div 부분 -->
+
+<!-- 
+<div class='maplist' style='overflow-y:scroll;
+  float:right;
+  font-color: black;
+  background-color:#FFFFFF; 
+  width:280px; 
+  height:300px;'> 
+<font color='black'>리스트</font>
+<br>
+<input type="checkbox" name="chk_info" value="HTML">본차로드
+<br><img src='../../image/meetmain/boncha.png' width=260px; height=100px;>
+<input type="checkbox" name="chk_info" value="HTML">설렁탕
+<br><img src='../../image/meetmain/sulung.png' width=260px; height=100px;>
+ -->
+ 
+ <div class='maplist' style='overflow-y:scroll;
+  float:right;
+  font-color: black;
+  background-color:#FFFFFF; 
+  width:280px; 
+  height:300px; display:none;'> 
+<font color='black' style='font-family:"Noto Sans KR", sans-serif;'>리스트</font>
+<br>
+<div style='height:100px; background-color:#FF5656;'>
+<input type="checkbox" name="chk_info" value="HTML"/>
+<font color='white' style='float:right; margin-top:70px; font-size:14px; font-family:"Noto Sans KR", sans-serif;'>1명</font>
+</div>
+<div style='height:100px; background-color:#2D66B2; margin-top:10px;'>
+<input type="checkbox" name="chk_info" value="HTML"/>
+<font color='white' style='float:right; margin-top:70px; font-size:14px; font-family:"Noto Sans KR", sans-serif;'>3명</font>
+</div>
+ 
+<div id='maplistsub'>
+<div id='tttt' style='background-color:#E7DEBB; margin-top:30px; height:20px; position:absoulte; text-align:center;'>
+<font style='font-size:11px; font-family: "Noto Sans KR", sans-serif;'>원하는 장소를 선택한 후 투표하기를 눌러 주세요</font>
+</div>
+<div style='width:100%; height:34px; background-color:black; text-align:center;'>
+<font color='white' style='vertical-align:middle; font-size:17px; font-family: "Noto Sans KR", sans-serif;'>투표하기</font></div>
+<!-- <button type='button' style='width:100%; background-color:black;'>
+<font color='white'>투표완료</font></button> -->
+</div>
+</div>
+
+<div class='map_view' id="map_view" style="width:450px; height:300px; margin-left:162px; display:none;"></div>
+
+<!-- 게시한 div 부분 -->
+<div style='height:30px; background-color:#14870F; margin-top:10px;'>
+<font size=4 color='white' style='font-family:Noto Sans KR, sans-serif; margin-left:180px;'><b>게시판</b></font>
+
+<button id="board" style='width:20px; hieght:20px; opacity: 0.2;'>▲</button>
+</div>
+
+<div id="content-card">
+
+<div class='file' style='height:30px; float:right; margin:5px; padding-right:10px; display:none;'>
+  <a id='fileall' class="btn btn-primary btn-large"><font color='white'>파일전체 다운받기</font></a>
+  <a id='filesel' class="btn btn-primary btn-large"><font color='white'>파일선택 다운받기</font></a>
+</div>
+
+<div class="card" 
+style="width: 20rem; background-color:#FFFFFF; margin-left:150px; 
+font-size:22px; font-family:Noto Sans KR, sans-serif; margin-top:50px; display:none;">
+  <img class="card-img-top" src="../../image/mylist/bg_test.jpg" width=200 height=90 alt="Card image cap">
+  <input type="checkbox" name="chk_info" value="HTML" style='float:right;'>
+  <div class="card-block">
+    <h4 class="card-title">테스트:</h4>
+<font size='3'>날짜: 170120-170131 <br>시간:투표중 <br>장소:투표중 <br></font><p align="right"><font size=3><b>3/5</b></font></p>
+  </div>
+  </div>
+<!-- 모임만들기 -->
+  <!-- 
+<div id='create-meet' style='height:30px; float:right; margin:5px; padding-right:350px; '>
+  <a id='c-meet' href='../mymeet/mymeet.html' class="btn btn-warning btn-large"><font color='white'>모임만들기</font></a>
+</div>
+ -->
+</div>
+
+
+</div> <!-- content -->
+</div>
+<div id='footer'></div>
+<script src="../../js/meetmain/meetmain.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
