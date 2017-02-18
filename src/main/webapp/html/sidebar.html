@@ -46,7 +46,7 @@ ul li a:hover, ul li a:focus {
 </div>
 
 <script id="liTemplate" type="text/x-handlebars-template">
-{{#each listTest}}
+{{#each listMeetingMemb}}
 <li><a href='#'><font color='red' style='font-size:14px;'>●</font><font color='black' style='font-size:12px;'>{{name}}</font><br></a></li>
 {{/each}}
 </script>
@@ -54,17 +54,17 @@ ul li a:hover, ul li a:focus {
 <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
 
 <script>
-$.getJSON('listTest.json', function(ajaxResult) {
+$.getJSON('listMeetingMemb.json', function(ajaxResult) {
   var status = ajaxResult.status;
   
   if (status != "success")
 	  return;
   
-  var listTest = ajaxResult.data;
+  var listMeetingMemb = ajaxResult.data;
   var ul = $(".meeting_memb");
   
   var template = Handlebars.compile($('#liTemplate').html());
   
-  ul.html(template({"listTest": listTest}));
+  ul.html(template({"listMeetingMemb": listMeetingMemb}));
 });
 </script>
