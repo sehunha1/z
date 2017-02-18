@@ -174,11 +174,6 @@
 	width: 90%;
 }
 
-/* #scheduleinfo .photo-add {
-	margin-bottom: 5%;
-	height: 80%;
-} */
-
 #scheduleinfo .photo-add .ss-title {
 	font-family: 'Noto Sans KR';
 	font-size: 13px;
@@ -200,6 +195,10 @@
   border-color: grey;
   background-color: #3ACBA3;
   color: white;
+}
+
+#scheduleinfo .filebox label:hover {
+	color: black;
 }
 
 #scheduleinfo .filebox input[type="file"] {
