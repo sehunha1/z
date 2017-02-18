@@ -5,6 +5,7 @@ import java.util.List;
 import z.domain.Member;
 
 public interface MemberService {
+  List<Member> getListTest() throws Exception;
   List<Member> getList() throws Exception;
   Member getDetail(int no) throws Exception;
   int add(Member member) throws Exception;

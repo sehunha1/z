@@ -1,5 +1,7 @@
 package z.control.json;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,12 @@ public class MemberJsonControl {
   @Autowired ServletContext sc;
   
   @Autowired MemberService memberService;
+
+  @RequestMapping("html/meetmain/listTest")
+  public AjaxResult listTest() throws Exception {
+    List<Member> listTest = memberService.getListTest();
+    return new AjaxResult(AjaxResult.SUCCESS, listTest);
+  }
   
   /*
   @RequestMapping("html/main/list")

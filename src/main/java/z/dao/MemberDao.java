@@ -7,6 +7,7 @@ import z.domain.Member;
 
 
 public interface MemberDao {
+  ArrayList<Member> getListTest() throws Exception;
   ArrayList<Member> getList() throws Exception;
   Member getOne(int memberNo) throws Exception;
   Member getOneByEmail(String email) throws Exception;

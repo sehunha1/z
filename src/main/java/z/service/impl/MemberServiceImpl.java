@@ -12,6 +12,10 @@ import z.service.MemberService;
 @Service
 public class MemberServiceImpl implements MemberService {
   @Autowired MemberDao memberDao;
+
+  public List<Member> getListTest() throws Exception {
+    return memberDao.getListTest();
+  }
   
   public List<Member> getList() throws Exception {
     return memberDao.getList();

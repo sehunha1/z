@@ -14,6 +14,10 @@
     <result column="kakao"      property="kakao"/>
     <result column="fcbk"       property="facebook"/>
   </resultMap>
+
+  <select id="getListTest" resultMap="member-map">
+    select * from memb join link on memb.mnum=link.mnum where mtnum=1;
+  </select>
   
   <select id="getList" resultMap="member-map">
     select * from memb;
@@ -73,10 +77,5 @@
     delete from memb where mno=#{value}
   </delete>
    -->
-   
-   
-  <!-- 모임에 속한 멤버리스트 뽑아내기(세훈) -->
-  <select id="getListInMeeting" parameterType="int" resultMap="member-map">
-    select * from memb where mtnum=#{value}
-  </select>
+
 </mapper>
