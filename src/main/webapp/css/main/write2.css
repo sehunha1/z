@@ -167,27 +167,22 @@
 	width: 90%;
 }
 
-#scheduleinfo .form-group {
+#scheduleinfo .photo-add {
 	height: 180px;
 	margin-left: 5%;
 	text-align: left;
 	width: 90%;
 }
 
-#scheduleinfo .photo-add {
-	/* position: relative; */
+/* #scheduleinfo .photo-add {
 	margin-bottom: 5%;
-	/* margin-right: 5%; */
-	/* bottom: 100px; */
 	height: 80%;
-}
+} */
 
 #scheduleinfo .photo-add .ss-title {
 	font-family: 'Noto Sans KR';
 	font-size: 13px;
 	font-color: gray;
-	float: left;
-	display: inline-block;
 }
 
 #scheduleinfo .filebox label {
