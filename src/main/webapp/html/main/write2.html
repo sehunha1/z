@@ -10,6 +10,8 @@
 	href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet"
 	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet"
+	href="../../node_modules/blueimp-file-upload/css/jquery.fileupload.css">
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet" href="../../css/main/write2.css">
 <body>
@@ -18,11 +20,12 @@
 
 	<div id="content">
 
+		<!-- 모임정보설정 -->
 		<div id="scheduleinfo" class="main-div">
 			<span class="section"></span><br> <span class="title">모임정보설정</span><br>
 
+			<!-- 모임분류, 투표마감 설정 -->
 			<div class="separate">
-
 				<div class="s-1">
 					<h6 class="ss-title">모임분류</h6>
 					<select class="form-control">
@@ -46,29 +49,34 @@
 						<option value="15">보름 후</option>
 					</select>
 				</div>
-
 			</div>
 
+			<!-- 모임 기간 설정(제한 날짜 및 기간 선택) -->
 			<div class="date-choice">
 				<h6 class="ss-title">모임 기간 설정</h6>
 				<input class="flatpickr" type="text" placeholder="Select Date..">
 			</div>
 
+			<!-- 내용(모임 상세설명) -->
 			<div class="schedule-desc">
 				<h6 class="ss-title">내용</h6>
 				<textarea class="form-control-area" rows="3"
 					placeholder="내용을 입력해주세요"></textarea>
 			</div>
 
-			<div class="photo-add">
+			<!-- 사진(모임 이미지) -->
+			<div class="form-group">
 				<h6 class="ss-title">사진</h6>
-				<button type="button" id="photo-btn" class="btn btn-defaultt">사진추가</button>
-
-				<div class=""></div>
+				<div class="filebox preview-image">
+					<input class="upload-name" value="파일선택" disabled="disabled">
+					<label for="input-file">사진업로드</label> <input type="file"
+						id="input-file" class="upload-hidden">
+				</div>
 			</div>
 
 		</div>
 
+		<!-- 모임원 초대 -->
 		<div id="schedulememb" class="main-div">
 			<span class="section"></span><br> <span class="title">모임원초대</span>
 			<button type="button" id="plus-btn" class="btn btn-default"
