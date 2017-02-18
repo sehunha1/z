@@ -18,7 +18,6 @@ function remove_memb(obj) {
 }
 
 // 모임 이미지 업로드
-
 $(document).ready(function(){
    var fileTarget = $('.filebox .upload-hidden');
 
@@ -27,7 +26,6 @@ $(document).ready(function(){
             // 파일명 추출
             var filename = $(this)[0].files[0].name;
         } 
-
         else {
             // Old IE 파일명 추출
             var filename = $(this).val().split('/').pop().split('\\').pop();
