@@ -28,7 +28,7 @@
 			<div class="separate">
 				<div class="s-1">
 					<h6 class="ss-title">모임분류</h6>
-					<select class="form-control">
+					<select id="meeting-desc" class="form-control">
 						<option value="">-- 선택 --</option>
 						<option value="스터디">스터디</option>
 						<option value="친목">친목</option>
@@ -40,7 +40,7 @@
 
 				<div class="s-2">
 					<h6 class="ss-title">투표마감</h6>
-					<select class="form-control">
+					<select id="limit-date" class="form-control">
 						<option value="">-- 선택 --</option>
 						<option value="1">1일 후</option>
 						<option value="2">2일 후</option>
@@ -54,13 +54,13 @@
 			<!-- 모임 기간 설정(제한 날짜 및 기간 선택) -->
 			<div class="date-choice">
 				<h6 class="ss-title">모임 기간 설정</h6>
-				<input class="flatpickr" type="text" placeholder="Select Date..">
+				<input id="possible-date" class="flatpickr" type="text" placeholder="Select Date..">
 			</div>
 
 			<!-- 내용(모임 상세설명) -->
 			<div class="schedule-desc">
 				<h6 class="ss-title">내용</h6>
-				<textarea class="form-control-area" rows="3"
+				<textarea id="meeting-content" class="form-control-area" rows="3"
 					placeholder="내용을 입력해주세요"></textarea>
 			</div>
 
@@ -85,7 +85,7 @@
 			<!-- 멤버 초대 -->
 			<div class="memb-add">
 				<div id="mail-box-div" class="mail-box-cls">
-					<input type="email" class="add-email-box"
+					<input id="memb-email" type="email" class="add-email-box"
 						placeholder="email을 입력해주세요">
 				</div>
 				<!-- 멤버 추가시 input Box 삽입할 div -->

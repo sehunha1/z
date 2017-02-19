@@ -1,8 +1,28 @@
+// 모임 생성시 설정화면 javaScript
+// 작성: 2017.02.19 김재녕
+
+// GO 버튼 클릭시 데이터 저장 후 페이지 이동
 $("#Go-btn").click(function(e) {
 	e.preventDefault();
-	location.href = "../meetmain/meetmain.html";
+    var param = {
+	    "meeting-desc": $('#meeting-desc').val(),
+	    "limit-date": $('#limit-date').val(),
+	    "possible-date": $('#possible-date').val(),
+	    "meeting-content": $('#meeting-content').val(),
+	    "photo-file": $('#input-file').val(),
+	    "memb-email": $('.add-email-box').val()
+	};
+    console.log(param);
+    /*location.href = "../meetmain/meetmain.html";*/
 });
 
+// 모임 기간 설정 시 제한 날짜 선택
+$("#possible-date").click(function(e) {
+/*	e.preventDefault();
+	console.log('test');*/
+});
+
+// 멤버 초대 상자 추가
 function add_memb() {
 	$('<div>').attr('class', 'mail-box-cls').html(
 			'<input type="email"' + 'class="add-email-box"'
@@ -13,13 +33,14 @@ function add_memb() {
 			'#new-field');
 }
 
+// 멤버 초대 상자 삭제
 function remove_memb(obj) {
 	document.getElementById('new-field').removeChild(obj.parentNode);
 }
 
 // 모임 이미지 업로드
 $(document).ready(function(){
-   var fileTarget = $('.filebox .upload-hidden');
+    var fileTarget = $('.filebox .upload-hidden');
 
     fileTarget.on('change', function(){
         if(window.FileReader){
@@ -69,3 +90,4 @@ $(document).ready(function(){
 	    }
 	});
 });
+

@@ -40,14 +40,16 @@
 	float: left;
 	height: 40px;
 	width: 70%;
-	margin: 5% 5%;
+	margin-top: 3%;
+	margin-left: 5%;
+	margin-right: 10%;
 	font-color: #3ACBA3;
 	border-radius: 3px;
 	display: inline-block;
 }
 
 #schedulememb #plus-btn {
-	margin-right: 5%;
+	margin-right: 6%;
 	float: right;
 	height: 30px;
 	line-height: 100%;
@@ -65,7 +67,7 @@
 
 #schedulememb #minus-btn {
 	display: inline-block;
-	margin: 6% auto;
+	margin: 3% auto;
 	float: left;
 	height: 30px;
 	line-height: 100%;
@@ -281,8 +283,9 @@
 	text-align: left;
 }
 
-#mail-box-div, .mail-box-cls {
+#schedulememb .mail-box-cls {
 	width: 99%;
+	margin: 0 auto;
 }
 
 #picarea {
