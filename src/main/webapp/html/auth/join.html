@@ -35,7 +35,7 @@
                 <div class="col-sm-5">
                   <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" />
                 </div>
-                  <input type='button' id='emailcheck' value='중복 체크' style='float:left;'>
+                  <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success" style='float:left;'>
                   <input type='hidden' id='isCheck' value="N">
               </div>
 
@@ -202,7 +202,7 @@ $('#photo').fileupload({
       
       
       if(regex.test(email) == false) {  
-          sweetAlert("경고", "이", 'warning');
+          sweetAlert("경고", "이메일 형식에 맞게 입력하세요", 'warning');
           $('#isCheck').val('N');
     	} 
 
@@ -221,10 +221,10 @@ $('#photo').fileupload({
     	   //document.getElementById('email').reload();
     	   //$("#emaildiv").load(window.location.href+" #emaildiv");
     	   
-      } else if ($("#email1").val() == '' || $("#email1").val() == 'undefined') {
+      } /*else if ($("#email1").val() == '' || $("#email1").val() == 'undefined') {
     	  sweetAlert("경고", "이메일을 입력하세요", 'warning');
           $('#isCheck').val('N');
-      }
+      }*/
       else if (status != "success") {
     	  sweetAlert("Fail!", ajaxResult.data, 'error');
     	  $('#isCheck').val('N');
