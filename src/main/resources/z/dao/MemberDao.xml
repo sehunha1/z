@@ -16,7 +16,7 @@
   </resultMap>
 
   <select id="getListMeetingMemb" parameterType="int" resultMap="member-map">
-    select * from memb join link on memb.mnum=link.mnum where mtnum=#{value};
+    select memb.mnum, memb.email, memb.name, memb.pwd from link left outer join memb on memb.mnum=link.mnum where mtnum=(select mtnum from link where mnum=#{value});
   </select>
   
   <select id="getList" resultMap="member-map">

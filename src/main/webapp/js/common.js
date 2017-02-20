@@ -24,7 +24,7 @@ $(function() {
 
       var memberNo = ajaxResult.data.memberNo;
 
-      $.post('listMeetingMemb.json', {memberNo:memberNo}, function(ajaxResult) {
+      $.getJSON('listMeetingMemb.json?memberNo=' + memberNo, function(ajaxResult) {
         var status = ajaxResult.status;
         
         if (status != "success")
@@ -36,7 +36,7 @@ $(function() {
         var template = Handlebars.compile($('#liTemplate').html());
         
         ul.html(template({"listMeetingMemb": listMeetingMemb}));
-      }, "json");
+      });
 
 			// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
 			$('#_logout_status').css('display', 'none');
