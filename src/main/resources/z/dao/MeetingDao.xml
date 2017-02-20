@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="z.dao.MeetingDao">
+
+  <resultMap type="meeting" id="meeting-map">
+    <id     column="mtnum"      property="meetingNo"/>
+    <result column="tltl"       property="title"/>
+    <result column="cont"       property="content"/>
+    <result column="name"       property="category"/>
+    <result column="dline"      property="deadline"/>
+    <result column="photo"      property="photo"/>
+    <result column="cloc"       property="location"/>
+    <result column="cdate"      property="date"/>
+    <result column="ctime"      property="time"/>
+  </resultMap>
+
+
+</mapper>
