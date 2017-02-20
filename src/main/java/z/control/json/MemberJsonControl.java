@@ -20,8 +20,8 @@ public class MemberJsonControl {
   @Autowired MemberService memberService;
 
   @RequestMapping("html/meetmain/listMeetingMemb")
-  public AjaxResult listMeetingMemb() throws Exception {
-    List<Member> listMeetingMemb = memberService.getListMeetingMemb();
+  public AjaxResult listMeetingMemb(int memberNo) throws Exception {
+    List<Member> listMeetingMemb = memberService.getListMeetingMemb(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, listMeetingMemb);
   }
   

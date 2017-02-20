@@ -52,19 +52,3 @@ ul li a:hover, ul li a:focus {
 </script>
 
 <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
-
-<script>
-$.getJSON('listMeetingMemb.json', function(ajaxResult) {
-  var status = ajaxResult.status;
-  
-  if (status != "success")
-	  return;
-  
-  var listMeetingMemb = ajaxResult.data;
-  var ul = $(".meeting_memb");
-  
-  var template = Handlebars.compile($('#liTemplate').html());
-  
-  ul.html(template({"listMeetingMemb": listMeetingMemb}));
-});
-</script>

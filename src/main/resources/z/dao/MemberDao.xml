@@ -15,8 +15,8 @@
     <result column="fcbk"       property="facebook"/>
   </resultMap>
 
-  <select id="getListMeetingMemb" resultMap="member-map">
-    select * from memb join link on memb.mnum=link.mnum where mtnum=1;
+  <select id="getListMeetingMemb" parameterType="int" resultMap="member-map">
+    select * from memb join link on memb.mnum=link.mnum where mtnum=#{value};
   </select>
   
   <select id="getList" resultMap="member-map">
