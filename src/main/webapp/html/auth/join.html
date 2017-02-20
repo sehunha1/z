@@ -116,9 +116,23 @@
       
       if (status == "success") {
     	   $('#isCheck').val('Y');
-    	   sweetAlert("OK!", ajaxResult.data, 'success');
+    	   //sweetAlert("OK!", ajaxResult.data, 'success');
+    	   swal({
+                title: "OK!",
+                text: ajaxResult.data,
+                type: "success",
+              },
+              function(){
+            	  $('#email1').focus();
+              });
+    	   //setInterval('autoRefresh_div()', 500); // 5초 후에 div 새로 고침
+    	   //document.getElementById('email').reload();
+    	   //$("#emaildiv").load(window.location.href+" #emaildiv");
+    	   
+      } else if ($("#email1").val() == '') {
+    	  sweetAlert("경고", "이메일을 입력하세요", 'warning');
+          $('#isCheck').val('N');
       }
-
       else if (status != "success") {
     	  sweetAlert("Fail!", ajaxResult.data, 'error');
     	  $('#isCheck').val('N');
