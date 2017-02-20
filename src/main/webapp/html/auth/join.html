@@ -291,7 +291,7 @@ $('#photo').fileupload({
         // 이름 한글만
         $.validator.addMethod("namez", function(value, element) {
            return this.optional(element) || /^[가-힝]{2,}$/i.test(value);
-        }, "한글로 두 글자 이상 입력 하세요. ex)김구");
+        }, "한글로만 두 글자 이상 입력 하세요. ex)김구");
     
     
     	
