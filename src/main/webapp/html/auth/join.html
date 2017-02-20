@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>회원가입 테스트</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
@@ -33,9 +33,9 @@
               <div class="form-group">
                 <label class="col-sm-4 control-label" for="email1">이메일</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" />
+                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" onChange="isCheck.value='N'" />
                 </div>
-                  <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success" style='float:left;'>
+                  <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left;'>
                   <input type='hidden' id='isCheck' value="N">
               </div>
 
