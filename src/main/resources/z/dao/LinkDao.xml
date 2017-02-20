@@ -12,5 +12,8 @@
     <result column="stat"       property="status"/>
   </resultMap>
 
+  <select id="getBoss" parameterType="int" resultMap="link-map">
+    select link.mnum from link left outer join memb on memb.mnum=link.mnum where mtnum=(select mtnum from link where mnum=#{value}) and link.boss="y";
+  </select>
 
 </mapper>

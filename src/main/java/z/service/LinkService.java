@@ -1,5 +1,9 @@
 package z.service;
 
-public interface LinkService {
+import java.util.List;
 
+import z.domain.Link;
+
+public interface LinkService {
+  List<Link> getBoss(int memberNo) throws Exception;
 }

@@ -47,7 +47,7 @@ ul li a:hover, ul li a:focus {
 
 <script id="liTemplate" type="text/x-handlebars-template">
 {{#each listMeetingMemb}}
-<li><a href='#'><font color='red' style='font-size:14px;'>●</font><font color='black' style='font-size:12px;'>{{name}}</font><br></a></li>
+<li><a href='#'><font color='red' style='font-size:14px;'>●</font><font color='black' style='font-size:12px;'>{{name}}</font><br></a></li><font id="{{@index}}" style='font-size:12px; margin-left:40px;'></font><br></a></li>
 {{/each}}
 </script>
 
