@@ -12,19 +12,3 @@ public interface MemberService {
   //int delete(int no) throws Exception;
   //int update(Member student) throws Exception;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
