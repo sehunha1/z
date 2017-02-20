@@ -23,37 +23,64 @@
  -->
 
 
-		<div style='padding-top: 10px; margin-bottom: 10px; margin-top: 20px;'>
-			<div id='login' style='text-align: center; vertical-align: middle;'>
-				<font
-					style='font-size: 26px; font-family: Arial; text-align: center;'>회원가입</font><br>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title">회원가입</h1>
+          </div>
+          <div class="panel-body">
+            <form id="signupForm1" method="post" class="form-horizontal" action="">
+
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="email1">이메일</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="username1">이름</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="username1" name="username1" placeholder="이름" />
+                </div>
+              </div>
 
 
-				<input id='email' type='email' placeholder='E-mail'
-					style='text-align: center; font-size: 19px; font-family: Vernada; width: 300px; height: 30px; margin-top: 10px; margin-bottom: 10px;' />
-				<button id='emailcheck' type='button'
-					style='position: absolute; margin-top: 10px; height: 30px;'>중복확인</button>
-				<br> <input id='names' type='text' placeholder='name'
-					style='text-align: center; font-size: 19px; font-family: Vernada; width: 300px; height: 30px; margin-top: 10px; margin-bottom: 10px;' />
-				<br> <input id='password' type='password'
-					placeholder='password'
-					style='text-align: center; font-size: 19px; font-family: Vernada; width: 300px; height: 30px; margin-top: 10px;' />
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="password1">암호</label>
+                <div class="col-sm-5">
+                  <input type="password" class="form-control" id="password1" name="password1" placeholder="암호" />
+                </div>
+              </div>
 
-        <input id='photo' type='file' name='files' multiple>
-        <input id='photo-path' type='hidden'>
-				
-			</div>
-		</div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="confirm_password1">암호 확인</label>
+                <div class="col-sm-5">
+                  <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="암호 확인" />
+                </div>
+              </div>
 
-		<div id='joinbutton' style='text-align:center; vertical-align:middle; margin-top:20px;'> 
-      <button id='add-btn' style='width:300px; height:38px; background-color:#3DB394'>
-      <font color='white' style='font-size:20px; font-family:Vernada; font-weight:500;'>join</font></button>
+<!-- 
+              <div class="form-group">
+                <div class="col-sm-5 col-sm-offset-4">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="agree1" name="agree1" value="agree" />Please agree to our policy
+                    </label>
+                  </div>
+                </div>
+              </div>
+               -->
+
+              <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-4">
+                  <button type="submit" class="btn btn-primary" name="signup1" value="Sign up">Sign up</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
       </div>
-    </div>
-    
-    
-    
-    
 <div id='footer'></div>
 <script src="../../node_modules/jquery/dist/jquery.js"></script>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
@@ -72,8 +99,134 @@
 <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
 <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
-<script src="join.js"></script>
+<!-- <script src="join.js"></script>  -->
 
+
+   <script type="text/javascript" src="jquery-validation/dist/jquery.validate.min.js"></script>
+   <script type="text/javascript" src="jquery-validation/dist/additional-methods.min.js"></script>
+   <script type="text/javascript" src="jquery-validation/dist/localization/messages_ko.min.js"></script>
+
+
+<script type="text/javascript">
+    $.validator.setDefaults( {
+      submitHandler: function () {
+    	  
+    	  var param = {
+    		      "email": $('#email1').val(),
+    		      "name": $('#username1').val(),
+    		      "password": $('#password1').val(),
+    		      "photo": $('#photo-path').val()
+    		      //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
+    		      //"photo": $("#photo").attr('src', 'html/upload/' + val())
+    		  
+    		  };
+
+    		  $.post('add.json', param, function(ajaxResult) {
+    		    if (ajaxResult.status == "fail") {
+    		      sweetAlert("회원가입 실패", ajaxResult.data, 'error');
+    		      return;
+    		    }
+    		    //sweetAlert("회원가입 완료!", "......", "success")
+    		    //sweetAlert("회원가입 완료!", "로그인창으로 이동합니다.", "success");
+    		    //alert('회원가입이 완료되었습니다. 로그인창으로 이동합니다.');
+    		    //location.href = 'login.html';
+    		    
+    		    swal({
+    		        title: "회원가입 완료!",
+    		        text: "로그인 창으로 이동합니다.",
+    		        type: "success",
+    		      },
+    		      function(){
+    		        location.href ='login.html'
+    		      });
+    		    
+    		    
+    		    
+    		  }, 'json'); // post();
+      }
+    } );
+
+    $( document ).ready( function () {
+      $( "#signupForm1" ).validate( {
+        rules: {
+          firstname1: "required",
+          lastname1: "required",
+          username1: {
+            required: true,
+            minlength: 2
+          },
+          password1: {
+            required: true,
+            minlength: 6
+          },
+          confirm_password1: {
+            required: true,
+            minlength: 6,
+            equalTo: "#password1"
+          },
+          email1: {
+            required: true,
+            email: true
+          },
+          agree1: "required"
+        },
+        messages: {
+          username1: {
+            required: "이름을 입력하세요",
+            minlength: "이름은 두 글자 이상 입력하세요"
+          },
+          password1: {
+            required: "암호를 입력하세요",
+            minlength: "암호는 여섯 글자 이상 입력하세요"
+          },
+          confirm_password1: {
+            required: "암호 확인란을 입력하세요",
+            minlength: "암호는 여섯 글자 이상 입력하세요",
+            equalTo: "암호가 맞는지  확인하세요"
+          },
+          email1: {
+            required:"이메일을 입력하세요.",
+            email:"올바른 형식의 이메일을 입력하세요.",
+          }
+          //agree1: "Please accept our policy"
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+          // Add the `help-block` class to the error element
+          error.addClass( "help-block" );
+
+          // Add `has-feedback` class to the parent div.form-group
+          // in order to add icons to inputs
+          element.parents( ".col-sm-5" ).addClass( "has-feedback" );
+
+          if ( element.prop( "type" ) === "checkbox" ) {
+            error.insertAfter( element.parent( "label" ) );
+          } else {
+            error.insertAfter( element );
+          }
+
+          // Add the span element, if doesn't exists, and apply the icon classes to it.
+          if ( !element.next( "span" )[ 0 ] ) {
+            $( "<span class='glyphicon glyphicon-remove form-control-feedback'></span>" ).insertAfter( element );
+          }
+        },
+        success: function ( label, element ) {
+          // Add the span element, if doesn't exists, and apply the icon classes to it.
+          if ( !$( element ).next( "span" )[ 0 ] ) {
+            $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+          }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+          $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+          $( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
+        },
+        unhighlight: function ( element, errorClass, validClass ) {
+          $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+          $( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
+        }
+      } );
+    } );
+  </script>
 
 </body>
 </html>

@@ -16,7 +16,20 @@ $('#photo').fileupload({
     }
 });
 
+$('#emailcheck').click(function() {
+	if($('#email').val() == "") {
+		swal({
+			
+		    title: '',
+			type: 'warning',
+			text: "아이디를 입력하세요"
+		});
+		$('#email').focus();
+	}
+});
+
 $('#add-btn').click(function() {
+	
 	var param = {
 			"email": $('#email').val(),
 			"name": $('#names').val(),
