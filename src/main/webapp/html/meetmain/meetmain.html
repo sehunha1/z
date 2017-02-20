@@ -70,6 +70,7 @@
 		  <div id="menu3" class="tab-pane fade">
 		  
 		  <div id='board' style='margin:0 auto; margin-top:10px;'>
+		    <a id='new-btnn' href='#' type='button' class="btn btn-primary btn-sm">추가</a>
 		    <div id='board1' onclick="location.href='목적지 링크주소(URL);" 
 		    style='width:30%; border:1px black solid; float:left; margin-right:20px;'>
 		      <img src='../../image/mylist/bg_default_a.jpg'>
@@ -123,6 +124,17 @@
 	<script type="text/javascript" src="./cal/js/jquery.js"></script>
 	<script type="text/javascript" src="./cal/js/monthly.js"></script>
   <script src='./cal/cal.js'></script>
+  <script>
+  $('#new-btnn').click(function(event) {
+	    event.preventDefault();
+	    location.href = 'write2.html?mtnum=1';
+	  });
+  
+  
+  
+  </script>
+  
+  
   <!-- 달력 js 끝 -->
 </body>
 </html>
