@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="z.dao.BoardDao">
+
+  <resultMap type="board" id="board-map">
+    <id     column="bnum"       property="boardNo"/>
+    <result column="titl"       property="title"/>
+    <result column="cont"      property="content"/>
+    <result column="mnum"      property="memberNo"/>
+    <result column="mtnum"      property="meetNo"/>
+  </resultMap>
+  
+  <select id="count" parameterType="String" resultType="int">
+    select count(*)
+    from board tltl
+      inner join board b on mr.mrno=m.mno
+    where m.email=#{value}
+  </select>
+  
+  <select id="countByNo" parameterType="int" resultType="int">
+    select count(*)
+    from mgr mr 
+      inner join memb m on mr.mrno=m.mno
+    where mr.mrno=#{value}
+  </select>
+  
+  <select id="getList" resultMap="board-map">
+    select 
+      b.bnum, 
+      b.mnum,
+      b.mtnum,
+      b.titl, 
+      b.cont,
+      m.name
+    from board b
+      inner join memb m on b.mnum=m.mnum
+  </select>
+  
+  <select id="getOne" parameterType="int" resultMap="board-map">
+    select 
+      m.mno,
+      m.name, 
+      m.tel, 
+      m.email, 
+      mr.posi, 
+      mr.fax, 
+      mr.path
+    from mgr mr
+      inner join memb m on mr.mrno=m.mno
+    where m.mno=#{value} 
+  </select>
+  
+  <insert id="insert" parameterType="board">
+    insert into board(mnum, mtnum, titl, cont) 
+    values(#{memberNo},#{meetNo}, #{title}, #{content})
+  </insert>  
+
+  <update id="update" parameterType="board">
+    update board set
+      titl=#{title}, 
+      cont=#{content}
+    where bnum=#{boardNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from board where bnum=#{value}
+  </delete>
+  
+</mapper>
