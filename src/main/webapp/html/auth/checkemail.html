@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+ <!-- 
+ <script type="text/javascript">
+ function chkMbEmail(){
+  $.ajax({
+   url : "./checkEmail.json",
+   type : "post",
+   data : {
+    email : $("#email").val()
+   },
+   dataType : "json",
+   success : function(data){
+    
+    $("<div style='text-align:center;'>"+data.resultMsg+"</div>").dialog({
+     modal : true,
+     resizable : false,
+     buttons : [{
+       text : "확인",
+       click : function() {
+        $(this).dialog("close");
+       }
+     }]
+    });
+    $(".ui-dialog-titlebar").hide();
+    
+    if ( data.result == "success") {
+     
+    } else {
+     
+    }
+   }
+        });
+ }
+ </script>
+ -->
+</head>
+<body>
+  회원가입<br/><br/>
+  <div>
+   <input type="text" name="email" id="email"/> 
+   <input type="button" value="중복 체크" id='emailcheck'> 
+   <input type='hidden' value="N" id='ischeck'>
+  </div>
+ <script src="../../node_modules/jquery/dist/jquery.js"></script>
+ <script>
+ $('#emailcheck').click(function() {
+	//학생 목록 가져와서 tr 태그를 만들어 붙인다.
+	  $.getJSON('checkEmail.json?email=' + $("#email").val(), function(ajaxResult) {
+	    var status = ajaxResult.status;
+	    alert($("#email").val());
+	    if (status != "success") {
+	      alert(ajaxResult.data);
+	      return;
+	    }
+	  });
+});
+ </script>
+</body>
+</html>

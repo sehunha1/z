@@ -14,6 +14,7 @@ public interface MemberDao {
   int insert(Member member) throws Exception;
   int count(String email) throws Exception;
   Member getOneByEmailPassword(Map<String,String> paramMap) throws Exception;
+  public int chkMbEmail (String email);
   /*int countByNo(int memberNo) throws Exception;
   int update(Member student) throws Exception;
   int delete(int memberNo) throws Exception;*/

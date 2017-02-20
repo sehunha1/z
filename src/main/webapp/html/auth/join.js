@@ -16,6 +16,7 @@ $('#photo').fileupload({
     }
 });
 
+/*
 $('#emailcheck').click(function() {
 	if($('#email').val() == "") {
 		swal({
@@ -27,6 +28,7 @@ $('#emailcheck').click(function() {
 		$('#email').focus();
 	}
 });
+*/
 
 $('#add-btn').click(function() {
 	

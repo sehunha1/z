@@ -42,6 +42,11 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.insert(member);
   }
   
+  public int chkMbEmail(String email) throws Exception {
+   
+    return memberDao.chkMbEmail(email);
+  }
+  
   /*
   public int delete(int no) throws Exception {
     if (studentDao.countByNo(no) == 0) {

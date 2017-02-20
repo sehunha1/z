@@ -108,34 +108,10 @@
    <script type="text/javascript" src="jquery-validation/dist/additional-methods.min.js"></script>
    <script type="text/javascript" src="jquery-validation/dist/localization/messages_ko.min.js"></script>
 
- <script>
- $('#emailcheck').click(function() {
-  //학생 목록 가져와서 tr 태그를 만들어 붙인다.
-    $.getJSON('checkEmail.json?email=' + $("#email1").val(), function(ajaxResult) {
-      var status = ajaxResult.status;
-      
-      if (status == "success") {
-    	   $('#isCheck').val('Y');
-    	   sweetAlert("OK!", ajaxResult.data, 'success');
-      }
-
-      else if (status != "success") {
-    	  sweetAlert("Fail!", ajaxResult.data, 'error');
-    	  $('#isCheck').val('N');
-        return;
-      }
-    });
-});
- </script>
 
 <script type="text/javascript">
     $.validator.setDefaults( {
       submitHandler: function () {
-    	  
-    	  if ($('#isCheck').val() == 'N') {
-    		  sweetAlert("경고", "이메일 사용 가능 여부를 확인하세요", 'warning');
-    		  return;
-    	  }
     	  
     	  var param = {
     		      "email": $('#email1').val(),
@@ -173,34 +149,6 @@
     } );
 
     $( document ).ready( function () {
-    	
-    	// 이메일 정규표현식 유효성 검사
-    	$.validator.addMethod("emailz", function(value, element) {
-         return this.optional(element) || /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(value);
-      }, "올바른 형식의 이메일 주소를 입력하세요 ex)user01@test.com");
-    
-    /*
-    	$.validator.addMethod("checkemail", function(value, element) {
-    		 if ($('#isCheck').val() == 'N') {
-    	          return false;
-    	        }
-    		 
-    		 else {
-    			 return true;
-    		 }
-      }, "이메일 중복 여부를 체크를 해주세요."); 
-    	*/
-    	
-    	jQuery.validator.addMethod("checkemail", function(value, element){
-    	    if ($('#isCheck').val() == 'Y') {
-    	        return true;
-    	    } else if ($('#isCheck').val() == 'N') {
-    	        return false;
-    	    };
-    	}, "이메일 중복 여부를 체크하세요"); 
-    	
-    	
-    	
       $( "#signupForm1" ).validate( {
         rules: {
           firstname1: "required",
@@ -220,8 +168,7 @@
           },
           email1: {
             required: true,
-            emailz: true,
-            checkemail: true
+            email: true
           },
           agree1: "required"
         },
@@ -241,7 +188,7 @@
           },
           email1: {
             required:"이메일을 입력하세요.",
-            //customemail:"올바른 형식의 이메일을 입력하세요.",
+            email:"올바른 형식의 이메일을 입력하세요.",
           }
           //agree1: "Please accept our policy"
         },

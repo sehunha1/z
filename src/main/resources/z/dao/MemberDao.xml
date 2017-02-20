@@ -62,6 +62,14 @@
       and pwd=password(#{password})
   </select>
   
+  <!-- 회원 중복 검사 -->
+  <select id="chkMbEmail" resultType="int">
+ SELECT
+  count(*)
+ FROM memb
+ WHERE email = #{email} 
+ </select>
+  
   <!-- 
   
   <update id="update" parameterType="member">
