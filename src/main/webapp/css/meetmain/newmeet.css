@@ -150,6 +150,83 @@ sec-intext {
   width: 100%;
 }
 
+#footer {
+  clear: left;
+  text-align: center;
+  background-color: #ECECEC;
+}
+
+/*사이트*/
+.site {
+  width: 960px;
+  text-align: center;
+  display: inline-block;
+}
+
+/*
+.logo {
+  background-image: ../../image/newlogo.png;
+  float: left;
+  width: 50px;
+}
+*/
+.site img {
+  float: left;
+  width: 35px;
+  height: 35px;
+  margin-top: 11px;
+}
+
+.sns {
+  float: right;
+  margin-top: 5px;
+}
+
+/*페이스북*/
+.facebook:before {
+  font-family: "FontAwesome";
+  content: "\f09a";
+  color: #b4b4b4;
+}
+
+.facebook:hover {
+  text-decoration: none;
+}
+
+.facebook:hover:before {
+  text-decoration: none;
+  color: #337AB7;
+}
+
+.facebook {
+  font-size: 32px;
+  text-decoration: none;
+}
+
+/*구글*/
+.google:before {
+  font-family: "FontAwesome";
+  content: "\f1a0";
+  color: #b4b4b4;
+}
+
+.google:hover {
+  text-decoration: none;
+}
+
+.google:hover:before {
+  text-decoration: none;
+  color: #EA4335;
+}
+
+.google {
+  font-size: 32px;
+  text-decoration: none;
+  margin-left: 5px;
+}
+/* 풋터 css 끝 */
+
+
 #sidebar {
   float:left;
   font-color:black;
