@@ -13,8 +13,12 @@ import z.service.MemberService;
 public class MemberServiceImpl implements MemberService {
   @Autowired MemberDao memberDao;
 
-  public List<Member> getListMeetingMemb(int memberNo) throws Exception {
-    return memberDao.getListMeetingMemb(memberNo);
+  public List<Member> getListMeetingMembBoss(int memberNo) throws Exception {
+    return memberDao.getListMeetingMembBoss(memberNo);
+  }
+
+  public List<Member> getListMeetingMembNotBoss(int memberNo) throws Exception {
+    return memberDao.getListMeetingMembNotBoss(memberNo);
   }
   
   public List<Member> getList() throws Exception {
