@@ -16,6 +16,7 @@ public class Member implements Serializable {
   protected String photo;
   protected String kakao;
   protected String facebook;
+  protected boolean boss;
   
   public int getMemberNo() {
     return memberNo;
@@ -58,5 +59,11 @@ public class Member implements Serializable {
   }
   public void setFacebook(String facebook) {
     this.facebook = facebook;
+  }
+  public boolean getBoss() {
+    return boss;
+  }
+  public void setBoss(boolean boss) {
+    this.boss = boss;
   }
 }

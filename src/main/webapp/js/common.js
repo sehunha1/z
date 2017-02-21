@@ -40,8 +40,9 @@ $(function() {
 
         if (status != "success") return;
 
+        var boss = ajaxResult.data[0].memberNo;
       });
-
+      
       
 
 			// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 

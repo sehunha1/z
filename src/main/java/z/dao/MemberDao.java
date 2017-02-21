@@ -5,7 +5,6 @@ import java.util.Map;
 
 import z.domain.Member;
 
-
 public interface MemberDao {
   ArrayList<Member> getListMeetingMemb(int memberNo) throws Exception;
   ArrayList<Member> getList() throws Exception;
