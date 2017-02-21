@@ -15,11 +15,11 @@
   
   <select id="count" parameterType="String" resultType="int">
     select count(*)
-    from board tltl
+    from board titl
       inner join board b on mr.mrno=m.mno
     where m.email=#{value}
   </select>
-  
+
   <select id="countByNo" parameterType="int" resultType="int">
     select count(*)
     from mgr mr 

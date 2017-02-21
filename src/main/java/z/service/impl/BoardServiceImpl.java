@@ -35,7 +35,7 @@ public class BoardServiceImpl implements BoardService {
       //memberDao.insert(member);
       
     } else {
-      member = memberDao.getOneByEmail(member.getEmail());
+      member = memberDao.get OneByEmail(member.getEmail());
       member.setMemberNo(member.getMemberNo());
     }
     */
