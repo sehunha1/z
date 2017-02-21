@@ -27,9 +27,6 @@ public class BoardServiceImpl implements BoardService {
   }
   public int add(Board board) throws Exception {
     
-    if (boardDao.count(board.getTitle()) > 0) {
-      throw new Exception("같은 학생의 이메일이 존재합니다. 등록을 취소합니다.");
-    }
     /*
     if (memberDao.count(member.getEmail()) == 0) { 
       //memberDao.insert(member);

@@ -56,12 +56,12 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
           "content": $('#cont').val()
 
         };
-        console.log(param);
         $.post('add.json', param, function(ajaxResult) {
             if (ajaxResult.status != "success") {
               alert(ajaxResult.data);
               return;
             }
+            console.log(ajaxResult);
             location.href = 'meetmain.html';
         }, 'json'); // post();
     }); // click()    
