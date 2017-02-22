@@ -6,7 +6,6 @@
 /.project
 /build/ 
 /temp/
-/src.main.webapp.node_modules/
 /.DS_Store
 *.DS_Store
 *.log
