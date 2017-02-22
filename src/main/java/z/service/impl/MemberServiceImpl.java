@@ -46,6 +46,11 @@ public class MemberServiceImpl implements MemberService {
    
     return memberDao.chkMbEmail(email);
   }
+
+  public int chkMbFacebook(String facebook) throws Exception {
+    
+    return memberDao.chkMbFacebook(facebook);
+  }
   
   /*
   public int delete(int no) throws Exception {

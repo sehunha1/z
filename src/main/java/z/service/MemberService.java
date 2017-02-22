@@ -12,4 +12,5 @@ public interface MemberService {
   public int chkMbEmail(String email) throws Exception; 
   //int delete(int no) throws Exception;
   //int update(Member student) throws Exception;
+  int chkMbFacebook(String facebook) throws Exception;
 }

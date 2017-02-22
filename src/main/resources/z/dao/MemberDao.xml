@@ -63,12 +63,34 @@
       and pwd=password(#{password})
   </select>
   
+    <select id="getOneByEmailFacebook" parameterType="map" resultMap="member-map">
+    select 
+      mnum, 
+      name, 
+      email,
+      photo,
+      kakao,
+      fcbk
+    from memb
+    where email=#{email} 
+      and fcbk=#{facebook}
+  </select>
+  
+  
   <!-- 회원 중복 검사 -->
   <select id="chkMbEmail" resultType="int">
  SELECT
   count(*)
  FROM memb
  WHERE email = #{email} 
+ </select>
+ 
+ <!-- 페이스북 중복 검사 -->
+ <select id="chkMbFacebook" resultType="int">
+ SELECT
+  count(*)
+ FROM memb
+ WHERE fcbk = #{facebook} 
  </select>
   
   <!-- 

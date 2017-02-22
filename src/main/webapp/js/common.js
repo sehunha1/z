@@ -95,6 +95,12 @@ $(function() {
     e.preventDefault();
     location.href = "../mylist/mylist.html";
   })
+  
+    $("body").on("click", "#href_mypage", function(e) {
+    e.preventDefault();
+    location.href = "../mypage/main.html";
+  })
+  
   /*
   $("body").on("click", "#href_out", function(e) {
     e.preventDefault();

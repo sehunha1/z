@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	저장값 :
+	<input type="text" id="save" />
+	<input type="button" value="쿠키저장" id="saveButton" />
+	<br /> 쿠키값호출 :
+	<input type="text" id="load" />
+	<input type="button" value="쿠키불러오기" id="loadButton" />
+	<input type="button" value="쿠키삭제" id="deleteButton" />
+
+
+	<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../js/jquery.cookie.js"></script>
+<script>
+			$(
+	function() {
+		//저장버튼 클릭 
+		$("#saveButton").click(function() {
+			//입력값 
+			var cookie_value = $("#save").val();
+			//'cookie'라는 key값으로 입력값을 저장한다. 
+			//1번째 parameter = 쿠키명 
+			// 2번째 parameter = 저장하고자 하는 쿠키값 
+			$.cookie('cookie', cookie_value);
+		});
+		//불러오기버튼 클릭 
+		$("#loadButton").click(function() {
+			//저장버튼클릭시 'cookie' key값을 불러온다. 
+			var cookie_value = $.cookie('cookie');
+			// load라는 id text태그에 cookie_value변수에 들어있는 값을 담는다. 
+			$("#load").val(cookie_value);
+		})
+		//삭제버튼 클릭 
+		$("#deleteButton").click(function() {
+			//'cookie' 라는 key값의 쿠키를 삭제한다 
+			$.removeCookie("cookie");
+		})
+	})
+</script>
+</body>
+</html>

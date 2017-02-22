@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
 
-
 <meta name="google-signin-client_id" content="960340793654-t9jr4bhlt49g8m5do8u503594dsf2rv4.apps.googleusercontent.com">
 </head>
 <body>
@@ -41,31 +40,25 @@
           </div>
           
       <div id='social' style='text-align:center; vertical-align:middle; margin-top:20px;'>
-      <!-- 페이스북 버튼 
           <input type='button' value='facebook' 
           style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-bottom:10px;'>
           <br>
-          -->
-          <fb:login-button scope="email" onlogin="checkLoginState();" id='saveButton'>
-          </fb:login-button>
+          
+          <div style='width:100%; text-align:center;'>
+            <div id="my-signin2" style='margin:0 auto; text-align:left; width:300px;'></div>
+					  <!-- 
+					  <a href="#" onclick="signOut();">Sign out</a>
+					  
+					  <a href="#" onclick="disconnect();">연결 해제</a>
+					   -->
+          </div>
+          
+          
           <!-- 
           <input type='button' value='gmail' 
           style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-bottom:10px;'/>
           <br>
           -->
-          
-          
-          <div style='width:100%; text-align:center;'>
-            <div id="my-signin2" style='margin:0 auto; text-align:left; width:300px;'></div>
-            <!-- 
-            <a href="#" onclick="signOut();">Sign out</a>
-            
-            <a href="#" onclick="disconnect();">연결 해제</a>
-             -->
-          </div>
-          
-          
-          
       </div>
       <div id='loginbutton' style='text-align:center; vertical-align:middle; margin-top:20px;'> 
       <button id='submit-btn' style='width:300px; height:38px; background-color:#3DB394'>
@@ -93,16 +86,7 @@
 <script src="../../js/common.js"></script>
 <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
-<!-- 페이스북 -->
-<script src='facebook.js'></script>
 
-
-<!-- 쿠키 -->
-<script src="../../js/jquery.cookie.js"></script>
-
-
-<!-- 구글 -->
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -139,7 +123,8 @@ function disconnect() {
       });
     }
   </script>
-  
+
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 </html>
 

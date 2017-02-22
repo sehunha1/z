@@ -41,13 +41,9 @@
           </div>
           
       <div id='social' style='text-align:center; vertical-align:middle; margin-top:20px;'>
-      <!-- 페이스북 버튼 
           <input type='button' value='facebook' 
           style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-bottom:10px;'>
           <br>
-          -->
-          <fb:login-button scope="email" onlogin="checkLoginState();" id='saveButton'>
-          </fb:login-button>
           <!-- 
           <input type='button' value='gmail' 
           style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-bottom:10px;'/>
@@ -93,15 +89,7 @@
 <script src="../../js/common.js"></script>
 <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
-<!-- 페이스북 -->
-<script src='facebook.js'></script>
 
-
-<!-- 쿠키 -->
-<script src="../../js/jquery.cookie.js"></script>
-
-
-<!-- 구글 -->
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script>
   function signOut() {
@@ -139,6 +127,7 @@ function disconnect() {
       });
     }
   </script>
+  
   
 </body>
 </html>

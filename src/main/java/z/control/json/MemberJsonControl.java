@@ -85,6 +85,18 @@ public class MemberJsonControl {
       return new AjaxResult(AjaxResult.FAIL, "중복된 이메일 입니다.");
     }
   }
+  
+  
+  @RequestMapping("html/auth/checkFacebook")
+  public AjaxResult chkMbFacebook(String facebook) throws Exception {
+
+    int resultCnt = memberService.chkMbFacebook(facebook);
+    if ( resultCnt == 0 ){
+      return new AjaxResult(AjaxResult.SUCCESS, "사용가능한 계정 입니다.");
+    } else {
+      return new AjaxResult(AjaxResult.FAIL, "중복된 페이스북 계정 입니다.");
+    }
+  }
 
   /*
   @RequestMapping("/member/delete")

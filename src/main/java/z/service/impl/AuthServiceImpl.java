@@ -26,4 +26,17 @@ public class AuthServiceImpl implements AuthService {
     }
       return memberDao.getOne(member.getMemberNo());
   }
+
+  public Member getMemberInfoFacebook(String email, String facebook) throws Exception {
+    HashMap<String,String> paramMap = new HashMap<>();
+    paramMap.put("email", email);
+    paramMap.put("facebook", facebook);
+    
+    Member member = memberDao.getOneByEmailFacebook(paramMap);
+    
+    if (member == null) {
+      return null;
+    }
+      return memberDao.getOne(member.getMemberNo());
+  }
 }

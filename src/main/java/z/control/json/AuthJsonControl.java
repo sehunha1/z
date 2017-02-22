@@ -30,6 +30,21 @@ public class AuthJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "로그인 성공!");
   }
   
+  // 페이스북 회원 조회
+  @RequestMapping("html/auth/loginFacebook")
+  public AjaxResult loginFacebook(String email, String facebook,
+      HttpServletResponse response, HttpSession session, Model model) throws Exception {
+    
+    Member member = authService.getMemberInfoFacebook(email, facebook);
+        
+    if (member == null) {
+      return new AjaxResult(AjaxResult.FAIL, "페이스북으로 가입된 회원이 아닙니다.");
+    }
+    
+    session.setAttribute("member", member); // HttpSession에 저장한다.
+    return new AjaxResult(AjaxResult.SUCCESS, "로그인 성공!");
+  }
+  
   @RequestMapping("html/auth/logout")
   public AjaxResult logout(HttpSession session) throws Exception {
     session.invalidate(); // 기존 세션을 무효화시킨다.

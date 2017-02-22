@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>회원가입 테스트</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
@@ -33,9 +33,9 @@
               <div class="form-group">
                 <label class="col-sm-4 control-label" for="email1">이메일</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" />
+                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" onChange="isCheck.value='N'" />
                 </div>
-                  <input type='button' id='emailcheck' value='중복 체크' style='float:left;'>
+                  <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left;'>
                   <input type='hidden' id='isCheck' value="N">
               </div>
 
@@ -58,6 +58,35 @@
                 <label class="col-sm-4 control-label" for="confirm_password1">암호 확인</label>
                 <div class="col-sm-5">
                   <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="암호 확인" />
+                </div>
+              </div>
+              
+              <div class="form-group">
+              <label class="col-sm-4 control-label">사진</label>
+              <div class="col-sm-5">
+				        <input id='photo' type='file' name='files' multiple class="form-control" >
+				        <input id='photo-path' type='hidden'>
+				        </div>
+              </div>
+
+              <!-- 강사님 사진 선택(녹색)
+               <div class="form-group">
+						    <label for="photo" class="col-sm-4 control-label">사진</label>
+						    <div class="col-sm-5">
+						        <span class="btn btn-success fileinput-button">
+						            <i class="glyphicon glyphicon-plus"></i>
+						            <span>파일 선택...</span>
+						            <input id='photo' class='form-control' type='file' name='files' multiple>
+						        </span>
+						        <input id='photo-path' type='hidden'>
+						    </div>
+						  </div>
+						   -->
+              
+              <div class="form-group">
+              <label class="col-sm-4 control-label">사진 미리보기</label>
+              <div class="col-sm-5">
+				        <img id='photo-img' height='80'>
                 </div>
               </div>
 
@@ -83,6 +112,7 @@
         </div>
         
       </div>
+  
 <div id='footer'></div>
 <script src="../../node_modules/jquery/dist/jquery.js"></script>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
@@ -108,30 +138,105 @@
    <script type="text/javascript" src="jquery-validation/dist/additional-methods.min.js"></script>
    <script type="text/javascript" src="jquery-validation/dist/localization/messages_ko.min.js"></script>
 
+
+<script src="../../js/jquery.cookie.js"></script>
+<script>
+$(document).ready(function() {
+	 var cookie_email = $.cookie('cookie_e');
+	 var cookie_name = $.cookie('cookie_n');
+     // load라는 id text태그에 cookie_value변수에 들어있는 값을 담는다. 
+     $("#email1").val(cookie_email);
+     $("#username1").val(cookie_name);
+});
+
+</script>
+
+
+<script>
+// 사진처리
+$('#photo').fileupload({
+    url: '../../common/fileupload.json', // 서버에 요청할 URL
+    dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
+    sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+    singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
+    autoUpload: true,        // 파일을 추가할 때 자동 업로딩 여부 설정. 기본은 true.
+    disableImageResize: /Android(?!.*Chrome)|Opera/
+        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+    previewMaxWidth: 800,   // 미리보기 이미지 너비
+    previewMaxHeight: 800,  // 미리보기 이미지 높이 
+    previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+    done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+      //console.log('done()...');
+      //console.log(data.result);
+        $('#photo-path').val(data.result.data[0]);
+    }, 
+    processalways: function(e, data) {
+        //console.log('fileuploadprocessalways()...', data.files.length, data.index);
+        var img = $('#photo-img');
+        if (data.index == 0) {
+          console.log('미리보기 처리...');
+          var canvas = data.files[0].preview;
+          var dataURL = canvas.toDataURL();
+          img.attr('src', dataURL).css('width', '100px');
+          $('#photo-label').css('display', '');
+        }
+    } 
+});
+</script>
+
+
  <script>
+ //이메일 중복검사
  $('#emailcheck').click(function() {
-  //학생 목록 가져와서 tr 태그를 만들어 붙인다.
+	 
+	 var email = $("#email1").val();
+	 //var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	 var regex=/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+
+	 
     $.getJSON('checkEmail.json?email=' + $("#email1").val(), function(ajaxResult) {
       var status = ajaxResult.status;
       
-      if (status == "success") {
-    	   $('#isCheck').val('Y');
-    	   sweetAlert("OK!", ajaxResult.data, 'success');
-      }
+      
+      
+      if(regex.test(email) == false) {  
+          sweetAlert("경고", "이메일 형식에 맞게 입력하세요", 'warning');
+          $('#isCheck').val('N');
+    	} 
 
+      else if (status == "success") {
+    	   $('#isCheck').val('Y');
+    	   //sweetAlert("OK!", ajaxResult.data, 'success');
+    	   swal({
+                title: "OK!",
+                text: ajaxResult.data,
+                type: "success",
+              },
+              function(){
+            	  $('#email1').focus();
+              });
+    	   //setInterval('autoRefresh_div()', 500); // 5초 후에 div 새로 고침
+    	   //document.getElementById('email').reload();
+    	   //$("#emaildiv").load(window.location.href+" #emaildiv");
+    	   
+      } /*else if ($("#email1").val() == '' || $("#email1").val() == 'undefined') {
+    	  sweetAlert("경고", "이메일을 입력하세요", 'warning');
+          $('#isCheck').val('N');
+      }*/
       else if (status != "success") {
     	  sweetAlert("Fail!", ajaxResult.data, 'error');
     	  $('#isCheck').val('N');
         return;
-      }
+      } 
     });
 });
- </script>
+ 
+</script>
 
 <script type="text/javascript">
+// 유효성 검사
     $.validator.setDefaults( {
       submitHandler: function () {
-    	  
     	  if ($('#isCheck').val() == 'N') {
     		  sweetAlert("경고", "이메일 사용 가능 여부를 확인하세요", 'warning');
     		  return;
@@ -141,7 +246,8 @@
     		      "email": $('#email1').val(),
     		      "name": $('#username1').val(),
     		      "password": $('#password1').val(),
-    		      "photo": $('#photo-path').val()
+    		      "photo": $('#photo-path').val(),
+    		      "facebook": $.cookie('cookie_e')
     		      //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
     		      //"photo": $("#photo").attr('src', 'html/upload/' + val())
     		  
@@ -173,33 +279,33 @@
     } );
 
     $( document ).ready( function () {
-    	
+      
     	// 이메일 정규표현식 유효성 검사
     	$.validator.addMethod("emailz", function(value, element) {
          return this.optional(element) || /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(value);
       }, "올바른 형식의 이메일 주소를 입력하세요 ex)user01@test.com");
     
-    /*
-    	$.validator.addMethod("checkemail", function(value, element) {
-    		 if ($('#isCheck').val() == 'N') {
-    	          return false;
-    	        }
-    		 
-    		 else {
-    			 return true;
-    		 }
-      }, "이메일 중복 여부를 체크를 해주세요."); 
-    	*/
+    
+        
+        // 이름 한글만
+        $.validator.addMethod("namez", function(value, element) {
+           return this.optional(element) || /^[가-힝]{2,}$/i.test(value);
+        }, "한글로만 두 글자 이상 입력 하세요. ex)김구");
+    
+    
     	
+    	/* 이메일 중복검사 버튼 클릭 여부 */
     	jQuery.validator.addMethod("checkemail", function(value, element){
+    		var saveemail=$('#email1').val()
+    		
     	    if ($('#isCheck').val() == 'Y') {
     	        return true;
     	    } else if ($('#isCheck').val() == 'N') {
     	        return false;
-    	    };
+    	    } else if(saveemail != $('#email1').val()) {
+    	    	return false;
+    	    }; 
     	}, "이메일 중복 여부를 체크하세요"); 
-    	
-    	
     	
       $( "#signupForm1" ).validate( {
         rules: {
@@ -207,6 +313,7 @@
           lastname1: "required",
           username1: {
             required: true,
+            namez: true,
             minlength: 2
           },
           password1: {
@@ -221,7 +328,8 @@
           email1: {
             required: true,
             emailz: true,
-            checkemail: true
+            checkemail: true,
+            //changeeval: true
           },
           agree1: "required"
         },
@@ -241,6 +349,7 @@
           },
           email1: {
             required:"이메일을 입력하세요.",
+            checkemail:"중복 여부를 체크하세요"
             //customemail:"올바른 형식의 이메일을 입력하세요.",
           }
           //agree1: "Please accept our policy"
