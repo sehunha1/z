@@ -4,12 +4,8 @@
 
 #content {
 	width: 960px;
-	margin: 0 auto;
-}
-
-#content .main-div {
-	/* display: inline-block; */
-	float: left;
+	margin: 3% auto;
+	/* text-align: center; */
 }
 
 .title {
@@ -36,53 +32,6 @@
 	margin-top: 20px;
 }
 
-#schedulememb .add-email-box {
-	float: left;
-	height: 40px;
-	width: 70%;
-	margin-top: 3%;
-	margin-left: 5%;
-	margin-right: 10%;
-	font-color: #3ACBA3;
-	border-radius: 3px;
-	display: inline-block;
-}
-
-#schedulememb #plus-btn {
-	margin-right: 6%;
-	float: right;
-	height: 30px;
-	line-height: 100%;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-}
-
-#schedulememb #plus-btn:hover {
-	color: black;
-}
-
-#schedulememb #minus-btn {
-	display: inline-block;
-	margin: 3% auto;
-	float: left;
-	height: 30px;
-	line-height: 100%;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-}
-
-#schedulememb #minus-btn:hover {
-	color: black;
-}
-
 #Go-btn {
 	border-radius: 10px;
 	border-style: solid;
@@ -93,10 +42,7 @@
 	font-size: 30px;
 	height: 530px;
 	width: 100px;
-	margin-left: 20px;
-	margin-top: 20px;
-	margin-right: 1px;
-	margin-bottom: 20px;
+	margin-left: 2%;
 }
 
 #Go-btn:hover {
@@ -104,16 +50,27 @@
 }
 
 #scheduleinfo {
+	height: 530px;
+	width: 380px;
+	float: left;
+	margin-left: 23%;
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: grey;
-	height: 530px;
-	width: 380px;
-	margin-left: 20px;
-	margin-top: 20px;
-	margin-right: 1px;
-	margin-bottom: 20px;
+}
+
+#scheduleinfo .play-name {
+	height: 15%;
+	width: 90%;
+	margin-left: 5%;
+	text-align: left;
+}
+
+#scheduleinfo #play-title {
+	height: 50%;
+	width: 100%;
+	border-radius: 3px;
 }
 
 #scheduleinfo .ss-title {
@@ -123,24 +80,28 @@
 }
 
 #scheduleinfo .separate {
+	margin-top: 0;
 	height: 15%;
-	width: 100%;
+	width: 90%;
+	overflow: hidden;
+	margin-left: 5%;
 }
 
 #scheduleinfo .separate .s-1 {
-	width: 45%;
+	width: 50%;
 	display: inline-block;
 	float: left;
 	text-align: left;
-	margin-left: 5%;
+	overflow: hidden;
 }
 
 #scheduleinfo .separate .s-2 {
-	width: 45%;
+	width: 50%;
 	display: inline-block;
 	float: right;
 	text-align: left;
-	margin-left: 5%;
+	/* margin-right: 10%; */
+	overflow: hidden;
 }
 
 #scheduleinfo .separate .s-1 .form-control {
@@ -149,15 +110,16 @@
 	display: inline-block;
 }
 
-#scheduleinfo .separate .s-2 .form-control {
-	display: inline-block;
-	position: relative;
+#scheduleinfo .separate .s-2 #limit-date {
 	height: 40px;
-	width: 90%;
+	margin: 0 auto;
+	border-radius: 3px;
+	display: inline-block;
+	width: 99%;
 }
 
 #scheduleinfo .date-choice {
-	width: 40%;
+	width: 90%;
 	height: 15%;
 	margin-left: 5%;
 	text-align: left;
@@ -170,7 +132,7 @@
 }
 
 #scheduleinfo .photo-add {
-	height: 180px;
+	height: 90px;
 	margin-left: 5%;
 	text-align: left;
 	width: 90%;
@@ -191,12 +153,12 @@
 	vertical-align: middle;
 	cursor: pointer;
 	text-align: right;
-  border-radius: 10px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: grey;
-  background-color: #3ACBA3;
-  color: white;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: grey;
+	background-color: #3ACBA3;
+	color: white;
 }
 
 #scheduleinfo .filebox label:hover {
@@ -262,51 +224,7 @@
 	color: black;
 }
 
-#schedulememb {
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: grey;
-	height: 530px;
-	width: 380px;
-	margin-left: 20px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-right: 1px;
-}
-
-#schedulememb .memb-add {
-	width: 100%;
-	height: 80%;
-	overflow: auto;
-	/* overflow-y: scroll; */
-	text-align: left;
-}
-
-#schedulememb .mail-box-cls {
-	width: 99%;
-	margin: 0 auto;
-}
-
-#picarea {
-	height: 60px;
-	width: 340px;
-	margin-left: 20px;
-	margin-right: 20px;
-	border-radius: 3px;
-	border-color: grey;
-	border-style: solid;
-	border-width: 1px;
-}
-
-#schedulememb .form-control {
-	height: 40px;
-	width: 30%;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-
-#scheduleinfo .flatpickr {
+#scheduleinfo #possible-date {
 	height: 40px;
 	margin: 0 auto;
 	width: 100%;
@@ -314,7 +232,7 @@
 }
 
 #scheduleinfo .form-control-area {
-	height: 80px;
+	height: 70px;
 	width: 100%;
 	border-radius: 3px;
 }

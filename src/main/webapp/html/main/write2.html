@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- 모임 생성시 설정화면 -->
-<!-- 수정: 2017.02.16 김재녕 -->
+<!-- 수정: 2017.02.22 김재녕 -->
 <!-- 내용: UI 수정 및 기능 구현 -->
 <html>
 <head>
@@ -24,6 +24,11 @@
 		<div id="scheduleinfo" class="main-div">
 			<span class="section"></span><br> <span class="title">모임정보설정</span><br>
 
+			<div class="play-name">
+				<h6 class="ss-title">모임명</h6>
+				<input type="text" id="play-title" placeholder="모임명을 입력하세요.">
+			</div>
+
 			<!-- 모임분류, 투표마감 설정 -->
 			<div class="separate">
 				<div class="s-1">
@@ -40,26 +45,29 @@
 
 				<div class="s-2">
 					<h6 class="ss-title">투표마감</h6>
-					<select id="limit-date" class="form-control">
+					<input id="limit-date" class="flatpickr" type="text"
+						placeholder="Select Date..">
+					<!-- 					<select id="limit-date" class="form-control">
 						<option value="">-- 선택 --</option>
 						<option value="1">1일 후</option>
 						<option value="2">2일 후</option>
 						<option value="3">3일 후</option>
 						<option value="7">일주일 후</option>
 						<option value="15">보름 후</option>
-					</select>
+					</select> -->
 				</div>
 			</div>
 
 			<!-- 모임 기간 설정(제한 날짜 및 기간 선택) -->
 			<div class="date-choice">
-				<h6 class="ss-title">모임 기간 설정</h6>
-				<input id="possible-date" class="flatpickr" type="text" placeholder="Select Date..">
+				<h6 class="ss-title">투표 가능 기간</h6>
+				<input id="possible-date" class="flatpickr" type="text"
+					placeholder="Select Date..">
 			</div>
 
 			<!-- 내용(모임 상세설명) -->
 			<div class="schedule-desc">
-				<h6 class="ss-title">내용</h6>
+				<h6 class="ss-title">모임 상세 설명</h6>
 				<textarea id="meeting-content" class="form-control-area" rows="3"
 					placeholder="내용을 입력해주세요"></textarea>
 			</div>
@@ -76,23 +84,6 @@
 
 		</div>
 
-		<!-- 모임원 초대 -->
-		<div id="schedulememb" class="main-div">
-			<span class="section"></span><br> <span class="title">모임원초대</span>
-			<button type="button" id="plus-btn" class="btn btn-default"
-				onClick="add_memb()">+</button>
-				
-			<!-- 멤버 초대 -->
-			<div class="memb-add">
-				<div id="mail-box-div" class="mail-box-cls">
-					<input id="memb-email" type="email" class="add-email-box"
-						placeholder="email을 입력해주세요">
-				</div>
-				<!-- 멤버 추가시 input Box 삽입할 div -->
-				<div id="new-field"></div>
-			</div>
-		</div>
-
 		<div class="main-div">
 			<button type="button" id="Go-btn" class="btn btn-go">Go!</button>
 		</div>
@@ -107,8 +98,9 @@
 	<script src="../../js/main/write2.js"></script>
 
 	<script>
-		flatpickr(".flatpickr", {"mode": "multiple"});
+	  flatpickr("#possible-date", {"minDate": "today", "mode": "range"});
+	  flatpickr("#limit-date", {"minDate": "today"});
 	</script>
-	
+
 </body>
 </html>
