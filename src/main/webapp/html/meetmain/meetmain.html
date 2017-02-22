@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="../../css/mylist/reset.css"/>
 <link rel="stylesheet" href="../../css/mylist/layout.css"/>
 <link rel="stylesheet" href="../../css/mylist/mylist.css"/>
+<link rel="stylesheet" href="../../css/mylist/write2.css"/>
+<link rel="stylesheet" href="../../css/main/main.css">
 
 
 <!-- 달력 css -->
@@ -71,7 +73,7 @@
 		  <div id="menu3" class="tab-pane fade">
 		  
 		  <div id='board' style='margin:0 auto; margin-top:10px;'>
-		    <a id='new-btnn' href='#' type='button' class="btn btn-primary btn-sm">추가</a>
+		    <a id='new-btnn' href='#' type='button' class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#myModal">추가</a>
 		    <div id='board1' onclick="location.href='목적지 링크주소(URL);" 
 		    style='width:30%; border:1px black solid; float:left; margin-right:20px;'>
 		      <img src='../../image/mylist/bg_default_a.jpg'>
@@ -110,6 +112,35 @@
 	  </div> 
 	  </div>
 	  </div>
+	  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+        <div id="write">
+  <span class="space"></span><br>
+  <span class="title">게시판글쓰기</span>
+ 
+  <div id="writeform">
+    <div class="box">
+
+      <input type="email" class="titlename" id="titl" placeholder="     글 제목을 입력해주세요.">
+      <input type="email" class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
+      <input type="email" class="titlefile" placeholder="     사진 또는 파일을 업로드해주세요."><br>
+      
+  
+      <a id='new-btnn' href='#' class="btn btn-primary btn-sm">취소</a>
+      <a id='new-btnnn' href='#' class="btn btn-primary btn-smm">저장</a><BR>
+    </div>
+  </div>
+</div>
+  <span class="space"></span><br>
+      </div>
+
+    </div>
+  </div>
+</div>
 	  
 		
 	</div> <!-- container -->
@@ -120,20 +151,62 @@
 	<script src="../../js/common.js"></script>
 	<script src='../../js/meetmain/tap.js'></script>
 	<script src="../../js/meetmain/meetmain.js"></script>
+
 	
 	<!-- 달력 js -->
 	<script type="text/javascript" src="./cal/js/jquery.js"></script>
 	<script type="text/javascript" src="./cal/js/monthly.js"></script>
   <script src='./cal/cal.js'></script>
+  <script >
+
+  </script>
+
+  
   <script>
   $('#new-btnn').click(function(event) {
 	    event.preventDefault();
-	    location.href = 'write2.html?mtnum=1';
+	    //location.href = 'meetmain.html?mtnum=1';
+
 	  });
-  
-  
-  
+
   </script>
+<script>
+
+try {
+    var mtnum = location.href.split('?')[1].split('=')[1];
+  } catch (error) {
+    var mtnum = -1;
+  }
+$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+  if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+    alert('로그인하세요');
+        return;
+      }
+  
+  var mnum = ajaxResult.data.memberNo;
+
+  
+    $('#new-btnnn').click(function(event) {
+      event.preventDefault();
+        var param = {
+          "memberNo": mnum,
+          "meetNo": mtnum,
+          "title": $('#titl').val(),
+          "content": $('#cont').val()
+
+        };
+        console.log(param);
+        $.post('add.json', param, function(ajaxResult2) {
+        	console.log(ajaxResult2)
+            if (ajaxResult2.status != "success") {
+              return;
+            }
+            location.href = 'meetmain.html';
+        }, 'json'); // post();
+    }); // click()    
+});
+
+</script>
   
   
   <!-- 달력 js 끝 -->

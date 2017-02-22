@@ -24,26 +24,27 @@ $(function() {
 
       var memberNo = ajaxResult.data.memberNo;
 
-      $.getJSON('listMeetingMemb.json?memberNo=' + memberNo, function(ajaxResult) {
-        var status = ajaxResult.status;
-        
-        if (status != "success") return;
-        
-        var listMeetingMemb = ajaxResult.data;
-        var ul = $(".meeting_memb");
-        var template = Handlebars.compile($('#liTemplate').html());
-        ul.html(template({"listMeetingMemb": listMeetingMemb}));
-      });
-
-      $.getJSON("getBoss.json?memberNo=" + memberNo, function(ajaxResult) {
+      $.getJSON("listMeetingMembBoss.json?memberNo=" + memberNo, function(ajaxResult) {
         var status = ajaxResult.status;
 
         if (status != "success") return;
 
-        var boss = ajaxResult.data[0].memberNo;
+        var listMeetingMembBoss = ajaxResult.data;
+        var template = Handlebars.compile($("#bossTemplate").html());
+        var ul = $(".meeting_memb_boss");
+        ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
       });
-      
-      
+
+      $.getJSON('listMeetingMembNotBoss.json?memberNo=' + memberNo, function(ajaxResult) {
+        var status = ajaxResult.status;
+        
+        if (status != "success") return;
+        
+        var listMeetingMembNotBoss = ajaxResult.data;
+        var template = Handlebars.compile($('#notbossTemplate').html());
+        var ul = $(".meeting_memb_notboss");
+        ul.html(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
+      });
 
 			// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
 			$('#_logout_status').css('display', 'none');

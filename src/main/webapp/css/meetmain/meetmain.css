@@ -124,7 +124,322 @@ body > .container {
   background-color:white;
 }
 
+#content {
+  width: 960px;
+  margin: 0 auto;
+}
 
+#content .main-div {
+  /* display: inline-block; */
+  float: left;
+}
+
+.title {
+  font-family: 'Noto Sans KR';
+  font-size: 24px;
+  font-weight: bold;
+  font-color: grey;
+  margin-left: 20px;
+}
+
+.section {
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-color: gray;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.section2 {
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-color: gray;
+  margin-left: 130px;
+  margin-top: 20px;
+}
+
+#schedulememb .add-email-box {
+  float: left;
+  height: 40px;
+  width: 70%;
+  margin-top: 3%;
+  margin-left: 5%;
+  margin-right: 10%;
+  font-color: #3ACBA3;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+#schedulememb #plus-btn {
+  margin-right: 6%;
+  float: right;
+  height: 30px;
+  line-height: 100%;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;
+}
+
+#schedulememb #plus-btn:hover {
+  color: black;
+}
+
+#schedulememb #minus-btn {
+  display: inline-block;
+  margin: 3% auto;
+  float: left;
+  height: 30px;
+  line-height: 100%;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;
+}
+
+#schedulememb #minus-btn:hover {
+  color: black;
+}
+
+#Go-btn {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;
+  font-size: 30px;
+  height: 530px;
+  width: 100px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 1px;
+  margin-bottom: 20px;
+}
+
+#Go-btn:hover {
+  color: black;
+}
+
+#scheduleinfo {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  height: 530px;
+  width: 380px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 1px;
+  margin-bottom: 20px;
+}
+
+#scheduleinfo .ss-title {
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-color: gray;
+}
+
+#scheduleinfo .separate {
+  height: 15%;
+  width: 100%;
+}
+
+#scheduleinfo .separate .s-1 {
+  width: 45%;
+  display: inline-block;
+  float: left;
+  text-align: left;
+  margin-left: 5%;
+}
+
+#scheduleinfo .separate .s-2 {
+  width: 45%;
+  display: inline-block;
+  float: right;
+  text-align: left;
+  margin-left: 5%;
+}
+
+#scheduleinfo .separate .s-1 .form-control {
+  height: 40px;
+  width: 90%;
+  display: inline-block;
+}
+
+#scheduleinfo .separate .s-2 .form-control {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  width: 90%;
+}
+
+#scheduleinfo .date-choice {
+  width: 40%;
+  height: 15%;
+  margin-left: 5%;
+  text-align: left;
+}
+
+#scheduleinfo .schedule-desc {
+  margin-left: 5%;
+  text-align: left;
+  width: 90%;
+}
+
+#scheduleinfo .photo-add {
+  height: 180px;
+  margin-left: 5%;
+  text-align: left;
+  width: 90%;
+}
+
+#scheduleinfo .photo-add .ss-title {
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+  font-color: gray;
+}
+
+#scheduleinfo .filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  text-align: right;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;
+}
+
+#scheduleinfo .filebox label:hover {
+  color: black;
+}
+
+#scheduleinfo .filebox input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+#scheduleinfo .filebox .upload-display {
+  margin-bottom: 5px;
+}
+
+@media ( min-width : 768px) {
+  .filebox .upload-display {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 0;
+  }
+}
+
+#scheduleinfo .filebox .upload-thumb-wrap {
+  display: inline-block;
+  width: 54px;
+  padding: 2px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+#scheduleinfo .filebox .upload-display img {
+  display: block;
+  max-width: 100%;
+  width: 100% \9;
+  height: auto;
+}
+
+#scheduleinfo .photo-add .fileinput-button {
+  height: 20%;
+  line-height: 100%;
+  float: right;
+  font: 15px;
+  text-align: right;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;
+  cursor: pointer;
+}
+
+#scheduleinfo .photo-add .fileinput-button:hover {
+  color: black;
+}
+
+#schedulememb {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  height: 530px;
+  width: 380px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 1px;
+}
+
+#schedulememb .memb-add {
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+  /* overflow-y: scroll; */
+  text-align: left;
+}
+
+#schedulememb .mail-box-cls {
+  width: 99%;
+  margin: 0 auto;
+}
+
+#picarea {
+  height: 60px;
+  width: 340px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+  border-color: grey;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#schedulememb .form-control {
+  height: 40px;
+  width: 30%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#scheduleinfo .flatpickr {
+  height: 40px;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 3px;
+}
+
+#scheduleinfo .form-control-area {
+  height: 80px;
+  width: 100%;
+  border-radius: 3px;
+}
 
 
 
