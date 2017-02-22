@@ -1,5 +1,10 @@
 package z.service;
 
-public interface MeetingService {
+import org.springframework.stereotype.Service;
 
+import z.domain.Meeting;
+
+@Service
+public interface MeetingService {
+  int add(Meeting meeting) throws Exception;
 }

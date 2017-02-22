@@ -2,20 +2,48 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+<!-- 작성: 2017-02-22 - 김재녕 -->
+<!-- 내용: MeetingDao 기본 쿼리 작성 -->
+
 <mapper namespace="z.dao.MeetingDao">
 
-  <resultMap type="meeting" id="meeting-map">
-    <id     column="mtnum"      property="meetingNo"/>
-    <result column="tltl"       property="title"/>
-    <result column="cont"       property="content"/>
-    <result column="name"       property="category"/>
-    <result column="dline"      property="deadline"/>
-    <result column="photo"      property="photo"/>
-    <result column="cloc"       property="location"/>
-    <result column="cdate"      property="date"/>
-    <result column="ctime"      property="time"/>
-  </resultMap>
+	<resultMap type="meeting" id="meeting-map">
+		<id column="mtnum" property="meetingNo" />
+		<result column="titl" property="title" />
+		<result column="cont" property="content" />
+		<result column="mtdesc" property="category" />
+		<result column="dline" property="deadline" />
+		<result column="photo" property="photo" />
+		<result column="cloc" property="location" />
+		<result column="cdate" property="date" />
+		<result column="ctime" property="time" />
+		<collection property="dateList" ofType="String">
+		</collection>
+	</resultMap>
 
+	<!-- 방 개설 시 기본 정보 삽입 -->
+	<insert id="insertmeet" parameterType="meeting"
+		useGeneratedKeys="true" keyColumn="mtnum" keyProperty="meetingNo">
+		<!-- 제목(모임명), 모임설명, 이름(모임분류), 투표기한, 사진, 모임 기간 -->
+		insert
+		into meet(titl, cont, mtdesc, dline, photo)
+		values(
+		#{title},
+		#{content},
+		#{category},
+		#{deadline},
+		#{photo}
+		)
+
+	</insert>
+
+	<insert id="inserttime" parameterType="meeting">
+		insert
+		into time(mtnum, tdate)
+		values
+		<foreach collection="dateList" item="dateList" separator=",">
+		(#{meetingNo}, #{dateList})
+		</foreach>
+	</insert>
 
 </mapper>

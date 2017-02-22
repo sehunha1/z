@@ -6,24 +6,25 @@ $("#Go-btn").click(function(e) {
 	e.preventDefault();
 	
     var param = {
-        "play-title": $('#play-title').val(),
-	    "meeting-desc": $('#meeting-desc').val(),
-	    "limit-date": $('#limit-date').val(),
-	    "possible-date": $('#possible-date').val(),
-	    "meeting-content": $('#meeting-content').val(),
-	    "photo-file": $('#input-file').val()
+        "title": $('#play-title').val(),
+	    "category": $('#meeting-desc').val(),
+	    "deadline": $('#limit-date').val(),
+	    "dateList": $('#possible-date').val().split(" to ").toString(),
+	    "content": $('#meeting-content').val(),
+	    "photo": $('#input-file').val()
     }
     
-    console.log(param);
+    /*console.log(param);*/
     
-/*    $.post(serverRoot + '/meeting/add.json', param, function(ajaxResult) {
+    $.post(serverRoot + '/meeting/add.json', param, function(ajaxResult) {
         if (ajaxResult.status != "success") {
           alert(ajaxResult.data);
           return;
         }
-        location.href = 'main.html';
-    }, 'json'); // post();
-*/
+        alert('okok');
+        location.href = '../meetmain/meetmain.html';
+    }, 'json');
+
 });
 
 // 모임 기간 설정 시 제한 날짜 선택
