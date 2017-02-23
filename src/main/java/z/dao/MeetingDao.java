@@ -10,7 +10,8 @@ import z.domain.Meeting;
  */
 
 public interface MeetingDao {
-  int insertmeet(Meeting meeting) throws Exception;
-  int inserttime(Meeting meeting) throws Exception;
+  int insertMeet(Meeting meeting) throws Exception;
+  int insertTime(Meeting meeting) throws Exception;
+  int insertLink(Meeting meeting) throws Exception;
   ArrayList<Meeting> getListMeetingCards(int memberNo) throws Exception;
 }

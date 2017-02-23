@@ -15,10 +15,12 @@ public class MeetingServiceImpl implements MeetingService {
 
   @Override
   public int add(Meeting meeting) throws Exception {
-    meetingDao.insertmeet(meeting);
-    return meetingDao.inserttime(meeting);
+    meetingDao.insertMeet(meeting);
+    return meetingDao.insertTime(meeting);
+    /*return meetingDao.insertLink(meeting);*/
   }
-
+  
+  @Override
   public List<Meeting> getListMeetingCards(int memberNo) throws Exception {
     return meetingDao.getListMeetingCards(memberNo);
   }

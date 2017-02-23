@@ -9,6 +9,7 @@
 
 	<resultMap type="meeting" id="meeting-map">
 		<id column="mtnum"			 property="meetingNo" />
+		<result column="mnum"   property="meetMembNo" />
 		<result column="titl" 	 property="title" />
 		<result column="cont"		 property="content" />
 		<result column="mtdesc"  property="category" />
@@ -22,11 +23,10 @@
 	</resultMap>
 
 	<!-- 방 개설 시 기본 정보 삽입 -->
-	<insert id="insertmeet" parameterType="meeting"
+	<insert id="insertMeet" parameterType="meeting"
 		useGeneratedKeys="true" keyColumn="mtnum" keyProperty="meetingNo">
 		<!-- 제목(모임명), 모임설명, 이름(모임분류), 투표기한, 사진, 모임 기간 -->
-		insert
-		into meet(titl, cont, mtdesc, dline, photo)
+		insert into meet(titl, cont, mtdesc, dline, photo)
 		values(
 		#{title},
 		#{content},
@@ -36,13 +36,22 @@
 		)
 	</insert>
 
-	<insert id="inserttime" parameterType="meeting">
-		insert
-		into time(mtnum, sdate, edate)
+	<insert id="insertTime" parameterType="meeting">
+		insert into time(mtnum, sdate, edate)
 		values(
 		#{meetingNo},
     #{sdate},
     #{edate}
+		)
+	</insert>
+	
+	<insert id="insertLink" parameterType="meeting">
+		insert into link(mnum, mtnum, boss, stat)
+		values(
+		#{meetMembNo},
+		#{meetingNo},
+		'Y',
+		'N'
 		)
 	</insert>
 

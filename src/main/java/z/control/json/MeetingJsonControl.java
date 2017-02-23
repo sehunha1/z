@@ -3,12 +3,14 @@ package z.control.json;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import z.domain.Meeting;
+import z.domain.Member;
 import z.service.MeetingService;
 
 /*
@@ -23,8 +25,12 @@ public class MeetingJsonControl {
   
   // 방 개설시 방정보 삽입.
   @RequestMapping("/meeting/add")
-  public AjaxResult add(Meeting meeting) throws Exception {
+  public AjaxResult add(Meeting meeting, HttpSession session) throws Exception {
+    Member member = (Member) session.getAttribute("member");
+    meeting.setMeetMembNo(member.getMemberNo());
     meetingService.add(meeting);
+    session.setAttribute("meeting", meeting);
+    System.out.println(session.getAttribute("meeting"));
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
