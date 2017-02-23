@@ -5,16 +5,34 @@
 $("#Go-btn").click(function(e) {
 	e.preventDefault();
 	
+	// 데이터 입력 여부 확인
+	if ($('#play-title').val().trim() == "") {
+		alert('모임명을 입력하세요.');
+		return;
+	} else if ($('#meeting-desc').val().trim() == "") {
+		alert('모임 분류를 선택하세요.');
+		return;
+	} else if ($('#limit-date').val().trim() == "") {
+		alert('투표 마감일을 선택하세요.');
+		return;
+	} else if ($('#possible-date').val().trim() == "") {
+		alert('투표 가능 기간을 선택하세요.');
+		return;
+	}
+	
+	var dateList = $('#possible-date').val().split(" to ");
+	
     var param = {
         "title": $('#play-title').val(),
 	    "category": $('#meeting-desc').val(),
 	    "deadline": $('#limit-date').val(),
-	    "dateList": $('#possible-date').val().split(" to ").toString(),
+	    "sdate": dateList[0],
+	    "edate": dateList[1],
 	    "content": $('#meeting-content').val(),
 	    "photo": $('#input-file').val()
     }
     
-    /*console.log(param);*/
+    console.log(param);
     
     $.post(serverRoot + '/meeting/add.json', param, function(ajaxResult) {
         if (ajaxResult.status != "success") {
@@ -101,4 +119,3 @@ $(document).ready(function(){
 	    }
 	});
 });
-

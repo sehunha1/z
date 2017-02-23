@@ -1,7 +1,6 @@
 package z.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 /*
  * 작성: 2017-02-22 - 김재녕
@@ -20,7 +19,8 @@ public class Meeting implements Serializable {
   protected String location; //////// 확정 장소
   protected String date; //////////// 확정 날짜
   protected String time; //////////// 확정 시간
-  protected List<String> dateList; // 투표 가능 날짜
+  protected String sdate; /////////// 투표 가능 시작일
+  protected String edate; /////////// 투표 가능 종료일
 
   public int getMeetingNo() {
     return meetingNo;
@@ -94,12 +94,19 @@ public class Meeting implements Serializable {
     this.time = time;
   }
 
-  public List<String> getDateList() {
-    return dateList;
+  public String getSdate() {
+    return sdate;
   }
 
-  public void setDateList(List<String> dateList) {
-    this.dateList = dateList;
+  public void setSdate(String sdate) {
+    this.sdate = sdate;
   }
 
+  public String getEdate() {
+    return edate;
+  }
+
+  public void setEdate(String edate) {
+    this.edate = edate;
+  }
 }

@@ -17,8 +17,8 @@
 		<result column="cloc" property="location" />
 		<result column="cdate" property="date" />
 		<result column="ctime" property="time" />
-		<collection property="dateList" ofType="String">
-		</collection>
+		<result column="sdate" property="sdate" />
+		<result column="edate" property="edate" />
 	</resultMap>
 
 	<!-- 방 개설 시 기본 정보 삽입 -->
@@ -39,11 +39,12 @@
 
 	<insert id="inserttime" parameterType="meeting">
 		insert
-		into time(mtnum, tdate)
-		values
-		<foreach collection="dateList" item="dateList" separator=",">
-		(#{meetingNo}, #{dateList})
-		</foreach>
+		into time(mtnum, sdate, edate)
+		values(
+		#{meetingNo},
+    #{sdate},
+    #{edate}
+		)
 	</insert>
 
 </mapper>
