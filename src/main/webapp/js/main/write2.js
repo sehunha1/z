@@ -33,7 +33,6 @@ $("#Go-btn").click(function(e) {
     }
     
     /*console.log(param);*/
-    
     $.post(serverRoot + '/meeting/add.json', param, function(ajaxResult) {
         if (ajaxResult.status != "success") {
           alert(ajaxResult.data);
