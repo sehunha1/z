@@ -20,6 +20,9 @@ public class AuthJsonControl {
   public AjaxResult login(String email, String password,
       HttpServletResponse response, HttpSession session, Model model) throws Exception {
     
+    System.out.printf(email, password);
+    System.out.println();
+    
     Member member = authService.getMemberInfo(email, password);
         
     if (member == null) {

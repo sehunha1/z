@@ -1,11 +1,18 @@
 package z.control.json;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,8 +40,67 @@ public class CommonJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, filenames);
   }
+  
+  @RequestMapping("fbPhoto")
+  public AjaxResult faceBookPhoto(String filename,
+      HttpServletResponse response, HttpSession session, Model model) throws Exception {
+    
+    String urlStr = filename;
+    
+    
+    try {
+        URL url = new URL(urlStr);
+        BufferedImage img = ImageIO.read(url);
+        File file=new File("D:/test.gif");
+        ImageIO.write(img, "gif", file);
+    } catch (IOException e) {
+     e.printStackTrace();
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, filename);
+  }
 }
 
+
+/*
+String urlStr = filename;
+    
+    StringBuffer sb = new StringBuffer();
+    
+    try { TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() { 
+      public java.security.cert.X509Certificate[] getAcceptedIssuers() { 
+        return null; }
+      public void checkClientTrusted(X509Certificate[] certs, String authType) { 
+
+      } public void checkServerTrusted(X509Certificate[] certs, String authType) {
+
+      } 
+    } };
+    
+    SSLContext sc = SSLContext.getInstance("SSL"); 
+    sc.init(null, trustAllCerts, new java.security.SecureRandom()); 
+    HttpsURLConnection 
+    .setDefaultSSLSocketFactory(sc.getSocketFactory()); 
+    URL url = new URL(urlStr); 
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection(); 
+    InputStreamReader in = new InputStreamReader( (InputStream) conn.getContent()); 
+    
+    BufferedImage img = ImageIO.read(url.openStream());
+    File file=new File("D:/test.gif");
+    ImageIO.write(img, "gif", file);
+    BufferedReader br = new BufferedReader(in);
+    
+    String line; 
+    while ((line = br.readLine()) != null) { 
+      sb.append(line).append("\n"); 
+      } 
+    
+    System.out.println(sb.toString()); br.close(); in.close(); conn.disconnect();
+    
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+ */
 
 
 

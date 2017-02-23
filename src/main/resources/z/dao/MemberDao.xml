@@ -34,6 +34,7 @@
     where mnum=#{value};
   </select>
   
+  
     <select id="getOneByEmail" parameterType="string" resultMap="member-map">
     select 
       mnum, 
@@ -71,7 +72,6 @@
       mnum, 
       name, 
       email,
-      photo,
       kakao,
       fcbk
     from memb
@@ -95,7 +95,7 @@
  FROM memb
  WHERE fcbk = #{facebook} 
  </select>
-  
+ 
   <!-- 
   
   <update id="update" parameterType="member">

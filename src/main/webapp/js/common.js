@@ -31,10 +31,42 @@
     version    : 'v2.8' // use graph api version 2.8
   });
 
-
+  /*
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
+  */
+  FB.getLoginStatus(function(response) {
+	    if (response.status === 'connected') {
+	        FB.api('/me', function(user) {
+	            if (user) {
+	            	var image = 'http://graph.facebook.com/' + user.id + '/picture';
+	            	
+	            	
+	            	// json
+	            	
+	                $.addJSON("../../common/fbPhoto.json?" + image, function(ajaxResult) {
+	                  });
+	            	
+	            	// json 끝
+	            	
+	            	
+	            	// image.src = 'http://graph.facebook.com/' + user.id + '/picture';
+	            	//document.getElementById('profile_photo').src = "yourpicture.png";
+	            	$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
+	                $('#inprofile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+	    			//$('#inprofile_photo').html('<img src="../upload/' + image + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+	                
+	                
+	            }
+	        });    
+	         
+	    } else if (response.status === 'not_authorized') {
+	        
+	    } else {
+	    
+	    }
+	});
 
   };
 
@@ -79,7 +111,24 @@ $(function() {
 					location.href = '../main/main.html'
 				});
 				return;
-			}
+			} else if (ajaxResult.status == "success") {
+				// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
+				$('#_logout_status').css('display', 'none');
+				//$('#sec-intext img').attr('src', '../upload/' + ajaxResult.data.photoPath);
+				//$('#nameo').text(ajaxResult.data.name);
+				$('#logout #name').text(ajaxResult.data.name);
+				$('#sec-intext #name').text(ajaxResult.data.name);
+				$('#sec-intext #emailin').text(ajaxResult.data.email);
+				
+				
+			   if (ajaxResult.data.photo == "") {
+					$('#profile_photo').html('<img src="../../image/profile-default.png" height=30px; width=30px;/>');
+					$('#inprofile_photo').html('<img src="../../image/profile-default.png" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+				} else {
+				$('#profile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" height=30px; width=30px;/>');
+				$('#inprofile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+				}
+			} 
 
       var memberNo = ajaxResult.data.memberNo;
 
@@ -104,16 +153,23 @@ $(function() {
         var ul = $(".meeting_memb_notboss");
         ul.html(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
       });
-
-			// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
+      		
+		/*	// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
 			$('#_logout_status').css('display', 'none');
 			//$('#sec-intext img').attr('src', '../upload/' + ajaxResult.data.photoPath);
 			//$('#nameo').text(ajaxResult.data.name);
 			$('#logout #name').text(ajaxResult.data.name);
 			$('#sec-intext #name').text(ajaxResult.data.name);
 			$('#sec-intext #emailin').text(ajaxResult.data.email);
+			
+			if (ajaxResult.data.photo == "") {
+				$('#profile_photo').html('<img src="../../image/profile-default.png" height=30px; width=30px;/>');
+				$('#inprofile_photo').html('<img src="../../image/profile-default.png" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+			} else {
 			$('#profile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" height=30px; width=30px;/>');
 			$('#inprofile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+			}*/
+			
 			//$('#profile_photo').text(ajaxResult.data.photo);
 			//$('#sec-intext #name').text(ajaxResult.data.name);
 			

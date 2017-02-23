@@ -103,7 +103,7 @@ public class MemberJsonControl {
       return new AjaxResult(AjaxResult.FAIL, "중복된 페이스북 계정 입니다.");
     }
   }
-
+  
   /*
   @RequestMapping("/member/delete")
   public AjaxResult delete(int memberNo, HttpServletRequest request) throws Exception {
