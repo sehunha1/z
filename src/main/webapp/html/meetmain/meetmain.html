@@ -48,13 +48,13 @@
         <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px;  font-size:12px;'> |모임시간:2시간 </font>
         <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'>|기간:1월중 </font>
         <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:1월25일까지 <font color='red'><b>(D-3)</b></font> </font>
-        </div>
+      </div>
 			
 			<div id='tab' style='float:left; width:745px; height:720px; margin-left:10px;'>
-			<ul class="nav nav-tabs" style='font-family:Noto Sans KR, sans-serif;'>
-		  <li class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
-		  <li><a data-toggle="tab" href="#menu2">장소투표</a></li>
-		  <li><a data-toggle="tab" href="#menu3">게시판</a></li>
+			 <ul class="nav nav-tabs" style='font-family:Noto Sans KR, sans-serif;'>
+		   <li class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
+		   <li><a data-toggle="tab" href="#menu2">장소투표</a></li>
+		   <li><a data-toggle="tab" href="#menu3">게시판</a></li>
 		</ul>
 		
 		<div class="tab-content">
@@ -74,36 +74,21 @@
 		  
 		  <div id='board' style='margin:0 auto; margin-top:10px;'>
 		    <a id='new-btnn' href='#' type='button' class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#myModal">추가</a>
-		    <div id='board1' onclick="location.href='목적지 링크주소(URL);" 
-		    style='width:30%; border:1px black solid; float:left; margin-right:20px;'>
-		      <img src='../../image/mylist/bg_default_a.jpg'>
-		      <div id='board1_text'>
-		      <h4>게시글1</h4>
-		      <hr>
-		      <span style='vertical-align:middle;'>내용</span>
-		      </div>
-		    </div> 
-		    
-		    <div id='board2' onclick="location.href='목적지 링크주소(URL);" 
-		    style='width:30%; border:1px black solid; float:left; margin-right:20px;'>
-          <img src='../../image/mylist/bg_default_b.jpg'>
-          <div id='board1_text'>
-          <h4>게시글2</h4>
-          <hr>
-          <span>내용</span>
-          </div>
-        </div> 
+							<div id="board-box">
+								<table class='table'>
+								  <tr><th>사진</th><td><img src='../upload/${teacher.photoList[0].filePath}' height='80'><input name='photo' type='file'></td></tr>
+								  <tr><th>제목</th><td><input name='title' type='text' value='${board.title}'></td></tr>
+                  <tr><th>내용</th><td><input name='content' type='text' value='${board.content}'></td></tr>
+								</table>
+							</div>
 
-        <div id='board3' onclick="location.href='목적지 링크주소(URL);" 
-        style='width:30%; border:1px black solid; float:left;'>
-          <img src='../../image/mylist/bg_default_b.jpg'>
-          <div id='board1_text'>
-          <h4>게시글3</h4>
-          <hr>
-          <span>내용</span>
-          </div>
-        </div> 
 
+
+
+
+
+
+						</div>
 		  
 		  </div> 
 		  
@@ -127,8 +112,7 @@
 
       <input type="email" class="titlename" id="titl" placeholder="     글 제목을 입력해주세요.">
       <input type="email" class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
-      <input type="email" class="titlefile" placeholder="     사진 또는 파일을 업로드해주세요."><br>
-      
+      <img id='photo-img' height='80' class='view-form'><input id='link' type='file'>
   
       <a id='new-btnn' href='#' class="btn btn-primary btn-sm">취소</a>
       <a id='new-btnnn' href='#' class="btn btn-primary btn-smm">저장</a><BR>
@@ -140,7 +124,7 @@
 
     </div>
   </div>
-</div>
+
 	  
 		
 	</div> <!-- container -->
