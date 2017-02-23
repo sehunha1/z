@@ -25,5 +25,4 @@ public class MeetingJsonControl {
     meetingService.add(meeting);
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
-  
 }

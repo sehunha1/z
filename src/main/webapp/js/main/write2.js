@@ -32,14 +32,13 @@ $("#Go-btn").click(function(e) {
 	    "photo": $('#input-file').val()
     }
     
-    console.log(param);
+    /*console.log(param);*/
     
     $.post(serverRoot + '/meeting/add.json', param, function(ajaxResult) {
         if (ajaxResult.status != "success") {
           alert(ajaxResult.data);
           return;
         }
-        alert('okok');
         location.href = '../meetmain/meetmain.html';
     }, 'json');
 
@@ -50,22 +49,6 @@ $("#possible-date").click(function(e) {
 /*	e.preventDefault();
 	console.log('test');*/
 });
-
-// 멤버 초대 상자 추가
-function add_memb() {
-	$('<div>').attr('class', 'mail-box-cls').html(
-			'<input type="email"' + 'class="add-email-box"'
-					+ 'placeholder="email을 입력해주세요">'
-					+ '<button type="button" id="minus-btn"'
-					+ 'class="btn btn-default"'
-					+ 'onClick="remove_memb(this)">-</button>').appendTo(
-			'#new-field');
-}
-
-// 멤버 초대 상자 삭제
-function remove_memb(obj) {
-	document.getElementById('new-field').removeChild(obj.parentNode);
-}
 
 // 모임 이미지 업로드
 $(document).ready(function(){

@@ -20,6 +20,23 @@
 </div>
 
 <script>
+
+//멤버 초대 상자 추가
+function add_memb() {
+  $('<div>').attr('class', 'mail-box-cls').html(
+      '<input type="email"' + 'class="add-email-box"'
+          + 'placeholder="email을 입력해주세요">'
+          + '<button type="button" id="minus-btn"'
+          + 'class="btn btn-default"'
+          + 'onClick="remove_memb(this)">-</button>').appendTo(
+      '#new-field');
+}
+
+// 멤버 초대 상자 삭제
+function remove_memb(obj) {
+  document.getElementById('new-field').removeChild(obj.parentNode);
+}
+
 // 모임구성원 이메일 변수에 담기
 function memb_add_email()  {
     var addmemb = document.getElementsByClassName('add-email-box');
