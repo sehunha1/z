@@ -1,5 +1,7 @@
 package z.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,7 @@ public class MeetingServiceImpl implements MeetingService {
     return meetingDao.inserttime(meeting);
   }
 
+  public List<Meeting> getListMeetingCards(int memberNo) throws Exception {
+    return meetingDao.getListMeetingCards(memberNo);
+  }
 }

@@ -109,118 +109,6 @@
       </li>
       <li class="item">
         <a href="#">
-          <div class="meeting_image">
-            <span class="meeting_owner">방장:꽃순이</span>
-          </div>
-          <div class="meeting_info">
-            <p class="tit">레고동호회</p>
-            <ul class="meeting_info_list">
-              <li class="item">
-                <span class="tit">날짜 : </span>
-                <span class="info">2017년 1월 24일</span>
-              </li>
-              <li class="item">
-                <span class="tit">시간 : </span>
-                <span class="info">투표중</span>
-              </li>
-              <li class="item">
-                <span class="tit">장소 : </span>
-                <span class="info">투표중</span>
-              </li>
-            </ul>
-            <div class="participation_member_info">3/4</div>
-          </div>
-          <div class="meeting_status ing">
-            <div class="info"></div>
-          </div>
-        </a>
-      </li>
-      <li class="item">
-        <a href="#">
-          <div class="meeting_image">
-            <span class="meeting_owner">방장:꽃순이</span>
-          </div>
-          <div class="meeting_info">
-            <p class="tit">레고동호회</p>
-            <ul class="meeting_info_list">
-              <li class="item">
-                <span class="tit">날짜 : </span>
-                <span class="info">2017년 1월 24일</span>
-              </li>
-              <li class="item">
-                <span class="tit">시간 : </span>
-                <span class="info">투표중</span>
-              </li>
-              <li class="item">
-                <span class="tit">장소 : </span>
-                <span class="info">투표중</span>
-              </li>
-            </ul>
-            <div class="participation_member_info">3/4</div>
-          </div>
-          <div class="meeting_status ing">
-            <div class="info"></div>
-          </div>
-        </a>
-      </li>
-      <li class="item">
-        <a href="#">
-          <div class="meeting_image">
-            <span class="meeting_owner">방장:꽃순이</span>
-          </div>
-          <div class="meeting_info">
-            <p class="tit">레고동호회</p>
-            <ul class="meeting_info_list">
-              <li class="item">
-                <span class="tit">날짜 : </span>
-                <span class="info">2017년 1월 24일</span>
-              </li>
-              <li class="item">
-                <span class="tit">시간 : </span>
-                <span class="info">투표중</span>
-              </li>
-              <li class="item">
-                <span class="tit">장소 : </span>
-                <span class="info">투표중</span>
-              </li>
-            </ul>
-            <div class="participation_member_info">3/4</div>
-          </div>
-          <div class="meeting_status ing">
-            <div class="info"></div>
-          </div>
-        </a>
-      </li>
-      <li class="item">
-        <a href="#">
-          <div class="meeting_image">
-            <span class="meeting_owner">방장:꽃순이</span>
-          </div>
-          <div class="meeting_info">
-            <p class="tit">레고동호회</p>
-            <ul class="meeting_info_list">
-              <li class="item">
-                <span class="tit">날짜 : </span>
-                <span class="info">2017년 1월 24일</span>
-              </li>
-              <li class="item">
-                <span class="tit">시간 : </span>
-                <span class="info">투표중</span>
-              </li>
-              <li class="item">
-                <span class="tit">장소 : </span>
-                <span class="info">투표중</span>
-              </li>
-            </ul>
-            <div class="participation_member_info">3/4</div>
-          </div>
-          <div class="meeting_status ing">
-            <div class="info"></div>
-          </div>
-        </a>
-      </li>
-      <li class="item">
-        <a href="#">
           <div class="meeting_image_empty">
             <img src="../../image/mylist/plus_icon.png" style="width:30%; height:30%; margin:35% 35%;"></img>
           </div>
@@ -233,9 +121,45 @@
   </div>
 </div>
 <div id="footer"></div>
+
+<script id="meeting_card" type="text/x-handlebars-template">
+{{#each listMeetingCards}}
+<li class="item">
+  <a href="#">
+    <div class="meeting_image">
+      <span class="meeting_owner"></span>
+    </div>
+    <div class="meeting_info">
+      <p class="tit">{{title}}</p>
+      <ul class="meeting_info_list">
+        <li class="item">
+          <span class="tit">날짜 : </span>
+          <span class="info">{{date}}</span>
+        </li>
+        <li class="item">
+          <span class="tit">시간 : </span>
+          <span class="info">{{time}}</span>
+        </li>
+        <li class="item">
+          <span class="tit">장소 : </span>
+          <span class="info">{{location}}</span>
+        </li>
+      </ul>
+      <div class="participation_member_info"></div>
+    </div>
+    <div class="meeting_status ing">
+      <div class="info"></div>
+    </div>
+  </a>
+</li>
+{{/each}}
+</script>
+
+<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
 <script src="../../node_modules/jquery/dist/jquery.js"></script>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../js/common.js"></script>
 <script src="../../js/mylist/mylist.js"></script>
+
 </body>
 </html>

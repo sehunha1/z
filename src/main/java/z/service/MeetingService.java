@@ -1,10 +1,10 @@
 package z.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import z.domain.Meeting;
 
-@Service
 public interface MeetingService {
   int add(Meeting meeting) throws Exception;
+  List<Meeting> getListMeetingCards(int memberNo) throws Exception;
 }

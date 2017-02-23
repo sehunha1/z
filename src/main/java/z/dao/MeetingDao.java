@@ -1,5 +1,7 @@
 package z.dao;
 
+import java.util.ArrayList;
+
 import z.domain.Meeting;
 
 /*
@@ -10,4 +12,5 @@ import z.domain.Meeting;
 public interface MeetingDao {
   int insertmeet(Meeting meeting) throws Exception;
   int inserttime(Meeting meeting) throws Exception;
+  ArrayList<Meeting> getListMeetingCards(int memberNo) throws Exception;
 }
