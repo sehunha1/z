@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../../css/mylist/mylist.css"/>
 <link rel="stylesheet" href="../../css/mylist/write2.css"/>
 <link rel="stylesheet" href="../../css/main/main.css">
-
+<link rel="stylesheet" href="../../css/meetmain/board.css">
 
 <!-- 달력 css -->
 <link rel="stylesheet" href="./cal/css/monthly.css">
@@ -38,6 +38,7 @@
 </head>
 <body>
 	<div id="header"></div>
+	
 	<div class='container'>
 		<div id="wrap">
 			<div id="sidebar"></div>
@@ -66,33 +67,23 @@
 		  
 		  <div id="menu2" class="tab-pane fade">
 		  </div>
-		  
-		  
-		  
-		  
-		  <div id="menu3" class="tab-pane fade">
-		  
-		  <div id='board' style='margin:0 auto; margin-top:10px;'>
-		    <a id='new-btnn' href='#' type='button' class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#myModal">추가</a>
-							<div id="board-box">
-								<table class='table'>
-								  <tr><th>사진</th><td><img src='../upload/${teacher.photoList[0].filePath}' height='80'><input name='photo' type='file'></td></tr>
-								  <tr><th>제목</th><td><input name='title' type='text' value='${board.title}'></td></tr>
-                  <tr><th>내용</th><td><input name='content' type='text' value='${board.content}'></td></tr>
-								</table>
+
+
+
+
+					<div id="menu3" class="tab-pane fade">
+
+						<div id='board' style='margin: 0 auto; margin-top: 10px;'>
+							<a id='new-btnn' href='#' type='button'
+								class="btn btn-primary btn-sm" data-toggle="modal"
+								data-target="#myModal">추가</a>
+
+							<div class="container2">
+							 <div class='row'></div>
 							</div>
-
-
-
-
-
-
-
 						</div>
-		  
-		  </div> 
-		  
-		  </div> 
+					</div>
+				</div> 
 			
 	  </div> 
 	  </div>
@@ -131,6 +122,7 @@
 		<div id="footer"></div>
 	
 	<script src='../../node_modules/jquery/dist/jquery.js'></script>
+	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
 	<script src='../../node_modules/bootstrap/dist/js/bootstrap.js'></script>
 	<script src="../../js/common.js"></script>
 	<script src='../../js/meetmain/tap.js'></script>
@@ -150,7 +142,7 @@
   $('#new-btnn').click(function(event) {
 	    event.preventDefault();
 	    //location.href = 'meetmain.html?mtnum=1';
-
+	    
 	  });
 
   </script>
@@ -187,12 +179,54 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
             }
             location.href = 'meetmain.html';
         }, 'json'); // post();
-    }); // click()    
+    }); // click()   
+    
+    $.getJSON('list.json?mtnum=1', function(ajaxResult) {
+    	 if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+          return;
+    		}
+    	 var list = ajaxResult.data;
+    	 var container2 = $('.container2');
+    	 //var container2 = $('#container2 .row');
+       var template = Handlebars.compile($('#trTemplate').html());
+       var row;
+       for (var i = 0; i < list.length; i++) {
+    	   if (i % 3 == 0) {
+    		   console.log('로우생성')
+    		   row = $('<div>').addClass('row').appendTo(container2);
+    	   }
+    	   var div = $('<div>').html(template(list[i]));
+    	   row.append(div);
+       }
+       
+    });
 });
 
 </script>
   
-  
+<script id="trTemplate" type="text/x-handlebars-template">
+<div class="col-sm-4 col-md-4">
+ <div class="post">
+     <div class="post-img-content">
+         <img src="../image/" class="img-responsive" />
+         <span class="post-title"><br/>
+             </span>
+     </div>
+     <div class="content">
+         <div class="author">
+             title <b>{{title}}</b> 
+         </div>
+         <div>
+             {{content}}
+         </div>
+         <div>
+             <a href="http://www.jquery2dotnet.com/2014/01/jquery-highlight-table-row-and-column.html" class="btn btn-warning btn-sm">상세보기</a>
+         </div>
+     </div>
+ </div>
+</div>
+</script>
+ 
   <!-- 달력 js 끝 -->
 </body>
 </html>

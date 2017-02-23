@@ -27,7 +27,7 @@
     where mr.mrno=#{value}
   </select>
   
-  <select id="getList" resultMap="board-map">
+  <select id="getList" parameterType="int" resultMap="board-map">
     select 
       b.bnum, 
       b.mnum,
@@ -37,7 +37,10 @@
       m.name
     from board b
       inner join memb m on b.mnum=m.mnum
+    where mtnum=#{vlaue}
   </select>
+  
+
   
   <select id="getOne" parameterType="int" resultMap="board-map">
     select 

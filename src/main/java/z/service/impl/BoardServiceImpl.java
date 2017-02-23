@@ -17,8 +17,8 @@ public class BoardServiceImpl implements BoardService {
   @Autowired BoardDao boardDao;
   
   
-  public List<Board> getList() throws Exception {
-    return boardDao.getList();
+  public List<Board> getList(int mtnum) throws Exception {
+    return boardDao.getList(mtnum);
   }
   
   

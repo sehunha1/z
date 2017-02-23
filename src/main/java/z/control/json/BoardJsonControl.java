@@ -25,8 +25,8 @@ public class BoardJsonControl {
   
  
   @RequestMapping("html/meetmain/list")
-  public AjaxResult list() throws Exception {
-    List<Board> list = boardService.getList();
+  public AjaxResult list(int mtnum) throws Exception {
+    List<Board> list = boardService.getList(mtnum);
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
