@@ -27,7 +27,8 @@ public class MeetingJsonControl {
     meetingService.add(meeting);
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
-
+  
+  // 모임 리스트 가져오기.
   @RequestMapping("html/mylist/listMeetingCards")
   public AjaxResult listMeetingCards(int memberNo) throws Exception {
     List<Meeting> listMeetingCards = meetingService.getListMeetingCards(memberNo);

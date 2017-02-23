@@ -34,7 +34,6 @@
 		#{deadline},
 		#{photo}
 		)
-
 	</insert>
 
 	<insert id="inserttime" parameterType="meeting">
