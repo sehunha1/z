@@ -30,7 +30,6 @@ public class MeetingJsonControl {
     meeting.setMeetMembNo(member.getMemberNo());
     meetingService.add(meeting);
     session.setAttribute("meeting", meeting);
-    System.out.println(session.getAttribute("meeting"));
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   

@@ -15,6 +15,7 @@
 		<result column="mtdesc"  property="category" />
 		<result column="dline" 	 property="deadline" />
 		<result column="photo"	 property="photo" />
+		<result column="mstat"   property="meetStat" />
 		<result column="cloc"		 property="location" />
 		<result column="cdate" 	 property="date" />
 		<result column="ctime" 	 property="time" />
@@ -22,20 +23,22 @@
 		<result column="edate" 	 property="edate" />
 	</resultMap>
 
-	<!-- 방 개설 시 기본 정보 삽입 -->
+	<!-- 방 개설 시 meet 테이블 데이터 삽입 -->
 	<insert id="insertMeet" parameterType="meeting"
 		useGeneratedKeys="true" keyColumn="mtnum" keyProperty="meetingNo">
 		<!-- 제목(모임명), 모임설명, 이름(모임분류), 투표기한, 사진, 모임 기간 -->
-		insert into meet(titl, cont, mtdesc, dline, photo)
+		insert into meet(titl, cont, mtdesc, dline, photo, mstat)
 		values(
 		#{title},
 		#{content},
 		#{category},
 		#{deadline},
-		#{photo}
+		#{photo},
+		'ING'
 		)
 	</insert>
 
+  <!-- 방 개설 시 time 테이블 데이터 삽입 -->
 	<insert id="insertTime" parameterType="meeting">
 		insert into time(mtnum, sdate, edate)
 		values(
@@ -45,6 +48,7 @@
 		)
 	</insert>
 	
+	<!-- 방 개설 시 link 테이블 데이터 삽입 -->
 	<insert id="insertLink" parameterType="meeting">
 		insert into link(mnum, mtnum, boss, stat)
 		values(

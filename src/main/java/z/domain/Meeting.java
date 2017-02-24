@@ -17,6 +17,7 @@ public class Meeting implements Serializable {
   protected String category; //////// 모임분류
   protected String deadline; //////// 모임 선택 마감기한
   protected String photo; /////////// 모임 대표 이미지
+  protected String meetStat; //////////// 모임 진행 상태(ING, WAIT, FIN) 
   protected String location; //////// 확정 장소
   protected String date; //////////// 확정 날짜
   protected String time; //////////// 확정 시간

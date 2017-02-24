@@ -16,8 +16,8 @@ public class MeetingServiceImpl implements MeetingService {
   @Override
   public int add(Meeting meeting) throws Exception {
     meetingDao.insertMeet(meeting);
-    return meetingDao.insertTime(meeting);
-    /*return meetingDao.insertLink(meeting);*/
+    meetingDao.insertTime(meeting);
+    return meetingDao.insertLink(meeting);
   }
   
   @Override
