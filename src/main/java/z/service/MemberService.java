@@ -14,4 +14,5 @@ public interface MemberService {
   //int delete(int no) throws Exception;
   //int update(Member student) throws Exception;
   int chkMbFacebook(String facebook) throws Exception;
+  int updateFBphoto(Member member);
 }

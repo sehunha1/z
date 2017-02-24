@@ -36,23 +36,53 @@
     statusChangeCallback(response);
   });
   */
+  
   FB.getLoginStatus(function(response) {
 	    if (response.status === 'connected') {
-	        FB.api('/me', function(user) {
+	        FB.api('/me/?fields=picture', function(user) {
 	            if (user) {
-	            	var image = 'http://graph.facebook.com/' + user.id + '/picture';
+	            	
+	            	/*
+	            	//var image = 'http://graph.facebook.com/' + user.id + '/picture';
+	            	var image = user.picture.data.url;
+	            	var imagesplit = image.split('/')[6].split('?')[0];
+	            	//var imagejpg = imagesplit[7].split('?')[0];
+	            	// replaceAll("\\?.*", "")
+	            	console.log(imagesplit);
+	            	//console.log(imagesplit[7].replace('/?/gi', ""));
 	            	
 	            	
-	            	// json
+	            	//console.log(image);
+	            	//image.replace(/&/gi, '%26');
 	            	
-	                $.addJSON("../../common/fbPhoto.json?" + image, function(ajaxResult) {
-	                  });
+	            	//console.log(image.replace(/&/gi, '%26'));
 	            	
-	            	// json 끝
+	            	
+	            	// 사진 json
+	            	
+	            	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	            		if (ajaxResult.data.photo != imagesplit) {
+	            			// 사진 DB에 추가
+	            			$.getJSON("../auth/updateFBphoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
+	    	                });
+	            			
+	            			// 사진 upload에 추가
+	            			$.getJSON("../../common/fbPhoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
+	    	                });
+	            		}
+	            		else {
+	            			$('#profile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" height=30px; width=30px;/>');
+	            		}
+	            	});
+	            	*/
+	                
+	            	
+	            	// 사진 json 끝
 	            	
 	            	
 	            	// image.src = 'http://graph.facebook.com/' + user.id + '/picture';
 	            	//document.getElementById('profile_photo').src = "yourpicture.png";
+	            	//$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
 	            	$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
 	                $('#inprofile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
 	    			//$('#inprofile_photo').html('<img src="../upload/' + image + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');

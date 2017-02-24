@@ -96,6 +96,14 @@
  WHERE fcbk = #{facebook} 
  </select>
  
+   <update id="updateFBphoto" parameterType="member">
+    update memb set
+      photo=#{photo}
+    where fcbk = #{facebook}
+  </update> 
+ 
+ 
+ 
   <!-- 
   
   <update id="update" parameterType="member">

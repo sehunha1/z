@@ -45,14 +45,19 @@ public class CommonJsonControl {
   public AjaxResult faceBookPhoto(String filename,
       HttpServletResponse response, HttpSession session, Model model) throws Exception {
     
-    String urlStr = filename;
+    //String urlStr = filename;
     
+    String[] array = filename.split("/");
+    
+    System.out.println("6번쨰 " + array[6].replaceAll("\\?.*", ""));
     
     try {
-        URL url = new URL(urlStr);
-        BufferedImage img = ImageIO.read(url);
-        File file=new File("D:/test.gif");
-        ImageIO.write(img, "gif", file);
+      URL url = new URL(filename);
+      BufferedImage img = ImageIO.read(url);
+      System.out.println(img);
+      //File file=new File("D:/" + array[7].replaceAll("\\?.*", ""));
+      File file = new File(sc.getRealPath("html/upload/") + array[6].replaceAll("\\?.*", ""));
+      ImageIO.write(img, "gif", file);
     } catch (IOException e) {
      e.printStackTrace();
     }

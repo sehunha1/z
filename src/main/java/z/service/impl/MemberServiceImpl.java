@@ -54,6 +54,11 @@ public class MemberServiceImpl implements MemberService {
   public int chkMbFacebook(String facebook) throws Exception {
     return memberDao.chkMbFacebook(facebook);
   }
+
+  public int updateFBphoto(Member member) {
+    
+    return memberDao.updateFBphoto(member);
+  }
   
   /*
   public int delete(int no) throws Exception {

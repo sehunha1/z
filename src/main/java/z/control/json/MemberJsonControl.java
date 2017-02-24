@@ -104,6 +104,15 @@ public class MemberJsonControl {
     }
   }
   
+  @RequestMapping("html/auth/updateFBphoto")
+  public AjaxResult updateFBphoto(Member member, String photo) throws Exception {
+    
+    memberService.updateFBphoto(member);
+
+    return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
+  }
+  
+  
   /*
   @RequestMapping("/member/delete")
   public AjaxResult delete(int memberNo, HttpServletRequest request) throws Exception {

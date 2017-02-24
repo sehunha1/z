@@ -14,7 +14,7 @@ public class imageIO
   {
    Image image = null;
       try {
-          URL url = new URL("https://scontent.xx.fbcdn.net/v/t1.0-1/c15.0.50.50/p50x50/10354686_10150004552801856_220367501106153455_n.jpg?oh=0bb129c4bacce2fd26d99c098ed48ce3&oe=5938E12F");
+          URL url = new URL("https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/16864490_122643644924849_4499205672535636192_n.jpg?oh=b991e8a098739cf8da2948da252b56d8&oe=593C611C");
           BufferedImage img = ImageIO.read(url);
           File file=new File("D:/test.gif");
           ImageIO.write(img, "gif", file);
