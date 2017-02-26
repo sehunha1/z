@@ -13,6 +13,7 @@
 </head>
 <body>
 <div id="header"></div>
+
 <div id="content">
   <div class="view_my_meeting">
     <h2 class="tit">내 모임</h2>
@@ -84,7 +85,7 @@
           <div class="meeting_image">
             <span class="meeting_owner">방장:꽃순이</span>
           </div>
-          <div class="meeting_info finish">
+          <div class="meeting_info fin">
             <p class="tit">레고동호회</p>
             <ul class="meeting_info_list">
               <li class="item">
@@ -120,6 +121,7 @@
     </ul>
   </div>
 </div>
+
 <div id="footer"></div>
 
 <script id="meeting_card" type="text/x-handlebars-template">
@@ -129,7 +131,7 @@
     <div class="meeting_image">
       <span class="meeting_owner"></span>
     </div>
-    <div class="meeting_info">
+    <div class="meeting_info {{meetStat}}">
       <p class="tit">{{title}}</p>
       <ul class="meeting_info_list">
         <li class="item">
@@ -160,6 +162,9 @@
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../js/common.js"></script>
 <script src="../../js/mylist/mylist.js"></script>
+
+<script>
+</script>
 
 </body>
 </html>
