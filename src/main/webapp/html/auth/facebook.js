@@ -38,7 +38,6 @@
       });
   }
   
-  
 
   window.fbAsyncInit = function() {
   FB.init({
