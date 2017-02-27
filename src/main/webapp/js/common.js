@@ -161,8 +161,9 @@ $(function() {
 			} 
 
       var memberNo = ajaxResult.data.memberNo;
+	  var meetingNo = 1;
 
-      $.getJSON("listMeetingMembBoss.json?memberNo=" + memberNo, function(ajaxResult) {
+      $.getJSON("listMeetingMembBoss.json?memberNo=" + memberNo + "&meetingNo=" + meetingNo, function(ajaxResult) {
         var status = ajaxResult.status;
 
         if (status != "success") return;
@@ -173,7 +174,7 @@ $(function() {
         ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
       });
 
-      $.getJSON('listMeetingMembNotBoss.json?memberNo=' + memberNo, function(ajaxResult) {
+      $.getJSON('listMeetingMembNotBoss.json?memberNo=' + memberNo + "&meetingNo=" + meetingNo, function(ajaxResult) {
         var status = ajaxResult.status;
         
         if (status != "success") return;

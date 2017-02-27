@@ -6,8 +6,8 @@ import java.util.Map;
 import z.domain.Member;
 
 public interface MemberDao {
-  ArrayList<Member> getListMeetingMembBoss(int memberNo) throws Exception;
-  ArrayList<Member> getListMeetingMembNotBoss(int memberNo) throws Exception;
+  ArrayList<Member> getListMeetingMembBoss(int memberNo, int meetingNo) throws Exception;
+  ArrayList<Member> getListMeetingMembNotBoss(int memberNo, int meetingNo) throws Exception;
   ArrayList<Member> getList() throws Exception;
   Member getOne(int memberNo) throws Exception;
   Member getOneByEmail(String email) throws Exception;
