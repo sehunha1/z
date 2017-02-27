@@ -43,8 +43,8 @@
 		insert into time(mtnum, sdate, edate)
 		values(
 		#{meetingNo},
-    #{sdate},
-    #{edate}
+    	#{sdate},
+    	#{edate}
 		)
 	</insert>
 	
