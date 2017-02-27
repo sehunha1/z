@@ -24,7 +24,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '{253788165032910}',
+    appId      : '{1343425079030171}',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -83,8 +83,8 @@
 	            	// image.src = 'http://graph.facebook.com/' + user.id + '/picture';
 	            	//document.getElementById('profile_photo').src = "yourpicture.png";
 	            	//$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
-	            	$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
-	                $('#inprofile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+	            	//$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
+	                //$('#inprofile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
 	    			//$('#inprofile_photo').html('<img src="../upload/' + image + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
 	                
 	                

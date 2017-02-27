@@ -42,7 +42,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '{253788165032910}',
+    appId      : '{1343425079030171}',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -62,7 +62,75 @@
   // These three cases are handled in the callback function.
 
   FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
+	  if (response.status === 'connected') {
+	        FB.api('/me/?fields=picture', function(user) {
+	            if (user) {
+	            	 $(function() {
+	            		  var image = user.picture.data.url;
+	            		  var defaulturl = "https://scontent.xx.fbcdn.net/v/t1.0-1/c15.0.50.50/p50x50/10354686_10150004552801856_220367501106153455_n.jpg?oh=0bb129c4bacce2fd26d99c098ed48ce3&oe=5938E12F";
+	            		  if (image == defaulturl) {
+	            			  var cookie_photo = image.split('/')[7].split('?')[0];
+	            		  } else {
+	            			  var cookie_photo = image.split('/')[6].split('?')[0];  
+	            		  }
+	 	            	  $.cookie('cookie_i', image, { path: '/'});
+	    		          $.cookie('cookie_p', cookie_photo, { path: '/'});
+	    		          
+	    		          console.log(cookie_photo);
+	    		      })
+	    		      
+	            	/*
+	            	//var image = 'http://graph.facebook.com/' + user.id + '/picture';
+	            	var image = user.picture.data.url;
+	            	var imagesplit = image.split('/')[6].split('?')[0];
+	            	//var imagejpg = imagesplit[7].split('?')[0];
+	            	// replaceAll("\\?.*", "")
+	            	console.log(imagesplit);
+	            	//console.log(imagesplit[7].replace('/?/gi', ""));
+	            	
+	            	
+	            	//console.log(image);
+	            	//image.replace(/&/gi, '%26');
+	            	
+	            	//console.log(image.replace(/&/gi, '%26'));
+	            	
+	            	
+	            	// 사진 json
+	            	
+	            	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	            		if (ajaxResult.data.photo != imagesplit) {
+	            			// 사진 DB에 추가
+	            			$.getJSON("../auth/updateFBphoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
+	    	                });
+	            			
+	            			// 사진 upload에 추가
+	            			$.getJSON("../../common/fbPhoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
+	    	                });
+	            		}
+	            		else {
+	            			$('#profile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" height=30px; width=30px;/>');
+	            		}
+	            	});
+	            	*/
+	                
+	            	
+	            	// 사진 json 끝
+	            	
+	            	
+	            	// image.src = 'http://graph.facebook.com/' + user.id + '/picture';
+	            	//document.getElementById('profile_photo').src = "yourpicture.png";
+	            	//$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
+	            	//$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
+	                //$('#inprofile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+	    			//$('#inprofile_photo').html('<img src="../upload/' + image + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+	                
+	                
+	            }
+	        });    
+	         
+	    } else if (response.status === 'not_authorized') {
+	        
+	    }
   });
 
   };
@@ -87,11 +155,13 @@
         'Thanks for logging in, ' + response.name + + '!';
     });
     */
-    
-    FB.api('/me', { locale: 'kr_KR', fields: 'name, email' },
+		        
+    //FB.api('/me', { locale: 'kr_KR', fields: 'name, email' },
+	  FB.api('/me/?fields=picture', { locale: 'kr_KR', fields: 'name, email, picture' },
     		  function(response) {
     		    console.log(response.email);
     		    console.log(response.name);
+    		    
     		    //document.getElementById('status').innerHTML =
     		    //  'Thanks for logging in, ' + response.name + response.email + '!';
     		    
