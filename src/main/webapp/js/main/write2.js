@@ -1,3 +1,4 @@
+"use strict";
 // 모임 생성시 설정화면 javaScript
 // 작성: 2017.02.19 김재녕
 
@@ -29,7 +30,7 @@ $("#Go-btn").click(function(e) {
 	    "sdate": dateList[0],
 	    "edate": dateList[1],
 	    "content": $('#meeting-content').val(),
-	    "photo": $('#input-file').val()
+	    "photo": $('#photo-path').val()
     }
     
     /*console.log(param);*/
@@ -43,14 +44,40 @@ $("#Go-btn").click(function(e) {
 
 });
 
-// 모임 기간 설정 시 제한 날짜 선택
-$("#possible-date").click(function(e) {
-/*	e.preventDefault();
-	console.log('test');*/
-});
+/*
+// 이미지 선택 시 파일 업로드
+$('#meet-photo').fileupload({
+    url: serverRoot + '/common/fileupload.json' // 서버에 요청할 URL
+    
+    dataType: 'json',
+    sequentialUploads: true,
+    singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
+    autoUpload: true,        // 파일을 추가할 때 자동 업로딩 여부 설정. 기본은 true.
+    disableImageResize: /Android(?!.*Chrome)|Opera/
+        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+    previewMaxWidth: 800,
+    previewMaxHeight: 800, 
+    previewCrop: true, 
+    done: function (e, data) {
+		console.log('done()...');
+		console.log(data.result);
+	    $('#photo-path').val(data.result.data[0]);
+    },
+    processalways: function(e, data) {
+        console.log('fileuploadprocessalways()...', data.files.length, data.index);
+        var img = $('#photo-img');
+        if (data.index == 0) {
+        	console.log('미리보기 처리...');
+	        var canvas = data.files[0].preview;
+	        var dataURL = canvas.toDataURL();
+	        img.attr('src', dataURL).css('width', '100px');
+	        $('#photo-label').css('display', '');
+        }
+    }
+});*/
 
 // 모임 이미지 업로드
-$(document).ready(function(){
+/*$(document).ready(function(){
     var fileTarget = $('.filebox .upload-hidden');
 
     fileTarget.on('change', function(){
@@ -100,4 +127,4 @@ $(document).ready(function(){
 			img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";
 	    }
 	});
-});
+});*/
