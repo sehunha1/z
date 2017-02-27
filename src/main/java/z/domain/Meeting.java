@@ -80,6 +80,14 @@ public class Meeting implements Serializable {
     this.photo = photo;
   }
 
+  public String getMeetStat() {
+    return meetStat;
+  }
+
+  public void setMeetStat(String meetStat) {
+    this.meetStat = meetStat;
+  }
+
   public String getLocation() {
     return location;
   }

@@ -84,7 +84,7 @@
 #content .view_my_meeting .meeting_list > .item > a .meeting_info.wait {
   background-color: #ff9999;
 }
-#content .view_my_meeting .meeting_list > .item > a .meeting_info.finish {
+#content .view_my_meeting .meeting_list > .item > a .meeting_info.fin {
   background-color: #cccccc;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info > .tit {
