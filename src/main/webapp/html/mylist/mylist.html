@@ -19,8 +19,9 @@
     <h2 class="tit">내 모임</h2>
     <select name="sort">
       <option value="recent">최신순</option>
-      <option value="ing">진행중</option>
-      <option value="fin">완료</option>
+      <option value="ing">투표진행중</option>
+      <option value="wait">확정대기중</option>
+      <option value="fin">일정확정</option>
     </select>
     <h4>정렬방법</h4>
     <ul class="meeting_list">
@@ -126,7 +127,7 @@
 
 <script id="meeting_card" type="text/x-handlebars-template">
 {{#each listMeetingCards}}
-<li class="item">
+<li class="item {{meetStat}}">
   <a href="#">
     <div class="meeting_image">
       <span class="meeting_owner"></span>
