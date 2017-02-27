@@ -67,20 +67,22 @@
 			<!-- 사진(모임 이미지) -->
 			<div class="photo-add">
 				<h6 class="ss-title">사진</h6>
-				<div><!--  class="col-sm-10"> -->
-					<img id='photo-img' height='80'> <span
-						class="btn btn-success fileinput-button"> <i
-						class="glyphicon glyphicon-plus"></i> <span>파일 선택...</span> <input
-						id='photo' class='form-control' type='file' name='files' multiple>
-					</span> <input id='photo-path' type='hidden'>
+				<div class="file-box">
+					
+					<div class="btn btn-success fileinput-button">
+						<i class="glyphicon glyphicon-plus"></i> <span>이미지 업로드</span> <input
+							id='photo' class='form-control fileinput-button' type='file'
+							name='files'>
+							<img id='photo-img'>
+					</div>
+					<input id='photo-path' type='hidden'>
 				</div>
-
 			</div>
 
 		</div>
 
 		<div class="main-div">
-			<button type="button" id="Go-btn" class="mouse-cursor">Go!</button>
+			<button type="button" id="Go-btn">Go!</button>
 		</div>
 	</div>
 
@@ -90,8 +92,6 @@
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="https://unpkg.com/flatpickr"></script>
-	<script src="../../js/common.js"></script>
-	<script src="../../js/main/write2.js"></script>
 
 	<!-- 모임 이미지 업로드 -->
 	<script
@@ -115,6 +115,9 @@
 		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
 	<script
 		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+
+	<script src="../../js/common.js"></script>
+	<script src="../../js/main/write2.js"></script>
 
 	<script>
 		flatpickr("#possible-date", {
