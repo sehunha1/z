@@ -23,14 +23,19 @@ public class MeetingJsonControl {
   @Autowired ServletContext sc;
   @Autowired MeetingService meetingService;
   
-  // 방 개설시 방정보 삽입.
+  // 모임 개설시 방정보 삽입.
   @RequestMapping("/meeting/add")
   public AjaxResult add(Meeting meeting, HttpSession session) throws Exception {
     Member member = (Member) session.getAttribute("member");
-    meeting.setMeetMembNo(member.getMemberNo());
-    meetingService.add(meeting);
-    session.setAttribute("meeting", meeting);
-    return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
+    
+    // 로그인 한 경우만 모임 개설
+    if (member != null) {
+      meeting.setMeetMembNo(member.getMemberNo());
+      meetingService.add(meeting);
+      session.setAttribute("meeting", meeting);
+      return new AjaxResult(AjaxResult.SUCCESS, "방 개설 성공.");
+    }
+    return new AjaxResult(AjaxResult.FAIL, "방 개설 실패.");
   }
   
   // 모임 리스트 가져오기.

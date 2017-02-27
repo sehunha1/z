@@ -5,7 +5,6 @@
 #content {
 	width: 960px;
 	margin: 3% auto;
-	/* text-align: center; */
 }
 
 .title {
@@ -24,14 +23,6 @@
 	margin-top: 20px;
 }
 
-.section2 {
-	font-family: 'Noto Sans KR';
-	font-size: 13px;
-	font-color: gray;
-	margin-left: 130px;
-	margin-top: 20px;
-}
-
 #Go-btn {
 	border-radius: 10px;
 	border-style: solid;
@@ -46,7 +37,8 @@
 }
 
 #Go-btn:hover {
-	color: black;
+  color: black;
+  cursor: pointer;
 }
 
 #scheduleinfo {
@@ -73,7 +65,7 @@
 	border-radius: 3px;
 }
 
-#scheduleinfo .ss-title {
+.ss-title {
 	font-family: 'Noto Sans KR';
 	font-size: 13px;
 	font-color: gray;
@@ -100,7 +92,6 @@
 	display: inline-block;
 	float: right;
 	text-align: left;
-	/* margin-right: 10%; */
 	overflow: hidden;
 }
 
@@ -125,6 +116,19 @@
 	text-align: left;
 }
 
+#scheduleinfo #possible-date {
+	height: 40px;
+	margin: 0 auto;
+	width: 100%;
+	border-radius: 3px;
+}
+
+#scheduleinfo .form-control-area {
+	height: 70px;
+	width: 100%;
+	border-radius: 3px;
+}
+
 #scheduleinfo .schedule-desc {
 	margin-left: 5%;
 	text-align: left;
@@ -138,13 +142,39 @@
 	width: 90%;
 }
 
-#scheduleinfo .photo-add .ss-title {
-	font-family: 'Noto Sans KR';
-	font-size: 13px;
-	font-color: gray;
+
+
+
+
+/* 
+#scheduleinfo .photo-add .filebox {
+	 position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-#scheduleinfo .filebox label {
+#scheduleinfo .photo-add .fileinput-button {
+	height: 5%;
+	line-height: 100%;
+	float: right;
+	font: 15px;
+	text-align: right;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: grey;
+	background-color: #3ACBA3;
+	color: white;
+	cursor: pointer;
+}
+ */
+
+/* #scheduleinfo .filebox label {
 	display: inline-block;
 	padding: .5em .75em;
 	color: #999;
@@ -163,17 +193,6 @@
 
 #scheduleinfo .filebox label:hover {
 	color: black;
-}
-
-#scheduleinfo .filebox input[type="file"] {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
 }
 
 #scheduleinfo .filebox .upload-display {
@@ -201,38 +220,6 @@
 #scheduleinfo .filebox .upload-display img {
 	display: block;
 	max-width: 100%;
-	width: 100% \9;
+	width: 100%;
 	height: auto;
-}
-
-#scheduleinfo .photo-add .fileinput-button {
-	height: 20%;
-	line-height: 100%;
-	float: right;
-	font: 15px;
-	text-align: right;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-	cursor: pointer;
-}
-
-#scheduleinfo .photo-add .fileinput-button:hover {
-	color: black;
-}
-
-#scheduleinfo #possible-date {
-	height: 40px;
-	margin: 0 auto;
-	width: 100%;
-	border-radius: 3px;
-}
-
-#scheduleinfo .form-control-area {
-	height: 70px;
-	width: 100%;
-	border-radius: 3px;
-}
+} */
