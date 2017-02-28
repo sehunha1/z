@@ -127,9 +127,9 @@
 
 <script id="meeting_card" type="text/x-handlebars-template">
 {{#each listMeetingCards}}
-<li class="item {{meetStat}}" data-meeting-no={{meetingNo}}>
+<li class="item {{meetStat}} {{mtdesc}}" data-meeting-no={{meetingNo}}>
   <a href="#">
-    <div class="meeting_image">
+    <div class="meeting_image" style="background: url('../upload/{{photo}}') no-repeat 50% 50%;">
       <span class="meeting_owner"></span>
     </div>
     <div class="meeting_info {{meetStat}}">
