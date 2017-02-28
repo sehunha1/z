@@ -129,7 +129,7 @@
 {{#each listMeetingCards}}
 <li class="item {{meetStat}}" data-meeting-no={{meetingNo}}>
   <a href="#">
-    <div class="meeting_image">
+    <div class="meeting_image" data-img-url={{photo}} style="background: url('../upload/{{photo}}') no-repeat 50% 50%;">
       <span class="meeting_owner"></span>
     </div>
     <div class="meeting_info {{meetStat}}">
