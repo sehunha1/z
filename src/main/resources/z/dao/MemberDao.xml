@@ -34,6 +34,12 @@
     where mnum=#{value};
   </select>
   
+  <select id="countByNo" parameterType="int" resultType="int">
+    select count(*)
+    from memb
+    where mnum=#{value};
+  </select>
+  
   
     <select id="getOneByEmail" parameterType="string" resultMap="member-map">
     select 
@@ -96,25 +102,14 @@
  WHERE fcbk = #{facebook} 
  </select>
  
-   <update id="updateFBphoto" parameterType="member">
-    update memb set
-      photo=#{photo}
-    where fcbk = #{facebook}
-  </update> 
- 
- 
- 
-  <!-- 
-  
   <update id="update" parameterType="member">
     update memb set
-      email=#{email}, 
-      pwd=password(#{password}), 
-      name=#{name}, 
-      tel=#{tel}
-    where mno=#{memberNo}
-  </update> 
-
+      name=#{name},
+      photo=#{photo} 
+    where mnum=#{memberNo}
+  </update>
+ 
+  <!-- 
   <delete id="delete" parameterType="int">
     delete from memb where mno=#{value}
   </delete>

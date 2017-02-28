@@ -12,7 +12,7 @@ public interface MemberService {
   int add(Member member) throws Exception;
   public int chkMbEmail(String email) throws Exception; 
   //int delete(int no) throws Exception;
-  //int update(Member student) throws Exception;
+  int update(Member member) throws Exception;
   int chkMbFacebook(String facebook) throws Exception;
   int updateFBphoto(Member member);
 }

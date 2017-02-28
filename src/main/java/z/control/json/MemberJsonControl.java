@@ -3,6 +3,7 @@ package z.control.json;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -106,10 +107,25 @@ public class MemberJsonControl {
   @RequestMapping("html/auth/updateFBphoto")
   public AjaxResult updateFBphoto(Member member, String photo) throws Exception {
     
+    
     memberService.updateFBphoto(member);
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
+  
+  @RequestMapping("html/mypage/updatemember")
+  public AjaxResult update(HttpSession session,  Member member) throws Exception {
+    int count = memberService.update(member);
+
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "멤버가 없습니다.");
+    }
+
+    //session.invalidate();
+    session.setAttribute("member", member);
+    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+  }
+}
   
   
   /*
@@ -140,7 +156,6 @@ public class MemberJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
   }
   */
-}
 
 
 

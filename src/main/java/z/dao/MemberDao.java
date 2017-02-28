@@ -22,4 +22,6 @@ public interface MemberDao {
   int delete(int memberNo) throws Exception;*/
   int chkFacebookPhoto(String facebook, String photo);
   int updateFBphoto(Member member);
+  int update(Member member) throws Exception;
+  int countByNo(int memberNo);
 }

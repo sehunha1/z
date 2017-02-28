@@ -46,6 +46,15 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.insert(member);
   }
   
+
+  public int update(Member member) throws Exception {
+    if (memberDao.countByNo(member.getMemberNo()) == 0) {
+      throw new Exception("회원을 찾지 못했습니다.");
+    }
+    memberDao.update(member);
+    return memberDao.update(member);
+  }
+  
   public int chkMbEmail(String email) throws Exception {
    
     return memberDao.chkMbEmail(email);
@@ -62,25 +71,17 @@ public class MemberServiceImpl implements MemberService {
   
   /*
   public int delete(int no) throws Exception {
-    if (studentDao.countByNo(no) == 0) {
+    if (memberDao.countByNo(no) == 0) {
       throw new Exception("학생을 찾지 못했습니다.");
     }
     
-    int count = studentDao.delete(no);
+    int count = memberDao.delete(no);
 
     if (managerDao.countByNo(no) == 0 && teacherDao.countByNo(no) == 0) {
       memberDao.delete(no);
     }
     
     return count;
-  }
-  
-  public int update(Student student) throws Exception {
-    if (studentDao.countByNo(student.getMemberNo()) == 0) {
-      throw new Exception("학생을 찾지 못했습니다.");
-    }
-    memberDao.update(student);
-    return studentDao.update(student);
   }*/
 }
 
