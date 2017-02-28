@@ -10,6 +10,14 @@ $.getJSON("../auth/loginUser.json", function(ajaxResult) {
 
     $(".meeting_info.ing .info").text("투표진행중");
     $(".meeting_info.wait .info").text("확정대기중");
+
+    $(".item").on("click", function(e) {
+      var currentMeeting = $(e.currentTarget);
+      var sMeetingUrl = "http://z.bitcamp.com:8080/z/html/meetmain/meetmain.html?memberNo=" + memberNo + "&meetingNo=";
+      var currentMeetingNo = currentMeeting.attr("data-meeting-no");
+      var landingUrl = sMeetingUrl + currentMeetingNo;
+      window.location.href = landingUrl;
+    });
   });
 });
 
@@ -43,4 +51,8 @@ $("select").on("change", function() {
         $(".item.wait").hide();
         $(".item.fin").show();
     };
+});
+
+$("a").click(function(e) {
+    e.preventDefault();
 });

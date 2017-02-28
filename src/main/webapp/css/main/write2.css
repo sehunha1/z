@@ -37,8 +37,8 @@
 }
 
 #Go-btn:hover {
-  color: black;
-  cursor: pointer;
+	color: black;
+	cursor: pointer;
 }
 
 #scheduleinfo {
@@ -142,26 +142,25 @@
 	width: 90%;
 }
 
-
-
-
-
-/* 
 #scheduleinfo .photo-add .filebox {
-	 position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: auto;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+#photo-img {
+	width:50px; height:50px; 
 }
 
 #scheduleinfo .photo-add .fileinput-button {
-	height: 5%;
+	height: 100%;
 	line-height: 100%;
-	float: right;
+	float: left;
 	font: 15px;
 	text-align: right;
 	border-radius: 10px;
@@ -172,54 +171,12 @@
 	color: white;
 	cursor: pointer;
 }
- */
 
-/* #scheduleinfo .filebox label {
-	display: inline-block;
-	padding: .5em .75em;
-	color: #999;
-	font-size: inherit;
-	line-height: normal;
-	vertical-align: middle;
-	cursor: pointer;
-	text-align: right;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-}
-
-#scheduleinfo .filebox label:hover {
+#scheduleinfo .photo-add .fileinput-button:hover {
 	color: black;
 }
 
-#scheduleinfo .filebox .upload-display {
-	margin-bottom: 5px;
+.fileinput-button input[type=file].fileinput-button::-webkit-file-upload-button
+{
+	cursor: pointer;
 }
-
-@media ( min-width : 768px) {
-	.filebox .upload-display {
-		display: inline-block;
-		margin-right: 5px;
-		margin-bottom: 0;
-	}
-}
-
-#scheduleinfo .filebox .upload-thumb-wrap {
-	display: inline-block;
-	width: 54px;
-	padding: 2px;
-	vertical-align: middle;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	background-color: #fff;
-}
-
-#scheduleinfo .filebox .upload-display img {
-	display: block;
-	max-width: 100%;
-	width: 100%;
-	height: auto;
-} */

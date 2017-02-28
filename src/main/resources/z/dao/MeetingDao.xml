@@ -16,9 +16,9 @@
 		<result column="dline" 	 	 property="deadline" />
 		<result column="photo"	 	 property="photo" />
 		<result column="mstat"   	 property="meetStat" />
-		<result column="cloc"		 property="location" />
-		<result column="cdate" 	 	 property="date" />
-		<result column="ctime" 	 	 property="time" />
+		<result column="floc"		 property="location" />
+		<result column="fdate" 	 	 property="date" />
+		<result column="ftime" 	 	 property="time" />
 		<result column="sdate" 	 	 property="sdate" />
 		<result column="edate" 	 	 property="edate" />
 	</resultMap>
@@ -43,8 +43,8 @@
 		insert into time(mtnum, sdate, edate)
 		values(
 		#{meetingNo},
-    #{sdate},
-    #{edate}
+    	#{sdate},
+    	#{edate}
 		)
 	</insert>
 	
@@ -60,7 +60,7 @@
 	</insert>
 
 	<select id="getListMeetingCards" parameterType="int" resultMap="meeting-map">
-		select meet.mtnum, meet.titl, meet.cont, meet.mtdesc, meet.dline, meet.photo, meet.mstat, meet.cloc, meet.cdate, meet.ctime
+		select meet.mtnum, meet.titl, meet.cont, meet.mtdesc, meet.dline, meet.photo, meet.mstat, meet.floc, meet.fdate, meet.ftime
 		from link left outer join meet on link.mtnum=meet.mtnum left outer join memb on link.mnum=memb.mnum where link.mnum=#{value};
 	</select>
 

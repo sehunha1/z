@@ -28,7 +28,6 @@ public class CommonJsonControl {
   public AjaxResult fileupload(MultipartFile[] files) throws Exception {
     ArrayList<String> filenames = new ArrayList<>();
     
-    // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.
     if (files != null && files.length > 0) {
       for (MultipartFile file : files) {
         if (file.getSize() > 0) {
