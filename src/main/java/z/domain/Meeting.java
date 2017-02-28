@@ -10,26 +10,26 @@ import java.io.Serializable;
 public class Meeting implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int meetMembNo; ///////// 회원(방장) 일련번호
+  protected int meetBossNo; ///////// 회원(방장) 일련번호
   protected int meetingNo; ////////// 모임 일련번호
   protected String title; /////////// 모임명
   protected String content; ///////// 모임상세설명
   protected String category; //////// 모임분류
   protected String deadline; //////// 모임 선택 마감기한
   protected String photo; /////////// 모임 대표 이미지
-  protected String meetStat; //////////// 모임 진행 상태(ING, WAIT, FIN) 
+  protected String meetStat; //////////// 모임 진행 상태(ING, WAIT, FIN)
   protected String location; //////// 확정 장소
   protected String date; //////////// 확정 날짜
   protected String time; //////////// 확정 시간
   protected String sdate; /////////// 투표 가능 시작일
   protected String edate; /////////// 투표 가능 종료일
 
-  public int getMeetMembNo() {
-    return meetMembNo;
+  public int getMeetBossNo() {
+    return meetBossNo;
   }
 
-  public void setMeetMembNo(int meetMembNo) {
-    this.meetMembNo = meetMembNo;
+  public void setMeetBossNo(int meetBossNo) {
+    this.meetBossNo = meetBossNo;
   }
 
   public int getMeetingNo() {

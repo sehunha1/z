@@ -9,7 +9,7 @@
 
 	<resultMap type="meeting" id="meeting-map">
 		<id column="mtnum"			 property="meetingNo" />
-		<result column="mnum"   	 property="meetMembNo" />
+		<result column="mnum"   	 property="meetBossNo" />
 		<result column="titl" 	 	 property="title" />
 		<result column="cont"		 property="content" />
 		<result column="mtdesc"  	 property="category" />
@@ -52,7 +52,7 @@
 	<insert id="insertLink" parameterType="meeting">
 		insert into link(mnum, mtnum, boss, stat)
 		values(
-		#{meetMembNo},
+		#{meetBossNo},
 		#{meetingNo},
 		'y',
 		'n'

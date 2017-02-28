@@ -30,10 +30,9 @@ public class MeetingJsonControl {
     
     // 로그인 한 경우만 모임 개설
     if (member != null) {
-      meeting.setMeetMembNo(member.getMemberNo());
+      meeting.setMeetBossNo(member.getMemberNo());
       meetingService.add(meeting);
-      session.setAttribute("meeting", meeting);
-      return new AjaxResult(AjaxResult.SUCCESS, "방 개설 성공.");
+      return new AjaxResult(AjaxResult.SUCCESS, meeting);
     }
     return new AjaxResult(AjaxResult.FAIL, "방 개설 실패.");
   }
