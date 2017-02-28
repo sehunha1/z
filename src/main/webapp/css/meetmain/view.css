@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
+#write {
+	font-family: 'Noto Sans KR';
+	background-color: #f5f5f5;
+	height:530px;
+	width:650px;
+	margin-left: 240px;
+	margin-top: 40px;
+}
+#write .space {
+  font-size: 20px;
+}
+#write .title {
+	font-family: 'Noto Sans KR';
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 32px;
+}
+
+#writeform {
+	font-family: 'Noto Sans KR';
+  background-color: white;
+  height:450px;
+  width:600px;
+  margin-left: 32px;
+  margin-top: 10px;
+}
+
+#writeform .box {
+	margin-left: 30px;
+  margin-top: 10px;
+}
+#writeform .titlename {
+  height: 35px;
+  width: 530px;
+  margin-top: 30px;
+  font-size: 12px;
+}
+#writeform .titlewrite {
+  height: 200px;
+  width: 530px;
+  margin-top: 5px;
+  font-size: 12px;
+}
+#writeform .titlefile {
+  height: 100px;
+  width: 530px;
+  margin-top: 5px;
+  font-size: 12px;
+}
+#writebtn .cancle {
+	border-color: #3db394;
+  height: 23px;
+  width: 100px;
+  font-size: 9px;
+  background-color: #3db394;
+}
+
+#writebtn .save {
+	margin-left: 30px;
+  background-color :#3db394;
+  height: 23px;
+  width: 100px;
+  font-size: 12px;
+  border-bottom-left-radius :2px;
+  borde-color: #cfd1d3;
+}
+
+#writeform #new-btnn {
+	margin-left : 320px;
+  margin-top: 10px;
+  height: 25px;
+  width: 100px;
+  font-size: 12px;
+  color:#3db394;
+  border-color: #3db394;
+  background-color: white;
+}
+
+#writeform #new-btn {
+	margin-left : 8px;
+	margin-top: 10px;
+  height: 25px;
+  width: 100px;
+  font-size: 12px;
+  border-color: #3db394;
+  background-color: #3db394;
+}
+
+
+
+

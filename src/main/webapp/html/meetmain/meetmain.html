@@ -93,37 +93,81 @@
 	  </div> 
 	  </div>
 	  </div>
+	  
 	  <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-  
-      <div class="modal-body">
-        <div id="write">
-  <span class="space"></span><br>
-  <span class="title">게시판글쓰기</span>
- 
-  <div id="writeform">
-    <div class="box">
-
-      <input type="email" class="titlename" id="titl" placeholder="     글 제목을 입력해주세요.">
-      <input type="email" class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
-      <img id='photo-img' height='80' class='view-form'><input id='link' type='file'>
-  
-      <a id='new-btnn' href='#' class="btn btn-primary btn-sm">취소</a>
-      <a id='new-btnnn' href='#' class="btn btn-primary btn-smm">저장</a><BR>
-    </div>
-  </div>
-</div>
-  <span class="space"></span><br>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div id="write">
+						<span class="space"></span><br> <span class="title">게시판글쓰기</span>
+						<div id="writeform">
+							<div class="box">
+								<input type="email" class="titlename" id="titl"
+									placeholder="     글 제목을 입력해주세요."> <input type="email"
+									class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
+								<img id='photo-img' height='80' class='view-form'><input
+									id='link' type='file'> <a id='new-btnn' href='#'
+									class="btn btn-primary btn-sm">취소</a> <a id='new-btnnn'
+									href='#' class="btn btn-primary btn-smm">저장</a><BR>
+							</div>
+						</div>
+					</div>
+					<span class="space"></span><br>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class='container'>
+            <div id="content">
+              <h1>게시판 상세보기</h1>
+              <form class='form-horizontal'>
+                <div class="form-group">
+                  <label for="title" class="col-sm-2 control-label">제목</label>
+                  <div class="col-sm-10">
+                    <input id='content' type='text' class="form-control"
+                      placeholder='내용'>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="photo" class="col-sm-2 control-label">사진</label>
+                  <div class="col-sm-10">
+                    <img id='photo-img' height='80'> <span
+                      class="btn btn-success fileinput-button"> <i
+                      class="glyphicon glyphicon-plus"></i> <span>파일 선택...</span> <input
+                      id='file' class='form-control' type='file' name='files'
+                      multiple>
+                    </span> <input id='photo-path' type='hidden'>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button id='add-btn' type='button'
+                      class='new-form btn btn-primary'>등록</button>
+                    <button id='update-btn' type='button'
+                      class='view-form btn btn-primary'>변경</button>
+                    <button id='delete-btn' type='button'
+                      class='view-form btn btn-primary'>삭제</button>
+                    <button id='list-btn' type='button' class='btn btn-primary'>목록</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
 
-    </div>
-  </div>
-
-	  
-		
-	</div> <!-- container -->
+</div>
+</div>
+	
+	<!-- container -->
 		<div id="footer"></div>
 	
 	<script src='../../node_modules/jquery/dist/jquery.js'></script>
@@ -151,6 +195,7 @@
 	  });
 
   </script>
+
 <script>
 
 try {
@@ -204,6 +249,10 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     	   row.append(div);
        }
        
+       $(".btn-view").click(function() {
+    	 
+       });
+       
     });
 });
 
@@ -225,12 +274,14 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
              {{content}}
          </div>
          <div>
-             <a href="http://www.jquery2dotnet.com/2014/01/jquery-highlight-table-row-and-column.html" class="btn btn-warning btn-sm">상세보기</a>
+             <a href='#' type ='button' class="btn btn-warning btn-sm btn-view" data-toggle="modal" data-target="#myModal2">상세보기</a>
          </div>
      </div>
  </div>
 </div>
 </script>
+
+
 <div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {

@@ -44,16 +44,15 @@
   
   <select id="getOne" parameterType="int" resultMap="board-map">
     select 
-      m.mno,
-      m.name, 
-      m.tel, 
-      m.email, 
-      mr.posi, 
-      mr.fax, 
-      mr.path
-    from mgr mr
-      inner join memb m on mr.mrno=m.mno
-    where m.mno=#{value} 
+      b.bnum, 
+      b.mnum,
+      b.mtnum,
+      b.titl, 
+      b.cont,
+      m.name
+    from board b
+      inner join memb m on b.mnum=m.mnum
+    where b.bnum=#{vlaue} 
   </select>
   
   <insert id="insert" parameterType="board">
