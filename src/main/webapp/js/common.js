@@ -158,12 +158,13 @@ $(function() {
 				$('#profile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" height=30px; width=30px;/>');
 				$('#inprofile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
 				}
-			} 
+			}
 
-      var memberNo = ajaxResult.data.memberNo;
-	  var meetingNo = 1;
+      // var memberNo = ajaxResult.data.memberNo;
+      var memberNo = window.location.search.split("&")[0].substring(10);
+      var meetingNo = window.location.search.split("&")[1].split("=")[1];
 
-      $.getJSON("listMeetingMembBoss.json?memberNo=" + memberNo + "&meetingNo=" + meetingNo, function(ajaxResult) {
+      $.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
         var status = ajaxResult.status;
 
         if (status != "success") return;
@@ -174,7 +175,7 @@ $(function() {
         ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
       });
 
-      $.getJSON('listMeetingMembNotBoss.json?memberNo=' + memberNo + "&meetingNo=" + meetingNo, function(ajaxResult) {
+      $.getJSON('listMeetingMembNotBoss.json?meetingNo=' + meetingNo, function(ajaxResult) {
         var status = ajaxResult.status;
         
         if (status != "success") return;

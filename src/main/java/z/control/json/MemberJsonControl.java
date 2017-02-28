@@ -19,14 +19,14 @@ public class MemberJsonControl {
   @Autowired MemberService memberService;
 
   @RequestMapping("html/meetmain/listMeetingMembBoss")
-  public AjaxResult listMeetingMembBoss(int memberNo, int meetingNo) throws Exception {
-    List<Member> listMeetingMembBoss = memberService.getListMeetingMembBoss(memberNo, meetingNo);
+  public AjaxResult listMeetingMembBoss(int meetingNo) throws Exception {
+    List<Member> listMeetingMembBoss = memberService.getListMeetingMembBoss(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, listMeetingMembBoss);
   }
 
   @RequestMapping("html/meetmain/listMeetingMembNotBoss")
-  public AjaxResult listMeetingMembNotBoss(int memberNo, int meetingNo) throws Exception {
-    List<Member> listMeetingMembNotBoss = memberService.getListMeetingMembNotBoss(memberNo, meetingNo);
+  public AjaxResult listMeetingMembNotBoss(int meetingNo) throws Exception {
+    List<Member> listMeetingMembNotBoss = memberService.getListMeetingMembNotBoss(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, listMeetingMembNotBoss);
   }
   
