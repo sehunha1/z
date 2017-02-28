@@ -159,32 +159,6 @@ $(function() {
 				$('#inprofile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
 				}
 			}
-
-      // var memberNo = ajaxResult.data.memberNo;
-      var memberNo = window.location.search.split("&")[0].substring(10);
-      var meetingNo = window.location.search.split("&")[1].substring(10);
-
-      $.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
-        var status = ajaxResult.status;
-
-        if (status != "success") return;
-
-        var listMeetingMembBoss = ajaxResult.data;
-        var template = Handlebars.compile($("#bossTemplate").html());
-        var ul = $(".meeting_memb_boss");
-        ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
-      });
-
-      $.getJSON('listMeetingMembNotBoss.json?meetingNo=' + meetingNo, function(ajaxResult) {
-        var status = ajaxResult.status;
-        
-        if (status != "success") return;
-        
-        var listMeetingMembNotBoss = ajaxResult.data;
-        var template = Handlebars.compile($('#notbossTemplate').html());
-        var ul = $(".meeting_memb_notboss");
-        ul.html(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
-      });
       		
 		/*	// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다. 
 			$('#_logout_status').css('display', 'none');
@@ -209,33 +183,20 @@ $(function() {
 			// 페이스북 API
 
 
-			// // 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
-			// $('#href_out').click(function(event) {
-			// 	event.preventDefault();
-			// 	$.getJSON('../auth/logout.json', function(ajaxResult) {
-			// 		location.href = '../main/main.html'
-			// 	});
-            //
-			// 	FB.logout(function (response) {
-			//           //Do what ever you want here when logged out like reloading the page
-			//           window.location.reload();
-			//     });
-			// });
+			// 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
+			$('#href_out').click(function(event) {
+				event.preventDefault();
+				$.getJSON('../auth/logout.json', function(ajaxResult) {
+					location.href = '../main/main.html'
+				});
+
+				FB.logout(function (response) {
+			          //Do what ever you want here when logged out like reloading the page
+			          window.location.reload();
+			    });
+			});
 		});
 	});
-
-    // 로그아웃 버튼의 클릭 이벤트 핸들러 등록하기
-    $("body").on("click", '#href_out', function(event) {
-        event.preventDefault();
-        $.getJSON('../auth/logout.json', function(ajaxResult) {
-            location.href = '../main/main.html'
-        });
-
-        FB.logout(function (response) {
-            //Do what ever you want here when logged out like reloading the page
-            window.location.reload();
-        });
-    });
   
   $.get("../../html/footer.html", function(result) {
     $("#footer").html(result);
