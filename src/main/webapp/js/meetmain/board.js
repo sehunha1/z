@@ -35,4 +35,8 @@ $.getJSON('list.json', function(ajaxResult) {
         }
         div.append(template(list[i]));
       }
+      
+      
+      
+
     });

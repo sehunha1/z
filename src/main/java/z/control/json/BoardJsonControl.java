@@ -30,6 +30,21 @@ public class BoardJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
+  @RequestMapping("html/meetmain/detail")
+  public String detail(int bnum) throws Exception {
+    Board board = boardService.getDetail(bnum);
+    
+    if (board == null) {
+      throw new Exception("해당게시물이 없습니다.");
+    }
+    
+    // 페이지 컨트롤러는 모델 객체가 리턴한 값을 JSP가 사용할 수 있도록 가공하는 일을 한다.
+   // model.addAttribute("board", board);
+   // model.addAttribute("title", "학생관리-상세정보");
+   // model.addAttribute("contentPage", "view/detail.jsp");
+    return "meetmain";
+  }
+  
  /* @RequestMapping("html/meetmain/")
   public AjaxResult detail(int memberNo) throws Exception {
     Member member = boardService.getDetail(memberNo);
