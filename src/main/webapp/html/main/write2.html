@@ -67,17 +67,22 @@
 			<!-- 사진(모임 이미지) -->
 			<div class="photo-add">
 				<h6 class="ss-title">사진</h6>
-				<div class="filebox preview-image">
-					<input class="upload-name" value="파일선택" disabled="disabled">
-					<label for="input-file">사진업로드</label> <input type="file"
-						id="input-file" class="upload-hidden">
+				<div class="file-box">
+					
+					<div class="btn btn-success fileinput-button">
+						<i class="glyphicon glyphicon-plus"></i> <span>이미지 업로드</span> <input
+							id='photo' class='form-control fileinput-button' type='file'
+							name='files'>
+							<img id='photo-img'>
+					</div>
+					<input id='photo-path' type='hidden'>
 				</div>
 			</div>
 
 		</div>
 
 		<div class="main-div">
-			<button type="button" id="Go-btn" class="btn btn-go">Go!</button>
+			<button type="button" id="Go-btn">Go!</button>
 		</div>
 	</div>
 
@@ -87,12 +92,41 @@
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="https://unpkg.com/flatpickr"></script>
+
+	<!-- 모임 이미지 업로드 -->
+	<script
+		src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+	<script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+	<script
+		src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+
 	<script src="../../js/common.js"></script>
 	<script src="../../js/main/write2.js"></script>
 
 	<script>
-	  flatpickr("#possible-date", {"minDate": "today", "mode": "range"});
-	  flatpickr("#limit-date", {"minDate": "today"});
+		flatpickr("#possible-date", {
+			"minDate" : "today",
+			"mode" : "range"
+		});
+		flatpickr("#limit-date", {
+			"minDate" : "today"
+		});
 	</script>
 
 </body>

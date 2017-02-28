@@ -1,103 +1,92 @@
+"use strict";
 // 모임 생성시 설정화면 javaScript
 // 작성: 2017.02.19 김재녕
 
 // GO 버튼 클릭시 데이터 저장 후 페이지 이동
-$("#Go-btn").click(function(e) {
-	e.preventDefault();
-	
-	// 데이터 입력 여부 확인
-	if ($('#play-title').val().trim() == "") {
-		alert('모임명을 입력하세요.');
-		return;
-	} else if ($('#meeting-desc').val().trim() == "") {
-		alert('모임 분류를 선택하세요.');
-		return;
-	} else if ($('#limit-date').val().trim() == "") {
-		alert('투표 마감일을 선택하세요.');
-		return;
-	} else if ($('#possible-date').val().trim() == "") {
-		alert('투표 가능 기간을 선택하세요.');
-		return;
-	}
-	
-	var dateList = $('#possible-date').val().split(" to ");
-	
-    var param = {
-        "title": $('#play-title').val(),
-	    "category": $('#meeting-desc').val(),
-	    "deadline": $('#limit-date').val(),
-	    "sdate": dateList[0],
-	    "edate": dateList[1],
-	    "content": $('#meeting-content').val(),
-	    "photo": $('#input-file').val()
-    }
-    
-    /*console.log(param);*/
-    $.post(serverRoot + '/meeting/add.json', param, function(ajaxResult) {
-        if (ajaxResult.status != "success") {
-          alert(ajaxResult.data);
-          return;
-        }
-        location.href = '../meetmain/meetmain.html';
-    }, 'json');
+$("#Go-btn").click(
+		function(e) {
+			e.preventDefault();
 
-});
+			// 데이터 입력 여부 확인
+			if ($('#play-title').val().trim() == "") {
+				alert('모임명을 입력하세요.');
+				return;
+			} else if ($('#meeting-desc').val().trim() == "") {
+				alert('모임 분류를 선택하세요.');
+				return;
+			} else if ($('#limit-date').val().trim() == "") {
+				alert('투표 마감일을 선택하세요.');
+				return;
+			} else if ($('#possible-date').val().trim() == "") {
+				alert('투표 가능 기간을 선택하세요.');
+				return;
+			}
 
-// 모임 기간 설정 시 제한 날짜 선택
-$("#possible-date").click(function(e) {
-/*	e.preventDefault();
-	console.log('test');*/
-});
+			var dateList = $('#possible-date').val().split(" to ");
 
-// 모임 이미지 업로드
-$(document).ready(function(){
-    var fileTarget = $('.filebox .upload-hidden');
+			var param = {
+				"title" : $('#play-title').val(),
+				"category" : $('#meeting-desc').val(),
+				"deadline" : $('#limit-date').val(),
+				"sdate" : dateList[0],
+				"edate" : dateList[1],
+				"content" : $('#meeting-content').val(),
+				"photo" : $('#photo-path').val()
+			}
 
-    fileTarget.on('change', function(){
-        if(window.FileReader){
-            // 파일명 추출
-            var filename = $(this)[0].files[0].name;
-        } 
-        else {
-            // Old IE 파일명 추출
-            var filename = $(this).val().split('/').pop().split('\\').pop();
-        };
+			$
+					.post(serverRoot + '/meeting/add.json', param,
+							function(ajaxResult) {
+								if (ajaxResult.status != "success") {
+									alert(ajaxResult.data);
+									return;
+								}
+								var meeting = JSON.stringify(ajaxResult.data);
+								location.href = '../meetmain/meetmain.html'
+										+ '?member='
+										+ JSON.parse(meeting).meetBossNo
+										+ '&meetingNo='
+										+ JSON.parse(meeting).meetingNo;
+							}, 'json');
 
-        $(this).siblings('.upload-name').val(filename);
-    });
+			// $.post(serverRoot + '/meeting/add.json', param,
+			// function(ajaxResult) {
+			// if (ajaxResult.status != "success") {
+			// alert(ajaxResult.data);
+			// return;
+			// }
+			// location.href = '../meetmain/meetmain.html';
+			// }, 'json');
 
-	var imgTarget = $('.preview-image .upload-hidden');
-	
-	imgTarget.on('change', function(){
-		var parent = $(this).parent();
-		parent.children('.upload-display').remove();
-		
-		if(window.FileReader){ //image 파일만 
-			
-			if (!$(this)[0].files[0].type.match(/image\//)) return;
-			
-			var reader = new FileReader();
-			reader.onload = function(e){
-				var src = e.target.result;
-				parent.prepend(
-						'<div class="upload-display">'
-					  + '<div class="upload-thumb-wrap">'
-					  + '<img src="'+src+'" class="upload-thumb">'
-					  + '</div></div>'); 
-				} 
-			reader.readAsDataURL($(this)[0].files[0]);
-		} 
-		else { 
-			$(this)[0].select();
-			$(this)[0].blur();
-			var imgSrc = document.selection.createRange().text;
-			parent.prepend(
-					'<div class="upload-display">'
-					+ '<div class="upload-thumb-wrap">'
-					+ '<img class="upload-thumb">'
-					+ '</div></div>');
-			var img = $(this).siblings('.upload-display').find('img');
-			img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";
-	    }
-	});
-});
+		});
+
+// 이미지 선택 시 파일 업로드
+$('#photo').fileupload(
+		{
+			url : serverRoot + '/common/fileupload.json',
+			dataType : 'json',
+			sequentialUploads : true,
+			singleFileUploads : false,
+			autoUpload : true,
+			disableImageResize : /Android(?!.*Chrome)|Opera/
+					.test(window.navigator && navigator.userAgent),
+			previewMaxWidth : 60,
+			previewMaxHeight : 60,
+			previewCrop : true,
+			done : function(e, data) {
+				/* console.log(data.result); */
+				$('#photo-path').val(data.result.data[0]);
+			},
+			processalways : function(e, data) {
+				console.log('fileuploadprocessalways()...', data.files.length,
+						data.index);
+				var img = $('#photo-img');
+				if (data.index == 0) {
+					var canvas = data.files[0].preview;
+					var dataURL = canvas.toDataURL();
+					/*console.log(canvas);*/
+					img.attr('src', dataURL).css('width', '100px');
+					$('#photo-label').css('display', '');
+				}
+			}
+		});
