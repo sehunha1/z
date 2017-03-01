@@ -24,14 +24,14 @@ public class BoardJsonControl {
   @Autowired BoardService boardService;
   
  
-  @RequestMapping("html/meetmain/list")
+  @RequestMapping("/html/meetmain/list")
   public AjaxResult list(int mtnum) throws Exception {
     List<Board> list = boardService.getList(mtnum);
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
-  @RequestMapping("html/meetmain/detail")
-  public String detail(int bnum) throws Exception {
+  @RequestMapping("/html/meetmain/detail")
+  public AjaxResult detail(int bnum) throws Exception {
     Board board = boardService.getDetail(bnum);
     
     if (board == null) {
@@ -42,7 +42,7 @@ public class BoardJsonControl {
    // model.addAttribute("board", board);
    // model.addAttribute("title", "학생관리-상세정보");
    // model.addAttribute("contentPage", "view/detail.jsp");
-    return "meetmain";
+    return new AjaxResult(AjaxResult.SUCCESS, board);
   }
   
  /* @RequestMapping("html/meetmain/")
@@ -56,7 +56,7 @@ public class BoardJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, member);
   }
   */
-  @RequestMapping("html/meetmain/add")
+  @RequestMapping("/html/meetmain/add")
   public AjaxResult add(Board board) throws Exception {
     
     // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.

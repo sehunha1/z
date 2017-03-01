@@ -130,9 +130,9 @@
               <h1>게시판 상세보기</h1>
               <form class='form-horizontal'>
                 <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">제목</label>
+                  <label id='detail_title' for="title" class="col-sm-2 control-label">제목</label>
                   <div class="col-sm-10">
-                    <input id='content' type='text' class="form-control"
+                    <input id='detail_content' type='text' class="form-control"
                       placeholder='내용'>
                   </div>
                 </div>
@@ -199,7 +199,7 @@
 <script>
 
 try {
-    var mtnum = location.href.split('?')[1].split('=')[1];
+    var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
 } catch (error) {
     var mtnum = -1;
 }
@@ -222,7 +222,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
           "content": $('#cont').val()
 
         };
-        console.log(param);
+        console.log('파라미터 : ',param);
         $.post('add.json', param, function(ajaxResult2) {
         	console.log(ajaxResult2)
             if (ajaxResult2.status != "success") {
@@ -251,7 +251,15 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
        }
        
        $(".btn-view").click(function() {
-    	 
+    	   $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
+    		   if (ajaxResult.status == "fail") {
+    		          return;
+    		        }
+    		   var detail = ajaxResult.data;
+	    	   $('#detail_title').text(detail.title);
+	    	   $('#detail_content').val(detail.content);
+    		   
+    	   }); 
        });
        
     });
@@ -275,7 +283,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
              {{content}}
          </div>
          <div>
-             <a href='#' type ='button' class="btn btn-warning btn-sm btn-view" data-toggle="modal" data-target="#myModal2">상세보기</a>
+             <a href='#' type ='button' class="btn btn-warning btn-sm btn-view" data-toggle="modal" data-target="#myModal2" data-bnum='{{boardNo}}'>상세보기</a>
          </div>
      </div>
  </div>
