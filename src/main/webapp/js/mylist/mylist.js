@@ -31,6 +31,11 @@ $.getJSON("../auth/loginUser.json", function(ajaxResult) {
 
     $(".item").on("click", function(e) {
       var currentMeeting = $(e.currentTarget);
+      if (currentMeeting.attr("data-meetstat") == "wait") {
+        window.location.href = serverRoot + "/html/detail/detail_meeting_ready.html?memberNo=" + memberNo +
+                        "&meetingNo=" + currentMeeting.attr("data-meeting-no");
+        return;
+      }
       var sMeetingUrl = "http://z.bitcamp.com:8080/z/html/meetmain/meetmain.html?memberNo=" + memberNo + "&meetingNo=";
       var currentMeetingNo = currentMeeting.attr("data-meeting-no");
       var landingUrl = sMeetingUrl + currentMeetingNo;

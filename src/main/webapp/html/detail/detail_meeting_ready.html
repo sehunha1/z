@@ -29,127 +29,6 @@
         <p class="tit">참여멤버</p>
         <div class="member_list_wrap">
           <ul class="member_list">
-            <li class="item">
-              <span class="ico"></span>
-              <div class="profile">
-                <img src="../../image/user_profile.jpg" alt=""/>
-              </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
-            <li class="item">
-                <div class="profile">
-                  <img src="../../image/user_profile.jpg" alt=""/>
-                </div>
-              <p class="name">하세훈</p>
-            </li>
           </ul>
         </div>
         <button id="btn_toggle_member_list">모임멤버보기</button>
@@ -197,7 +76,6 @@
             <span class="info2">(20/23)</span>
           </li>
         </ul>
-        </ul>
       </div>
       <div class="btn_ready">
         <button id="btn_ok" type="submit">확정</button>
@@ -207,7 +85,30 @@
   </div>
   
   <div id="footer"></div>
-  
+
+  <script id="bossTemplate" type="text/x-handlebars-template">
+    {{#each listMeetingMembBoss}}
+    <li class="item">
+      <span class="ico"></span>
+      <div class="profile">
+        <img src="../../image/user_profile.jpg" alt=""/>
+      </div>
+      <p class="name">{{name}}</p>
+    </li>
+    {{/each}}
+  </script>
+  <script id="notbossTemplate" type="text/x-handlebars-template">
+    {{#each listMeetingMembNotBoss}}
+    <li class="item">
+      <div class="profile">
+        <img src="../../image/user_profile.jpg" alt=""/>
+      </div>
+      <p class="name">{{name}}</p>
+    </li>
+    {{/each}}
+  </script>
+
+  <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
   <script src="../../node_modules/jquery/dist/jquery.js"></script>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="../../js/common.js"></script>
