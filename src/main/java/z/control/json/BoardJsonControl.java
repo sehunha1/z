@@ -1,6 +1,5 @@
 package z.control.json;
 
-import java.io.File;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -9,20 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import z.domain.Board;
-import z.domain.Member;
 import z.service.BoardService;
-import z.util.MultipartUtil;
 
-//@Controller
-@RestController // 이 애노테이션을 붙이면, 스프링 설정 파일에 JSON 변환기 'MappingJackson2JsonView' 객체를 등록하지 않아도 된다.
+@RestController
 public class BoardJsonControl {
+  
   @Autowired ServletContext sc;
-  
   @Autowired BoardService boardService;
-  
  
   @RequestMapping("/html/meetmain/list")
   public AjaxResult list(int mtnum) throws Exception {
@@ -89,24 +83,27 @@ public class BoardJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }
+
+  // Board, File 객체 프로퍼티 변경 >> 확인 후 수정 요망 -- 김재녕
   
-  @RequestMapping("/member/update")
-  public AjaxResult update(Board board, MultipartFile photo) throws Exception {
-    
-    if (photo != null && photo.getSize() > 0) { // 파일이 업로드 되었다면,
-      String newFilename = MultipartUtil.generateFilename();
-      photo.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
-      board.setFilePath(newFilename);
-    }
-    
-    int count = boardService.update(board);
-    
-    if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 학생이 없습니다.");
-    }
-    
-    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
-  }
+//  @RequestMapping("/member/update")
+//  public AjaxResult update(Board board, MultipartFile photo) throws Exception {
+//    
+//    if (photo != null && photo.getSize() > 0) { // 파일이 업로드 되었다면,
+//      String newFilename = MultipartUtil.generateFilename();
+//      photo.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+//      
+//      // board.setFilePath(newFilename);
+//    }
+//    
+//    int count = boardService.update(board);
+//    
+//    if (count == 0) {
+//      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 학생이 없습니다.");
+//    }
+//    
+//    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+//  }
   
 }
 

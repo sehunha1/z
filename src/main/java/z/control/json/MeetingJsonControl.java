@@ -24,7 +24,7 @@ public class MeetingJsonControl {
   @Autowired MeetingService meetingService;
   
   // 모임 개설시 방정보 삽입.
-  @RequestMapping("/meeting/add")
+  @RequestMapping("html/meeting/add")
   public AjaxResult add(Meeting meeting, HttpSession session) throws Exception {
     Member member = (Member) session.getAttribute("member");
     
@@ -42,5 +42,12 @@ public class MeetingJsonControl {
   public AjaxResult listMeetingCards(int memberNo) throws Exception {
     List<Meeting> listMeetingCards = meetingService.getListMeetingCards(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, listMeetingCards);
+  }
+  
+  // 완료 모임 상세 정보 가져오기
+  @RequestMapping("html/detail/detailMeet")
+  public AjaxResult detailMeeting(int memberNo, int meetingNo) throws Exception {
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "성공");
   }
 }

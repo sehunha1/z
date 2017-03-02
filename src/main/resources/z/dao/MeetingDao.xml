@@ -21,6 +21,18 @@
 		<result column="ftime" 	 	 property="time" />
 		<result column="sdate" 	 	 property="sdate" />
 		<result column="edate" 	 	 property="edate" />
+		<collection property="boardList" ofType="board">
+			<id column="bnum" property="boardNo"/>
+			<result column="mno" property="memberNo"/>
+			<result column="mtnum" property="meetingNo"/>
+			<result column="titl" property="title"/>
+			<result column="cont" property="content"/>
+			<collection property="addFileList" ofType="addFile">
+				<id column="fnum" property="fileNo"/>
+	      <result column="link" property="filePath"/>
+	      <result column="type" property="fileDesc"/>
+			</collection>
+		</collection>
 	</resultMap>
 
 	<!-- 방 개설 시 meet 테이블 데이터 삽입 -->
@@ -63,5 +75,31 @@
 		select meet.mtnum, meet.titl, meet.cont, meet.mtdesc, meet.dline, meet.photo, meet.mstat, meet.floc, meet.fdate, meet.ftime
 		from link left outer join meet on link.mtnum=meet.mtnum left outer join memb on link.mnum=memb.mnum where link.mnum=#{value};
 	</select>
+	
+	<select id="getDetailFinish" parameterType="int" resultMap="meeting-map">
+	  select me.titl
+		      ,me.cont
+			    ,me.mtdesc
+			    ,me.dline
+			    ,me.photo
+			    ,me.mstat
+			    ,me.floc
+			    ,me.fdate
+			    ,me.ftime
+			    ,bo.titl
+			    ,bo.cont
+			    ,fi.link
+			    ,fi.type
+		  from link li
+		  join meet me
+		    on li.mtnum = me.mtnum
+		  left outer join board bo
+		    on bo.mnum = li.mnum
+		   and bo.mtnum = li.mtnum
+		  left outer join file fi
+		    on fi.bnum = bo.bnum
+		 where li.mtnum = #{meetingNo}
+	     and li.mnum = #{memberNo};
+  </select>
 
 </mapper>

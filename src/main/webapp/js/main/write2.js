@@ -44,7 +44,7 @@ $("#Go-btn").click(function(e) {
 		"photo" : $('#photo-path').val()
 	}
 
-	$.post(serverRoot + '/meeting/add.json', param,function(ajaxResult) {
+	$.post(serverRoot + '/html/meeting/add.json', param,function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			alert(ajaxResult.data);
 			return;

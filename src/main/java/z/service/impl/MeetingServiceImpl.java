@@ -12,7 +12,8 @@ import z.service.MeetingService;
 @Service
 public class MeetingServiceImpl implements MeetingService {
   @Autowired MeetingDao meetingDao;
-
+  
+  // 모임 개설시 방정보 삽입.
   @Override
   public int add(Meeting meeting) throws Exception {
     meetingDao.insertMeet(meeting);
@@ -20,6 +21,7 @@ public class MeetingServiceImpl implements MeetingService {
     return meetingDao.insertLink(meeting);
   }
   
+  // 모임 리스트 가져오기.
   @Override
   public List<Meeting> getListMeetingCards(int memberNo) throws Exception {
     return meetingDao.getListMeetingCards(memberNo);
