@@ -152,12 +152,13 @@ public class MemberJsonControl {
   
   @RequestMapping("html/mypage/memberdelete")
   public AjaxResult delete(int memberNo, HttpServletRequest request, HttpSession session) throws Exception {
+    session.invalidate(); // 세션 초기화
+    
     int count = memberService.memberdelete(memberNo);
     if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
     }
     
-    session.invalidate(); // 세션 초기화
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }
 }
