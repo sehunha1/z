@@ -20,11 +20,10 @@
     where m.email=#{value}
   </select>
 
-  <select id="countByNo" parameterType="int" resultType="int">
+  <select id="getBoardNo" parameterType="int" resultType="int">
     select count(*)
-    from mgr mr 
-      inner join memb m on mr.mrno=m.mno
-    where mr.mrno=#{value}
+    from board b 
+    where b.bnum=#{value}
   </select>
   
   <select id="getList" parameterType="int" resultMap="board-map">
