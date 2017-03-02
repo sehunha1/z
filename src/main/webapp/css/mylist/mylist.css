@@ -17,7 +17,7 @@
   position: absolute;
   right: -40px;
   top: -1px;
-  background: url("../../image/mylist/ico_calendar.png") no-repeat 50% 50%;
+  /*background: url("../../image/mylist/ico_calendar.png") no-repeat 50% 50%;*/
   background-size: cover;
 }
 #content .view_my_meeting select {
@@ -28,6 +28,11 @@
   float:right;
   display:inline-block;
   margin-top:25px;
+  margin-left: 610px;
+}
+#content .view_my_meeting button {
+  float:right;
+  margin-top: 24px;
 }
 #content .view_my_meeting .meeting_list {
   *zoom: 1;

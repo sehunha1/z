@@ -74,3 +74,7 @@ $("select").on("change", function() {
 $("a").click(function(e) {
     e.preventDefault();
 });
+
+$("button").click(function(e) {
+    location.href = serverRoot + "/html/main/write2.html";
+});
