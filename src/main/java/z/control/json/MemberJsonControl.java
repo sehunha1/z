@@ -152,7 +152,7 @@ public class MemberJsonControl {
   
   @RequestMapping("html/mypage/memberdelete")
   public AjaxResult delete(int memberNo, HttpServletRequest request, HttpSession session) throws Exception {
-    int count = memberService.delete(memberNo);
+    int count = memberService.memberdelete(memberNo);
     if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
     }

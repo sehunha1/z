@@ -26,6 +26,7 @@ public interface MemberDao {
   int update(Member member) throws Exception;
   int countByNo(int memberNo);
   int updatelogin(Member member);
-  int delete(int no);
+  int memberdelete(int no);
   int getOneByEmailPasswordCount(HashMap<String, String> paramMap);
+  int linkmemberdelete(int no);
 }

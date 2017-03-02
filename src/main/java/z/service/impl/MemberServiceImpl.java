@@ -79,14 +79,15 @@ public class MemberServiceImpl implements MemberService {
   }
   
   
-  public int delete(int no) throws Exception {
+  public int memberdelete(int no) throws Exception {
     if (memberDao.countByNo(no) == 0) {
       throw new Exception("회원을 찾지 못했습니다.");
     }
     
-    int count = memberDao.delete(no);
+    int count1 = memberDao.linkmemberdelete(no);
+    int count2 = memberDao.memberdelete(no);
 
-    return count;
+    return (count1 & count2);
   }
   
   public int countEmailPassword(String email, String password) throws Exception {

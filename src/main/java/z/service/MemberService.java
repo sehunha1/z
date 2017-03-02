@@ -16,6 +16,6 @@ public interface MemberService {
   int updateFBphoto(Member member);
   int update(Member member) throws Exception;
   int updatelogin(Member member) throws Exception;
-  int delete(int memberNo) throws Exception;
+  int memberdelete(int memberNo) throws Exception;
   int countEmailPassword(String email, String password) throws Exception;
 }
