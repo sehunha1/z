@@ -64,14 +64,17 @@ public class BoardServiceImpl implements BoardService {
 
   @Override
   public int delete(int no) throws Exception {
-    // TODO Auto-generated method stub
-    return 0;
+    if (boardDao.getBoardNo(no) == 0) { 
+      //memberDao.insert(member);
+      throw new Exception("게시물을 찾지 못했습니다");
+    } 
+    int count = boardDao.delete(no);
+    return count;
   }
 
 
   @Override
   public int update(Board board) throws Exception {
-    // TODO Auto-generated method stub
-    return 0;
+    return boardDao.update(board);
   }
 }

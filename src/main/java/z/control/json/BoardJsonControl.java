@@ -81,28 +81,29 @@ public class BoardJsonControl {
   }*/
 
   
-  @RequestMapping("/member/delete")
-  public AjaxResult delete(int memberNo, HttpServletRequest request) throws Exception {
-    int count = boardService.delete(memberNo);
+  @RequestMapping("/html/meetmain/delete")
+  public AjaxResult delete(int boardNo) throws Exception {
+    System.out.println("받은 보드넘버 = " + boardNo);
+    int count = boardService.delete(boardNo);
     if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 학생이 없습니다.");
+      return new AjaxResult(AjaxResult.FAIL, "게시글이 없습니다.");
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }
   
-  @RequestMapping("/member/update")
+  @RequestMapping("/html/meetmain/update")
   public AjaxResult update(Board board, MultipartFile photo) throws Exception {
     
-    if (photo != null && photo.getSize() > 0) { // 파일이 업로드 되었다면,
-      String newFilename = MultipartUtil.generateFilename();
-      photo.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
-      board.setFilePath(newFilename);
-    }
+    //if (photo != null && photo.getSize() > 0) { // 파일이 업로드 되었다면,
+     // String newFilename = MultipartUtil.generateFilename();
+     // photo.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
+     // board.setFilePath(newFilename);
+    //}
     
     int count = boardService.update(board);
     
     if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 학생이 없습니다.");
+      return new AjaxResult(AjaxResult.FAIL, "해당 게시물이 없습니다.");
     }
     
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
