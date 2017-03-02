@@ -3,6 +3,7 @@ package z.control.json;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,7 +114,7 @@ public class MemberJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
-  @RequestMapping("html/mypage/updatemember")
+  @RequestMapping("html/mypage/updatemember") 
   public AjaxResult update(HttpSession session,  Member member) throws Exception {
     int count = memberService.update(member);
 
@@ -125,8 +126,43 @@ public class MemberJsonControl {
     session.setAttribute("member", member);
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
   }
-}
   
+  @RequestMapping("html/mypage/updateemailpassword")
+  public AjaxResult updatelogin(HttpSession session,  Member member) throws Exception {
+    int count = memberService.updatelogin(member);
+
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "멤버가 없습니다.");
+    }
+
+    //session.invalidate();
+    session.setAttribute("member", member);
+    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+  }
+  
+  @RequestMapping("html/mypage/membercheck")
+  public AjaxResult membercheck(String email, String password) throws Exception {
+    int count = memberService.countEmailPassword(email, password);
+
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "멤버가 없습니다.");
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "멤버가 있습니다.");
+  }
+  
+  @RequestMapping("html/mypage/memberdelete")
+  public AjaxResult delete(int memberNo, HttpServletRequest request, HttpSession session) throws Exception {
+    int count = memberService.delete(memberNo);
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
+    }
+    
+    session.invalidate(); // 세션 초기화
+    return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
+  }
+}
+
+
   
   /*
   @RequestMapping("/member/delete")

@@ -14,10 +14,13 @@
 	<div class='container' style='overflow: hidden;'>
    <input type='hidden' id='memberNo'/>
    <input type='hidden' id='email'/>
+   <input type='hidden' id='nameback'/>
+   <input type='hidden' id='pathback'/>
+   <input type='hidden' id='passback'/>
 
 
 		<div id='tab'
-			style='float: left; width: 150px; height: 300px; margin-left: 10px; margin-right: 20px; position: relative;'>
+			style='float: left; width: 150px; height: 600px; margin-left: 10px; margin-right: 20px; position: relative;'>
 			<ul class="nav nav-pills nav-stacked"
 				style='font-family: Noto Sans KR, sans-serif;'>
 				<li class="active"><a data-toggle="tab" href="#menu1">개인 정보
@@ -31,7 +34,7 @@
 			<div id="menu1" class="tab-pane fade in active">
 				<h2 style=''>개인 정보 변경</h2>
 				<hr>
-				<form id="updateform" method="post" class="form-horizontal"
+				<form id="updateform1" method="post" class="form-horizontal"
 					action="">
 					<div class="form-group"
 						style='overflow: hidden; margin-left: 200px;'>
@@ -62,10 +65,69 @@
 
 
 
-			<div id="menu2" class="tab-pane fade">456</div>
+			<div id="menu2" class="tab-pane fade">
+			<h2 style=''>로그인 정보 변경</h2>
+        <hr>
+        <form id="updateform2" method="post" class="form-horizontal"
+          action="">
+              <div class="form-group" style='overflow:hidden;'>
+                <label class="col-sm-2 control-label" for="email1" >이메일</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" onChange="isCheck.value='N'" />
+                </div>
+                  <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left;'>
+                  <input type='hidden' id='isCheck' value="N">
+              </div>
+              
+              
+              <div class="form-group" style='margin-left:30px; height:100%; overflow:hidden;'> 
+                <label class="col-sm-2 control-label" for="password1">암호</label>
+                <div class="col-sm-5">
+                  <input type="password" class="form-control" id="password1" name="password1" placeholder="암호" />
+                </div>
+              </div>
+
+              <div class="form-group" style='height:100%; overflow:hidden;'>
+                <label class="col-sm-2 control-label" for="confirm_password1">암호 확인</label>
+                <div class="col-sm-5">
+                  <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="암호 확인" />
+                </div>
+              </div>
+              
+               <div class="form-group" style='margin-top:90px; margin-left:30px; height:100%; overflow:hidden;'>
+                  <button type="submit" class="btn btn-primary" name="update" value="변경하기">변경 하기</button>
+              </div>
+        </form>
+			
+			</div>
 		  
 		  
-		  <div id="menu3" class="tab-pane fade">789</div>
+		  <div id="menu3" class="tab-pane fade">
+		  <h2 style=''>회원탈퇴</h2>
+		  <h4>회원 탈퇴를 하시려면 이메일 주소와 비밀번호를 한번 더 입력해주세요</h4>
+		  <hr>
+              <div class="form-group" style='overflow:hidden;'>
+                <label class="col-sm-2 control-label" for="emailout" >이메일</label>
+	                <div class="col-sm-5">
+	                  <input type="text" class="form-control" id="emailout" name="emailout" placeholder="이메일"/>
+	                </div>
+                </div>
+              
+              
+              <div class="form-group" style='margin-left:30px; height:100%; overflow:hidden;'> 
+                <label class="col-sm-2 control-label" for="passwordout">암호</label>
+                <div class="col-sm-5">
+                  <input type="password" class="form-control" id="passwordout" name="passwordout" placeholder="암호" />
+                </div>
+              </div>
+              
+               <div class="form-group" style='margin-top:90px; margin-left:30px; height:100%; overflow:hidden;'>
+                  <button type="button" class="btn btn-primary" name="out" id='out-btn'>탈퇴하기</button>
+              </div>
+		  
+		  </div>
+      
+      
       </div>
 
 	</div>
@@ -108,9 +170,14 @@
 		
 		<script src="../../js/jquery.cookie.js"></script>
 
-	<script>
+
+</body>
+</html>
+
+<!-- 
+  <script>
 $('#photo').fileupload({
-	 url: '../../common/fileupload.json', // 서버에 요청할 URL
+    url: '../../common/fileupload.json', // 서버에 요청할 URL
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
     sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
     singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
@@ -121,7 +188,7 @@ $('#photo').fileupload({
     previewMaxHeight: 800,  // 미리보기 이미지 높이 
     previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
     done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-    	 $('#photo-path').val(data.result.data[0]);
+       $('#photo-path').val(data.result.data[0]);
     }, 
     processalways: function(e, data) {
         //console.log('fileuploadprocessalways()...', data.files.length, data.index);
@@ -137,39 +204,53 @@ $('#photo').fileupload({
 
 </script>
 
-	<script type="text/javascript">
-    $.validator.setDefaults( {
-      submitHandler: function () {
-    	  
-        var param = {
-              "memberNo": $('#memberNo').val(),
-              "email": $('#email').val(),
-              "name": $('#username1').val(),
-              "photo": $('#photo-path').val()
-              //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
-              //"photo": $("#photo").attr('src', 'html/upload/' + val())
-          
-          };
+<script>
+$('#emailcheck').click(function() {
+     
+     var email = $("#email1").val();
+     //var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+     var regex=/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
-          $.post('updatemember.json' , param, function(ajaxResult) {
-            if (ajaxResult.status == "fail") {
-              sweetAlert("변경 실패", ajaxResult.data, 'error');
-              return;
-            }
-            
-            swal({
-                title: "변경 완료!",
-                text: "변경을 완료하였습니다.",
-                type: "success",
-              },
-              function(){
-            	  event.preventDefault(); 
-            	  location.href='../main/main.html?ver=1';
+     
+      $.getJSON('../auth/checkEmail.json?email=' + $("#email1").val(), function(ajaxResult) {
+        var status = ajaxResult.status;
+        
+        
+        
+        if(regex.test(email) == false) {  
+            sweetAlert("경고", "이메일 형식에 맞게 입력하세요", 'warning');
+            $('#isCheck').val('N');
+        } 
+
+        else if (status == "success") {
+           $('#isCheck').val('Y');
+           //sweetAlert("OK!", ajaxResult.data, 'success');
+           swal({
+                  title: "OK!",
+                  text: ajaxResult.data,
+                  type: "success",
+                },
+                function(){
+                  $('#email1').focus();
                 });
-          }, 'json'); // post();
-      }
-    } );
+           //setInterval('autoRefresh_div()', 500); // 5초 후에 div 새로 고침
+           //document.getElementById('email').reload();
+           //$("#emaildiv").load(window.location.href+" #emaildiv");
+           
+        } /*else if ($("#email1").val() == '' || $("#email1").val() == 'undefined') {
+          sweetAlert("경고", "이메일을 입력하세요", 'warning');
+            $('#isCheck').val('N');
+        }*/
+        else if (status != "success") {
+          sweetAlert("Fail!", ajaxResult.data, 'error');
+          $('#isCheck').val('N');
+          return;
+        } 
+      });
+  });
+</script>
 
+  <script type="text/javascript">
     $( document ).ready( function () {
       
       // 이메일 정규표현식 유효성 검사
@@ -183,6 +264,18 @@ $('#photo').fileupload({
         $.validator.addMethod("namez", function(value, element) {
            return this.optional(element) || /^[가-힝]{2,}$/i.test(value);
         }, "한글로만 두 글자 이상 입력 하세요. ex)김구");
+        
+        // 암호 같은지 검사
+        $.validator.addMethod("passz", function(value, element) {
+          var passback = $('#passback').val();
+          var password = $('#password1').val();
+          
+          if (passback == password) {
+            return false;
+          } else {
+            return true;
+          }
+        }, "현재 사용하는 암호와 다른 암호를 입력하세요");
     
     
       
@@ -199,7 +292,7 @@ $('#photo').fileupload({
           }; 
       }, "이메일 중복 여부를 체크하세요"); 
       
-      $( "#updateform" ).validate( {
+      $( "#updateform1" ).validate( {
         rules: {
           firstname1: "required",
           lastname1: "required",
@@ -208,21 +301,6 @@ $('#photo').fileupload({
             namez: true,
             minlength: 2
           },
-          password1: {
-            required: true,
-            minlength: 6
-          },
-          confirm_password1: {
-            required: true,
-            minlength: 6,
-            equalTo: "#password1"
-          },
-          email1: {
-            required: true,
-            emailz: true,
-            checkemail: true,
-            //changeeval: true
-          },
           agree1: "required"
         },
         messages: {
@@ -230,21 +308,6 @@ $('#photo').fileupload({
             required: "이름을 입력하세요",
             minlength: "이름은 두 글자 이상 입력하세요"
           },
-          password1: {
-            required: "암호를 입력하세요",
-            minlength: "암호는 여섯 글자 이상 입력하세요"
-          },
-          confirm_password1: {
-            required: "암호 확인란을 입력하세요",
-            minlength: "암호는 여섯 글자 이상 입력하세요",
-            equalTo: "암호가 맞는지  확인하세요"
-          },
-          email1: {
-            required:"이메일을 입력하세요.",
-            checkemail:"중복 여부를 체크하세요"
-            //customemail:"올바른 형식의 이메일을 입력하세요.",
-          }
-          //agree1: "Please accept our policy"
         },
         errorElement: "em",
         errorPlacement: function ( error, element ) {
@@ -279,9 +342,140 @@ $('#photo').fileupload({
         unhighlight: function ( element, errorClass, validClass ) {
           $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
           $( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
-        }
-      } );
+        },
+            submitHandler: function () {
+              var param = {
+                    "memberNo": $('#memberNo').val(),
+                    "email": $('#email').val(),
+                    "name": $('#username1').val(),
+                    "photo": $('#photo-path').val()
+                    //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
+                    //"photo": $("#photo").attr('src', 'html/upload/' + val())
+                
+                };
+
+                $.post('updatemember.json' , param, function(ajaxResult) {
+                  if (ajaxResult.status == "fail") {
+                    sweetAlert("변경 실패", ajaxResult.data, 'error');
+                    return;
+                  }
+                  
+                  swal({
+                      title: "변경 완료!",
+                      text: "변경을 완료하였습니다.",
+                      type: "success",
+                    },
+                    function(){
+                      event.preventDefault(); 
+                      location.href='../main/main.html?ver=1';
+                      });
+                }, 'json'); // post();
+            }
+      } ); //update1
+      
+      
+      $( "#updateform2" ).validate( {
+        rules: {
+              password1: {
+                required: true,
+                minlength: 6,
+                passz: true
+              },
+              confirm_password1: {
+                required: true,
+                minlength: 6,
+                equalTo: "#password1",
+                passz: true
+              },
+              email1: {
+                required: true,
+                emailz: true,
+                checkemail: true,
+                //changeeval: true
+              },
+            },
+            messages: {
+              password1: {
+                required: "암호를 입력하세요",
+                minlength: "암호는 여섯 글자 이상 입력하세요"
+              },
+              confirm_password1: {
+                required: "암호 확인란을 입력하세요",
+                minlength: "암호는 여섯 글자 이상 입력하세요",
+                equalTo: "암호가 맞는지  확인하세요"
+              },
+              email1: {
+                required:"이메일을 입력하세요.",
+                checkemail:"중복 여부를 체크하세요"
+                //customemail:"올바른 형식의 이메일을 입력하세요.",
+              }
+            },
+          errorElement: "em",
+          errorPlacement: function ( error, element ) {
+            // Add the `help-block` class to the error element
+            error.addClass( "help-block" );
+
+            // Add `has-feedback` class to the parent div.form-group
+            // in order to add icons to inputs
+            element.parents( ".col-sm-5" ).addClass( "has-feedback" );
+
+            if ( element.prop( "type" ) === "checkbox" ) {
+              error.insertAfter( element.parent( "label" ) );
+            } else {
+              error.insertAfter( element );
+            }
+
+            // Add the span element, if doesn't exists, and apply the icon classes to it.
+            if ( !element.next( "span" )[ 0 ] ) {
+              $( "<span class='glyphicon glyphicon-remove form-control-feedback'></span>" ).insertAfter( element );
+            }
+          },
+          success: function ( label, element ) {
+            // Add the span element, if doesn't exists, and apply the icon classes to it.
+            if ( !$( element ).next( "span" )[ 0 ] ) {
+              $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+            }
+          },
+          highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            $( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
+          },
+          unhighlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            $( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
+          },
+              submitHandler: function () {
+                var param = {
+                      "memberNo": $('#memberNo').val(),
+                      "email": $('#email1').val(),
+                      "name": $('#nameback').val(),
+                      "password": $('#password1').val(),
+                      "photo": $('#pathback').val()
+                  };
+
+                  $.post('updateemailpassword.json', param, function(ajaxResult) {
+                    if (ajaxResult.status == "fail") {
+                      sweetAlert("변경 실패", ajaxResult.data, 'error');
+                      return;
+                    }
+                    
+                    swal({
+                        title: "변경 완료!",
+                        text: "변경을 완료하였습니다.",
+                        type: "success",
+                      },
+                      function(){
+                        event.preventDefault(); 
+                        location.href='../main/main.html?ver=1';
+                        });
+                  }, 'json'); // post();
+              }
+        } ); //update2
+        
+      
+      
+      
     } );
   </script>
-</body>
-</html>
+
+ -->

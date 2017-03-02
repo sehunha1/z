@@ -1,5 +1,6 @@
 package z.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,14 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.update(member);
   }
   
+  public int updatelogin(Member member) throws Exception {
+    if (memberDao.countByNo(member.getMemberNo()) == 0) {
+      throw new Exception("회원을 찾지 못했습니다.");
+    }
+    memberDao.updatelogin(member);
+    return memberDao.updatelogin(member);
+  }
+  
   public int chkMbEmail(String email) throws Exception {
    
     return memberDao.chkMbEmail(email);
@@ -69,20 +78,29 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.updateFBphoto(member);
   }
   
-  /*
+  
   public int delete(int no) throws Exception {
     if (memberDao.countByNo(no) == 0) {
-      throw new Exception("학생을 찾지 못했습니다.");
+      throw new Exception("회원을 찾지 못했습니다.");
     }
     
     int count = memberDao.delete(no);
 
-    if (managerDao.countByNo(no) == 0 && teacherDao.countByNo(no) == 0) {
-      memberDao.delete(no);
-    }
-    
     return count;
-  }*/
+  }
+  
+  public int countEmailPassword(String email, String password) throws Exception {
+    HashMap<String,String> paramMap = new HashMap<>();
+    paramMap.put("email", email);
+    paramMap.put("password", password);
+    
+    int count = memberDao.getOneByEmailPasswordCount(paramMap);
+    
+    if (count == 0) {
+      return 0;
+    }
+      return count;
+  }
 }
 
 

@@ -1,6 +1,7 @@
 package z.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import z.domain.Member;
@@ -24,4 +25,7 @@ public interface MemberDao {
   int updateFBphoto(Member member);
   int update(Member member) throws Exception;
   int countByNo(int memberNo);
+  int updatelogin(Member member);
+  int delete(int no);
+  int getOneByEmailPasswordCount(HashMap<String, String> paramMap);
 }
