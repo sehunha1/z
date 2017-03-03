@@ -24,7 +24,7 @@
 		<!-- <collection property="boardList" ofType="board">
 			<id column="bnum" property="boardNo"/>
 			<result column="mno" property="memberNo"/>
-			<result column="mtnum" property="meetingNo"/>
+			<result column="mtnum" property="meetNo"/>
 			<result column="titl" property="title"/>
 			<result column="cont" property="content"/>
 			<collection property="addFileList" ofType="addFile">
@@ -81,7 +81,8 @@
 		select * from meet where mtnum=#{value};
 	</select>
 	
-<!-- 	<select id="getDetailFinish" parameterType="int" resultMap="meeting-map">
+	<!-- 완료 모임 상세 정보 가져오기 -->
+ 	<!-- <select id="getDetailMeeting" parameterType="int" resultMap="meeting-map">
 	  select me.titl
 		      ,me.cont
 			    ,me.mtdesc
@@ -91,6 +92,7 @@
 			    ,me.floc
 			    ,me.fdate
 			    ,me.ftime
+			    ,bo.mnum
 			    ,bo.titl
 			    ,bo.cont
 			    ,fi.link
@@ -99,8 +101,7 @@
 		  join meet me
 		    on li.mtnum = me.mtnum
 		  left outer join board bo
-		    on bo.mnum = li.mnum
-		   and bo.mtnum = li.mtnum
+		    on bo.mtnum = li.mtnum
 		  left outer join file fi
 		    on fi.bnum = bo.bnum
 		 where li.mtnum = #{meetingNo}

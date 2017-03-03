@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Meeting implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int meetBossNo; ///////// 회원(방장) 일련번호
+  protected int meetBossNo; ///////// 방장 일련번호
   protected int meetingNo; ////////// 모임 일련번호
   protected String title; /////////// 모임명
   protected String content; ///////// 모임상세설명
@@ -23,7 +23,7 @@ public class Meeting implements Serializable {
   protected String time; //////////// 확정 시간
   protected String sdate; /////////// 투표 가능 시작일
   protected String edate; /////////// 투표 가능 종료일
-  protected Board[] boardList; ////////// 게시글
+  protected Board[] boardList; ////// 게시글
 
   public int getMeetBossNo() {
     return meetBossNo;
