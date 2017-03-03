@@ -16,7 +16,7 @@
   
   <div id="content">
     <div id="meeting_ready">
-      <h1 class="tit">레고동호회</h1>
+      <h1 class="tit"></h1>
       <div class="meeting_info">
         <p class="date">확정대기중</p>
         <p class="member">
@@ -86,6 +86,9 @@
   
   <div id="footer"></div>
 
+  <script id="infoTemplate" type="text/x-handlebars-template">
+    {{title}}
+  </script>
   <script id="bossTemplate" type="text/x-handlebars-template">
     {{#each listMeetingMembBoss}}
     <li class="item">
