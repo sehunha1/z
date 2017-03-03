@@ -1,3 +1,15 @@
+var meetingNo = window.location.search.split("&")[1].substring(10);
+
+$.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
+    var status = ajaxResult.status;
+    if (status != "success") return;
+    var oneMeeting = ajaxResult.data;
+
+    var template = Handlebars.compile($("#infoTemplate").html());
+    var div = $("#wrap .conttext1");
+    div.append(template(oneMeeting));
+});
+
 $(function() {
 	$.get("../../html/header.html", function(result) {
 		$("#header").html(result);
@@ -14,7 +26,7 @@ $(function() {
     $.get("../../html/sidebar.html", function(result) {
 	    $("#sidebar").html(result);
 
-        var meetingNo = window.location.search.split("&")[1].substring(10);
+        // var meetingNo = window.location.search.split("&")[1].substring(10);
         $.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
             var status = ajaxResult.status;
 

@@ -37,7 +37,7 @@ public class MeetingJsonControl {
     return new AjaxResult(AjaxResult.FAIL, "방 개설 실패.");
   }
 
-  @RequestMapping("html/detail/getOneMeeting")
+  @RequestMapping("html/getOneMeeting")
   public AjaxResult getOneMeeting(int meetingNo) throws Exception {
     Meeting oneMeeting = meetingService.getOneMeeting(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, oneMeeting);

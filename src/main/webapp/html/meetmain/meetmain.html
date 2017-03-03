@@ -42,14 +42,7 @@
 	<div class='container'>
 		<div id="wrap">
 			<div id="sidebar"></div>
-        <div class='conttext1' style='float:left; margin-left:10px;'>
-        <font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>신년회</b></font><br>
-        <font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">늦은 망년회 겸 신년회를 하려고 합니다. 다들 투표해 주세요!</font>
-        <br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:회식  </font>
-        <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px;  font-size:12px;'> |모임시간:2시간 </font>
-        <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'>|기간:1월중 </font>
-        <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:1월25일까지 <font color='red'><b>(D-3)</b></font> </font>
-      </div>
+        <div class='conttext1' style='float:left; margin-left:10px;'></div>
         <div style='float: right;'>
         <font>공유하기</font>
         <br>
@@ -335,6 +328,13 @@ function share(){
 
 
   <!-- 달력 js 끝 -->
+
+<script id="infoTemplate" type="x-handlebars-template">
+	<font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>{{title}}</b></font><br>
+	<font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">{{content}}</font>
+	<br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:{{category}}  </font>
+	<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:{{deadline}} <font color='red'><b></b></font> </font>
+</script>
 </body>
 </html>
 

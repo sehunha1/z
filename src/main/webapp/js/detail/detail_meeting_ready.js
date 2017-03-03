@@ -1,6 +1,6 @@
 var meetingNo = window.location.search.split("&")[1].substring(10);
 
-$.getJSON("getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
+$.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var status = ajaxResult.status;
     if (status != "success") return;
     var oneMeeting = ajaxResult.data;
@@ -14,6 +14,10 @@ $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, functio
   var status = ajaxResult.status;
   if (status != "success") return;
   var listMeetingMembBoss = ajaxResult.data;
+  for (var i = 0; i < listMeetingMembBoss.length; i++) {
+    if (listMeetingMembBoss[i].photo.length < 2)
+      listMeetingMembBoss[i].photo = "../../image/profile-default.png";
+  }
 
   var template = Handlebars.compile($("#bossTemplate").html());
   var ul = $(".member_list");
@@ -23,6 +27,10 @@ $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, functio
     var status = ajaxResult.status;
     if (status != "success") return;
     var listMeetingMembNotBoss = ajaxResult.data;
+    for (var i = 0; i < listMeetingMembNotBoss.length; i++) {
+      if (listMeetingMembNotBoss[i].photo.length < 2)
+        listMeetingMembNotBoss[i].photo = "../../image/profile-default.png";
+    }
 
     var template = Handlebars.compile($("#notbossTemplate").html());
     var ul = $(".member_list");
