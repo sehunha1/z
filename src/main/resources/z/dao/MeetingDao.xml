@@ -21,7 +21,7 @@
 		<result column="ftime" 	 	 property="time" />
 		<result column="sdate" 	 	 property="sdate" />
 		<result column="edate" 	 	 property="edate" />
-		<collection property="boardList" ofType="board">
+		<!-- <collection property="boardList" ofType="board">
 			<id column="bnum" property="boardNo"/>
 			<result column="mno" property="memberNo"/>
 			<result column="mtnum" property="meetingNo"/>
@@ -32,7 +32,7 @@
 	      <result column="link" property="filePath"/>
 	      <result column="type" property="fileDesc"/>
 			</collection>
-		</collection>
+		</collection> -->
 	</resultMap>
 
 	<!-- 방 개설 시 meet 테이블 데이터 삽입 -->
@@ -76,7 +76,7 @@
 		from link left outer join meet on link.mtnum=meet.mtnum left outer join memb on link.mnum=memb.mnum where link.mnum=#{value};
 	</select>
 	
-	<select id="getDetailFinish" parameterType="int" resultMap="meeting-map">
+<!-- 	<select id="getDetailFinish" parameterType="int" resultMap="meeting-map">
 	  select me.titl
 		      ,me.cont
 			    ,me.mtdesc
@@ -100,6 +100,6 @@
 		    on fi.bnum = bo.bnum
 		 where li.mtnum = #{meetingNo}
 	     and li.mnum = #{memberNo};
-  </select>
+  </select> -->
 
 </mapper>
