@@ -37,22 +37,6 @@
       <div class="section date_result">
         <p class="tit">일정투표결과</p>
         <ul class="result_list date_result_list">
-          <li class="item">
-            <span class="info1">2017년 1월 29일 2시</span>
-            <span class="info2">(20/23)</span>
-          </li>
-          <li class="item">
-            <span class="info1">2017년 1월 29일 2시</span>
-            <span class="info2">(20/23)</span>
-          </li>
-          <li class="item">
-            <span class="info1">2017년 1월 29일 2시</span>
-            <span class="info2">(20/23)</span>
-          </li>
-          <li class="item">
-            <span class="info1">2017년 1월 29일 2시</span>
-            <span class="info2">(20/23)</span>
-          </li>
         </ul>
       </div>
   
@@ -107,6 +91,14 @@
         <img src="../upload/{{photo}}" alt=""/>
       </div>
       <p class="name">{{name}}</p>
+    </li>
+    {{/each}}
+  </script>
+  <script id="dateTemplate" type="text/x-handlebars-template">
+    {{#each dateDuplication}}
+    <li class="item">
+      <span class="info1">{{calendarDate}}</span>
+      <span class="info2"></span>
     </li>
     {{/each}}
   </script>
