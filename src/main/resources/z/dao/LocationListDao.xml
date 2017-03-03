@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="z.dao.LocationListDao">
+
+	<resultMap type="locationList" id="locationList-map">
+		<id column="ltnum"			 property="locationListNo" />
+		<result column="mnum"   	 property="memberNo" />
+		<result column="mtnum" 	 	 property="meetingNo" />
+		<result column="lname"		 property="locationListName" />
+		<result column="addr"  	 property="locationListAddress" />
+	</resultMap>
+
+	<select id="getLocationListDuplication" parameterType="int" resultMap="locationList-map">
+		select list.lname, list.addr from list where mtnum=#{value} group by list.addr having count(*) >= (select count(*) from list where mtnum=#{value} group by list.addr desc limit 1);
+	</select>
+</mapper>

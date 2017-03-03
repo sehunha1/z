@@ -38,6 +38,26 @@ $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, functio
   });
 });
 
+$.getJSON("getDateDuplication.json?meetingNo=" + meetingNo, function(ajaxResult) {
+  var status = ajaxResult.status;
+  if (status != "success") return;
+  var dateDuplication = ajaxResult.data;
+
+  var template = Handlebars.compile($("#dateTemplate").html());
+  var ul = $(".result_list.date_result_list");
+  ul.append(template({"dateDuplication":dateDuplication}));
+});
+
+$.getJSON("getLocationListDuplication.json?meetingNo=" + meetingNo, function(ajaxResult) {
+  var status = ajaxResult.status;
+  if (status != "success") return;
+  var locationListDuplication = ajaxResult.data;
+
+  var template = Handlebars.compile($("#locationListTemplate").html());
+  var ul = $(".result_list.place_result_list");
+  ul.append(template({"locationListDuplication":locationListDuplication}));
+});
+
 $(function() {
   $('#btn_toggle_member_list').on('click', function() {
     $('.member_list_wrap').toggleClass('on');

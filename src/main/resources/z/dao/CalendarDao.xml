@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="z.dao.CalendarDao">
+
+	<resultMap type="calendar" id="calendar-map">
+		<id column="cnum"			 property="calendarNo" />
+		<result column="mnum"   	 property="memberNo" />
+		<result column="mtnum" 	 	 property="meetingNo" />
+		<result column="cdate"		 property="calendarDate" />
+		<result column="ctime"  	 property="calendarTime" />
+	</resultMap>
+
+	<select id="getDateDuplication" parameterType="int" resultMap="calendar-map">
+		select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >= (select count(*) from cal where mtnum=#{value} group by cdate desc limit 1);
+	</select>
+</mapper>
