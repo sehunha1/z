@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import z.dao.BoardDao;
 import z.dao.MemberDao;
 import z.domain.Board;
+import z.domain.Link;
 import z.service.BoardService;
 
 @Service
@@ -37,6 +38,20 @@ public class BoardServiceImpl implements BoardService {
     }
     */
     return boardDao.insert(board);
+  }
+  
+  public int fileadd(Link link) throws Exception {
+    
+    /*
+    if (memberDao.count(member.getEmail()) == 0) { 
+      //memberDao.insert(member);
+      
+    } else {
+      member = memberDao.get OneByEmail(member.getEmail());
+      member.setMemberNo(member.getMemberNo());
+    }
+    */
+    return boardDao.insertlink(link);
   }
   /*
   public int delete(int no) throws Exception {

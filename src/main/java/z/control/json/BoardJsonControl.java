@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import z.domain.Board;
+import z.domain.Link;
 import z.service.BoardService;
 
 @RestController
@@ -73,7 +74,14 @@ public class BoardJsonControl {
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }*/
-
+  @RequestMapping("/html/meetmain/file")
+  public AjaxResult file(Link link) throws Exception {
+    
+    // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.
+    boardService.fileadd(link);
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
+  }
   
   @RequestMapping("/html/meetmain/delete")
   public AjaxResult delete(int boardNo) throws Exception {

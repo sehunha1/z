@@ -3,6 +3,7 @@ package z.dao;
 import java.util.ArrayList;
 
 import z.domain.Board;
+import z.domain.Link;
 
 public interface BoardDao{
   int count(String title) throws Exception;
@@ -14,7 +15,7 @@ public interface BoardDao{
   int delete(int boardNo) throws Exception;
   int detail(int boardNo) throws Exception;
   int getBoardNo(int boardNo) throws Exception;
-
+  int insertlink(Link link) throws Exception;
 
 }
 

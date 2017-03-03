@@ -101,7 +101,8 @@
 									placeholder="     글 제목을 입력해주세요."> <input type="email"
 									class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
 					  			<img id='photo-img' height='80' class='view-form'><input
-									id='link' type='file' multiple> 
+									id='link' name='files' type='file' multiple> 
+									<input id='link-path' type='hidden'>
 									<a id='new-btnn' href='#'class="btn btn-primary btn-sm">취소</a> 
 									<a id='new-btnnn' href='#' class="btn btn-primary btn-smm">저장</a><BR>
 							</div>
@@ -200,7 +201,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
           "memberNo": mnum,
           "meetNo": mtnum,
           "title": $('#titl').val(),
-          "content": $('#cont').val()
+          "content": $('#cont').val(),
+
 
         };
         console.log('파라미터 : ',param);
@@ -209,6 +211,14 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
             if (ajaxResult2.status != "success") {
               return;
             }
+        	var params = {
+        	"boardNo": bnumber,
+        	"link": $('#link-path').val(),
+        	"type": 'jpg';
+        	}
+        	$.post('file.json', params, function(ajaxResult2) {
+        		
+        	}
             location.reload();
         }, 'json'); // post();
     }); // click()   
@@ -316,9 +326,10 @@ $('#link').fileupload({
     previewMaxHeight: 800,  // 미리보기 이미지 높이 
     previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
     done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-      //console.log('done()...');
-      //console.log(data.result);
-        $('#photo-path').val(data.result.data[0]);
+      console.log('done()...');
+      console.log(data.result);
+        $('#link-path').val(data.result.data[0]);
+        console.log(data.result.data[0]);
     }, 
     processalways: function(e, data) {
         //console.log('fileuploadprocessalways()...', data.files.length, data.index);

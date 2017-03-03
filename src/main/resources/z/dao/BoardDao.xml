@@ -11,6 +11,7 @@
     <result column="cont"      property="content"/>
     <result column="mnum"      property="memberNo"/>
     <result column="mtnum"      property="meetNo"/>
+  
   </resultMap>
   
   <select id="count" parameterType="String" resultType="int">
