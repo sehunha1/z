@@ -100,8 +100,7 @@
 .member_list .item:nth-child(7),
 .member_list .item:nth-child(8),
 .member_list .item:nth-child(9),
-.member_list .item:nth-child(10),
-.member_list .item:nth-child(11) {
+.member_list .item:nth-child(10) {
   display:block;
 }
 

@@ -1,5 +1,3 @@
--- 20170302
-
 -- 회원
 DROP TABLE IF EXISTS `memb` RESTRICT;
 
@@ -29,319 +27,319 @@ DROP TABLE IF EXISTS `time` RESTRICT;
 
 -- 회원
 CREATE TABLE `memb` (
-  `mnum`  INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-  `email` VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
-  `name`  VARCHAR(50)  NOT NULL COMMENT '이름(닉네임)', -- 이름(닉네임)
-  `pwd`   VARCHAR(50)  NOT NULL COMMENT '암호', -- 암호
-  `photo` VARCHAR(255) NULL     COMMENT '사진', -- 사진
-  `kakao` VARCHAR(60)  NULL     COMMENT '카카오톡', -- 카카오톡
-  `fcbk`  VARCHAR(60)  NULL     COMMENT '페이스북' -- 페이스북
+    `mnum`  INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+    `email` VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
+    `name`  VARCHAR(50)  NOT NULL COMMENT '이름(닉네임)', -- 이름(닉네임)
+    `pwd`   VARCHAR(50)  NOT NULL COMMENT '암호', -- 암호
+    `photo` VARCHAR(255) NULL     COMMENT '사진', -- 사진
+    `kakao` VARCHAR(60)  NULL     COMMENT '카카오톡', -- 카카오톡
+    `fcbk`  VARCHAR(60)  NULL     COMMENT '페이스북' -- 페이스북
 )
 COMMENT '회원';
 
 -- 회원
 ALTER TABLE `memb`
-  ADD CONSTRAINT `PK_memb` -- 회원 기본키
-    PRIMARY KEY (
-      `mnum` -- 회원일련번호
-    );
+    ADD CONSTRAINT `PK_memb` -- 회원 기본키
+        PRIMARY KEY (
+            `mnum` -- 회원일련번호
+        );
 
 -- 회원 유니크 인덱스
 CREATE UNIQUE INDEX `UIX_memb`
-  ON `memb` ( -- 회원
-    `email` ASC -- 이메일
-  );
+    ON `memb` ( -- 회원
+        `email` ASC -- 이메일
+    );
 
 -- 회원 유니크 인덱스2
 CREATE UNIQUE INDEX `UIX_memb2`
-  ON `memb` ( -- 회원
-    `kakao` ASC -- 카카오톡
-  );
+    ON `memb` ( -- 회원
+        `kakao` ASC -- 카카오톡
+    );
 
 -- 회원 유니크 인덱스3
 CREATE UNIQUE INDEX `UIX_memb3`
-  ON `memb` ( -- 회원
-    `fcbk` ASC -- 페이스북
-  );
+    ON `memb` ( -- 회원
+        `fcbk` ASC -- 페이스북
+    );
 
 ALTER TABLE `memb`
-  MODIFY COLUMN `mnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '회원일련번호';
+    MODIFY COLUMN `mnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '회원일련번호';
 
 -- 모임
 CREATE TABLE `meet` (
-  `mtnum`  INTEGER      NOT NULL COMMENT '모임일련번호', -- 모임일련번호
-  `titl`   VARCHAR(255) NOT NULL COMMENT '모임명', -- 모임명
-  `cont`   TEXT         NULL     COMMENT '모임내용', -- 모임내용
-  `mtdesc` VARCHAR(50)  NOT NULL COMMENT '모임분류', -- 모임분류
-  `dline`  DATE         NOT NULL COMMENT '투표기한', -- 투표기한
-  `photo`  VARCHAR(255) NULL     COMMENT '사진', -- 사진
-  `mstat`  VARCHAR(30)  NOT NULL COMMENT '모임진행상태', -- 모임진행상태
-  `floc`   VARCHAR(255) NULL     COMMENT '확정장소', -- 확정장소
-  `fdate`  DATE         NULL     COMMENT '확정날짜', -- 확정날짜
-  `ftime`  VARCHAR(50)  NULL     COMMENT '확정시간' -- 확정시간
+    `mtnum`  INTEGER      NOT NULL COMMENT '모임일련번호', -- 모임일련번호
+    `titl`   VARCHAR(255) NOT NULL COMMENT '모임명', -- 모임명
+    `cont`   TEXT         NULL     COMMENT '모임내용', -- 모임내용
+    `mtdesc` VARCHAR(50)  NOT NULL COMMENT '모임분류', -- 모임분류
+    `dline`  DATE         NOT NULL COMMENT '투표기한', -- 투표기한
+    `photo`  VARCHAR(255) NULL     COMMENT '사진', -- 사진
+    `mstat`  VARCHAR(30)  NOT NULL COMMENT '모임진행상태', -- 모임진행상태
+    `floc`   VARCHAR(255) NULL     COMMENT '확정장소', -- 확정장소
+    `fdate`  DATE         NULL     COMMENT '확정날짜', -- 확정날짜
+    `ftime`  VARCHAR(50)  NULL     COMMENT '확정시간' -- 확정시간
 )
 COMMENT '모임';
 
 -- 모임
 ALTER TABLE `meet`
-  ADD CONSTRAINT `PK_meet` -- 모임 기본키
-    PRIMARY KEY (
-      `mtnum` -- 모임일련번호
-    );
+    ADD CONSTRAINT `PK_meet` -- 모임 기본키
+        PRIMARY KEY (
+            `mtnum` -- 모임일련번호
+        );
 
 ALTER TABLE `meet`
-  MODIFY COLUMN `mtnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '모임일련번호';
+    MODIFY COLUMN `mtnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '모임일련번호';
 
 -- 게시글
 CREATE TABLE `board` (
-  `bnum`  INTEGER      NOT NULL COMMENT '게시글일련번호', -- 게시글일련번호
-  `mnum`  INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-  `mtnum` INTEGER      NOT NULL COMMENT '모임일련번호', -- 모임일련번호
-  `titl`  VARCHAR(255) NOT NULL COMMENT '제목', -- 제목
-  `cont`  TEXT         NOT NULL COMMENT '내용' -- 내용
+    `bnum`  INTEGER      NOT NULL COMMENT '게시글일련번호', -- 게시글일련번호
+    `mnum`  INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+    `mtnum` INTEGER      NOT NULL COMMENT '모임일련번호', -- 모임일련번호
+    `titl`  VARCHAR(255) NOT NULL COMMENT '제목', -- 제목
+    `cont`  TEXT         NOT NULL COMMENT '내용' -- 내용
 )
 COMMENT '게시글';
 
 -- 게시글
 ALTER TABLE `board`
-  ADD CONSTRAINT `PK_board` -- 게시글 기본키
-    PRIMARY KEY (
-      `bnum` -- 게시글일련번호
-    );
+    ADD CONSTRAINT `PK_board` -- 게시글 기본키
+        PRIMARY KEY (
+            `bnum` -- 게시글일련번호
+        );
 
 ALTER TABLE `board`
-  MODIFY COLUMN `bnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '게시글일련번호';
+    MODIFY COLUMN `bnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '게시글일련번호';
 
 -- 장소선택
 CREATE TABLE `loc` (
-  `lnum`  INTEGER NOT NULL COMMENT '장소선택일련번호', -- 장소선택일련번호
-  `ltnum` INTEGER NOT NULL COMMENT '장소일련번호', -- 장소일련번호
-  `mnum`  INTEGER NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-  `mtnum` INTEGER NOT NULL COMMENT '모임일련번호' -- 모임일련번호
+    `lnum`  INTEGER NOT NULL COMMENT '장소선택일련번호', -- 장소선택일련번호
+    `ltnum` INTEGER NOT NULL COMMENT '장소일련번호', -- 장소일련번호
+    `mnum`  INTEGER NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+    `mtnum` INTEGER NOT NULL COMMENT '모임일련번호' -- 모임일련번호
 )
 COMMENT '장소선택';
 
 -- 장소선택
 ALTER TABLE `loc`
-  ADD CONSTRAINT `PK_loc` -- 장소선택 기본키
-    PRIMARY KEY (
-      `lnum` -- 장소선택일련번호
-    );
+    ADD CONSTRAINT `PK_loc` -- 장소선택 기본키
+        PRIMARY KEY (
+            `lnum` -- 장소선택일련번호
+        );
 
 -- 장소선택 유니크 인덱스
 CREATE UNIQUE INDEX `UIX_loc`
-  ON `loc` ( -- 장소선택
-    `ltnum` ASC, -- 장소일련번호
-    `mnum` ASC,  -- 회원일련번호
-    `mtnum` ASC  -- 모임일련번호
-  );
+    ON `loc` ( -- 장소선택
+        `ltnum` ASC, -- 장소일련번호
+        `mnum` ASC,  -- 회원일련번호
+        `mtnum` ASC  -- 모임일련번호
+    );
 
 ALTER TABLE `loc`
-  MODIFY COLUMN `lnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '장소선택일련번호';
+    MODIFY COLUMN `lnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '장소선택일련번호';
 
 -- 일정
 CREATE TABLE `cal` (
-  `cnum`  INTEGER     NOT NULL COMMENT '일정일련번호', -- 일정일련번호
-  `mnum`  INTEGER     NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-  `mtnum` INTEGER     NOT NULL COMMENT '모임일련번호', -- 모임일련번호
-  `cdate` DATE        NOT NULL COMMENT '선택날짜', -- 선택날짜
-  `ctime` VARCHAR(50) NOT NULL COMMENT '선택시간' -- 선택시간
+    `cnum`  INTEGER     NOT NULL COMMENT '일정일련번호', -- 일정일련번호
+    `mnum`  INTEGER     NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+    `mtnum` INTEGER     NOT NULL COMMENT '모임일련번호', -- 모임일련번호
+    `cdate` DATE        NOT NULL COMMENT '선택날짜', -- 선택날짜
+    `ctime` VARCHAR(50) NOT NULL COMMENT '선택시간' -- 선택시간
 )
 COMMENT '일정';
 
 -- 일정
 ALTER TABLE `cal`
-  ADD CONSTRAINT `PK_cal` -- 일정 기본키
-    PRIMARY KEY (
-      `cnum` -- 일정일련번호
-    );
+    ADD CONSTRAINT `PK_cal` -- 일정 기본키
+        PRIMARY KEY (
+            `cnum` -- 일정일련번호
+        );
 
 ALTER TABLE `cal`
-  MODIFY COLUMN `cnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '일정일련번호';
+    MODIFY COLUMN `cnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '일정일련번호';
 
 -- 장소리스트(API)
 CREATE TABLE `list` (
-  `ltnum` INTEGER      NOT NULL COMMENT '장소일련번호', -- 장소일련번호
-  `lname` VARCHAR(255) NOT NULL COMMENT '장소명', -- 장소명
-  `addr`  VARCHAR(255) NOT NULL COMMENT '주소', -- 주소
-  `mnum`  INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-  `mtnum` INTEGER      NOT NULL COMMENT '모임일련번호' -- 모임일련번호
+    `ltnum` INTEGER      NOT NULL COMMENT '장소일련번호', -- 장소일련번호
+    `lname` VARCHAR(255) NOT NULL COMMENT '장소명', -- 장소명
+    `addr`  VARCHAR(255) NOT NULL COMMENT '주소', -- 주소
+    `mnum`  INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+    `mtnum` INTEGER      NOT NULL COMMENT '모임일련번호' -- 모임일련번호
 )
 COMMENT '장소리스트(API)';
 
 -- 장소리스트(API)
 ALTER TABLE `list`
-  ADD CONSTRAINT `PK_list` -- 장소리스트(API) 기본키
-    PRIMARY KEY (
-      `ltnum` -- 장소일련번호
-    );
+    ADD CONSTRAINT `PK_list` -- 장소리스트(API) 기본키
+        PRIMARY KEY (
+            `ltnum` -- 장소일련번호
+        );
 
 -- 장소리스트(API) 유니크 인덱스
 CREATE UNIQUE INDEX `UIX_list`
-  ON `list` ( -- 장소리스트(API)
-    `lname` ASC, -- 장소명
-    `addr` ASC,  -- 주소
-    `mtnum` ASC  -- 모임일련번호
-  );
+    ON `list` ( -- 장소리스트(API)
+        `lname` ASC, -- 장소명
+        `addr` ASC,  -- 주소
+        `mtnum` ASC  -- 모임일련번호
+    );
 
 ALTER TABLE `list`
-  MODIFY COLUMN `ltnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '장소일련번호';
+    MODIFY COLUMN `ltnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '장소일련번호';
 
 -- 첨부파일
 CREATE TABLE `file` (
-  `fnum` INTEGER      NOT NULL COMMENT '첨부파일일련번호', -- 첨부파일일련번호
-  `bnum` INTEGER      NOT NULL COMMENT '게시글일련번호', -- 게시글일련번호
-  `link` VARCHAR(255) NOT NULL COMMENT '링크주소', -- 링크주소
-  `type` VARCHAR(50)  NOT NULL COMMENT '파일종류' -- 파일종류
+    `fnum` INTEGER      NOT NULL COMMENT '첨부파일일련번호', -- 첨부파일일련번호
+    `bnum` INTEGER      NOT NULL COMMENT '게시글일련번호', -- 게시글일련번호
+    `link` VARCHAR(255) NOT NULL COMMENT '링크주소', -- 링크주소
+    `type` VARCHAR(50)  NOT NULL COMMENT '파일종류' -- 파일종류
 )
 COMMENT '첨부파일';
 
 -- 첨부파일
 ALTER TABLE `file`
-  ADD CONSTRAINT `PK_file` -- 첨부파일 기본키
-    PRIMARY KEY (
-      `fnum` -- 첨부파일일련번호
-    );
+    ADD CONSTRAINT `PK_file` -- 첨부파일 기본키
+        PRIMARY KEY (
+            `fnum` -- 첨부파일일련번호
+        );
 
 ALTER TABLE `file`
-  MODIFY COLUMN `fnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '첨부파일일련번호';
+    MODIFY COLUMN `fnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '첨부파일일련번호';
 
 -- 연결정보(모임멤버등....)
 CREATE TABLE `link` (
-  `mnum`  INTEGER NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-  `mtnum` INTEGER NOT NULL COMMENT '모임일련번호', -- 모임일련번호
-  `boss`  CHAR(1) NOT NULL COMMENT '방장여부', -- 방장여부
-  `stat`  CHAR(1) NOT NULL COMMENT '모임참여상태' -- 모임참여상태
+    `mnum`  INTEGER NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+    `mtnum` INTEGER NOT NULL COMMENT '모임일련번호', -- 모임일련번호
+    `boss`  CHAR(1) NOT NULL COMMENT '방장여부', -- 방장여부
+    `stat`  CHAR(1) NOT NULL COMMENT '모임참여상태' -- 모임참여상태
 )
 COMMENT '연결정보(모임멤버등....)';
 
 -- 연결정보(모임멤버등....)
 ALTER TABLE `link`
-  ADD CONSTRAINT `PK_link` -- 연결정보(모임멤버등....) 기본키
-    PRIMARY KEY (
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    );
+    ADD CONSTRAINT `PK_link` -- 연결정보(모임멤버등....) 기본키
+        PRIMARY KEY (
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        );
 
 -- 기간(제한날짜)
 CREATE TABLE `time` (
-  `ldnum` INTEGER NOT NULL COMMENT '제한날짜일련번호', -- 제한날짜일련번호
-  `mtnum` INTEGER NOT NULL COMMENT '모임일련번호', -- 모임일련번호
-  `sdate` DATE    NOT NULL COMMENT '시작일', -- 시작일
-  `edate` DATE    NOT NULL COMMENT '종료일' -- 종료일
+    `ldnum` INTEGER NOT NULL COMMENT '제한날짜일련번호', -- 제한날짜일련번호
+    `mtnum` INTEGER NOT NULL COMMENT '모임일련번호', -- 모임일련번호
+    `sdate` DATE    NOT NULL COMMENT '시작일', -- 시작일
+    `edate` DATE    NOT NULL COMMENT '종료일' -- 종료일
 )
 COMMENT '기간(제한날짜)';
 
 -- 기간(제한날짜)
 ALTER TABLE `time`
-  ADD CONSTRAINT `PK_time` -- 기간(제한날짜) 기본키
-    PRIMARY KEY (
-      `ldnum` -- 제한날짜일련번호
-    );
+    ADD CONSTRAINT `PK_time` -- 기간(제한날짜) 기본키
+        PRIMARY KEY (
+            `ldnum` -- 제한날짜일련번호
+        );
 
 -- 기간(제한날짜) 유니크 인덱스
 CREATE UNIQUE INDEX `UIX_time`
-  ON `time` ( -- 기간(제한날짜)
-    `mtnum` ASC -- 모임일련번호
-  );
+    ON `time` ( -- 기간(제한날짜)
+        `mtnum` ASC -- 모임일련번호
+    );
 
 ALTER TABLE `time`
-  MODIFY COLUMN `ldnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '제한날짜일련번호';
+    MODIFY COLUMN `ldnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '제한날짜일련번호';
 
 -- 게시글
 ALTER TABLE `board`
-  ADD CONSTRAINT `FK_link_TO_board` -- 연결정보(모임멤버등....) -> 게시글
-    FOREIGN KEY (
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    )
-    REFERENCES `link` ( -- 연결정보(모임멤버등....)
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    );
+    ADD CONSTRAINT `FK_link_TO_board` -- 연결정보(모임멤버등....) -> 게시글
+        FOREIGN KEY (
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        )
+        REFERENCES `link` ( -- 연결정보(모임멤버등....)
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        );
 
 -- 장소선택
 ALTER TABLE `loc`
-  ADD CONSTRAINT `FK_list_TO_loc` -- 장소리스트(API) -> 장소선택
-    FOREIGN KEY (
-      `ltnum` -- 장소일련번호
-    )
-    REFERENCES `list` ( -- 장소리스트(API)
-      `ltnum` -- 장소일련번호
-    );
+    ADD CONSTRAINT `FK_list_TO_loc` -- 장소리스트(API) -> 장소선택
+        FOREIGN KEY (
+            `ltnum` -- 장소일련번호
+        )
+        REFERENCES `list` ( -- 장소리스트(API)
+            `ltnum` -- 장소일련번호
+        );
 
 -- 장소선택
 ALTER TABLE `loc`
-  ADD CONSTRAINT `FK_link_TO_loc` -- 연결정보(모임멤버등....) -> 장소선택
-    FOREIGN KEY (
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    )
-    REFERENCES `link` ( -- 연결정보(모임멤버등....)
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    );
+    ADD CONSTRAINT `FK_link_TO_loc` -- 연결정보(모임멤버등....) -> 장소선택
+        FOREIGN KEY (
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        )
+        REFERENCES `link` ( -- 연결정보(모임멤버등....)
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        );
 
 -- 일정
 ALTER TABLE `cal`
-  ADD CONSTRAINT `FK_link_TO_cal` -- 연결정보(모임멤버등....) -> 일정
-    FOREIGN KEY (
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    )
-    REFERENCES `link` ( -- 연결정보(모임멤버등....)
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    );
+    ADD CONSTRAINT `FK_link_TO_cal` -- 연결정보(모임멤버등....) -> 일정
+        FOREIGN KEY (
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        )
+        REFERENCES `link` ( -- 연결정보(모임멤버등....)
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        );
 
 -- 장소리스트(API)
 ALTER TABLE `list`
-  ADD CONSTRAINT `FK_link_TO_list` -- 연결정보(모임멤버등....) -> 장소리스트(API)
-    FOREIGN KEY (
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    )
-    REFERENCES `link` ( -- 연결정보(모임멤버등....)
-      `mnum`,  -- 회원일련번호
-      `mtnum`  -- 모임일련번호
-    );
+    ADD CONSTRAINT `FK_link_TO_list` -- 연결정보(모임멤버등....) -> 장소리스트(API)
+        FOREIGN KEY (
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        )
+        REFERENCES `link` ( -- 연결정보(모임멤버등....)
+            `mnum`,  -- 회원일련번호
+            `mtnum`  -- 모임일련번호
+        );
 
 -- 첨부파일
 ALTER TABLE `file`
-  ADD CONSTRAINT `FK_board_TO_file` -- 게시글 -> 첨부파일
-    FOREIGN KEY (
-      `bnum` -- 게시글일련번호
-    )
-    REFERENCES `board` ( -- 게시글
-      `bnum` -- 게시글일련번호
-    );
+    ADD CONSTRAINT `FK_board_TO_file` -- 게시글 -> 첨부파일
+        FOREIGN KEY (
+            `bnum` -- 게시글일련번호
+        )
+        REFERENCES `board` ( -- 게시글
+            `bnum` -- 게시글일련번호
+        );
 
 -- 연결정보(모임멤버등....)
 ALTER TABLE `link`
-  ADD CONSTRAINT `FK_memb_TO_link` -- 회원 -> 연결정보(모임멤버등....)
-    FOREIGN KEY (
-      `mnum` -- 회원일련번호
-    )
-    REFERENCES `memb` ( -- 회원
-      `mnum` -- 회원일련번호
-    );
+    ADD CONSTRAINT `FK_memb_TO_link` -- 회원 -> 연결정보(모임멤버등....)
+        FOREIGN KEY (
+            `mnum` -- 회원일련번호
+        )
+        REFERENCES `memb` ( -- 회원
+            `mnum` -- 회원일련번호
+        );
 
 -- 연결정보(모임멤버등....)
 ALTER TABLE `link`
-  ADD CONSTRAINT `FK_meet_TO_link` -- 모임 -> 연결정보(모임멤버등....)
-    FOREIGN KEY (
-      `mtnum` -- 모임일련번호
-    )
-    REFERENCES `meet` ( -- 모임
-      `mtnum` -- 모임일련번호
-    );
+    ADD CONSTRAINT `FK_meet_TO_link` -- 모임 -> 연결정보(모임멤버등....)
+        FOREIGN KEY (
+            `mtnum` -- 모임일련번호
+        )
+        REFERENCES `meet` ( -- 모임
+            `mtnum` -- 모임일련번호
+        );
 
 -- 기간(제한날짜)
 ALTER TABLE `time`
-  ADD CONSTRAINT `FK_meet_TO_time` -- 모임 -> 기간(제한날짜)
-    FOREIGN KEY (
-      `mtnum` -- 모임일련번호
-    )
-    REFERENCES `meet` ( -- 모임
-      `mtnum` -- 모임일련번호
-    );
+    ADD CONSTRAINT `FK_meet_TO_time` -- 모임 -> 기간(제한날짜)
+        FOREIGN KEY (
+            `mtnum` -- 모임일련번호
+        )
+        REFERENCES `meet` ( -- 모임
+            `mtnum` -- 모임일련번호
+        );
