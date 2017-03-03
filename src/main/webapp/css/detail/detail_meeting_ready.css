@@ -133,6 +133,7 @@
 
 .member_list .item .profile img {
   max-width:100%;
+  min-height: 100%;
 }
 
 .member_list .item .name {
