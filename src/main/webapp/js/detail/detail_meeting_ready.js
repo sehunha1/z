@@ -48,6 +48,16 @@ $.getJSON("getDateDuplication.json?meetingNo=" + meetingNo, function(ajaxResult)
   ul.append(template({"dateDuplication":dateDuplication}));
 });
 
+$.getJSON("getLocationListDuplication.json?meetingNo=" + meetingNo, function(ajaxResult) {
+  var status = ajaxResult.status;
+  if (status != "success") return;
+  var locationListDuplication = ajaxResult.data;
+
+  var template = Handlebars.compile($("#locationListTemplate").html());
+  var ul = $(".result_list.place_result_list");
+  ul.append(template({"locationListDuplication":locationListDuplication}));
+});
+
 $(function() {
   $('#btn_toggle_member_list').on('click', function() {
     $('.member_list_wrap').toggleClass('on');

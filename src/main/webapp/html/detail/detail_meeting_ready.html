@@ -43,22 +43,6 @@
       <div class="section place_result">
         <p class="tit">장소투표결과</p>
         <ul class="result_list place_result_list">
-          <li class="item">
-            <span class="info1">깐부치킨</span>
-            <span class="info2">(20/23)</span>
-          </li>
-          <li class="item">
-            <span class="info1">돈도니</span>
-            <span class="info2">(20/23)</span>
-          </li>
-          <li class="item">
-            <span class="info1">깐부치킨</span>
-            <span class="info2">(20/23)</span>
-          </li>
-          <li class="item">
-            <span class="info1">돈도니</span>
-            <span class="info2">(20/23)</span>
-          </li>
         </ul>
       </div>
       <div class="btn_ready">
@@ -99,6 +83,14 @@
     <li class="item">
       <span class="info1">{{calendarDate}}</span>
       <span class="info2"></span>
+    </li>
+    {{/each}}
+  </script>
+  <script id="locationListTemplate" type="text/x-handlebars-template">
+    {{#each locationListDuplication}}
+    <li class="item">
+      <span class="info1">{{locationListName}}</span>
+      <span class="info2">{{locationListAddress}}</span>
     </li>
     {{/each}}
   </script>
