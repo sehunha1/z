@@ -7,17 +7,17 @@ package z.domain;
 
 import java.io.Serializable;
 
-public class Board implements Serializable {
+public class Boardbackup implements Serializable {
   private static final long serialVersionUID = 1L;
 
   protected int boardNo; //////// 게시글 일련번호
   protected int memberNo; /////// 작성자 일련번호
-  protected int meetNo; ////// 모임 일련번호
+  protected int meetingNo; ////// 모임 일련번호
   protected String title; /////// 제목
   protected String content; ///// 내용
   protected AddFile[] addFileList; // 첨부파일
 
-  public Board() {
+  public Boardbackup() {
   }
 
   public int getBoardNo() {
@@ -36,12 +36,12 @@ public class Board implements Serializable {
     this.memberNo = memberNo;
   }
 
-  public int getMeetNo() {
-    return meetNo;
+  public int getMeetingNo() {
+    return meetingNo;
   }
 
-  public void setMeetNo(int meetNo) {
-    this.meetNo = meetNo;
+  public void setMeetingNo(int meetingNo) {
+    this.meetingNo = meetingNo;
   }
 
   public String getTitle() {
