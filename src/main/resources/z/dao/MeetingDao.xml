@@ -33,6 +33,7 @@
 	      <result column="type" property="fileDesc"/>
 			</collection>
 		</collection> -->
+
 	</resultMap>
 
 	<!-- 방 개설 시 meet 테이블 데이터 삽입 -->
@@ -74,6 +75,10 @@
 	<select id="getListMeetingCards" parameterType="int" resultMap="meeting-map">
 		select meet.mtnum, meet.titl, meet.cont, meet.mtdesc, meet.dline, meet.photo, meet.mstat, meet.floc, meet.fdate, meet.ftime
 		from link left outer join meet on link.mtnum=meet.mtnum left outer join memb on link.mnum=memb.mnum where link.mnum=#{value};
+	</select>
+
+	<select id="getOneMeeting" parameterType="int" resultMap="meeting-map">
+		select * from meet where mtnum=#{value};
 	</select>
 	
 <!-- 	<select id="getDetailFinish" parameterType="int" resultMap="meeting-map">

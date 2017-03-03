@@ -15,4 +15,5 @@ public interface MeetingDao {
   int insertLink(Meeting meeting) throws Exception; // 방 개설시 link 테이블 데이터 삽입
   ArrayList<Meeting> getListMeetingCards(int memberNo) throws Exception; // 모임 리스트 가져오기
 //  Meeting getDetailFinish(int memberNo, int meetingNo) throws Exception; // 완료 모임 상세 정보 가져오기
+  Meeting getOneMeeting(int meetingNo) throws Exception;
 }

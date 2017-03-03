@@ -3,7 +3,7 @@
 }
 
 #meeting_ready > .tit {
-  font-size:36px;
+  font-size:30px;
   font-weight:bold;
 }
 
@@ -100,8 +100,7 @@
 .member_list .item:nth-child(7),
 .member_list .item:nth-child(8),
 .member_list .item:nth-child(9),
-.member_list .item:nth-child(10),
-.member_list .item:nth-child(11) {
+.member_list .item:nth-child(10) {
   display:block;
 }
 
@@ -133,6 +132,7 @@
 
 .member_list .item .profile img {
   max-width:100%;
+  min-height: 100%;
 }
 
 .member_list .item .name {

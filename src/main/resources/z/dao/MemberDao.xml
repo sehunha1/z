@@ -16,11 +16,11 @@
   </resultMap>
 
   <select id="getListMeetingMembBoss" parameterType="int" resultMap="member-map">
-    select memb.mnum, memb.email, memb.name from link left outer join memb on memb.mnum=link.mnum where mtnum=#{value} and boss="y";
+    select memb.mnum, memb.email, memb.name, memb.photo from link left outer join memb on memb.mnum=link.mnum where mtnum=#{value} and boss="y";
   </select>
 
   <select id="getListMeetingMembNotBoss" parameterType="int" resultMap="member-map">
-    select memb.mnum, memb.email, memb.name from link left outer join memb on memb.mnum=link.mnum where mtnum=#{value} and boss="n";
+    select memb.mnum, memb.email, memb.name, memb.photo from link left outer join memb on memb.mnum=link.mnum where mtnum=#{value} and boss="n";
   </select>
   
   <select id="getList" resultMap="member-map">

@@ -36,6 +36,12 @@ public class MeetingJsonControl {
     }
     return new AjaxResult(AjaxResult.FAIL, "방 개설 실패.");
   }
+
+  @RequestMapping("html/detail/getOneMeeting")
+  public AjaxResult getOneMeeting(int meetingNo) throws Exception {
+    Meeting oneMeeting = meetingService.getOneMeeting(meetingNo);
+    return new AjaxResult(AjaxResult.SUCCESS, oneMeeting);
+  }
   
   // 모임 리스트 가져오기.
   @RequestMapping("html/mylist/listMeetingCards")

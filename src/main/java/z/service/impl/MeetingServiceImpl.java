@@ -26,4 +26,9 @@ public class MeetingServiceImpl implements MeetingService {
   public List<Meeting> getListMeetingCards(int memberNo) throws Exception {
     return meetingDao.getListMeetingCards(memberNo);
   }
+
+  @Override
+  public Meeting getOneMeeting(int meetingNo) throws Exception {
+    return meetingDao.getOneMeeting(meetingNo);
+  }
 }
