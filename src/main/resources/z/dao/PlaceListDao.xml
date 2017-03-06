@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="z.dao.PlaceListDao">
+
+	<resultMap type="PlaceList" id="placelist-map">
+		<id column="ltnum"			   property="locationNo" />
+		<result column="mnum"   	 property="memberNo" />
+		<result column="mtnum" 	 	 property="meetingNo" />
+		<result column="lname"		 property="place" />
+		<result column="addr"  	   property="address" />
+		<result column="addr_x"    property="xLocation" />
+		<result column="addr_y"    property="yLocation" />
+	</resultMap>
+	
+	
+	<insert id="insert" parameterType="PlaceList" 
+          useGeneratedKeys="true" keyColumn="ltnum" keyProperty="locationNo">
+    insert into list(lname, addr, mnum, mtnum, addr_x, addr_y)
+    values(#{title}, #{address}, #{memberNo}, #{meetingNo}, #{xLocation}, #{yLocation})
+  </insert> 
+  
+  <select id="countP" parameterType="string" resultType="int">
+    select count(*) from list where lname=#{value}
+  </select>
+  
+  <select id="countA" parameterType="string" resultType="int">
+    select count(*) from list where addr=#{value}
+  </select>
+</mapper>

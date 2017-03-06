@@ -1,0 +1,20 @@
+package z.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import z.dao.PlaceListDao;
+import z.domain.PlaceList;
+import z.service.PlaceListService;
+
+@Service
+public class PlaceListServiceImpl implements PlaceListService {
+  @Autowired PlaceListDao placeListDao;
+
+  public int add(PlaceList placelist) throws Exception {
+    if (( placeListDao.countP(placelist.getPlace()) & placeListDao.countA(placelist.getAddress()) ) >= 0) {
+      throw new Exception("같은 장소가 존재합니다. 등록을 취소합니다.");
+    }
+    return placeListDao.insert(placelist);
+  }
+}

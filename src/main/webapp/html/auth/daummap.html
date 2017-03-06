@@ -41,6 +41,9 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 </style>
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
 </head>
 <body>
 <div class="map_wrap">
@@ -62,6 +65,8 @@
 </div>
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=972fc2cd0c0d0f176249bf894a112457&libraries=services"></script>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 // 마커를 담을 배열입니다
 var markers = [];
@@ -151,7 +156,7 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
+        (function(marker, title, address, latitude, longitude) {
             daum.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
@@ -159,15 +164,71 @@ function displayPlaces(places) {
             daum.maps.event.addListener(marker, 'mouseout', function() {
                 infowindow.close();
             });
+            
+            daum.maps.event.addListener(marker, 'click', function() {
+                alert("장소명:" + title + "\n주소:" + address + "\n위도(x):" + latitude + "\n경도(y):" + longitude);
+                swal({
+                	  title: "장소 선택",
+                	  text: "이 장소를 선택하시겠습니까?",
+                	  showCancelButton: true,
+                	  confirmButtonColor: "#DD6B55",
+                	  confirmButtonText: "선택",
+                	  cancelButtonText: "취소",
+                	  closeOnConfirm: false,
+                	  closeOnCancel: false
+                	},
+                	function(isConfirm){
+                	  if (isConfirm) {
+                		  var memberNo = 1;
+                		  var meetingNo = 1;
+                		  var param = {
+                				          "memberNo": memberNo,
+                				          "meetingNo": meetingNo,
+                                  "place": title,
+                                  "address": address,
+                                  "xLocation": latitude,
+                                  "yLocation": longitude
+                                  //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
+                                  //"photo": $("#photo").attr('src', 'html/upload/' + val())
+                              
+                              };
+
+                              $.post('listadd.json', param, function(ajaxResult) {
+                                if (ajaxResult.status == "fail") {
+                                  sweetAlert("장소추가 실패", ajaxResult.data, 'error');
+                                  return;
+                                }
+                                //sweetAlert("회원가입 완료!", "......", "success")
+                                //sweetAlert("회원가입 완료!", "로그인창으로 이동합니다.", "success");
+                                //alert('회원가입이 완료되었습니다. 로그인창으로 이동합니다.');
+                                //location.href = 'login.html';
+                                
+                                swal({
+                                    title: "선택",
+                                    text: "선택이 완료되었습니다.",
+                                    type: "success",
+                                  });
+                              }, 'json'); // post();
+                		  
+                	  } else {
+                	    swal("취소", "취소되었습니다.", "error");
+                	  }
+                	});
+            });
 
             itemEl.onmouseover =  function () {
                 displayInfowindow(marker, title);
+            };
+            
+            itemEl.onclick =  function () {
+            	console.log("장소명:" + title + "\n주소:" + address + "\n위도(x):" + latitude + "\n경도(y):" + longitude);
+            	//alert();
             };
 
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
-        })(marker, places[i].title);
+        })(marker, places[i].title, places[i].address, places[i].latitude, places[i].longitude);
 
         fragment.appendChild(itemEl);
     }
@@ -221,7 +282,7 @@ function addMarker(position, idx, title) {
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
+    
     return marker;
 }
 
