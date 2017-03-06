@@ -54,6 +54,7 @@ public class MeetingJsonControl {
   @RequestMapping("html/detail/detailMeet")
   public AjaxResult detailMeeting(int meetingNo) throws Exception {
     Meeting detailMeeting = meetingService.getDetailMeeting(meetingNo);
+    System.out.println(detailMeeting);
     if (detailMeeting != null) {
       return new AjaxResult(AjaxResult.SUCCESS, detailMeeting);
     }

@@ -20,20 +20,30 @@ var swiper = new Swiper('.board .swiper-container', {
 });
 
 try {
-	var memberNo = 1;
-	var meetingNo = 1;
+	var mNo = location.href.split('?')[1].split('=')[1].split('&')[0];
+	var mtNo = location.href.split('?')[1].split('=')[2];
 	
-	$.getJSON(serverRoot + '/html/detail/detailMeet.json?meberNo=' + memberNo+ '&meetingNo=' + meetingNo, function(ajaxResult) {
+	$.getJSON(serverRoot + '/html/detail/detailMeet.json?memberNo=' + mNo+ '&meetingNo=' + mtNo, function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			return;
 		}
 		var meeting = JSON.stringify(ajaxResult.data);
-		console.log(meeting);
-		var titlTemp = Handlebars.compile($("#meetingName").html());
-		var title = JSON.parse(meeting).title;
+		console.log(ajaxResult.data);
 		
-		console.log(title);
-		title.append(titlTemp({"title": title}));
+		// 모임 상태
+		$(".stat-span").append(ajaxResult.data.meetStat);
+		
+		// 모임 이미지
+		var photo = JSON.parse(meeting).photo;
+		$(".title-photo").attr('src', clientRoot + '/html/upload/' + ajaxResult.data.photo);
+		
+		// 모임명
+		var h1 = $("#meeting-title");
+		var title = JSON.parse(meeting).title;
+		var temp = Handlebars.compile($('#meetingName').html());
+		h1.append(temp({"title": title}));
+		
+		// 
 	});
 	
 } catch (e) {
