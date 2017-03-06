@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="z.dao.LinkDao">
+
+  <resultMap type="link" id="link-map">
+    <id     column="mnum"      property="memberNo"/>
+    <result column="mtnum"       property="meetingNo"/>
+    <result column="boss"       property="boss"/>
+    <result column="stat"       property="status"/>
+  </resultMap>
+
+  <select id="getBoss" parameterType="int" resultMap="link-map">
+    select link.mnum from link left outer join memb on memb.mnum=link.mnum where mtnum=(select mtnum from link where mnum=#{value}) and link.boss="y";
+  </select>
+
+</mapper>

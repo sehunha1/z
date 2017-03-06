@@ -214,11 +214,11 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
         	var params = {
         	"boardNo": bnumber,
         	"link": $('#link-path').val(),
-        	"type": 'jpg';
+        	"type": 'jpg'
         	}
         	$.post('file.json', params, function(ajaxResult2) {
         		
-        	}
+        	});
             location.reload();
         }, 'json'); // post();
     }); // click()   
