@@ -21,19 +21,18 @@
 		<result column="ftime" 	 	 property="time" />
 		<result column="sdate" 	 	 property="sdate" />
 		<result column="edate" 	 	 property="edate" />
-		<!-- <collection property="boardList" ofType="board">
+ 	  <collection property="boardList" ofType="Board">
 			<id column="bnum" property="boardNo"/>
-			<result column="mno" property="memberNo"/>
-			<result column="mtnum" property="meetNo"/>
-			<result column="titl" property="title"/>
-			<result column="cont" property="content"/>
-			<collection property="addFileList" ofType="addFile">
+ 		 	<result column="bmnum" property="memberNo"/>
+			<result column="bmtnum" property="meetNo"/>
+			<result column="btitl" property="title"/>
+			<result column="bcont" property="content"/>
+			<collection property="addFileList" ofType="AddFile">
 				<id column="fnum" property="fileNo"/>
-	      <result column="link" property="filePath"/>
-	      <result column="type" property="fileDesc"/>
+	      <result column="flink" property="filePath"/>
+	      <result column="ftype" property="fileDesc"/>
 			</collection>
-		</collection> -->
-
+		</collection>
 	</resultMap>
 
 	<!-- 방 개설 시 meet 테이블 데이터 삽입 -->
@@ -82,7 +81,7 @@
 	</select>
 	
 	<!-- 완료 모임 상세 정보 가져오기 -->
- 	<!-- <select id="getDetailMeeting" parameterType="int" resultMap="meeting-map">
+ 	<select id="getDetailMeeting" parameterType="int" resultMap="meeting-map">
 	  select me.titl
 		      ,me.cont
 			    ,me.mtdesc
@@ -92,11 +91,14 @@
 			    ,me.floc
 			    ,me.fdate
 			    ,me.ftime
-			    ,bo.mnum
-			    ,bo.titl
-			    ,bo.cont
-			    ,fi.link
-			    ,fi.type
+			    ,bo.bnum as bnum
+			    ,bo.mnum as bmnum
+			    ,bo.mtnum as bmtnum
+			    ,bo.titl as btitl
+			    ,bo.cont as bcont
+			    ,fi.fnum as fnum
+			    ,fi.link as flink
+			    ,fi.type as ftype
 		  from link li
 		  join meet me
 		    on li.mtnum = me.mtnum
@@ -106,6 +108,6 @@
 		    on fi.bnum = bo.bnum
 		 where li.mtnum = #{meetingNo}
 	     and li.mnum = #{memberNo};
-  </select> -->
+  </select>
 
 </mapper>
