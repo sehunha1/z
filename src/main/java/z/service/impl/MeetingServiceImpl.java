@@ -31,4 +31,10 @@ public class MeetingServiceImpl implements MeetingService {
   public Meeting getOneMeeting(int meetingNo) throws Exception {
     return meetingDao.getOneMeeting(meetingNo);
   }
+  
+  // 완료 모임 상세 정보 가져오기.
+  @Override
+  public Meeting getDetailMeeting(int meetingNo) throws Exception {
+    return meetingDao.getDetailMeeting(meetingNo);
+  }
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- 작성: 2017.02.09 김재녕 -->
 <!-- 내용: 모임 상세정보(완료상태) -->
+<!-- 수정: 2017.03.06 김재녕 -->
 <html>
 <head>
 <meta charset='UTF-8'>
@@ -24,7 +25,7 @@
 		<div class="detail-info">
 			<div class="headtitle">
 				<h1 class="stat-span">완료</h1>
-				<h1 class="play-title">JavaScript Study</h1>
+				<h1 class="play-title"></h1>
 			</div>
 			<img class="title-photo" src="../../image/detail/study.jpg"
 				alt="Image Error" title="Image Error">
@@ -141,29 +142,15 @@
 	<div id="footer"></div>
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
+	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>	
+	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+	<script src="../../js/context.js"></script>
 	<script src="../../js/common.js"></script>
-
-	<!-- Initialize Swiper -->
-	<script>
-		var swiper = new Swiper('.member .swiper-container', {
-			pagination : '.member .swiper-pagination',
-			slidesPerView : 6,
-			centeredSlides : false,
-			paginationClickable : true,
-			spaceBetween : 30
-		});
-	</script>
-
-	<script>
-		var swiper = new Swiper('.board .swiper-container', {
-			pagination : '.board .swiper-pagination',
-			slidesPerView : 4,
-			centeredSlides : false,
-			paginationClickable : true,
-			spaceBetween : 10
-		});
-	</script>
+	<script src="../../js/detail/detail.js"></script>
+	
+	<script id="meetingName" type="text/x-handlebars-template">
+    {{title}} 
+  </script>
 
 </body>
 </html>
