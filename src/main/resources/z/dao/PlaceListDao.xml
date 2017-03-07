@@ -35,7 +35,7 @@
      
   </select>
   
-  <select id="count" parameterType="String" resultType="int">
-    select count(*) from list where lname=#{param1} and addr=#{param2}
+  <select id="count" parameterType="map" resultType="int">
+    select count(*) from list where lname=#{param1} and addr=#{param2} and mtnum=#{param3}
   </select>
 </mapper>

@@ -43,7 +43,7 @@
   <!-- 달력 CSS 끝 -->
 
 </head>
-<body onLoad="menu2()">
+<body onLoad="maphide()">
 	<div id="header"></div>
 	
 	<div class='container'>
@@ -71,10 +71,17 @@
 		  
 		  
 		  <div id="menu2" class="tab-pane fade">
+						<div id="buttonchoice" style='margin-top:10px;'>
+							<button type="button" id='bselect' class="btn btn-primary">장소 선택하기</button>
+							<button type="button" id='blist' class="btn btn-primary">장소 리스트</button>
+						</div>
+            
+            <div class="map1">
 						<div class="map_wrap">
 							<div id="map"
-								style="width: 900px; height: 600px; position: relative; overflow: hidden;"></div>
-
+								style="margin-top:5px; width: 900px; height: 600px; position: relative; overflow: hidden;"></div>
+              
+              
 							<div id="menu_wrap" class="bg_white" style='width:250px; height:500px; overflow: hidden;'>
 								<div class="option">
 									<div>
@@ -90,7 +97,22 @@
 								<div id="pagination"></div>
 							</div>
 						</div>
-
+          </div>
+          
+          <div class="map2" style='overflow: scroll;'>
+							<table id='list-table' class='table table-hover'>
+								<thead>
+									<tr>
+										<th>모임장소번호</th>
+										<th>장소명</th>
+										<th>주소</th>
+										<th>멤버번호</th>
+										<th>모임일련번호</th>
+									</tr>
+								<thead>
+								<tbody></tbody>
+							</table>
+						</div>
 					</div>
 
 
@@ -209,12 +231,25 @@
   </script>
   
   <script>
+  $('#blist').click(function(){
+	  $(".map1").hide();
+  });
+  
+  $('#bselect').click(function(){
+	    $(".map1").show();
+	  });
+  
+  function maphide() {
+	  $(".map_wrap").css("display", "none");
+  }
+  
   function menu1c() {
 	    $("#menu_wrap").css("display", "none");
 	    $("#map").css("display", "none");
 	  }
   
   function menu2c() {
+	    $(".map_wrap").css("display", "block");
 	    $("#menu_wrap").css("display", "block");
 	    $("#map").css("display", "block");
 	  }
@@ -225,6 +260,20 @@
   }
   
   </script>
+
+<script src="maplist.js"></script>
+
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td>{{locationNo}}</td>
+  <td>{{place}}</td>
+  <td>{{address}}</td>
+  <td>{{memberNo}}</td>
+  <td>{{meetingNo}}</td>
+</tr>
+{{/each}}
+</script>
   
 <script>
 

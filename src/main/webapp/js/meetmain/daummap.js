@@ -1,5 +1,7 @@
-function menu2() {
 // 마커를 담을 배열입니다
+var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
+console.log(mtnum);
+
 var markers = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -11,6 +13,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
+map.relayout();
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places();  
 
@@ -114,7 +117,7 @@ function displayPlaces(places) {
                 		  var meetingNo = 1;
                 		  var param = {
                 				  "memberNo": memberNo,
-                				  "meetingNo": meetingNo,
+                				  "meetingNo": mtnum,
                                   "place": title,
                                   "address": address,
                                   "xLocation": latitude,
@@ -161,10 +164,10 @@ function displayPlaces(places) {
               	function(isConfirm){
               	  if (isConfirm) {
               		  var memberNo = 1;
-              		  var meetingNo = 1;
+              		 // var meetingNo = 1;
               		  var param = {
               				  "memberNo": memberNo,
-              				  "meetingNo": meetingNo,
+              				  "meetingNo": mtnum,
                                 "place": title,
                                 "address": address,
                                 "xLocation": latitude,
@@ -306,5 +309,4 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
-}
 }
