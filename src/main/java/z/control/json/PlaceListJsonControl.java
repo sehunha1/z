@@ -16,7 +16,11 @@ public class PlaceListJsonControl {
 
   @RequestMapping("html/auth/listadd")
   public AjaxResult add(PlaceList placelist) throws Exception {
-    placeListService.add(placelist);
+    int count = placeListService.add(placelist);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "등록 실패입니다.");
+    }
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
