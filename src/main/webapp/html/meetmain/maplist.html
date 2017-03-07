@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>장소목록</title>
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+<div class='container'>
+
+<div id="content">
+<table id='list-table' class='table table-hover'>
+<thead>
+  <tr>
+    <th>모임장소번호</th>
+    <th>장소명</th>
+    <th>주소</th>
+    <th>멤버번호</th>
+    <th>모임일련번호</th>
+  </tr>
+<thead>
+<tbody></tbody>
+</table>
+</div>
+
+<div id='footer'></div>
+</div>
+
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td>{{locationNo}}</td>
+  <td>{{place}}</td>
+  <td>{{address}}</td>
+  <td>{{memberNo}}</td>
+  <td>{{meetingNo}}</td>
+</tr>
+{{/each}}
+</script>
+
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="maplist.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

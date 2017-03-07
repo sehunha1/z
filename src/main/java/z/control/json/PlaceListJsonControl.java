@@ -1,5 +1,7 @@
 package z.control.json;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ public class PlaceListJsonControl {
   @Autowired ServletContext sc;
   @Autowired PlaceListService placeListService;
 
-  @RequestMapping("html/auth/listadd")
+  @RequestMapping("html/meetmain/listadd")
   public AjaxResult add(PlaceList placelist) throws Exception {
     int count = placeListService.add(placelist);
     
@@ -23,5 +25,13 @@ public class PlaceListJsonControl {
     }
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
+  }
+  
+  @RequestMapping("html/meetmain/placelist")
+  public AjaxResult list() throws Exception {
+    
+    List<PlaceList> list = placeListService.getList();
+    
+    return new AjaxResult(AjaxResult.SUCCESS, list);
   }
 }

@@ -9,10 +9,10 @@ public class PlaceList {
   protected String xLocation;
   protected String yLocation;
   
-  public int getLocationNumber() {
+  public int getLocationNo() {
     return locationNo;
   }
-  public void setLocationNumber(int locationNo) {
+  public void setLocationNo(int locationNo) {
     this.locationNo = locationNo;
   }
   public int getMeetingNo() {

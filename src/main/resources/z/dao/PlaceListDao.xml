@@ -22,7 +22,20 @@
     values(#{place}, #{address}, #{memberNo}, #{meetingNo}, #{xLocation}, #{yLocation})
   </insert> 
   
-  <select id="count" parameterType="string" resultType="int">
-    select count(*) from list where addr=#{value}
+  <select id="getList" resultMap="placelist-map">
+    select
+      ltnum,
+      mnum,
+      mtnum,
+      lname,
+      addr,
+      addr_x,
+      addr_y 
+    from list
+     
+  </select>
+  
+  <select id="count" parameterType="String" resultType="int">
+    select count(*) from list where lname=#{param1} and addr=#{param2}
   </select>
 </mapper>
