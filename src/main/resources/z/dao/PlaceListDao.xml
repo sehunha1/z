@@ -19,14 +19,10 @@
 	<insert id="insert" parameterType="PlaceList" 
           useGeneratedKeys="true" keyColumn="ltnum" keyProperty="locationNo">
     insert into list(lname, addr, mnum, mtnum, addr_x, addr_y)
-    values(#{title}, #{address}, #{memberNo}, #{meetingNo}, #{xLocation}, #{yLocation})
+    values(#{place}, #{address}, #{memberNo}, #{meetingNo}, #{xLocation}, #{yLocation})
   </insert> 
   
-  <select id="countP" parameterType="string" resultType="int">
-    select count(*) from list where lname=#{value}
-  </select>
-  
-  <select id="countA" parameterType="string" resultType="int">
+  <select id="count" parameterType="string" resultType="int">
     select count(*) from list where addr=#{value}
   </select>
 </mapper>
