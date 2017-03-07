@@ -192,16 +192,11 @@ function displayPlaces(places) {
                                   //"photo": $("#photo").attr('src', 'html/upload/' + val())
                               
                               };
-
                               $.post('listadd.json', param, function(ajaxResult) {
-                                if (ajaxResult.status == "fail") {
-                                  sweetAlert("장소추가 실패", ajaxResult.data, 'error');
-                                  return;
+                            	  if (ajaxResult.status != "success") {
+                                      sweetAlert("오류", "동일한 장소가 이미 존재합니다.", "error")
+                                      return;
                                 }
-                                //sweetAlert("회원가입 완료!", "......", "success")
-                                //sweetAlert("회원가입 완료!", "로그인창으로 이동합니다.", "success");
-                                //alert('회원가입이 완료되었습니다. 로그인창으로 이동합니다.');
-                                //location.href = 'login.html';
                                 
                                 swal({
                                     title: "선택",
