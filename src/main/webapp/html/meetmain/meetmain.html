@@ -201,9 +201,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
           "memberNo": mnum,
           "meetNo": mtnum,
           "title": $('#titl').val(),
-          "content": $('#cont').val(),
-
-
+          "content": $('#cont').val()
         };
         console.log('파라미터 : ',param);
         $.post('add.json', param, function(ajaxResult2) {
@@ -214,7 +212,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
         	var params = {
         	"boardNo": bnumber,
         	"link": $('#link-path').val(),
-        	"type": 'jpg';
+        	"type": 'jpg'
         	}
         	$.post('file.json', params, function(ajaxResult2) {
         		

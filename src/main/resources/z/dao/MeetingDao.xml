@@ -106,8 +106,7 @@
 		    on bo.mtnum = li.mtnum
 		  left outer join file fi
 		    on fi.bnum = bo.bnum
-		 where li.mtnum = #{meetingNo}
-	     and li.mnum = #{memberNo};
+		 where li.mtnum = #{meetingNo};
   </select>
 
 </mapper>
