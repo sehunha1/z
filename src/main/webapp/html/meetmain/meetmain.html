@@ -212,7 +212,6 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
               return;
             }
         	var params = {
-        	"boardNo": bnumber,
         	"link": $('#link-path').val(),
         	"type": 'jpg'
         	}
@@ -283,8 +282,11 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     	        }
     	        location.reload();
     	      }, 'json');
-    	      
     	  }); // click()
+    	  
+          $('#list-btn').click(function() {
+                 location.reload();
+             }); 
     	  
     });
 });
@@ -301,7 +303,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
      </div>
      <div class="content">
          <div class="author">
-             title <b>{{title}}</b> 
+              <b>{{title}}</b> 
          </div>
          <div>
              {{content}}

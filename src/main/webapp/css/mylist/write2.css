@@ -99,8 +99,9 @@
 }
 
 #new-btnn {
-  margin-left :650px;
-  margin-top: 10px;
+  margin-left :640px;
+  margin-top: 3px;
+  margin-bottom: 10px;
   height: 25px;
   width: 100px;
   font-size: 12px;
@@ -119,23 +120,29 @@
 }
 
 
-
+.title {
+	font-size: 20px;
+}
 #detail_title {
-	margin-top : 10px;
+	margin-top : 0px;
 	width :650px;
-	height : 50px;
+	height : 40px;
   font-size: 15px;
   background-color: #f5f5f5;
-   text-align : left;
+  text-align : left;
+  border-bottom: 2px;
+  border-bottom-color: grey;
+  border: 0px;
 }
 #detail_content {
-	width: 600px;
+	width: 630px;
 	height :100px;
 	font-size:12px;
 	margin-left : 10px;
 	background-color: #f5f5f5;
 	border-color : #f5f5f5;
-	
+	border: 0px;
+	margin-top:10px;
 }
 .form-horizontal {
   background-color: #f5f5f5;

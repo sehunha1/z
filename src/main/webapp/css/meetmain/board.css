@@ -27,17 +27,19 @@ body
 }
 .post .content
 {
-    padding: 15px;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 .post .author
 {
-    font-size: 11px;
+    font-size: 13px;
     color: #737373;
-    padding: 25px 30px 20px;
+    padding: 10px 30px 10px 3px;
+    vertical-align: left;
 }
 .post .post-img-content
 {
-    height: 196px;
+    height: 130px;
     position: relative;
 }
 .post .post-img-content img
@@ -61,3 +63,16 @@ body
     margin-top: 5px;
 }
 
+
+.btn-warning {
+	width: 200px;
+	height: 25px;
+	margin-top: 5px;
+	border-color: darkgray;
+	background-color: white;
+	color:darkgray;
+}
+
+.btn-view {
+	padding-top: 3px;
+}
