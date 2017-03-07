@@ -58,7 +58,7 @@
   <insert id="insert" parameterType="board">
     insert into board(mnum, mtnum, titl, cont) 
     values(#{memberNo},#{meetNo}, #{title}, #{content})
-  </insert>  
+  </insert>
 
   <update id="update" parameterType="board">
     update board set
