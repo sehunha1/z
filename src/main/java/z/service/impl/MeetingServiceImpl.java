@@ -34,7 +34,7 @@ public class MeetingServiceImpl implements MeetingService {
   
   // 완료 모임 상세 정보 가져오기.
   @Override
-  public Meeting getDetailMeeting(int meetingNo) throws Exception {
-    return meetingDao.getDetailMeeting(meetingNo);
+  public Meeting getDetailMeeting(int memberNo, int meetingNo) throws Exception {
+    return meetingDao.getDetailMeeting(memberNo, meetingNo);
   }
 }

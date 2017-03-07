@@ -25,7 +25,7 @@
 		<!-- 상단 모임 정보 -->
 		<div class="detail-info">
 			<div class="headtitle">
-			  <!-- 진행상태 -->
+				<!-- 진행상태 -->
 				<h1 class="stat-span"></h1>
 				<!-- 모임명 -->
 				<h1 id="meeting-title"></h1>
@@ -33,72 +33,45 @@
 			<!-- 모임 이미지 -->
 			<img class="title-photo" alt="Image Error" title="Image Error">
 			<div class="desc-info">
-				<p id="final-date" class="d-info"></p> <!-- 확정날짜 -->
-				<p id="final-loc" class="d-info"></p> <!-- 확정장소 -->
-				<p id="final-time" class="d-info"></p> <!-- 확정시간 -->
-				<p id="final-cont" class="d-info"></p> <!-- 내용 -->
+				<p id="final-date" class="d-info"></p>
+				<!-- 확정날짜 -->
+				<p id="final-loc" class="d-info"></p>
+				<!-- 확정장소 -->
+				<p id="final-time" class="d-info"></p>
+				<!-- 확정시간 -->
+				<p id="final-cont" class="d-info"></p>
+				<!-- 내용 -->
 			</div>
 		</div>
 
 		<!-- 멤버 -->
 		<div class="member">
 			<p class="d-info">멤버</p>
-			
-			
-			<!-- <div class="swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
-					<div class="swiper-slide">
-						<img class="memb-photo" src="../../image/profile-default.png">
-					</div>
+
+			<div class="section member_wrap">
+				<div class="member_list_wrap">
+					<ul class="member_list">
+					</ul>
 				</div>
-				Add Pagination
-				<div class="swiper-pagination"></div>
-			</div> -->
-			
-			
+				<button id="btn_toggle_member_list">전체보기</button>
+			</div>
+
 		</div>
 
 		<div class="board">
 			<div class="headtitle">
 				<p class="b-info">게시판</p>
 				<div class="search-board">
-				  <form class="search-board-form">
-				    <input class="search-keyword"type="text" placeholder="검색어 입력">
-				    <button class="search-btn" type="submit"></button>
-				  </form>
+					<form class="search-board-form">
+						<input class="search-keyword" type="text" placeholder="검색어 입력">
+						<button class="search-btn" type="submit"></button>
+					</form>
 				</div>
 			</div>
 
 			<div class="swiper-container">
-			<a class='all-down-btn' href='#'></a>
-				<div class="swiper-wrapper" >
+				<a class='all-down-btn' href='#'></a>
+				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="board-box">
 							<img class="board-photo" src="../../image/detail/board.jpg">
@@ -151,14 +124,32 @@
 	<div id="footer"></div>
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>	
+	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
 	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
 	<script src="../../js/context.js"></script>
 	<script src="../../js/common.js"></script>
 	<script src="../../js/detail/detail.js"></script>
-	
-	<script id="meetingName" type="text/x-handlebars-template">
-    {{title}}
+
+	<script id="bossTemplate" type="text/x-handlebars-template">
+    {{#each listMeetingMembBoss}}
+    <li class="item">
+      <span class="ico"></span>
+      <div class="profile">
+        <img src="../upload/{{photo}}" alt=""/>
+      </div>
+      <p class="name">{{name}}</p>
+    </li>
+    {{/each}}
+  </script>
+	<script id="notbossTemplate" type="text/x-handlebars-template">
+    {{#each listMeetingMembNotBoss}}
+    <li class="item">
+      <div class="profile">
+        <img src="../upload/{{photo}}" alt=""/>
+      </div>
+      <p class="name">{{name}}</p>
+    </li>
+    {{/each}}
   </script>
 
 </body>

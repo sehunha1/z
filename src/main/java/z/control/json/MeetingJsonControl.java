@@ -52,8 +52,8 @@ public class MeetingJsonControl {
   
   // 완료 모임 상세 정보 가져오기
   @RequestMapping("html/detail/detailMeet")
-  public AjaxResult detailMeeting(int meetingNo) throws Exception {
-    Meeting detailMeeting = meetingService.getDetailMeeting(meetingNo);
+  public AjaxResult detailMeeting(int memberNo, int meetingNo) throws Exception {
+    Meeting detailMeeting = meetingService.getDetailMeeting(memberNo, meetingNo);
     if (detailMeeting != null) {
       return new AjaxResult(AjaxResult.SUCCESS, detailMeeting);
     }

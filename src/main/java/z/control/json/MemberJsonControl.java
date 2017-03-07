@@ -32,6 +32,19 @@ public class MemberJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, listMeetingMembNotBoss);
   }
   
+  @RequestMapping("html/detail/detailMeetList")
+  public AjaxResult detailMeetList(int meetingNo) throws Exception {
+    List<Member> detailMeetList = memberService.getListMeetingMembBoss(meetingNo);
+    List<Member> testList = memberService.getListMeetingMembNotBoss(meetingNo);
+    for (Member memb : testList) {
+      if (memb != null) {
+        detailMeetList.add(memb);
+      }
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, detailMeetList);
+  }
+  
   /*
   @RequestMapping("html/main/list")
   public AjaxResult list() throws Exception {
