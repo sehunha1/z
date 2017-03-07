@@ -12,7 +12,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
   
   // 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
   tbody.html(template({"list": list}));
-  
+  preparePagingButton(ajaxResult.data.totalCount);
 });
 
 //$.getJSON('list.json', function(ajaxResult) {

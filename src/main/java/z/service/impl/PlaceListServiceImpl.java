@@ -20,8 +20,23 @@ public class PlaceListServiceImpl implements PlaceListService {
     }
     return placeListDao.insert(placelist);
   }
-  
+  // 페이징 처리 전
   public List<PlaceList> getList() throws Exception {
     return placeListDao.getList();
+  }
+  
+  // 페이징 처리 후
+  /*
+  public List<PlaceList> getList(int pageNo, int pageSize) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startRowIndex", (pageNo - 1) * pageSize);
+    paramMap.put("rowSize", pageSize);
+    
+    return placeListDao.getList(paramMap);
+  }
+  */
+  
+  public int getSize() throws Exception {
+    return placeListDao.countAll();
   }
 }

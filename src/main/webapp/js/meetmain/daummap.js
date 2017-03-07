@@ -1,6 +1,9 @@
 // 마커를 담을 배열입니다
 var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
-console.log(mtnum);
+var mnum = location.href.split('?')[1].split('=')[1].split('&')[0];
+
+//console.log("mtnum = ", mtnum);
+//console.log("mnum = ", mnum);
 
 var markers = [];
 
@@ -113,10 +116,9 @@ function displayPlaces(places) {
                 	},
                 	function(isConfirm){
                 	  if (isConfirm) {
-                		  var memberNo = 1;
-                		  var meetingNo = 1;
+                		  
                 		  var param = {
-                				  "memberNo": memberNo,
+                				  "memberNo": mnum,
                 				  "meetingNo": mtnum,
                                   "place": title,
                                   "address": address,

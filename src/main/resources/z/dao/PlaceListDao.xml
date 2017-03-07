@@ -34,8 +34,31 @@
     from list
      
   </select>
+
+  <!-- 페이징 처리 후
+    <select id="getList" resultMap="placelist-map" parameterType="map">
+    select
+      ltnum,
+      mnum,
+      mtnum,
+      lname,
+      addr,
+      addr_x,
+      addr_y 
+    from list
+      order by ltnum
+      limit #{startRowIndex}, #{rowSize}
+  </select>
+   -->
   
   <select id="count" parameterType="map" resultType="int">
     select count(*) from list where lname=#{param1} and addr=#{param2} and mtnum=#{param3}
+  </select>
+  
+    <select id="countAll" resultType="int">
+    select 
+      count(*)
+    from list
+      ltnum
   </select>
 </mapper>
