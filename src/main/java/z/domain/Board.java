@@ -6,16 +6,18 @@ package z.domain;
  */
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Board implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int boardNo; //////// 게시글 일련번호
-  protected int memberNo; /////// 작성자 일련번호
-  protected int meetNo; ///////// 모임 일련번호
-  protected String title; /////// 제목
-  protected String content; ///// 내용
-  protected AddFile[] addFileList; // 첨부파일
+  protected int boardNo; //////////////// 게시글 일련번호
+  protected int memberNo; /////////////// 작성자 일련번호
+  protected String name; //////////////// 작성자 이름
+  protected int meetNo; ///////////////// 모임 일련번호
+  protected String title; /////////////// 제목
+  protected String content; ///////////// 내용
+  protected List<AddFile> addFileList; // 첨부파일
 
   public Board() {
   }
@@ -34,6 +36,14 @@ public class Board implements Serializable {
 
   public void setMemberNo(int memberNo) {
     this.memberNo = memberNo;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public int getMeetNo() {
@@ -60,11 +70,11 @@ public class Board implements Serializable {
     this.content = content;
   }
 
-  public AddFile[] getAddFileList() {
+  public List<AddFile> getAddFileList() {
     return addFileList;
   }
 
-  public void setAddFileList(AddFile[] addFileList) {
+  public void setAddFileList(List<AddFile> addFileList) {
     this.addFileList = addFileList;
   }
 
