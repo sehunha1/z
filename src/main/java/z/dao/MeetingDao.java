@@ -1,7 +1,9 @@
 package z.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import z.domain.Board;
 import z.domain.Meeting;
 
 /*
@@ -16,4 +18,5 @@ public interface MeetingDao {
   ArrayList<Meeting> getListMeetingCards(int memberNo) throws Exception; // 모임 리스트 가져오기
   Meeting getDetailMeeting(int memberNo, int meetingNo) throws Exception; // 완료 모임 상세 정보 가져오기
   Meeting getOneMeeting(int meetingNo) throws Exception;
+  List<Board> boardListTest (int meetingNo) throws Exception;
 }

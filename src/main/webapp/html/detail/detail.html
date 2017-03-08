@@ -72,48 +72,13 @@
 			<div class="swiper-container">
 				<a class='all-down-btn' href='#'></a>
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div class="board-box">
+      <!--<div class="swiper-slide">
+	          <div class="board-box">
 							<img class="board-photo" src="../../image/detail/board.jpg">
 							<p>설명글~~~~</p>
 							<p>안녕</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="board-box">
-							<img class="board-photo" src="../../image/pencils.png">
-							<p>설명글~~~~</p>
-							<p>안녕</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="board-box">
-							<img class="board-photo" src="../../image/detail/board.jpg">
-							<p>설명글~~~~</p>
-							<p>안녕</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="board-box">
-							<img class="board-photo" src="../../image/pencils.png">
-							<p>설명글~~~~</p>
-							<p>안녕</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="board-box">
-							<img class="board-photo" src="../../image/detail/board.jpg">
-							<p>설명글~~~~</p>
-							<p>안녕</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="board-box">
-							<img class="board-photo" src="../../image/pencils.png">
-							<p>설명글~~~~</p>
-							<p>안녕</p>
-						</div>
-					</div>
+				    </div>
+					</div> -->
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
@@ -131,7 +96,7 @@
 	<script src="../../js/detail/detail.js"></script>
 
 	<script id="bossTemplate" type="text/x-handlebars-template">
-    {{#each listMeetingMembBoss}}
+    {{#each boss}}
     <li class="item">
       <span class="ico"></span>
       <div class="profile">
@@ -141,8 +106,9 @@
     </li>
     {{/each}}
   </script>
-	<script id="notbossTemplate" type="text/x-handlebars-template">
-    {{#each listMeetingMembNotBoss}}
+
+	<script id="membTemplate" type="text/x-handlebars-template">
+    {{#each detailMembList}}
     <li class="item">
       <div class="profile">
         <img src="../upload/{{photo}}" alt=""/>
@@ -150,6 +116,18 @@
       <p class="name">{{name}}</p>
     </li>
     {{/each}}
+  </script>
+  
+	<script id="boardTemplate" type="text/x-handlebars-template">
+
+  {{#each boardListTest}}
+    <div class="board-box">
+      <img class="board-photo" src="../upload/{{link}}" alt="">
+      <p>{{title}}</p>
+      <p>{{content}}</p>
+    </div>
+  {{/each}}
+  
   </script>
 
 </body>

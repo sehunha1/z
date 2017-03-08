@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import z.domain.Board;
 import z.domain.Meeting;
 import z.domain.Member;
 import z.service.MeetingService;
@@ -59,4 +60,15 @@ public class MeetingJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
   }
+  
+  // 완료 모임 게시글 정보 가져오기
+  @RequestMapping("html/detail/boardListTest")
+  public AjaxResult boardList(int meetingNo) throws Exception {
+    List<Board> boardList = meetingService.boardList(meetingNo);
+    if (boardList != null) {
+      return new AjaxResult(AjaxResult.SUCCESS, boardList);
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
+  }
+  
 }

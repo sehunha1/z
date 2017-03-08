@@ -50,8 +50,8 @@
 
 .member {
   margin: 0 auto;
-  height: 250px;
-  overflow: hidden;
+  height: 300px;
+  overflow: auto;
 }
 
 /**************************************************/
@@ -195,11 +195,11 @@
 }
 
 .member .swiper-slide:nth-child(2n) {
-  width: 40%;
+  width: 1%;
 }
 
 .member .swiper-slide:nth-child(3n) {
-  width: 20%;
+  width: 1%;
 }
 
 .board {
@@ -293,10 +293,43 @@
   color: #EA4335;
 }
 
+.board .swiper-container {
+  top: 10px;
+  width: 100%;
+  height: 60%;
+  margin-top: 0;
+  margin-bottom: 5%;
+}
+
+.board .swiper-wrapper {
+  margin: 0;
+}
+
+.board .swiper-slide {
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  width: 25%;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
 .board .board-box {
   bottom: 10%;
   display: inline-block;
-  width: 90%;
+  width: 100%;
   height: 60%;
   border: 1px solid black;
   text-align: center;
@@ -316,43 +349,11 @@
   border-radius: 50%;
 }
 
-.board .swiper-container {
-  top: 10px;
-  width: 100%;
-  height: 80%;
-  margin-top: 0;
-  margin-bottom: 5%;
-}
 
-.board .swiper-wrapper {
-  margin: 0;
-}
-
-.board .swiper-slide {
-  margin: 0;
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  width: 60%;
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-.board .swiper-slide:nth-child(2n) {
+/* .board .swiper-slide:nth-child(2n) {
   width: 100%;
 }
 
 .board .swiper-slide:nth-child(3n) {
   width: 100%;
-}
+} */

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import z.dao.MeetingDao;
+import z.domain.Board;
 import z.domain.Meeting;
 import z.service.MeetingService;
 
@@ -36,5 +37,10 @@ public class MeetingServiceImpl implements MeetingService {
   @Override
   public Meeting getDetailMeeting(int memberNo, int meetingNo) throws Exception {
     return meetingDao.getDetailMeeting(memberNo, meetingNo);
+  }
+  
+  @Override
+  public List<Board> boardList(int meetingNo) throws Exception {
+    return meetingDao.boardListTest(meetingNo);
   }
 }

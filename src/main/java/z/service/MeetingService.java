@@ -2,6 +2,7 @@ package z.service;
 
 import java.util.List;
 
+import z.domain.Board;
 import z.domain.Meeting;
 
 public interface MeetingService {
@@ -9,4 +10,5 @@ public interface MeetingService {
   List<Meeting> getListMeetingCards(int memberNo) throws Exception;
   Meeting getOneMeeting(int meetingNo) throws Exception;
   Meeting getDetailMeeting(int memberNo, int meetingNo) throws Exception;
+  List<Board> boardList(int meetingNo) throws Exception;
 }

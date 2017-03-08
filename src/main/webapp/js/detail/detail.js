@@ -1,24 +1,6 @@
 "use strict"
 // 작성: 2017.03.06 김재녕
 
-// Initialize Swiper - 멤버
-var swiper = new Swiper('.member .swiper-container', {
-	pagination : '.member .swiper-pagination',
-	slidesPerView : 6,
-	centeredSlides : false,
-	paginationClickable : true,
-	spaceBetween : 30
-});
-
-// Initialize Swiper - 게시글
-var swiper = new Swiper('.board .swiper-container', {
-	pagination : '.board .swiper-pagination',
-	slidesPerView : 4,
-	centeredSlides : false,
-	paginationClickable : true,
-	spaceBetween : 10
-});
-
 try {
 	var memberNo = location.href.split('?')[1].split('=')[1].split('&')[0];
 	var meetingNo = location.href.split('?')[1].split('=')[2];
@@ -28,6 +10,7 @@ try {
 			return;
 		}
 		var meeting = JSON.stringify(ajaxResult.data);
+		var detailMembList;
 		
 		// 모임 상태
 		if (ajaxResult.data.meetStat == "ing") {
@@ -42,7 +25,7 @@ try {
 		
 		// 모임 이미지
 		var photo = JSON.parse(meeting).photo;
-		$(".title-photo").attr('src', clientRoot + '/html/upload/' + ajaxResult.data.photo);
+		$(".title-photo").attr('src', clientRoot + '/html/upload/' + photo);
 		
 		// 모임명
 		var h1Titl = $("#meeting-title");
@@ -90,32 +73,30 @@ try {
 		  if (status != "success") {
 			  return;
 		  }
-		  var detailMembList = ajaxResult.data;
-		  console.log(ajaxResult.data);
-		  for (var i = 0; i < detailMembList.length; i++) {
-		    if (detailMembList[i].photo.length < 2)
-		    	detailMembList[i].photo = "../../image/profile-default.png";
+		  window.detailMembList = ajaxResult.data;
+		  for (var i = 0; i < window.detailMembList.length; i++) {
+		    if (window.detailMembList[i].photo.length < 2)
+		    	window.detailMembList[i].photo = "../../image/profile-default.png";
 		  }
-
-		  var template = Handlebars.compile($("#bossTemplate").html());
+		  
 		  var ul = $(".member_list");
-		  ul.append(template({"detailMembList":detailMembList}));
-
-/*		  $.getJSON("../meetmain/listMeetingMembNotBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
-		    var status = ajaxResult.status;
-		    if (status != "success") return;
-		    var listMeetingMembNotBoss = ajaxResult.data;
-		    for (var i = 0; i < listMeetingMembNotBoss.length; i++) {
-		      if (listMeetingMembNotBoss[i].photo.length < 2)
-		        listMeetingMembNotBoss[i].photo = "../../image/profile-default.png";
-		    }
-
-		    var template = Handlebars.compile($("#notbossTemplate").html());
-		    var ul = $(".member_list");
-		    ul.append(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
-		  });*/
+		  var membTemplate = Handlebars.compile($("#membTemplate").html());
+		  ul.append(membTemplate({"detailMembList":window.detailMembList}));
 		});
 		
+		// 게시판
+		
+		$.getJSON("../detail/boardListTest.json?meetingNo=" + meetingNo, function(ajaxResult) {
+		  var status = ajaxResult.status;
+		  if (status != "success") {
+			  return;
+		  }
+		  var div = $(".swiper-wrapper");
+		  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
+		  
+		  var boardListTest = ajaxResult.data;
+		  div.append(boardTemplate({"boardListTest":boardListTest}));
+		});
 	});
 	
 } catch (e) {
@@ -123,3 +104,19 @@ try {
 } finally {
 	
 }
+
+//Initialize Swiper - 게시글
+var swiper = new Swiper('.board .swiper-container', {
+	pagination : '.board .swiper-pagination',
+	slidesPerView : 4,
+	centeredSlides : false,
+	paginationClickable : true,
+	spaceBetween : 20
+});
+
+// 멤버 전체보기 버튼 클릭 이벤트
+$(function() {
+  $('#btn_toggle_member_list').on('click', function() {
+    $('.member_list_wrap').toggleClass('on');
+  });
+});
