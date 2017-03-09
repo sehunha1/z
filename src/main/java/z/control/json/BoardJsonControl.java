@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import z.domain.AddFile;
 import z.domain.Board;
 import z.domain.Link;
 import z.service.BoardService;
@@ -54,6 +55,11 @@ public class BoardJsonControl {
   @RequestMapping("/html/meetmain/add")
   public AjaxResult add(Board board) throws Exception {
     
+    List<AddFile> list = board.getAddFileList();
+    System.out.println("보드번호 = "+board.getBoardNo());
+    for (int i = 0; i < list.size(); i++) {
+      System.out.println(i+"번째 addFile = "+ ((AddFile)list.get(i)).getFilePath());
+    }
     // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.
     boardService.add(board);
     

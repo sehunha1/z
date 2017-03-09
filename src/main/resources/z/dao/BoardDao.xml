@@ -11,6 +11,13 @@
     <result column="cont"      property="content"/>
     <result column="mnum"      property="memberNo"/>
     <result column="mtnum"      property="meetNo"/>
+    
+    <collection property="addFileList" ofType="addFile">
+      <id     column="fnum"     property="fileNo"/>
+      <result column="bnum"     property="boardNo"/>
+      <result column="link"     property="filePath"/>
+      <result column="type"     property="fileDesc"/>
+    </collection>
 
   </resultMap>
   
@@ -27,6 +34,15 @@
     where b.bnum=#{value}
   </select>
   
+  <insert id="insertlink" parameterType="board" >
+    insert into file(bnum, link, type) 
+    values
+    <foreach collection="addFileList" item="addFile" separator=",">
+      (#{boardNo},#{addFileList.filePath},'picture')
+    </foreach>
+
+  </insert>
+  
   <select id="getList" parameterType="int" resultMap="board-map">
     select 
       b.bnum, 
@@ -34,9 +50,11 @@
       b.mtnum,
       b.titl, 
       b.cont,
-      m.name
+      m.name,
+      f.link
     from board b
       inner join memb m on b.mnum=m.mnum
+      left outer join file f on f.fnum=b.bnum
     where mtnum=#{vlaue}
   </select>
   
@@ -55,7 +73,7 @@
     where b.bnum=#{vlaue} 
   </select>
   
-  <insert id="insert" parameterType="board">
+  <insert id="insert" parameterType="board" useGeneratedKeys="true" keyColumn="bnum" keyProperty="boardNo">
     insert into board(mnum, mtnum, titl, cont) 
     values(#{memberNo},#{meetNo}, #{title}, #{content})
   </insert>

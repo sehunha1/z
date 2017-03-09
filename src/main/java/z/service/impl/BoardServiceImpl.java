@@ -37,7 +37,11 @@ public class BoardServiceImpl implements BoardService {
       member.setMemberNo(member.getMemberNo());
     }
     */
-    return boardDao.insert(board);
+    int count = boardDao.insert(board);
+    if (board.getAddFileList().size() != 0 ) {
+      boardDao.insertlink(board);
+    }
+    return count;
   }
   
   public int fileadd(Link link) throws Exception {
@@ -51,7 +55,8 @@ public class BoardServiceImpl implements BoardService {
       member.setMemberNo(member.getMemberNo());
     }
     */
-    return boardDao.insertlink(link);
+    /*return boardDao.insertlink(link);*/
+    return 0;
   }
   /*
   public int delete(int no) throws Exception {

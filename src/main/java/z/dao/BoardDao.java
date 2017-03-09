@@ -15,7 +15,7 @@ public interface BoardDao{
   int delete(int boardNo) throws Exception;
   int detail(int boardNo) throws Exception;
   int getBoardNo(int boardNo) throws Exception;
-  int insertlink(Link link) throws Exception;
+  int insertlink(Board board) throws Exception;
 
 }
 

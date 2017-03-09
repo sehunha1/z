@@ -11,11 +11,20 @@ public class AddFile implements Serializable {
   private static final long serialVersionUID = 1L;
 
   protected int fileNo; /////// 첨부파일 일련번호
+  protected int boardNo;
   protected String filePath; // 파일 링크주소
   protected String fileDesc; // 파일 종류
 
   public AddFile() {
   }
+  
+  
+
+  public AddFile(String filePath) {
+    this.filePath = filePath;
+  }
+
+
 
   public int getFileNo() {
     return fileNo;
@@ -41,4 +50,17 @@ public class AddFile implements Serializable {
     this.fileDesc = fileDesc;
   }
 
+
+
+  public int getBoardNo() {
+    return boardNo;
+  }
+
+
+
+  public void setBoardNo(int boardNo) {
+    this.boardNo = boardNo;
+  }
+
+  
 }
