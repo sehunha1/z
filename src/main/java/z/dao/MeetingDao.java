@@ -3,6 +3,8 @@ package z.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import z.domain.Board;
 import z.domain.Meeting;
 
@@ -18,5 +20,6 @@ public interface MeetingDao {
   ArrayList<Meeting> getListMeetingCards(int memberNo) throws Exception; // 모임 리스트 가져오기
   Meeting getDetailMeeting(int memberNo, int meetingNo) throws Exception; // 완료 모임 상세 정보 가져오기
   Meeting getOneMeeting(int meetingNo) throws Exception;
-  List<Board> boardListTest (int meetingNo) throws Exception;
+  List<Board> meetBoardList (int meetingNo) throws Exception; // 완료 모임 게시글 정보 가져오기
+  List<Board> keywordBoardList (@Param("meetingNo") int meetingNo, @Param("keyWord") String keyWord) throws Exception; // 완료 모임 게시글 정보 가져오기
 }

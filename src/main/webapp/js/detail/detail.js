@@ -1,6 +1,17 @@
 "use strict"
 // 작성: 2017.03.06 김재녕
 
+
+//Initialize Swiper - 게시글
+var swiper = new Swiper('.board .swiper-container', {
+	initialSlide: 0,
+	pagination : '.board .swiper-pagination', // 페이징 추가할 위치 지정
+	slidesPerView : 4, // 한번에 보이는 슬라이드 갯수
+	centeredSlides : false, //  
+	paginationClickable : true, // 페이지 클릭 가능 여부
+	spaceBetween : 30
+});
+
 try {
 	var memberNo = location.href.split('?')[1].split('=')[1].split('&')[0];
 	var meetingNo = location.href.split('?')[1].split('=')[2];
@@ -86,7 +97,7 @@ try {
 		
 		// 게시판
 		
-		$.getJSON("../detail/boardListTest.json?meetingNo=" + meetingNo, function(ajaxResult) {
+		$.getJSON("../detail/meetBoardList.json?meetingNo=" + meetingNo, function(ajaxResult) {
 		  var status = ajaxResult.status;
 		  if (status != "success") {
 			  return;
@@ -94,8 +105,9 @@ try {
 		  var div = $(".swiper-wrapper");
 		  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
 		  
-		  var boardListTest = ajaxResult.data;
-		  div.append(boardTemplate({"boardListTest":boardListTest}));
+		  var meetBoardList = ajaxResult.data;
+		  div.append(boardTemplate({"meetBoardList":meetBoardList}));
+		  swiper.onResize();
 		});
 	});
 	
@@ -105,18 +117,32 @@ try {
 	
 }
 
-//Initialize Swiper - 게시글
-var swiper = new Swiper('.board .swiper-container', {
-	pagination : '.board .swiper-pagination',
-	slidesPerView : 4,
-	centeredSlides : false,
-	paginationClickable : true,
-	spaceBetween : 20
-});
-
 // 멤버 전체보기 버튼 클릭 이벤트
 $(function() {
   $('#btn_toggle_member_list').on('click', function() {
     $('.member_list_wrap').toggleClass('on');
   });
+});
+
+// 게시판 검색 버튼 클릭 이벤트
+$('.board .search-btn').on('click', function(e) {
+	e.preventDefault();	
+	$(".swiper-wrapper").empty();
+	var keyWord = $('.search-keyword').val();
+	
+	$.getJSON("../detail/keywordBoardList.json?meetingNo=" + meetingNo + "&keyWord=" + keyWord, function(ajaxResult) {
+	  var status = ajaxResult.status;
+	  if (status != "success") {
+		  return;
+	  }
+	  
+	  var div = $(".swiper-wrapper");
+	  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
+	  var meetBoardList = ajaxResult.data;
+	  console.log(ajaxResult.data);
+	  div.append(boardTemplate({"meetBoardList":meetBoardList}));
+	  
+	  swiper.onResize();
+	});
+	
 });

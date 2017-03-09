@@ -28,6 +28,7 @@
 			<result column="bmtnum" property="meetNo" />
 			<result column="btitl" property="title" />
 			<result column="bcont" property="content" />
+			<result column="bdate" property="boardDate" />
 			<collection property="addFileList" ofType="addFile">
 				<id column="fnum" property="fileNo" />
 				<result column="flink" property="filePath" />
@@ -118,39 +119,10 @@
         on li.mtnum = me.mtnum
      where li.mtnum = #{meetingNo}
        and li.mnum = #{memberNo};
-	<!-- 	select me.titl
-					,me.cont
-					,me.mtdesc
-					,me.dline
-					,me.photo
-					,me.mstat
-					,me.floc
-					,me.fdate
-					,me.ftime
-					,bo.bnum as bnum
-					,bo.mnum as bmnum
-					,bo.mtnum as bmtnum
-					,bo.titl as btitl
-					,bo.cont as bcont
-					,mb.name as bname
-					,fi.fnum as fnum
-					,fi.link as flink
-					,fi.type as ftype
-		  from link li
-		  join meet me
-		    on li.mtnum = me.mtnum
-		  left join board bo
-	    	on bo.mtnum = li.mtnum
-		  left join file fi
-		    on fi.bnum = bo.bnum
-		  left join memb mb
-		    on bo.mnum = mb.mnum
-	   where li.mtnum = #{meetingNo}
-		   and li.mnum = #{memberNo}; -->
 	</select>
 	
 	<!-- 완료 모임 게시글 정보 가져오기 -->
-	<select id="boardListTest" parameterType="int" resultMap="board-map">
+	<select id="meetBoardList" parameterType="int" resultMap="board-map">
 	 	  select bo.bnum as bnum
             ,bo.mnum as bmnum
             ,bo.mtnum as bmtnum
@@ -166,6 +138,31 @@
         left join memb mb
           on bo.mnum = mb.mnum
 	     where bo.mtnum = #{meetingNo};
+	</select>
+	
+	<select id="keywordBoardList" resultMap="board-map">
+	   <![CDATA[
+	     select bo.bnum as bnum
+            ,bo.mnum as bmnum
+            ,bo.mtnum as bmtnum
+            ,bo.titl as btitl
+            ,bo.cont as bcont
+            ,bo.bdate as bdate
+            ,mb.name as bname
+            ,fi.fnum as fnum
+            ,fi.link as flink
+            ,fi.type as ftype
+        from board bo
+        left join file fi
+          on bo.bnum = fi.bnum
+        left join memb mb
+          on bo.mnum = mb.mnum
+       where bo.mtnum = #{meetingNo}
+         and (bo.titl like concat('%',#{keyWord},'%') 
+              or bo.cont like concat('%',#{keyWord},'%')
+              or fi.link like concat('%',#{keyWord},'%') 
+              or mb.name like concat('%',#{keyWord},'%'));
+     ]]>
 	</select>
 
 </mapper>

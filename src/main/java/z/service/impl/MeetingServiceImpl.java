@@ -39,8 +39,18 @@ public class MeetingServiceImpl implements MeetingService {
     return meetingDao.getDetailMeeting(memberNo, meetingNo);
   }
   
+  // 완료 모임 게시글 정보 가져오기.
   @Override
   public List<Board> boardList(int meetingNo) throws Exception {
-    return meetingDao.boardListTest(meetingNo);
+    return meetingDao.meetBoardList(meetingNo);
+  }
+  
+  // 완료 모임 특정 게시글 정보 가져오기.
+  @Override
+  public List<Board> keywordBoardList(int meetingNo, String keyWord) throws Exception {
+//    HashMap<String, Object> keyWordList = new HashMap<String, Object>();
+//    keyWordList.put("meetingNo", meetingNo);
+//    keyWordList.put("keyWord", keyWord);
+    return meetingDao.keywordBoardList(meetingNo, keyWord);
   }
 }

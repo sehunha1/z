@@ -17,6 +17,7 @@ public class Board implements Serializable {
   protected int meetNo; ///////////////// 모임 일련번호
   protected String title; /////////////// 제목
   protected String content; ///////////// 내용
+  protected String boardDate; /////////// 게시글 DateTime
   protected List<AddFile> addFileList; // 첨부파일
 
   public Board() {
@@ -76,6 +77,14 @@ public class Board implements Serializable {
 
   public void setAddFileList(List<AddFile> addFileList) {
     this.addFileList = addFileList;
+  }
+
+  public String getBoardDate() {
+    return boardDate;
+  }
+
+  public void setBoardDate(String boardDate) {
+    this.boardDate = boardDate;
   }
 
 }

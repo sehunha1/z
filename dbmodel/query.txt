@@ -96,7 +96,8 @@ CREATE TABLE `board` (
   `mnum`  INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
   `mtnum` INTEGER      NOT NULL COMMENT '모임일련번호', -- 모임일련번호
   `titl`  VARCHAR(255) NOT NULL COMMENT '제목', -- 제목
-  `cont`  TEXT         NOT NULL COMMENT '내용' -- 내용
+  `cont`  TEXT         NOT NULL COMMENT '내용', -- 내용
+  `bdate` DATETIME     NOT NULL COMMENT '게시글 작성일자' -- 게시글 작성일자
 )
 COMMENT '게시글';
 

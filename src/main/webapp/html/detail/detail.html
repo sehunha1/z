@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- 작성: 2017.02.09 김재녕 -->
 <!-- 내용: 모임 상세정보(완료상태) -->
-<!-- 수정: 2017.03.06 김재녕 -->
+<!-- 수정: 2017.03.09 김재녕 -->
 <html>
 <head>
 <meta charset='UTF-8'>
@@ -47,7 +47,6 @@
 		<!-- 멤버 -->
 		<div class="member">
 			<p class="d-info">멤버</p>
-
 			<div class="section member_wrap">
 				<div class="member_list_wrap">
 					<ul class="member_list">
@@ -55,12 +54,13 @@
 				</div>
 				<button id="btn_toggle_member_list">전체보기</button>
 			</div>
-
 		</div>
 
+    <!-- 게시판 -->
 		<div class="board">
 			<div class="headtitle">
 				<p class="b-info">게시판</p>
+				<a class='all-down-btn' href='#'></a>
 				<div class="search-board">
 					<form class="search-board-form">
 						<input class="search-keyword" type="text" placeholder="검색어 입력">
@@ -68,45 +68,23 @@
 					</form>
 				</div>
 			</div>
-
 			<div class="swiper-container">
-				<a class='all-down-btn' href='#'></a>
 				<div class="swiper-wrapper">
-      <!--<div class="swiper-slide">
-	          <div class="board-box">
-							<img class="board-photo" src="../../image/detail/board.jpg">
-							<p>설명글~~~~</p>
-							<p>안녕</p>
-				    </div>
-					</div> -->
 				</div>
-				<div class="swiper-pagination"></div>
 			</div>
 		</div>
-
-	</div>
+	</div> <!-- content end -->
 
 	<div id="footer"></div>
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
 	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
 	<script src="../../js/context.js"></script>
 	<script src="../../js/common.js"></script>
-	<script src="../../js/detail/detail.js"></script>
+  <script src="../../js/detail/detail.js"></script>
 
-	<script id="bossTemplate" type="text/x-handlebars-template">
-    {{#each boss}}
-    <li class="item">
-      <span class="ico"></span>
-      <div class="profile">
-        <img src="../upload/{{photo}}" alt=""/>
-      </div>
-      <p class="name">{{name}}</p>
-    </li>
-    {{/each}}
-  </script>
-
+  <!-- 멤버 템플릿 -->
 	<script id="membTemplate" type="text/x-handlebars-template">
     {{#each detailMembList}}
     <li class="item">
@@ -118,16 +96,18 @@
     {{/each}}
   </script>
   
+  <!-- 게시판 템플릿 -->
 	<script id="boardTemplate" type="text/x-handlebars-template">
-
-  {{#each boardListTest}}
-    <div class="board-box">
-      <img class="board-photo" src="../upload/{{link}}" alt="">
-      <p>{{title}}</p>
-      <p>{{content}}</p>
+    {{#each meetBoardList}}
+    <div class="swiper-slide">
+      <div class="board-box">
+        <img class="board-photo" src="../upload/{{link}}" alt="">
+        <p>{{title}}</p>
+        <p>{{content}}</p>
+      </div>
     </div>
-  {{/each}}
-  
+    {{/each}}
+    <div class="swiper-pagination"></div>
   </script>
 
 </body>
