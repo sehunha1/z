@@ -222,7 +222,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     $('#new-btnnn').click(function(event) {
       event.preventDefault();
         var param = {
-          "memberNo": mnum,
+          
+        	"memberNo": mnum,
           "meetNo": mtnum,
           "title": $('#titl').val(),
           "content": $('#cont').val(),
@@ -331,7 +332,7 @@ var arrayToJson = function(list) {
 </script>
   
 <script id="trTemplate" type="text/x-handlebars-template">
-<div class="col-sm-4 col-md-4" data-boardNo={{boardNo}}>
+<div class="col-sm-4 col-md-4" >
  <div class="post">
      <div class="post-img-content">
          <img src="../image/" class="img-responsive" />
