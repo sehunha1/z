@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <style>
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    .info .link {color: #5085BB;}
+    
+    .map_wrap2, .map_wrap2 * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+		.map_wrap2 a, .map_wrap2 a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+		.map_wrap2 {position:relative;width:100%;height:100%;}
+		#menu_wrap2 {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		.bg_white2 {background:#fff;}
+		#menu_wrap2 hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+		#menu_wrap2 .option{text-align: center;}
+		#menu_wrap2 .option p {margin:10px 0;}  
+		#menu_wrap2 .option button {margin-left:5px;}
+</style>
+</head>
+<body>
+<div class="map2">
+<div id="map-2" style="width:100%;height:600px;"></div>
+<div id="menu_wrap2" class="bg_white2" style='width:250px; height:500px;'>
+                <div class="option">
+                  <div>
+                    <form onsubmit="searchPlaces(); return false;">
+                    </form>
+                  </div>
+                </div>
+                <font>선택된 장소 리스트</font>
+                <input type='button' id='on' style='float: right; position:absolute; 
+                background-color: rgba( 255, 255, 255, 0.2 );  background:none;
+                border:none; margin:0; padding:0;' value='▲'></input>
+                
+                <input type='hidden' id='off' style='float: right; position:absolute; 
+                background-color: rgba( 255, 255, 255, 0.2 );  background:none;
+                border:none; margin:0; padding:0;' value='▼'></input>
+                <hr>
+                <table id='list-table' class='table table-hover'>
+                <thead>
+                  <tr>
+                    <th>장소명</th>
+                    <th>주소</th>
+                  </tr>
+                <thead>
+                <tbody></tbody>
+              </table>
+                <!-- 
+                <ul id="placesList"></ul>
+                <div id="pagination"></div>
+                -->
+              </div>
+              </div>
+
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=972fc2cd0c0d0f176249bf894a112457&libraries=services"></script>
+
+<script src='../../node_modules/jquery/dist/jquery.js'></script>
+<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+
+<script>
+$('#on').click(function() {
+		$("#menu_wrap").css("height", "13px");
+		$("#menu_wrap").css("overflow", "hidden");
+		$("#on").attr("type", "hidden");
+		$("#off").attr("type", "button");
+});
+
+$('#off').click(function() {
+    $("#menu_wrap").css("height", "500px");
+    $("#menu_wrap").css("overflow", "auto");
+    $("#on").attr("type", "button");
+    $("#off").attr("type", "hidden");
+});
+
+</script>
+
+
+
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
+  <td id='address'>{{address}}</td>
+</tr>
+{{/each}}
+</script>
+
+<script>
+$.getJSON('placelist.json', function(ajaxResult) {
+	var list = ajaxResult.data;
+	
+	//console.log(ajaxResult);
+	  
+	var x = list[0].xLocation;
+	var y = list[0].yLocation;
+	
+	var status = ajaxResult.status;
+	    
+	    if (status != "success")
+	      return;
+	    
+	    var list = ajaxResult.data;
+	    
+	var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
+	    mapOption = {
+	        center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	
+	var map2 = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+	var tbody = $('#list-table > tbody');
+	    
+	    // 템플릿 텍스트를 처리하여 HTML을 생성해 줄 함수 얻기
+	    var template = Handlebars.compile($('#trTemplate').html());
+	    
+	    // 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
+	    tbody.html(template({"list": list}));
+	    
+	    
+	var positions = Array(list.length);
+	  
+	  for (j = 0; j < positions.length; j++) {
+	    positions[j] = new daum.maps.LatLng(list[j].xLocation, list[j].yLocation) 
+	  }
+	  
+	  var contents = Array(list.length);
+	    
+	    for (i = 0; i < contents.length; i++) {
+	    
+	      contents[i] = '<div class="wrap">' + 
+	                '    <div class="info">' + 
+	                '        <div class="title">' + 
+	                             list[i].place + 
+	                '            <div class="close" title="닫기"></div>' + 
+	                '        </div>' + 
+	                '        <div class="body">' + 
+	                '            <div class="img">' +
+	                '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+	                '           </div>' + 
+	                '            <div class="desc">' + 
+	                '                <div class="ellipsis">' + list[i].address + '</div>' +
+	                '                <div class="member">선택한 멤버' + list[i].memberNo + '</div>' + 
+	                '            </div>' + 
+	                '        </div>' + 
+	                '    </div>' +    
+	                '</div>';
+	    }
+	    
+	
+	// 오버레이를 담는 배열
+	var overlays = [];
+	
+	
+	// 맵의 확대수준이 변경되거나 위치이동 되었을때 커스텀 오버레이 삭제
+	daum.maps.event.addListener(map2, 'idle', function() {
+	    closeOverlays();
+	});
+	
+	// 오버레이를 모두 닫는 함수
+	function closeOverlays() {
+	  for (var i = 0; i < overlays.length; i++) {
+	    overlays[i].setMap(null);
+	  }
+	}
+	
+	for (var i = 0; i < positions.length; i++) {
+	  createMarkerAndOverlay(positions[i], contents[i]);
+	}
+	
+	// 마커와 오버레이를 생성하는 함수
+	function createMarkerAndOverlay(posi, cont) {
+	  // 마커를 생성합니다
+	    var marker = new daum.maps.Marker({
+	        map: map2, // 마커를 표시할 지도
+	        position: posi // 마커의 위치
+	    }); 
+	
+	    var overlayDiv = document.createElement('div');
+	    overlayDiv.innerHTML = cont;
+	
+	    // 마커 위에 커스텀오버레이를 표시합니다
+	    var overlay = new daum.maps.CustomOverlay({
+	        content: overlayDiv, // 커스텀오버레이에 표시할 내용
+	        position: marker.getPosition(),
+	        zIndex: 3
+	    });
+	    
+	    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+	    daum.maps.event.addListener(marker, 'click', function() {
+	        overlay.setMap(map2);
+	    });
+	
+	    // 오버레이 element에서 close버튼을 클릭하면 닫히게 이벤트를 등록한다.
+	    var close = overlayDiv.getElementsByClassName('close')[0];
+	    close.onclick= function() {
+	      overlay.setMap(null); 
+	    };
+	    
+	    overlays.push(overlay);
+	}
+	
+	      $('.place-link').click(function(event) {
+	      for (i = 0; i < list.length; i++) {
+	    	  if (list[i].xLocation == $(this).attr("x")) {
+	    	        var overlayDiv = document.createElement('div');
+	    	        overlayDiv.innerHTML = contents[i];
+	    	        
+	    	        var placelist = document.getElementById('place-link').value;    
+	    	        // 마커 위에 커스텀오버레이를 표시합니다
+	    	        var overlay = new daum.maps.CustomOverlay({
+	    	            content:  contents[i], // 커스텀오버레이에 표시할 내용
+	    	            position: positions[i],
+	    	            zIndex: 3
+	    	        });
+	    	        
+	    	        // 오버레이 element에서 close버튼을 클릭하면 닫히게 이벤트를 등록한다.
+	    	        overlays.push(overlay);
+	    	  }
+	      }
+	    	        var close = overlayDiv.getElementsByClassName('close')[0];
+	    	          close.onclick= function() {
+	    	          overlay.setMap(null);
+	    	        };
+	    	        
+	    	        
+	    	        
+            map2.setCenter(new daum.maps.LatLng($(this).attr("x"), $(this).attr("y")));
+            overlay.setMap(map2);
+        });
+});
+</script>
+</body>
+</html>
