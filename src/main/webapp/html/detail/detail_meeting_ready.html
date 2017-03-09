@@ -18,7 +18,7 @@
     <div id="meeting_ready">
       <h1 class="tit"></h1>
       <div class="meeting_info">
-        <p class="date">확정대기중</p>
+        <p class="date"></p>
         <p class="member">
           <span class="tit">투표인원</span>
           <span class="count">20/23</span>
@@ -56,6 +56,9 @@
 
   <script id="infoTemplate" type="text/x-handlebars-template">
     {{title}}
+  </script>
+  <script id="contentTemplate" type="text/x-handlebars-template">
+    {{content}}
   </script>
   <script id="bossTemplate" type="text/x-handlebars-template">
     {{#each listMeetingMembBoss}}

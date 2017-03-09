@@ -8,6 +8,10 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var template = Handlebars.compile($("#infoTemplate").html());
     var h1 = $("#meeting_ready h1");
     h1.append(template(oneMeeting));
+
+    var template_cont = Handlebars.compile($("#contentTemplate").html());
+    var p = $(".meeting_info .date");
+    p.append(template(oneMeeting));
 });
 
 $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
