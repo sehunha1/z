@@ -8,6 +8,10 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var template = Handlebars.compile($("#infoTemplate").html());
     var h1 = $("#meeting_ready h1");
     h1.append(template(oneMeeting));
+
+    var template_cont = Handlebars.compile($("#contentTemplate").html());
+    var p = $(".meeting_info .date");
+    p.append(template_cont(oneMeeting));
 });
 
 $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
@@ -56,6 +60,24 @@ $.getJSON("getLocationListDuplication.json?meetingNo=" + meetingNo, function(aja
   var template = Handlebars.compile($("#locationListTemplate").html());
   var ul = $(".result_list.place_result_list");
   ul.append(template({"locationListDuplication":locationListDuplication}));
+});
+
+$.getJSON("getVotedCount.json?meetingNo=" + meetingNo, function(ajaxResult) {
+  var status = ajaxResult.status;
+  if (status != "success") return;
+  var votedCount = ajaxResult.data;
+
+  var span = $(".meeting_info .count #voted");
+  span.append(votedCount);
+});
+
+$.getJSON("getEntireCount.json?meetingNo=" + meetingNo, function(ajaxResult) {
+  var status = ajaxResult.status;
+  if (status != "success") return;
+  var entireCount = ajaxResult.data;
+
+  var span = $(".meeting_info .count #entire");
+  span.append(entireCount);
 });
 
 $(function() {

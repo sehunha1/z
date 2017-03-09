@@ -14,6 +14,6 @@
 	</resultMap>
 
 	<select id="getDateDuplication" parameterType="int" resultMap="calendar-map">
-		select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >= (select count(*) from cal where mtnum=#{value} group by cdate desc limit 1);
+		select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >= (select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1);
 	</select>
 </mapper>

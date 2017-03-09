@@ -16,4 +16,12 @@ public class LinkServiceImpl implements LinkService {
   public List<Link> getBoss(int memberNo) throws Exception {
     return linkDao.getBoss(memberNo);
   }
+
+  public int getVotedCount(int meetingNo) throws Exception {
+    return linkDao.getVotedCount(meetingNo);
+  }
+
+  public int getEntireCount(int meetingNo) throws Exception {
+    return linkDao.getEntireCount(meetingNo);
+  }
 }
