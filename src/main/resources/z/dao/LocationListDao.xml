@@ -14,6 +14,7 @@
 	</resultMap>
 
 	<select id="getLocationListDuplication" parameterType="int" resultMap="locationList-map">
-		select list.lname, list.addr from list where mtnum=#{value} group by list.addr having count(*) >= (select count(*) from list where mtnum=#{value} group by list.addr desc limit 1);
+		select list.lname, list.addr from loc left outer join list on loc.ltnum=list.ltnum where loc.mtnum=#{value} group by loc.ltnum having count(*) >=
+		(select count(*) from loc where loc.mtnum=#{value} group by loc.ltnum order by count(*) desc limit 1);
 	</select>
 </mapper>

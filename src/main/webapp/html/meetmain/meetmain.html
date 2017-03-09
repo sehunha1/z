@@ -11,17 +11,9 @@
 <link rel="stylesheet" href="../../css/mylist/write2.css"/>
 <link rel="stylesheet" href="../../css/main/main.css">
 <link rel="stylesheet" href="../../css/meetmain/board.css">
+<link rel="stylesheet" href="../../node_modules/jquery-ui-1.12.1.custom/jquery-ui.css"/>
 
-<!-- 달력 css -->
-<link rel="stylesheet" href="./cal/css/monthly.css">
 <style type="text/css">
-    #mycalendar {
-      width: 100%;
-      margin: 2em auto 0 auto;
-      max-width: 80em;
-      border: 1px solid #666;
-    }
-    
     #board img {
       width: 100%;
       height: 120px;
@@ -33,7 +25,6 @@
       margin: 0 auto;
     }
   </style>
-  <!-- 달력 CSS 끝 -->
 
 </head>
 <body>
@@ -58,7 +49,7 @@
 		
 		<div class="tab-content">
 		  <div id="menu1" class="tab-pane fade in active">
-		    <div class="monthly" id="mycalendar" style='border:1px solid black; width:600px; height:400px; float:left;'></div>
+		    <div id="datepicker"></div>
 		  </div>
 		  
 		  
@@ -151,13 +142,8 @@
 	<script src='../../node_modules/bootstrap/dist/js/bootstrap.js'></script>
 	<script src="../../js/common.js"></script>
 	<script src='../../js/meetmain/tap.js'></script>
+	<script src="../../node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="../../js/meetmain/meetmain.js"></script>
-
-	
-	<!-- 달력 js -->
-	<script type="text/javascript" src="./cal/js/jquery.js"></script>
-	<script type="text/javascript" src="./cal/js/monthly.js"></script>
-  <script src='./cal/cal.js'></script>
   
   <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>

@@ -16,4 +16,12 @@
     select link.mnum from link left outer join memb on memb.mnum=link.mnum where mtnum=(select mtnum from link where mnum=#{value}) and link.boss="y";
   </select>
 
+  <select id="getVotedCount" parameterType="int" resultType="int">
+    select count(*) from link where mtnum=#{value} and stat="y";
+  </select>
+
+  <select id="getEntireCount" parameterType="int" resultType="int">
+    select count(*) from link where mtnum=#{value};
+  </select>
+
 </mapper>

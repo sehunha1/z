@@ -1,0 +1,150 @@
+
+-- memb
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test01@test.com', '김재녕', password(123456), '1488859605553_0', 'test01@kakao.com', 'test01@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test02@test.com', '하세훈', password(123456), '1488859605553_0', 'test02@kakao.com', 'test02@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test03@test.com', '김우종', password(123456), '1488859605553_0', 'test03@kakao.com', 'test03@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test04@test.com', '김희경', password(123456), '1488859605553_0', 'test04@kakao.com', 'test04@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test05@test.com', '원요엘', password(123456), '1488859605553_0', 'test05@kakao.com', 'test05@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test06@test.com', '박수희', password(123456), '1488859605553_0', 'test06@kakao.com', 'test06@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test07@test.com', '김용진', password(123456), '1488859605553_0', 'test07@kakao.com', 'test07@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test08@test.com', '한옥주', password(123456), '1488859605553_0', 'test08@kakao.com', 'test08@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test09@test.com', '이석환', password(123456), '1488859605553_0', 'test09@kakao.com', 'test09@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test10@test.com', '정용창', password(123456), '1488859605553_0', 'test10@kakao.com', 'test10@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test11@test.com', '김지환', password(123456), '1488859605553_0', 'test11@kakao.com', 'test11@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test12@test.com', '천지연', password(123456), '1488859605553_0', 'test12@kakao.com', 'test12@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test13@test.com', '지정훈', password(123456), '1488859605553_0', 'test13@kakao.com', 'test13@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test14@test.com', '정지연', password(123456), '1488859605553_0', 'test14@kakao.com', 'test14@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test15@test.com', '유신애', password(123456), '1488859605553_0', 'test15@kakao.com', 'test15@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test16@test.com', '정선교', password(123456), '1488859605553_0', 'test16@kakao.com', 'test16@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test17@test.com', '이성복', password(123456), '1488859605553_0', 'test17@kakao.com', 'test17@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test18@test.com', '서동훈', password(123456), '1488859605553_0', 'test18@kakao.com', 'test18@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test19@test.com', '오용석', password(123456), '1488859605553_0', 'test19@kakao.com', 'test19@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test20@test.com', '김보라', password(123456), '1488859605553_0', 'test20@kakao.com', 'test20@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test21@test.com', '김건우', password(123456), '1488859605553_0', 'test21@kakao.com', 'test21@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test22@test.com', '한동은', password(123456), '1488859605553_0', 'test22@kakao.com', 'test22@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test23@test.com', '신종우', password(123456), '1488859605553_0', 'test23@kakao.com', 'test23@facebook.com');
+insert into memb (email, name, pwd, photo, kakao, fcbk) values('test24@test.com', '민경기', password(123456), '1488859605553_0', 'test24@kakao.com', 'test24@facebook.com');
+
+-- meet
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임01', '첫번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임02', '두번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임03', '세번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임04', '네번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임05', '다섯번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임06', '여섯번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임07', '일곱번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임08', '여덟번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임09', '아홉번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+insert into meet (titl, cont, mtdesc, dline, photo, mstat, floc, fdate, ftime) values('테스트모임10', '열번째 테스트 모임입니다.', '친목', '2017-03-31', '1488859605553_0', 'ing', 'seoul', '2017-03-31', '오전');
+
+-- link
+insert into link (mnum, mtnum, boss, stat) values('1', '1', 'y', 'n');
+insert into link (mnum, mtnum, boss, stat) values('2', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('3', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('4', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('5', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('6', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('7', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('8', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('9', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('10', '1', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('11', '2', 'y', 'n');
+insert into link (mnum, mtnum, boss, stat) values('12', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('13', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('14', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('15', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('16', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('17', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('18', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('19', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('20', '2', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('21', '3', 'y', 'n');
+insert into link (mnum, mtnum, boss, stat) values('22', '3', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('23', '3', 'n', 'n');
+insert into link (mnum, mtnum, boss, stat) values('24', '3', 'n', 'n');
+
+-- board
+insert into board (mnum, mtnum, titl, cont, bdate) values('1', '1', 'testBoard01', '첫번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('2', '1', 'testBoard02', '두번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('3', '1', 'testBoard03', '세번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('4', '1', 'testBoard04', '네번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('5', '1', 'testBoard05', '다섯번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('6', '1', 'testBoard06', '여섯번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('7', '1', 'testBoard07', '일곱번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('8', '1', 'testBoard08', '여덟번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('9', '1', 'testBoard09', '아홉번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('10', '1', 'testBoard10', '열번째 게시물입니다.', now());
+
+insert into board (mnum, mtnum, titl, cont, bdate) values('11', '2', 'testBoard01', '첫번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('12', '2', 'testBoard02', '두번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('13', '2', 'testBoard03', '세번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('14', '2', 'testBoard04', '네번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('15', '2', 'testBoard05', '다섯번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('16', '2', 'testBoard06', '여섯번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('17', '2', 'testBoard07', '일곱번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('18', '2', 'testBoard08', '여덟번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('19', '2', 'testBoard09', '아홉번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('20', '2', 'testBoard10', '열번째 게시물입니다.', now());
+
+insert into board (mnum, mtnum, titl, cont, bdate) values('21', '3', 'testBoard01', '첫번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('22', '3', 'testBoard02', '두번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('23', '3', 'testBoard03', '세번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('24', '3', 'testBoard04', '네번째 게시물입니다.', now());
+
+insert into board (mnum, mtnum, titl, cont, bdate) values('1', '1', 'testBoard11', '열한번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('2', '1', 'testBoard12', '열두번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('3', '1', 'testBoard13', '열세번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('4', '1', 'testBoard14', '열네번째 게시물입니다.', now());
+
+insert into board (mnum, mtnum, titl, cont, bdate) values('11', '2', 'testBoard11', '열한번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('12', '2', 'testBoard12', '열두번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('13', '2', 'testBoard13', '열세번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('14', '2', 'testBoard14', '열네번째 게시물입니다.', now());
+
+insert into board (mnum, mtnum, titl, cont, bdate) values('21', '3', 'testBoard11', '다섯번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('22', '3', 'testBoard12', '여섯번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('23', '3', 'testBoard13', '일곱번째 게시물입니다.', now());
+insert into board (mnum, mtnum, titl, cont, bdate) values('24', '3', 'testBoard14', '여덟번째 게시물입니다.', now());
+
+-- file
+insert into file (bnum, link, type) values('1', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('2', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('3', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('4', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('5', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('6', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('7', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('8', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('9', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('10', '1488859605553_0', 'photo');
+
+insert into file (bnum, link, type) values('11', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('12', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('13', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('14', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('15', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('16', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('17', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('18', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('19', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('20', '1488859605553_0', 'photo');
+
+insert into file (bnum, link, type) values('21', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('22', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('23', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('24', '1488859605553_0', 'photo');
+
+insert into file (bnum, link, type) values('1', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('1', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('1', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('1', '1488859605553_0', 'photo');
+
+insert into file (bnum, link, type) values('11', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('11', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('11', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('11', '1488859605553_0', 'photo');
+
+insert into file (bnum, link, type) values('21', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('21', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('21', '1488859605553_0', 'photo');
+insert into file (bnum, link, type) values('21', '1488859605553_0', 'photo');

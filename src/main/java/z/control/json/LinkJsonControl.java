@@ -22,4 +22,16 @@ public class LinkJsonControl {
     List<Link> boss = linkService.getBoss(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, boss);
   }
+
+  @RequestMapping("html/detail/getVotedCount")
+  public AjaxResult getVotedCount(int meetingNo) throws Exception {
+    int votedCount = linkService.getVotedCount(meetingNo);
+    return new AjaxResult(AjaxResult.SUCCESS, votedCount);
+  }
+
+  @RequestMapping("html/detail/getEntireCount")
+  public AjaxResult getEntireCount(int meetingNo) throws Exception {
+    int entireCount = linkService.getEntireCount(meetingNo);
+    return new AjaxResult(AjaxResult.SUCCESS, entireCount);
+  }
 }

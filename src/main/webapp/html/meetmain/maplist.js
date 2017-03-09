@@ -12,6 +12,11 @@ $.getJSON('placelist.json', function(ajaxResult) {
   
   // 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
   tbody.html(template({"list": list}));
+  
+  $('.place-link').click(function(event) {
+	  	event.preventDefault();
+	  	location.href = 'view.html?memberNo=' + $(this).attr("data-no");
+	 });
 });
 
 //$.getJSON('list.json', function(ajaxResult) {

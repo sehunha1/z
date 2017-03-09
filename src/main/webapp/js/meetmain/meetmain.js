@@ -1,5 +1,9 @@
 var meetingNo = window.location.search.split("&")[1].substring(10);
 
+$("#datepicker").datepicker({
+    inline: true
+});
+
 $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var status = ajaxResult.status;
     if (status != "success") return;

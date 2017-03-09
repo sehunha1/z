@@ -21,14 +21,16 @@ import z.service.MeetingService;
 
 @RestController
 public class MeetingJsonControl {
-  @Autowired ServletContext sc;
-  @Autowired MeetingService meetingService;
-  
+  @Autowired
+  ServletContext sc;
+  @Autowired
+  MeetingService meetingService;
+
   // 모임 개설시 방정보 삽입.
   @RequestMapping("html/meeting/add")
   public AjaxResult add(Meeting meeting, HttpSession session) throws Exception {
     Member member = (Member) session.getAttribute("member");
-    
+
     // 로그인 한 경우만 모임 개설
     if (member != null) {
       meeting.setMeetBossNo(member.getMemberNo());
@@ -43,14 +45,14 @@ public class MeetingJsonControl {
     Meeting oneMeeting = meetingService.getOneMeeting(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, oneMeeting);
   }
-  
+
   // 모임 리스트 가져오기.
   @RequestMapping("html/mylist/listMeetingCards")
   public AjaxResult listMeetingCards(int memberNo) throws Exception {
     List<Meeting> listMeetingCards = meetingService.getListMeetingCards(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, listMeetingCards);
   }
-  
+
   // 완료 모임 상세 정보 가져오기
   @RequestMapping("html/detail/detailMeet")
   public AjaxResult detailMeeting(int memberNo, int meetingNo) throws Exception {
@@ -60,9 +62,9 @@ public class MeetingJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
   }
-  
+
   // 완료 모임 게시글 정보 가져오기
-  @RequestMapping("html/detail/boardListTest")
+  @RequestMapping("html/detail/meetBoardList")
   public AjaxResult boardList(int meetingNo) throws Exception {
     List<Board> boardList = meetingService.boardList(meetingNo);
     if (boardList != null) {
@@ -70,5 +72,15 @@ public class MeetingJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
   }
-  
+
+  // 완료 모임 특정 게시글 정보 가져오기
+  @RequestMapping("html/detail/keywordBoardList")
+  public AjaxResult keywordBoardList(int meetingNo, String keyWord) throws Exception {
+    List<Board> boardList = meetingService.keywordBoardList(meetingNo, keyWord);
+    if (boardList != null && boardList.size() != 0) {
+      return new AjaxResult(AjaxResult.SUCCESS, boardList);
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
+  }
+
 }
