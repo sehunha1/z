@@ -10,8 +10,8 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var oneMeeting = ajaxResult.data;
 
     var template = Handlebars.compile($("#infoTemplate").html());
-    var div = $("#wrap .conttext1");
-    div.append(template(oneMeeting));
+    var divs = $("#testwrap .conttext1");
+    divs.append(template(oneMeeting));
 });
 
 $(function() {

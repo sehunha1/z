@@ -26,14 +26,19 @@
       width: 98%;
       margin: 0 auto;
     }
+    
+    #menu2 {
+	  display: block;
+	  position: static;
+	}
   </style>
 
 </head>
-<body>
+<body onload='maphide()'>
 	<div id="header"></div>
 	
 	<div class='container'>
-		<div id="wrap">
+		<div id="testwrap">
 			<div id="sidebar"></div>
         <div class='conttext1' style='float:left; margin-left:10px;'></div>
         <div style='float: right;'>
@@ -45,8 +50,8 @@
 			<div id='tab' style='float:left; width:745px; height:720px; margin-left:10px;'>
 			 <ul class="nav nav-tabs" style='font-family:Noto Sans KR, sans-serif;'>
 		   <li class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
-		   <li><a data-toggle="tab" href="#menu2">장소투표</a></li>
-		   <li><a data-toggle="tab" href="#menu3">게시판</a></li>
+		   <li><a data-toggle="tab" href="#menu2" onClick="menu2c()">장소투표</a></li>
+		   <li><a data-toggle="tab" href="#menu3" onClick="menu3c()">게시판</a></li>
 		</ul>
 		
 		<div class="tab-content">
@@ -56,9 +61,52 @@
 		  
 		  
 		  
-		  <div id="menu2" class="tab-pane fade">
-		  </div>
-
+      <div id="menu2" class="tab-pane fade">
+      <div id="menu2-wrap">
+            <div id="buttonchoice" style='margin-top:10px;'>
+              <button type="button" id='bselect' class="btn btn-primary">장소 선택하기</button>
+              <button type="button" id='blist' class="btn btn-primary">장소 리스트</button>
+            </div>
+            
+            <div class="map1">
+            <div class="map_wrap">
+              <div id="map"
+                style="margin-top:5px; width: 900px; height: 600px; position: relative; overflow: hidden;"></div>
+              
+              
+              <div id="menu_wrap" class="bg_white" style='width:250px; height:500px;'>
+                <div class="option">
+                  <div>
+                    <form onsubmit="searchPlaces(); return false;">
+                      키워드 : <input type="text" value="강남역 모임장소" id="keyword"
+                        size="15">
+                      <button type="submit">검색하기</button>
+                    </form>
+                  </div>
+                </div>
+                <hr>
+                <ul id="placesList"></ul>
+                <div id="pagination"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="map2">
+              <table id='list-table' class='table table-hover'>
+                <thead>
+                  <tr>
+                    <th>모임장소번호</th>
+                    <th>장소명</th>
+                    <th>주소</th>
+                    <th>멤버번호</th>
+                    <th>모임일련번호</th>
+                  </tr>
+                <thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -138,6 +186,7 @@
 	
 	<!-- container -->
 		<div id="footer"></div>
+   <script src="//apis.daum.net/maps/maps3.js?apikey=972fc2cd0c0d0f176249bf894a112457&libraries=services"></script>
 	
 	<script src='../../node_modules/jquery/dist/jquery.js'></script>
 	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
@@ -146,6 +195,10 @@
 	<script src='../../js/meetmain/tap.js'></script>
 	<script src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="../../js/meetmain/meetmain.js"></script>
+	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+	
+	<!-- 다음 지도 -->
+  <script src="../../js/meetmain/daummap.js"></script>
 	
   <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
@@ -164,6 +217,59 @@
   $('#new-btnn').click(function(event) {
 	    event.preventDefault();
 	  });
+  </script>
+  
+  <script>
+  $('#blist').click(function(){
+    $(".map1").hide();
+    $(".map2").show();
+  });
+  
+  $('#bselect').click(function(){
+      $(".map1").show();
+      $(".map2").hide();
+    });
+  
+  function maphide() {
+      $(".map_wrap").css("display", "none");
+      $("#menu_wrap").css("display", "none");
+      $("#map").css("display", "none");
+      $("#buttonchoice").css("display", "none");
+      
+      $(".map1").hide();
+      $(".map2").hide();
+}
+  
+  function menu1c() {
+      $(".map_wrap").css("display", "none");
+      $("#menu_wrap").css("display", "none");
+      $("#map").css("display", "none");
+      $("#buttonchoice").css("display", "none");
+      
+      $(".map1").hide();
+      $(".map2").hide();
+    }
+  
+  function menu2c() {
+      $(".map_wrap").css("display", "block");
+      $("#menu_wrap").css("display", "block");
+      $("#map").css("display", "block");
+      $("#buttonchoice").css("display", "block");
+      
+      $(".map1").show();
+      $(".map2").hide();
+    }
+  
+  function menu3c() {
+    $(".map_wrap").css("display", "none");
+    $("#menu_wrap").css("display", "none");
+    $("#map").css("display", "none");
+    $("#buttonchoice").css("display", "none");
+    
+    $(".map1").hide();
+    $(".map2").hide();
+  }
+  
   </script>
   
 <script>
