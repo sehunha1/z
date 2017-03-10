@@ -17,4 +17,9 @@ public class CalendarServiceImpl implements CalendarService {
   public List<Calendar> getDateDuplication(int meetingNo) throws Exception {
     return calendarDao.getDateDuplication(meetingNo);
   }
+
+  @Override
+  public List<Calendar> getSelectedDateInfo(int meetingNo) throws Exception {
+    return calendarDao.getSelectedDateInfo(meetingNo);
+  }
 }

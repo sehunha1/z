@@ -4,6 +4,12 @@ $("#datepicker").datepicker({
     inline: true
 });
 
+$.getJSON("getSelectedDateInfo.json?meetingNo=" + meetingNo, function(ajaxResult) {
+    var status = ajaxResult.status;
+    if (status != "success") return;
+    var dddd = ajaxResult.data;
+});
+
 $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var status = ajaxResult.status;
     if (status != "success") return;

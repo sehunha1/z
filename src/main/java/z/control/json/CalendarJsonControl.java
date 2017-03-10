@@ -21,4 +21,10 @@ public class CalendarJsonControl {
     List<Calendar> dateDuplication = calendarService.getDateDuplication(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, dateDuplication);
   }
+
+  @RequestMapping("html/meetmain/getSelectedDateInfo")
+  public AjaxResult getSelectedDateInfo(int meetingNo) throws Exception {
+    List<Calendar> selectedDateInfo = calendarService.getSelectedDateInfo(meetingNo);
+    return new AjaxResult(AjaxResult.SUCCESS, selectedDateInfo);
+  }
 }
