@@ -1,23 +1,16 @@
 package z.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Calendar implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int calendarNo;
   protected int memberNo;
   protected int meetingNo;
   protected String calendarDate;
   protected String calendarTime;
-
-  public int getCalendarNo() {
-    return calendarNo;
-  }
-
-  public void setCalendarNo(int calendarNo) {
-    this.calendarNo = calendarNo;
-  }
+  protected List<Calendar> selectedDateInfo;
 
   public int getMemberNo() {
     return memberNo;
@@ -49,5 +42,13 @@ public class Calendar implements Serializable {
 
   public void setCalendarTime(String calendarTime) {
     this.calendarTime = calendarTime;
+  }
+
+  public List<Calendar> getSelectedDateInfo() {
+    return selectedDateInfo;
+  }
+
+  public void setSelectedDateInfo(List<Calendar> selectedDateInfo) {
+    this.selectedDateInfo = selectedDateInfo;
   }
 }

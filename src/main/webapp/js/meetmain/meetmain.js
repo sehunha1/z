@@ -1,13 +1,98 @@
 var meetingNo = window.location.search.split("&")[1].substring(10);
 
+
+Date.prototype.Compare = function(ComDate, Type) {
+    var RtnVal = -1;
+    var tmpDate = new Date();
+    tmpDate.setTime(this.getTime());
+
+    switch(Type.toUpperCase())
+    {
+        case "Y" : {
+            do{
+                tmpDate.setMonth(tmpDate.getMonth() + 12);
+                RtnVal++;
+            }
+            while(tmpDate <= ComDate);
+        }
+            break;
+        case "M" : {
+            do{
+                tmpDate.setMonth(tmpDate.getMonth() + 1);
+                RtnVal++;
+            }
+            while(tmpDate <= ComDate);
+        }
+            break;
+        case "D" : {
+            do{
+                tmpDate.setDate(tmpDate.getDate() + 1);
+                RtnVal++;
+            }
+            while(tmpDate <= ComDate);
+        }
+            break;
+        case "YD" : {
+            do{
+                tmpDate.setMonth(tmpDate.getMonth() + 12);
+            }
+            while(tmpDate <= ComDate);
+
+            tmpDate.setMonth(tmpDate.getMonth() - 12);
+
+            do{
+                tmpDate.setDate(tmpDate.getDate() + 1);
+                RtnVal++;
+            }
+            while(tmpDate <= ComDate);
+        }
+            break;
+        case "YM" : {
+            do{
+                tmpDate.setMonth(tmpDate.getMonth() + 12);
+            }
+            while(tmpDate <= ComDate);
+
+            tmpDate.setMonth(tmpDate.getMonth() - 12);
+
+            do{
+                tmpDate.setMonth(tmpDate.getMonth() + 1);
+                RtnVal++;
+            }
+            while(tmpDate <= ComDate);
+
+        }
+            break;
+        case "MD" : {
+            do{
+                tmpDate.setMonth(tmpDate.getMonth() + 12);
+            }
+            while(tmpDate <= ComDate);
+
+            tmpDate.setMonth(tmpDate.getMonth() - 12);
+
+            do{
+                tmpDate.setMonth(tmpDate.getMonth() + 1);
+            }
+            while(tmpDate <= ComDate);
+
+            tmpDate.setMonth(tmpDate.getMonth() - 1);
+
+            do{
+                tmpDate.setDate(tmpDate.getDate() + 1);
+                RtnVal++;
+            }
+            while(tmpDate <= ComDate);
+        }
+            break;
+    }
+
+    return RtnVal;
+};
+
+
 $("#datepicker").datepicker({
     inline: true
-});
-
-$.getJSON("getSelectedDateInfo.json?meetingNo=" + meetingNo, function(ajaxResult) {
-    var status = ajaxResult.status;
-    if (status != "success") return;
-    var dddd = ajaxResult.data;
 });
 
 $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
@@ -58,4 +143,11 @@ $(function() {
             ul.html(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
         });
     });
-})
+
+    window.oMeetingDetail = new MeetingDetail();
+    $('body').on('click', '.ui-datepicker-header', function(e){
+        e.preventDefault();
+        window.oMeetingDetail.init();
+    });
+});
+
