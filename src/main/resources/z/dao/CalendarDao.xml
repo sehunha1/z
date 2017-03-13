@@ -6,7 +6,6 @@
 <mapper namespace="z.dao.CalendarDao">
 
 	<resultMap type="calendar" id="calendar-map">
-		<id column="cnum"			 property="calendarNo" />
 		<result column="mnum"   	 property="memberNo" />
 		<result column="mtnum" 	 	 property="meetingNo" />
 		<result column="cdate"		 property="calendarDate" />
@@ -18,7 +17,7 @@
 	</select>
 
 	<select id="getSelectedDateInfo" parameterType="int" resultMap="calendar-map">
-		select mtnum, mnum, cdate, ctime from cal where mtnum=#{value};
+		select cal.mtnum, cal.mnum, cal.cdate, cal.ctime from cal where cal.mtnum=#{value};
 	</select>
 
 </mapper>

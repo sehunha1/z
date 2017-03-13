@@ -1,40 +1,71 @@
 <!-- 작성: 2017-03-10 - 김재녕 -->
 <!-- 내용: SideBar 멤버 초대. 멤버 리스트 출력 -->
 
-<div id="sidebarMenu" style='margin-left:15px;'>
+<div id="sidebarMenu">
 	<div class="sideShare">
 	  <p>공유</p>
 	  <img src='../../image/kakaotalk.png'  width=30px; height=30px;>
     <img src='../../image/facebook-c.png' width=30px; height=30px;>
   </div>	
 	
-	<div class="sideMemb" style='margin-top:15px;'>
+	<div id="sideMembDiv" class="sideMemb">
 	  <button id="sideMembPlus">
 	    <i class="glyphicon glyphicon-plus"></i>
 	    <span>멤버초대</span>
 	  </button>
-<!-- 	  <font style='font-size:15px;'>모임멤버</font>
-	  <font style='font-size:20px;'>⊕</font> -->
 	</div>
 	
-	<div style='margin-top:10px;'>
-	<ul class="meeting_memb">
-	  <div class="meeting_memb_boss"></div>
-	  <div class="meeting_memb_notboss"></div>
-	</ul>
+	<div class="membList">
+		<ul class="meeting_memb">
+		  <div class="meeting_memb_boss"></div>
+		  <div class="meeting_memb_notboss"></div>
+		</ul>
 	</div>
 </div>
 
+<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
 <script id="bossTemplate" type="text/x-handlebars-template">
 {{#each listMeetingMembBoss}}
-<li><a href='#'><font color='red' style='font-size:14px;'>●</font><font color='black' style='font-size:12px;'>{{name}}</font></a><font style='font-size:12px; margin-left:40px;'>방장</font></a></li>
+<li>
+    <div class="circle"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/boheme/128.jpg"/>
+    </div>
+    <i class="membName">{{name}}</i>
+    <font color='red' style='font-size:14px;'>●</font>
+</li>
+{{/each}}
+</script>
+    <!-- <input id="check-1" type="checkbox"/>
+    <label for="check-1"><i class="fa fa-check"></i></label> -->
+
+<!-- 
+<script id="bossTemplateBackUP" type="text/x-handlebars-template">
+{{#each listMeetingMembBoss}}
+<li>
+  <a href='#'>
+    <font color='red' style='font-size:14px;'>●</font>
+    <font color='black' style='font-size:12px;'>{{name}}</font>
+  </a>
+  <font style='font-size:12px; margin-left:40px;'>방장</font>
+</li>
+{{/each}}
+</script>
+ -->
+
+<script id="notbossTemplate" type="text/x-handlebars-template">
+{{#each listMeetingMembNotBoss}}
+<li>
+    <div class="circle"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/boheme/128.jpg"/>
+    </div>
+    <i class="membName">{{name}}</i>
+</li>
 {{/each}}
 </script>
 
-<script id="notbossTemplate" type="text/x-handlebars-template">
+<!-- 
+<script id="notbossTemplateBackUp" type="text/x-handlebars-template">
 {{#each listMeetingMembNotBoss}}
 <li><a href='#'><font color='red' style='font-size:14px;'>●</font><font color='black' style='font-size:12px;'>{{name}}</font><br></a></li>
 {{/each}}
 </script>
+ -->
 
-<script src="../../node_modules/handlebars/dist/handlebars.js"></script>

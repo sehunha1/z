@@ -8,15 +8,15 @@
 <link rel="stylesheet" href="../../css/selecttime/selecttime.css">
 </head>
 <body>
-	<div id="selecttime">
+	<div id="selecttime" class="_dateItemLayer">
 		<div id="selecthead">
 			<strong class="timep"> 참석할 시간을 선택해주세요! </strong>
-			<button id="timeclose" class="timebtn">X</button>
+			<button id="timeclose" class="timebtn _btnColseLayer">X</button>
 		</div>
 
 		<div id="selectcontent">
 			<div class="timechoice">
-				<span class="placeholder">Select time</span>
+				<span class="placeholder" class="_timeInfo">Select time</span>
 				<ul>
 					<li>아침</li>
 					<li>낮</li>
@@ -26,13 +26,12 @@
 			</div>
 		</div>
 		<div id="selectbutton">
-			<button id="timeok" class="timebtn">OK</button>
+			<button id="timeok" class="timebtn _selectDate">OK</button>
 		</div>
 
 	</div>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript">
         $('.timechoice').on('click','.placeholder',function(){
           var parent = $(this).closest('.timechoice');

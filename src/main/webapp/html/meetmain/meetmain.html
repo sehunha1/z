@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>New Meet</title>
+<link rel="stylesheet" href="../../css/meetmain/daummap.css">
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../css/meetmain/newmeet.css">
+<!-- <link rel="stylesheet" href="../../css/mylist/reset.css"/> -->
+<link rel="stylesheet" href="../../css/mylist/layout.css"/>
+<link rel="stylesheet" href="../../css/mylist/mylist.css"/>
+<link rel="stylesheet" href="../../css/mylist/write2.css"/>
+<link rel="stylesheet" href="../../css/main/main.css">
+<link rel="stylesheet" href="../../css/meetmain/board.css">
+<link rel="stylesheet" href="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.css"/>
+<link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="../../css/main/sideBar.css">
+
+<style type="text/css">
+    #board img {
+      width: 100%;
+      height: 120px;
+    }
+    
+    #board hr {
+      height:1px;
+      width: 98%;
+      margin: 0 auto;
+    }
+    
+    #menu2 {
+	  display: block;
+	  position: static;
+	}
+  </style>
+
+</head>
+<body onload='maphide()'>
+	<div id="header"></div>
+	
+	<div class='container'>
+		<div id="testwrap">
+			<div id="sidebar"></div>
+        <div class='conttext1' style='float:left; margin-left:10px;'></div>
+        <div style='float: right;'>
+        <font>공유하기</font>
+        <br>
+        <a href='#' onclick='share()'><img src='../../image/facebook-c.png' width=30 height=30></a>
+        </div>
+			
+			<div id='tab' style='float:left; width:745px; height:720px; margin-left:10px;'>
+			 <ul class="nav nav-tabs" style='font-family:Noto Sans KR, sans-serif;'>
+		   <li class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
+		   <li><a data-toggle="tab" href="#menu2" onClick="menu2c()">장소투표</a></li>
+		   <li><a data-toggle="tab" href="#menu3" onClick="menu3c()">게시판</a></li>
+		</ul>
+		
+		<div class="tab-content">
+		  <div id="menu1" class="tab-pane fade in active">
+		    <div id="datepicker"></div>
+              <button class="_btnSaveSelectedDate">날짜선택완료</button>
+		  </div>
+		  
+		  
+		  
+      <div id="menu2" class="tab-pane fade">
+      <div id="menu2-wrap">
+            <div id="buttonchoice" style='margin-top:10px;'>
+              <button type="button" id='bselect' class="btn btn-primary">장소 선택하기</button>
+              <button type="button" id='blist' class="btn btn-primary">장소 리스트</button>
+            </div>
+            
+            <div class="map1">
+            <div class="map_wrap">
+              <div id="map"
+                style="margin-top:5px; width: 900px; height: 600px; position: relative; overflow: hidden;"></div>
+              
+              
+              <div id="menu_wrap" class="bg_white" style='width:250px; height:500px;'>
+                <div class="option">
+                  <div>
+                    <form onsubmit="searchPlaces(); return false;">
+                      키워드 : <input type="text" value="강남역 모임장소" id="keyword"
+                        size="15">
+                      <button type="submit">검색하기</button>
+                    </form>
+                  </div>
+                </div>
+                <hr>
+                <ul id="placesList"></ul>
+                <div id="pagination"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="map2">
+              <table id='list-table' class='table table-hover'>
+                <thead>
+                  <tr>
+                    <th>모임장소번호</th>
+                    <th>장소명</th>
+                    <th>주소</th>
+                    <th>멤버번호</th>
+                    <th>모임일련번호</th>
+                  </tr>
+                <thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+
+					<div id="menu3" class="tab-pane fade">
+
+						<div id='board' style='margin: 0 auto; margin-top: 10px;'>
+							<a id='new-btnn' href='#' type='button'
+								class="btn btn-primary btn-sm" data-toggle="modal"
+								data-target="#myModal">추가</a>
+
+							<div class="container2">
+							 <div class='row'></div>
+							</div>
+						</div>
+					</div>
+				</div> 
+			
+	  </div> 
+	  </div>
+	  </div>
+	  
+	  <!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div id="write">
+						<span class="space"></span><br> <span class="title">게시판글쓰기</span>
+						<div id="writeform">
+							<div class="box">
+								<input type="email" class="titlename" id="titl"
+									placeholder="     글 제목을 입력해주세요."> <input type="email"
+									class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
+					  			<img id='photo-img' height='80' class='view-form'><input
+									id='link' name='files' type='file' multiple> 
+									<input id='link-path' type='hidden'>
+									<a id='new-btnn' href='#'class="btn btn-primary btn-sm">취소</a> 
+									<a id='new-btnnn' href='#' class="btn btn-primary btn-smm">저장</a><BR>
+							</div>
+						</div>
+					</div>
+					<span class="space"></span><br>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+
+              <span class="space"></span><br> <span class="title">게시판 상세보기</span>
+              <form class='form-horizontal'>
+                  <input id='detail_title'  class="col-sm-2 control-label">
+                    <input id='detail_content' type='text' class="form-control"
+                      placeholder='내용'>
+
+                  <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label><br>
+                  <div class="col-sm-10">
+                     <input id='photo-path' type='hidden'>
+                  </div>
+                <div class="form-group">
+                  <div class="detail_button">
+                    <button id='update-btn' type='button' class='view-form btn btn-primary'>변경</button>
+                    <button id='delete-btn' type='button' class='view-form btn btn-primary'>삭제</button>
+                    <button id='list-btn' type='button' class='btn btn-primary'>목록</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+      </div>
+</div>
+</div>
+	
+	<!-- container -->
+		<div id="footer"></div>
+   <script src="//apis.daum.net/maps/maps3.js?apikey=972fc2cd0c0d0f176249bf894a112457&libraries=services"></script>
+	
+	<script src='../../node_modules/jquery/dist/jquery.js'></script>
+	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+	<script src='../../node_modules/bootstrap/dist/js/bootstrap.js'></script>
+	<script src="../../js/common.js"></script>
+	<script src='../../js/meetmain/tap.js'></script>
+	<script src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="../../js/meetmain/meetmain.js"></script>
+    <script src="../../js/meetmain/MeetingDetail.js"></script>
+	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+	
+	<!-- 다음 지도 -->
+  <script src="../../js/meetmain/daummap.js"></script>
+	
+  <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
+<script src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+<script src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+<script src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+<script src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+<script src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
+<script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+
+  
+  <script>
+  $('#new-btnn').click(function(event) {
+	    event.preventDefault();
+	  });
+  </script>
+  
+  <script>
+  $('#blist').click(function(){
+    $(".map1").hide();
+    $(".map2").show();
+  });
+  
+  $('#bselect').click(function(){
+      $(".map1").show();
+      $(".map2").hide();
+    });
+  
+  function maphide() {
+      $(".map_wrap").css("display", "none");
+      $("#menu_wrap").css("display", "none");
+      $("#map").css("display", "none");
+      $("#buttonchoice").css("display", "none");
+      
+      $(".map1").hide();
+      $(".map2").hide();
+}
+  
+  function menu1c() {
+      $(".map_wrap").css("display", "none");
+      $("#menu_wrap").css("display", "none");
+      $("#map").css("display", "none");
+      $("#buttonchoice").css("display", "none");
+      
+      $(".map1").hide();
+      $(".map2").hide();
+    }
+  
+  function menu2c() {
+      $(".map_wrap").css("display", "block");
+      $("#menu_wrap").css("display", "block");
+      $("#map").css("display", "block");
+      $("#buttonchoice").css("display", "block");
+      
+      $(".map1").show();
+      $(".map2").hide();
+    }
+  
+  function menu3c() {
+    $(".map_wrap").css("display", "none");
+    $("#menu_wrap").css("display", "none");
+    $("#map").css("display", "none");
+    $("#buttonchoice").css("display", "none");
+    
+    $(".map1").hide();
+    $(".map2").hide();
+  }
+  
+  </script>
+  
+<script>
+var filenamelist;
+
+$('#link').fileupload({
+    url: '../../common/fileupload.json', // 서버에 요청할 URL
+    dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
+    sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+    singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
+    autoUpload: true,        // 파일을 추가할 때 자동 업로딩 여부 설정. 기본은 true.
+    disableImageResize: /Android(?!.*Chrome)|Opera/
+        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+    previewMaxWidth: 800,   // 미리보기 이미지 너비
+    previewMaxHeight: 800,  // 미리보기 이미지 높이 
+    previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+    done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+      console.log('done()...');
+      console.log(data.result);
+      filenamelist = data.result.data;
+        $('#link-path').val(data.result.data[0]);
+        console.log('파일리스트 : ',filenamelist);
+        
+    }, 
+    processalways: function(e, data) {
+        console.log('fileuploadprocessalways()...', data.files.length, data.index);
+        var img = $('#photo-img');
+        if (data.index == 0) {
+          console.log('미리보기 처리...');
+          var canvas = data.files[0].preview;
+          var dataURL = canvas.toDataURL();
+          img.attr('src', dataURL).css('width', '100px');
+          $('#photo-label').css('display', '');
+        }
+    } 
+});
+</script>
+
+<script>
+
+try {
+    var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
+} catch (error) {
+    var mtnum = -1;
+}
+
+$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+  if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+    alert('로그인하세요');
+        return;
+      }
+  
+  var mnum = ajaxResult.data.memberNo;
+
+  
+    $('#new-btnnn').click(function(event) {
+      event.preventDefault();
+        var param = {
+          
+        	"memberNo": mnum,
+          "meetNo": mtnum,
+          "title": $('#titl').val(),
+          "content": $('#cont').val(),
+          "addFileList": arrayToJson(filenamelist)
+
+        };
+        console.log('파라미터 : ',param);
+        $.post('add.json', param, function(ajaxResult2) {
+        	console.log(ajaxResult2)
+            if (ajaxResult2.status != "success") {
+              return;
+            }
+        	var params = {
+        	"link": $('#link-path').val(),
+        	"type": 'jpg'
+        	}
+        	$.post('file.json', params, function(ajaxResult2) {
+        		
+        	});
+            location.reload();
+        }, 'json'); // post();
+    }); // click()   
+    
+    $.getJSON('list.json?mtnum='+ mtnum, function(ajaxResult) {
+    	 if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+          return;
+    		}
+    	 var list = ajaxResult.data;
+    	 var container2 = $('.container2');
+    	 //var container2 = $('#container2 .row');
+       var template = Handlebars.compile($('#trTemplate').html());
+       var row;
+       for (var i = 0; i < list.length; i++) {
+    	   if (i % 3 == 0) {
+    		   console.log('로우생성')
+    		   row = $('<div>').addClass('row').appendTo(container2);
+    	   }
+    	   var div = $('<div>').html(template(list[i]));
+    	   row.append(div);
+       }
+       
+       $(".btn-view").click(function() {
+    	   window.bnumber = $(this).attr('data-bnum');
+    	   $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
+    		   if (ajaxResult.status == "fail") {
+    		          return;
+    		        }
+    		   var detail = ajaxResult.data;
+	    	   $('#detail_title').val(detail.title);
+	    	   $('#detail_content').val(detail.content);
+	    	   
+	    	  console.log( bnumber);
+    	   }); 
+       });
+       
+       
+       $('#delete-btn').click(function() {
+    	   console.log('비넘버 : ',bnumber);
+    	    $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
+    	      if (ajaxResult.status != "success") { 
+    	        alert(ajaxResult.data);
+    	        return;
+    	      }
+    	      location.reload();
+    	    }); // getJSON()
+    	  }); // click()
+    	  
+    	  
+    	  $('#update-btn').click(function() {
+    	      var param = {
+    	        "boardNo": bnumber, 
+    	        "meetNo": mtnum,
+    	        "title": $('#detail_title').val(),
+    	        "content": $('#detail_content').val()
+    	      };
+    	      
+    	      $.post('update.json', param, function(ajaxResult) {
+    	        if (ajaxResult.status != "success") {
+    	          alert(ajaxResult.data);
+    	          return;
+    	        }
+    	        location.reload();
+    	      }, 'json');
+    	  }); // click()
+    	  
+          $('#list-btn').click(function() {
+                 location.reload();
+             }); 
+    	  
+    });
+});
+var arrayToJson = function(list) {
+	  var result = '';
+	  if (list == null) {
+		  return null;
+	  }
+	  for (var i = 0; i < list.length; i++) {
+	    if (i != 0) {
+	      result += ',';
+	    }
+	    result += list[i];
+	  }
+	  result += '';
+	  return result;
+	}
+</script>
+  
+<script id="trTemplate" type="text/x-handlebars-template">
+<div class="col-sm-4 col-md-4" >
+ <div class="post">
+     <div class="post-img-content">
+         <img src="../image/" class="img-responsive" />
+         <span class="post-title"><br/>
+             </span>
+     </div>
+     <div class="content">
+         <div class="author">
+              <b>{{title}}</b> 
+         </div>
+         <div>
+             {{content}}
+         </div>
+         <div>
+             <a href='#' type ='button' class="btn btn-warning btn-sm btn-view" data-toggle="modal" data-target="#myModal2" data-bnum='{{boardNo}}'>상세보기</a>
+         </div>
+     </div>
+ </div>
+</div>
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '253788165032910',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/kr_KR/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+function share(){
+    var share = {
+        method: 'stream.share',
+        u: 'http://z.bitcamp.com:8080/z/html/meetmain/meetmain.html'
+    };
+ 
+    FB.ui(share, function(response) { console.log(response); });
+}
+</script>
+
+
+  <!-- 달력 js 끝 -->
+
+<script id="infoTemplate" type="x-handlebars-template">
+	<font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>{{title}}</b></font><br>
+	<font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">{{content}}</font>
+	<br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:{{category}}  </font>
+	<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:{{deadline}} <font color='red'><b></b></font> </font>
+</script>
+</body>
+</html>
+
+
+
+
+
+
