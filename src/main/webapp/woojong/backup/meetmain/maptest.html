@@ -54,6 +54,7 @@
                   <tr>
                     <th>장소명</th>
                     <th>주소</th>
+                    <th>순위</th>
                   </tr>
                 <thead>
                 <tbody></tbody>
@@ -94,13 +95,19 @@ $('#off').click(function() {
 <tr>
   <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
   <td id='address'>{{address}}</td>
+  <td>{{email}}</td>
 </tr>
 {{/each}}
 </script>
 
 <script>
+// select distinct (lname), (addr), (ltnum), (select count(mnum) from loc o where o.ltnum = l.ltnum) as count from list l;
+// select distinct (mnum), (ltnum), (select count(ltnum) from loc o) as count from loc o;
+// select distinct (mnum), (name), (select count(ltnum) from loc o) as count from memb m;
+$.getJSON('../auth/loginUser.json', function(ajaxResultlogin) {
 $.getJSON('placelist.json', function(ajaxResult) {
 	var list = ajaxResult.data;
+	var loginuser = ajaxResultlogin.data;
 	
 	//console.log(ajaxResult);
 	  
@@ -128,7 +135,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    var template = Handlebars.compile($('#trTemplate').html());
 	    
 	    // 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
-	    tbody.html(template({"list": list}));
+	    tbody.html(template({"list": list, "loginuser": loginuser}));
 	    
 	    
 	var positions = Array(list.length);
@@ -207,7 +214,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    // 오버레이 element에서 close버튼을 클릭하면 닫히게 이벤트를 등록한다.
 	    var close = overlayDiv.getElementsByClassName('close')[0];
 	    close.onclick= function() {
-	      overlay.setMap(null); 
+	      overlay.setMap(null);
 	    };
 	    
 	    overlays.push(overlay);
@@ -222,25 +229,27 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    	        var placelist = document.getElementById('place-link').value;    
 	    	        // 마커 위에 커스텀오버레이를 표시합니다
 	    	        var overlay = new daum.maps.CustomOverlay({
-	    	            content:  contents[i], // 커스텀오버레이에 표시할 내용
+	    	            content:  overlayDiv, // 커스텀오버레이에 표시할 내용
 	    	            position: positions[i],
 	    	            zIndex: 3
 	    	        });
 	    	        
 	    	        // 오버레이 element에서 close버튼을 클릭하면 닫히게 이벤트를 등록한다.
 	    	        overlays.push(overlay);
-	    	  }
-	      }
+	    	        
 	    	        var close = overlayDiv.getElementsByClassName('close')[0];
 	    	          close.onclick= function() {
 	    	          overlay.setMap(null);
 	    	        };
+	    	  }
+	      }
 	    	        
 	    	        
 	    	        
             map2.setCenter(new daum.maps.LatLng($(this).attr("x"), $(this).attr("y")));
             overlay.setMap(map2);
         });
+});
 });
 </script>
 </body>

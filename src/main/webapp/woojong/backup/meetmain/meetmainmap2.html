@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../../css/meetmain/daummap.css">
 <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../../css/meetmain/newmeet.css">
-<!-- <link rel="stylesheet" href="../../css/mylist/reset.css"/> -->
+<link rel="stylesheet" href="../../css/mylist/reset.css"/>
 <link rel="stylesheet" href="../../css/mylist/layout.css"/>
 <link rel="stylesheet" href="../../css/mylist/mylist.css"/>
 <link rel="stylesheet" href="../../css/mylist/write2.css"/>
@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="../../css/meetmain/board.css">
 <link rel="stylesheet" href="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.css"/>
 <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
-<link rel="stylesheet" href="../../css/main/sideBar.css">
 
 <style type="text/css">
     #board img {
@@ -58,7 +57,6 @@
 		<div class="tab-content">
 		  <div id="menu1" class="tab-pane fade in active">
 		    <div id="datepicker"></div>
-              <button class="_btnSaveSelectedDate">날짜선택완료</button>
 		  </div>
 		  
 		  
@@ -67,13 +65,13 @@
       <div id="menu2-wrap">
             <div id="buttonchoice" style='margin-top:10px;'>
               <button type="button" id='bselect' class="btn btn-primary">장소 선택하기</button>
-              <button type="button" id='blist' class="btn btn-primary">장소 투표하기</button>
+              <button type="button" id='blist' class="btn btn-primary">장소 리스트</button>
             </div>
             
             <div class="map1">
             <div class="map_wrap">
               <div id="map"
-                style="margin-top:5px; width:100%; height: 600px; position: relative; overflow: hidden;"></div>
+                style="margin-top:5px; width: 900px; height: 600px; position: relative; overflow: hidden;"></div>
               
               
               <div id="menu_wrap" class="bg_white" style='width:250px; height:500px;'>
@@ -94,40 +92,19 @@
           </div>
           
           <div class="map2">
-          <div class="map_wrap">
-					<div id="map-2" style="width:100%;height:600px;"></div>
-					<div id="menu_wrap2" class="bg_white2" style='width:150px; height:500px;'>
-                <div class="option">
-                  <div>
-                    <form onsubmit="searchPlaces(); return false;">
-                    </form>
-                  </div>
-                </div>
-                <font>선택된 장소 리스트</font>
-                <input type='button' id='on' style='float: right; position:absolute; 
-                background-color: rgba( 255, 255, 255, 0.2 );  background:none;
-                border:none; margin:0; padding:0;' value='▲'></input>
-                
-                <input type='hidden' id='off' style='float: right; position:absolute; 
-                background-color: rgba( 255, 255, 255, 0.2 );  background:none;
-                border:none; margin:0; padding:0;' value='▼'></input>
-                <hr>
-                <table id='list-table' class='table table-hover'>
+              <table id='list-table' class='table table-hover'>
                 <thead>
                   <tr>
+                    <th>모임장소번호</th>
                     <th>장소명</th>
+                    <th>주소</th>
+                    <th>멤버번호</th>
+                    <th>모임일련번호</th>
                   </tr>
                 <thead>
                 <tbody></tbody>
               </table>
-                <!-- 
-                <ul id="placesList"></ul>
-                <div id="pagination"></div>
-                -->
-                </div>
-              </div>
-              </div>
-
+            </div>
             
           </div>
         </div>
@@ -218,13 +195,11 @@
 	<script src="../../js/common.js"></script>
 	<script src='../../js/meetmain/tap.js'></script>
 	<script src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <script src="../../js/meetmain/meetmain.js"></script>
-    <script src="../../js/meetmain/MeetingDetail.js"></script>
+	<script src="../../js/meetmain/meetmain.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- 다음 지도 -->
   <script src="../../js/meetmain/daummap.js"></script>
-  <script src="../../js/meetmain/daummaplist.js"></script>
 	
 <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
@@ -297,31 +272,6 @@
   }
   
   </script>
-  
-  <script id="trTemplatelist" type="text/x-handlebars-template">
-{{#each list}}
-<tr>
-  <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
-</tr>
-{{/each}}
-</script>
-
-<script>
-$('#on').click(function() {
-    $("#menu_wrap2").css("height", "22px");
-    $("#menu_wrap2").css("overflow", "hidden");
-    $("#on").attr("type", "hidden");
-    $("#off").attr("type", "button");
-});
-
-$('#off').click(function() {
-    $("#menu_wrap2").css("height", "500px");
-    $("#menu_wrap2").css("overflow", "auto");
-    $("#on").attr("type", "button");
-    $("#off").attr("type", "hidden");
-});
-
-</script>
   
 <script>
 var filenamelist;

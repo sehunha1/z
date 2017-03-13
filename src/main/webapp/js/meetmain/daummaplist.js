@@ -1,17 +1,3 @@
-$('#on').click(function() {
-		$("#menu_wrap").css("height", "13px");
-		$("#menu_wrap").css("overflow", "hidden");
-		$("#on").attr("type", "hidden");
-		$("#off").attr("type", "button");
-});
-
-$('#off').click(function() {
-    $("#menu_wrap").css("height", "500px");
-    $("#menu_wrap").css("overflow", "auto");
-    $("#on").attr("type", "button");
-    $("#off").attr("type", "hidden");
-});
-
 $.getJSON('placelist.json', function(ajaxResult) {
 	var list = ajaxResult.data;
 	
@@ -27,7 +13,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    
 	    var list = ajaxResult.data;
 	    
-	var mapContainer = document.getElementById('map2'), // 지도를 표시할 div  
+	var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
 	    mapOption = {
 	        center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
@@ -38,7 +24,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	var tbody = $('#list-table > tbody');
 	    
 	    // 템플릿 텍스트를 처리하여 HTML을 생성해 줄 함수 얻기
-	    var template = Handlebars.compile($('#trTemplate').html());
+	    var template = Handlebars.compile($('#trTemplatelist').html());
 	    
 	    // 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
 	    tbody.html(template({"list": list}));
@@ -135,7 +121,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    	        var placelist = document.getElementById('place-link').value;    
 	    	        // 마커 위에 커스텀오버레이를 표시합니다
 	    	        var overlay = new daum.maps.CustomOverlay({
-	    	            content:  contents[i], // 커스텀오버레이에 표시할 내용
+	    	            content:  overlayDiv, // 커스텀오버레이에 표시할 내용
 	    	            position: positions[i],
 	    	            zIndex: 3
 	    	        });
