@@ -34,7 +34,7 @@
     where b.bnum=#{value}
   </select>
   
-  <insert id="insertlink" parameterType="board" >
+  <insert id="insertlink"  >
     insert into file(bnum, link, type) 
     values
     <foreach collection="addFileList" item="addFile" separator=",">
