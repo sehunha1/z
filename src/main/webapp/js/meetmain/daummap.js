@@ -152,8 +152,6 @@ function displayPlaces(places) {
                                   },
                                   function(){
                           			  location.reload();
-                          		      $("#li1").removeClass("active");
-                          		      $("#li2").addClass("active");
                           			});
                               }, 'json'); // post();
                 		  
@@ -213,9 +211,7 @@ function displayPlaces(places) {
                                   type: "success",
                                 },
                                 function(){
-                                	//location.reload();
-                    		        //$("#li1").removeClass("active");
-                      		        //$("#li2").addClass("active");..
+                                	location.reload();
                       			});
                             }, 'json'); // post();
               		  

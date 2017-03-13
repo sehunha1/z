@@ -60,8 +60,12 @@ $.getJSON('placelist.json', function(ajaxResult) {
 		                '                <div class="member" style="margin-left:5px;">선택한 멤버' + '<br>' +
 		                				   memck[0].name + '</div>' + 
 		                '                <div class="photo" style="margin-left:5px;"><img src="' + photopathdefault + '" width=30 height=30>' +
-		                '        </div>' + 
-		                '    </div>' +    
+		                ' 	       </div>' + 
+		                //'          <div class="votebutton" style="margin-bottom: 10px;">' + 
+		                //'                <input type="button" class="btn btn-primary" value="투표"' + 
+		                //' style="vertical-aligh:center; position:relative; float: right; width:50px; height:20px;">' +
+		                '</div>' + 
+		                '</input>' +
 		                '</div>';
 		    }
 	    }
