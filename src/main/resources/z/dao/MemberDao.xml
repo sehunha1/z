@@ -13,6 +13,7 @@
 		<result column="photo" property="photo" />
 		<result column="kakao" property="kakao" />
 		<result column="fcbk" property="facebook" />
+		<result column="stat" property="meetStat" />
 	</resultMap>
 
 	<select id="getListMeetingMembBoss" parameterType="int"
@@ -20,7 +21,8 @@
 		select memb.mnum,
 		memb.email,
 		memb.name,
-		memb.photo
+		memb.photo,
+		link.stat
 		from link
 		left outer join memb
 		on memb.mnum=link.mnum
@@ -33,7 +35,8 @@
 		select memb.mnum,
 		memb.email,
 		memb.name,
-		memb.photo
+		memb.photo,
+		link.stat
 		from link
 		left outer
 		join memb on memb.mnum=link.mnum

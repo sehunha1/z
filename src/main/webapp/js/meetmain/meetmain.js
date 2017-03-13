@@ -128,6 +128,7 @@ $(function() {
             if (status != "success") return;
 
             var listMeetingMembBoss = ajaxResult.data;
+            console.log(listMeetingMembBoss);
             var template = Handlebars.compile($("#bossTemplate").html());
             var ul = $(".meeting_memb_boss");
             ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));

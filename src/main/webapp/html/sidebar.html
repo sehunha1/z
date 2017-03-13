@@ -27,45 +27,30 @@
 <script id="bossTemplate" type="text/x-handlebars-template">
 {{#each listMeetingMembBoss}}
 <li>
-    <div class="circle"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/boheme/128.jpg"/>
+    <div class="circle"><img src="../upload/{{photo}}"/>
     </div>
     <i class="membName">{{name}}</i>
-    <font color='red' style='font-size:14px;'>●</font>
+    {{#if meetStat}}
+      <font color='green' style='font-size:14px;'>●</font>
+    {{else}}
+      <font color='red' style='font-size:14px;'>●</font>
+    {{/if}}
 </li>
 {{/each}}
 </script>
-    <!-- <input id="check-1" type="checkbox"/>
-    <label for="check-1"><i class="fa fa-check"></i></label> -->
-
-<!-- 
-<script id="bossTemplateBackUP" type="text/x-handlebars-template">
-{{#each listMeetingMembBoss}}
-<li>
-  <a href='#'>
-    <font color='red' style='font-size:14px;'>●</font>
-    <font color='black' style='font-size:12px;'>{{name}}</font>
-  </a>
-  <font style='font-size:12px; margin-left:40px;'>방장</font>
-</li>
-{{/each}}
-</script>
- -->
 
 <script id="notbossTemplate" type="text/x-handlebars-template">
 {{#each listMeetingMembNotBoss}}
 <li>
-    <div class="circle"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/boheme/128.jpg"/>
+    <div class="circle"><img src="../upload/{{photo}}"/>
     </div>
     <i class="membName">{{name}}</i>
+    {{#if meetStat}}
+      <font color='green' style='font-size:14px;'>●</font>
+    {{else}}
+      <font color='red' style='font-size:14px;'>●</font>
+    {{/if}}
 </li>
 {{/each}}
 </script>
-
-<!-- 
-<script id="notbossTemplateBackUp" type="text/x-handlebars-template">
-{{#each listMeetingMembNotBoss}}
-<li><a href='#'><font color='red' style='font-size:14px;'>●</font><font color='black' style='font-size:12px;'>{{name}}</font><br></a></li>
-{{/each}}
-</script>
- -->
 

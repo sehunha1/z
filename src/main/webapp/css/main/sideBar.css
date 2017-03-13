@@ -31,13 +31,12 @@
 
 .membList {
 	margin-left: 5%;
+	overflow: auto;
 }
-
 
 .circle {
 	margin-top: 5%;
 	display: inline-block;
-	
 }
 
 .circle img {
