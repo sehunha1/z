@@ -20,11 +20,14 @@
   
   <select id='getmemberList' resultType="map">
     select 
-	    name, 
-	    photo
+      o.ltnum,
+	    name,
+	    l.mnum, 
+	    photo,
+	    lname
 	  from 
-      memb m, loc l
+      memb m, loc o, list l
     where
-      m.mnum = l.mnum
+      m.mnum = o.mnum and l.ltnum = o.ltnum;
   </select>
 </mapper>

@@ -39,15 +39,6 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	  var contents = Array(list.length);
 	    
 	    for (i = 0; i < contents.length; i++) {
-	    	for (j = 0; j < memck.length; j++) {
-		    	var photopath = Array(memck.length);
-		    	photopathdefault = "../../image/profile-default.png";
-		    	
-		    	if (memck[j].photo != "") {
-		    		photopath[j] = "../upload/" + memck[j].photo;
-		    	} else {
-		    		photopath[j] = photopathdefault;
-		    	}
 		      contents[i] = '<div class="wrap">' + 
 		                '    <div class="info">' + 
 		                '        <div class="title">' + 
@@ -57,17 +48,10 @@ $.getJSON('placelist.json', function(ajaxResult) {
 		                '        <div class="body">' + 
 		                '                <div class="ellipsis" style="margin-left:5px;">주소 : ' + list[i].address + '</div>' +
 		                '				 <hr style="border: solid 1px;">' +
-		                '                <div class="member" style="margin-left:5px;">선택한 멤버' + '<br>' +
-		                				   memck[0].name + '</div>' + 
-		                '                <div class="photo" style="margin-left:5px;"><img src="' + photopathdefault + '" width=30 height=30>' +
-		                ' 	       </div>' + 
-		                //'          <div class="votebutton" style="margin-bottom: 10px;">' + 
-		                //'                <input type="button" class="btn btn-primary" value="투표"' + 
-		                //' style="vertical-aligh:center; position:relative; float: right; width:50px; height:20px;">' +
+		                '                <div class="member" style="margin-left:5px;">선택한 멤버</div>'+ '<br>' +
+		                '                <div class="photo" style="margin-left:5px;"></div>' +
 		                '</div>' + 
-		                '</input>' +
 		                '</div>';
-		    }
 	    }
 	    
 	
@@ -139,14 +123,31 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    	        
 	    	        // 오버레이 element에서 close버튼을 클릭하면 닫히게 이벤트를 등록한다.
 	    	        overlays.push(overlay);
+	    	        
+	    	        var membin = overlayDiv.getElementsByClassName('member')[0];
+	    	        membin.innerHTML = "선택한 멤버<br>";
+	    	        
+	    	        for (j = 0; j < memck.length; j++) {
+	    	        	var photopath = Array(memck.length);
+	    	        	photopathdefault = "../../image/profile-default.png";
+	    	        	
+	    	        	if (memck[j].ltnum == list[i].locationNo) {
+	    	        	membin.innerHTML += memck[j].name + " ";
+	    	        	
+		    	        	if (memck[j].photo != "") {
+		    	        		photopath[j] = "../upload/" + memck[j].photo;
+		    	        	} else {
+		    	        		photopath[j] = photopathdefault;
+		    	        	}
+		    	        	membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px;'>"
+	    	        	}
+	    	        }
 	    	  }
 	      }
 	    	        var close = overlayDiv.getElementsByClassName('close')[0];
 	    	          close.onclick= function() {
 	    	          overlay.setMap(null);
 	    	        };
-	    	        
-	    	        
 	    	        
             map2.setCenter(new daum.maps.LatLng($(this).attr("x"), $(this).attr("y")));
             overlay.setMap(map2);
