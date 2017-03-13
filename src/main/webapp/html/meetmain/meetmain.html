@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.css"/>
 <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="../../css/main/sideBar.css">
+<link rel="stylesheet" href="../../css/selecttime/selecttime.css">
 
 <style type="text/css">
     #board img {
@@ -552,6 +553,22 @@ function share(){
 	<br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:{{category}}  </font>
 	<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:{{deadline}} <font color='red'><b></b></font> </font>
 </script>
+
+<script>
+    $('.timechoice').on('click','.placeholder',function(){
+        var parent = $(this).closest('.timechoice');
+        if ( ! parent.hasClass('is-open')){
+            parent.addClass('is-open');
+            $('.timechoice.is-open').not(parent).removeClass('is-open');
+        }else{
+            parent.removeClass('is-open');
+        }
+    }).on('click','ul>li',function(){
+        var parent = $(this).closest('.timechoice');
+        parent.removeClass('is-open').find('.placeholder').text( $(this).text() );
+    });
+</script>
+
 </body>
 </html>
 

@@ -406,10 +406,10 @@ if(eachDate.calendarDate === '2017-03-17' || eachDate.calendarDate === '2017-03-
         }
 
         // test용
-        console.log('------------------------------------------------')
-        this.aCalendarData[0].aEachDateInfo.forEach(function(v){
+        // console.log('------------------------------------------------')
+        // this.aCalendarData[0].aEachDateInfo.forEach(function(v){
             //console.log(v)
-        })
+        // })
         // this.getMeetingDateInfo().aData.forEach(function(v){
         //     console.log(v.uiData)
         // })
