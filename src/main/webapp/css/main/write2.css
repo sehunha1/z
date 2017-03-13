@@ -154,7 +154,8 @@
 }
 
 #photo-img {
-	width:50px; height:50px; 
+	width: 50px;
+	height: 50px;
 }
 
 #scheduleinfo .photo-add .fileinput-button {
@@ -177,7 +178,6 @@
 }
 
 .fileinput-button input[type=file].fileinput-button::-webkit-file-upload-button
-{
+	{
 	cursor: pointer;
 }
-

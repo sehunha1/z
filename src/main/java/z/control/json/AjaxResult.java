@@ -1,7 +1,6 @@
 package z.control.json;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class AjaxResult {
   public static final String SUCCESS = "success";

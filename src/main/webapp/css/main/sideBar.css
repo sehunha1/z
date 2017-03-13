@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
+#sidebarMenu {
+	margin-left: 5%;
+}
+
+#sidebarMenu ul {
+	padding: 0;
+  border: 0;
+  list-style: none; 
+}
+
+#sideMembDiv {
+	margin-top: 10px;
+}
+
+#sideMembPlus {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;  
+}
+
+#sideMembPlus:hover {
+	color: black;
+}
+
+.membList {
+	margin-left: 5%;
+}
+
+
+.circle {
+	margin-top: 5%;
+	display: inline-block;
+	
+}
+
+.circle img {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 20px;
+}
+
+.meeting_memb .membName {
+	vertical-align: middle;
+	display: inline-block;
+	width: 70px;
+	margin-left: 2%;
+	margin-right: 10%;
+	overflow: hidden;
+}

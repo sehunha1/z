@@ -71,7 +71,7 @@ body > .container {
 }
 
 
-#sidebar {
+/* #sidebar {
 	position: absolute;
 	float:left;
   color: white;
@@ -82,7 +82,7 @@ body > .container {
   height:700px;
   font-weight:500;
   padding-right:1px;
-  /* border: 1px solid red; */
+  border: 1px solid red;
 }
 
 #sidebar a {
@@ -93,7 +93,7 @@ body > .container {
 #sidebar a:hover {
   color: navy;
 }
-
+ */
 
 #content-cal {
 	/* 스크롤 */
