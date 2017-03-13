@@ -1,17 +1,3 @@
-$('#on').click(function() {
-		$("#menu_wrap").css("height", "13px");
-		$("#menu_wrap").css("overflow", "hidden");
-		$("#on").attr("type", "hidden");
-		$("#off").attr("type", "button");
-});
-
-$('#off').click(function() {
-    $("#menu_wrap").css("height", "500px");
-    $("#menu_wrap").css("overflow", "auto");
-    $("#on").attr("type", "button");
-    $("#off").attr("type", "hidden");
-});
-
 $.getJSON('placelist.json', function(ajaxResult) {
 	var list = ajaxResult.data;
 	
@@ -27,7 +13,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    
 	    var list = ajaxResult.data;
 	    
-	var mapContainer = document.getElementById('map2'), // 지도를 표시할 div  
+	var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
 	    mapOption = {
 	        center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
