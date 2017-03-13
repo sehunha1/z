@@ -1,27 +1,41 @@
-<!-- 작성: 2017-03-10 - 김재녕 -->
-<!-- 내용: SideBar 멤버 초대. 멤버 리스트 출력 -->
+<style>
+ul {  
+   list-style:none;
+   padding-left:0px; 
+}
 
-<div id="sidebarMenu" style='margin-left:15px;'>
-	<div class="sideShare">
-	  <p>공유</p>
-	  <img src='../../image/kakaotalk.png'  width=30px; height=30px;>
-    <img src='../../image/facebook-c.png' width=30px; height=30px;>
-  </div>	
-	
-	<div class="sideMemb" style='margin-top:15px;'>
-	  <button id="sideMembPlus">
-	    <i class="glyphicon glyphicon-plus"></i>
-	    <span>멤버초대</span>
-	  </button>
-<!-- 	  <font style='font-size:15px;'>모임멤버</font>
-	  <font style='font-size:20px;'>⊕</font> -->
+li {
+   list-style:none;
+   padding-left:0px;
+}
+
+ul li a:hover, ul li a:focus {  
+    background-color:white;  
+}  
+</style>
+
+<div style='margin-left:15px;'>
+	<div>
+	  <font style='font-size:15px;'>영어스터디</font> <font color=#F1C40F style='font-size:20px;'><b>★</b></font>
 	</div>
 	
+	
+	<div style='margin-top:15px;'>
+	  <font style='font-size:15px;'>모임멤버</font> <font style='font-size:20px;'>⊕</font>
+	</div>
 	<div style='margin-top:10px;'>
 	<ul class="meeting_memb">
 	  <div class="meeting_memb_boss"></div>
 	  <div class="meeting_memb_notboss"></div>
 	</ul>
+	</div>
+	
+	<div style='margin-top:20px;'>
+	공유하기
+	  <div id='img'>
+	    <img src='../../image/kakaotalk.png'  width=30px; height=30px;>
+	    <img src='../../image/facebook-c.png' width=30px; height=30px;>
+	  </div>
 	</div>
 </div>
 

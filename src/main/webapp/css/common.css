@@ -115,10 +115,6 @@ sec-intext {
 	font-weight: 500;
 }
 
-
-
-
-
 .Pstyle {
  opacity: 0;
  display: none;
@@ -221,7 +217,7 @@ sec-intext {
 /* 풋터 css 끝 */
 
 /* 사이드바 css 시작*/
-#sidebar {
+/* #sidebar {
 	position: absolute;
 	float: left;
 	color: white;
@@ -231,7 +227,7 @@ sec-intext {
 	width: 180px;
 	height: 700px;
 	font-weight: 500;
-	/* border: 1px solid red; */
+	border: 1px solid red;
 }
 
 #sidebar a {
@@ -241,5 +237,7 @@ sec-intext {
 
 #sidebar a:hover {
 	color: navy;
-}
+} */
+
+
 /* 사이드바 css 끝 */
