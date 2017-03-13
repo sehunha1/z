@@ -24,7 +24,6 @@ public class PlaceListServiceImpl implements PlaceListService {
   public List<PlaceList> getList() throws Exception {
     return placeListDao.getList();
   }
-  
   // 페이징 처리 후
   /*
   public List<PlaceList> getList(int pageNo, int pageSize) throws Exception {

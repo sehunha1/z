@@ -9,19 +9,20 @@
 		<id column="ltnum"			   property="locationNo" />
 		<result column="mnum"   	 property="memberNo" />
 		<result column="mtnum" 	 	 property="meetingNo" />
+		<result column="count"     property="count" />
 		<result column="lname"		 property="place" />
 		<result column="addr"  	   property="address" />
 		<result column="addr_x"    property="xLocation" />
 		<result column="addr_y"    property="yLocation" />
 	</resultMap>
 	
-	
 	<insert id="insert" parameterType="PlaceList" 
           useGeneratedKeys="true" keyColumn="ltnum" keyProperty="locationNo">
     insert into list(lname, addr, mnum, mtnum, addr_x, addr_y)
     values(#{place}, #{address}, #{memberNo}, #{meetingNo}, #{xLocation}, #{yLocation})
-  </insert> 
+  </insert>
   
+  <!-- 
   <select id="getList" resultMap="placelist-map">
     select
       ltnum,
@@ -32,9 +33,22 @@
       addr_x,
       addr_y 
     from list
-     
   </select>
-
+  -->
+  
+  <select id="getList" resultMap="placelist-map">
+	  select distinct 
+		  (ltnum), 
+		  (mnum), 
+		  (mtnum),  
+		  (lname),
+		  (addr), 
+		  (addr_x), 
+		  (addr_y), 
+		  (select count(mnum) from loc o where o.ltnum = l.ltnum) as count
+	  from list l;
+  </select>
+  
   <!-- 페이징 처리 후
     <select id="getList" resultMap="placelist-map" parameterType="map">
     select

@@ -1,8 +1,8 @@
+$.getJSON('membloc.json', function(ajaxResult2) {
 $.getJSON('placelist.json', function(ajaxResult) {
 	var list = ajaxResult.data;
-	
-	//console.log(ajaxResult);
-	  
+    var memck = ajaxResult2.data;
+    
 	var x = list[0].xLocation;
 	var y = list[0].yLocation;
 	
@@ -15,7 +15,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    
 	var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
 	    mapOption = {
-	        center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
+	        center: new daum.maps.LatLng(37.5032238545975, 127.02357032937897), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
 	
@@ -39,24 +39,35 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	  var contents = Array(list.length);
 	    
 	    for (i = 0; i < contents.length; i++) {
-	    
-	      contents[i] = '<div class="wrap">' + 
-	                '    <div class="info">' + 
-	                '        <div class="title">' + 
-	                             list[i].place + 
-	                '            <div class="close" title="닫기"></div>' + 
-	                '        </div>' + 
-	                '        <div class="body">' + 
-	                '            <div class="img">' +
-	                '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-	                '           </div>' + 
-	                '            <div class="desc">' + 
-	                '                <div class="ellipsis">' + list[i].address + '</div>' +
-	                '                <div class="member">선택한 멤버' + list[i].memberNo + '</div>' + 
-	                '            </div>' + 
-	                '        </div>' + 
-	                '    </div>' +    
-	                '</div>';
+	    	for (j = 0; j < memck.length; j++) {
+		    	var photopath = Array(memck.length);
+		    	photopathdefault = "../../image/profile-default.png";
+		    	
+		    	if (memck[j].photo != "") {
+		    		photopath[j] = "../upload/" + memck[j].photo;
+		    	} else {
+		    		photopath[j] = photopathdefault;
+		    	}
+		      contents[i] = '<div class="wrap">' + 
+		                '    <div class="info">' + 
+		                '        <div class="title">' + 
+		                             list[i].place + 
+		                '            <div class="close" title="닫기"></div>' + 
+		                '        </div>' + 
+		                '        <div class="body">' + 
+		                '                <div class="ellipsis" style="margin-left:5px;">주소 : ' + list[i].address + '</div>' +
+		                '				 <hr style="border: solid 1px;">' +
+		                '                <div class="member" style="margin-left:5px;">선택한 멤버' + '<br>' +
+		                				   memck[0].name + '</div>' + 
+		                '                <div class="photo" style="margin-left:5px;"><img src="' + photopathdefault + '" width=30 height=30>' +
+		                ' 	       </div>' + 
+		                //'          <div class="votebutton" style="margin-bottom: 10px;">' + 
+		                //'                <input type="button" class="btn btn-primary" value="투표"' + 
+		                //' style="vertical-aligh:center; position:relative; float: right; width:50px; height:20px;">' +
+		                '</div>' + 
+		                '</input>' +
+		                '</div>';
+		    }
 	    }
 	    
 	
@@ -140,4 +151,5 @@ $.getJSON('placelist.json', function(ajaxResult) {
             map2.setCenter(new daum.maps.LatLng($(this).attr("x"), $(this).attr("y")));
             overlay.setMap(map2);
         });
+});
 });

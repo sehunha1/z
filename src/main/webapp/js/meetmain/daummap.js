@@ -124,21 +124,35 @@ function displayPlaces(places) {
                                   "address": address,
                                   "xLocation": latitude,
                                   "yLocation": longitude
-                                  //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
-                                  //"photo": $("#photo").attr('src', 'html/upload/' + val())
                               
                               };
+                		  
                               $.post('listadd.json', param, function(ajaxResult) {
                             	  if (ajaxResult.status != "success") {
                                       sweetAlert("오류", "동일한 장소가 이미 존재합니다.", "error")
                                       return;
                                 }
+                            	  
+                    		  var param2 = {
+                    				  "memberNo": mnum,
+                    				  "meetingNo": mtnum,
+                                  };
+                        		  
+                              $.post('locadd.json', param2, function(ajaxResult) {
+                            	  if (ajaxResult.status != "success") {
+                                      sweetAlert("오류", "오류", "error")
+                                      return;
+                                }
+                              });
                                 
                                 swal({
                                     title: "선택",
                                     text: "선택이 완료되었습니다.",
                                     type: "success",
-                                  });
+                                  },
+                                  function(){
+                          			  location.reload();
+                          			});
                               }, 'json'); // post();
                 		  
                 	  } else {
@@ -165,30 +179,40 @@ function displayPlaces(places) {
               	},
               	function(isConfirm){
               	  if (isConfirm) {
-              		  var memberNo = 1;
-              		 // var meetingNo = 1;
               		  var param = {
-              				  "memberNo": memberNo,
-              				  "meetingNo": mtnum,
+              				    "memberNo": mnum,
+              				    "meetingNo": mtnum,
                                 "place": title,
                                 "address": address,
                                 "xLocation": latitude,
                                 "yLocation": longitude
-                                //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
-                                //"photo": $("#photo").attr('src', 'html/upload/' + val())
-                            
                             };
                             $.post('listadd.json', param, function(ajaxResult) {
                           	  if (ajaxResult.status != "success") {
                                     sweetAlert("오류", "동일한 장소가 이미 존재합니다.", "error")
                                     return;
                               }
+                          	  
+                    		  var param2 = {
+                    				  "memberNo": mnum,
+                    				  "meetingNo": mtnum,
+                                  };
+                        		  
+                              $.post('locadd.json', param2, function(ajaxResult) {
+                            	  if (ajaxResult.status != "success") {
+                                      sweetAlert("오류", "오류", "error")
+                                      return;
+                                }
+                              });
                               
                               swal({
                                   title: "선택",
                                   text: "선택이 완료되었습니다.",
                                   type: "success",
-                                });
+                                },
+                                function(){
+                                	location.reload();
+                      			});
                             }, 'json'); // post();
               		  
               	  } else {
