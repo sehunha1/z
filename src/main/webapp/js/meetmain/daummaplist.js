@@ -24,7 +24,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	var tbody = $('#list-table > tbody');
 	    
 	    // 템플릿 텍스트를 처리하여 HTML을 생성해 줄 함수 얻기
-	    var template = Handlebars.compile($('#trTemplate').html());
+	    var template = Handlebars.compile($('#trTemplatelist').html());
 	    
 	    // 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
 	    tbody.html(template({"list": list}));
@@ -121,7 +121,7 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    	        var placelist = document.getElementById('place-link').value;    
 	    	        // 마커 위에 커스텀오버레이를 표시합니다
 	    	        var overlay = new daum.maps.CustomOverlay({
-	    	            content:  contents[i], // 커스텀오버레이에 표시할 내용
+	    	            content:  overlayDiv, // 커스텀오버레이에 표시할 내용
 	    	            position: positions[i],
 	    	            zIndex: 3
 	    	        });
