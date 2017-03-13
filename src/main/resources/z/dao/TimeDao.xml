@@ -6,8 +6,6 @@
 <mapper namespace="z.dao.TimeDao">
 
 	<resultMap type="time" id="time-map">
-		<id column="ldnum" property="limitedDateNo" />
-		<result column="mtnum" property="meetingNo" />
 		<result column="sdate" property="startDate" />
 		<result column="edate" property="endDate" />
 	</resultMap>

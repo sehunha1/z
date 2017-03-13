@@ -1,5 +1,8 @@
 package z.control.json;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AjaxResult {
   public static final String SUCCESS = "success";
   public static final String FAIL = "fail";
@@ -12,6 +15,14 @@ public class AjaxResult {
   public AjaxResult(String status, Object data) {
     this.status = status;
     this.data = data;
+  }
+
+  public AjaxResult(String status, Object data, Object data1) {
+    this.status = status;
+    HashMap<Object, Object> map = new HashMap<>();
+    map.put("meetingInfo", data);
+    map.put("selectedDateInfo", data1);
+    this.data = map;
   }
 
   public String getStatus() {
