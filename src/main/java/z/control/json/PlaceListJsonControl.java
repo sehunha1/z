@@ -3,6 +3,7 @@ package z.control.json;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +18,14 @@ public class PlaceListJsonControl {
   @Autowired PlaceListService placeListService;
 
   @RequestMapping("html/meetmain/listadd")
-  public AjaxResult add(PlaceList placelist) throws Exception {
+  public AjaxResult add(PlaceList placelist, HttpSession session) throws Exception {
     int count = placeListService.add(placelist);
     
     if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "등록 실패입니다.");
     }
-
+    
+    session.setAttribute("placelist", placelist);
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   // 페이징 처리 전

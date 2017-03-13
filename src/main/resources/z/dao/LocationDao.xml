@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="z.dao.LocationDao">
+
+<resultMap type="Location"            id="Location-map">
+  <id     column="lnum"               property="locationListNo"/>
+  <result column="ltnum"              property="locationNo"/>
+  <result column="mnum"               property="memberNo"/>
+  <result column="mtnum"              property="meetingNo"/>
+</resultMap>
+
+  <insert id="insert" parameterType="Location" 
+          useGeneratedKeys="true" keyColumn="lnum" keyProperty="locationListNo">
+    insert into loc(ltnum, mnum, mtnum)
+    values(LAST_INSERT_ID(), #{memberNo}, #{meetingNo})
+  </insert>
+  
+  <select id='getmemberList' resultType="map">
+    select 
+	    name, 
+	    photo
+	  from 
+      memb m, loc l
+    where
+      m.mnum = l.mnum
+  </select>
+</mapper>
