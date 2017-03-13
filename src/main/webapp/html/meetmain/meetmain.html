@@ -49,9 +49,9 @@
 			
 			<div id='tab' style='float:left; width:745px; height:720px; margin-left:10px;'>
 			 <ul class="nav nav-tabs" style='font-family:Noto Sans KR, sans-serif;'>
-		   <li class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
-		   <li><a data-toggle="tab" href="#menu2" onClick="menu2c()">장소투표</a></li>
-		   <li><a data-toggle="tab" href="#menu3" onClick="menu3c()">게시판</a></li>
+		   <li id='li1' class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
+		   <li id='li2'><a data-toggle="tab" href="#menu2" onClick="menu2c()">장소투표</a></li>
+		   <li id='li3'><a data-toggle="tab" href="#menu3" onClick="menu3c()">게시판</a></li>
 		</ul>
 		
 		<div class="tab-content">
@@ -115,6 +115,7 @@
                 <thead>
                   <tr>
                     <th>장소명</th>
+                    <th>투표수</th>
                   </tr>
                 <thead>
                 <tbody></tbody>
@@ -301,6 +302,7 @@
 {{#each list}}
 <tr>
   <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
+  <td>{{count}}</td>
 </tr>
 {{/each}}
 </script>

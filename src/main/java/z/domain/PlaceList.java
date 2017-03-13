@@ -4,6 +4,7 @@ public class PlaceList {
   protected int locationNo;
   protected int meetingNo;
   protected int memberNo;
+  protected int count;
   protected String place;
   protected String address;
   protected String xLocation;
@@ -26,6 +27,12 @@ public class PlaceList {
   }
   public void setMemberNo(int memberNo) {
     this.memberNo = memberNo;
+  }
+  public int getCount() {
+    return count;
+  }
+  public void setCount(int count) {
+    this.count = count;
   }
   public String getPlace() {
     return place;
