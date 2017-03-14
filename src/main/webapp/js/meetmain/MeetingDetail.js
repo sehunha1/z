@@ -252,9 +252,10 @@ MeetingDetail.prototype = {
                     var eachDate = oRenderCalendarDate[i].aEachDateInfo[j],
                         selectedDate = oOriginCalendarData.selectedDateInfo[k];
 // 서버에서 토탈값 받아야함
-if(eachDate.calendarDate === '2017-03-17' || eachDate.calendarDate === '2017-03-15'){
-    selectedDate.nTotalSelector = 2;
-}
+// if(eachDate.calendarDate === '2017-03-17' || eachDate.calendarDate === '2017-03-15'){
+//     selectedDate.nTotalSelector = 2;
+// }
+selectedDate.nTotalSelector = 100;
                     if(eachDate.calendarDate == selectedDate.calendarDate){
 
                         eachDate.calendarDate = selectedDate.calendarDate;
