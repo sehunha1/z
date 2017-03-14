@@ -20,4 +20,12 @@
 		select cal.mtnum, cal.mnum, cal.cdate, cal.ctime from cal where cal.mtnum=#{value};
 	</select>
 
+	<delete id="deleteCal" parameterType="int">
+		delete from cal where mtnum=#{value};
+	</delete>
+
+	<insert id="insertCal" parameterType="calendar">
+		insert into cal (mnum, mtnum, cdate, ctime) values (#{memberNo}, #{meetingNo}, #{calendarDate}, #{calendarTime});
+	</insert>
+
 </mapper>

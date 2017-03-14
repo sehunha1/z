@@ -450,10 +450,13 @@ if(eachDate.calendarDate === '2017-03-17' || eachDate.calendarDate === '2017-03-
             sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?meetingNo=' + this.getQueryParam('meetingNo'),
             that = this;
 
+        var json_oMeetingParamData = JSON.stringify(oMeetingParamData);
+
         $.ajax({
             url : sMeetingInfoAPI,
             method : 'POST',
-            data : oMeetingParamData,
+            data : json_oMeetingParamData,
+            contentType: 'application/json',
             success : function(res){
                 console.log("전송완료")
                 that.aCalendarData = that.makeMeetingObject(res);

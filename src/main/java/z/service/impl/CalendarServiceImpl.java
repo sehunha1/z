@@ -22,4 +22,14 @@ public class CalendarServiceImpl implements CalendarService {
   public List<Calendar> getSelectedDateInfo(int meetingNo) throws Exception {
     return calendarDao.getSelectedDateInfo(meetingNo);
   }
+
+  @Override
+  public int deleteCal(int meetingNo) throws Exception {
+    return calendarDao.deleteCal(meetingNo);
+  }
+
+  @Override
+  public int insertCal(Calendar calendar) throws Exception {
+    return calendarDao.insertCal(calendar);
+  }
 }
