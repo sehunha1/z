@@ -290,4 +290,4 @@ $(function() {
 		}
 		location.href = "write2.html?title=" + encodeURIComponent($('#exampleInputEmail3').val());
 	});
-})
+});

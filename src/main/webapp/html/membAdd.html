@@ -1,9 +1,83 @@
-<!-- 사이드 바 멤버 추가시 팝업 -->
-<!-- 작성: 2017.02.22 김재녕 -->
-<!-- 내용: 방 개설 설정화면 분리 -->
-
+<!-- 작성: 2017.03.13 김재녕 -->
+<!-- 내용: SideBar - MembAdd -->
 <!-- 모임원 초대 -->
+
+<style>
+#schedulememb {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  height: 530px;
+  width: 380px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 1px;
+}
+
+#schedulememb .memb-add {
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+  text-align: left;
+}
+
+#schedulememb .mail-box-cls {
+  width: 99%;
+  margin: 0 auto;
+}
+
+#schedulememb .add-email-box {
+  float: left;
+  height: 40px;
+  width: 70%;
+  margin-top: 3%;
+  margin-left: 5%;
+  margin-right: 10%;
+  font-color: #3ACBA3;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+#schedulememb #plus-btn {
+  margin-right: 6%;
+  float: right;
+  height: 30px;
+  line-height: 100%;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;
+}
+
+#schedulememb #plus-btn:hover {
+  color: black;
+}
+
+#schedulememb #minus-btn {
+  display: inline-block;
+  margin: 3% auto;
+  float: left;
+  height: 30px;
+  line-height: 100%;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background-color: #3ACBA3;
+  color: white;
+}
+
+#schedulememb #minus-btn:hover {
+  color: black;
+}
+</style>
+
 <div id="schedulememb" class="main-div">
+
 	<span class="section"></span><br> <span class="title">모임원초대</span>
 	<button type="button" id="plus-btn" class="btn btn-default"
 		onClick="add_memb()">+</button>
@@ -50,76 +124,4 @@ function memb_add_email()  {
   }
 </script>
 
-<style>
-#schedulememb {
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: grey;
-	height: 530px;
-	width: 380px;
-	margin-left: 20px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-right: 1px;
-}
 
-#schedulememb .memb-add {
-	width: 100%;
-	height: 80%;
-	overflow: auto;
-	text-align: left;
-}
-
-#schedulememb .mail-box-cls {
-	width: 99%;
-	margin: 0 auto;
-}
-
-#schedulememb .add-email-box {
-	float: left;
-	height: 40px;
-	width: 70%;
-	margin-top: 3%;
-	margin-left: 5%;
-	margin-right: 10%;
-	font-color: #3ACBA3;
-	border-radius: 3px;
-	display: inline-block;
-}
-
-#schedulememb #plus-btn {
-	margin-right: 6%;
-	float: right;
-	height: 30px;
-	line-height: 100%;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-}
-
-#schedulememb #plus-btn:hover {
-	color: black;
-}
-
-#schedulememb #minus-btn {
-	display: inline-block;
-	margin: 3% auto;
-	float: left;
-	height: 30px;
-	line-height: 100%;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-}
-
-#schedulememb #minus-btn:hover {
-	color: black;
-}
-</style>

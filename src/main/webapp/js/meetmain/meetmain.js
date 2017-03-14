@@ -150,5 +150,11 @@ $(function() {
         e.preventDefault();
         window.oMeetingDetail.init();
     });
+    
+    $('body').on('click', '#sideMembPlus', function(e) {
+    	e.preventDefault();
+    	$('#schedulememb').popup();
+    });
 });
+
 
