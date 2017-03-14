@@ -24,4 +24,8 @@ public class LinkServiceImpl implements LinkService {
   public int getEntireCount(int meetingNo) throws Exception {
     return linkDao.getEntireCount(meetingNo);
   }
+
+  public int getMyUnvoteCount(int memberNo) throws Exception {
+    return linkDao.getMyUnvoteCount(memberNo);
+  }
 }
