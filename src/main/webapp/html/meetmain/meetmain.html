@@ -194,8 +194,10 @@
                       placeholder='내용'>
 
                   <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label><br>
-                  <div class="col-sm-10">
-                     <input id='photo-path' type='hidden'>
+                  <div class="col-sm-10 detail-photo">
+               <!--    <input name='photo-path' type='hidden' >
+                     <img class='img-responsive-detail'   />  -->
+   
                   </div>
                 <div class="form-group">
                   <div class="detail_button">
@@ -427,6 +429,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     	   $('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
     	   row.append(div);
        }
+
        
        $(".btn-view").click(function() {
     	   window.bnumber = $(this).attr('data-bnum');
@@ -435,9 +438,18 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     		          return;
     		        }
     		   var detail = ajaxResult.data;
+    		   console.log('디테일?',detail)
 	    	   $('#detail_title').val(detail.title);
 	    	   $('#detail_content').val(detail.content);
-	    	   
+	    	   $('.detail-photo').children().remove();
+	    	   for (var i in detail.addFileList) {
+	    		   $('<input>')
+	    		     .attr('name','input-file-path')
+	    		     .attr('value',detail.addFileList[i].filePath)
+	    		     .css('display','none').appendTo($('.detail-photo'));
+	    		   $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
+	    		     .css('width','100px').css('height','70px').css('display','inline-block');
+	    	   }
 	    	  console.log( bnumber);
     	   }); 
        });
