@@ -45,6 +45,17 @@ public class MemberJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, detailMeetList);
   }
   
+  // SideBar 멤버 추가시 회원 유무 조회
+  @RequestMapping("html/membAdd/membAdd")
+  public AjaxResult getSideMemb(String emailAddress) throws Exception {
+    int membAddYn = memberService.getSideMemb(emailAddress);
+    if (membAddYn == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "이메일이 존재하지 않습니다.");
+    } else {
+      return new AjaxResult(AjaxResult.SUCCESS, "이메일이 존재합니다.");
+    }
+  }
+  
   /*
   @RequestMapping("html/main/list")
   public AjaxResult list() throws Exception {

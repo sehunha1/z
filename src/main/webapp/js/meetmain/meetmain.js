@@ -1,6 +1,5 @@
 var meetingNo = window.location.search.split("&")[1].substring(10);
 
-
 Date.prototype.Compare = function(ComDate, Type) {
     var RtnVal = -1;
     var tmpDate = new Date();
@@ -84,12 +83,10 @@ Date.prototype.Compare = function(ComDate, Type) {
             }
             while(tmpDate <= ComDate);
         }
-            break;
+        break;
     }
-
     return RtnVal;
 };
-
 
 $("#datepicker").datepicker({
     inline: true
@@ -151,10 +148,66 @@ $(function() {
         window.oMeetingDetail.init();
     });
     
-    $('body').on('click', '#sideMembPlus', function(e) {
-    	e.preventDefault();
-    	$('#schedulememb').popup();
-    });
+});
+// 멤버 초대 버튼 이벤트
+$('body').on('click', '#sideMembPlus', function(e) {
+	e.preventDefault();
+//	$('#membPlusPopup').modal();
+/*	$('#membPlusPopup').fadeIn(1000);
+	$('#membPlusPopup').fadeTo("slow",1); */
 });
 
+$('body').on('click', '#memb-close-btn', function(e) {
+//	$('#membPlusPopup').fadeOut(1000);
+});
 
+var inputEmail;
+$('body').on('focus', '.add-email-box', function() {
+  inputEmail = $(this);
+})
+
+// 멤버 초대 함수 호출
+$('body').on('click', '#memb-plus-btn', function(e) {
+	e.preventDefault();
+	add_memb();
+});
+
+// 멤버 초대 박스 이메일 입력시
+$('body').on('keyup', '.mail-box-cls', function(e) {
+	 console.log(inputEmail.val());	 
+/* 	 $.post(serverRoot + '/html/membAdd/membAdd.json', inputEmail, function(ajaxResult) {
+		 if (ajaxResult.status != "success") {
+        console.log(ajaxResult.data);
+        return;
+	   }
+		 console.log("성공");
+	 }); */
+});
+
+// 멤버 초대 상자 추가
+function add_memb() {
+   $('<div>').attr('class', 'mail-box-cls').html(
+      '<input type="email"' + 'class="add-email-box"'
+          + 'placeholder="email을 입력해주세요">'
+          + '<button type="button" id="minus-btn"'
+          + 'class="btn btn-default"'
+          + 'onClick="remove_memb(this)">-</button>').appendTo(
+      '#new-field');
+}
+
+// 멤버 초대 상자 삭제
+function remove_memb(obj) {
+  document.getElementById('new-field').removeChild(obj.parentNode);
+}
+
+// 모임구성원 이메일 변수에 담기
+function memb_add_email()  {
+  var addmemb = document.getElementsByClassName('add-email-box');
+  var membdata = new Array();
+  for (var i = 0; i < addmemb.length; i++) {
+    if (addmemb[i] != null) {
+      membdata.push(addmemb[i]);
+    }
+  }
+  return membdata;
+}

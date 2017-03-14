@@ -122,7 +122,6 @@
 		and fcbk=#{facebook}
 	</select>
 
-
 	<!-- 회원 중복 검사 -->
 	<select id="chkMbEmail" resultType="int">
 		SELECT
@@ -138,6 +137,13 @@
 		count(*)
 		FROM memb
 		WHERE fcbk = #{facebook}
+	</select>
+	
+	<!-- SideBar 멤버 추가시 회원유무 확인 -->
+	<select id="getSideMemb" resultType="int">
+	  SELECT COUNT(*)
+	    FROM MEMB
+	   WHERE MEMB.EMAIL LIKE CONCAT('%', #{VALUE}, '%') OR MEMB.FCBK LIKE CONCAT('%', #{VALUE}, '%')
 	</select>
 
 	<update id="update" parameterType="member">

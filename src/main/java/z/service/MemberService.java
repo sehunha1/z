@@ -18,4 +18,5 @@ public interface MemberService {
   int updatelogin(Member member) throws Exception;
   int memberdelete(int memberNo) throws Exception;
   int countEmailPassword(String email, String password) throws Exception;
+  public int getSideMemb (String emailAddress) throws Exception; // SideBar 멤버 추가시 회원 유무 조회
 }
