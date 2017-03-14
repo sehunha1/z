@@ -18,6 +18,16 @@
     values(LAST_INSERT_ID(), #{memberNo}, #{meetingNo})
   </insert>
   
+  <insert id="insertvote" parameterType="Location" 
+          useGeneratedKeys="true" keyColumn="lnum" keyProperty="locationListNo">
+    insert into loc(ltnum, mnum, mtnum)
+    values(#{locationNo}, #{memberNo}, #{meetingNo})
+  </insert>
+  
+  <select id="count" parameterType="map" resultType="int">
+    select count(*) from loc where ltnum=#{param1} and mnum=#{param2} and mtnum=#{param3}
+  </select>
+  
   <select id='getmemberList' resultType="map">
     select 
       o.ltnum,

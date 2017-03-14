@@ -223,7 +223,8 @@
   <script src="../../js/meetmain/meetmain.js"></script>
   <script src="../../js/meetmain/MeetingDetail.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
-	
+	<script src="../../js/jquery.cookie.js"></script>
+ 
 	<!-- 다음 지도 -->
   <script src="../../js/meetmain/daummap.js"></script>
   <script src="../../js/meetmain/daummaplist.js"></script>
@@ -300,11 +301,11 @@
   
   </script>
   
-  <script id="trTemplatelist" type="text/x-handlebars-template">
+<script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
   <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
-  <td>{{count}}</td>
+  <td class="tdcount">{{count}}</td>
 </tr>
 {{/each}}
 </script>
@@ -323,7 +324,6 @@ $('#off').click(function() {
     $("#on").attr("type", "button");
     $("#off").attr("type", "hidden");
 });
-
 </script>
   
 <script>

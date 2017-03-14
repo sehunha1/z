@@ -150,8 +150,23 @@ function displayPlaces(places) {
                                     text: "선택이 완료되었습니다.",
                                     type: "success",
                                   },
+                                  
                                   function(){
-                          			  location.reload();
+                                	  /*
+                                      	$.ajax({
+                  		  	        		type : "GET",
+                  		  	        		url : "placelist.json",
+                  		  	        		dataType : "json",
+                  		  	        		error : function() {
+                  		  	        			alert('통신실패!!');
+                  		  	        		},
+                  		  	        		success : function(data) {
+                  		  	        			var tbody = $('#list-table > tbody');
+                  		  	        			var template = Handlebars.compile($('#trTemplatelist').html());
+                  		  	        		    tbody.html(template({"list": data.data}));
+                  		  	        		}
+                  		  	        	});
+                  		  	        	*/
                           			});
                               }, 'json'); // post();
                 		  
@@ -211,7 +226,7 @@ function displayPlaces(places) {
                                   type: "success",
                                 },
                                 function(){
-                                	location.reload();
+                                	//location.reload();
                       			});
                             }, 'json'); // post();
               		  
