@@ -51,13 +51,11 @@ public class TimeJsonControl {
         String calendarDate = (String)map_list1.get("calendarDate");
         String calendarTime1 = (String)calendarTime.get(j);
         int memberNo1;
-        Object obj = memberNo.get(j);
-        String aa = obj.getClass().getName();
 
-        if (aa.equals("java.lang.Integer")) {
-          memberNo1 = (int)obj;
+        if (memberNo.get(j).getClass().getName().equals("java.lang.Integer")) {
+          memberNo1 = (int)memberNo.get(j);
         } else {
-          memberNo1 = Integer.parseInt((String)obj);
+          memberNo1 = Integer.parseInt((String)memberNo.get(j));
         }
 
         calendar.setMemberNo(memberNo1);
