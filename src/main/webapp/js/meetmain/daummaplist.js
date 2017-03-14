@@ -50,6 +50,9 @@ $.getJSON('placelist.json', function(ajaxResult) {
 		                '				 <hr style="border: solid 1px;">' +
 		                '                <div class="member" style="margin-left:5px;">선택한 멤버</div>'+ '<br>' +
 		                '                <div class="photo" style="margin-left:5px;"></div>' +
+		                '                <div class="votebutton" style="margin-bottom:3px;"> ' +
+		                ' <button class="vote" type="button" style="float:right; width:40px; height:20px;">투표</button>' +
+		                '</div>    ' +
 		                '</div>' + 
 		                '</div>';
 	    }
@@ -124,6 +127,29 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    	        // 오버레이 element에서 close버튼을 클릭하면 닫히게 이벤트를 등록한다.
 	    	        overlays.push(overlay);
 	    	        
+	    	        var place = list[i].place;
+	    	        
+	    	        var vote = overlayDiv.getElementsByClassName('vote')[0];
+		  	          vote.onclick= function() {
+		  	        	swal({
+		  	        	  title: place + "을(를) 투표할까요?",
+		  	        	  //text: "You will not be able to recover this imaginary file!",
+		  	        	  showCancelButton: true,
+		  	        	  confirmButtonColor: "#558CDF",
+		  	        	  confirmButtonText: "투표",
+		  	        	  cancelButtonText: "취소",
+		  	        	  closeOnConfirm: false,
+		  	        	  closeOnCancel: false
+		  	        	},
+		  	        	function(isConfirm){
+		  	        	  if (isConfirm) {
+		  	        	    swal("투표", "투표가 완료되었습니다.", "success");
+		  	        	  } else {
+		  	        	    swal("취소", "취소하였습니다.", "error");
+		  	        	  }
+		  	        	});
+		  	        };
+	    	        
 	    	        var membin = overlayDiv.getElementsByClassName('member')[0];
 	    	        membin.innerHTML = "선택한 멤버<br>";
 	    	        
@@ -144,11 +170,12 @@ $.getJSON('placelist.json', function(ajaxResult) {
 	    	        }
 	    	  }
 	      }
-	    	        var close = overlayDiv.getElementsByClassName('close')[0];
-	    	          close.onclick= function() {
-	    	          overlay.setMap(null);
-	    	        };
-	    	        
+	      
+	        var close = overlayDiv.getElementsByClassName('close')[0];
+	          close.onclick= function() {
+	          overlay.setMap(null);
+	        };
+	        
             map2.setCenter(new daum.maps.LatLng($(this).attr("x"), $(this).attr("y")));
             overlay.setMap(map2);
         });

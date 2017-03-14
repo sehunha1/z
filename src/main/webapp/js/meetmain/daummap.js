@@ -32,7 +32,7 @@ function searchPlaces() {
     var keyword = document.getElementById('keyword').value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        sweetAlert('키워드를 입력해주세요!');
+        //sweetAlert('키워드를 입력해주세요!');
         return false;
     }
 
