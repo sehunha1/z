@@ -5,12 +5,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import z.domain.Calendar;
-import z.domain.Test;
 import z.domain.Time;
 import z.service.CalendarService;
 import z.service.TimeService;
@@ -35,12 +35,11 @@ public class TimeJsonControl {
   }
 
   @RequestMapping(value="html/meetmain/getSelectDate", method=RequestMethod.POST)
-  public AjaxResult getSelectDate(@RequestBody Object jsonData) throws Exception {
+  public AjaxResult getSelectDate(@RequestBody Object jsonData, HttpServletRequest httpServletRequest) throws Exception {
     Calendar calendar = new Calendar();
     LinkedHashMap<String, ArrayList<LinkedHashMap<String, Object>>> map_jsonData = (LinkedHashMap<String, ArrayList<LinkedHashMap<String, Object>>>) jsonData;
     ArrayList<LinkedHashMap<String, Object>> aData = map_jsonData.get("aData");
-    LinkedHashMap<String, Object> map_list = aData.get(0);
-    int meetingNo = (int)map_list.get("meetingNo");
+    int meetingNo = Integer.parseInt(httpServletRequest.getParameter("meetingNo"));
     int count = calendarService.deleteCal(meetingNo);
 
     for (int i = 0; i < aData.size(); i++) {
@@ -67,8 +66,9 @@ public class TimeJsonControl {
       }
     }
 
-    Time time = timeService.getTime(meetingNo);
-    List<Calendar> selectedDateInfo = calendarService.getSelectedDateInfo(meetingNo);
-    return new AjaxResult(AjaxResult.SUCCESS, time, selectedDateInfo);
+//    Time time = timeService.getTime(meetingNo);
+//    List<Calendar> selectedDateInfo = calendarService.getSelectedDateInfo(meetingNo);
+//    return new AjaxResult(AjaxResult.SUCCESS, time, selectedDateInfo);
+    return this.getSelectDate(meetingNo);
   }
 }

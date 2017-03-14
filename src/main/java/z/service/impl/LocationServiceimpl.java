@@ -23,4 +23,14 @@ public class LocationServiceimpl implements LocationService {
   public List<PlaceList> getmemberList() throws Exception {
     return locationDao.getmemberList();
   }
+
+  @Override
+  public int vote(Location location) throws Exception {
+    if (locationDao.count(location.getLocationNo(), location.getMemberNo(), location.getMeetingNo()) == 1) {
+      //throw new Exception("같은 장소가 존재합니다. 등록을 취소합니다.");
+      return 0;
+    }
+    
+    return locationDao.insertvote(location);
+  }
 }

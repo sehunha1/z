@@ -174,6 +174,13 @@ $(function() {
 										+ ajaxResult.data.photo
 										+ '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
 			}
+
+			$.getJSON("../../getMyUnvoteCount.json?memberNo=" + ajaxResult.data.memberNo, function(ajaxResult) {
+                var status = ajaxResult.status;
+                if (status != "success") return;
+                var myUnvoteCount = ajaxResult.data;
+                $("#userpopup #sec3 #unvoteCount").append(myUnvoteCount);
+			});
 		}
 
 		/*

@@ -34,4 +34,10 @@ public class LinkJsonControl {
     int entireCount = linkService.getEntireCount(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, entireCount);
   }
+
+  @RequestMapping("getMyUnvoteCount")
+  public AjaxResult getMyUnvoteCount(int memberNo) throws Exception {
+    int myUnvoteCount = linkService.getMyUnvoteCount(memberNo);
+    return new AjaxResult(AjaxResult.SUCCESS, myUnvoteCount);
+  }
 }

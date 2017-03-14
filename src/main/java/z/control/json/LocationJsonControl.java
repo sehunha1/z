@@ -35,4 +35,15 @@ public class LocationJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
+  
+  @RequestMapping("html/meetmain/vote")
+  public AjaxResult vote(Location location) throws Exception {
+    int count = locationService.vote(location);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "등록 실패입니다.");
+    }
+
+    return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
+  }
 }

@@ -24,4 +24,8 @@
     select count(*) from link where mtnum=#{value};
   </select>
 
+  <select id="getMyUnvoteCount" parameterType="int" resultType="int">
+    select count(*) from link where mnum=#{value} and stat="n";
+  </select>
+
 </mapper>

@@ -1,0 +1,50 @@
+DROP TABLE IF EXISTS `loc` RESTRICT;
+
+-- 장소선택
+CREATE TABLE `loc` (
+  `lnum`  INTEGER NOT NULL COMMENT '장소선택일련번호', -- 장소선택일련번호
+  `ltnum` INTEGER NOT NULL COMMENT '장소일련번호', -- 장소일련번호
+  `mnum`  INTEGER NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+  `mtnum` INTEGER NOT NULL COMMENT '모임일련번호' -- 모임일련번호
+)
+COMMENT '장소선택';
+
+-- 장소선택
+ALTER TABLE `loc`
+  ADD CONSTRAINT `PK_loc` -- 장소선택 기본키
+    PRIMARY KEY (
+      `lnum` -- 장소선택일련번호
+    );
+
+-- 장소선택 유니크 인덱스
+CREATE UNIQUE INDEX `UIX_loc`
+  ON `loc` ( -- 장소선택
+    `ltnum` ASC, -- 장소일련번호
+    `mnum` ASC,  -- 회원일련번호
+    `mtnum` ASC  -- 모임일련번호
+  );
+
+ALTER TABLE `loc`
+  MODIFY COLUMN `lnum` INTEGER NOT NULL AUTO_INCREMENT COMMENT '장소선택일련번호';
+  
+-- 장소선택
+ALTER TABLE `loc`
+  ADD CONSTRAINT `FK_list_TO_loc` -- 장소리스트(API) -> 장소선택
+    FOREIGN KEY (
+      `ltnum` -- 장소일련번호
+    )
+    REFERENCES `list` ( -- 장소리스트(API)
+      `ltnum` -- 장소일련번호
+    );
+
+-- 장소선택
+ALTER TABLE `loc`
+  ADD CONSTRAINT `FK_link_TO_loc` -- 연결정보(모임멤버등....) -> 장소선택
+    FOREIGN KEY (
+      `mnum`,  -- 회원일련번호
+      `mtnum`  -- 모임일련번호
+    )
+    REFERENCES `link` ( -- 연결정보(모임멤버등....)
+      `mnum`,  -- 회원일련번호
+      `mtnum`  -- 모임일련번호
+    );

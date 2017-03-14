@@ -1,7 +1,7 @@
 package z.domain;
 
 public class Location {
-  protected int locationListNo;
+  protected int locationListNo; // 주키
   protected int locationNo;
   protected int memberNo;
   protected int meetingNo;
