@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import z.domain.Calendar;
 import z.domain.Time;
 import z.service.CalendarService;
+import z.service.LinkService;
+import z.service.LocationService;
 import z.service.TimeService;
 
 @RestController
@@ -20,6 +22,8 @@ public class TimeJsonControl {
   @Autowired ServletContext sc;
   @Autowired TimeService timeService;
   @Autowired CalendarService calendarService;
+  @Autowired LocationService locationService;
+  @Autowired LinkService linkService;
 
   @RequestMapping("html/meetmain/getTime")
   public AjaxResult getTime(int meetingNo) throws Exception {
@@ -39,6 +43,7 @@ public class TimeJsonControl {
     Calendar calendar = new Calendar();
     LinkedHashMap<String, ArrayList<LinkedHashMap<String, Object>>> map_jsonData = (LinkedHashMap<String, ArrayList<LinkedHashMap<String, Object>>>) jsonData;
     ArrayList<LinkedHashMap<String, Object>> aData = map_jsonData.get("aData");
+    int memberNo2 = Integer.parseInt(httpServletRequest.getParameter("memberNo"));
     int meetingNo = Integer.parseInt(httpServletRequest.getParameter("meetingNo"));
     int count = calendarService.deleteCal(meetingNo);
 
@@ -46,6 +51,7 @@ public class TimeJsonControl {
       LinkedHashMap<String, Object> map_list1 = aData.get(i);
       ArrayList<Object> calendarTime = (ArrayList<Object>)map_list1.get("calendarTime");
       ArrayList<Object> memberNo = (ArrayList<Object>)map_list1.get("memberNo");
+
       for (int j = 0; j < calendarTime.size(); j++) {
         String calendarDate = (String)map_list1.get("calendarDate");
         String calendarTime1 = (String)calendarTime.get(j);
@@ -66,9 +72,11 @@ public class TimeJsonControl {
       }
     }
 
-//    Time time = timeService.getTime(meetingNo);
-//    List<Calendar> selectedDateInfo = calendarService.getSelectedDateInfo(meetingNo);
-//    return new AjaxResult(AjaxResult.SUCCESS, time, selectedDateInfo);
+    int count2 = locationService.getCheckLoc(memberNo2, meetingNo);
+    if (count2 > 0) {
+      linkService.updateStat(memberNo2, meetingNo);
+    }
+
     return this.getSelectDate(meetingNo);
   }
 }

@@ -33,4 +33,9 @@ public class LocationServiceimpl implements LocationService {
     
     return locationDao.insertvote(location);
   }
+
+  @Override
+  public int getCheckLoc(int memberNo2, int meetingNo) throws Exception {
+    return locationDao.getCheckLoc(memberNo2, meetingNo);
+  }
 }

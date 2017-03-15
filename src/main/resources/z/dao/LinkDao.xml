@@ -28,4 +28,8 @@
     select count(*) from link where mnum=#{value} and stat="n";
   </select>
 
+  <update id="updateStat" parameterType="int" >
+    update link set stat="y" where mnum=#{param1} and mtnum=#{param2};
+  </update>
+
 </mapper>
