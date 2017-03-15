@@ -1,0 +1,102 @@
+<style rel="stylesheet" type="text/css">  
+    #PageArea li { display:none; }  
+    #PageArea.now_page_1 li.page_1 { display:block; }  
+    #PageArea.now_page_2 li.page_2 { display:block; }  
+</style>  
+<script type="text/javascript">  
+// <![CDATA[   
+  
+    function pageMiniCounter (ele, ele_num, classname, maxpage)  
+    {  
+        this.eleArea = null;  
+        this.eleNumArea = null;  
+        this.nowpage = 1;  
+        this.maxpage = maxpage;  
+        this.classname = classname;  
+        this.left = function ()  
+        {  
+            if(this.nowpage > 1)  
+            {             
+                this.nowpage = this.nowpage - 1;  
+                chage(this.eleArea, this.eleNumArea,   
+                    this.classname, this.maxpage, this.nowpage);  
+            }else{  
+                return;  
+            }  
+        }  
+        this.right = function ()  
+        {  
+            if(this.nowpage <= this.maxpage-1)  
+            {  
+                this.nowpage = this.nowpage + 1;  
+                chage(this.eleArea, this.eleNumArea,   
+                    this.classname, this.maxpage, this.nowpage);  
+            }else{  
+                return;  
+            }  
+        }             
+        try  
+        {  
+  
+            this.eleArea = document.getElementById(ele);  
+        }catch(e){}  
+        try  
+        {  
+            this.eleNumArea = document.getElementById(ele_num);  
+        }catch(e){}           
+          
+        function chage (obj, obj_num, classname, maxpage, nowpage )  
+        {  
+            if(nowpage > maxpage)  
+            {  
+                nowpage = maxpage;  
+            }else if(nowpage <= 0)  
+            {  
+                nowpage = 1;  
+            }  
+            obj.className = classname + nowpage;  
+            obj_num.innerHTML = nowpage;  
+        }  
+    }  
+// ]]>  
+</script>  
+  
+  
+<h1>미니 페이징 테스트</h1>  
+<ul id="PageArea" class="now_page_1">  
+    <li class="page_1">element 4</li>  
+    <li class="page_1">element 3</li>  
+    <li class="page_2">element 2</li>  
+    <li class="page_2">element 1</li>  
+</ul>  
+<div>  
+    <h2>페이징 버튼</h2>  
+    <span id="PageLeft" class="tt_new_star_page_l">left</span>  
+        <span  class="tt_new_star_page_n">  
+        <span id="NowPageNum">1</span> / 2  
+    </span>  
+    <span id="PageRight" class="tt_new_star_page_r">right</span>  
+</div>  
+  
+  
+<script type="text/javascript">  
+// <![CDATA[  
+    /**   
+    *   
+    * mini paging script by byuli   
+    *   
+    * Parameters   
+    * waper dome Element Id, 
+    * page number set Element Id,    
+    * page number cssname in waper dome Element,    
+    * totalpage count  
+    *   
+    */                    
+    var PageTest =   
+    new pageMiniCounter("PageArea", "NowPageNum", "now_page_", 2);  
+    document.getElementById("PageLeft").onclick   
+        = new Function("PageTest.left()");  
+    document.getElementById("PageRight").onclick   
+        = new Function("PageTest.right()");  
+// ]]>  
+</script>

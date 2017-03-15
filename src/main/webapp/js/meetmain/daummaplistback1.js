@@ -46,15 +46,14 @@ $('body').on('click', '#blist', function() {
 				'    <div class="info">' + 
 				'        <div class="title">' + 
 				list[i].place + 
-				'            <div class="close" title="닫기" style="margin-right:10px;"></div>' + 
+				'            <div class="close" title="닫기"></div>' + 
 				'        </div>' + 
 				'        <div class="body">' + 
-				'                <div class="ellipsis" style="margin-left:5px;">주소 : ' + 
-				list[i].address + 
-				'</div>' +
+				'                <div class="ellipsis" style="margin-left:5px;">주소 : ' + list[i].address + '</div>' +
 				'				 <hr style="border: solid 1px;">' +
 				'                <span class="move" style="float: right; position:relative; overflow:hidden;"></span>' +
-				'                <div class="member" style="margin-left:5px; overflow-x:auto;">선택한 멤버</div>' +
+				'                <div class="member" style="margin-left:5px; overflow:scroll;"><a href="#" class="show">멤버보기</a><br></div>' +
+				'                <div class="photo" style="margin-left:5px;"></div>' +
 				'                <div class="votebutton" style="margin-bottom:3px;"> ' +
 				' <button class="vote" type="button" style="float:right; width:40px; height:20px;">투표</button>' +
 				'</div>    ' +
@@ -109,10 +108,9 @@ $('body').on('click', '#blist', function() {
 					overlay.setMap(map2);
 					
 					var membin = overlayDiv.getElementsByClassName('member')[0];
-					membin.innerHTML = "선택한 멤버<br>";
-					
-					var movein = overlayDiv.getElementsByClassName('move')[0];
-					movein.innerHTML = "";
+					//membin.innerHTML = "선택한 멤버<br>";
+					var showin = overlayDiv.getElementsByClassName('show')[0];
+					showin.onclick= function() {
 					
 					for (j = 0; j < memck.length; j++) {
 						var photopath = Array(memck.length);
@@ -128,17 +126,18 @@ $('body').on('click', '#blist', function() {
 							} else {
 								photopath[j] = photopathdefault;
 							}
+							if (countup % 5 == 0) {
+								//movein.innerHTML += '<a class="more" href="#" style="text-decoration:none;">더보기▶</a>';
+								membin.innerHTML += 'hel';
+							}
+							
 							membin.innerHTML += memck[j].name + " ";
 							membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px;'>"
 							
-							/*if (countup % 4 == 0) {
-								membin.style.overflowx = "auto";
-								membin.innerHTML += "<br>";
-								console.log(countup);
-							}*/
 						}
 					}
 					countup = 0; 
+					};
 				});
 				
 				
@@ -176,7 +175,7 @@ $('body').on('click', '#blist', function() {
 						var locationNo = list[i].locationNo;
 
 						var membin = overlayDiv.getElementsByClassName('member')[0];
-						membin.innerHTML = "선택한 멤버<br>";
+						//membin.innerHTML = "선택한 멤버<br>";
 
 						for (j = 0; j < memck.length; j++) {
 							var photopath = Array(memck.length);
@@ -184,14 +183,14 @@ $('body').on('click', '#blist', function() {
 
 							if (memck[j].ltnum == list[i].locationNo) {
 								//console.log(i);
+								membin.innerHTML += memck[j].name + " ";
 
 								if (memck[j].photo != "") {
 									photopath[j] = "../upload/" + memck[j].photo;
 								} else {
 									photopath[j] = photopathdefault;
 								}
-								membin.innerHTML += memck[j].name + " ";
-								membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px; margin-right:5px;'>"
+								membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px;'>"
 								countdown++;
 							}
 						}
