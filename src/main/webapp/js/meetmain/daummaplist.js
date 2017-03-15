@@ -193,8 +193,8 @@ $('body').on('click', '#blist', function() {
 									type: "success",
 								},
 								function(){
-									//$('#blist').trigger('click'); //강제 클릭
-									$.ajax({
+									$('#blist').trigger('click'); //강제 클릭
+/*									$.ajax({
 										type : "GET",
 										url : "placelist.json",
 										dataType : "json",
@@ -222,7 +222,7 @@ $('body').on('click', '#blist', function() {
 												upcheck = 1;
 											});
 										}
-									});
+									});*/
 								});
 							} else {
 								swal("취소", "취소하였습니다.", "error");
@@ -319,8 +319,8 @@ $('body').on('click', '#blist', function() {
 										type: "success",
 									},
 									function(){
-										//$('#blist').trigger('click'); //강제 클릭
-										$.ajax({
+										$('#blist').trigger('click'); //강제 클릭
+/*										$.ajax({
 											type : "GET",
 											url : "placelist.json",
 											dataType : "json",
@@ -348,7 +348,7 @@ $('body').on('click', '#blist', function() {
 												});
 												upcheck = 1;
 											}
-										});
+										});*/
 									});
 								} else {
 									swal("취소", "취소하였습니다.", "error");
