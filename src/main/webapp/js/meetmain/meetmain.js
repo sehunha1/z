@@ -178,6 +178,7 @@ $('body').on('keyup', '.mail-box-cls', function(e) {
 	      return;
 	    }
 		
+		// Link 테이블 조회 매개변수
 		var param = {
 			"membNo" : JSON.stringify(ajaxResult.data),
 			"meetingNo" : meetingNo
@@ -190,6 +191,7 @@ $('body').on('keyup', '.mail-box-cls', function(e) {
 		      // console.log(ajaxResult.data);
 		      return;
 			}
+			$('#addAvailability').css({"background": dd });
 			console.log("성공");
 		});
 		
@@ -223,3 +225,10 @@ function memb_add_email()  {
   }
   return membdata;
 }
+
+$('body').on('click', '#memb-close-btn', function(event) {
+//	event.preventDefault();
+//	$('#membPlusPopup').removeData('.add-email-box');
+//    $('#myModal').removeData('bs.modal').modal({remote: $(this).attr('href')});
+});
+
