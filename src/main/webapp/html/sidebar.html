@@ -1,6 +1,29 @@
 <!-- 작성: 2017-03-10 - 김재녕 -->
 <!-- 내용: SideBar 멤버 초대. 멤버 리스트 출력 -->
 
+<!-- 멤버 초대 팝업 -->
+<div id="membPlusPopup" class="modal fade" role="dialog">
+	<div id="membPlusHead">
+		<button type="button" id="memb-plus-btn">모임원초대</button>
+		<button type="button" id="memb-close-btn" data-dismiss="modal">X</button>
+	</div>
+
+	<!-- 멤버 초대 -->
+	<div class="memb-add">
+		<div id="mail-box-div" class="mail-box-cls">
+			<input id="memb-email" type="email" class="add-email-box"
+				placeholder="email을 입력해주세요">
+		</div>
+
+		<!-- 멤버 추가시 input Box 삽입할 div -->
+		<div id="new-field"></div>
+	</div>
+	<div class="Ok-area">
+		<button type="button" id="invite-btn">초대</button>
+	</div>
+</div>
+
+<!-- 멤버 리스트 -->
 <div id="sidebarMenu">
 	<div class="sideShare">
 		<p>공유</p>
@@ -9,7 +32,8 @@
 	</div>
 
 	<div id="sideMembDiv" class="sideMemb">
-		<button id="sideMembPlus">
+		<button id="sideMembPlus" data-toggle="modal"
+			data-target="#membPlusPopup">
 			<i class="glyphicon glyphicon-plus"></i> <span>멤버초대</span>
 		</button>
 	</div>

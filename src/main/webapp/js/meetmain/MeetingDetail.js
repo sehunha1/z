@@ -255,7 +255,6 @@ MeetingDetail.prototype = {
 // if(eachDate.calendarDate === '2017-03-17' || eachDate.calendarDate === '2017-03-15'){
 //     selectedDate.nTotalSelector = 2;
 // }
-selectedDate.nTotalSelector = 100;
                     if(eachDate.calendarDate == selectedDate.calendarDate){
 
                         eachDate.calendarDate = selectedDate.calendarDate;
@@ -448,7 +447,7 @@ selectedDate.nTotalSelector = 100;
     saveMeetingDate : function(){
         if(!confirm("전송합니까?")) return;
         var oMeetingParamData = this.getMeetingDateInfo(),
-            sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?meetingNo=' + this.getQueryParam('meetingNo'),
+            sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?memberNo=' + this.getQueryParam('memberNo') + '&meetingNo=' + this.getQueryParam('meetingNo'),
             that = this;
 
         var json_oMeetingParamData = JSON.stringify(oMeetingParamData);

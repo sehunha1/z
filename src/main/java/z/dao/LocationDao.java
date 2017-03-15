@@ -10,4 +10,5 @@ public interface LocationDao {
   int insertvote(Location location) throws Exception;
   int count(int locationNo, int memberNo, int meetingNo) throws Exception;
   List<PlaceList> getmemberList() throws Exception;
+  int getCheckLoc(int memberNo2, int meetingNo) throws Exception;
 }

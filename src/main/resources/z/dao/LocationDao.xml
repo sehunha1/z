@@ -40,4 +40,9 @@
     where
       m.mnum = o.mnum and l.ltnum = o.ltnum;
   </select>
+
+  <select id="getCheckLoc" parameterType="int" resultType="int">
+    select count(*) from loc where mnum=#{param1} and mtnum=#{param2};
+  </select>
+
 </mapper>

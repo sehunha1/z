@@ -15,6 +15,13 @@
 		<result column="fcbk" property="facebook" />
 		<result column="stat" property="meetStat" />
 	</resultMap>
+	
+	<resultMap type="link" id="link-map">
+	  <result column="mnum" property="memberNo" />
+	  <result column="mtnum" property="meetingNo" />
+	  <result column="boss" property="boss" />
+	  <result column="stat" property="status" />
+	</resultMap>
 
 	<select id="getListMeetingMembBoss" parameterType="int"
 		resultMap="member-map">
@@ -122,7 +129,6 @@
 		and fcbk=#{facebook}
 	</select>
 
-
 	<!-- 회원 중복 검사 -->
 	<select id="chkMbEmail" resultType="int">
 		SELECT
@@ -139,7 +145,23 @@
 		FROM memb
 		WHERE fcbk = #{facebook}
 	</select>
-
+	
+	<!-- SideBar 멤버 추가시 회원유무 확인 -->
+	<select id="getSideMemb" resultType="String">
+	  SELECT mnum
+	    FROM MEMB
+	   WHERE (MEMB.EMAIL = #{emailAddress} 
+	      OR MEMB.FCBK = #{emailAddress})
+	</select>
+	
+	<!-- SideBar 멤버 추가시 초대여부 확인 -->
+	<select id="getSideLink" parameterType="link" resultType="int">
+	  SELECT COUNT(*)
+	    FROM LINK
+	   WHERE LINK.MNUM = #{memberNo}
+	     AND LINK.MTNUM = #{meetingNo}
+	</select>
+	
 	<update id="update" parameterType="member">
 		update memb set
 		name=#{name},

@@ -193,3 +193,8 @@
 .post-img-content {
 	height: 130px;
 }
+
+.col-sm-10{
+	height : 100px;
+	width :500px;
+}

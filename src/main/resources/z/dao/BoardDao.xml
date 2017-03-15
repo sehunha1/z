@@ -66,9 +66,11 @@
       b.mtnum,
       b.titl, 
       b.cont,
-      m.name
+      m.name,
+      f.link
     from board b
       inner join memb m on b.mnum=m.mnum
+      left outer join file f on f.bnum=b.bnum
     where b.bnum=#{vlaue} 
   </select>
   
@@ -88,4 +90,7 @@
     delete from board where bnum=#{value}
   </delete>
   
+  <delete id="delete2" parameterType="int">
+    delete from file where bnum=#{value}
+  </delete>
 </mapper>
