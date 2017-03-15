@@ -46,7 +46,8 @@
 		  (addr_x), 
 		  (addr_y), 
 		  (select count(mnum) from loc o where o.ltnum = l.ltnum) as count
-	  from list l;
+	  from list l
+	   order by count desc;
   </select>
   
   <!-- 페이징 처리 후
