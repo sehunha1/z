@@ -193,7 +193,9 @@
 					<form class='form-horizontal'>
 						<input id='detail_title' class="col-sm-2 control-label"> <input
 							id='detail_content' type='text' class="form-control"
-							placeholder='내용'> <label id='detail_photo' for="title"
+							placeholder='내용'>
+<!-- <<<<<<< HEAD
+=======<label id='detail_photo' for="title"
 							class="col-sm-2 control-label">사진</label><br>
 						<div class="col-sm-10">
 							<input id='photo-path' type='hidden'>
@@ -212,9 +214,9 @@
 			</div>
 		</div>
 	</div>
+>>>>>>> branch 'master' of https://github.com/sehunha1/z.git -->
+	<!-- container -->
 
-<!-- <<<<<<< HEAD
-=======
                   <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label><br>
                   <div class="col-sm-10 detail-photo">
                   <input name='photo-path' type='hidden' >
@@ -234,8 +236,6 @@
 </div>
 </div>
 	
->>>>>>> branch 'master' of https://github.com/sehunha1/z.git -->
-	<!-- container -->
 	<div id="footer"></div>
 	<script src="../../js/context.js"></script>
 	<script
@@ -485,7 +485,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	    		     .attr('value',detail.addFileList[i].filePath)
 	    		     .css('display','none').appendTo($('.detail-photo'));
 	    		   $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
-	    		     .css('width','100px').css('height','70px').css('display','inline-block');
+	    		     .css('width','150px').css('height','100px').css('display','inline-block');
 	    	   }
 	    	  console.log( bnumber);
     	   }); 
@@ -499,6 +499,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     	        alert(ajaxResult.data);
     	        return;
     	      }
+
     	      location.reload();
     	    }); // getJSON()
     	  }); // click()

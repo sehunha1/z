@@ -90,4 +90,7 @@
     delete from board where bnum=#{value}
   </delete>
   
+  <delete id="delete2" parameterType="int">
+    delete from file where bnum=#{value}
+  </delete>
 </mapper>

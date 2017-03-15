@@ -448,7 +448,7 @@ selectedDate.nTotalSelector = 100;
     saveMeetingDate : function(){
         if(!confirm("전송합니까?")) return;
         var oMeetingParamData = this.getMeetingDateInfo(),
-            sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?meetingNo=' + this.getQueryParam('meetingNo'),
+            sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?memberNo=' + this.getQueryParam('memberNo') + '&meetingNo=' + this.getQueryParam('meetingNo'),
             that = this;
 
         var json_oMeetingParamData = JSON.stringify(oMeetingParamData);
