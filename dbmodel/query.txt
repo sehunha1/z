@@ -1,4 +1,4 @@
--- 2017.03.12
+-- 2017.03.12 ver2
 
 -- 회원
 DROP TABLE IF EXISTS `memb` RESTRICT;
@@ -213,9 +213,9 @@ ALTER TABLE `file`
 CREATE TABLE `link` (
   `mnum`   INTEGER NOT NULL COMMENT '회원일련번호', -- 회원일련번호
   `mtnum`  INTEGER NOT NULL COMMENT '모임일련번호', -- 모임일련번호
-  `boss`   CHAR(1) NOT NULL DEFAULT n COMMENT '방장여부', -- 방장여부
+  `boss`   CHAR(1) NOT NULL DEFAULT 'n' COMMENT '방장여부', -- 방장여부
   `stat`   CHAR(1) NOT NULL COMMENT '모임투표상태', -- 모임투표상태
-  `accept` CHAR(1) NOT NULL DEFAULT n COMMENT '모임승낙여부' -- 모임승낙여부
+  `accept` CHAR(1) NOT NULL DEFAULT 'n' COMMENT '모임승낙여부' -- 모임승낙여부
 )
 COMMENT '연결정보(모임멤버등....)';
 
