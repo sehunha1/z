@@ -457,7 +457,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
        for (var i = 0; i < list.length; i++) {
     	   if (i % 3 == 0) {
     		   console.log('로우생성');
-    		   console.log(ajaxResult.data[4].addFileList[0].filePath)
+    		   console.log(ajaxResult.data[0].addFileList[0].filePath)
     		   row = $('<div>').addClass('row').appendTo(container2);
     	   }
     	   var div = $('<div>').html(template(list[i]));
@@ -498,7 +498,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     	        alert(ajaxResult.data);
     	        return;
     	      }
-
+    	    
     	      location.reload();
     	    }); // getJSON()
     	  }); // click()
