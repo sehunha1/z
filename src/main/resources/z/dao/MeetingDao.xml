@@ -86,7 +86,8 @@
 		#{meetBossNo},
 		#{meetingNo},
 		'y',
-		'n'
+		'n',
+		'y'
 		)
 	</insert>
 

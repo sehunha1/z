@@ -5,10 +5,11 @@ import java.io.Serializable;
 public class Link implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int memberNo;
-  protected int meetingNo;
-  protected String boss;
-  protected String status;
+  protected int memberNo; /////// 회원 일련번호
+  protected int meetingNo; ////// 모임 일련번호
+  protected String boss; //////// 방장여부
+  protected String status; ////// 모임 투표 상태
+  protected String acceptMeet; // 모임 승낙 여부
 
   public int getMemberNo() {
     return memberNo;
@@ -41,4 +42,13 @@ public class Link implements Serializable {
   public void setStatus(String status) {
     this.status = status;
   }
+
+  public String getAcceptMeet() {
+    return acceptMeet;
+  }
+
+  public void setAcceptMeet(String acceptMeet) {
+    this.acceptMeet = acceptMeet;
+  }
+
 }
