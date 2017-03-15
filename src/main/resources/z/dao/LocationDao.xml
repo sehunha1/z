@@ -32,7 +32,7 @@
     select 
       o.ltnum,
 	    name,
-	    l.mnum, 
+	    o.mnum, 
 	    photo,
 	    lname
 	  from 

@@ -6,9 +6,6 @@ $('body').on('click', '#blist', function() {
 
 			var list = ajaxResult.data;
 			var memck = ajaxResult2.data;
-			var upcheck = 0; // 새 투표 확인 변수
-			var cookien = ""; // 새로 투표시 추가될 이름
-			var cookiep = ""; // 새로 투표시 추가될 파일명
 
 			var x = list[0].xLocation;
 			var y = list[0].yLocation;
@@ -17,6 +14,8 @@ $('body').on('click', '#blist', function() {
 
 			if (status != "success")
 				return;
+
+			var list = ajaxResult.data;
 
 			var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
 			mapOption = {
@@ -47,15 +46,14 @@ $('body').on('click', '#blist', function() {
 				'    <div class="info">' + 
 				'        <div class="title">' + 
 				list[i].place + 
-				'            <div class="close" title="닫기" style="margin-right:10px;"></div>' + 
+				'            <div class="close" title="닫기"></div>' + 
 				'        </div>' + 
 				'        <div class="body">' + 
-				'                <div class="ellipsis" style="margin-left:5px;">주소 : ' + 
-				list[i].address + 
-				'</div>' +
+				'                <div class="ellipsis" style="margin-left:5px;">주소 : ' + list[i].address + '</div>' +
 				'				 <hr style="border: solid 1px;">' +
 				'                <span class="move" style="float: right; position:relative; overflow:hidden;"></span>' +
-				'                <div class="member" style="margin-left:5px; overflow-x:auto;">선택한 멤버</div>' +
+				'                <div class="member" style="margin-left:5px;">선택한 멤버</div>' +
+				'                <div class="photo" style="margin-left:5px;"></div>' +
 				'                <div class="votebutton" style="margin-bottom:3px;"> ' +
 				' <button class="vote" type="button" style="float:right; width:40px; height:20px;">투표</button>' +
 				'</div>    ' +
@@ -107,9 +105,6 @@ $('body').on('click', '#blist', function() {
 
 				// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 				daum.maps.event.addListener(marker, 'click', function() {
-					var place = list[num].place;
-					var locationNo = list[num].locationNo;
-					
 					overlay.setMap(map2);
 					
 					var membin = overlayDiv.getElementsByClassName('member')[0];
@@ -118,117 +113,54 @@ $('body').on('click', '#blist', function() {
 					var movein = overlayDiv.getElementsByClassName('move')[0];
 					movein.innerHTML = "";
 					
-					$.getJSON('../auth/loginUser.json', function(userData) {
-						userJson = userData.data;
-						for (j = 0; j < memck.length; j++) {
-							var photopath = Array(memck.length);
-							photopathdefault = "../../image/profile-default.png";
-							
-							if (memck[j].ltnum == list[num].locationNo) {
-								countup++; 
-								if (memck[j].photo != "") {
-									photopath[j] = "../upload/" + memck[j].photo;
-								} else {
-									photopath[j] = photopathdefault;
-								}
-								membin.innerHTML += memck[j].name + " ";
-								membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px; margin-right:5px;'>"
-								/*if (countup % 4 == 0) {
-									membin.style.overflowx = "auto";
-									membin.innerHTML += "<br>";
-									console.log(countup);
-								}*/
-								//console.log(countup);
-								//console.log("upcheck" + upcheck);.
-								if (userJson.name == memck[j].name) {
-									if (upcheck == 1) {
-										console.log(userJson.name);
-									}
-									else {
-										//console.log("upcheck=0");
-									}
-								}
+					for (j = 0; j < memck.length; j++) {
+						var photopath = Array(memck.length);
+						photopathdefault = "../../image/profile-default.png";
+						
+						if (memck[j].ltnum == list[num].locationNo) {
+							if (countup == 0) {
+								//movein.innerHTML += countup;
 							}
-						}
-					});
-					countup = 0; 
-					if (upcheck == 1) {
-					    //membin.innerHTML += cookien;
-						//membin.innerHTML += cookiep;
-						//console.log(upcheck);
-						//return;
-						//console.log(overlayDiv);
-						//console.log(contents[num]);
-					}
-					
-					var vote = overlayDiv.getElementsByClassName('vote')[0];
-					vote.onclick= function() {
-						swal({
-							title: place + "을(를) 투표할까요?",
-							showCancelButton: true,
-							confirmButtonColor: "#558CDF",
-							confirmButtonText: "투표",
-							cancelButtonText: "취소",
-							closeOnConfirm: false,
-							closeOnCancel: false
-						},
-						function(isConfirm){
-							if (isConfirm) {
-								var param = {
-										"locationNo": locationNo,
-										"memberNo": mnum,
-										"meetingNo": mtnum
-								};
-
-								$.post('vote.json', param, function(ajaxResult) {
-									if (ajaxResult.status != "success") {
-										sweetAlert("오류", "이미 투표하셨습니다.", "error")
-										return;
-									}
-								});
-								//swal("투표", "투표가 완료되었습니다.", "success");
-								swal({
-									title: "투표",
-									text: "투표가 완료되었습니다.",
-									type: "success",
-								},
-								function(){
-									$('#blist').trigger('click'); //강제 클릭
-/*									$.ajax({
-										type : "GET",
-										url : "placelist.json",
-										dataType : "json",
-										error : function() {
-											alert('통신실패!!');
-										},
-										success : function(data) {
-											tbody = $('#list-table > tbody');
-											template = Handlebars.compile($('#trTemplatelist').html());
-											tbody.html(template({"list": data.data}));
-
-											$.getJSON('../auth/loginUser.json', function(userData) {
-												var photopath = "../../image/profile-default.png";
-
-												membin.innerHTML += userData.data.name + " ";
-												cookien = userData.data.name + " ";
-
-												if (userData.data.photo != "") {
-													photopath = "../upload/" + userData.data.photo;
-												} else {
-
-												}
-												membin.innerHTML += "<img src='../upload/" + photopath + "'" + "style='width:30px; height:30px;'>"
-												cookiep = "<img src='../upload/" + photopath + "'" + "style='width:30px; height:30px;'>";
-												upcheck = 1;
-											});
-										}
-									});*/
-								});
+							countup++; 
+							if (memck[j].photo != "") {
+								photopath[j] = "../upload/" + memck[j].photo;
 							} else {
-								swal("취소", "취소하였습니다.", "error");
+								photopath[j] = photopathdefault;
 							}
-						});
-					}; //vote 끝
+							if (countup % 5 == 0) {
+								movein.innerHTML += '<a class="more" href="#" style="text-decoration:none;">더보기▶</a>'
+								break;
+							}
+							
+							var more = movein.getElementsByClassName("more")[0];
+							console.log(more);
+							
+							membin.innerHTML += memck[j].name + " ";
+							membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px;'>"
+							
+							/*more.onclick= function() {
+								movein.innerHTML = '<a class="pre" href="#" style="text-decoration:none;">◀이전으로</a>';
+								membin.style.display='none';
+							};*/
+						}
+					}
+					if (countup >= 5 ) {
+						var more = movein.getElementsByClassName("more")[0];
+						more.onclick= function() {
+							movein.innerHTML = '<a class="pre" href="#" style="text-decoration:none;">◀이전으로</a>';
+							membin.style.display='none';
+							/*var wtf = overlayDiv.getElementsByClassName("member")[0];
+							wtf.innerHTML = "";
+							wtf.innerHTML += memck[j].name + " ";
+							wtf.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px;'>"*/
+							var pre = movein.getElementsByClassName("pre")[0];
+							pre.onclick = function() {
+								movein.innerHTML = '<a class="more" href="#" style="text-decoration:none;">더보기▶</a>';;
+								membin.style.display='block';
+							}
+						};
+					}
+					countup = 0; 
 				});
 				
 				
@@ -274,14 +206,14 @@ $('body').on('click', '#blist', function() {
 
 							if (memck[j].ltnum == list[i].locationNo) {
 								//console.log(i);
+								membin.innerHTML += memck[j].name + " ";
 
 								if (memck[j].photo != "") {
 									photopath[j] = "../upload/" + memck[j].photo;
 								} else {
 									photopath[j] = photopathdefault;
 								}
-								membin.innerHTML += memck[j].name + " ";
-								membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px; margin-right:5px;'>"
+								membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px;'>"
 								countdown++;
 							}
 						}
@@ -313,14 +245,15 @@ $('body').on('click', '#blist', function() {
 											return;
 										}
 									});
+									//swal("투표", "투표가 완료되었습니다.", "success");
 									swal({
 										title: "투표",
 										text: "투표가 완료되었습니다.",
 										type: "success",
 									},
 									function(){
-										$('#blist').trigger('click'); //강제 클릭
-/*										$.ajax({
+										//$('#blist').trigger('click'); //강제 클릭
+										$.ajax({
 											type : "GET",
 											url : "placelist.json",
 											dataType : "json",
@@ -336,7 +269,6 @@ $('body').on('click', '#blist', function() {
 													var photopath = "../../image/profile-default.png";
 
 													membin.innerHTML += userData.data.name + " ";
-													cookien = userData.data.name + " ";
 
 													if (userData.data.photo != "") {
 														photopath = "../upload/" + userData.data.photo;
@@ -344,17 +276,15 @@ $('body').on('click', '#blist', function() {
 
 													}
 													membin.innerHTML += "<img src='../upload/" + photopath + "'" + "style='width:30px; height:30px;'>"
-													cookiep = "<img src='../upload/" + photopath + "'" + "style='width:30px; height:30px;'>";
 												});
-												upcheck = 1;
 											}
-										});*/
+										});
 									});
 								} else {
 									swal("취소", "취소하였습니다.", "error");
 								}
 							});
-						}; //vote 끝
+						};
 
 
 						var close = overlayDiv.getElementsByClassName('close')[0];

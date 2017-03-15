@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import z.domain.Link;
 import z.domain.Member;
 import z.service.MemberService;
 
-//@Controller
-@RestController // 이 애노테이션을 붙이면, 스프링 설정 파일에 JSON 변환기 'MappingJackson2JsonView' 객체를 등록하지 않아도 된다.
+@RestController
 public class MemberJsonControl {
   @Autowired ServletContext sc;
   @Autowired MemberService memberService;
@@ -41,18 +41,29 @@ public class MemberJsonControl {
         detailMeetList.add(memb);
       }
     }
-    
     return new AjaxResult(AjaxResult.SUCCESS, detailMeetList);
   }
   
   // SideBar 멤버 추가시 회원 유무 조회
-  @RequestMapping("html/membAdd/membAdd")
+  @RequestMapping("html/sidebar/getSideMemb")
   public AjaxResult getSideMemb(String emailAddress) throws Exception {
-    int membAddYn = memberService.getSideMemb(emailAddress);
-    if (membAddYn == 0) {
+    String membNo = memberService.getSideMemb(emailAddress);
+    if (membNo == null) {
       return new AjaxResult(AjaxResult.FAIL, "이메일이 존재하지 않습니다.");
     } else {
-      return new AjaxResult(AjaxResult.SUCCESS, "이메일이 존재합니다.");
+      return new AjaxResult(AjaxResult.SUCCESS, membNo);
+    }
+  }
+  
+  // SideBar 멤버 추가시 초대 여부 조회
+  @RequestMapping("html/sidebar/getSideLink")
+  public AjaxResult getSideLink(Link link) throws Exception {
+    System.out.println(link);
+    int membAddYn = memberService.getSideLink(link);
+    if (membAddYn != 0) {
+      return new AjaxResult(AjaxResult.FAIL, "이미 초대된 회원입니다.");
+    } else {
+      return new AjaxResult(AjaxResult.SUCCESS, "초대 가능한 회원입니다.");
     }
   }
   

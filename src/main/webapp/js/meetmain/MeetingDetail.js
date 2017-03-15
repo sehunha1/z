@@ -255,7 +255,6 @@ MeetingDetail.prototype = {
 // if(eachDate.calendarDate === '2017-03-17' || eachDate.calendarDate === '2017-03-15'){
 //     selectedDate.nTotalSelector = 2;
 // }
-selectedDate.nTotalSelector = 100;
                     if(eachDate.calendarDate == selectedDate.calendarDate){
 
                         eachDate.calendarDate = selectedDate.calendarDate;

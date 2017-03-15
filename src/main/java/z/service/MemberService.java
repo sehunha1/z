@@ -2,6 +2,7 @@ package z.service;
 
 import java.util.List;
 
+import z.domain.Link;
 import z.domain.Member;
 
 public interface MemberService {
@@ -18,5 +19,6 @@ public interface MemberService {
   int updatelogin(Member member) throws Exception;
   int memberdelete(int memberNo) throws Exception;
   int countEmailPassword(String email, String password) throws Exception;
-  public int getSideMemb (String emailAddress) throws Exception; // SideBar 멤버 추가시 회원 유무 조회
+  public String getSideMemb (String emailAddress) throws Exception; // SideBar 멤버 추가시 회원 유무 조회
+  public int getSideLink (Link link) throws Exception; // SideBar 멤버 추가시 초대 여부 조회
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import z.dao.MemberDao;
+import z.domain.Link;
 import z.domain.Member;
 import z.service.MemberService;
 
@@ -28,8 +29,13 @@ public class MemberServiceImpl implements MemberService {
   }
   
   // Sidebar 멤버 추가시 회원 유무 조회
-  public int getSideMemb (String emailAddress) throws Exception {
+  public String getSideMemb (String emailAddress) throws Exception {
     return memberDao.getSideMemb(emailAddress);
+  }
+  
+  // SideBar 멤버 추가시 초대 여부 조회
+  public int getSideLink (Link link) throws Exception {
+    return memberDao.getSideLink(link);
   }
 
   public Member getDetail(int no) throws Exception {

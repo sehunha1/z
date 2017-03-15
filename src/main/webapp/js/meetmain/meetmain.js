@@ -149,21 +149,11 @@ $(function() {
     });
     
 });
-// 멤버 초대 버튼 이벤트
-$('body').on('click', '#sideMembPlus', function(e) {
-	e.preventDefault();
-//	$('#membPlusPopup').modal();
-/*	$('#membPlusPopup').fadeIn(1000);
-	$('#membPlusPopup').fadeTo("slow",1); */
-});
 
-$('body').on('click', '#memb-close-btn', function(e) {
-//	$('#membPlusPopup').fadeOut(1000);
-});
-
-var inputEmail;
+//******* 멤버 초대 팝업 *******//
+var inputData;
 $('body').on('focus', '.add-email-box', function() {
-  inputEmail = $(this);
+  inputData = $(this);
 })
 
 // 멤버 초대 함수 호출
@@ -172,16 +162,38 @@ $('body').on('click', '#memb-plus-btn', function(e) {
 	add_memb();
 });
 
+/*$('body').on('click', '#membPlusPopup', function(e) {
+	alert("test000");
+});*/
+
 // 멤버 초대 박스 이메일 입력시
 $('body').on('keyup', '.mail-box-cls', function(e) {
-	 console.log(inputEmail.val());	 
-/* 	 $.post(serverRoot + '/html/membAdd/membAdd.json', inputEmail, function(ajaxResult) {
-		 if (ajaxResult.status != "success") {
-        console.log(ajaxResult.data);
-        return;
-	   }
-		 console.log("성공");
-	 }); */
+	var emailAddress = {
+		"emailAddress" : inputData.val()
+	}
+	
+ 	$.post(serverRoot + '/html/sidebar/getSideMemb.json', emailAddress, function(ajaxResult) {
+		if (ajaxResult.status != "success") {
+	      // console.log(ajaxResult.data);
+	      return;
+	    }
+		
+		var param = {
+			"membNo" : JSON.stringify(ajaxResult.data),
+			"meetingNo" : meetingNo
+		};
+		
+		console.log(param);
+		
+		$.post(serverRoot + '/html/sidebar/getSideLink.json', param, function(ajaxResult) {
+			if (ajaxResult.status != "success") {
+		      // console.log(ajaxResult.data);
+		      return;
+			}
+			console.log("성공");
+		});
+		
+	});
 });
 
 // 멤버 초대 상자 추가

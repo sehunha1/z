@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import z.domain.Link;
 import z.domain.Member;
 
 public interface MemberDao {
@@ -31,5 +32,6 @@ public interface MemberDao {
   int memberdelete(int no);
   int getOneByEmailPasswordCount(HashMap<String, String> paramMap);
   int linkmemberdelete(int no);
-  int getSideMemb(@Param("emailAddress") String emailAddress) throws Exception;
+  String getSideMemb(@Param("emailAddress") String emailAddress) throws Exception; // Sidebar 멤버 추가시 회원 유무 조회
+  int getSideLink(Link link) throws Exception; // SideBar 멤버 추가시 초대 여부 조회
 }
