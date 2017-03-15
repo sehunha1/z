@@ -84,12 +84,15 @@ public class BoardServiceImpl implements BoardService {
 
   @Override
   public int delete(int no) throws Exception {
+    
     if (boardDao.getBoardNo(no) == 0) { 
       //memberDao.insert(member);
       throw new Exception("게시물을 찾지 못했습니다");
     } 
+    int count2 = boardDao.delete2(no);
     int count = boardDao.delete(no);
-    return count;
+    return count & count2;
+   
   }
 
 
