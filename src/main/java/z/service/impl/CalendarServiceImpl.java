@@ -32,4 +32,9 @@ public class CalendarServiceImpl implements CalendarService {
   public int insertCal(Calendar calendar) throws Exception {
     return calendarDao.insertCal(calendar);
   }
+
+  @Override
+  public int isDuplicate(String dline) throws Exception {
+    return calendarDao.isDuplicate(dline);
+  }
 }

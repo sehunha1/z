@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import z.domain.Member;
 import z.service.AuthService;
+import z.service.CalendarService;
 import z.service.MeetingService;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ public class AuthJsonControl {
   
   @Autowired AuthService authService;
   @Autowired MeetingService meetingService;
+  @Autowired CalendarService calendarService;
   
   @RequestMapping("html/auth/login")
   public AjaxResult login(String email, String password,
@@ -67,9 +69,20 @@ public class AuthJsonControl {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String time = dateFormat.format(date);
     String[] dline = meetingService.getDline(time);
-//    for (int i = 0; i < dline.length; i++) {
-//
-//    }
+    for (int i = 0; i < dline.length; i++) {
+      int isDuplicate = calendarService.isDuplicate(dline[i]);
+
+      if (isDuplicate > 1) {
+        meet의 mstat을 wait으로 바꿈;
+
+      } else {
+        meet의 mstat을 fin으로 바꿈;
+        meet의 floc, fdate, ftime에 각1등을 꽂아줌;
+      }
+    }
+
+//  확정대기에서 방장이 선택하고 확인누르면 meet의 mstat을 fin으로 바꿈;
+//                                          meet의 floc, fdate, ftime에 각1등을 꽂아줌;
 
     if (member == null) { // 로그인이 되지 않은 상태
       return new AjaxResult(AjaxResult.FAIL, "로그인을 하지 않았습니다.");

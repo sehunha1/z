@@ -1,17 +1,16 @@
 package z.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import z.dao.MeetingDao;
 import z.domain.Board;
 import z.domain.Meeting;
 import z.service.MeetingService;
 
+import java.util.List;
+
 @Service
-public class MeetingServiceImpl implements MeetingService {
+public class MeetingServiceImpl_bak implements MeetingService {
   @Autowired MeetingDao meetingDao;
   
   // 모임 개설시 방정보 삽입.

@@ -1,11 +1,11 @@
 package z.service;
 
-import java.util.List;
-
 import z.domain.Board;
 import z.domain.Meeting;
 
-public interface MeetingService {
+import java.util.List;
+
+public interface MeetingService_bak {
   int add(Meeting meeting) throws Exception; // 모임 생성시 데이터 삽입
   List<Meeting> getListMeetingCards(int memberNo) throws Exception;
   Meeting getOneMeeting(int meetingNo) throws Exception;
