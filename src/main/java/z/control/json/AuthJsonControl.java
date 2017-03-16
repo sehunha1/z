@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import z.domain.Member;
 import z.service.AuthService;
 import z.service.CalendarService;
+import z.service.LocationListService;
 import z.service.MeetingService;
 
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ public class AuthJsonControl {
   @Autowired AuthService authService;
   @Autowired MeetingService meetingService;
   @Autowired CalendarService calendarService;
+  @Autowired LocationListService locationListService;
   
   @RequestMapping("html/auth/login")
   public AjaxResult login(String email, String password,
@@ -65,27 +67,39 @@ public class AuthJsonControl {
   public AjaxResult loginUser(HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
 
-    Date date = new Date();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    String time = dateFormat.format(date);
-    String[] dline = meetingService.getDline(time);
-    for (int i = 0; i < dline.length; i++) {
-      int isDuplicate = calendarService.isDuplicate(dline[i]);
-
-      if (isDuplicate > 1) {
-        meet의 mstat을 wait으로 바꿈;
-
-      } else {
-        meet의 mstat을 fin으로 바꿈;
-        meet의 floc, fdate, ftime에 각1등을 꽂아줌;
-      }
-    }
-
 //  확정대기에서 방장이 선택하고 확인누르면 meet의 mstat을 fin으로 바꿈;
 //                                          meet의 floc, fdate, ftime에 각1등을 꽂아줌;
 
+//    select list.lname from list left outer join loc on list.ltnum=loc.ltnum where list.mtnum=1 group by loc.ltnum having count(*) >= (select count(*) from loc where loc.mtnum=1 group by loc.ltnum order by count(*) desc limit 1);
+
+
     if (member == null) { // 로그인이 되지 않은 상태
       return new AjaxResult(AjaxResult.FAIL, "로그인을 하지 않았습니다.");
+    }
+
+    int memberNo = member.getMemberNo();
+    int meetingNo[] = meetingService.getMeetingNo(memberNo);
+    long currentTime = System.currentTimeMillis();
+
+    for (int i = 0; i <meetingNo.length; i++) {
+      String dline = meetingService.getDline(meetingNo[i]);
+      Date date = new Date();
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+      date = dateFormat.parse(dline);
+      long time = date.getTime();
+
+      if (time < currentTime) {
+        int isDuplicateCal = calendarService.isDuplicate(meetingNo[i]);
+        int isDuplicateLoc = locationListService.isDuplicate(meetingNo[i]);
+
+        if (isDuplicateCal > 1 || isDuplicateLoc > 1) {
+          meetingService.updateMstatWait(meetingNo[i]);
+        } else {
+          meetingService.updateMstatFin(meetingNo[i]);
+          meetingService.updateFdate(meetingNo[i]);
+          meetingService.updateFloc(meetingNo[i]);
+        }
+      }
     }
     
     return new AjaxResult(AjaxResult.SUCCESS, member);

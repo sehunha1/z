@@ -96,7 +96,7 @@
 		meet.photo, meet.mstat, meet.floc, meet.fdate, meet.ftime
 		from link
 		left outer join meet on link.mtnum=meet.mtnum left outer join memb on
-		link.mnum=memb.mnum where link.mnum=#{value};
+		link.mnum=memb.mnum where link.mnum=#{value} and link.accept="y";
 	</select>
 
 	<select id="getOneMeeting" parameterType="int" resultMap="meeting-map">
@@ -179,12 +179,30 @@
      ]]>
 	</select>
 
-	<select id="getDline" parameterType="string" resultType="string">
-		select dline from meet where dline &lt; #{value};
+	<select id="getDline" parameterType="int" resultType="string">
+		select dline from meet where mtnum=#{value};
 	</select>
 
-	<update id="updateMstatWait" parameterType="string">
-		update meet set mstat="wait" where dline=#{value};
+	<update id="updateMstatWait" parameterType="int">
+		update meet set mstat="wait" where mtnum=#{value};
+	</update>
+
+	<update id="updateMstatFin" parameterType="int">
+		update meet set mstat="fin" where mtnum=#{value};
+	</update>
+
+	<select id="getMeetingNo" parameterType="int" resultType="int">
+		select link.mtnum from link left outer join meet on link.mtnum=meet.mtnum left outer join memb on link.mnum=memb.mnum where link.mnum=#{value} and link.accept="y";
+	</select>
+
+	<update id="updateFdate" parameterType="int">
+		update meet set fdate=(select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >=
+		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) where mtnum=#{value};
+	</update>
+
+	<update id="updateFloc" parameterType="int">
+		update meet set floc=(select list.lname from loc left outer join list on loc.ltnum=list.ltnum where loc.mtnum=#{value} group by loc.ltnum having count(*) >=
+		(select count(*) from loc where loc.mtnum=#{value} group by loc.ltnum order by count(*) desc limit 1)) where mtnum=#{value};
 	</update>
 
 </mapper>

@@ -16,4 +16,9 @@ public class LocationListServiceImpl implements LocationListService {
   public List<LocationList> getLocationListDuplication(int meetingNo) throws Exception {
     return locationListDao.getLocationListDuplication(meetingNo);
   }
+
+  @Override
+  public int isDuplicate(int meetingNo) throws Exception {
+    return locationListDao.isDuplicate(meetingNo);
+  }
 }

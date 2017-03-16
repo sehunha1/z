@@ -23,6 +23,10 @@ public interface MeetingDao {
   List<Board> meetBoardList (int meetingNo) throws Exception; // 완료 모임 게시글 정보 가져오기
   List<Board> keywordBoardList (@Param("meetingNo") int meetingNo, @Param("keyWord") String keyWord) throws Exception; // 완료 모임 게시글 정보 가져오기
   List<Meeting> invite(int memberNo) throws Exception; // 미수락 초대 가져오기
-  String[] getDline(String time) throws Exception;
-  int updateMstatWait(String dline) throws Exception;
+  String getDline(int meetingNo) throws Exception;
+  int updateMstatWait(int meetingNo) throws Exception;
+  int updateMstatFin(int meetingNo) throws Exception;
+  int[] getMeetingNo(int memberNo) throws Exception;
+  int updateFdate(int meetingNo) throws Exception;
+  int updateFloc(int meetingNo) throws Exception;
 }

@@ -36,9 +36,9 @@
 		insert into cal (mnum, mtnum, cdate, ctime) values (#{memberNo}, #{meetingNo}, #{calendarDate}, #{calendarTime});
 	</insert>
 
-	<select id="isDuplicate" parameterType="string" resultType="int">
-		select count(*) from (select count(*) from (select cdate from cal left outer join meet on cal.mtnum=meet.mtnum where meet.dline=#{value}) as tt group by cdate having count(*) >=
-		(select count(*) from (select cdate from cal left outer join meet on cal.mtnum=meet.mtnum where meet.dline=#{value}) as tt group by cdate order by count(*) desc limit 1)) as ff;
+	<select id="isDuplicate" parameterType="int" resultType="int">
+		select count(*) from (select count(*) from (select cdate from cal left outer join meet on cal.mtnum=meet.mtnum where meet.mtnum=#{value}) as tt group by cdate having count(*) >=
+		(select count(*) from (select cdate from cal left outer join meet on cal.mtnum=meet.mtnum where meet.mtnum=#{value}) as tt group by cdate order by count(*) desc limit 1)) as ff;
 	</select>
 
 </mapper>
