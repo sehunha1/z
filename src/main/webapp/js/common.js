@@ -196,6 +196,7 @@ $(function() {
 							function(isConfirm){
 								  if (isConfirm) {
 									  $.cookie('check', 'y', {path : '/'});
+									  location.href="http://z.bitcamp.com:8080/z/html/mypage/main.html";
 								  } else {
 									  $.cookie('check', 'y', {path : '/'});
 								  }
