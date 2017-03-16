@@ -91,7 +91,7 @@
 	width: 70%;
 	margin-top: 3%;
 	margin-left: 5%;
-	margin-right: 10%;
+	margin-right: 5%;
 	font-color: #3ACBA3;
 	border-radius: 3px;
 	display: inline-block;
@@ -168,4 +168,10 @@
 
 #membPlusPopup #memb-close-btn:hover {
 	cursor: pointer;
+}
+
+#addAvailability {
+	border: 1px solid green;
+	width: 3px;
+	height: 3px;
 }

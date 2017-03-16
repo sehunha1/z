@@ -81,12 +81,13 @@
 	<!-- 방 개설 시 link 테이블 데이터 삽입 -->
 	<insert id="insertLink" parameterType="meeting">
 		insert into link(mnum,
-		mtnum, boss, stat)
+		mtnum, boss, stat, accept)
 		values(
 		#{meetBossNo},
 		#{meetingNo},
 		'y',
-		'n'
+		'n',
+		'y'
 		)
 	</insert>
 
