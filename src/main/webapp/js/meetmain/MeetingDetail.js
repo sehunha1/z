@@ -445,6 +445,17 @@ MeetingDetail.prototype = {
     },
 
     saveMeetingDate : function(){
+        swal({title: "Are you sure?",
+              text: "You will not be able to recover this imaginary file!",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, delete it!",
+              closeOnConfirm: false}, function(){
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");});
+
+
+
         if(!confirm("전송합니까?")) return;
         var oMeetingParamData = this.getMeetingDateInfo(),
             sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?memberNo=' + this.getQueryParam('memberNo') + '&meetingNo=' + this.getQueryParam('meetingNo'),

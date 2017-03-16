@@ -12,5 +12,9 @@ public interface MeetingService {
   Meeting getDetailMeeting(int memberNo, int meetingNo) throws Exception;
   List<Board> boardList(int meetingNo) throws Exception; // 완료모임 게시글 가져오기
   List<Board> keywordBoardList(int meetingNo, String keyWord) throws Exception; // 완료모임 특정 게시글 가져오기
+<<<<<<< HEAD
   List<Meeting> invite(int memberNo) throws Exception;
+=======
+  String[] getDline(String time) throws Exception;
+>>>>>>> branch 'master' of https://github.com/sehunha1/z.git
 }

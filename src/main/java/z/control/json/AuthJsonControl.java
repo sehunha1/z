@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import z.domain.Member;
 import z.service.AuthService;
+import z.service.MeetingService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 public class AuthJsonControl {
   
   @Autowired AuthService authService;
+  @Autowired MeetingService meetingService;
   
   @RequestMapping("html/auth/login")
   public AjaxResult login(String email, String password,
@@ -57,6 +62,14 @@ public class AuthJsonControl {
   @RequestMapping("html/auth/loginUser")
   public AjaxResult loginUser(HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
+
+    Date date = new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String time = dateFormat.format(date);
+    String[] dline = meetingService.getDline(time);
+//    for (int i = 0; i < dline.length; i++) {
+//
+//    }
 
     if (member == null) { // 로그인이 되지 않은 상태
       return new AjaxResult(AjaxResult.FAIL, "로그인을 하지 않았습니다.");
