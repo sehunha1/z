@@ -42,24 +42,40 @@ $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, functio
   });
 });
 
-$.getJSON("getDateDuplication.json?meetingNo=" + meetingNo, function(ajaxResult) {
+$.getJSON("isDuplicateCal.json?meetingNo=" + meetingNo, function(ajaxResult) {
   var status = ajaxResult.status;
   if (status != "success") return;
-  var dateDuplication = ajaxResult.data;
+  var isDuplicate = ajaxResult.data;
 
-  var template = Handlebars.compile($("#dateTemplate").html());
-  var ul = $(".result_list.date_result_list");
-  ul.append(template({"dateDuplication":dateDuplication}));
+  if (isDuplicate > 1) {
+    $.getJSON("getDateDuplication.json?meetingNo=" + meetingNo, function(ajaxResult1) {
+      var status1 = ajaxResult1.status;
+      if (status1 != "success") return;
+      var dateDuplication = ajaxResult1.data;
+
+      var template = Handlebars.compile($("#dateTemplate").html());
+      var ul = $(".result_list.date_result_list");
+      ul.append(template({"dateDuplication":dateDuplication}));
+    });
+  }
 });
 
-$.getJSON("getLocationListDuplication.json?meetingNo=" + meetingNo, function(ajaxResult) {
+$.getJSON("isDuplicateLoc.json?meetingNo=" + meetingNo, function(ajaxResult) {
   var status = ajaxResult.status;
   if (status != "success") return;
-  var locationListDuplication = ajaxResult.data;
+  var isDuplicate = ajaxResult.data;
 
-  var template = Handlebars.compile($("#locationListTemplate").html());
-  var ul = $(".result_list.place_result_list");
-  ul.append(template({"locationListDuplication":locationListDuplication}));
+  if (isDuplicate > 1) {
+    $.getJSON("getLocationListDuplication.json?meetingNo=" + meetingNo, function(ajaxResult1) {
+      var status1 = ajaxResult1.status;
+      if (status1 != "success") return;
+      var locationListDuplication = ajaxResult1.data;
+
+      var template = Handlebars.compile($("#locationListTemplate").html());
+      var ul = $(".result_list.place_result_list");
+      ul.append(template({"locationListDuplication":locationListDuplication}));
+    });
+  }
 });
 
 $.getJSON("getVotedCount.json?meetingNo=" + meetingNo, function(ajaxResult) {
@@ -81,16 +97,16 @@ $.getJSON("getEntireCount.json?meetingNo=" + meetingNo, function(ajaxResult) {
 });
 
 $(function() {
-  $('#btn_toggle_member_list').on('click', function() {
+  $('body').on('click', '#btn_toggle_member_list', function() {
     $('.member_list_wrap').toggleClass('on');
   });
 
-  $('.date_result_list .item').on('click', function() {
+  $('body').on('click', '.date_result_list .item', function() {
     $('.date_result_list .item').removeClass('on');
     $(this).toggleClass('on');
   });
 
-  $('.place_result_list .item').on('click', function() {
+  $('body').on('click', '.place_result_list .item', function() {
     $('.place_result_list .item').removeClass('on');
     $(this).toggleClass('on');
   });
