@@ -30,9 +30,9 @@ public class PlaceListJsonControl {
   }
   // 페이징 처리 전
   @RequestMapping("html/meetmain/placelist")
-  public AjaxResult list() throws Exception {
+  public AjaxResult list(int meetingNo) throws Exception {
     
-    List<PlaceList> list = placeListService.getList();
+    List<PlaceList> list = placeListService.getList(meetingNo);
     
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }

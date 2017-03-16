@@ -36,7 +36,7 @@
   </select>
   -->
   
-  <select id="getList" resultMap="placelist-map">
+  <select id="getList" parameterType="int" resultMap="placelist-map">
 	  select distinct 
 		  (ltnum), 
 		  (mnum), 
@@ -47,7 +47,8 @@
 		  (addr_y), 
 		  (select count(mnum) from loc o where o.ltnum = l.ltnum) as count
 	  from list l
-	   order by count desc;
+	    where mtnum=#{value}
+	    order by count desc;
   </select>
   
   <!-- 페이징 처리 후

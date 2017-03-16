@@ -53,6 +53,10 @@ public class MeetingServiceImpl implements MeetingService {
 //    keyWordList.put("keyWord", keyWord);
     return meetingDao.keywordBoardList(meetingNo, keyWord);
   }
+  
+  // 미수락 초대 가져오기 
+  public List<Meeting> invite(int memberNo) throws Exception {
+    return meetingDao.invite(memberNo);
 
   @Override
   public String[] getDline(String time) throws Exception {

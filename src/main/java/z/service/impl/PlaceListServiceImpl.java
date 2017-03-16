@@ -21,8 +21,8 @@ public class PlaceListServiceImpl implements PlaceListService {
     return placeListDao.insert(placelist);
   }
   // 페이징 처리 전
-  public List<PlaceList> getList() throws Exception {
-    return placeListDao.getList();
+  public List<PlaceList> getList(int meetingNo) throws Exception {
+    return placeListDao.getList(meetingNo);
   }
   // 페이징 처리 후
   /*

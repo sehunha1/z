@@ -12,7 +12,92 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	$('#passback').val(member.password);
 	
 	$('#now-photo').attr('src', '../upload/' + member.photo);
+	
+	var mnum = member.memberNo;
+	
+	$.getJSON('invite.json?memberNo=' + mnum, function(ajaxResult2) {
+			
+			var list = ajaxResult2.data;
+			
+			if (list == "") {
+				$("#list-table").css("display", "none");
+				$("#none").css("display", "block");
+			}
+		
+			var tbody = $('#list-table > tbody');
+			
+			var template = Handlebars.compile($('#trTemplatelist').html());
+			
+			tbody.html(template({"list": list}));
+	});
+	
+	// 초대 수락 or 거절
+	$('body').on('click', '.ok', function() {
+		var mtnum = $(this).attr("mtnumok");
+		swal({
+			  title: "초대 수락",
+			  text: "초대를 수락하시겠습니까?",
+			  showCancelButton: true,
+			  confirmButtonText: "수락",
+			  closeOnConfirm: false,
+			  cancelButtonText: "취소",
+			},
+			function(){
+				var param = {
+						"memberNo": mnum,
+						"meetingNo": mtnum
+				};
+				$.post('accept.json', param, function(ajaxResult) {
+					if (ajaxResult.status != "success") {
+						sweetAlert("오류", "오류가 발생하였습니다.", "error")
+						return;
+					}
+				});
+				swal({
+					title: "초대 수락",
+					text: "초대를 수락하였습니다.",
+					type: "success",
+				},
+				function(){
+					top.document.location.reload();
+				});
+			});
+	});
+
+	$('body').on('click', '.no', function() {
+		var mtnum = $(this).attr("mtnumno");
+		
+		swal({
+			  title: "초대 거절",
+			  text: "초대를 거절하시겠습니까?",
+			  showCancelButton: true,
+			  confirmButtonText: "거절",
+			  closeOnConfirm: false,
+			  cancelButtonText: "취소",
+			},
+			function(){
+				var param = {
+						"memberNo": mnum,
+						"meetingNo": mtnum
+				};
+				$.post('refuse.json', param, function(ajaxResult) {
+					if (ajaxResult.status != "success") {
+						sweetAlert("오류", "오류가 발생하였습니다.", "error")
+						return;
+					}
+				});
+				swal({
+					title: "초대 거절",
+					text: "초대를 거절하였습니다.",
+					type: "success",
+				},
+				function(){
+					top.document.location.reload();
+				});
+			});
+	});
 });
+
 
 
 $('#photo').fileupload({

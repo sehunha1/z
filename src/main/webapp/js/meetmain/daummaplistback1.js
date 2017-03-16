@@ -6,15 +6,15 @@ $('body').on('click', '#blist', function() {
 
 			var list = ajaxResult.data;
 			var memck = ajaxResult2.data;
-
+			
+			alert(list);
+			
+			if (list != "[]") {
 			var x = list[0].xLocation;
 			var y = list[0].yLocation;
 
 			var status = ajaxResult.status;
-
-			if (status != "success")
-				return;
-
+			
 			var list = ajaxResult.data;
 
 			var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
@@ -274,6 +274,7 @@ $('body').on('click', '#blist', function() {
 					} // if
 				}
 			})
+			}
 		});
 	});
 });

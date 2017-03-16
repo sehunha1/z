@@ -20,18 +20,40 @@
 
 
 		<div id='tab'
-			style='float: left; width: 150px; height: 600px; margin-left: 10px; margin-right: 20px; position: relative;'>
+			style='float: left; width: 150px; height: 700px; margin-left: 10px; margin-right: 20px; position: relative;'>
 			<ul class="nav nav-pills nav-stacked"
 				style='font-family: Noto Sans KR, sans-serif;'>
-				<li class="active"><a data-toggle="tab" href="#menu1">개인 정보
-						변경</a></li>
-				<li><a data-toggle="tab" href="#menu2">로그인 정보 변경</a></li>
-				<li><a data-toggle="tab" href="#menu3">탈퇴</a></li>
+				<li class="active"><a data-toggle="tab" href="#menu1">초대 확인</a></li>
+				<li><a data-toggle="tab" href="#menu2">개인 정보 변경</a></li>
+				<li><a data-toggle="tab" href="#menu3" id="menu3_a">로그인 정보 변경</a></li>
+				<li><a data-toggle="tab" href="#menu4">탈퇴</a></li>
 			</ul>
 		</div>
 
 		<div class="tab-content">
-			<div id="menu1" class="tab-pane fade in active">
+		  
+		    
+		<div id="menu1" class="tab-pane fade in active" >
+      <h2 style=''>초대 확인</h2>
+        <hr>
+        <div>
+        <div id="none" style="display:none;"><h3>받은 초대가 없습니다</h3></div>
+        <table id='list-table' class='table table-hover' style='width:700px; overflow:hidden;'>
+        <thead>
+          <tr>
+            <th>모임명</th>
+            <th>모임설명</th>
+            <th>모임분류</th>
+            <th>투표마감일</th>
+            <th>수락하기/거절하기</th>
+          </tr>
+        <thead>
+        <tbody></tbody>
+      </table>
+        </div>
+      </div>
+      
+			<div id="menu2" class="tab-pane fade">
 				<h2 style=''>개인 정보 변경</h2>
 				<hr>
 				<form id="updateform1" method="post" class="form-horizontal"
@@ -65,7 +87,7 @@
 
 
 
-			<div id="menu2" class="tab-pane fade">
+			<div id="menu3" class="tab-pane fade">
 			<h2 style=''>로그인 정보 변경</h2>
         <hr>
         <form id="updateform2" method="post" class="form-horizontal"
@@ -100,9 +122,8 @@
         </form>
 			
 			</div>
-		  
-		  
-		  <div id="menu3" class="tab-pane fade">
+			
+		  <div id="menu4" class="tab-pane fade">
 		  <h2 style=''>회원탈퇴</h2>
 		  <h4>회원 탈퇴를 하시려면 이메일 주소와 비밀번호를 한번 더 입력해주세요</h4>
 		  <hr>
@@ -137,7 +158,8 @@
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="../../js/common.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
-
+  <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+  
 	<script
 		src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 	<script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
@@ -170,8 +192,21 @@
 		src="../jquery-validation/dist/localization/messages_ko.min.js"></script>
 		
 		<script src="../../js/jquery.cookie.js"></script>
-
-
+		
+<script id="trTemplatelist" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td>{{title}}</td>
+  <td>{{content}}</td>
+  <td>{{category}}</td>
+  <td>{{deadline}}</td>
+  <td>
+    <button type="button" class="ok" mtnumok="{{meetingNo}}">수락</button>
+    <button type="button" class="no" mtnumno="{{meetingNo}}">거절</button>
+  </td>
+</tr>
+{{/each}}
+</script>
 </body>
 </html>
 

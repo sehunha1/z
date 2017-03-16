@@ -43,8 +43,27 @@ public class LinkJsonControl {
   
   @RequestMapping("getMyInviteCount")
   public AjaxResult getMyInviteCount(int memberNo) throws Exception {
-    int myUnvoteCount = linkService.getMyInviteCount(memberNo);
-    return new AjaxResult(AjaxResult.SUCCESS, myUnvoteCount);
+    int myInviteCount = linkService.getMyInviteCount(memberNo);
+    return new AjaxResult(AjaxResult.SUCCESS, myInviteCount);
+  }
+  
+  @RequestMapping("html/mypage/refuse")
+  public AjaxResult refuse(int memberNo, int meetingNo) throws Exception {
+    int refuseCount = linkService.refuse(memberNo, meetingNo);
+    
+    if (refuseCount == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "거절 실패하였습니다");
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "거절 성공하였습니다");
+  }
+  
+  @RequestMapping("html/mypage/accept")
+  public AjaxResult accept(int memberNo, int meetingNo) throws Exception {
+    int refuseCount = linkService.accept(memberNo, meetingNo);
+    
+    if (refuseCount == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "수락 실패하였습니다");
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "수락 성공하였습니다");
   }
 }
-//getMyInviteCount

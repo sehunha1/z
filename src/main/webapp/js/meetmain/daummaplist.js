@@ -1,15 +1,19 @@
 $('body').on('click', '#blist', function() {
 	$.getJSON('membloc.json', function(ajaxResult2) {
-		$.getJSON('placelist.json', function(ajaxResult) {
 			var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
+			$.getJSON('placelist.json?meetingNo=' + mtnum, function(ajaxResult) {
 			var mnum = location.href.split('?')[1].split('=')[1].split('&')[0];
-
+			
+			//console.log(ajaxResult);
+			
 			var list = ajaxResult.data;
 			var memck = ajaxResult2.data;
 			var upcheck = 0; // 새 투표 확인 변수
 			var cookien = ""; // 새로 투표시 추가될 이름
 			var cookiep = ""; // 새로 투표시 추가될 파일명
-
+			
+			if (list != "") {
+			
 			var x = list[0].xLocation;
 			var y = list[0].yLocation;
 
@@ -243,7 +247,7 @@ $('body').on('click', '#blist', function() {
 			
 			$('body').on('click', '.place-link', function() {
 				for (i = 0; i < list.length; i++) {
-					if (list[i].xLocation == $(this).attr("x")) {
+					if (list[i].xLocation == $(this).attr("x") & list[i].yLocation == $(this).attr("y")) {
 						//console.log(template);
 
 						var overlayDiv = document.createElement('div');
@@ -367,6 +371,16 @@ $('body').on('click', '#blist', function() {
 					} // if
 				}
 			})
+			} else {
+				swal({
+					title: "오류",
+					text: "선택된 장소가 없습니다.",
+					type: "error",
+				},
+				function(){
+					$('#bselect').trigger('click'); //강제 클릭
+				});
+			}
 		});
 	});
 });

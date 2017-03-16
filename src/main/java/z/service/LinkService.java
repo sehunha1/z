@@ -11,4 +11,6 @@ public interface LinkService {
   int getMyUnvoteCount(int memberNo) throws Exception;
   int getMyInviteCount(int memberNo) throws Exception;
   int updateStat(int memberNo2, int meetingNo) throws Exception;
+  int refuse(int memberNo, int meetingNo) throws Exception;
+  int accept(int memberNo, int meetingNo) throws Exception;
 }
