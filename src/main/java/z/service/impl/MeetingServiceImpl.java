@@ -53,16 +53,14 @@ public class MeetingServiceImpl implements MeetingService {
 //    keyWordList.put("keyWord", keyWord);
     return meetingDao.keywordBoardList(meetingNo, keyWord);
   }
-<<<<<<< HEAD
   
   // 미수락 초대 가져오기 
   public List<Meeting> invite(int memberNo) throws Exception {
     return meetingDao.invite(memberNo);
-=======
+  }
 
   @Override
   public String[] getDline(String time) throws Exception {
     return meetingDao.getDline(time);
->>>>>>> branch 'master' of https://github.com/sehunha1/z.git
   }
 }
