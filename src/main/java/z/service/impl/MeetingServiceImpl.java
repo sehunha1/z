@@ -53,4 +53,9 @@ public class MeetingServiceImpl implements MeetingService {
 //    keyWordList.put("keyWord", keyWord);
     return meetingDao.keywordBoardList(meetingNo, keyWord);
   }
+
+  @Override
+  public String[] getDline(String time) throws Exception {
+    return meetingDao.getDline(time);
+  }
 }

@@ -166,4 +166,8 @@
      ]]>
 	</select>
 
+	<select id="getDline" parameterType="string" resultType="string">
+		select dline from meet where dline &lt; #{value};
+	</select>
+
 </mapper>
