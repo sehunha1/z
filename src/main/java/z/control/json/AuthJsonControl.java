@@ -15,6 +15,7 @@ import z.service.LocationListService;
 import z.service.MeetingService;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 @RestController
@@ -67,12 +68,6 @@ public class AuthJsonControl {
   public AjaxResult loginUser(HttpSession session) throws Exception {
     Member member = (Member)session.getAttribute("member");
 
-//  확정대기에서 방장이 선택하고 확인누르면 meet의 mstat을 fin으로 바꿈;
-//                                          meet의 floc, fdate, ftime에 각1등을 꽂아줌;
-
-//    select list.lname from list left outer join loc on list.ltnum=loc.ltnum where list.mtnum=1 group by loc.ltnum having count(*) >= (select count(*) from loc where loc.mtnum=1 group by loc.ltnum order by count(*) desc limit 1);
-
-
     if (member == null) { // 로그인이 되지 않은 상태
       return new AjaxResult(AjaxResult.FAIL, "로그인을 하지 않았습니다.");
     }
@@ -83,10 +78,13 @@ public class AuthJsonControl {
 
     for (int i = 0; i <meetingNo.length; i++) {
       String dline = meetingService.getDline(meetingNo[i]);
-      Date date = new Date();
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-      date = dateFormat.parse(dline);
-      long time = date.getTime();
+      Date date = dateFormat.parse(dline);
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(date);
+      cal.add(Calendar.DATE, 1);
+      Date date1 = cal.getTime();
+      long time = date1.getTime();
 
       if (time < currentTime) {
         int isDuplicateCal = calendarService.isDuplicate(meetingNo[i]);
