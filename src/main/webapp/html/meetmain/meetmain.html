@@ -466,6 +466,9 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     	   $('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
     	   row.append(div);
        }
+       $('.img-responsive').click(function(){
+    	   console.log(i);
+       });
 
        
        $(".btn-view").click(function() {
@@ -544,7 +547,7 @@ var arrayToJson = function(list) {
 	}
 </script>
 
-	<script id="trTemplate" type="text/x-handlebars-template">
+<script id="trTemplate" type="text/x-handlebars-template">
 <div class="col-sm-4 col-md-4" >
  <div class="post">
      <div class="post-img-content">
