@@ -40,4 +40,11 @@ public class LinkJsonControl {
     int myUnvoteCount = linkService.getMyUnvoteCount(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, myUnvoteCount);
   }
+  
+  @RequestMapping("getMyInviteCount")
+  public AjaxResult getMyInviteCount(int memberNo) throws Exception {
+    int myUnvoteCount = linkService.getMyInviteCount(memberNo);
+    return new AjaxResult(AjaxResult.SUCCESS, myUnvoteCount);
+  }
 }
+//getMyInviteCount

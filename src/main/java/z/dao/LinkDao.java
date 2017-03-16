@@ -10,4 +10,5 @@ public interface LinkDao {
   int getEntireCount(int meetingNo) throws Exception;
   int getMyUnvoteCount(int memberNo) throws Exception;
   int updateStat(int memberNo2, int meetingNo) throws Exception;
+  int getMyInviteCount(int memberNo) throws Exception;
 }

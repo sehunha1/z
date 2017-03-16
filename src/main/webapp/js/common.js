@@ -179,7 +179,7 @@ $(function() {
 			var mainlink = "http://z.bitcamp.com:8080/z/html/main/main.html";
 			var link = document.location.href;
 				var membnum = ajaxResult.data.memberNo;
-				$.getJSON(serverRoot + '/getMyUnvoteCount.json?memberNo=' + membnum, function(ajaxResult2) {
+				$.getJSON(serverRoot + '/getMyInviteCount.json?memberNo=' + membnum, function(ajaxResult2) {
 					var invite = ajaxResult2.data;
 					if (mainlink == link & invite > 0) {
 						var checkcookie = $.cookie('check');
@@ -188,7 +188,7 @@ $(function() {
 							  title: "알림",
 							  text: invite + "개의 받은 초대가 있습니다.\n확인 버튼을 누르면 마이페이지로 이동합니다.",
 							  showCancelButton: true,
-							  cancelButtonText: "취소",
+							  cancelButtonText: "닫기",
 							  //confirmButtonColor: "#DD6B55",
 							  confirmButtonText: "확인",
 							  closeOnConfirm: true

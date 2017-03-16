@@ -28,6 +28,10 @@ public class LinkServiceImpl implements LinkService {
   public int getMyUnvoteCount(int memberNo) throws Exception {
     return linkDao.getMyUnvoteCount(memberNo);
   }
+  
+  public int getMyInviteCount(int memberNo) throws Exception {
+    return linkDao.getMyInviteCount(memberNo);
+  }
 
   public int updateStat(int memberNo2, int meetingNo) throws Exception {
     return linkDao.updateStat(memberNo2, meetingNo);
