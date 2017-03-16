@@ -15,9 +15,10 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
     Member member = (Member)session.getAttribute("member");
     
     if (member == null) {
-      response.sendRedirect(request.getContextPath() + "/auth/loginform.do");
+      response.sendRedirect(request.getContextPath() + "/html/auth/login.html");
       return false;
-    } 
+    }
+    System.out.println(request.getContextPath());
     
     return true;
   }

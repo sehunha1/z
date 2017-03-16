@@ -7,7 +7,8 @@ $('#submit-btn').click(function() {
 	
 	$.post('login.json', param, function(ajaxResult) {
 		if (ajaxResult.status == "success") {
-			location.href = "../main/main.html";	
+			location.href = "../main/main.html";
+			 $.cookie('check', 'n', {path : '/'});
 			return;
 		}
 		sweetAlert("로그인 실패", ajaxResult.data, "error");

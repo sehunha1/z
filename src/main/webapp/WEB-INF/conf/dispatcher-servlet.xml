@@ -47,7 +47,7 @@
   <mvc:interceptors>
     <mvc:interceptor>
         <mvc:mapping path="/**"/>
-        <mvc:exclude-mapping path="/auth/**"/>
+        <mvc:exclude-mapping path="/html/auth/**"/>
         <bean class="z.interceptor.LoginCheckInterceptor"/>
     </mvc:interceptor>
   </mvc:interceptors>
