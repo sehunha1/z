@@ -29,7 +29,7 @@
   </select>
   
   <select id="getMyInviteCount" parameterType="int" resultType="int">
-    select count(*) from link where mnum=#{value} and stat="n";
+    select count(*) from link where mnum=#{value} and accept="n";
   </select>
   
   <update id="updateStat" parameterType="int" >
