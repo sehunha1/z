@@ -141,6 +141,19 @@
 	     where bo.mtnum = #{meetingNo};
 	</select>
 	
+	<!-- 미수락 초대  가져오기 -->
+	<select id="invite" parameterType="int" resultMap="meeting-map">
+    select distinct 
+      titl,
+      m.mtnum, 
+      cont, 
+      mtdesc, 
+      dline 
+        from link l, meet m 
+      where m.mtnum = l.mtnum 
+        and l.mnum=#{value} and accept="n";
+  </select>
+	
 	<select id="keywordBoardList" resultMap="board-map">
 	   <![CDATA[
 	     select bo.bnum as bnum

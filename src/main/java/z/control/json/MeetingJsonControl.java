@@ -82,5 +82,12 @@ public class MeetingJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
   }
-
+  
+  // 미수락 초대 가져오기
+  @RequestMapping("html/mypage/invite")
+  public AjaxResult invite(int memberNo) throws Exception {
+    List<Meeting> invite = meetingService.invite(memberNo);
+    
+    return new AjaxResult(AjaxResult.SUCCESS, invite);
+  }
 }

@@ -36,4 +36,12 @@ public class LinkServiceImpl implements LinkService {
   public int updateStat(int memberNo2, int meetingNo) throws Exception {
     return linkDao.updateStat(memberNo2, meetingNo);
   }
+
+  public int refuse(int memberNo, int meetingNo) throws Exception {
+    return linkDao.refuse(memberNo, meetingNo);
+  }
+  
+  public int accept(int memberNo, int meetingNo) throws Exception {
+    return linkDao.accept(memberNo, meetingNo);
+  }
 }

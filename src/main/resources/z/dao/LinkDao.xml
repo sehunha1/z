@@ -35,5 +35,16 @@
   <update id="updateStat" parameterType="int" >
     update link set stat="y" where mnum=#{param1} and mtnum=#{param2};
   </update>
+  
+  <delete id="refuse" parameterType='int'>
+    delete from link
+    where mnum=#{param1} and mtnum=#{param2};
+  </delete>
+  
+   <update id="accept" parameterType="link">
+	   update link set
+	   accept="y"
+	   where mnum=#{param1} and mtnum=#{param2}
+  </update>
 
 </mapper>
