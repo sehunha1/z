@@ -118,14 +118,12 @@ $(function() {
     $.get("../../html/sidebar.html", function(result) {
 	    $("#sidebar").html(result);
 
-        // var meetingNo = window.location.search.split("&")[1].substring(10);
         $.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
             var status = ajaxResult.status;
 
             if (status != "success") return;
 
             var listMeetingMembBoss = ajaxResult.data;
-            console.log(listMeetingMembBoss);
             var template = Handlebars.compile($("#bossTemplate").html());
             var ul = $(".meeting_memb_boss");
             ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
@@ -162,9 +160,10 @@ $('body').on('click', '#memb-plus-btn', function(e) {
 	add_memb();
 });
 
-/*$('body').on('click', '#membPlusPopup', function(e) {
-	alert("test000");
-});*/
+$('body').on('click', '#sideMembPlus', function(e) {
+	
+	
+});
 
 // 멤버 초대 박스 이메일 입력시
 $('body').on('keyup', '.mail-box-cls', function(e) {
@@ -172,29 +171,29 @@ $('body').on('keyup', '.mail-box-cls', function(e) {
 		"emailAddress" : inputData.val()
 	}
 	
+	// 해당 박스
+	var $inputMessage = $(this).children('.inputMessage');
+	$inputMessage.empty();
+	
  	$.post(serverRoot + '/html/sidebar/getSideMemb.json', emailAddress, function(ajaxResult) {
 		if (ajaxResult.status != "success") {
-	      // console.log(ajaxResult.data);
+			$inputMessage.text("회원이 아닙니다.").css("color", "red");
 	      return;
 	    }
 		
 		// Link 테이블 조회 매개변수
 		var param = {
-			"membNo" : JSON.stringify(ajaxResult.data),
+			"memberNo" : ajaxResult.data,
 			"meetingNo" : meetingNo
 		};
 		
-		console.log(param);
-		
 		$.post(serverRoot + '/html/sidebar/getSideLink.json', param, function(ajaxResult) {
 			if (ajaxResult.status != "success") {
-		      // console.log(ajaxResult.data);
+		      $inputMessage.text("이미 초대된 회원입니다.").css("color", "red");
 		      return;
 			}
-			$('#addAvailability').css({"background": dd });
-			console.log("성공");
+			$inputMessage.text("초대 가능한 회원입니다.").css("color", "black");
 		});
-		
 	});
 });
 
@@ -205,7 +204,8 @@ function add_memb() {
           + 'placeholder="email을 입력해주세요">'
           + '<button type="button" id="minus-btn"'
           + 'class="btn btn-default"'
-          + 'onClick="remove_memb(this)">-</button>').appendTo(
+          + 'onClick="remove_memb(this)">-</button>'
+          + '<div class="inputMessage"></div>').appendTo(
       '#new-field');
 }
 
@@ -227,8 +227,8 @@ function memb_add_email()  {
 }
 
 $('body').on('click', '#memb-close-btn', function(event) {
-//	event.preventDefault();
-//	$('#membPlusPopup').removeData('.add-email-box');
-//    $('#myModal').removeData('bs.modal').modal({remote: $(this).attr('href')});
+	$('#memb-email').val('');
+	$('#new-field').children().remove();
+	$('.inputMessage').empty();
 });
 

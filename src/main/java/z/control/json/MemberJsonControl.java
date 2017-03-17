@@ -58,7 +58,6 @@ public class MemberJsonControl {
   // SideBar 멤버 추가시 초대 여부 조회
   @RequestMapping("html/sidebar/getSideLink")
   public AjaxResult getSideLink(Link link) throws Exception {
-    System.out.println(link);
     int membAddYn = memberService.getSideLink(link);
     if (membAddYn != 0) {
       return new AjaxResult(AjaxResult.FAIL, "이미 초대된 회원입니다.");
