@@ -3,6 +3,7 @@ package z.control.json;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,5 +90,22 @@ public class MeetingJsonControl {
     List<Meeting> invite = meetingService.invite(memberNo);
     
     return new AjaxResult(AjaxResult.SUCCESS, invite);
+  }
+
+  @RequestMapping("html/detail/updateMstatFin")
+  public AjaxResult updateMstat(int meetingNo, HttpServletRequest httpServletRequest) throws Exception {
+    meetingService.updateMstatFin(meetingNo);
+    String cal = httpServletRequest.getParameter("cal");
+    String loc = httpServletRequest.getParameter("loc");
+
+    if (cal.length() > 1) {
+      meetingService.updateCal(meetingNo, cal);
+    }
+
+    if (loc.length() > 1) {
+      meetingService.updateLoc(meetingNo, loc);
+    }
+
+    return new AjaxResult(AjaxResult.SUCCESS, "성공");
   }
 }

@@ -92,6 +92,12 @@ public class AuthJsonControl {
 
         if (isDuplicateCal > 1 || isDuplicateLoc > 1) {
           meetingService.updateMstatWait(meetingNo[i]);
+          if (isDuplicateCal < 2) {
+            meetingService.updateFdate(meetingNo[i]);
+          }
+          if (isDuplicateLoc < 2) {
+            meetingService.updateFloc(meetingNo[i]);
+          }
         } else {
           meetingService.updateMstatFin(meetingNo[i]);
           meetingService.updateFdate(meetingNo[i]);
