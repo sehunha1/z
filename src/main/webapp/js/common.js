@@ -185,8 +185,8 @@ $(function() {
 						var checkcookie = $.cookie('check');
 						if (checkcookie == 'n') {
 						swal({
-							  title: "알림",
-							  text: invite + "개의 받은 초대가 있습니다.\n확인 버튼을 누르면 마이페이지로 이동합니다.",
+							  title: "초대 알림",
+							  text: invite + "개의 받은 초대가 있습니다.\n확인 버튼을 누르면 마이페이지로 이동합니다.\n초대를 수락/거절 하기 전까지는 로그인 할때마다 계속 이창이 나타납니다.",
 							  showCancelButton: true,
 							  cancelButtonText: "닫기",
 							  //confirmButtonColor: "#DD6B55",

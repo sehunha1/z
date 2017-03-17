@@ -137,7 +137,7 @@
 	 	            	  $.cookie('cookie_i', image, { path: '/'});
 	    		          $.cookie('cookie_p', cookie_photo, { path: '/'});
 	    		          
-	    		          console.log(cookie_photo);
+	    		          //console.log(cookie_photo);
 	    		      })
 	    		      
 	            }
