@@ -60,7 +60,32 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
-  public String[] getDline(String time) throws Exception {
-    return meetingDao.getDline(time);
+  public String getDline(int meetingNo) throws Exception {
+    return meetingDao.getDline(meetingNo);
+  }
+
+  @Override
+  public int updateMstatWait(int meetingNo) throws Exception {
+    return meetingDao.updateMstatWait(meetingNo);
+  }
+
+  @Override
+  public int updateMstatFin(int meetingNo) throws Exception {
+    return meetingDao.updateMstatFin(meetingNo);
+  }
+
+  @Override
+  public int[] getMeetingNo(int memberNo) throws Exception {
+    return meetingDao.getMeetingNo(memberNo);
+  }
+
+  @Override
+  public int updateFdate(int meetingNo) throws Exception {
+    return meetingDao.updateFdate(meetingNo);
+  }
+
+  @Override
+  public int updateFloc(int meetingNo) throws Exception {
+    return meetingDao.updateFloc(meetingNo);
   }
 }

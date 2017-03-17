@@ -17,4 +17,10 @@
 		select list.lname, list.addr from loc left outer join list on loc.ltnum=list.ltnum where loc.mtnum=#{value} group by loc.ltnum having count(*) >=
 		(select count(*) from loc where loc.mtnum=#{value} group by loc.ltnum order by count(*) desc limit 1);
 	</select>
+
+	<select id="isDuplicate" parameterType="int" resultType="int">
+		select count(*) from (select count(*) from (select ltnum from loc left outer join meet on loc.mtnum=meet.mtnum where meet.mtnum=#{value}) as tt group by ltnum having count(*) >=
+		(select count(*) from (select ltnum from loc left outer join meet on loc.mtnum=meet.mtnum where meet.mtnum=#{value}) as tt group by ltnum order by count(*) desc limit 1)) as ff;
+	</select>
+
 </mapper>

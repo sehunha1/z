@@ -19,4 +19,10 @@ public class LocationListJsonControl {
     List<LocationList> locationListDuplication = locationListService.getLocationListDuplication(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, locationListDuplication);
   }
+
+  @RequestMapping("html/detail/isDuplicateLoc")
+  public AjaxResult isDuplicate(int meetingNo) throws Exception {
+    int isDuplicate = locationListService.isDuplicate(meetingNo);
+    return new AjaxResult(AjaxResult.SUCCESS, isDuplicate);
+  }
 }

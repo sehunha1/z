@@ -27,4 +27,10 @@ public class CalendarJsonControl {
     List<Calendar> selectedDateInfo = calendarService.getSelectedDateInfo(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, selectedDateInfo);
   }
+
+  @RequestMapping("html/detail/isDuplicateCal")
+  public AjaxResult isDuplicate(int meetingNo) throws Exception {
+    int isDuplicate = calendarService.isDuplicate(meetingNo);
+    return new AjaxResult(AjaxResult.SUCCESS, isDuplicate);
+  }
 }

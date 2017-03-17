@@ -13,5 +13,10 @@ public interface MeetingService {
   List<Board> boardList(int meetingNo) throws Exception; // 완료모임 게시글 가져오기
   List<Board> keywordBoardList(int meetingNo, String keyWord) throws Exception; // 완료모임 특정 게시글 가져오기
   List<Meeting> invite(int memberNo) throws Exception;
-  String[] getDline(String time) throws Exception;
+  String getDline(int meetingNo) throws Exception;
+  int updateMstatWait(int meetingNo) throws Exception;
+  int updateMstatFin(int meetingNo) throws Exception;
+  int[] getMeetingNo(int memberNo) throws Exception;
+  int updateFdate(int meetingNo) throws Exception;
+  int updateFloc(int meetingNo) throws Exception;
 }
