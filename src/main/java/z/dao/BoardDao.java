@@ -19,4 +19,3 @@ public interface BoardDao{
   int insertlink(Board board) throws Exception;
 
 }
-

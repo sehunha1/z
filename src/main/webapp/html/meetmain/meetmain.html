@@ -5,7 +5,7 @@
 <title>New Meet</title>
 <link rel="stylesheet" href="../../css/meetmain/daummap.css">
 <link rel="stylesheet"
-	href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+  href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../../css/meetmain/newmeet.css">
 <!-- <link rel="stylesheet" href="../../css/mylist/reset.css"/> -->
 <link rel="stylesheet" href="../../css/mylist/layout.css" />
@@ -13,219 +13,213 @@
 <link rel="stylesheet" href="../../css/mylist/write2.css" />
 <link rel="stylesheet" href="../../css/main/main.css">
 <link rel="stylesheet" href="../../css/meetmain/board.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
 <link rel="stylesheet"
-	href="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.css" />
+  href="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.css" />
 <link rel="stylesheet"
-	href="../../node_modules/sweetalert/dist/sweetalert.css">
+  href="../../node_modules/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="../../css/main/sideBar.css">
 <link rel="stylesheet" href="../../css/selecttime/selecttime.css">
 
 <style type="text/css">
 #board img {
-	width: 100%;
-	height: 120px;
+  width: 100%;
+  height: 120px;
 }
-
 #board hr {
-	height: 1px;
-	width: 98%;
-	margin: 0 auto;
+  height: 1px;
+  width: 98%;
+  margin: 0 auto;
 }
-
 #menu2 {
-	display: block;
-	position: static;
+  display: block;
+  position: static;
 }
 </style>
 
 </head>
 <body onload='maphide()'>
-	<div id="header"></div>
+  <div id="header"></div>
 
-	<div class='container'>
-		<div id="testwrap">
-			<div id="sidebar"></div>
-			<div class='conttext1' style='float: left; margin-left: 10px;'></div>
-			<div style='float: right;'>
-				<font>공유하기</font> <br> <a href='#' onclick='share()'><img
-					src='../../image/facebook-c.png' width=30 height=30></a>
-			</div>
+  <div class='container'>
+    <div id="testwrap">
+      <div id="sidebar"></div>
+      <div class='conttext1' style='float: left; margin-left: 10px;'></div>
+      <div style='float: right;'>
+        <font>공유하기</font> <br> <a href='#' onclick='share()'><img
+          src='../../image/facebook-c.png' width=30 height=30></a>
+      </div>
 
-			<div id='tab'
-				style='float: left; width: 745px; height: 720px; margin-left: 10px;'>
-				<ul class="nav nav-tabs"
-					style='font-family: Noto Sans KR, sans-serif;'>
-					<li id='li1' class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
-					<li id='li2'><a data-toggle="tab" href="#menu2"
-						onClick="menu2c()">장소투표</a></li>
-					<li id='li3'><a data-toggle="tab" href="#menu3"
-						onClick="menu3c()">게시판</a></li>
-				</ul>
+      <div id='tab'
+        style='float: left; width: 745px; height: 720px; margin-left: 10px;'>
+        <ul class="nav nav-tabs"
+          style='font-family: Noto Sans KR, sans-serif;'>
+          <li id='li1' class="active"><a data-toggle="tab" href="#menu1">일정투표</a></li>
+          <li id='li2'><a data-toggle="tab" href="#menu2"
+            onClick="menu2c()">장소투표</a></li>
+          <li id='li3'><a data-toggle="tab" href="#menu3"
+            onClick="menu3c()">게시판</a></li>
+        </ul>
 
-				<div class="tab-content">
-					<div id="menu1" class="tab-pane fade in active">
-						<div id="datepicker"></div>
-						<button class="_btnSaveSelectedDate">날짜선택완료</button>
-					</div>
+        <div class="tab-content">
+          <div id="menu1" class="tab-pane fade in active">
+            <div id="datepicker"></div>
+            <button class="_btnSaveSelectedDate">날짜선택완료</button>
+          </div>
 
-					<div id="menu2" class="tab-pane fade">
-						<div id="menu2-wrap">
-							<div id="buttonchoice" style='margin-top: 10px;'>
-								<button type="button" id='bselect' class="btn btn-primary">장소
-									선택하기</button>
-								<button type="button" id='blist' class="btn btn-primary">장소
-									투표하기</button>
-							</div>
+          <div id="menu2" class="tab-pane fade">
+            <div id="menu2-wrap">
+              <div id="buttonchoice" style='margin-top: 10px;'>
+                <button type="button" id='bselect' class="btn btn-primary">장소
+                  선택하기</button>
+                <button type="button" id='blist' class="btn btn-primary">장소
+                  투표하기</button>
+              </div>
 
-							<div class="map1">
-								<div class="map_wrap">
-									<div id="map"
-										style="margin-top: 5px; width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
+              <div class="map1">
+                <div class="map_wrap">
+                  <div id="map"
+                    style="margin-top: 5px; width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
 
 
-									<div id="menu_wrap" class="bg_white"
-										style='width: 250px; height: 500px;'>
-										<div class="option">
-											<div>
-												<form onsubmit="searchPlaces(); return false;">
-													키워드 : <input type="text" placeholder="검색어를 입력하세요" value=""
-														id="keyword" size="15">
-													<button id='search' type="submit">검색하기</button>
-												</form>
-											</div>
-										</div>
-										<hr>
-										<ul id="placesList"></ul>
-										<div id="pagination"></div>
-									</div>
-								</div>
-							</div>
+                  <div id="menu_wrap" class="bg_white"
+                    style='width: 250px; height: 500px;'>
+                    <div class="option">
+                      <div>
+                        <form onsubmit="searchPlaces(); return false;">
+                          키워드 : <input type="text" placeholder="검색어를 입력하세요" value=""
+                            id="keyword" size="15">
+                          <button id='search' type="submit">검색하기</button>
+                        </form>
+                      </div>
+                    </div>
+                    <hr>
+                    <ul id="placesList"></ul>
+                    <div id="pagination"></div>
+                  </div>
+                </div>
+              </div>
 
-							<div class="map2">
-								<div class="map_wrap">
-									<div id="map-2" style="margin-top: 5px; width: 100%; height: 600px;"></div>
-									<div id="menu_wrap2" class="bg_white2"
-										style='width: 150px; height: 500px;'>
-										<div class="option">
-											<div>
-												<form onsubmit="searchPlaces(); return false;"></form>
-											</div>
-										</div>
-										<font>선택된 장소 목록</font> <input type='button' id='on'
-											style='float: right; position: absolute; background-color: rgba(255, 255, 255, 0.2); background: none; border: none; margin: 0; padding: 0;'
-											value='▲'></input> <input type='hidden' id='off'
-											style='float: right; position: absolute; background-color: rgba(255, 255, 255, 0.2); background: none; border: none; margin: 0; padding: 0;'
-											value='▼'></input>
-										<hr>
-										<table id='list-table' class='table table-hover'>
-											<thead>
-												<tr>
-													<th>장소명</th>
-													<th>투표수</th>
-												</tr>
-											<thead>
-											<tbody></tbody>
-										</table>
-										<!-- 
+              <div class="map2">
+                <div class="map_wrap">
+                  <div id="map-2" style="margin-top: 5px; width: 100%; height: 600px;"></div>
+                  <div id="menu_wrap2" class="bg_white2"
+                    style='width: 150px; height: 500px;'>
+                    <div class="option">
+                      <div>
+                        <form onsubmit="searchPlaces(); return false;"></form>
+                      </div>
+                    </div>
+                    <font>선택된 장소 목록</font> <input type='button' id='on'
+                      style='float: right; position: absolute; background-color: rgba(255, 255, 255, 0.2); background: none; border: none; margin: 0; padding: 0;'
+                      value='▲'></input> <input type='hidden' id='off'
+                      style='float: right; position: absolute; background-color: rgba(255, 255, 255, 0.2); background: none; border: none; margin: 0; padding: 0;'
+                      value='▼'></input>
+                    <hr>
+                    <table id='list-table' class='table table-hover'>
+                      <thead>
+                        <tr>
+                          <th>장소명</th>
+                          <th>투표수</th>
+                        </tr>
+                      <thead>
+                      <tbody></tbody>
+                    </table>
+                    <!-- 
                 <ul id="placesList"></ul>
                 <div id="pagination"></div>
                 -->
-									</div>
-								</div>
-							</div>
+                  </div>
+                </div>
+              </div>
 
-						</div>
-					</div>
+            </div>
+          </div>
 
-					<div id="menu3" class="tab-pane fade">
+          <div id="menu3" class="tab-pane fade">
 
-						<div id='board' style='margin: 0 auto; margin-top: 10px;'>
-							<a id='new-btnn' href='#' type='button'
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#myModal">추가</a>
+            <div id='board' style='margin: 0 auto; margin-top: 10px;'>
+              <a id='new-btnn' href='#' type='button'
+                class="btn btn-primary btn-sm" data-toggle="modal"
+                data-target="#myModal">추가</a>
 
-							<div class="container2">
-								<div class='row'></div>
-							</div>
-						</div>
-					</div>
-				</div>
+              <div class="container2">
+                <div class='row'></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div id="write">
-						<span class="space"></span><br> <span class="title">게시판글쓰기</span>
-						<div id="writeform">
-							<div class="box">
-								<input type="email" class="titlename" id="titl"
-									placeholder="     글 제목을 입력해주세요."> <input type="email"
-									class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
-								<img id='photo-img' height='80' class='view-form'><input
-									id='link' name='files' type='file' multiple> <input
-									id='link-path' type='hidden'> <a id='new-btnn' href='#'
-									class="btn btn-primary btn-sm">취소</a> <a id='new-btnnn'
-									href='#' class="btn btn-primary btn-smm">저장</a><BR>
-							</div>
-						</div>
-					</div>
-					<span class="space"></span><br>
-				</div>
-			</div>
-		</div>
-	</div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div id="write">
+            <span class="space"></span><br> <span class="title">게시판글쓰기</span>
+            <div id="writeform">
+              <div class="box">
+                <input type="email" class="titlename" id="titl"
+                  placeholder="     글 제목을 입력해주세요."> <input type="email"
+                  class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
+                <img id='photo-img' height='80' class='view-form'><input
+                  id='link' name='files' type='file' multiple> <input
+                  id='link-path' type='hidden'> <a id='new-btnn' href='#'
+                  class="btn btn-primary btn-sm">취소</a> <a id='new-btnnn'
+                  href='#' class="btn btn-primary btn-smm">저장</a><BR>
+              </div>
+            </div>
+          </div>
+          <span class="space"></span><br>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
 
-					<span class="space"></span><br> <span class="title">게시판
-						상세보기</span>
-					<form class='form-horizontal'>
-						<input id='detail_title' class="col-sm-2 control-label"> <input
-							id='detail_content' type='text' class="form-control"
-							placeholder='내용'>
+          <span class="space"></span><br> <span class="title">게시판상세보기</span>
+          <form class='form-horizontal'>
+            <input id='detail_title' class="col-sm-2 control-label">
+            <input id='detail_date' type='datetime' class="board-date"> 
+            <input id='detail_content' type='text' class="form-control" placeholder='내용'>
 <!-- <<<<<<< HEAD
 =======<label id='detail_photo' for="title"
-							class="col-sm-2 control-label">사진</label><br>
-						<div class="col-sm-10">
-							<input id='photo-path' type='hidden'>
-						</div>
-						<div class="form-group">
-							<div class="detail_button">
-								<button id='update-btn' type='button'
-									class='view-form btn btn-primary'>변경</button>
-								<button id='delete-btn' type='button'
-									class='view-form btn btn-primary'>삭제</button>
-								<button id='list-btn' type='button' class='btn btn-primary'>목록</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+              class="col-sm-2 control-label">사진</label><br>
+            <div class="col-sm-10">
+              <input id='photo-path' type='hidden'>
+            </div>
+            <div class="form-group">
+              <div class="detail_button">
+                <button id='update-btn' type='button'
+                  class='view-form btn btn-primary'>변경</button>
+                <button id='delete-btn' type='button'
+                  class='view-form btn btn-primary'>삭제</button>
+                <button id='list-btn' type='button' class='btn btn-primary'>목록</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 >>>>>>> branch 'master' of https://github.com/sehunha1/z.git -->
-	<!-- container -->
+  <!-- container -->
 
                   <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label><br>
-                  <button class="download-btn" type="submit">다운로드</button>
                   <div class="col-sm-10 detail-photo">
                   <input name='photo-path' type='hidden' >
                      <img class='img-responsive-detail'   /> 
    
                   </div>
-                  
                 <div class="form-group">
                   <div class="detail_button">
                     <button id='update-btn' type='button' class='view-form btn btn-primary'>변경</button>
@@ -238,59 +232,59 @@
       </div>
 </div>
 </div>
-	
-	<div id="footer"></div>
-	<script src="../../js/context.js"></script>
-	<script
-		src="//apis.daum.net/maps/maps3.js?apikey=972fc2cd0c0d0f176249bf894a112457&libraries=services"></script>
+  
+  <div id="footer"></div>
+  <script src="../../js/context.js"></script>
+  <script
+    src="//apis.daum.net/maps/maps3.js?apikey=972fc2cd0c0d0f176249bf894a112457&libraries=services"></script>
 
-	<script src='../../node_modules/jquery/dist/jquery.js'></script>
-	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
-	<script src='../../node_modules/bootstrap/dist/js/bootstrap.js'></script>
-	<script src="../../js/common.js"></script>
-	<script src='../../js/meetmain/tap.js'></script>
-	<script
-		src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	<script src="../../js/meetmain/meetmain.js"></script>
-	<script src="../../js/meetmain/MeetingDetail.js"></script>
-	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="../../js/jquery.cookie.js"></script>
-
-
-	<!-- 다음 지도 -->
-	<script src="../../js/meetmain/daummap.js"></script>
-	<script src="../../js/meetmain/daummaplist.js"></script>
-
-	<script
-		src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
-	<script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
-	<script
-		src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+  <script src='../../node_modules/jquery/dist/jquery.js'></script>
+  <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+  <script src='../../node_modules/bootstrap/dist/js/bootstrap.js'></script>
+  <script src="../../js/common.js"></script>
+  <script src='../../js/meetmain/tap.js'></script>
+  <script
+    src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <script src="../../js/meetmain/meetmain.js"></script>
+  <script src="../../js/meetmain/MeetingDetail.js"></script>
+  <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="../../js/jquery.cookie.js"></script>
 
 
-	<script>
+  <!-- 다음 지도 -->
+  <script src="../../js/meetmain/daummap.js"></script>
+  <script src="../../js/meetmain/daummaplist.js"></script>
+
+  <script
+    src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+  <script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+  <script
+    src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+
+
+  <script>
   $('#new-btnn').click(function(event) {
-	    event.preventDefault();
-	  });
+      event.preventDefault();
+    });
   </script>
 
-	<script>
+  <script>
   $('#blist').click(function(){
     $(".map1").hide();
     $(".map2").show();
@@ -343,7 +337,7 @@
   
   </script>
 
-	<script id="trTemplatelist" type="text/x-handlebars-template">
+  <script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
   <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
@@ -352,14 +346,13 @@
 {{/each}}
 </script>
 
-	<script>
+  <script>
 $('#on').click(function() {
     $("#menu_wrap2").css("height", "22px");
     $("#menu_wrap2").css("overflow", "hidden");
     $("#on").attr("type", "hidden");
     $("#off").attr("type", "button");
 });
-
 $('#off').click(function() {
     $("#menu_wrap2").css("height", "500px");
     $("#menu_wrap2").css("overflow", "auto");
@@ -368,9 +361,8 @@ $('#off').click(function() {
 });
 </script>
 
-	<script>
+  <script>
 var filenamelist;
-
 $('#link').fileupload({
     url: '../../common/fileupload.json', // 서버에 요청할 URL
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
@@ -405,13 +397,11 @@ $('#link').fileupload({
 </script>
 
 <script>
-
 try {
     var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
 } catch (error) {
     var mtnum = -1;
 }
-
 $.getJSON('../auth/loginUser.json', function(ajaxResult) {
   if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
     alert('로그인하세요');
@@ -419,142 +409,142 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
       }
   
   var mnum = ajaxResult.data.memberNo;
-
   
     $('#new-btnnn').click(function(event) {
       event.preventDefault();
         var param = {
           
-        	"memberNo": mnum,
+          "memberNo": mnum,
           "meetNo": mtnum,
           "title": $('#titl').val(),
           "content": $('#cont').val(),
+          "boardDate":$('#bdate').val(),
           "addFileList": arrayToJson(filenamelist)
-
         };
         console.log('파라미터 : ',param);
         $.post('add.json', param, function(ajaxResult2) {
-        	console.log(ajaxResult2)
+          console.log(ajaxResult2)
             if (ajaxResult2.status != "success") {
               return;
             }
-        	var params = {
-        	"link": $('#link-path').val(),
-        	"type": 'jpg'
-        	}
-        	$.post('file.json', params, function(ajaxResult2) {
-        		
-        	});
+          var params = {
+          "link": $('#link-path').val(),
+          "type": 'jpg'
+          }
+          $.post('file.json', params, function(ajaxResult2) {
+            
+          });
             location.reload();
         }, 'json'); // post();
     }); // click()   
     
     $.getJSON('list.json?mtnum='+ mtnum, function(ajaxResult) {
-    	 if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+       if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
           return;
-    		}
-    	 var list = ajaxResult.data;
-    	 var container2 = $('.container2');
-    	 //var container2 = $('#container2 .row');
+        }
+       var list = ajaxResult.data;
+       var container2 = $('.container2');
+       //var container2 = $('#container2 .row');
        var template = Handlebars.compile($('#trTemplate').html());
        var row;
        for (var i = 0; i < list.length; i++) {
-    	   if (i % 3 == 0) {
-    		   console.log('로우생성');
-    		   console.log(ajaxResult.data[0].addFileList[0].filePath)
-    		   row = $('<div>').addClass('row').appendTo(container2);
-    	   }
-    	   var div = $('<div>').html(template(list[i]));
-    	   console.log(list)
-    	   $('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
-    	   row.append(div);
+         if (i % 3 == 0) {
+           console.log('로우생성');
+           console.log(ajaxResult.data[0].addFileList[0].filePath)
+           row = $('<div>').addClass('row').appendTo(container2);
+         }
+         var div = $('<div>').html(template(list[i]));
+         console.log(list)
+         //$('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
+         row.append(div);
        }
        $('.img-responsive').click(function(){
-    	   console.log(i);
+         console.log(i);
        });
-
        
        $(".btn-view").click(function() {
-    	   window.bnumber = $(this).attr('data-bnum');
-    	   $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
-    		   if (ajaxResult.status == "fail") {
-    		          return;
-    		        }
-    		   var detail = ajaxResult.data;
-    		   console.log('디테일?',detail)
-	    	   $('#detail_title').val(detail.title);
-	    	   $('#detail_content').val(detail.content);
-	    	   $('.detail-photo').children().remove();
-	    	   for (var i in detail.addFileList) {
-	    		   $('<input>')
-	    		     .attr('name','input-file-path')
-	    		     .attr('value',detail.addFileList[i].filePath)
-	    		     .css('display','none').appendTo($('.detail-photo'));
-	    		   $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
-	    		     .css('width','150px').css('height','100px').css('display','inline-block');
-	    	   }
-	    	  console.log( bnumber);
-    	   }); 
+         window.bnumber = $(this).attr('data-bnum');
+         $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
+           if (ajaxResult.status == "fail") {
+                  return;
+                }
+           var detail = ajaxResult.data;
+           console.log('디테일?',detail)
+           $('#detail_title').val(detail.title);
+           $('#detail_content').val(detail.content);
+           $('#detail_date').val(detail.boardDate);
+           $('.detail-photo').children().remove();
+           for (var i in detail.addFileList) {
+             $('<input>')
+               .attr('name','input-file-path')
+               .attr('value',detail.addFileList[i].filePath)
+               .css('display','none').appendTo($('.detail-photo'));
+             $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
+               .css('width','150px').css('height','100px').css('display','inline-block');
+           }
+          console.log( bnumber);
+         }); 
        });
        
        
        $('#delete-btn').click(function() {
-    	   console.log('비넘버 : ',bnumber);
-    	    $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
-    	      if (ajaxResult.status != "success") { 
-    	        alert(ajaxResult.data);
-    	        return;
-    	      }
-    	    
-    	      location.reload();
-    	    }); // getJSON()
-    	  }); // click()
-    	  
-    	  
-    	  $('#update-btn').click(function() {
-    	      var param = {
-    	        "boardNo": bnumber, 
-    	        "meetNo": mtnum,
-    	        "title": $('#detail_title').val(),
-    	        "content": $('#detail_content').val()
-    	      };
-    	      
-    	      $.post('update.json', param, function(ajaxResult) {
-    	        if (ajaxResult.status != "success") {
-    	          alert(ajaxResult.data);
-    	          return;
-    	        }
-    	        location.reload();
-    	      }, 'json');
-    	  }); // click()
-    	  
+         console.log('비넘버 : ',bnumber);
+          $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
+            if (ajaxResult.status != "success") { 
+              alert(ajaxResult.data);
+              return;
+            }
+          
+            location.reload();
+          }); // getJSON()
+        }); // click()
+        
+        
+        $('#update-btn').click(function() {
+            var param = {
+              "boardNo": bnumber, 
+              "meetNo": mtnum,
+              "title": $('#detail_title').val(),
+              "boarddate": $('#detail_date').val(),
+              "content": $('#detail_content').val()
+            };
+            
+            $.post('update.json', param, function(ajaxResult) {
+              if (ajaxResult.status != "success") {
+                alert(ajaxResult.data);
+                return;
+              }
+              location.reload();
+            }, 'json');
+        }); // click()
+        
           $('#list-btn').click(function() {
                  location.reload();
              }); 
-    	  
+        
     });
 });
 var arrayToJson = function(list) {
-	  var result = '';
-	  if (list == null) {
-		  return null;
-	  }
-	  for (var i = 0; i < list.length; i++) {
-	    if (i != 0) {
-	      result += ',';
-	    }
-	    result += list[i];
-	  }
-	  result += '';
-	  return result;
-	}
+    var result = '';
+    if (list == null) {
+      return null;
+    }
+    for (var i = 0; i < list.length; i++) {
+      if (i != 0) {
+        result += ',';
+      }
+      result += list[i];
+    }
+    result += '';
+    return result;
+  }
 </script>
 
 <script id="trTemplate" type="text/x-handlebars-template">
 <div class="col-sm-4 col-md-4" >
  <div class="post">
      <div class="post-img-content">
-         <img src="../upload/{{addFileList.filePath}}" class="img-responsive"  />
+         <img src="../upload/{{addFileList.[0].filePath}}" class="img-responsive"  />
          <span class="post-title"><br/>
              </span>
      </div>
@@ -563,7 +553,8 @@ var arrayToJson = function(list) {
               <b>{{title}}</b> 
          </div>
          <div>
-             {{content}}
+             {{content}}<br>
+          <div class = "block-date">{{boardDate}}</div>
          </div>
          <div>
              <a href='#' type ='button' class="btn btn-warning btn-sm btn-view" data-toggle="modal" data-target="#myModal2" data-bnum='{{boardNo}}'>상세보기</a>
@@ -575,8 +566,8 @@ var arrayToJson = function(list) {
 
 
 
-	<div id="fb-root"></div>
-	<script>
+  <div id="fb-root"></div>
+  <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '253788165032910',
@@ -585,7 +576,6 @@ var arrayToJson = function(list) {
     });
     FB.AppEvents.logPageView();
   };
-
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -594,7 +584,7 @@ var arrayToJson = function(list) {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-	<script>
+  <script>
 function share(){
     var share = {
         method: 'stream.share',
@@ -606,16 +596,16 @@ function share(){
 </script>
 
 
-	<!-- 달력 js 끝 -->
+  <!-- 달력 js 끝 -->
 
-	<script id="infoTemplate" type="x-handlebars-template">
-	<font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>{{title}}</b></font><br>
-	<font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">{{content}}</font>
-	<br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:{{category}}  </font>
-	<font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:{{deadline}} <font color='red'><b></b></font> </font>
+  <script id="infoTemplate" type="x-handlebars-template">
+  <font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>{{title}}</b></font><br>
+  <font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">{{content}}</font>
+  <br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:{{category}}  </font>
+  <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:{{deadline}} <font color='red'><b></b></font> </font>
 </script>
 
-	<script>
+  <script>
     $('.timechoice').on('click','.placeholder',function(){
         var parent = $(this).closest('.timechoice');
         if ( ! parent.hasClass('is-open')){
