@@ -88,4 +88,14 @@ public class MeetingServiceImpl implements MeetingService {
   public int updateFloc(int meetingNo) throws Exception {
     return meetingDao.updateFloc(meetingNo);
   }
+
+  @Override
+  public int updateCal(int meetingNo, String cal) throws Exception {
+    return meetingDao.updateCal(meetingNo, cal);
+  }
+
+  @Override
+  public int updateLoc(int meetingNo, String loc) throws Exception {
+    return meetingDao.updateLoc(meetingNo, loc);
+  }
 }

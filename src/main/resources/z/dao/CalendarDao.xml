@@ -42,6 +42,3 @@
 	</select>
 
 </mapper>
-
-
-		<!--select cal.mtnum, cal.mnum, cal.cdate, cal.ctime from cal where cal.mtnum=#{value};-->
