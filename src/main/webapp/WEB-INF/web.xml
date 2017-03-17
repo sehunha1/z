@@ -67,7 +67,7 @@
   <servlet-mapping>
       <servlet-name>json</servlet-name>
       <url-pattern>*.json</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   
   <!-- URL에서 구체적으로 자원을 명시하지 않았을 때 기본으로 찾는 자원 -->
   <welcome-file-list>

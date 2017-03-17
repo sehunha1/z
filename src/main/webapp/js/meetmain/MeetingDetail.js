@@ -445,38 +445,67 @@ MeetingDetail.prototype = {
     },
 
     saveMeetingDate : function(){
-        swal({title: "Are you sure?",
-              text: "You will not be able to recover this imaginary file!",
+        var these = this;
+
+        swal({title: "일정 선택",
+              text: "날짜를 최종 선택하시겠습니까?",
               type: "warning",
               showCancelButton: true,
               confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Yes, delete it!",
-              closeOnConfirm: false}, function(){
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");});
+              confirmButtonText: "선택",
+              cancelButtonText: "취소",
+              closeOnConfirm: false,
+              closeOnCancel: false
+        }, function(isConfirm){
+            if (isConfirm) {
+                var oMeetingParamData = these.getMeetingDateInfo(),
+                    sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?memberNo=' + these.getQueryParam('memberNo') + '&meetingNo=' + these.getQueryParam('meetingNo'),
+                    that = these;
 
+                var json_oMeetingParamData = JSON.stringify(oMeetingParamData);
 
+                $.ajax({
+                    url : sMeetingInfoAPI,
+                    method : 'POST',
+                    data : json_oMeetingParamData,
+                    contentType: 'application/json',
+                    success : function(res){
+                        console.log("전송완료")
+                        that.aCalendarData = that.makeMeetingObject(res);
+                        that.drawCalendar();
+                    },
+                    error : function(){
+                        console.warn("API 호출 실패");
+                    }
+                })
 
-        if(!confirm("전송합니까?")) return;
-        var oMeetingParamData = this.getMeetingDateInfo(),
-            sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?memberNo=' + this.getQueryParam('memberNo') + '&meetingNo=' + this.getQueryParam('meetingNo'),
-            that = this;
-
-        var json_oMeetingParamData = JSON.stringify(oMeetingParamData);
-
-        $.ajax({
-            url : sMeetingInfoAPI,
-            method : 'POST',
-            data : json_oMeetingParamData,
-            contentType: 'application/json',
-            success : function(res){
-                console.log("전송완료")
-                that.aCalendarData = that.makeMeetingObject(res);
-                that.drawCalendar();
-            },
-            error : function(){
-                console.warn("API 호출 실패");
+                swal("선택", "선택이 완료되었습니다.", "success");
+            } else {
+                swal("취소", "취소되었습니다.", "error");
             }
-        })
+        });
+
+        // if(!confirm("전송합니까?")) return;
+        // var oMeetingParamData = this.getMeetingDateInfo(),
+        //     sMeetingInfoAPI = '/z/html/meetmain/getSelectDate.json?memberNo=' + this.getQueryParam('memberNo') + '&meetingNo=' + this.getQueryParam('meetingNo'),
+        //     that = this;
+        //
+        // var json_oMeetingParamData = JSON.stringify(oMeetingParamData);
+        //
+        // $.ajax({
+        //     url : sMeetingInfoAPI,
+        //     method : 'POST',
+        //     data : json_oMeetingParamData,
+        //     contentType: 'application/json',
+        //     success : function(res){
+        //         console.log("전송완료")
+        //         that.aCalendarData = that.makeMeetingObject(res);
+        //         that.drawCalendar();
+        //     },
+        //     error : function(){
+        //         console.warn("API 호출 실패");
+        //     }
+        // })
     },
 
     /**
