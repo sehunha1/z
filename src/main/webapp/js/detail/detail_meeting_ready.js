@@ -115,4 +115,20 @@ $(function() {
     e.preventDefault();
     location.href = "../mylist/mylist.html";
   });
+
+  $("#btn_ok").on("click", function(e) {
+    e.preventDefault();
+    var param = {
+      "cal" : $(".date_result_list .item.on .info1").text(),
+      "loc" : $(".place_result_list .item.on .info1").text()
+    };
+
+    $.post("updateMstatFin.json?meetingNo=" + meetingNo, param, function(ajaxResult) {
+      var status = ajaxResult.status;
+      if (status != "success") return;
+      var data = ajaxResult.data;
+    });
+
+    location.href = "../mylist/mylist.html";
+  });
 });

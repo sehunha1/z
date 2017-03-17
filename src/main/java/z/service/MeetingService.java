@@ -19,4 +19,6 @@ public interface MeetingService {
   int[] getMeetingNo(int memberNo) throws Exception;
   int updateFdate(int meetingNo) throws Exception;
   int updateFloc(int meetingNo) throws Exception;
+  int updateCal(int meetingNo, String cal) throws Exception;
+  int updateLoc(int meetingNo, String loc) throws Exception;
 }

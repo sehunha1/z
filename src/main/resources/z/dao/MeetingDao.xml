@@ -205,4 +205,12 @@
 		(select count(*) from loc where loc.mtnum=#{value} group by loc.ltnum order by count(*) desc limit 1)) where mtnum=#{value};
 	</update>
 
+	<update id="updateCal">
+		update meet set fdate=#{cal} where mtnum=#{meetingNo};
+	</update>
+
+	<update id="updateLoc">
+		update meet set floc=#{loc} where mtnum=#{meetingNo};
+	</update>
+
 </mapper>
