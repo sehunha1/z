@@ -8,6 +8,10 @@ var MeetingDetail = function(){
 MeetingDetail.prototype = {
     aCalendarData : null,
     sCurrentMemberInfo : null,
+    sCurrentUserName : null,
+    sCurrentUserPhoto : null,
+    sTimeValueCheckString : 'Select time',
+
     nTotalMember : 1, // 방장 기본 1
 
     init : function(){
@@ -26,6 +30,8 @@ MeetingDetail.prototype = {
     // 세션이나 최소한 쿠키로 멤버정보 가져오도록 처리 필요
     getMemberInfo : function(){
         this.sCurrentMemberInfo = this.getQueryParam('memberNo');
+        this.sCurrentUserName = window._oUserInfo.name;
+        this.sCurrentUserPhoto = window._oUserInfo.photo;
     },
 
     cacheDom : function(){
@@ -42,9 +48,15 @@ MeetingDetail.prototype = {
         this.domDatePicker.on('click', '._dateItemLayer ._deleteDate', $.proxy(this.deleteDateItem, this));
         this.domDatePicker.on('click', '._btnSaveSelectedDate', $.proxy(this.saveMeetingDate, this));
         this.domDatePicker.on('click', '._btnPrevNextCalendar', $.proxy(this.drawCalendar, this));
+        this.domDatePicker.on('click', '._dateInfo', $.proxy(this.toggleEachDateInfoLayer, this));
 
         this.domBtnSaveSelectedDate.on('click', $.proxy(this.saveMeetingDate, this));
         this.domDatePicker.on('click', '._btnPrevNextCalendar', $.proxy(this.drawCalendar, this));
+    },
+
+    toggleEachDateInfoLayer : function(e){
+        var domCurrentDate = $(e.currentTarget).parents('._activeDate');
+        domCurrentDate.find('._dateInfoLayer').toggle();
     },
 
     showSelectInfoUI : function(e){
@@ -61,6 +73,10 @@ MeetingDetail.prototype = {
         this.domDateItemLayer.hide();
     },
 
+    checkTimeValue : function(sValue){
+        return sValue == this.sTimeValueCheckString ? false : true;
+    },
+
     selectDateItem : function(e){
         var domCurrentDate = $(e.currentTarget).parents('._activeDate'),
             sSelectedParamDate = domCurrentDate.find('._dateText').text(),
@@ -72,13 +88,26 @@ MeetingDetail.prototype = {
             sSelectedParamTime = domCurrentDate.attr('data-param-time'),
             aSelectedParamTime = sSelectedParamTime ? sSelectedParamTime.slice(1).split('@') : [],
 
+            sUserName = domCurrentDate.attr('data-param-user-name'),
+            aUserName = sUserName ? sUserName.slice(1).split('@') : [],
+
+            sUserPhoto = domCurrentDate.attr('data-param-user-photo'),
+            aUserPhoto = sUserPhoto ? sUserPhoto.slice(1).split('@') : [],
+
             bUpdateInfo = false,
             bUserUpdateIdx = 0,
             htParamData = {
                 sSelectedParamDate : sSelectedParamDate,
                 aMemberNoList : [],
-                aCalendarTime : []
+                aCalendarTime : [],
+                aUserName : [],
+                aUserPhoto : []
             };
+
+        if(!this.checkTimeValue(sCurrentSelectedParamTime)){
+            alert("시간을 선택해 주세요");
+            return;
+        }
 
         for(var i=0, len=aUserList.length; i<len; i++){
             if(aUserList[i] == this.sCurrentMemberInfo){
@@ -92,6 +121,8 @@ MeetingDetail.prototype = {
             htParamData.aMemberNoList = aUserList;
             htParamData.aCalendarTime = aSelectedParamTime;
             htParamData.aCalendarTime[bUserUpdateIdx] = sCurrentSelectedParamTime;
+            htParamData.aUserName = aUserName;
+            htParamData.aUserPhoto = aUserPhoto;
         }else{
             if(aSelectedParamTime.length){
                 // 기존 날짜 선택자가 있는 경우
@@ -99,13 +130,19 @@ MeetingDetail.prototype = {
                 htParamData.aMemberNoList = aUserList;
                 aSelectedParamTime.push(sCurrentSelectedParamTime);
                 htParamData.aCalendarTime = aSelectedParamTime;
+                aUserName.push(this.sCurrentUserName);
+                htParamData.aUserName = aUserName;
+                aUserPhoto.push(this.sCurrentUserPhoto);
+                htParamData.aUserPhoto = aUserPhoto;
             }else{
                 // 신규선택
                 htParamData.aMemberNoList = [this.sCurrentMemberInfo];
                 htParamData.aCalendarTime = [sCurrentSelectedParamTime];
+                htParamData.aUserName = [this.sCurrentUserName];
+                htParamData.aUserPhoto = [this.sCurrentUserPhoto];
             }
         }
-
+console.log('select',htParamData)
         this.updateMeetingObject(htParamData);
         this.hideSelectInfoUI();
     },
@@ -121,12 +158,20 @@ MeetingDetail.prototype = {
             sSelectedParamTime = domCurrentDate.attr('data-param-time'),
             aSelectedParamTime = sSelectedParamTime ? sSelectedParamTime.slice(1).split('@') : [],
 
+            sUserName = domCurrentDate.attr('data-param-user-name'),
+            aUserName = sUserName ? sUserName.slice(1).split('@') : [],
+
+            sUserPhoto = domCurrentDate.attr('data-param-user-photo'),
+            aUserPhoto = sUserPhoto ? sUserPhoto.slice(1).split('@') : [],
+
             bUpdateInfo = false,
             bUserUpdateIdx = 0,
             htParamData = {
                 sSelectedParamDate : sSelectedParamDate,
                 aMemberNoList : [],
-                aCalendarTime : []
+                aCalendarTime : [],
+                aUserName : [],
+                aUserPhoto : []
             };
 
         if(!aUserList.length){
@@ -145,13 +190,17 @@ MeetingDetail.prototype = {
         if(bUpdateInfo){
             aUserList.splice(bUserUpdateIdx,1);
             aSelectedParamTime.splice(bUserUpdateIdx,1);
+            aUserName.splice(bUserUpdateIdx,1);
+            aUserPhoto.splice(bUserUpdateIdx,1);
             htParamData.aMemberNoList = aUserList;
             htParamData.aCalendarTime = aSelectedParamTime;
+            htParamData.aUserName = aUserName;
+            htParamData.aUserPhoto = aUserPhoto;
         }else{
             alert("본인거만 수정가능합니다.");
             return;
         }
-
+console.log('delete',htParamData)
         this.deleteMeetingObject(htParamData);
         this.hideSelectInfoUI();
         this.drawCalendar();
@@ -172,7 +221,7 @@ MeetingDetail.prototype = {
             }
         }
 
-        return htParamData.value;
+        return decodeURIComponent(htParamData.value);
     },
 
     getMeetingInfo : function(){
@@ -233,7 +282,11 @@ MeetingDetail.prototype = {
                     nSelectCount : 0,
                     bActiveDate : false,
                     memberNo : '',
-                    aMemberNo : []
+                    aMemberNo : [],
+                    userName : '',
+                    userPhoto : '',
+                    aUserName : [],
+                    aUserPhoto : []
                 };
 
                 var _data = oRenderCalendarDate[i].aEachDateInfo[j];
@@ -251,10 +304,7 @@ MeetingDetail.prototype = {
 
                     var eachDate = oRenderCalendarDate[i].aEachDateInfo[j],
                         selectedDate = oOriginCalendarData.selectedDateInfo[k];
-// 서버에서 토탈값 받아야함
-// if(eachDate.calendarDate === '2017-03-17' || eachDate.calendarDate === '2017-03-15'){
-//     selectedDate.nTotalSelector = 2;
-// }
+
                     if(eachDate.calendarDate == selectedDate.calendarDate){
 
                         eachDate.calendarDate = selectedDate.calendarDate;
@@ -266,11 +316,19 @@ MeetingDetail.prototype = {
                             eachDate.aCalendarTime.push(selectedDate.calendarTime);
                             eachDate.memberNo += '@'+selectedDate.memberNo;
                             eachDate.aMemberNo.push(selectedDate.memberNo);
+                            eachDate.userName += '@'+selectedDate.userName;
+                            eachDate.aUserName.push(selectedDate.userName);
+                            eachDate.userPhoto += '@'+selectedDate.userPhoto;
+                            eachDate.aUserPhoto.push(selectedDate.userPhoto);
                         }else{
                             eachDate.calendarTime = '@'+selectedDate.calendarTime; // array
                             eachDate.aCalendarTime[0] = selectedDate.calendarTime;
                             eachDate.memberNo = '@'+selectedDate.memberNo;
                             eachDate.aMemberNo[0] = selectedDate.memberNo;
+                            eachDate.userName += '@'+selectedDate.userName;
+                            eachDate.aUserName[0] = selectedDate.userName;
+                            eachDate.userPhoto += '@'+selectedDate.userPhoto;
+                            eachDate.aUserPhoto[0] = selectedDate.userPhoto;
                         }
                     }
 
@@ -290,7 +348,9 @@ MeetingDetail.prototype = {
         var aMeetingData = this.aCalendarData,
             sParamDate = htParamData.sSelectedParamDate,
             aParamTime = htParamData.aCalendarTime,
-            aMemberNo = htParamData.aMemberNoList;
+            aMemberNo = htParamData.aMemberNoList,
+            aUserName = htParamData.aUserName,
+            aUserPhoto = htParamData.aUserPhoto;
 
         for(var i=0, len=aMeetingData.length; i<len; i++){
             if(aMeetingData[i].sMeetingDate.getFullYear() == parseInt(currentYear) && aMeetingData[i].sMeetingDate.getMonth() == parseInt(currentMonth)){
@@ -303,6 +363,10 @@ MeetingDetail.prototype = {
                         data.aMemberNo = aMemberNo;
                         data.memberNo = '@'+aMemberNo.join('@');
                         data.nLocalSelectedDate = sParamDate;
+                        data.userName = '@'+aUserName.join('@');
+                        data.aUserName = aUserName;
+                        data.userPhoto = '@'+aUserPhoto.join('@');
+                        data.aUserPhoto = aUserPhoto;
                     }
                 }
             }
@@ -319,7 +383,9 @@ MeetingDetail.prototype = {
         var aMeetingData = this.aCalendarData,
             sParamDate = htParamData.sSelectedParamDate,
             aParamTime = htParamData.aCalendarTime,
-            aMemberNo = htParamData.aMemberNoList;
+            aMemberNo = htParamData.aMemberNoList,
+            aUserName = htParamData.aUserName,
+            aUserPhoto = htParamData.aUserPhoto;
 
         var aMeetingData = this.aCalendarData,
             sCurrentMonthDateIdx = null;
@@ -340,6 +406,10 @@ MeetingDetail.prototype = {
                     data.aCalendarTime = aParamTime;
                     data.memberNo = '@'+aMemberNo.join('@');
                     data.aMemberNo = aMemberNo;
+                    data.userName = '@'+aUserName.join('@');
+                    data.aUserName = aUserName;
+                    data.userPhoto = '@'+aUserPhoto.join('@');
+                    data.aUserPhoto = aUserPhoto;
                 }
 
                 if(!aMeetingData[sCurrentMonthDateIdx].aEachDateInfo[j].aCalendarTime.length){
@@ -371,6 +441,8 @@ MeetingDetail.prototype = {
         var aDomActiveDateList = this.domDatePicker.find("._dateItem");
         aDomActiveDateList.removeClass('_selectComplete selecting _currentUserSelectDate');
         aDomActiveDateList.find('.memberInfo').text('');
+        aDomActiveDateList.find('.dateInfo').text('');
+        aDomActiveDateList.find('._dateInfoLayer').hide().empty();
         // aDomActiveDateList.find('a').css({'opacity': 1});
 
         for(var i=0, len=aDomActiveDateList.length; i<len; i++){
@@ -389,6 +461,7 @@ MeetingDetail.prototype = {
 
                 _renderData.currentUserSelectDate = '___';
                 if(_renderData.nLocalSelectedDate == aDomActiveDateList.eq(i).find('a').text()*1){
+
                     for(var v=0, vlen=_renderData.aMemberNo.length; v<vlen; v++){
                         if(this.sCurrentMemberInfo*1 === _renderData.aMemberNo[v]*1){
                             _renderData.currentUserSelectDate = '_currentUserSelectDate';
@@ -397,10 +470,25 @@ MeetingDetail.prototype = {
 
                     aDomActiveDateList.eq(i).attr('data-member-no', '@'+_renderData.aMemberNo.join('@'));
                     aDomActiveDateList.eq(i).attr('data-param-time', '@'+_renderData.aCalendarTime.join('@'));
+                    aDomActiveDateList.eq(i).attr('data-param-user-name', '@'+_renderData.aUserName.join('@'));
+                    aDomActiveDateList.eq(i).attr('data-param-user-photo', '@'+_renderData.aUserPhoto.join('@'));
                     aDomActiveDateList.eq(i).addClass("_selectComplete");
                     aDomActiveDateList.eq(i).addClass(_renderData.currentUserSelectDate);
                     aDomActiveDateList.eq(i).find('.memberInfo').text(_renderData.aMemberNo.length +"/"+this.nTotalMember);
-                    // aDomActiveDateList.eq(i).find('a').css({'opacity': memberRate/100});
+                    aDomActiveDateList.eq(i).find('.dateInfo').text('!!!');
+                    aDomActiveDateList.eq(i).find('._dateInfoLayer').empty();
+                    var tempFragment = '';
+                    for(var z=0, zlen=_renderData.aUserName.length; z<zlen; z++){
+                        var name = _renderData.aUserName[z],
+                            photo = _renderData.aUserPhoto[z];
+
+                        tempFragment += "<div class='date_user_info'>" +
+                                        "<img class='photo' src='../upload/"+photo+"' alt='"+name+"프로필 이미지'>"+
+                                        "<span class='name'>"+name+"</span>"+
+                                        "</div>";
+                    }
+
+                    aDomActiveDateList.eq(i).find('._dateInfoLayer').html(tempFragment);
                 }
             }
         }
@@ -408,7 +496,7 @@ MeetingDetail.prototype = {
         // test용
         // console.log('------------------------------------------------')
         // this.aCalendarData[0].aEachDateInfo.forEach(function(v){
-            //console.log(v)
+        //console.log(v)
         // })
         // this.getMeetingDateInfo().aData.forEach(function(v){
         //     console.log(v.uiData)
@@ -448,14 +536,14 @@ MeetingDetail.prototype = {
         var these = this;
 
         swal({title: "일정 선택",
-              text: "날짜를 최종 선택하시겠습니까?",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "선택",
-              cancelButtonText: "취소",
-              closeOnConfirm: false,
-              closeOnCancel: false
+            text: "날짜를 최종 선택하시겠습니까?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "선택",
+            cancelButtonText: "취소",
+            closeOnConfirm: false,
+            closeOnCancel: false
         }, function(isConfirm){
             if (isConfirm) {
                 var oMeetingParamData = these.getMeetingDateInfo(),
