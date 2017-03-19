@@ -636,7 +636,7 @@ function share(){
 </script>
 
   <script>
-    $('.timechoice').on('click','.placeholder',function(){
+    $('body').on('click','.timechoice .placeholder',function(){
         var parent = $(this).closest('.timechoice');
         if ( ! parent.hasClass('is-open')){
             parent.addClass('is-open');

@@ -140,12 +140,12 @@ $(function() {
         });
     });
 
-    window.oMeetingDetail = new MeetingDetail();
+
     $('body').on('click', '.ui-datepicker-header', function(e){
         e.preventDefault();
         window.oMeetingDetail.init();
     });
-    
+
 });
 
 //******* 멤버 초대 팝업 *******//

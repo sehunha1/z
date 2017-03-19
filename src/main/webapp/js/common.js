@@ -140,6 +140,11 @@ $(function() {
 			});
 			return;
 		} else if (ajaxResult.status == "success") {
+			window._oUserInfo = ajaxResult.data;
+			if("/z/html/meetmain/meetmain.html" === location.pathname){
+                window.oMeetingDetail = new MeetingDetail();
+			}
+
 			// 로그인 되었으면, 로그오프 상태 출력 창을 감춘다.
 			$('#_logout_status').css(
 					'display', 'none');
