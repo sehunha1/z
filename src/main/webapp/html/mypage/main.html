@@ -17,10 +17,11 @@
    <input type='hidden' id='nameback'/>
    <input type='hidden' id='pathback'/>
    <input type='hidden' id='passback'/>
+   <input type='hidden' id='facebookback'/>
 
 
 		<div id='tab'
-			style='float: left; width: 150px; height: 700px; margin-left: 10px; margin-right: 20px; position: relative;'>
+			style='float: left; width: 150px; height: 700px; margin-left: 10px; margin-right: 20px; position: absoulte;'>
 			<ul class="nav nav-pills nav-stacked"
 				style='font-family: Noto Sans KR, sans-serif;'>
 				<li class="active"><a data-toggle="tab" href="#menu1">초대 확인</a></li>
@@ -33,12 +34,12 @@
 		<div class="tab-content">
 		  
 		    
-		<div id="menu1" class="tab-pane fade in active" >
+		<div id="menu1" class="tab-pane fade in active">
       <h2 style=''>초대 확인</h2>
         <hr>
         <div>
         <div id="none" style="display:none;"><h3>받은 초대가 없습니다</h3></div>
-        <table id='list-table' class='table table-hover' style='width:700px; overflow:hidden;'>
+        <table id='list-table' class='table table-hover' style='width:750px; overflow:hidden; overflow-y:auto;'>
         <thead>
           <tr>
             <th>모임명</th>
@@ -122,8 +123,14 @@
         </form>
         
         <hr>
-        <h3>페이스북 계정 연동</h3>
-			
+        <h2>페이스북 계정 연동</h2>
+        <hr>
+			  <div id="facebook">
+			  <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
+			  </div>
+			  <div id="already">
+			     <h3>이미 페이스북과 연동되어있습니다.</h3>
+			  </div>
 			</div>
 			
 		  <div id="menu4" class="tab-pane fade">
@@ -186,6 +193,7 @@
 		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
 	<script src='main.js'></script>
+	<script src='facebook.js'></script>
 
 	<script type="text/javascript"
 		src="../jquery-validation/dist/jquery.validate.min.js"></script>

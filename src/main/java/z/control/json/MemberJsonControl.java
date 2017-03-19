@@ -116,7 +116,6 @@ public class MemberJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
-  
   @RequestMapping("html/auth/checkEmail")
   public AjaxResult chkMbEmail(String email) throws Exception {
 
@@ -138,6 +137,13 @@ public class MemberJsonControl {
     } else {
       return new AjaxResult(AjaxResult.FAIL, "중복된 페이스북 계정 입니다.");
     }
+  }
+  
+  @RequestMapping("html/mypage/checkfbemail")
+  public AjaxResult checkfbemail(String facebook) throws Exception {
+
+    int resultCnt = memberService.chkMbFacebook(facebook);
+      return new AjaxResult(AjaxResult.SUCCESS, resultCnt);
   }
   
   @RequestMapping("html/auth/updateFBphoto")
@@ -189,12 +195,27 @@ public class MemberJsonControl {
   public AjaxResult delete(int memberNo, HttpServletRequest request, HttpSession session) throws Exception {
     session.invalidate(); // 세션 초기화
     
-    int count = memberService.memberdelete(memberNo);
-    if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
+    int count1 = memberService.locmemberdelete(memberNo);
+    int count2 = memberService.listmemberdelete(memberNo);
+    int count3 = memberService.boardmemberdelete(memberNo);
+    int count4 = memberService.calmemberdelete(memberNo);
+    int count5 = memberService.linkmemberdelete(memberNo);
+    int count6 = memberService.memberdelete(memberNo);
+    
+    if ((count1 & count2 & count3 & count4 & count5 & count6) == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "삭제 실패 입니다");
     }
     
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
+  }
+  
+  @RequestMapping("html/mypage/updatefcbk")
+  public AjaxResult updatefcbk(HttpSession session, Member member) throws Exception {
+    
+    memberService.updatefcbk(member);
+    
+    session.setAttribute("member", member);
+    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
   }
 }
 

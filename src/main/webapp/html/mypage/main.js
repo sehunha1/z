@@ -10,6 +10,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	$('#username1').val(member.name);
 	$('#pathback').val(member.photo);
 	$('#passback').val(member.password);
+	$('#facebookback').val(member.facebook);
 	
 	$('#now-photo').attr('src', '../upload/' + member.photo);
 	
@@ -312,7 +313,8 @@ $('#emailcheck').click(function() {
                     "memberNo": $('#memberNo').val(),
                     "email": $('#email').val(),
                     "name": $('#username1').val(),
-                    "photo": $('#photo-path').val()
+                    "photo": $('#photo-path').val(),
+                    "facebook": $('#facebookback').val()
                     //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
                     //"photo": $("#photo").attr('src', 'html/upload/' + val())
                 
@@ -331,7 +333,7 @@ $('#emailcheck').click(function() {
                     },
                     function(){
                       event.preventDefault(); 
-                      location.href='../main/main.html?ver=1';
+                      location.reload();
                       });
                 }, 'json'); // post();
             }
@@ -414,7 +416,8 @@ $('#emailcheck').click(function() {
                       "email": $('#email1').val(),
                       "name": $('#nameback').val(),
                       "password": $('#password1').val(),
-                      "photo": $('#pathback').val()
+                      "photo": $('#pathback').val(),
+                      "facebook": $('#facebookback').val()
                   };
 
                   $.post('updateemailpassword.json', param, function(ajaxResult) {
@@ -430,7 +433,7 @@ $('#emailcheck').click(function() {
                       },
                       function(){
                         event.preventDefault(); 
-                        location.href='../main/main.html?ver=1';
+                        location.reload();
                         });
                   }, 'json'); // post();
               }
