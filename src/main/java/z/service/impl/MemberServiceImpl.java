@@ -77,7 +77,7 @@ public class MemberServiceImpl implements MemberService {
 
     return memberDao.chkMbEmail(email);
   }
-
+  
   public int chkMbFacebook(String facebook) throws Exception {
     return memberDao.chkMbFacebook(facebook);
   }
@@ -91,11 +91,15 @@ public class MemberServiceImpl implements MemberService {
     if (memberDao.countByNo(no) == 0) {
       throw new Exception("회원을 찾지 못했습니다.");
     }
-
-    int count1 = memberDao.linkmemberdelete(no);
-    int count2 = memberDao.memberdelete(no);
-
-    return (count1 & count2);
+    
+    int count = memberDao.linkCheck(no);
+    
+    if (count == 0) {
+      int count2 = memberDao.memberdelete(no);
+      return count2;
+    } 
+      memberDao.memberChange(no);
+      return count;
   }
 
   public int countEmailPassword(String email, String password) throws Exception {
@@ -110,4 +114,34 @@ public class MemberServiceImpl implements MemberService {
     }
     return count;
   }
+
+  public int updatefcbk(Member member) throws Exception {
+    return memberDao.updatefcbk(member);
+  }
+/*
+  public int locmemberdelete(int memberNo) throws Exception {
+    int count = memberDao.locmemberdelete(memberNo);
+    return count;
+  }
+
+  public int listmemberdelete(int memberNo) throws Exception {
+    int count = memberDao.listmemberdelete(memberNo);
+    return count;
+  }
+
+  public int boardmemberdelete(int memberNo) throws Exception {
+    int count = memberDao.boardmemberdelete(memberNo);
+    return count;
+  }
+
+  public int calmemberdelete(int memberNo) throws Exception {
+    int count = memberDao.calmemberdelete(memberNo);
+    return count;
+  }
+
+  public int linkmemberdelete(int memberNo) throws Exception {
+    int count = memberDao.linkmemberdelete(memberNo);
+    return count;
+  }*/
+  
 }

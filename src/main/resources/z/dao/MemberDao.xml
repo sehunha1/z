@@ -108,13 +108,16 @@
 		email,
 		photo,
 		kakao,
-		fcbk
+		fcbk,
+		quit
 		from memb
 		where
 		email=#{email}
 		and pwd=password(#{password})
+		and quit="n"
 	</select>
 
+<!-- 
 	<select id="getOneByEmailFacebook" parameterType="map"
 		resultMap="member-map">
 		select
@@ -128,7 +131,21 @@
 		email=#{email}
 		and fcbk=#{facebook}
 	</select>
-
+ -->
+ 
+  <select id="getOneByFacebook" parameterType="String"
+    resultMap="member-map">
+    select
+    mnum,
+    name,
+    email,
+    kakao,
+    fcbk
+    from memb
+    where
+      fcbk=#{facebook}
+  </select>
+ 
 	<!-- 회원 중복 검사 -->
 	<select id="chkMbEmail" resultType="int">
 		SELECT
@@ -168,23 +185,72 @@
 		photo=#{photo}
 		where mnum=#{memberNo}
 	</update>
-
+	
 	<update id="updatelogin" parameterType="member">
 		update memb set
 		email=#{email},
 		pwd=password(#{password})
 		where mnum=#{memberNo}
 	</update>
+	
+	 <update id="updatefcbk" parameterType="member">
+    update memb set
+    fcbk=#{facebook}
+    where mnum=#{memberNo}
+  </update>
 
 	<!-- 회원 삭제 임시 -->
+	<!-- 
+  <delete id="locmemberdelete" parameterType='int'>
+    delete from loc
+    where mnum=#{value}
+  </delete>
+  
+	<delete id="listmemberdelete" parameterType='int'>
+    delete from list
+    where mnum=#{value}
+  </delete>
+  
+  <delete id="boardmemberdelete" parameterType='int'>
+    delete from board
+    where mnum=#{value}
+  </delete>
+
+  <delete id="calmemberdelete" parameterType='int'>
+    delete from cal
+    where mnum=#{value}
+  </delete>
+  
 	<delete id="linkmemberdelete" parameterType='int'>
 		delete from link
 		where mnum=#{value}
 	</delete>
-
+	 -->
+	 
+	 <select id="linkCheck" parameterType="int" resultType="int">
+    select count(*) 
+      from link
+    where mnum=#{value}
+	 </select>
+	
 	<delete id="memberdelete" parameterType="int">
-		delete from memb where
-		mnum=#{value}
+	  delete from memb
+	  where mnum=#{value}
 	</delete>
-
+	
+	 <delete id="memberChange" parameterType="int">
+    update memb set
+    quit="y"
+    where mnum=#{value}
+  </delete>
+ <!-- 
+	<delete id="memberdelete" parameterType="int">
+		delete from loc where mnum=#{value};
+		delete from list where mnum=#{value};
+		delete from board where mnum=#{value};
+		delete from cal where mnum=#{value};
+		delete from link where mnum=#{value};
+		delete from memb where mnum=#{value};
+	</delete>
+ -->
 </mapper>

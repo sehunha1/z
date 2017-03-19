@@ -38,6 +38,67 @@
       });
   }
   
+  
+  function fbLogin() {
+	  FB.login(function(response) {
+		  FB.api('/me/?fields=picture', { locale: 'kr_KR', fields: 'name, email, picture' },
+	    		  function(response) {
+	    		    //console.log(response.email);
+	    		    //console.log(response.name);
+	    		    
+	    		    //document.getElementById('status').innerHTML =
+	    		    //  'Thanks for logging in, ' + response.name + response.email + '!';
+	    		    
+	    		    
+	    		    $(function() {
+	    		          var cookie_email = response.email;
+	    		          var cookie_name = response.name;
+	    		          $.cookie('cookie_e', cookie_email, { path: '/'});
+	    		          $.cookie('cookie_n', cookie_name, { path: '/'});
+	    		      })
+	    		      
+	    		      // 페이스북 중복검사
+	    		      
+					 //페이스북 종복검사
+					 $(function() {
+					    $.getJSON('checkFacebook.json?facebook=' + response.email, function(ajaxResult) {
+					      var status = ajaxResult.status;
+					
+					      if (response.email == undefined) {
+					    	  
+					      }
+					      else if (status == "success") {
+					        	 swal({
+				    				  title: "페이스북 첫 로그인 ",
+				    				  text: "회원가입 창으로 이동합니다. 사진은 자동으로 받아옵니다.",
+				    				},
+				    				function(){
+				    				  location.href ='facebookjoin.html'
+				    				});
+					        	
+					        } 
+					        else if (status != "success") {
+					        	
+					        	var param = {
+					        			facebook: response.email
+					        		};
+					        		
+					        		$.post('loginFacebook.json', param, function(ajaxResult) {
+					        			if (ajaxResult.status == "success") {
+					        				location.href = "../main/main.html";	
+					        				return;
+					        			}
+					        			sweetAlert("로그인 실패", ajaxResult.data, "error");
+					        		}, 'json');
+					        	
+					      } 
+					    });
+					});
+	    		  }
+	    		);
+		});
+  }
+  
 
   window.fbAsyncInit = function() {
   FB.init({
@@ -75,55 +136,9 @@
 	 	            	  $.cookie('cookie_i', image, { path: '/'});
 	    		          $.cookie('cookie_p', cookie_photo, { path: '/'});
 	    		          
-	    		          console.log(cookie_photo);
+	    		          //console.log(cookie_photo);
 	    		      })
 	    		      
-	            	/*
-	            	//var image = 'http://graph.facebook.com/' + user.id + '/picture';
-	            	var image = user.picture.data.url;
-	            	var imagesplit = image.split('/')[6].split('?')[0];
-	            	//var imagejpg = imagesplit[7].split('?')[0];
-	            	// replaceAll("\\?.*", "")
-	            	console.log(imagesplit);
-	            	//console.log(imagesplit[7].replace('/?/gi', ""));
-	            	
-	            	
-	            	//console.log(image);
-	            	//image.replace(/&/gi, '%26');
-	            	
-	            	//console.log(image.replace(/&/gi, '%26'));
-	            	
-	            	
-	            	// 사진 json
-	            	
-	            	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-	            		if (ajaxResult.data.photo != imagesplit) {
-	            			// 사진 DB에 추가
-	            			$.getJSON("../auth/updateFBphoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
-	    	                });
-	            			
-	            			// 사진 upload에 추가
-	            			$.getJSON("../../common/fbPhoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
-	    	                });
-	            		}
-	            		else {
-	            			$('#profile_photo').html('<img src="../upload/' + ajaxResult.data.photo + '" height=30px; width=30px;/>');
-	            		}
-	            	});
-	            	*/
-	                
-	            	
-	            	// 사진 json 끝
-	            	
-	            	
-	            	// image.src = 'http://graph.facebook.com/' + user.id + '/picture';
-	            	//document.getElementById('profile_photo').src = "yourpicture.png";
-	            	//$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
-	            	//$('#profile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" height=30px; width=30px;/>');
-	                //$('#inprofile_photo').html('<img src="http://graph.facebook.com/' + user.id + '/picture" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
-	    			//$('#inprofile_photo').html('<img src="../upload/' + image + '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
-	                
-	                
 	            }
 	        });    
 	         
@@ -143,70 +158,3 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    //console.log('Welcome!  Fetching your information.... ');
-    /*
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + + '!';
-    });
-    */
-		        
-    //FB.api('/me', { locale: 'kr_KR', fields: 'name, email' },
-	  FB.api('/me/?fields=picture', { locale: 'kr_KR', fields: 'name, email, picture' },
-    		  function(response) {
-    		    console.log(response.email);
-    		    console.log(response.name);
-    		    
-    		    //document.getElementById('status').innerHTML =
-    		    //  'Thanks for logging in, ' + response.name + response.email + '!';
-    		    
-    		    
-    		    $(function() {
-    		          var cookie_email = response.email;
-    		          var cookie_name = response.name;
-    		          $.cookie('cookie_e', cookie_email, { path: '/'});
-    		          $.cookie('cookie_n', cookie_name, { path: '/'});
-    		      })
-    		      
-    		      // 페이스북 중복검사
-    		      
-				 //페이스북 종복검사
-				 $(function() {
-				    $.getJSON('checkFacebook.json?facebook=' + response.email, function(ajaxResult) {
-				      var status = ajaxResult.status;
-				
-				        if (status == "success") {
-				        	 swal({
-			    				  title: "페이스북으로 로그인",
-			    				  text: "회원가입 창으로 이동합니다.",
-			    				},
-			    				function(){
-			    				  location.href ='facebookjoin.html'
-			    				});
-				        	
-				        } else if (status != "success") {
-				        	
-				        	var param = {
-				        			email: response.email,
-				        			facebook: response.email
-				        		};
-				        		
-				        		$.post('loginFacebook.json', param, function(ajaxResult) {
-				        			if (ajaxResult.status == "success") {
-				        				location.href = "../main/main.html";	
-				        				return;
-				        			}
-				        			sweetAlert("로그인 실패", ajaxResult.data, "error");
-				        		}, 'json');
-				        	
-				      } 
-				    });
-				});
-    		  }
-    		);
-    
-  }
