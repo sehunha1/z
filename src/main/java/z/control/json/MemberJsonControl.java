@@ -194,14 +194,9 @@ public class MemberJsonControl {
   public AjaxResult delete(int memberNo, HttpServletRequest request, HttpSession session) throws Exception {
     session.invalidate(); // 세션 초기화
     
-    int count1 = memberService.locmemberdelete(memberNo);
-    int count2 = memberService.listmemberdelete(memberNo);
-    int count3 = memberService.boardmemberdelete(memberNo);
-    int count4 = memberService.calmemberdelete(memberNo);
-    int count5 = memberService.linkmemberdelete(memberNo);
-    int count6 = memberService.memberdelete(memberNo);
+    int count = memberService.memberdelete(memberNo);
     
-    if ((count1 & count2 & count3 & count4 & count5 & count6) == 0) {
+    if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "삭제 실패 입니다");
     }
     

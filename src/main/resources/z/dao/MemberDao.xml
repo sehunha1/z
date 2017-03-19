@@ -108,11 +108,13 @@
 		email,
 		photo,
 		kakao,
-		fcbk
+		fcbk,
+		quit
 		from memb
 		where
 		email=#{email}
 		and pwd=password(#{password})
+		and quit="n"
 	</select>
 
 <!-- 
@@ -198,6 +200,7 @@
   </update>
 
 	<!-- 회원 삭제 임시 -->
+	<!-- 
   <delete id="locmemberdelete" parameterType='int'>
     delete from loc
     where mnum=#{value}
@@ -222,11 +225,24 @@
 		delete from link
 		where mnum=#{value}
 	</delete>
+	 -->
+	 
+	 <select id="linkCheck" parameterType="int" resultType="int">
+    select count(*) 
+      from link
+    where mnum=#{value}
+	 </select>
 	
 	<delete id="memberdelete" parameterType="int">
 	  delete from memb
 	  where mnum=#{value}
 	</delete>
+	
+	 <delete id="memberChange" parameterType="int">
+    update memb set
+    quit="y"
+    where mnum=#{value}
+  </delete>
  <!-- 
 	<delete id="memberdelete" parameterType="int">
 		delete from loc where mnum=#{value};

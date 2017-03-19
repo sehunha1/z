@@ -92,9 +92,14 @@ public class MemberServiceImpl implements MemberService {
       throw new Exception("회원을 찾지 못했습니다.");
     }
     
-    int count = memberDao.memberdelete(no);
-
-    return (count);
+    int count = memberDao.linkCheck(no);
+    
+    if (count == 0) {
+      int count2 = memberDao.memberdelete(no);
+      return count2;
+    } 
+      memberDao.memberChange(no);
+      return count;
   }
 
   public int countEmailPassword(String email, String password) throws Exception {
@@ -113,7 +118,7 @@ public class MemberServiceImpl implements MemberService {
   public int updatefcbk(Member member) throws Exception {
     return memberDao.updatefcbk(member);
   }
-
+/*
   public int locmemberdelete(int memberNo) throws Exception {
     int count = memberDao.locmemberdelete(memberNo);
     return count;
@@ -137,5 +142,6 @@ public class MemberServiceImpl implements MemberService {
   public int linkmemberdelete(int memberNo) throws Exception {
     int count = memberDao.linkmemberdelete(memberNo);
     return count;
-  }
+  }*/
+  
 }

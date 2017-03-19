@@ -60,7 +60,25 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 					type: "success",
 				},
 				function(){
-					top.document.location.reload();
+					//top.document.location.reload();
+					$.ajax({
+						type : "GET",
+						url : "invite.json?memberNo=" + mnum,
+						dataType : "json",
+						error : function() {
+							alert('통신실패!!');
+						},
+						success : function(data) {
+							tbody = $('#list-table > tbody');
+							template = Handlebars.compile($('#trTemplatelist').html());
+							tbody.html(template({"list": data.data}));
+							
+							if (data.data == "") {
+								$("#list-table").css("display", "none");
+								$("#none").css("display", "block");
+							}
+						}
+					});
 				});
 			});
 	});
@@ -93,7 +111,25 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 					type: "success",
 				},
 				function(){
-					top.document.location.reload();
+					//top.document.location.reload();
+					$.ajax({
+						type : "GET",
+						url : "invite.json?memberNo=" + mnum,
+						dataType : "json",
+						error : function() {
+							alert('통신실패!!');
+						},
+						success : function(data) {
+							tbody = $('#list-table > tbody');
+							template = Handlebars.compile($('#trTemplatelist').html());
+							tbody.html(template({"list": data.data}));
+							
+							if (data.data == "") {
+								$("#list-table").css("display", "none");
+								$("#none").css("display", "block");
+							}
+						}
+					});
 				});
 			});
 	});
