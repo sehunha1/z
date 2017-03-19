@@ -115,8 +115,6 @@
   background-color: grey;
   height:300px;
   width:230px;
-  
-  
 }
 
 
@@ -130,8 +128,6 @@
   font-size: 15px;
   background-color: #f5f5f5;
   text-align : left;
-  border-bottom: 2px;
-  border-bottom-color: grey;
   border: 0px;
 }
 #detail_content {
@@ -148,18 +144,33 @@
   background-color: #f5f5f5;
   margin-top: 10px;
 }
+#detail_date {
+  margin-top : 0px;
+  width :650px;
+  height : 12px;
+  font-size: 10px;
+  color: grey;
+  background-color: #f5f5f5;
+  text-align : right;
+  padding-right:15px;
+  border: 0px;
+}
 
 #detail_photo {
   font-size: 15px;
   background-color: #f5f5f5;
    text-align : left;
+   padding-top : 0px;
 }
+
 .detail_button{
 	text-align : left;
 	margin-left : 20px;
+	
 }
+
 #update-btn {
-	margin-left : 300px;
+	margin-left : 390px;
   margin-top: 10px;
   height: 25px;
   width: 70px;
@@ -190,11 +201,31 @@
  .author {
 	text-align : left;
 }
+
+.block-date {
+	color :grey;
+	font-size: 6px;
+}
 .post-img-content {
 	height: 130px;
 }
 
 .col-sm-10{
-	height : 100px;
-	width :500px;
+	height : 230px;
+	margin-left :10px;
+	padding-left : 10px;
+	width :626px;
+	padding-top:15px;
+	margin-top: 10px;
+	background-color : #ffdad9;
+	border-radius: 3px;
+}
+
+.download-btn {
+	margin-left: 429px;
+	height :20px;
+	width : 100px;
+	font-size: 10px;
+	
+	
 }

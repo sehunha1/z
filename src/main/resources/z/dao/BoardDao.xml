@@ -11,7 +11,7 @@
     <result column="cont"      property="content"/>
     <result column="mnum"      property="memberNo"/>
     <result column="mtnum"      property="meetNo"/>
-    
+    <result column="bdate"       property="boardDate"/>
     <collection property="addFileList" ofType="addFile">
       <id     column="fnum"     property="fileNo"/>
       <result column="bnum"     property="boardNo"/>
@@ -44,6 +44,7 @@
   
   <select id="getList" parameterType="int" resultMap="board-map">
     select 
+      b.bdate,
       b.bnum, 
       b.mnum,
       b.mtnum,
@@ -61,6 +62,7 @@
   
   <select id="getOne" parameterType="int" resultMap="board-map">
     select 
+      b.bdate,
       b.bnum, 
       b.mnum,
       b.mtnum,
@@ -75,8 +77,8 @@
   </select>
   
   <insert id="insert" parameterType="board" useGeneratedKeys="true" keyColumn="bnum" keyProperty="boardNo">
-    insert into board(mnum, mtnum, titl, cont) 
-    values(#{memberNo},#{meetNo}, #{title}, #{content})
+    insert into board(mnum, mtnum, titl, cont, bdate) 
+    values(#{memberNo},#{meetNo}, #{title}, #{content}, now())
   </insert> 
 
   <update id="update" parameterType="board">

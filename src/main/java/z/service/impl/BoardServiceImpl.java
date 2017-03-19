@@ -65,7 +65,6 @@ public class BoardServiceImpl implements BoardService {
     }
     
     int count = studentDao.delete(no);
-
     if (managerDao.countByNo(no) == 0 && teacherDao.countByNo(no) == 0) {
       memberDao.delete(no);
     }

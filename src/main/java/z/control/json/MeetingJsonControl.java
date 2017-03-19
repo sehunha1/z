@@ -40,7 +40,7 @@ public class MeetingJsonControl {
     }
     return new AjaxResult(AjaxResult.FAIL, "방 개설 실패.");
   }
-
+  
   @RequestMapping("html/getOneMeeting")
   public AjaxResult getOneMeeting(int meetingNo) throws Exception {
     Meeting oneMeeting = meetingService.getOneMeeting(meetingNo);
@@ -108,4 +108,19 @@ public class MeetingJsonControl {
 
     return new AjaxResult(AjaxResult.SUCCESS, "성공");
   }
+  
+  // 모임멤버 초대
+//  @RequestMapping("html/link/membAdd")
+//  public AjaxResult emailLink(EmailList emailList) throws Exception {
+//    int[] membNoList = meetingService.getMembNoList(emailList);
+////    int count = meetingService.emailLink(emailList);
+//    // 로그인 한 경우만 모임 개설
+//    if (count == 0) {
+//
+//      return new AjaxResult(AjaxResult.SUCCESS, "성공");
+//    }
+//    return new AjaxResult(AjaxResult.FAIL, "실패");
+//  }
+  
+  
 }

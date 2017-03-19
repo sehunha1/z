@@ -76,7 +76,6 @@ public class BoardJsonControl {
     }
     
     memberService.add(member);
-
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }*/
   @RequestMapping("/html/meetmain/file")
@@ -137,8 +136,3 @@ public class BoardJsonControl {
   }
   
 }
-
-
-
-
-
