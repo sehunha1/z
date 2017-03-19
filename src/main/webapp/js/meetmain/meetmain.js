@@ -262,4 +262,3 @@ $('body').on('click', '#memb-close-btn', function(event) {
 	$('#new-field').children().remove();
 	$('.inputMessage').empty();
 });
-
