@@ -1,11 +1,14 @@
 package z.control.json;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import z.domain.Link;
@@ -66,4 +69,21 @@ public class LinkJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "수락 성공하였습니다");
   }
+  
+  // 멤버 초대시 link 테이블 데이터 삽입
+  @RequestMapping("html/link/insert")
+  public AjaxResult linkInsert(@RequestParam(value="meetingNo") int meetingNo, @RequestParam(value="linkMembList") int[] linkMembList) throws Exception {
+    System.out.println(linkMembList.length);
+    Map linkMembMap = new HashMap();
+    linkMembMap.put("meetingNo", meetingNo);
+    linkMembMap.put("linkMembList", linkMembList);
+    
+    int count = linkService.linkInsert(linkMembMap);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "데이터 삽입 실패");
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "데이터 삽입 성공");
+  }
+  
 }

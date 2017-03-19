@@ -1,5 +1,5 @@
 var meetingNo = window.location.search.split("&")[1].substring(10);
-var membNoList = new Array(); // 멤버번호
+var linkMembList = new Array(); // 멤버번호
 
 Date.prototype.Compare = function(ComDate, Type) {
     var RtnVal = -1;
@@ -118,7 +118,8 @@ $(function() {
   
     $.get("../../html/sidebar.html", function(result) {
 	    $("#sidebar").html(result);
-
+	    
+	    // 방장
         $.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
             var status = ajaxResult.status;
 
@@ -129,6 +130,8 @@ $(function() {
             var ul = $(".meeting_memb_boss");
             ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
         });
+        
+        // 방장 외 멤버
         $.getJSON('listMeetingMembNotBoss.json?meetingNo=' + meetingNo, function(ajaxResult) {
             var status = ajaxResult.status;
 
@@ -140,7 +143,6 @@ $(function() {
             ul.html(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
         });
     });
-
 
     $('body').on('click', '.ui-datepicker-header', function(e){
         e.preventDefault();
@@ -171,25 +173,32 @@ $('body').on('click', '#invite-btn', function(e) {
 		
 		// 빈 문자열 입력 or 경고 문구 출력 시
 		if ($(this).text().trim() == "" || $(this).css('color') == "rgb(255, 0, 0)") {
-			alert("msss");
+			alert("입력한 이메일을 다시 확인해주세요.");
 			sendOk = false;
 			return false;
 		}
 	});
 	
-	// 이메일 전송
+	// 초대 멤버 데이터 삽입
 	if (sendOk) {
-		var emailList = memb_add_email();
-		console.log(emailList);
-//				$.post(serverRoot + '/html/sidebar/getSideMemb.json', emailList, function(ajaxResult) {
-//
-//				});
+		
+		$.post(serverRoot + '/html/link/insert.json?meetingNo=' + meetingNo + '&linkMembList=' + linkMembList, function(ajaxResult) {
+			if (ajaxResult.status != "success") {
+				alert(ajaxResult.data);
+				return false;
+			}
+			
+			// 멤버 초대 성공시
+			linkMembList.splice(0);
+			console.log(linkMembList);
+		});
 	}
 });
 
 // 멤버 초대 박스 이메일 입력시
 $('body').on('keyup', '.mail-box-cls', function(e) {
-	var membNo = null;
+	var membNo = null; // 회원 일련번호
+	var saveMembNo = true; // 회원 일련번호 저장유무
 	
 	// 회원유무조회 파라미터 세팅
 	var emailAddress = {
@@ -215,7 +224,7 @@ $('body').on('keyup', '.mail-box-cls', function(e) {
 		
 		// 초대여부조회 파라미터 세팅
 		var param = {
-			"memberNo" : ajaxResult.data,
+			"memberNo" : membNo,
 			"meetingNo" : meetingNo
 		};
 		
@@ -226,6 +235,16 @@ $('body').on('keyup', '.mail-box-cls', function(e) {
 		      return;
 			}
 			$inputMessage.text("초대 가능한 회원입니다.").css("color", "black");
+			
+			// 회원 일련번호 배열에 담기
+			$.each(linkMembList, function(index, value) {
+				if(value == membNo) {
+					saveMembNo = false;
+				}
+			});
+			if (saveMembNo) {
+				linkMembList.push(Number(membNo));
+			}
 		});
 	});
 });
@@ -244,7 +263,23 @@ function add_memb() {
 
 // 멤버 초대 상자 삭제
 function remove_memb(obj) {
-  document.getElementById('new-field').removeChild(obj.parentNode);
+	var tempEmail = $(obj).parents('.mail-box-cls').children('.add-email-box').val();
+	var emailAddress = {
+		"emailAddress" : tempEmail
+	}
+	
+	// MembNo 다시 조회해서 삭제
+	$.post(serverRoot + '/html/sidebar/getSideMemb.json', emailAddress, function(ajaxResult) {
+		if (ajaxResult.status != "success") {
+			console.log(ajaxResult.data);
+	      return false;
+	    }
+		var delMembNo = ajaxResult.data;
+		linkMembList = $.grep(linkMembList, function(value) {
+			return value != delMembNo;
+		});
+	});
+	document.getElementById('new-field').removeChild(obj.parentNode);
 }
 
 // 모임구성원 이메일 변수에 담기
@@ -257,8 +292,16 @@ function memb_add_email()  {
   return membdata;
 }
 
-$('body').on('click', '#memb-close-btn', function(event) {
+function closeEvent() {
 	$('#memb-email').val('');
 	$('#new-field').children().remove();
 	$('.inputMessage').empty();
-});
+}
+
+$('body').on('click', '#memb-close-btn', closeEvent()); 
+
+//$('body').on('click', '#memb-close-btn', function closeEvent() {
+//	$('#memb-email').val('');
+//	$('#new-field').children().remove();
+//	$('.inputMessage').empty();
+//});

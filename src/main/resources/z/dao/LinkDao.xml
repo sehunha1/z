@@ -7,9 +7,10 @@
 
   <resultMap type="link" id="link-map">
     <id     column="mnum"      property="memberNo"/>
-    <result column="mtnum"       property="meetingNo"/>
-    <result column="boss"       property="boss"/>
-    <result column="stat"       property="status"/>
+    <result column="mtnum"     property="meetingNo"/>
+    <result column="boss"      property="boss"/>
+    <result column="stat"      property="status"/>
+    <result column="accept"    property="acceptMeet"/>
   </resultMap>
 
   <select id="getBoss" parameterType="int" resultMap="link-map">
@@ -46,5 +47,13 @@
 	   accept="y"
 	   where mnum=#{param1} and mtnum=#{param2}
   </update>
+  
+  <!-- 멤버 초대시 Link 테이블 데이터 삽입 -->
+  <insert id="linkInsert" parameterType="hashmap">
+    insert into link (mnum, mtnum, boss, stat, accept)
+    <foreach collection="linkMembList" item="int">
+       values(#{int}, #{meetingNo}, 'n', 'n', 'n')
+    </foreach>
+  </insert>
 
 </mapper>

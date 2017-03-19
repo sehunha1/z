@@ -1,6 +1,7 @@
 package z.service;
 
 import java.util.List;
+import java.util.Map;
 
 import z.domain.Link;
 
@@ -13,4 +14,5 @@ public interface LinkService {
   int updateStat(int memberNo2, int meetingNo) throws Exception;
   int refuse(int memberNo, int meetingNo) throws Exception;
   int accept(int memberNo, int meetingNo) throws Exception;
+  int linkInsert(Map linkMembMap) throws Exception; // 멤버 초대시 link 테이블 데이터 삽입
 }

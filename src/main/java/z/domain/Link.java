@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class Link implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int memberNo; /////// 회원 일련번호
-  protected int meetingNo; ////// 모임 일련번호
-  protected String boss; //////// 방장여부
-  protected String status; ////// 모임 투표 상태
-  protected String acceptMeet; // 모임 승낙 여부
+  protected int memberNo; //////// 회원 일련번호
+  protected int meetingNo; /////// 모임 일련번호
+  protected String boss; ///////// 방장여부
+  protected String status; /////// 모임 투표 상태
+  protected String acceptMeet; /// 모임 승락 여부
 
   public int getMemberNo() {
     return memberNo;

@@ -1,6 +1,7 @@
 package z.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,12 @@ public class LinkServiceImpl implements LinkService {
   
   public int accept(int memberNo, int meetingNo) throws Exception {
     return linkDao.accept(memberNo, meetingNo);
+  }
+  
+  // 멤버 초대시 link 테이블 데이터 삽입
+//  public int linkInsert(@Param("meetingNo")int meetingNo, @Param("linkMembList") int[] linkMembList) throws Exception {
+  public int linkInsert(Map linkMembMap) throws Exception {
+    return linkDao.linkInsert(linkMembMap);
+//    return linkDao.linkInsert(meetingNo, linkMembList);
   }
 }
