@@ -1,4 +1,5 @@
 var meetingNo = window.location.search.split("&")[1].substring(10);
+var membNoList = new Array(); // 멤버번호
 
 Date.prototype.Compare = function(ComDate, Type) {
     var RtnVal = -1;
@@ -151,42 +152,74 @@ $(function() {
 //******* 멤버 초대 팝업 *******//
 var inputData;
 $('body').on('focus', '.add-email-box', function() {
-  inputData = $(this);
+	inputData = $(this);
 })
 
-// 멤버 초대 함수 호출
+// 모임원 초대 버튼 클릭 이벤트
 $('body').on('click', '#memb-plus-btn', function(e) {
 	e.preventDefault();
 	add_memb();
 });
 
-$('body').on('click', '#sideMembPlus', function(e) {
+// 초대 버튼 클릭 이벤트
+$('body').on('click', '#invite-btn', function(e) {
+	e.preventDefault();
 	
+	// 이메일 유효성 여부
+	var sendOk = true;
+	$('div').find('.inputMessage').each(function(i, e){
+		
+		// 빈 문자열 입력 or 경고 문구 출력 시
+		if ($(this).text().trim() == "" || $(this).css('color') == "rgb(255, 0, 0)") {
+			alert("msss");
+			sendOk = false;
+			return false;
+		}
+	});
 	
+	// 이메일 전송
+	if (sendOk) {
+		var emailList = memb_add_email();
+		console.log(emailList);
+//				$.post(serverRoot + '/html/sidebar/getSideMemb.json', emailList, function(ajaxResult) {
+//
+//				});
+	}
 });
 
 // 멤버 초대 박스 이메일 입력시
 $('body').on('keyup', '.mail-box-cls', function(e) {
+	var membNo = null;
+	
+	// 회원유무조회 파라미터 세팅
 	var emailAddress = {
 		"emailAddress" : inputData.val()
 	}
 	
-	// 해당 박스
+	// 해당 박스 안에 메세지박스 선택
 	var $inputMessage = $(this).children('.inputMessage');
-	$inputMessage.empty();
 	
+	// 빈 문자열 경우 종료
+	if (inputData.val().trim() == "") {
+		$inputMessage.empty();
+		return;
+	}
+	
+	// 회원 유무 조회
  	$.post(serverRoot + '/html/sidebar/getSideMemb.json', emailAddress, function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			$inputMessage.text("회원이 아닙니다.").css("color", "red");
 	      return;
 	    }
+		membNo = ajaxResult.data;
 		
-		// Link 테이블 조회 매개변수
+		// 초대여부조회 파라미터 세팅
 		var param = {
 			"memberNo" : ajaxResult.data,
 			"meetingNo" : meetingNo
 		};
 		
+		// 초대 여부 조회
 		$.post(serverRoot + '/html/sidebar/getSideLink.json', param, function(ajaxResult) {
 			if (ajaxResult.status != "success") {
 		      $inputMessage.text("이미 초대된 회원입니다.").css("color", "red");
@@ -216,13 +249,11 @@ function remove_memb(obj) {
 
 // 모임구성원 이메일 변수에 담기
 function memb_add_email()  {
-  var addmemb = document.getElementsByClassName('add-email-box');
+  var addmemb = $('.add-email-box').text();
   var membdata = new Array();
-  for (var i = 0; i < addmemb.length; i++) {
-    if (addmemb[i] != null) {
-      membdata.push(addmemb[i]);
-    }
-  }
+  $('div').find('.add-email-box').each(function(i, e){
+	  membdata.push($(this).val()); 
+  });
   return membdata;
 }
 

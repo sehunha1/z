@@ -98,4 +98,5 @@ public class MeetingServiceImpl implements MeetingService {
   public int updateLoc(int meetingNo, String loc) throws Exception {
     return meetingDao.updateLoc(meetingNo, loc);
   }
+  
 }
