@@ -70,8 +70,7 @@ body > .container {
   /* border: 1px solid red; */
 }
 
-
-/* #sidebar {
+#sidebar {
 	position: absolute;
 	float:left;
   color: white;
@@ -93,7 +92,7 @@ body > .container {
 #sidebar a:hover {
   color: navy;
 }
- */
+ 
 
 #content-cal {
 	/* 스크롤 */

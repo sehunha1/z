@@ -4,6 +4,9 @@
 
 #sidebarMenu {
 	margin-left: 5%;
+	margin-bottom: 25px;
+	height: 770px;
+	overflow: auto;
 }
 
 #sidebarMenu ul {
@@ -17,6 +20,7 @@
 }
 
 #sideMembPlus {
+	display: none;
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 2px;

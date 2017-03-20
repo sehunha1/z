@@ -73,10 +73,9 @@ public class LinkJsonControl {
   // 멤버 초대시 link 테이블 데이터 삽입
   @RequestMapping("html/link/insert")
   public AjaxResult linkInsert(@RequestParam(value="meetingNo") int meetingNo, @RequestParam(value="linkMembList") int[] linkMembList) throws Exception {
-    System.out.println(linkMembList.length);
     Map linkMembMap = new HashMap();
-    linkMembMap.put("meetingNo", meetingNo);
-    linkMembMap.put("linkMembList", linkMembList);
+    linkMembMap.put("meetingNo", meetingNo); //////// 모임번호
+    linkMembMap.put("linkMembList", linkMembList); // 모임 초대 멤버
     
     int count = linkService.linkInsert(linkMembMap);
     

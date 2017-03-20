@@ -1,5 +1,6 @@
-var meetingNo = window.location.search.split("&")[1].substring(10);
+var meetingNo = window.location.search.split("&")[1].substring(10); // 모임 번호
 var linkMembList = new Array(); // 멤버번호
+var membPlusBtnHidden = false; // 방장 여부에 따라 멤버 초대 버튼 여부
 
 Date.prototype.Compare = function(ComDate, Type) {
     var RtnVal = -1;
@@ -104,6 +105,8 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
 });
 
 $(function() {
+	
+	// 헤더
 	$.get("../../html/header.html", function(result) {
 		$("#header").html(result);
 	});
@@ -111,44 +114,19 @@ $(function() {
     $.get("../../html/header-login.html", function(result) {
 	    $("#header-login").html(result);
     });
-  
+    
+    // 푸터
     $.get("../../html/footer.html", function(result) {
         $("#footer").html(result);
     });
-  
-    $.get("../../html/sidebar.html", function(result) {
-	    $("#sidebar").html(result);
-	    
-	    // 방장
-        $.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
-            var status = ajaxResult.status;
-
-            if (status != "success") return;
-
-            var listMeetingMembBoss = ajaxResult.data;
-            var template = Handlebars.compile($("#bossTemplate").html());
-            var ul = $(".meeting_memb_boss");
-            ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
-        });
-        
-        // 방장 외 멤버
-        $.getJSON('listMeetingMembNotBoss.json?meetingNo=' + meetingNo, function(ajaxResult) {
-            var status = ajaxResult.status;
-
-            if (status != "success") return;
-
-            var listMeetingMembNotBoss = ajaxResult.data;
-            var template = Handlebars.compile($('#notbossTemplate').html());
-            var ul = $(".meeting_memb_notboss");
-            ul.html(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
-        });
-    });
+    
+    // 사이드바
+    sideBarLoad();
 
     $('body').on('click', '.ui-datepicker-header', function(e){
         e.preventDefault();
         window.oMeetingDetail.init();
     });
-
 });
 
 //******* 멤버 초대 팝업 *******//
@@ -169,12 +147,19 @@ $('body').on('click', '#invite-btn', function(e) {
 	
 	// 이메일 유효성 여부
 	var sendOk = true;
+	
+	// 초대 성공시 초기화
+	var successReset = true;
+	
 	$('div').find('.inputMessage').each(function(i, e){
 		
 		// 빈 문자열 입력 or 경고 문구 출력 시
-		if ($(this).text().trim() == "" || $(this).css('color') == "rgb(255, 0, 0)") {
-			alert("입력한 이메일을 다시 확인해주세요.");
-			sendOk = false;
+		if ($(this).text().trim() == "" || $(this).text().trim() == null) {
+			if ($(this).css('color') != "rgb(0, 0, 0)") {
+				alert("입력한 이메일을 다시 확인해주세요.");
+				sendOk = false;
+				return false;
+			}
 			return false;
 		}
 	});
@@ -185,18 +170,26 @@ $('body').on('click', '#invite-btn', function(e) {
 		$.post(serverRoot + '/html/link/insert.json?meetingNo=' + meetingNo + '&linkMembList=' + linkMembList, function(ajaxResult) {
 			if (ajaxResult.status != "success") {
 				alert(ajaxResult.data);
+				successReset = false;
 				return false;
 			}
 			
 			// 멤버 초대 성공시
-			linkMembList.splice(0);
-			console.log(linkMembList);
+			if (successReset) {
+				linkMembList.splice(0);
+				closeEvent();
+				$('#membPlusPopup').modal('hide');
+				$('.modal-backdrop').remove();
+				$.ajax(sideBarLoad());
+				$('body').css('overflow', 'auto');
+			}
 		});
 	}
 });
 
 // 멤버 초대 박스 이메일 입력시
 $('body').on('keyup', '.mail-box-cls', function(e) {
+	
 	var membNo = null; // 회원 일련번호
 	var saveMembNo = true; // 회원 일련번호 저장유무
 	
@@ -218,7 +211,7 @@ $('body').on('keyup', '.mail-box-cls', function(e) {
  	$.post(serverRoot + '/html/sidebar/getSideMemb.json', emailAddress, function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			$inputMessage.text("회원이 아닙니다.").css("color", "red");
-	      return;
+	        return;
 	    }
 		membNo = ajaxResult.data;
 		
@@ -283,25 +276,66 @@ function remove_memb(obj) {
 }
 
 // 모임구성원 이메일 변수에 담기
-function memb_add_email()  {
+function memb_add_email() {
   var addmemb = $('.add-email-box').text();
   var membdata = new Array();
   $('div').find('.add-email-box').each(function(i, e){
-	  membdata.push($(this).val()); 
+	membdata.push($(this).val()); 
   });
   return membdata;
 }
 
+// 멤버 초대 팝업 닫기
 function closeEvent() {
 	$('#memb-email').val('');
 	$('#new-field').children().remove();
 	$('.inputMessage').empty();
 }
 
-$('body').on('click', '#memb-close-btn', closeEvent()); 
+$('body').on('click', '#memb-close-btn', function() {
+	closeEvent();
+});
 
-//$('body').on('click', '#memb-close-btn', function closeEvent() {
-//	$('#memb-email').val('');
-//	$('#new-field').children().remove();
-//	$('.inputMessage').empty();
-//});
+// 사이드바 조회
+function sideBarLoad() {
+   $.get("../../html/sidebar.html", function(result) {
+	    $("#sidebar").html(result);
+	    
+	    // 방장
+        $.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
+            var status = ajaxResult.status;
+
+            if (status != "success") return;
+
+            var listMeetingMembBoss = ajaxResult.data;
+            var template = Handlebars.compile($("#bossTemplate").html());
+            var ul = $(".meeting_memb_boss");
+            ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
+            
+            // 로그인 유저, 방장 여부 비교 후 멤버 초대 버튼 활성화 결정
+            var sessionMemb = window.sessionStorage.getItem("member");
+            if (listMeetingMembBoss[0].memberNo == JSON.parse(sessionMemb).memberNo) {
+            	membPlusBtnHidden = true;
+            }
+            
+            // 멤버초대 버튼 활성화 여부
+            if (membPlusBtnHidden == true) {
+            	console.log("testOk");
+            	$('#sideMembPlus').show();
+            }
+            
+        });
+        
+        // 방장 외 멤버
+        $.getJSON('listMeetingMembNotBoss.json?meetingNo=' + meetingNo, function(ajaxResult) {
+            var status = ajaxResult.status;
+
+            if (status != "success") return;
+
+            var listMeetingMembNotBoss = ajaxResult.data;
+            var template = Handlebars.compile($('#notbossTemplate').html());
+            var ul = $(".meeting_memb_notboss");
+            ul.html(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
+        });
+    });
+}
