@@ -1,4 +1,18 @@
-$('#submit-btn').click(function() {
+$("#email").keypress(function(event) {
+	if(event.which==13) {
+		$('#btn').click();
+		return false;
+	}
+});
+
+$("#password").keypress(function(event) {
+	if(event.which==13) {
+		$('#btn').click();
+		return false;
+	}
+});
+
+$('#btn').click(function() {
 	var param = {
 		email: $('#email').val(),
 		password: $('#password').val()
