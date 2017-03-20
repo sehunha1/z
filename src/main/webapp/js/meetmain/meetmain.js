@@ -178,26 +178,6 @@ $('body').on('click', '#invite-btn', function(e) {
 			if (successReset) {
 				var bossEmail = JSON.parse(window.sessionStorage.getItem("member")).email; // 방장 이메일
 				var sendEmailList = memb_add_email(); // 초대 멤버 이메일 목록
-//				console.log(sendEmail);
-//				console.log(sendEmailList);
-//				console.log(typeOf (sendEmailList));
-//				console.log(typeOf (bossEmail));
-				
-//				var sendEmail = {
-//					"bossEmail" : bossEmail,
-//					"sendEmailList" : sendEmailList,
-//					"memberNo" : linkMembList
-//				}
-				console.log(bossEmail);
-				console.log(sendEmailList);
-				console.log(linkMembList);
-				
-				$.post(serverRoot + '/html/send/sendEmail.json?bossEmail=' + bossEmail + '&sendEmailList=' + sendEmailList + '&linkMembList=' + linkMembList, function(ajaxResult) {
-					if (status != "success") {
-						console.log(ajaxResult.data);
-						return false;
-					}
-				});
 				
 				linkMembList.splice(0); // 초대 멤버 데이터 초기화
 				closeEvent(); // 팝업 데이터 제거
