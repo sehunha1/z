@@ -33,8 +33,9 @@
 		from link
 		left outer join memb
 		on memb.mnum=link.mnum
-		where mtnum=#{value} and
-		boss="y";
+		where mtnum=#{value} 
+		and boss='y'
+		and quit='n';
 	</select>
 
 	<select id="getListMeetingMembNotBoss" parameterType="int"
@@ -48,7 +49,8 @@
 		left outer
 		join memb on memb.mnum=link.mnum
 		where mtnum=#{value}
-		and boss="n";
+		and boss='n'
+		and quit='n';
 	</select>
 
 	<select id="getList" resultMap="member-map">
