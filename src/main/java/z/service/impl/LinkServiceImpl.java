@@ -49,7 +49,18 @@ public class LinkServiceImpl implements LinkService {
   // 멤버 초대시 link 테이블 데이터 삽입
 //  public int linkInsert(@Param("meetingNo")int meetingNo, @Param("linkMembList") int[] linkMembList) throws Exception {
   public int linkInsert(Map linkMembMap) throws Exception {
-    return linkDao.linkInsert(linkMembMap);
+    int meetingNo = (int) linkMembMap.get("meetingNo");
+    int[] linkMembNoList = (int[]) linkMembMap.get("linkMembList");
+    int count = 0;
+    for (int linkMembNo : linkMembNoList) {
+      count = linkDao.linkInsert(meetingNo, linkMembNo);
+      if (count != 1) {
+        return count;
+      }
+    }
+    return count;
+    
+//    return linkDao.linkInsert(linkMembMap);
 //    return linkDao.linkInsert(meetingNo, linkMembList);
   }
 }

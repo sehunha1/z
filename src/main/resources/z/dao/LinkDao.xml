@@ -49,11 +49,9 @@
   </update>
   
   <!-- 멤버 초대시 Link 테이블 데이터 삽입 -->
-  <insert id="linkInsert" parameterType="hashmap">
+  <insert id="linkInsert">
     insert into link (mnum, mtnum, boss, stat, accept)
-    <foreach collection="linkMembList" item="int">
-       values(#{int}, #{meetingNo}, 'n', 'n', 'n')
-    </foreach>
+    values(#{linkMembNo}, #{meetingNo}, 'n', 'n', 'n')
   </insert>
 
 </mapper>

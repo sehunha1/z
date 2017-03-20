@@ -1,7 +1,10 @@
 package z.dao;
 
 import java.util.ArrayList;
-import java.util.Map;import z.domain.Link;
+
+import org.apache.ibatis.annotations.Param;
+
+import z.domain.Link;
 
 public interface LinkDao {
   ArrayList<Link> getBoss(int memberNo) throws Exception;
@@ -12,5 +15,5 @@ public interface LinkDao {
   int getMyInviteCount(int memberNo) throws Exception;
   int refuse(int memberNo, int meetingNo) throws Exception;
   int accept(int memberNo, int meetingNo) throws Exception;
-  int linkInsert(Map linkMembMap) throws Exception; // 멤버 초대시 link 테이블 데이터 삽입
+  int linkInsert(@Param("meetingNo") int meetingNo, @Param("linkMembNo") int linkMembNo) throws Exception; // 멤버 초대시 link 테이블 데이터 삽입
 }
