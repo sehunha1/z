@@ -9,6 +9,8 @@ $('#submit-btn').click(function() {
 		if (ajaxResult.status == "success") {
 			location.href = "../main/main.html";
 			 $.cookie('check', 'n', {path : '/'});
+			 console.log(ajaxResult.data.memberNo);
+			 window.sessionStorage.setItem("member", JSON.stringify(ajaxResult.data));
 			return;
 		}
 		sweetAlert("로그인 실패", ajaxResult.data, "error");

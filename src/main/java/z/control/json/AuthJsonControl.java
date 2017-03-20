@@ -30,9 +30,7 @@ public class AuthJsonControl {
   public AjaxResult login(String email, String password,
       HttpServletResponse response, HttpSession session, Model model) throws Exception {
     
-    System.out.printf(email, password);
-    System.out.println();
-    
+//    System.out.printf(email, password);
     Member member = authService.getMemberInfo(email, password);
         
     if (member == null) {
@@ -40,7 +38,7 @@ public class AuthJsonControl {
     }
     
     session.setAttribute("member", member); // HttpSession에 저장한다.
-    return new AjaxResult(AjaxResult.SUCCESS, "로그인 성공!");
+    return new AjaxResult(AjaxResult.SUCCESS, member);
   }
   /*
   // 페이스북 회원 조회

@@ -1,5 +1,6 @@
-var meetingNo = window.location.search.split("&")[1].substring(10);
+var meetingNo = window.location.search.split("&")[1].substring(10); // 모임 번호
 var linkMembList = new Array(); // 멤버번호
+var membPlusBtnHidden = false; // 방장 여부에 따라 멤버 초대 버튼 여부
 
 Date.prototype.Compare = function(ComDate, Type) {
     var RtnVal = -1;
@@ -126,7 +127,6 @@ $(function() {
         e.preventDefault();
         window.oMeetingDetail.init();
     });
-
 });
 
 //******* 멤버 초대 팝업 *******//
@@ -311,6 +311,19 @@ function sideBarLoad() {
             var template = Handlebars.compile($("#bossTemplate").html());
             var ul = $(".meeting_memb_boss");
             ul.html(template({"listMeetingMembBoss":listMeetingMembBoss}));
+            
+            // 로그인 유저, 방장 여부 비교 후 멤버 초대 버튼 활성화 결정
+            var sessionMemb = window.sessionStorage.getItem("member");
+            if (listMeetingMembBoss[0].memberNo == JSON.parse(sessionMemb).memberNo) {
+            	membPlusBtnHidden = true;
+            }
+            
+            // 멤버초대 버튼 활성화 여부
+            if (membPlusBtnHidden == true) {
+            	console.log("testOk");
+            	$('#sideMembPlus').show();
+            }
+            
         });
         
         // 방장 외 멤버
