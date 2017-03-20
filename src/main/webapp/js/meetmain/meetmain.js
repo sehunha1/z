@@ -176,12 +176,35 @@ $('body').on('click', '#invite-btn', function(e) {
 			
 			// 멤버 초대 성공시
 			if (successReset) {
-				linkMembList.splice(0);
-				closeEvent();
-				$('#membPlusPopup').modal('hide');
-				$('.modal-backdrop').remove();
-				$.ajax(sideBarLoad());
-				$('body').css('overflow', 'auto');
+				var bossEmail = JSON.parse(window.sessionStorage.getItem("member")).email; // 방장 이메일
+				var sendEmailList = memb_add_email(); // 초대 멤버 이메일 목록
+//				console.log(sendEmail);
+//				console.log(sendEmailList);
+//				console.log(typeOf (sendEmailList));
+//				console.log(typeOf (bossEmail));
+				
+//				var sendEmail = {
+//					"bossEmail" : bossEmail,
+//					"sendEmailList" : sendEmailList,
+//					"memberNo" : linkMembList
+//				}
+				console.log(bossEmail);
+				console.log(sendEmailList);
+				console.log(linkMembList);
+				
+				$.post(serverRoot + '/html/send/sendEmail.json?bossEmail=' + bossEmail + '&sendEmailList=' + sendEmailList + '&linkMembList=' + linkMembList, function(ajaxResult) {
+					if (status != "success") {
+						console.log(ajaxResult.data);
+						return false;
+					}
+				});
+				
+				linkMembList.splice(0); // 초대 멤버 데이터 초기화
+				closeEvent(); // 팝업 데이터 제거
+				$('#membPlusPopup').modal('hide'); // 팝업
+				$('.modal-backdrop').remove(); // 팝업 배경
+				$.ajax(sideBarLoad()); // 사이드바 갱신
+				$('body').css('overflow', 'auto'); // 전체화면 스크롤 재설정
 			}
 		});
 	}
@@ -320,10 +343,8 @@ function sideBarLoad() {
             
             // 멤버초대 버튼 활성화 여부
             if (membPlusBtnHidden == true) {
-            	console.log("testOk");
             	$('#sideMembPlus').show();
             }
-            
         });
         
         // 방장 외 멤버
