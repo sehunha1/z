@@ -1,0 +1,147 @@
+<!-- 
+<div id="content">
+<h1>로그인 테스트</h1>
+      <input id='email' type='text' class="form-control" placeholder='예)hong@test.com'>
+      <input id='password' type='password' class="form-control">
+  <button id='submit-btn'>로그인</button>
+</div>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>로그인</title>
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
+<style>
+body {
+  background-image:url("../../image/loginbg0.jpg");
+  background:auto;
+}
+</style>
+
+<meta name="google-signin-client_id" content="960340793654-t9jr4bhlt49g8m5do8u503594dsf2rv4.apps.googleusercontent.com">
+</head>
+<!-- <body background="../../image/loginbg.jpg" style="background-size:1024px 800px; opacity:0.5!important;">  -->
+<body>
+<div class='container'>
+
+<div style='padding-top:10px; margin-bottom:10px; margin-top:20px;'>
+        <div id='login' style='text-align:center; vertical-align:middle;'>
+       <font style='font-size:26px; font-family:Arial; text-align:center;'>로그인</font><br>
+        <input id='email' type='text' placeholder='E-mail' 
+          style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-top:10px; margin-bottom:10px;'/>
+          <br>
+        <input id='password' type='password' placeholder='password' 
+          style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px;'/>
+          </div>
+          
+      <div id='social' style='text-align:center; vertical-align:middle; margin-top:20px;'>
+      <!-- 페이스북 버튼 
+          <input type='button' value='facebook' 
+          style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-bottom:10px;'>
+          <br>
+          -->
+          <!-- 
+          <fb:login-button scope="email" onlogin="checkLoginState();" id='saveButton'>
+          </fb:login-button>
+           -->
+          <a href="#" onclick="fbLogin();"><img src="../../image/fbloginbutton.jpg" border="0" alt="" style='width:300px;'></a>
+          <!-- 
+          <input type='button' value='gmail' 
+          style='text-align:center; font-size:19px; font-family:Vernada; width:300px; height:30px; margin-bottom:10px;'/>
+          <br>
+          -->
+          
+          
+          
+          
+      </div>
+      <div id='loginbutton' style='text-align:center; vertical-align:middle; margin-top:20px;'> 
+      <button id='submit-btn' style='width:300px; height:38px; background-color:#3DB394'>
+      <font color='white' style='font-size:20px; font-family:Vernada; font-weight:500;'>enter</font></button>
+      </div>
+    <div id='help' style='margin-top:5px; text-align:center;'>
+          <font color='#BEBEBE' style='font-size:14px; font-family: "Noto Sans KR", sans-serif;'>아이디가 없으세요? </font> 
+          <font color='blue' style='font-size:12px; border:1px solid blue; border-radius:5px; font-family: "Noto Sans KR", sans-serif;'>
+          <a href='join.html'>회원가입</a></font>
+          <font color='#BEBEBE' style='font-size:14px;  font-family: "Noto Sans KR", sans-serif;'>을 해주세요</font>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+</div>
+
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="login.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- 페이스북 -->
+<script src='facebook.js'></script>
+
+
+<!-- 쿠키 -->
+<script src="../../js/jquery.cookie.js"></script>
+
+
+<!-- 구글 -->
+<!-- 
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+  
+function disconnect() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.disconnect().then(function () {
+      console.log('User disconnect out.');
+    });
+  }
+</script>
+
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getEmail());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 300,
+        'height': 30,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+  -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>로그인</title>
+
+        <!-- CSS -->
+        <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"> -->
+        
+        <!-- 
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/form-elements.css">
+         -->
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../../css/auth/font-awesome.min.css">
+        <link rel="stylesheet" href="../../css/auth/form-elements.css">
+        <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
+        
+        <link rel="stylesheet" href="../../css/auth/style.css">
+        
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+          
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>회원가입</strong></h1>
+                            <div class="description">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                          <div class="form-top">
+                            <div class="form-top-left">
+                              <h3>회원가입</h3>
+                                <p>아래의 항목들을 작성해주세요</p>
+                            </div>
+                            <div class="form-top-right">
+                              <i class="fa fa-user"></i>
+                            </div>
+                            </div>
+                            <div class="form-bottom">
+                          <form role="form" action="" method="post" class="form-horizontal" id="signupForm1">
+                            <div class="form-group">
+                              <label class="sr-only" for="form-email">Email</label>
+                                <div class="col-sm-5">
+                                <input type="text" name="email1" placeholder="Email" class="form-email form-control" id="email1" onChange="isCheck.value='N'" >
+                                </div>
+                                <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left;'>
+                                <input type='hidden' id='isCheck' value="N">
+                              </div>
+                              <div class="form-group">
+                              <label class="sr-only" for="form-name">Name</label>
+                                <input type="text" name="form-name" placeholder="Name" class="form-name form-control" id="username1">
+                              </div>
+                              <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="password1">
+                              </div>
+                              <h4>사진은 선택 입력 항목입니다.</h4>
+                              <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="password">
+                              </div>
+                              <button type="button" id="btn" class="btn">회원가입</button>
+                          </form>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login">
+                          <h3>또는</h3>
+                          <div class="social-login-buttons">
+                            <a class="btn btn-link-1 btn-link-1-facebook" onclick="fbLogin();" href="#">
+                              <i id="facebook" class="fa fa-facebook"></i> 페이스북으로 가입하기
+                            </a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="../../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="../../js/auth/jquery.backstretch.min.js"></script>
+        <script src="../../js/auth/scripts.js"></script>
+        <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="login.js"></script>
+        
+        <!-- 쿠키 -->
+        <script src="../../js/jquery.cookie.js"></script>
+        <!-- 페이스북 -->
+        <script src='facebook.js'></script>
+        
+        
+        
+        
+        <script type="text/javascript" src="../../node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="../../node_modules/jquery-validation/dist/additional-methods.min.js"></script>
+        <script type="text/javascript" src="../../node_modules/jquery-validation/dist/localization/messages_ko.min.js"></script>
+        
+        <script>
+ $('#emailcheck').click(function() {
+   
+   var email = $("#email1").val();
+   //var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+   var regex=/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+
+   
+    $.getJSON('checkEmail.json?email=' + $("#email1").val(), function(ajaxResult) {
+      var status = ajaxResult.status;
+      
+      
+      
+      if(regex.test(email) == false) {  
+          sweetAlert("경고", "이메일 형식에 맞게 입력하세요", 'warning');
+          $('#isCheck').val('N');
+      } 
+
+      else if (status == "success") {
+         $('#isCheck').val('Y');
+         //sweetAlert("OK!", ajaxResult.data, 'success');
+         swal({
+                title: "OK!",
+                text: ajaxResult.data,
+                type: "success",
+              },
+              function(){
+                $('#email1').focus();
+              });
+         //setInterval('autoRefresh_div()', 500); // 5초 후에 div 새로 고침
+         //document.getElementById('email').reload();
+         //$("#emaildiv").load(window.location.href+" #emaildiv");
+         
+      } /*else if ($("#email1").val() == '' || $("#email1").val() == 'undefined') {
+        sweetAlert("경고", "이메일을 입력하세요", 'warning');
+          $('#isCheck').val('N');
+      }*/
+      else if (status != "success") {
+        sweetAlert("Fail!", ajaxResult.data, 'error');
+        $('#isCheck').val('N');
+        return;
+      } 
+    });
+});
+ 
+ </script>
+
+<script type="text/javascript">
+    $.validator.setDefaults( {
+      submitHandler: function () {
+        
+        if ($('#isCheck').val() == 'N') {
+          sweetAlert("경고", "이메일 사용 가능 여부를 확인하세요", 'warning');
+          return;
+        }
+        
+        var param = {
+              "email": $('#email1').val(),
+              "name": $('#username1').val(),
+              "password": $('#password1').val(),
+              "photo": $('#photo-path').val()
+              //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
+              //"photo": $("#photo").attr('src', 'html/upload/' + val())
+          
+          };
+
+          $.post('add.json', param, function(ajaxResult) {
+            if (ajaxResult.status == "fail") {
+              sweetAlert("회원가입 실패", ajaxResult.data, 'error');
+              return;
+            }
+            //sweetAlert("회원가입 완료!", "......", "success")
+            //sweetAlert("회원가입 완료!", "로그인창으로 이동합니다.", "success");
+            //alert('회원가입이 완료되었습니다. 로그인창으로 이동합니다.');
+            //location.href = 'login.html';
+            
+            swal({
+                title: "회원가입 완료!",
+                text: "로그인 창으로 이동합니다.",
+                type: "success",
+              },
+              function(){
+                location.href ='login.html'
+              });
+            
+            
+            
+          }, 'json'); // post();
+      }
+    } );
+
+    $( document ).ready( function () {
+      
+      // 이메일 정규표현식 유효성 검사
+      $.validator.addMethod("emailz", function(value, element) {
+         return this.optional(element) || /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(value);
+      }, "올바른 형식의 이메일 주소를 입력하세요 ex)user01@test.com");
+    
+    
+        
+        // 이름 한글만
+        $.validator.addMethod("namez", function(value, element) {
+           return this.optional(element) || /^[가-힝]{2,}$/i.test(value);
+        }, "한글로만 두 글자 이상 입력 하세요. ex)김구");
+    
+    
+      
+      /* 이메일 중복검사 버튼 클릭 여부 */
+      jQuery.validator.addMethod("checkemail", function(value, element){
+        var saveemail=$('#email1').val()
+        
+          if ($('#isCheck').val() == 'Y') {
+              return true;
+          } else if ($('#isCheck').val() == 'N') {
+              return false;
+          } else if(saveemail != $('#email1').val()) {
+            return false;
+          }; 
+      }, "이메일 중복 여부를 체크하세요"); 
+      
+      $("#signupForm1").validate( {
+        rules: {
+          username1: {
+            required: true,
+            namez: true,
+            minlength: 2
+          },
+          password1: {
+            required: true,
+            minlength: 6
+          },
+          confirm_password1: {
+            required: true,
+            minlength: 6,
+            equalTo: "#password1"
+          },
+          email1: {
+            required: true,
+            emailz: true,
+            checkemail: true,
+            //changeeval: true
+          },
+          agree1: "required"
+        },
+        messages: {
+          username1: {
+            required: "이름을 입력하세요",
+            minlength: "이름은 두 글자 이상 입력하세요"
+          },
+          password1: {
+            required: "암호를 입력하세요",
+            minlength: "암호는 여섯 글자 이상 입력하세요"
+          },
+          confirm_password1: {
+            required: "암호 확인란을 입력하세요",
+            minlength: "암호는 여섯 글자 이상 입력하세요",
+            equalTo: "암호가 맞는지  확인하세요"
+          },
+          email1: {
+            required:"이메일을 입력하세요.",
+            checkemail:"중복 여부를 체크하세요"
+            //customemail:"올바른 형식의 이메일을 입력하세요.",
+          }
+          //agree1: "Please accept our policy"
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+          // Add the `help-block` class to the error element
+          error.addClass( "help-block" );
+
+          // Add `has-feedback` class to the parent div.form-group
+          // in order to add icons to inputs
+          element.parents( ".col-sm-13" ).addClass( "has-feedback" );
+
+          if ( element.prop( "type" ) === "checkbox" ) {
+            error.insertAfter( element.parent( "label" ) );
+          } else {
+            error.insertAfter( element );
+          }
+
+          // Add the span element, if doesn't exists, and apply the icon classes to it.
+          if ( !element.next( "span" )[ 0 ] ) {
+            $( "<span class='glyphicon glyphicon-remove form-control-feedback'></span>" ).insertAfter( element );
+          }
+        },
+        success: function ( label, element ) {
+          // Add the span element, if doesn't exists, and apply the icon classes to it.
+          if ( !$( element ).next( "span" )[ 0 ] ) {
+            $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+          }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+          $( element ).parents( ".col-sm-13" ).addClass( "has-error" ).removeClass( "has-success" );
+          $( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
+        },
+        unhighlight: function ( element, errorClass, validClass ) {
+          $( element ).parents( ".col-sm-13" ).addClass( "has-success" ).removeClass( "has-error" );
+          $( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
+        }
+      } );
+    } );
+  </script>
+        
+        
+        <!-- 백업 -->
+        <!-- <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        -->
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

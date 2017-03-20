@@ -4,14 +4,14 @@
 <meta charset='UTF-8'>
 <title>메인</title>
 <link rel="stylesheet"
-	href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+  href="../../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../../css/main/main.css">
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet"
-	href="../../node_modules/sweetalert/dist/sweetalert.css">
+  href="../../node_modules/sweetalert/dist/sweetalert.css">
 <body>
-	<div id="header"></div>
-	<div class='container' style='overflow: hidden;'>
+  <div id="header"></div>
+  <div class='container' style='overflow: hidden;'>
    <input type='hidden' id='memberNo'/>
    <input type='hidden' id='email'/>
    <input type='hidden' id='nameback'/>
@@ -20,21 +20,21 @@
    <input type='hidden' id='facebookback'/>
 
 
-		<div id='tab'
-			style='float: left; width: 150px; height: 700px; margin-left: 10px; margin-right: 20px; position: absoulte;'>
-			<ul class="nav nav-pills nav-stacked"
-				style='font-family: Noto Sans KR, sans-serif; color:red;'>
-				<li class="active"><a data-toggle="tab" href="#menu1">초대 확인</a></li>
-				<li><a data-toggle="tab" href="#menu2">개인 정보 변경</a></li>
-				<li><a data-toggle="tab" href="#menu3" id="menu3_a">로그인 정보 변경 / 페이스북 계정 연동</a></li>
-				<li><a data-toggle="tab" href="#menu4">탈퇴</a></li>
-			</ul>
-		</div>
+    <div id='tab'
+      style='float: left; width: 150px; height: 700px; margin-left: 10px; margin-right: 20px; position: absoulte;'>
+      <ul class="nav nav-pills nav-stacked"
+        style='font-family: Noto Sans KR, sans-serif;'>
+        <li class="active"><a data-toggle="tab" href="#menu1">초대 확인</a></li>
+        <li><a data-toggle="tab" href="#menu2">개인 정보 변경</a></li>
+        <li><a data-toggle="tab" href="#menu3" id="menu3_a">로그인 정보 변경 / 페이스북 계정 연동</a></li>
+        <li><a data-toggle="tab" href="#menu4">탈퇴</a></li>
+      </ul>
+    </div>
 
-		<div class="tab-content">
-		  
-		    
-		<div id="menu1" class="tab-pane fade in active">
+    <div class="tab-content">
+      
+        
+    <div id="menu1" class="tab-pane fade in active">
       <h2 style=''>초대 확인</h2>
         <hr>
         <div>
@@ -54,42 +54,42 @@
         </div>
       </div>
       
-			<div id="menu2" class="tab-pane fade">
-				<h2 style=''>개인 정보 변경</h2>
-				<hr>
-				<form id="updateform1" method="post" class="form-horizontal"
-					action="">
-					<div class="form-group"
-						style='overflow: hidden; margin-left: 200px;'>
-						<img id='now-photo'
-							style='float: left; width: 50px; height: 50px;'>
-						<div class="file_input_div" style='overflow: hidden;'>
-							<input type="file" id='photo' name='files'
-								class="file_input_hidden"
-								onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
-								style='float: left;' />
-						</div>
-						<input id='photo-name' type='text' style='margin-left: 2px;'
-							readonly /> <input id='photo-path' type='hidden' />
-						<p>
-					</div>
-					<div class="form-group" style='height:100%; overflow:hidden;'>
-						<label class="col-sm-1 control-label" for="username1">이름</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="username1"
-								name="username1" placeholder="이름" />
-						</div>
-						  <div class="form-group" style='margin-top:90px; margin-left:30px; height:100%; overflow:hidden;'>
+      <div id="menu2" class="tab-pane fade">
+        <h2 style=''>개인 정보 변경</h2>
+        <hr>
+        <form id="updateform1" method="post" class="form-horizontal"
+          action="">
+          <div class="form-group"
+            style='overflow: hidden; margin-left: 200px;'>
+            <img id='now-photo'
+              style='float: left; width: 50px; height: 50px;'>
+            <div class="file_input_div" style='overflow: hidden;'>
+              <input type="file" id='photo' name='files'
+                class="file_input_hidden"
+                onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
+                style='float: left;' />
+            </div>
+            <input id='photo-name' type='text' style='margin-left: 2px;'
+              readonly /> <input id='photo-path' type='hidden' />
+            <p>
+          </div>
+          <div class="form-group" style='height:100%; overflow:hidden;'>
+            <label class="col-sm-1 control-label" for="username1">이름</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="username1"
+                name="username1" placeholder="이름" />
+            </div>
+              <div class="form-group" style='margin-top:90px; margin-left:30px; height:100%; overflow:hidden;'>
                   <button type="submit" class="btn btn-primary" name="update" value="변경하기">변경 하기</button>
               </div>
-					</div>
-				</form>
-			</div>
+          </div>
+        </form>
+      </div>
 
 
 
-			<div id="menu3" class="tab-pane fade">
-			<h2 style=''>로그인 정보 변경</h2>
+      <div id="menu3" class="tab-pane fade">
+      <h2 style=''>로그인 정보 변경</h2>
         <hr>
         <form id="updateform2" method="post" class="form-horizontal"
           action="">
@@ -125,23 +125,23 @@
         <hr>
         <h2>페이스북 계정 연동</h2>
         <hr>
-			  <div id="facebook">
-			  <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
-			  </div>
-			  <div id="already">
-			     <h3>이미 페이스북과 연동되어있습니다.</h3>
-			  </div>
-			</div>
-			
-		  <div id="menu4" class="tab-pane fade">
-		  <h2 style=''>회원탈퇴</h2>
-		  <h4>회원 탈퇴를 하시려면 이메일 주소와 비밀번호를 한번 더 입력해주세요</h4>
-		  <hr>
+        <div id="facebook">
+        <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
+        </div>
+        <div id="already">
+           <h3>이미 페이스북과 연동되어있습니다.</h3>
+        </div>
+      </div>
+      
+      <div id="menu4" class="tab-pane fade">
+      <h2 style=''>회원탈퇴</h2>
+      <h4>회원 탈퇴를 하시려면 이메일 주소와 비밀번호를 한번 더 입력해주세요</h4>
+      <hr>
               <div class="form-group" style='overflow:hidden;'>
                 <label class="col-sm-2 control-label" for="emailout" >이메일</label>
-	                <div class="col-sm-5">
-	                  <input type="text" class="form-control" id="emailout" name="emailout" placeholder="이메일"/>
-	                </div>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="emailout" name="emailout" placeholder="이메일"/>
+                  </div>
                 </div>
               
               
@@ -155,55 +155,55 @@
                <div class="form-group" style='margin-top:90px; margin-left:30px; height:100%; overflow:hidden;'>
                   <button type="button" class="btn btn-primary" name="out" id='out-btn'>탈퇴하기</button>
               </div>
-		  
-		  </div>
+      
+      </div>
       
       
       </div>
 
-	</div>
-	<div id="footer"></div>
-	<script src="../../js/context.js"></script>
-	<script src="../../node_modules/jquery/dist/jquery.js"></script>
-	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="../../js/common.js"></script>
-	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+  </div>
+  <div id="footer"></div>
+  <script src="../../js/context.js"></script>
+  <script src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
   
-	<script
-		src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
-	<script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
-	<script
-		src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
-	<script
-		src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
-	<script
-		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+  <script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+  <script
+    src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+  <script
+    src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+  <script
+    src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
-	<script src='main.js'></script>
-	<script src='facebook.js'></script>
+  <script src='main.js'></script>
+  <script src='facebook.js'></script>
 
-	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
-	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/additional-methods.min.js"></script>
-	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/localization/messages_ko.min.js"></script>
-		
-		<script src="../../js/jquery.cookie.js"></script>
-		
+  <script type="text/javascript"
+    src="../../node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script type="text/javascript"
+    src="../../node_modules/jquery-validation/dist/additional-methods.min.js"></script>
+  <script type="text/javascript"
+    src="../../node_modules/jquery-validation/dist/localization/messages_ko.min.js"></script>
+    
+    <script src="../../js/jquery.cookie.js"></script>
+    
 <script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
