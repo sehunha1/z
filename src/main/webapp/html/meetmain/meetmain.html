@@ -146,6 +146,7 @@
               <div class="container2">
                 <div class='row'></div>
               </div>
+                <div id="nextPgBtn">더보기</div>
             </div>
           </div>
         </div>
@@ -403,6 +404,9 @@ try {
 } catch (error) {
     var mtnum = -1;
 }
+
+var pageNo = 1;
+
 $.getJSON('../auth/loginUser.json', function(ajaxResult) {
   if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
     alert('로그인하세요');
@@ -439,6 +443,9 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
         }, 'json'); // post();
     }); // click()   
     
+  
+
+    
     $.getJSON('list.json?mtnum='+ mtnum, function(ajaxResult) {
        if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
           return;
@@ -448,17 +455,49 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
        //var container2 = $('#container2 .row');
        var template = Handlebars.compile($('#trTemplate').html());
        var row;
+       
+       var pageSize = 6;  
+       
        for (var i = 0; i < list.length; i++) {
          if (i % 3 == 0) {
            console.log('로우생성');
            console.log(ajaxResult.data[0].addFileList[0].filePath)
            row = $('<div>').addClass('row').appendTo(container2);
+         
          }
+        
+         
          var div = $('<div>').html(template(list[i]));
          console.log(list)
          //$('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
          row.append(div);
        }
+       
+       
+       if (list.length < 7) {
+           $('#nextPgBtn').css('display', 'none');
+       } else {
+    	   for (var i = 6; i < list.length; i++) {
+    		   $('.post').eq(i).css('display','none');
+    	   }
+       }
+       
+       $('#nextPgBtn').click(function() {
+    	   var startNo = pageNo*6;
+    	   var endNo;
+    	   if ( ++pageNo*6 >= list.length) {
+    		   endNo = list.length;
+    		   $('#nextPgBtn').css('display', 'none');
+    	   } else {
+    		   endNo = pageNo*6;
+    	   }
+    		   for (var i = startNo; i < endNo; i++) {
+    			   $('.post').eq(i).css('display','block');
+    		   }
+       });
+       
+    	   
+       
        $('.img-responsive').click(function(){
          console.log(i);
        });
