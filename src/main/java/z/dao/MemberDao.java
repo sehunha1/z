@@ -20,7 +20,7 @@ public interface MemberDao {
   Member getOneByEmailPassword(Map<String,String> paramMap) throws Exception;
   //Member getOneByEmailFacebook(Map<String,String> paramMap) throws Exception;
   Member getOneByFacebook(String facebook) throws Exception;
-  public int chkMbEmail (String email);
+  int chkMbEmail (String email);
   int chkMbFacebook (String facebook);
   /*int countByNo(int memberNo) throws Exception;
   int update(Member student) throws Exception;
