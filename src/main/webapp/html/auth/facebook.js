@@ -55,10 +55,10 @@
 					      else if (status == "success") {
 					        	 swal({
 				    				  title: "페이스북 첫 로그인 ",
-				    				  text: "회원가입 창으로 이동합니다",
+				    				  text: "회원가입 창으로 이동합니다.\n페이스북으로 가입하기 버튼을 눌러주세요",
 				    				},
 				    				function(){
-				    				  location.href ='newjoin.html'
+				    				  location.href ='join.html'
 				    				});
 					        	
 					        } 
