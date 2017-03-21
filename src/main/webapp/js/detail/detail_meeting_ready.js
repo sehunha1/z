@@ -1,3 +1,4 @@
+var memberNo = window.location.search.split("&")[0].substring(10);
 var meetingNo = window.location.search.split("&")[1].substring(10);
 
 $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
@@ -39,6 +40,27 @@ $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, functio
     var template = Handlebars.compile($("#notbossTemplate").html());
     var ul = $(".member_list");
     ul.append(template({"listMeetingMembNotBoss":listMeetingMembNotBoss}));
+  });
+
+  $("#btn_ok").on("click", function(e) {
+      e.preventDefault();
+      if (memberNo != listMeetingMembBoss[0].memberNo) {
+        swal("방장만 선택가능");
+        return;
+      }
+
+      var param = {
+          "cal" : $(".date_result_list .item.on .info1").text(),
+          "loc" : $(".place_result_list .item.on .info1").text()
+      };
+
+      $.post("updateMstatFin.json?meetingNo=" + meetingNo, param, function(ajaxResult) {
+          var status = ajaxResult.status;
+          if (status != "success") return;
+          var data = ajaxResult.data;
+      });
+
+      location.href = "../mylist/mylist.html";
   });
 });
 
@@ -113,22 +135,6 @@ $(function() {
   
   $("#btn_back").on("click", function(e) {
     e.preventDefault();
-    location.href = "../mylist/mylist.html";
-  });
-
-  $("#btn_ok").on("click", function(e) {
-    e.preventDefault();
-    var param = {
-      "cal" : $(".date_result_list .item.on .info1").text(),
-      "loc" : $(".place_result_list .item.on .info1").text()
-    };
-
-    $.post("updateMstatFin.json?meetingNo=" + meetingNo, param, function(ajaxResult) {
-      var status = ajaxResult.status;
-      if (status != "success") return;
-      var data = ajaxResult.data;
-    });
-
     location.href = "../mylist/mylist.html";
   });
 });

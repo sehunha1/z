@@ -69,12 +69,11 @@ public class MemberServiceImpl implements MemberService {
     if (memberDao.countByNo(member.getMemberNo()) == 0) {
       throw new Exception("회원을 찾지 못했습니다.");
     }
-    memberDao.updatelogin(member);
+    //memberDao.updatelogin(member);
     return memberDao.updatelogin(member);
   }
 
   public int chkMbEmail(String email) throws Exception {
-
     return memberDao.chkMbEmail(email);
   }
   

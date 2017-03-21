@@ -196,24 +196,24 @@
 	<script src='facebook.js'></script>
 
 	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+		src="../../node_modules/jquery-validation/dist/jquery.validate.js"></script>
 	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/additional-methods.min.js"></script>
+		src="../../node_modules/jquery-validation/dist/additional-methods.js"></script>
 	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/localization/messages_ko.min.js"></script>
+		src="../../node_modules/jquery-validation/dist/localization/messages_ko.js"></script>
 		
 		<script src="../../js/jquery.cookie.js"></script>
 		
 <script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
-  <td>{{title}}</td>
-  <td>{{content}}</td>
-  <td>{{category}}</td>
-  <td>{{deadline}}</td>
+  <td style="padding-top: 12px;">{{title}}</td>
+  <td style="padding-top: 12px;">{{content}}</td>
+  <td style="padding-top: 12px;">{{category}}</td>
+  <td style="padding-top: 12px;">{{deadline}}</td>
   <td>
-    <button type="button" class="ok" mtnumok="{{meetingNo}}">수락</button>
-    <button type="button" class="no" mtnumno="{{meetingNo}}">거절</button>
+    <button type="button" class="ok btn btn-success btn-sm" mtnumok="{{meetingNo}}">수락</button>
+    <button type="button" class="no btn btn-success btn-sm" mtnumno="{{meetingNo}}">거절</button>
   </td>
 </tr>
 {{/each}}

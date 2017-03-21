@@ -38,27 +38,12 @@
       });
   }
   
-  
+  // 로그인
   function fbLogin() {
 	  FB.login(function(response) {
 		  FB.api('/me/?fields=picture', { locale: 'kr_KR', fields: 'name, email, picture' },
 	    		  function(response) {
-	    		    //console.log(response.email);
-	    		    //console.log(response.name);
 	    		    
-	    		    //document.getElementById('status').innerHTML =
-	    		    //  'Thanks for logging in, ' + response.name + response.email + '!';
-	    		    
-	    		    
-	    		    $(function() {
-	    		          var cookie_email = response.email;
-	    		          var cookie_name = response.name;
-	    		          $.cookie('cookie_e', cookie_email, { path: '/'});
-	    		          $.cookie('cookie_n', cookie_name, { path: '/'});
-	    		      })
-	    		      
-	    		      // 페이스북 중복검사
-	    		      
 					 //페이스북 종복검사
 					 $(function() {
 					    $.getJSON('checkFacebook.json?facebook=' + response.email, function(ajaxResult) {
@@ -70,10 +55,10 @@
 					      else if (status == "success") {
 					        	 swal({
 				    				  title: "페이스북 첫 로그인 ",
-				    				  text: "회원가입 창으로 이동합니다. 사진은 자동으로 받아옵니다.",
+				    				  text: "회원가입 창으로 이동합니다.\n페이스북으로 가입하기 버튼을 눌러주세요",
 				    				},
 				    				function(){
-				    				  location.href ='facebookjoin.html'
+				    				  location.href ='join.html'
 				    				});
 					        	
 					        } 
@@ -99,55 +84,98 @@
 		});
   }
   
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '{1343425079030171}',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-	  if (response.status === 'connected') {
-	        FB.api('/me/?fields=picture', function(user) {
-	            if (user) {
-	            	 $(function() {
-	            		  var image = user.picture.data.url;
-	            		  var defaulturl = "https://scontent.xx.fbcdn.net/v/t1.0-1/c15.0.50.50/p50x50/10354686_10150004552801856_220367501106153455_n.jpg?oh=0bb129c4bacce2fd26d99c098ed48ce3&oe=5938E12F";
-	            		  if (image == defaulturl) {
-	            			  var cookie_photo = image.split('/')[7].split('?')[0];
-	            		  } else {
-	            			  var cookie_photo = image.split('/')[6].split('?')[0];  
-	            		  }
-	 	            	  $.cookie('cookie_i', image, { path: '/'});
-	    		          $.cookie('cookie_p', cookie_photo, { path: '/'});
+  // 회원가입
+  function fbJoin() {
+	  FB.login(function(response) {
+		  FB.api('/me/?fields=picture', { locale: 'kr_KR', fields: 'name, email, picture' },
+	    		  function(response) {
+	    		    //console.log(response.email);
+	    		    //console.log(response.name);
+	    		    //console.log(response.picture.data.url);
+	    		    
+	    		    
+	    		    /*$(function() {
+	    		          var facebook_email = response.email;
+	    		          var facebook_name = response.name;
 	    		          
-	    		          //console.log(cookie_photo);
-	    		      })
+	    		          var image = response.picture.data.url;
+  						var defaulturl = "https://scontent.xx.fbcdn.net/v/t1.0-1/c15.0.50.50/p50x50/10354686_10150004552801856_220367501106153455_n.jpg?oh=0bb129c4bacce2fd26d99c098ed48ce3&oe=5938E12F";
+  						if (image == defaulturl) {
+  							var fcbk_photo = image.split('/')[7].split('?')[0];
+  						} else {
+  							var fcbk_photo = image.split('/')[6].split('?')[0];  
+  						}
+	    		          //$.cookie('cookie_e', cookie_email, { path: '/'});
+	    		          //$.cookie('cookie_n', cookie_name, { path: '/'});
+	    		      })*/
 	    		      
-	            }
-	        });    
-	         
-	    } else if (response.status === 'not_authorized') {
-	        
-	    }
-  });
+	    		      // 페이스북 중복검사
+	    		      
+					 //페이스북 종복검사
+				  
+					 $(function() {
+					    $.getJSON('checkFacebook.json?facebook=' + response.email, function(ajaxResult) {
+					      var status = ajaxResult.status;
 
+					      var facebook_email = response.email;
+	    		          var facebook_name = response.name;
+	    		          
+	    		          var image = response.picture.data.url;
+  						var defaulturl = "https://scontent.xx.fbcdn.net/v/t1.0-1/c15.0.50.50/p50x50/10354686_10150004552801856_220367501106153455_n.jpg?oh=0bb129c4bacce2fd26d99c098ed48ce3&oe=5938E12F";
+  						if (image == defaulturl) {
+  							var fcbk_photo = image.split('/')[7].split('?')[0];
+  						} else {
+  							var fcbk_photo = image.split('/')[6].split('?')[0];  
+  						}
+					
+					      if (response.email == undefined) {
+					    	  
+					      }
+					      else if (status == "success") {
+					        	 swal({
+				    				  title: "페이스북 계정으로 가입",
+				    				  text: "사진은 자동으로 받아옵니다.",
+				    				},
+				    				function(){
+				    					$("#email1").val(facebook_email);
+				    				    $("#username1").val(facebook_name);
+				    				    $("#photo-path").val(fcbk_photo);
+				    				    $("#fcbk").val(facebook_email);
+				    				    $("#photowrap").css("display", "none");
+				    				    $("#email1").focus();
+				    				});
+					        	
+					        } 
+					    });
+					});
+	    		  }
+	    		);
+		});
+  }
+  
+  
+  window.fbAsyncInit = function() {
+	  FB.init({
+		  appId      : '{1343425079030171}',
+		  cookie     : true,  // enable cookies to allow the server to access 
+		  // the session
+		  xfbml      : true,  // parse social plugins on this page
+		  version    : 'v2.8' // use graph api version 2.8
+	  });
+	  
+	  // Now that we've initialized the JavaScript SDK, we call 
+	  // FB.getLoginStatus().  This function gets the state of the
+	  // person visiting this page and can return one of three states to
+	  // the callback you provide.  They can be:
+	  //
+	  // 1. Logged into your app ('connected')
+	  // 2. Logged into Facebook, but not your app ('not_authorized')
+	  // 3. Not logged into Facebook and can't tell if they are logged into
+	  //    your app or not.
+	  //
+	  // These three cases are handled in the callback function.
   };
+
 
   // Load the SDK asynchronously
 	 (function(d, s, id) {

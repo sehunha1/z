@@ -112,8 +112,9 @@ public class MemberJsonControl {
   @RequestMapping("html/auth/checkEmail")
   public AjaxResult chkMbEmail(String email) throws Exception {
 
-    int resultCnt = memberService.chkMbEmail(email);
-    if (resultCnt == 0) {
+    int count = memberService.chkMbEmail(email);
+    
+    if (count == 0) {
       return new AjaxResult(AjaxResult.SUCCESS, "사용가능한 이메일 입니다.");
     } else {
       return new AjaxResult(AjaxResult.FAIL, "중복된 이메일 입니다.");
@@ -124,6 +125,7 @@ public class MemberJsonControl {
   public AjaxResult chkMbFacebook(String facebook) throws Exception {
 
     int resultCnt = memberService.chkMbFacebook(facebook);
+    
     if (resultCnt == 0) {
       return new AjaxResult(AjaxResult.SUCCESS, "사용가능한 계정 입니다.");
     } else {
@@ -227,3 +229,4 @@ public class MemberJsonControl {
  * 
  * return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다."); }
  */
+
