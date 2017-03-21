@@ -103,7 +103,8 @@ public class AuthJsonControl {
       if (time < currentTime) {
         int isDuplicateCal = calendarService.isDuplicate(meetingNo[i]);
         int isDuplicateLoc = locationListService.isDuplicate(meetingNo[i]);
-
+        String mstat = meetingService.getOneMeeting(meetingNo[i]).getMeetStat();
+        if (mstat != "ing") break;
         if (isDuplicateCal > 1 || isDuplicateLoc > 1) {
           meetingService.updateMstatWait(meetingNo[i]);
           if (isDuplicateCal < 2) {
