@@ -85,23 +85,20 @@ try {
 		});
 		
 		// 게시판
-		
 		$.getJSON("../detail/meetBoardList.json?meetingNo=" + meetingNo, function(ajaxResult) {
 		  var status = ajaxResult.status;
+		  
 		  if (status != "success") {
-			  return;
+			  $('#BoarddataNotFound').show();
+			  return false;
 		  }
+		  
 		  var div = $(".swiper-wrapper");
 		  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
 		  var meetBoardList = ajaxResult.data;
-		  
-		  var boardView = JSON.stringify(meetBoardList[0]);
-		  if (boardView != undefined) {
-			  div.append(boardTemplate({"meetBoardList":meetBoardList}));
-			  swiper.onResize();
-		  } else {
-			  $('#BoarddataNotFound').show();
-		  }
+		
+		  div.append(boardTemplate({"meetBoardList":meetBoardList}));
+		  swiper.onResize();
 		  
 		});
 	});
@@ -131,25 +128,20 @@ $('.board .search-btn').on('click', function(e) {
 	
 	$.getJSON("../detail/keywordBoardList.json?meetingNo=" + meetingNo + "&keyWord=" + keyWord, function(ajaxResult) {
 	  var status = ajaxResult.status;
+	  console.log(status);
 	  if (status != "success") {
-		  return;
+		  $(".swiper-wrapper").empty();
+		  $('#BoarddataNotFound').show();
+		  return false;
 	  }
 	  
 	  $(".swiper-wrapper").empty();
 	  var div = $(".swiper-wrapper");
 	  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
 	  var meetBoardList = ajaxResult.data;
-	  
-	  var boardVieww = JSON.stringify(meetBoardList);
-	  console.log(boardVieww);
-	  if (boardVieww != undefined) {
-		  console.log('1');
-		  $('#BoarddataNotFound').css('display', 'none');
-		  div.append(boardTemplate({"meetBoardList":meetBoardList}));
-	  } else {
-		  console.log('22');
-		  $('#BoarddataNotFound').show();
-	  }
+
+	  $('#BoarddataNotFound').css('display', 'none');
+	  div.append(boardTemplate({"meetBoardList":meetBoardList}));
 	  swiper.onResize();
 	});
 	
