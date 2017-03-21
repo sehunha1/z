@@ -90,6 +90,11 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
+  public int updateFtime(int meetingNo) throws Exception {
+    return meetingDao.updateFtime(meetingNo);
+  }
+
+  @Override
   public int updateCal(int meetingNo, String cal) throws Exception {
     return meetingDao.updateCal(meetingNo, cal);
   }
