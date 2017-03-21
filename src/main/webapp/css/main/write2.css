@@ -23,23 +23,23 @@
 	margin-top: 20px;
 }
 
-#Go-btn {
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-	font-size: 30px;
-	height: 530px;
-	width: 100px;
-	margin-left: 2%;
-}
+/*#Go-btn {*/
+	/*border-radius: 10px;*/
+	/*border-style: solid;*/
+	/*border-width: 2px;*/
+	/*border-color: grey;*/
+	/*background-color: #3ACBA3;*/
+	/*color: white;*/
+	/*font-size: 30px;*/
+	/*height: 530px;*/
+	/*width: 100px;*/
+	/*margin-left: 2%;*/
+/*}*/
 
-#Go-btn:hover {
-	color: black;
-	cursor: pointer;
-}
+/*#Go-btn:hover {*/
+	/*color: black;*/
+	/*cursor: pointer;*/
+/*}*/
 
 #scheduleinfo {
 	height: 530px;
@@ -158,24 +158,24 @@
 	height: 50px;
 }
 
-#scheduleinfo .photo-add .fileinput-button {
-	height: 100%;
-	line-height: 100%;
-	float: left;
-	font: 15px;
-	text-align: right;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: grey;
-	background-color: #3ACBA3;
-	color: white;
-	cursor: pointer;
-}
+/*#scheduleinfo .photo-add .fileinput-button {*/
+	/*height: 100%;*/
+	/*line-height: 100%;*/
+	/*float: left;*/
+	/*font: 15px;*/
+	/*text-align: right;*/
+	/*border-radius: 10px;*/
+	/*border-style: solid;*/
+	/*border-width: 2px;*/
+	/*border-color: grey;*/
+	/*background-color: #3ACBA3;*/
+	/*color: white;*/
+	/*cursor: pointer;*/
+/*}*/
 
-#scheduleinfo .photo-add .fileinput-button:hover {
-	color: black;
-}
+/*#scheduleinfo .photo-add .fileinput-button:hover {*/
+	/*color: black;*/
+/*}*/
 
 .fileinput-button input[type=file].fileinput-button::-webkit-file-upload-button
 	{

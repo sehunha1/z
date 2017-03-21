@@ -1,6 +1,6 @@
 body
 {
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     /*background-color: #F7F7F7;*/
 }
 .post
@@ -68,9 +68,9 @@ body
 	width: 200px;
 	height: 25px;
 	margin-top: 5px;
-	border-color: darkgray;
-	background-color: white;
-	color:darkgray;
+	/*border-color: darkgray;*/
+	/*background-color: white;*/
+	/*color:darkgray;*/
 }
 
 .btn-view {

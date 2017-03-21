@@ -63,15 +63,15 @@
         <div class="tab-content">
           <div id="menu1" class="tab-pane fade in active">
             <div id="datepicker"></div>
-            <button class="_btnSaveSelectedDate">날짜선택완료</button>
+            <button class="_btnSaveSelectedDate btn btn-success" style="margin-top: 10px;">날짜선택완료</button>
           </div>
 
           <div id="menu2" class="tab-pane fade">
             <div id="menu2-wrap">
               <div id="buttonchoice" style='margin-top: 10px;'>
-                <button type="button" id='bselect' class="btn btn-primary">장소
+                <button type="button" id='bselect' class="btn btn-success">장소
                   선택하기</button>
-                <button type="button" id='blist' class="btn btn-primary">장소
+                <button type="button" id='blist' class="btn btn-success">장소
                   투표하기</button>
               </div>
 
@@ -88,7 +88,7 @@
                         <form onsubmit="searchPlaces(); return false;">
                           키워드 : <input type="text" placeholder="검색어를 입력하세요" value=""
                             id="keyword" size="15">
-                          <button id='search' type="submit">검색하기</button>
+                          <button id='search' type="submit" class="btn btn-success btn-xs">검색하기</button>
                         </form>
                       </div>
                     </div>
@@ -140,7 +140,7 @@
 
             <div id='board' class="pre-scrollable" style='margin: 0 auto; margin-top: 10px;'>
               <a id='new-btnn' href='#' type='button'
-                class="btn btn-primary btn-sm" data-toggle="modal"
+                class="btn btn-success" data-toggle="modal"
                 data-target="#myModal">추가</a>
 
               <div class="container2">
@@ -171,8 +171,8 @@
                 <img id='photo-img' height='80' class='view-form'><input
                   id='link' name='files' type='file' multiple> <input
                   id='link-path' type='hidden'> <a id='new-btnn' href='#'
-                  class="btn btn-primary btn-sm">취소</a> <a id='new-btnnn'
-                  href='#' class="btn btn-primary btn-smm">저장</a><BR>
+                  class="btn btn-success">취소</a> <a id='new-btnnn'
+                  href='#' class="btn btn-success">저장</a><BR>
               </div>
             </div>
           </div>
