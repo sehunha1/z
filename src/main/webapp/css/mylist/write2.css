@@ -67,7 +67,7 @@
   font-size: 12px;
 }
 #writebtn .cancle {
-	border-color: #3db394;
+  border-color: #3db394;
   height: 23px;
   width: 100px;
   font-size: 9px;
@@ -75,7 +75,7 @@
 }
 
 #writebtn .save {
-	margin-left: 30px;
+  margin-left: 30px;
   background-color :#3db394;
   height: 23px;
   width: 100px;
@@ -85,24 +85,24 @@
 }
 
 #writeform #new-btnn {
-	margin-left : 320px;
-  margin-top: 10px;
-  height: 25px;
-  width: 100px;
-  font-size: 12px;
-  color:#3db394;
-  border-color: #3db394;
-  background-color: white;
+  margin-left: 380px;
+  margin-top: 20px;
+  /*height: 25px;*/
+  /*width: 100px;*/
+  /*font-size: 12px;*/
+  /*color:#3db394;*/
+  /*border-color: #3db394;*/
+  /*background-color: white;*/
 }
 
 #writeform #new-btnnn {
-	margin-left : 8px;
-	margin-top: 10px;
-  height: 25px;
-  width: 100px;
-  font-size: 12px;
-  border-color: #3db394;
-  background-color: #3db394;
+  margin-left: 28px;
+  margin-top: 10px;
+  /*height: 25px;*/
+  /*width: 100px;*/
+  /*font-size: 12px;*/
+  /*border-color: #3db394;*/
+  /*background-color: #3db394;*/
 }
 
 .modal-body {
@@ -114,15 +114,14 @@
 }
 
 #new-btnn {
-  margin-left :640px;
+  margin-left :670px;
   margin-top: 3px;
   margin-bottom: 10px;
-  height: 25px;
-  width: 100px;
-  font-size: 12px;
-  border-color: #3db394;
-  background-color: #3db394;
-  
+  /*height: 25px;*/
+  /*width: 100px;*/
+  /*font-size: 12px;*/
+  /*border-color: #3db394;*/
+  /*background-color: #3db394;*/
 }
 #board-box{
 	margin-top: 20px;
