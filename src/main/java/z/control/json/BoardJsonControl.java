@@ -54,12 +54,17 @@ public class BoardJsonControl {
   */
   @RequestMapping("/html/meetmain/add")
   public AjaxResult add(Board board) throws Exception {
-    /*
+    
     List<AddFile> list = board.getAddFileList();
-    for (int i = 0; i < list.size(); i++) {
+    if (list.size() == 0) {
+      list.add(new AddFile("noimage.jpg"));
+    }
+    board.setAddFileList(list);
+    /*for (int i = 0; i < list.size(); i++) {
       System.out.println(i+"번째 addFile = "+ ((AddFile)list.get(i)).getFilePath());
     }*/
     // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.
+    
     boardService.add(board);
     
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
