@@ -1,0 +1,247 @@
+<html>
+<head>
+<meta charset='UTF-8'>
+<link rel="stylesheet"
+  href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../../css/common.css">
+<style>
+
+/*  bhoechie tab */
+div.bhoechie-tab-container{
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 0 !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  border:1px solid #ddd;
+  margin-top: 20px;
+  margin-left: 50px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+}
+div.bhoechie-tab-menu{
+  /*padding-right: 0;*/
+  padding-left: 0;
+  padding-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a .glyphicon,
+div.bhoechie-tab-menu div.list-group>a .fa {
+  color: #5A55A3;
+}
+div.bhoechie-tab-menu div.list-group>a:first-child{
+  border-top-right-radius: 0;
+  -moz-border-top-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a:last-child{
+  border-bottom-right-radius: 0;
+  -moz-border-bottom-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a.active,
+div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
+div.bhoechie-tab-menu div.list-group>a.active .fa{
+  background-color: #5A55A3;
+  background-image: #5A55A3;
+  color: #ffffff;
+}
+div.bhoechie-tab-menu div.list-group>a.active:after{
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-left: 0;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-left: 10px solid #5A55A3;
+}
+
+div.bhoechie-tab-content{
+  background-color: #ffffff;
+  /* border: 1px solid #eeeeee; */
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+  display: none;
+}
+</style>
+</head>
+<body>
+<div id="header"></div>
+<div class="container">
+  <div class="row">
+        <!-- <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container" style="width:960px;">  -->
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu" style="margin-right:20px;">
+              <div class="list-group" style="width:200px;">
+                <a href="#" class="list-group-item active text-center" style="height:80px;">
+                 <h4 class="glyphicon glyphicon-send"></h4><br/>초대 확인
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-user"></h4><br/>개인 정보 변경
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-log-in"></h4><br/>로그인 정보 변경 <br/>& 페이스북 연동
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-log-out"></h4><br/>탈퇴
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                <!-- 초대 확인 -->
+                <div class="bhoechie-tab-content active">
+                <h2 style=''>초대 확인</h2>
+					        <hr>
+					        <div>
+					        <div id="none" style="display:none;"><h3>받은 초대가 없습니다</h3></div>
+					        <table id='list-table' class='table table-hover' style='width:750px; overflow:hidden; overflow-y:auto;'>
+					        <thead>
+					          <tr>
+					            <th>모임명</th>
+					            <th>모임설명</th>
+					            <th>모임분류</th>
+					            <th>투표마감일</th>
+					            <th>수락하기/거절하기</th>
+					          </tr>
+					        <thead>
+					        <tbody></tbody>
+					      </table>
+					        </div>
+                </div>
+                
+                <!-- 개인 정보 변경 -->
+                <div class="bhoechie-tab-content">
+                        <h2 style=''>개인 정보 변경</h2>
+					        <hr>
+					        <form id="updateform1" method="post" class="form-horizontal"
+					          action="">
+					          <div class="form-group"
+					            style='overflow: hidden;'>
+					            <img id='now-photo'
+					              style='float: left; width: 50px; height: 50px;'>
+					            <div class="file_input_div" style='overflow: hidden;'>
+					              <input type="file" id='photo' name='files'
+					                class="file_input_hidden"
+					                onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
+					                style='float: left;' />
+					            </div>
+					            <input id='photo-name' type='text' style='margin-left: 2px;'
+					              readonly /> <input id='photo-path' type='hidden' />
+					            <p>
+					          </div>
+					          <div class="form-group" style='overflow:hidden;'>
+					            <label class="col-sm-1 control-label" for="username1">이름</label>
+					            <div class="col-sm-5">
+					              <input type="text" class="form-control" id="username1"
+					                name="username1" placeholder="이름" />
+					            </div>
+					              <div class="form-group" style='margin-top:90px; margin-left:30px; overflow:hidden;'>
+					                  <button type="submit" class="btn btn-primary" name="update" value="변경하기">변경 하기</button>
+					              </div>
+					          </div>
+					        </form>
+                </div>
+    
+                <!-- 로그인 정보 변경 & 페이스북 연동 -->
+                <div class="bhoechie-tab-content">
+                   <h2 style=''>로그인 정보 변경</h2>
+					        <hr>
+					        <form id="updateform2" method="post" class="form-horizontal"
+					          action="">
+					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '>
+					                <label class="col-sm-1 control-label" for="email1" style='margin-right:40px;'>이메일</label>
+					                <div class="col-sm-5">
+					                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" onChange="isCheck.value='N'" />
+					                </div>
+					                  <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left;'>
+					                  <input type='hidden' id='isCheck' value="N">
+					              </div>
+					              
+					              
+					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '> 
+					                <label class="col-sm-1 control-label" for="password1" style='margin-right:40px;'>암호</label>
+					                <div class="col-sm-5">
+					                  <input type="password" class="form-control" id="password1" name="password1" placeholder="암호" />
+					                </div>
+					              </div>
+					
+					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '>
+					                <label class="col-sm-1 control-label" for="confirm_password1" style='margin-right:40px;'>암호 확인</label>
+					                <div class="col-sm-5">
+					                  <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="암호 확인" />
+					                </div>
+					              </div>
+					              
+					               <div class="form-group" style='margin-top:30px; margin-left:30px; overflow:hidden;'>
+					                  <button type="submit" class="btn btn-primary" name="update" value="변경하기">변경 하기</button>
+					              </div>
+					        </form>
+					        
+					        <hr>
+					        <h2>페이스북 계정 연동</h2>
+					        <hr>
+					        <div id="facebook">
+					        <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
+					        </div>
+					        <div id="already">
+					           <h3>이미 페이스북과 연동되어있습니다.</h3>
+					        </div>
+                </div>
+                
+                <!-- 탈퇴 -->
+                <div class="bhoechie-tab-content">
+                    <h2 style=''>회원탈퇴</h2>
+						      <h4>회원 탈퇴를 하시려면 이메일 주소와 비밀번호를 한번 더 입력해주세요</h4>
+						      <hr>
+						              <div class="form-group" style='overflow:hidden;'>
+						                <label class="col-sm-2 control-label" for="emailout" >이메일</label>
+						                  <div class="col-sm-5">
+						                    <input type="text" class="form-control" id="emailout" name="emailout" placeholder="이메일"/>
+						                  </div>
+						                </div>
+						              
+						              
+						              <div class="form-group" style='margin-left:30px; overflow:hidden;'> 
+						                <label class="col-sm-2 control-label" for="passwordout">암호</label>
+						                <div class="col-sm-5">
+						                  <input type="password" class="form-control" id="passwordout" name="passwordout" placeholder="암호" />
+						                </div>
+						              </div>
+						              
+						               <div class="form-group" style='margin-top:90px; margin-left:30px; overflow:hidden;'>
+						                  <button type="button" class="btn btn-primary" name="out" id='out-btn'>탈퇴하기</button>
+						              </div>
+						      
+						      </div>
+                </div>
+            </div>
+        </div>
+<div id="footer"></div>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../js/common.js"></script>
+<script>
+$(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
+</script>
+</body>
+</html>

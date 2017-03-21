@@ -90,19 +90,19 @@
   display: inline-block;
   margin: 3% auto;
   float: left;
-  height: 30px;
-  line-height: 100%;
-  border-radius: 10px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: grey;
-  background-color: #3ACBA3;
-  color: white;
+  /*height: 30px;*/
+  /*line-height: 100%;*/
+  /*border-radius: 10px;*/
+  /*border-style: solid;*/
+  /*border-width: 2px;*/
+  /*border-color: grey;*/
+  /*background-color: #3ACBA3;*/
+  /*color: white;*/
 }
 
-#membPlusPopup #minus-btn:hover {
-  color: black;
-}
+/*#membPlusPopup #minus-btn:hover {*/
+  /*color: black;*/
+/*}*/
 
 #mail-box-div {
   height: 15%;
@@ -173,7 +173,7 @@ function add_memb() {
       '<input type="email"' + 'class="add-email-box"'
           + 'placeholder="email을 입력해주세요">'
           + '<button type="button" id="minus-btn"'
-          + 'class="btn btn-default"'
+          + 'class="btn btn-warning"'
           + 'onClick="remove_memb(this)">-</button>').appendTo(
       '#new-field');
 }

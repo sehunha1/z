@@ -11,7 +11,7 @@ public interface MemberService {
   List<Member> getList() throws Exception;
   Member getDetail(int no) throws Exception;
   int add(Member member) throws Exception;
-  public int chkMbEmail(String email) throws Exception; 
+  int chkMbEmail(String email) throws Exception; 
   //int delete(int no) throws Exception;
   int chkMbFacebook(String facebook) throws Exception;
   int updateFBphoto(Member member);

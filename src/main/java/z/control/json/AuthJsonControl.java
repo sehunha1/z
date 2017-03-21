@@ -103,7 +103,8 @@ public class AuthJsonControl {
       if (time < currentTime) {
         int isDuplicateCal = calendarService.isDuplicate(meetingNo[i]);
         int isDuplicateLoc = locationListService.isDuplicate(meetingNo[i]);
-
+        String mstat = meetingService.getOneMeeting(meetingNo[i]).getMeetStat();
+        if (!mstat.equals("ing")) break;
         if (isDuplicateCal > 1 || isDuplicateLoc > 1) {
           meetingService.updateMstatWait(meetingNo[i]);
           if (isDuplicateCal < 2) {
@@ -116,6 +117,7 @@ public class AuthJsonControl {
           meetingService.updateMstatFin(meetingNo[i]);
           meetingService.updateFdate(meetingNo[i]);
           meetingService.updateFloc(meetingNo[i]);
+          meetingService.updateFtime(meetingNo[i]);
         }
       }
     }

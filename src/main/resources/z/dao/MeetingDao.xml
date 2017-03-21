@@ -204,6 +204,13 @@
 		(select count(*) from loc where loc.mtnum=#{value} group by loc.ltnum order by count(*) desc limit 1)) where mtnum=#{value};
 	</update>
 
+	<update id="updateFtime" parameterType="int">
+		update meet set ftime=(select ctime from cal where mtnum=#{value} and cdate=(select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >=
+		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) group by ctime having count(*) >=
+		(select count(*) from cal where mtnum=#{value} and cdate=(select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >=
+		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) group by ctime order by count(*) desc limit 1)) where mtnum=#{value};
+	</update>
+
 	<update id="updateCal">
 		update meet set fdate=#{cal} where mtnum=#{meetingNo};
 	</update>

@@ -1,4 +1,4 @@
-$('#photo').fileupload({
+/*$('#photo').fileupload({
     url: '../../common/fileupload.json', // 서버에 요청할 URL
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
     sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
@@ -14,7 +14,7 @@ $('#photo').fileupload({
     	console.log(data.result);
         $('#photo-path').val(data.result.data[0]);
     }
-});
+});*/
 
 /*
 $('#emailcheck').click(function() {
@@ -30,12 +30,12 @@ $('#emailcheck').click(function() {
 });
 */
 
-$('#add-btn').click(function() {
+/*$('#add-btn').click(function() {
 	
 	var param = {
-			"email": $('#email').val(),
-			"name": $('#names').val(),
-			"password": $('#password').val(),
+			"email": $('#email1').val(),
+			"name": $('#username1').val(),
+			"password": $('#password1').val(),
 			"photo": $('#photo-path').val()
 			//"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
 			//"photo": $("#photo").attr('src', 'html/upload/' + val())
@@ -68,4 +68,4 @@ $('#add-btn').click(function() {
 }); // click() 
 
 
-
+*/
