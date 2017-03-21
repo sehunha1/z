@@ -4,17 +4,28 @@
 
 #nextPgBtn {
 	width: 750px;
-	height :40px;
+	height :35px;
   display: inline-block;
   padding: 10px;
-  background-color: grey;
+  background-color: #778899;
   color: #fff;
-  font-size: 1.1em;
-  margin-bottom: 15px;
+  font-size: 0.9em;
+  margin-top :10px;
+  margin-bottom: 20px;
   cursor: pointer;
   text-align: center;
   border-radius: 2px;
 
+}
+
+
+#board {
+  height :700px;
+}
+.pre-scrollable{
+	max-height: 600px;
+	overflow-x: hidden;
+	scrollbar-face-color: 
 }
 
 #write {
@@ -114,6 +125,17 @@
 }
 
 #new-btnn {
+<<<<<<< HEAD
+  margin-left :630px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  height: 25px;
+  width: 90px;
+  font-size: 12px;
+  border-color: #3db394;
+  background-color: #3db394;
+  
+=======
   margin-left :670px;
   margin-top: 3px;
   margin-bottom: 10px;
@@ -122,6 +144,7 @@
   /*font-size: 12px;*/
   /*border-color: #3db394;*/
   /*background-color: #3db394;*/
+>>>>>>> cc3ad0f7f003b18dba587096894c0657260c224d
 }
 #board-box{
 	margin-top: 20px;

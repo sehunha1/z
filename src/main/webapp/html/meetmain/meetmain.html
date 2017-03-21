@@ -138,7 +138,7 @@
 
           <div id="menu3" class="tab-pane fade">
 
-            <div id='board' style='margin: 0 auto; margin-top: 10px;'>
+            <div id='board' class="pre-scrollable" style='margin: 0 auto; margin-top: 10px;'>
               <a id='new-btnn' href='#' type='button'
                 class="btn btn-success" data-toggle="modal"
                 data-target="#myModal">추가</a>
@@ -170,7 +170,7 @@
                   class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
                 <img id='photo-img' height='80' class='view-form'><input
                   id='link' name='files' type='file' multiple> <input
-                  id='link-path' type='hidden'> <a id='new-btnn' href='#'
+                  id='link-path' type='hidden'> <a id='cancel-btn' href='#'
                   class="btn btn-success">취소</a> <a id='new-btnnn'
                   href='#' class="btn btn-success">저장</a><BR>
               </div>
@@ -283,6 +283,11 @@
   <script>
   $('#new-btnn').click(function(event) {
       event.preventDefault();
+      //location.reload();
+    });
+  $('#cancel-btn').click(function(event) {
+      event.preventDefault();
+      location.reload();
     });
   </script>
 
@@ -417,8 +422,9 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
   
     $('#new-btnnn').click(function(event) {
       event.preventDefault();
+
+        
         var param = {
-          
           "memberNo": mnum,
           "meetNo": mtnum,
           "title": $('#titl').val(),
@@ -426,6 +432,16 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
           "boardDate":$('#bdate').val(),
           "addFileList": arrayToJson(filenamelist)
         };
+        
+        if (param.title.length == 0) {
+        	//$inputMessage.text("제목을 입력해주세요.").css("color", "red");
+        	swal('알림','제목을 입력해주세요','warning');
+        	return;
+        }
+        if (param.content.length == 0) {
+        	swal('알림','내용을 입력해주세요','warning');
+            return;
+          }
         console.log('파라미터 : ',param);
         $.post('add.json', param, function(ajaxResult2) {
           console.log(ajaxResult2)
