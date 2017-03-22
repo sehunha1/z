@@ -18,8 +18,11 @@ public interface MeetingService {
   int updateMstatFin(int meetingNo) throws Exception;
   int[] getMeetingNo(int memberNo) throws Exception;
   int updateFdate(int meetingNo) throws Exception;
+  int updateFdateNonVote(int meetingNo) throws Exception;
   int updateFloc(int meetingNo) throws Exception;
+  int updateFlocNonVote(int meetingNo) throws Exception;
   int updateFtime(int meetingNo) throws Exception;
+  int updateFtimeNonVote(int meetingNo) throws Exception;
   int updateCal(int meetingNo, String cal) throws Exception;
   int updateLoc(int meetingNo, String loc) throws Exception;
 }

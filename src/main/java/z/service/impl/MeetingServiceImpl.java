@@ -85,13 +85,28 @@ public class MeetingServiceImpl implements MeetingService {
   }
 
   @Override
+  public int updateFdateNonVote(int meetingNo) throws Exception {
+    return meetingDao.updateFdateNonVote(meetingNo);
+  }
+
+  @Override
   public int updateFloc(int meetingNo) throws Exception {
     return meetingDao.updateFloc(meetingNo);
   }
 
   @Override
+  public int updateFlocNonVote(int meetingNo) throws Exception {
+    return meetingDao.updateFlocNonVote(meetingNo);
+  }
+
+  @Override
   public int updateFtime(int meetingNo) throws Exception {
     return meetingDao.updateFtime(meetingNo);
+  }
+
+  @Override
+  public int updateFtimeNonVote(int meetingNo) throws Exception {
+    return meetingDao.updateFtimeNonVote(meetingNo);
   }
 
   @Override

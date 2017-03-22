@@ -107,17 +107,30 @@ public class AuthJsonControl {
         if (mstat.equals("ing")) {
           if (isDuplicateCal > 1 || isDuplicateLoc > 1) {
             meetingService.updateMstatWait(meetingNo[i]);
-            if (isDuplicateCal < 2) {
+            if (isDuplicateCal == 1) {
               meetingService.updateFdate(meetingNo[i]);
             }
-            if (isDuplicateLoc < 2) {
+            if (isDuplicateCal == 0) {
+              meetingService.updateFdateNonVote(meetingNo[i]);
+            }
+            if (isDuplicateLoc == 1) {
               meetingService.updateFloc(meetingNo[i]);
+            }
+            if (isDuplicateLoc == 0) {
+              meetingService.updateFlocNonVote(meetingNo[i]);
             }
           } else {
             meetingService.updateMstatFin(meetingNo[i]);
             meetingService.updateFdate(meetingNo[i]);
             meetingService.updateFloc(meetingNo[i]);
             meetingService.updateFtime(meetingNo[i]);
+            if (isDuplicateCal == 0) {
+              meetingService.updateFdateNonVote(meetingNo[i]);
+              meetingService.updateFtimeNonVote(meetingNo[i]);
+            }
+            if (isDuplicateLoc == 0) {
+              meetingService.updateFlocNonVote(meetingNo[i]);
+            }
           }
         }
       }

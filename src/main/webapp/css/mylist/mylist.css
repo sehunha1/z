@@ -95,13 +95,15 @@
   border-left:1px solid black;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info.ing {
-  background-color: #efefef;
+  /*background-color: #efefef;*/
+  background-color: rgba(182, 161, 158, 0.1);
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info.wait {
-  background-color: #a9a9a9;
+  background-color: rgba(182, 161, 158, 0.5);
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info.fin {
-  background-color: #6d7993;
+  /*background-color: rgba(254, 220, 61, 0.3);*/
+  background-color: rgba(182, 161, 158, 1.0);
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info > .tit {
   color: #000;

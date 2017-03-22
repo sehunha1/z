@@ -51,7 +51,7 @@ $("#Go-btn").click(function(e) {
 		}
 		var meeting = JSON.stringify(ajaxResult.data);
 		location.href = '../meetmain/meetmain.html'
-				+ '?member='
+				+ '?memberNo='
 				+ JSON.parse(meeting).meetBossNo
 				+ '&meetingNo='
 				+ JSON.parse(meeting).meetingNo;
