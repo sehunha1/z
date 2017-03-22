@@ -61,7 +61,7 @@ $('body').on('click', '#blist', function() {
 				'                <span class="move" style="float: right; position:relative; overflow:hidden;"></span>' +
 				'                <div class="member" style="margin-left:5px; overflow-x:auto;">선택한 멤버</div>' +
 				'                <div class="votebutton" style="margin-bottom:3px;"> ' +
-				' <button class="vote" type="button" style="float:right; width:40px; height:20px;">투표</button>' +
+				' <button class="vote btn btn-info btn-sm" type="button" style="float:right; margin-right: 20px;">투표</button>' +
 				'</div>    ' +
 				'</div>' + 
 				'</div>';
@@ -170,7 +170,7 @@ $('body').on('click', '#blist', function() {
 						swal({
 							title: place + "을(를) 투표할까요?",
 							showCancelButton: true,
-							confirmButtonColor: "#558CDF",
+							confirmButtonColor: "#337ab7",
 							confirmButtonText: "투표",
 							cancelButtonText: "취소",
 							closeOnConfirm: false,
