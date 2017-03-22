@@ -117,6 +117,12 @@ $('body').on('click', 'swiper-wrapper', function() {
 // 멤버 전체보기 버튼 클릭 이벤트
 $(function() {
   $('#btn_toggle_member_list').on('click', function() {
+	  if ($(this).text() == "전체보기") {
+		  console.log('ss');
+		  $(this).text("닫기");
+	  } else {
+		  $(this).text("전체보기");
+	  }
     $('.member_list_wrap').toggleClass('on');
   });
 });
@@ -128,7 +134,6 @@ $('.board .search-btn').on('click', function(e) {
 	
 	$.getJSON("../detail/keywordBoardList.json?meetingNo=" + meetingNo + "&keyWord=" + keyWord, function(ajaxResult) {
 	  var status = ajaxResult.status;
-	  console.log(status);
 	  if (status != "success") {
 		  $(".swiper-wrapper").empty();
 		  $('#BoarddataNotFound').show();

@@ -49,12 +49,13 @@
   font-size: large;
 }
 
+
+/**************************************************/
+
 .member {
   margin: 0 auto;
   overflow: auto;
 }
-
-/**************************************************/
 
 .member_wrap {
 	position: relative;
@@ -188,7 +189,6 @@
   font-size: 18px;
   background: #fff;
   width: 60%;
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -278,29 +278,7 @@
   font-family: FontAwesome;
   color: #324b4e;
 }
-/* 
-.board .all-down-btn {
-  margin-right: 5px;
-  font-size: 32px;
-  text-decoration: none;
-  float: right;
-}
 
-.board .all-down-btn:before {
-  font-family: "FontAwesome";
-  content: "\f019";
-  color: #b4b4b4;
-}
-
-.board .all-down-btn:hover {
-  text-decoration: none;
-}
-
-.board .all-down-btn:hover:before {
-  text-decoration: none;
-  color: #EA4335;
-}
- */
  
 #BoarddataNotFound {
 	display: none;
@@ -334,7 +312,6 @@
   font-size: 18px;
   background: #fff;
   width: 25%;
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -372,11 +349,3 @@
   border-radius: 50%;
 }
 
-
-/* .board .swiper-slide:nth-child(2n) {
-  width: 100%;
-}
-
-.board .swiper-slide:nth-child(3n) {
-  width: 100%;
-} */

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!-- 작성: 2017.02.09 김재녕 -->
+<!-- 내용: 모임 상세정보(완료상태) -->
+<!-- 수정: 2017.03.09 김재녕 -->
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>완료 모임 상세정보</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet"
+	href="../../node_modules/swiper/dist/css/swiper.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/main/main.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/detail/detail.css">
+<style>
+@import "compass/css3";
+
+.swiper-container {
+	width: 600px;
+	height: 338px;
+}
+
+.hot-listing-3 {
+	background: #FFFFFF;
+	border: 1px solid #E6E6E6;
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.12);
+	border-radius: 3px;
+	padding: 8px;
+	display: block;
+	height: 300px;
+}
+
+.left {
+	float: left;
+}
+
+.agent-photo {
+	width: 30%;
+	background-color: #ddd;
+	height: 75px;
+	margin: 10px 0 0 0;
+	display: block;
+	float: left;
+}
+
+.listing-info {
+	float: left;
+	width: 63%;
+	margin: 0 0 0 10px;
+	padding: 0;
+	display: block;
+}
+
+/* for the photo space, you'll need to restrict the height to 88px */
+.photo-test {
+	background-color: #ddd;
+	height: 88px;
+	margin: 0 0 10px 0;
+}
+
+/* below here is just mockup title styles, use the stuff that's on the site already */
+h2 {
+	font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
+	font-weight: 400;
+	font-size: 20px;
+	color: #008FBE;
+	line-height: 1em;
+	margin: 15px 0 0 0;
+}
+
+.bed-bath {
+	font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1em;
+	color: #2E2A25;
+	margin: 8px 0;
+}
+
+h3 {
+	font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 0.3;
+	display: inline;
+}
+
+.inline-image {
+	display: inline-block;
+}
+
+.realtor-name {
+	font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.2em;
+	text-transform: uppercase;
+	margin: 10px 0 0 0;
+}
+
+* {
+	box-sizing: border-box
+}
+
+.swiper-scrollbar {
+	left: 10% !important;
+	bottom: 6px !important;
+	width: 80% !important;
+	height: 14px !important;
+	background-color: #e7e8e3;
+}
+
+.swiper-scrollbar-drag {
+	background-color: #c5c6c0;
+}
+
+.swiper-button-next, .swiper-button-prev {
+	transition: all, 0.3s;
+	position: absolute;
+	top: auto;
+	bottom: auto;
+	width: 45px;
+	height: 26px;
+	margin-top: 0;
+	z-index: 10;
+	cursor: pointer;
+	background-color: #18c1de;
+	background-size: 8px 20px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+	background-color: #20a7bd;
+}
+
+.swiper-button-next {
+	right: 0;
+	bottom: 0;
+	background-image:
+		url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDEwIj48cG9seWdvbiBmaWxsPSIjRkZGRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iNSAwIDAgNSA1IDEwIDYgOSAyIDUgNiAxIiB0cmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgMSA2IDApIi8+PC9zdmc+');
+}
+
+.swiper-button-prev {
+	left: 0;
+	bottom: 0;
+	background-image:
+		url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDEwIj48cG9seWdvbiBmaWxsPSIjRkZGRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iNSAwIDAgNSA1IDEwIDYgOSAyIDUgNiAxIi8+PC9zdmc+');
+}
+
+.swiper-button-prev.swiper-button-disabled {
+	opacity: 1.0;
+}
+
+.swiper-button-next.swiper-button-disabled {
+	opacity: 1.0;
+}
+
+body {
+	background: #f3f4ec;
+}
+</style>
+</head>
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="hot-listing-3 swiper-slide">
+				<div class="photo-test"></div>
+				<div class="details">
+					<h2>$333,333</h2>
+					<p class="bed-bath">2 beds, 2 baths</p>
+					<h3>Burlington</h3>
+					<img class="inline-image"
+						src="http://factore.ca/system/tenon/assets/attachments/000/001/193/original/flame.jpg" />
+				</div>
+				<div class="agent-photo"></div>
+				<div class="listing-info">
+					<p class="realtor-name">Another title</p>
+					<p class="bed-bath">Broker</p>
+				</div>
+			</div>
+			<div class="hot-listing-3 swiper-slide">
+				<div class="photo-test"></div>
+				<div class="details">
+					<h2>$333,333</h2>
+					<p class="bed-bath">2 beds, 2 baths</p>
+					<h3>Burlington</h3>
+					<img class="inline-image"
+						src="http://factore.ca/system/tenon/assets/attachments/000/001/193/original/flame.jpg" />
+				</div>
+				<div class="agent-photo"></div>
+				<div class="listing-info">
+					<p class="realtor-name">Another title</p>
+					<p class="bed-bath">Broker</p>
+				</div>
+			</div>
+			<div class="hot-listing-3 swiper-slide">
+				<div class="photo-test"></div>
+				<div class="details">
+					<h2>$333,333</h2>
+					<p class="bed-bath">2 beds, 2 baths</p>
+					<h3>Burlington</h3>
+					<img class="inline-image"
+						src="http://factore.ca/system/tenon/assets/attachments/000/001/193/original/flame.jpg" />
+				</div>
+				<div class="agent-photo"></div>
+				<div class="listing-info">
+					<p class="realtor-name">Another title</p>
+					<p class="bed-bath">Broker</p>
+				</div>
+			</div>
+			<div class="hot-listing-3 swiper-slide">
+				<div class="photo-test"></div>
+				<div class="details">
+					<h2>$333,333</h2>
+					<p class="bed-bath">2 beds, 2 baths</p>
+					<h3>Burlington</h3>
+					<img class="inline-image"
+						src="http://factore.ca/system/tenon/assets/attachments/000/001/193/original/flame.jpg" />
+				</div>
+				<div class="agent-photo"></div>
+				<div class="listing-info">
+					<p class="realtor-name">Another title</p>
+					<p class="bed-bath">Broker</p>
+				</div>
+			</div>
+			<div class="hot-listing-3 swiper-slide">
+				<div class="photo-test"></div>
+				<div class="details">
+					<h2>$333,333</h2>
+					<p class="bed-bath">2 beds, 2 baths</p>
+					<h3>Burlington</h3>
+					<img class="inline-image"
+						src="http://factore.ca/system/tenon/assets/attachments/000/001/193/original/flame.jpg" />
+				</div>
+				<div class="agent-photo"></div>
+				<div class="listing-info">
+					<p class="realtor-name">Another title</p>
+					<p class="bed-bath">Broker</p>
+				</div>
+			</div>
+		</div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-scrollbar"></div>
+	</div>
+
+	<script src="../../node_modules/jquery/dist/jquery.js"></script>
+	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
+
+	<script>
+	 $(document).ready(function () {
+		    //initialize swiper when document ready  
+		    var mySwiper = new Swiper ('.swiper-container', {
+		      // Optional parameters
+		      nextButton: '.swiper-button-next',
+		      prevButton: '.swiper-button-prev',
+		      spaceBetween: 11,
+		      slidesPerView: 3,
+		      scrollbar: '.swiper-scrollbar',
+		      scrollbarHide: false,
+		      scrollbarDraggable: true,
+		      scrollbarSnapOnRelease: true,
+		      grabCursor: true
+		    })        
+		  });
+	</script>
+
+</body>
+</html>

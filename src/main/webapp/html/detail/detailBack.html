@@ -24,51 +24,52 @@
 	<div id="content">
 		<!-- 상단 모임 정보 -->
 		<div class="detail-info">
+		
+			<!-- 모임명 -->
 			<div class="headtitle">
-			
-				<!-- 진행상태 -->
-				<!-- <h1 class="stat-span"></h1> -->
-				
-				<!-- 모임명 -->
 				<h1 id="meeting-title"></h1>
 			</div>
+			
 			<!-- 모임 이미지 -->
 			<img class="title-photo" alt="Image Error" title="Image Error">
 			<div class="desc-info">
-				<p id="final-date" class="d-info"></p>
 				<!-- 확정날짜 -->
-				<p id="final-loc" class="d-info"></p>
+				<p id="final-date" class="tit">[날짜] </p>
 				<!-- 확정장소 -->
-				<p id="final-time" class="d-info"></p>
+				<p id="final-loc" class="tit">[장소] </p>
 				<!-- 확정시간 -->
-				<p id="final-cont" class="d-info"></p>
+				<p id="final-time" class="tit">[시간] </p>
 				<!-- 내용 -->
+				<p id="final-cont" class="tit">[설명] </p>
 			</div>
 		</div>
 
 		<!-- 멤버 -->
 		<div class="member">
-			<p class="d-info">멤버</p>
+			<p class="tit">멤버</p>
 			<div class="section member_wrap">
+				<button id="btn_toggle_member_list">전체보기</button>
 				<div class="member_list_wrap">
 					<ul class="member_list">
 					</ul>
 				</div>
-				<button id="btn_toggle_member_list">전체보기</button>
 			</div>
 		</div>
 
     <!-- 게시판 -->
 		<div class="board">
 			<div class="headtitle">
-				<p class="b-info">게시판</p>
-				<a class='all-down-btn' href='#'></a>
+				<p class="tit">게시판</p>
+				<!-- <a class='all-down-btn' href='#'></a> -->
+			</div>
 				<div class="search-board">
 					<form class="search-board-form">
-						<input class="search-keyword" type="text" placeholder="검색어 입력">
+						<input class="search-keyword" type="text" placeholder="제목, 내용, 작성자 중 검색">
 						<button class="search-btn" type="submit"></button>
 					</form>
 				</div>
+			<div id="BoarddataNotFound">
+			<p class="dataError">데이터가 없습니다.</p>
 			</div>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
@@ -91,7 +92,7 @@
     {{#each detailMembList}}
     <li class="item">
       <div class="profile">
-        <img src="../upload/{{photo}}" alt=""/>
+        <img src="../upload/{{photo}}"/>
       </div>
       <p class="name">{{name}}</p>
     </li>
@@ -103,9 +104,9 @@
     {{#each meetBoardList}}
     <div class="swiper-slide">
       <div class="board-box">
-        <img class="board-photo" src="../upload/{{link}}" alt="사진없음">
-        <p>{{title}}</p>
-        <p>{{content}}</p>
+        <img class="board-photo" src="../upload/{{link}}">
+        <p>작성자: {{name}}</p>
+        <p>제목: {{title}}</p>
       </div>
     </div>
     {{/each}}
