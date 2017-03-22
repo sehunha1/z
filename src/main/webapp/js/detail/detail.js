@@ -136,7 +136,7 @@ $(function() {
 
 // 게시판 검색 버튼 클릭 이벤트
 $('.board .search-btn').on('click', function(e) {
-	e.preventDefault();	
+	e.preventDefault();
 	var keyWord = $('.search-keyword').val();
 	
 	$.getJSON("../detail/keywordBoardList.json?meetingNo=" + meetingNo + "&keyWord=" + keyWord, function(ajaxResult) {
@@ -159,4 +159,9 @@ $('.board .search-btn').on('click', function(e) {
 	  div.append(boardTemplate({"meetBoardList":meetBoardList}));
 	  mySwiper.init();
 	});
+});
+
+// 게시판 작성 버튼 클릭 이벤트
+$('body').on('click', '#boardAddBtn', function(e) {
+	e.preventDefault();
 });

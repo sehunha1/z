@@ -1,6 +1,7 @@
 /* detail Page 작성 - 2017.03.09 김재녕 */
 /* detail Page 수정 - 2017.03.21 김재녕 */
-/* @import "compass/css3"; */
+
+/*************************모임 상세 정보*************************/
 /* 멤버, 게시판 문구 */
 .member .tit, .board .tit {
 	font-size: 26px;
@@ -13,22 +14,20 @@
 	border-bottom: 1px solid #ddd;
 }
 
+/* 모임 영역 */
 .detail-info {
 	margin: 0 auto;
 	height: 300px;
 }
 
+/* 모임명 */
 .detail-info .headtitle {
 	text-align: center;
 	height: 20%;
 	overflow: hidden;
 }
 
-.detail-info .headtitle .play-title {
-	margin: 0;
-	display: inline-block;
-}
-
+/* 모임이미지 */
 .detail-info>.title-photo {
 	margin: 1% 2% auto 0;
 	width: 30%;
@@ -39,19 +38,16 @@
 	width: 30%;
 }
 
+/* 모임 상세 영역 */
 .desc-info {
 	margin: 2% 2% auto 0;
 	border-left: 2px solid #ddd;
 	height: 200px;
 	overflow: auto;
+	border-left: 2px solid #ddd;
 }
 
-.d-info {
-	margin: 2% auto;
-	font-size: large;
-}
-
-/**************************************************/
+/*************************멤버*************************/
 .member {
 	margin: 0 auto;
 	overflow: auto;
@@ -161,16 +157,7 @@
 	font-size: 14px;
 }
 
-/**************************************************/
-.memb-photo {
-	margin: 0 auto;
-	width: 80%;
-	height: 80%;
-	object-fit: cover;
-	object-position: top;
-	border-radius: 50%;
-}
-
+/*************************게시판*************************/
 .board {
 	margin: 0 auto;
 	/* height: 400px; */
@@ -189,17 +176,19 @@
 	float: left;
 }
 
+/* 게시글 작성 버튼, 검색 div */
+.board .search-board {
+	margin: 0;
+	margin-right: 5%;
+	width: 100%;
+}
+
+/* 게시글 작성 버튼 */
 #boardAddBtn {
 	float: left;
 	display: inline-block;
 	width: 100px;
 	height: 50px;
-}
-
-.board .search-board {
-	margin: 0;
-	margin-right: 5%;
-	width: 100%;
 }
 
 .board .search-board form {
@@ -323,7 +312,7 @@
 
 .inline-image {
 	width: 100%;
-  height: 100%;
+	height: 100%;
 	display: inline-block;
 	object-fit: cover;
 }
@@ -380,4 +369,207 @@
 
 .swiper-button-next.swiper-button-disabled {
 	opacity: 1.0;
+}
+
+/* 게시글 작성 팝업 */
+
+.modal-body {
+  position: relative;
+  width: 680px;
+  height: 565px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#write {
+	font-family: 'Noto Sans KR';
+	background-color: #f5f5f5;
+	height: 530px;
+	width: 650px;
+	margin-left: 0px;
+}
+
+#write .space {
+	font-size: 20px;
+}
+
+#write .title {
+	font-family: 'Noto Sans KR';
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 32px;
+}
+
+#writeform {
+	font-family: 'Noto Sans KR';
+	background-color: white;
+	height: 450px;
+	width: 600px;
+	margin-left: 32px;
+	margin-top: 10px;
+}
+
+#writeform .box {
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+#writeform .titlename {
+	height: 35px;
+	width: 530px;
+	margin-top: 30px;
+	font-size: 12px;
+}
+
+#writeform .titlewrite {
+	height: 200px;
+	width: 530px;
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+#writeform .titlefile {
+	height: 100px;
+	width: 530px;
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+/* #writebtn .cancle {
+	border-color: #3db394;
+	height: 23px;
+	width: 100px;
+	font-size: 9px;
+	background-color: #3db394;
+} */
+
+/* #writebtn .save {
+	margin-left: 30px;
+	background-color: #3db394;
+	height: 23px;
+	width: 100px;
+	font-size: 12px;
+	border-bottom-left-radius: 2px;
+	borde-color: #cfd1d3;
+} */
+
+#writeform #cancel-btn {
+	margin-left: 380px;
+	margin-top: 10px;
+}
+
+#writeform #new-btnnn {
+	margin-left: 28px;
+	margin-top: 10px;
+}
+
+/* #new-btnn {
+	margin-left: 670px;
+	margin-top: 3px;
+	margin-bottom: 10px;
+} */
+
+/* #board-box {
+	margin-top: 20px;
+	margin-right: 30px;
+	background-color: grey;
+	height: 300px;
+	width: 230px;
+} */
+
+/* .title {
+	font-size: 20px;
+} */
+
+/* #detail_title {
+	margin-top: 0px;
+	width: 650px;
+	height: 40px;
+	font-size: 15px;
+	background-color: #f5f5f5;
+	text-align: left;
+	border: 0px;
+} */
+
+/* #detail_content {
+	width: 630px;
+	height: 100px;
+	font-size: 12px;
+	margin-left: 10px;
+	background-color: #f5f5f5;
+	border-color: #f5f5f5;
+	border: 0px;
+	margin-top: 10px;
+} */
+
+/* .form-horizontal {
+	background-color: #f5f5f5;
+	margin-top: 10px;
+} */
+/* 
+#detail_date {
+	margin-top: 0px;
+	width: 650px;
+	height: 12px;
+	font-size: 10px;
+	color: grey;
+	background-color: #f5f5f5;
+	text-align: right;
+	padding-right: 15px;
+	border: 0px;
+}
+
+#detail_photo {
+	font-size: 15px;
+	background-color: #f5f5f5;
+	text-align: left;
+	padding-top: 0px;
+}
+ */
+.detail_button {
+	text-align: left;
+	margin-left: 20px;
+}
+
+#update-btn {
+	margin-left: 440px;
+	margin-top: 10px;
+}
+
+#delete-btn {
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+#list-btn {
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+.author {
+	text-align: left;
+}
+
+.block-date {
+	color: grey;
+	font-size: 6px;
+}
+
+.post-img-content {
+	height: 130px;
+}
+
+.col-sm-10 {
+	height: 230px;
+	margin-left: 10px;
+	padding-left: 10px;
+	width: 626px;
+	padding-top: 15px;
+	margin-top: 10px;
+	background-color: #ffdad9;
+	border-radius: 3px;
+}
+
+.download-btn {
+	margin-left: 460px;
 }
