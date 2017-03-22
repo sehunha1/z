@@ -26,16 +26,6 @@
       <option value="fin">일정확정</option>
     </select>
     <ul class="meeting_list">
-      <li class="item">
-        <a href="#">
-          <div class="meeting_image_empty">
-            <img src="../../image/mylist/plus_icon.png" style="width:30%; height:30%; margin:35% 35%;"></img>
-          </div>
-          <div class="meeting_status ing">
-            <div class="info"></div>
-          </div>
-        </a>
-      </li>
     </ul>
   </div>
 </div>
@@ -46,21 +36,21 @@
 {{#each listMeetingCards}}
 <li class="item {{meetStat}}" data-meeting-no={{meetingNo}} data-meetstat={{meetStat}}>
   <a href="#">
-    <div class="meeting_image" style="background: url('../upload/{{photo}}') no-repeat 50% 50%; background-size: cover;">
+    <div class="meeting_image" style="background: url('../upload/{{photo}}') no-repeat 50% 50%; background-size: cover; border-radius: 20px 20px 0px 0px;">
       <span class="meeting_owner"></span>
     </div>
-    <div class="meeting_info {{meetStat}}">
+    <div class="meeting_info {{meetStat}}" style="border-radius: 0px 0px 20px 20px;">
       <p class="tit">{{title}}</p>
       <ul class="meeting_info_list">
-        <li class="item">
+        <li class="item date">
           <span class="tit">날짜 : </span>
           <span class="info">{{date}}</span>
         </li>
-        <li class="item">
+        <li class="item time">
           <span class="tit">시간 : </span>
           <span class="info">{{time}}</span>
         </li>
-        <li class="item">
+        <li class="item location">
           <span class="tit">장소 : </span>
           <span class="info">{{location}}</span>
         </li>
