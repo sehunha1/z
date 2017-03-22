@@ -24,10 +24,10 @@
 			style='float: left; width: 150px; height: 700px; margin-left: 10px; margin-right: 20px; position: absoulte;'>
 			<ul class="nav nav-pills nav-stacked"
 				style='font-family: Noto Sans KR, sans-serif; color:red;'>
-				<li class="active"><a data-toggle="tab" href="#menu1" style="height:80px;"><font style="font-size:25px;">초대 확인</font></a></li>
-				<li><a data-toggle="tab" href="#menu2" style="height:80px;"><font style="font-size:100%;">개인 정보 변경</font></a></li>
-				<li><a data-toggle="tab" href="#menu3" id="menu3_a" style="height:80px;">로그인 정보 변경 / 페이스북 계정 연동</a></li>
-				<li><a data-toggle="tab" href="#menu4" style="height:80px;">탈퇴</a></li>
+				<li class="active"><a data-toggle="tab" href="#menu1">초대 확인</a></li>
+				<li><a data-toggle="tab" href="#menu2">개인 정보 변경</a></li>
+				<li><a data-toggle="tab" href="#menu3" id="menu3_a">로그인 정보 변경 / 페이스북 계정 연동</a></li>
+				<li><a data-toggle="tab" href="#menu4">탈퇴</a></li>
 			</ul>
 		</div>
 
@@ -166,7 +166,6 @@
 	<script src="../../js/context.js"></script>
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="../../js/common.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
   
@@ -196,24 +195,25 @@
 	<script src='facebook.js'></script>
 
 	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+		src="../../node_modules/jquery-validation/dist/jquery.validate.js"></script>
 	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/additional-methods.min.js"></script>
+		src="../../node_modules/jquery-validation/dist/additional-methods.js"></script>
 	<script type="text/javascript"
-		src="../../node_modules/jquery-validation/dist/localization/messages_ko.min.js"></script>
+		src="../../node_modules/jquery-validation/dist/localization/messages_ko.js"></script>
 		
 		<script src="../../js/jquery.cookie.js"></script>
+	  <script src="../../js/common.js"></script>
 		
 <script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
-  <td>{{title}}</td>
-  <td>{{content}}</td>
-  <td>{{category}}</td>
-  <td>{{deadline}}</td>
+  <td style="padding-top: 12px;">{{title}}</td>
+  <td style="padding-top: 12px;">{{content}}</td>
+  <td style="padding-top: 12px;">{{category}}</td>
+  <td style="padding-top: 12px;">{{deadline}}</td>
   <td>
-    <button type="button" class="ok" mtnumok="{{meetingNo}}">수락</button>
-    <button type="button" class="no" mtnumno="{{meetingNo}}">거절</button>
+    <button type="button" class="ok btn btn-success btn-sm" mtnumok="{{meetingNo}}">수락</button>
+    <button type="button" class="no btn btn-success btn-sm" mtnumno="{{meetingNo}}">거절</button>
   </td>
 </tr>
 {{/each}}

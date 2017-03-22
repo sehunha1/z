@@ -1,10 +1,10 @@
 @CHARSET "UTF-8";
 
-@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+@import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 
 #nextPgBtn {
-	width: 750px;
-	height :35px;
+  width: 750px;
+  height :35px;
   display: inline-block;
   padding: 10px;
   background-color: #778899;
@@ -15,32 +15,26 @@
   cursor: pointer;
   text-align: center;
   border-radius: 2px;
-
 }
-
-
 #board {
   height :700px;
 }
 .pre-scrollable{
 	max-height: 600px;
 	overflow-x: hidden;
-	scrollbar-face-color: 
 }
-
 #write {
 	font-family: 'Noto Sans KR';
 	background-color: #f5f5f5;
 	height:530px;
 	width:650px;
 	margin-left: 0px;
-	margin-top: px;
 }
 #write .space {
   font-size: 20px;
 }
 #write .title {
-	font-family: 'Noto Sans KR';
+  font-family: 'Noto Sans KR';
   font-size: 18px;
   font-weight: bold;
   margin-left: 32px;
@@ -54,7 +48,6 @@
   margin-left: 32px;
   margin-top: 10px;
 }
-
 #writeform .box {
 	margin-left: 30px;
   margin-top: 10px;
@@ -84,7 +77,6 @@
   font-size: 9px;
   background-color: #3db394;
 }
-
 #writebtn .save {
   margin-left: 30px;
   background-color :#3db394;
@@ -94,10 +86,9 @@
   border-bottom-left-radius :2px;
   borde-color: #cfd1d3;
 }
-
-#writeform #new-btnn {
+#writeform #cancel-btn {
   margin-left: 380px;
-  margin-top: 20px;
+  margin-top: 10px;
   /*height: 25px;*/
   /*width: 100px;*/
   /*font-size: 12px;*/
@@ -105,7 +96,6 @@
   /*border-color: #3db394;*/
   /*background-color: white;*/
 }
-
 #writeform #new-btnnn {
   margin-left: 28px;
   margin-top: 10px;
@@ -115,7 +105,6 @@
   /*border-color: #3db394;*/
   /*background-color: #3db394;*/
 }
-
 .modal-body {
 	position:relative;
 	width:680px;
@@ -123,19 +112,7 @@
 	background-color: white;
 	border-radius: 10px;
 }
-
 #new-btnn {
-<<<<<<< HEAD
-  margin-left :630px;
-  margin-top: 3px;
-  margin-bottom: 10px;
-  height: 25px;
-  width: 90px;
-  font-size: 12px;
-  border-color: #3db394;
-  background-color: #3db394;
-  
-=======
   margin-left :670px;
   margin-top: 3px;
   margin-bottom: 10px;
@@ -144,17 +121,14 @@
   /*font-size: 12px;*/
   /*border-color: #3db394;*/
   /*background-color: #3db394;*/
->>>>>>> cc3ad0f7f003b18dba587096894c0657260c224d
 }
 #board-box{
-	margin-top: 20px;
-	margin-right: 30px;
+  margin-top: 20px;
+  margin-right: 30px;
   background-color: grey;
   height:300px;
   width:230px;
 }
-
-
 .title {
 	font-size: 20px;
 }
@@ -162,10 +136,10 @@
 	margin-top : 0px;
 	width :650px;
 	height : 40px;
-  font-size: 15px;
-  background-color: #f5f5f5;
-  text-align : left;
-  border: 0px;
+    font-size: 15px;
+    background-color: #f5f5f5;
+    text-align : left;
+    border: 0px;
 }
 #detail_content {
 	width: 630px;
@@ -192,53 +166,46 @@
   padding-right:15px;
   border: 0px;
 }
-
 #detail_photo {
-  font-size: 15px;
-  background-color: #f5f5f5;
-   text-align : left;
-   padding-top : 0px;
+    font-size: 15px;
+    background-color: #f5f5f5;
+    text-align : left;
+    padding-top : 0px;
 }
-
 .detail_button{
 	text-align : left;
 	margin-left : 20px;
-	
 }
-
 #update-btn {
-	margin-left : 390px;
+  margin-left : 440px;
   margin-top: 10px;
-  height: 25px;
-  width: 70px;
-  font-size: 12px;
-  border-color: #3db394;
-  background-color: #3db394;
+  /*height: 25px;*/
+  /*width: 70px;*/
+  /*font-size: 12px;*/
+  /*border-color: #3db394;*/
+  /*background-color: #3db394;*/
 }
 #delete-btn {
-	 margin-left : 8px;
+  margin-left : 15px;
   margin-top: 10px;
-  height: 25px;
-  width: 70px;
-  font-size: 12px;
-  border-color: #3db394;
-  background-color: #3db394;
+  /*height: 25px;*/
+  /*width: 70px;*/
+  /*font-size: 12px;*/
+  /*border-color: #3db394;*/
+  /*background-color: #3db394;*/
 }
-
 #list-btn {
-	 margin-left : 8px;
+  margin-left : 15px;
   margin-top: 10px;
-  height: 25px;
-  width: 70px;
-  font-size: 12px;
-  border-color: #3db394;
-  background-color: #3db394;
+  /*height: 25px;*/
+  /*width: 70px;*/
+  /*font-size: 12px;*/
+  /*border-color: #3db394;*/
+  /*background-color: #3db394;*/
 }
-
- .author {
+.author {
 	text-align : left;
 }
-
 .block-date {
 	color :grey;
 	font-size: 6px;
@@ -246,7 +213,6 @@
 .post-img-content {
 	height: 130px;
 }
-
 .col-sm-10{
 	height : 230px;
 	margin-left :10px;
@@ -257,13 +223,9 @@
 	background-color : #ffdad9;
 	border-radius: 3px;
 }
-
 .download-btn {
-	margin-left: 429px;
-	height :20px;
-	width : 100px;
-	font-size: 10px;
-	
-	
+	margin-left: 460px;
+	/*height :20px;*/
+	/*width : 100px;*/
+	/*font-size: 10px;*/
 }
-

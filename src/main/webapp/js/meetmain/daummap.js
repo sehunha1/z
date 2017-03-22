@@ -186,7 +186,7 @@ function displayPlaces(places) {
               	  title: "장소 선택",
               	  text: "이 장소를 선택하시겠습니까?",
               	  showCancelButton: true,
-              	  confirmButtonColor: "#DD6B55",
+              	  confirmButtonColor: "#337ab7",
               	  confirmButtonText: "선택",
               	  cancelButtonText: "취소",
               	  closeOnConfirm: false,

@@ -55,10 +55,24 @@
 					      else if (status == "success") {
 					        	 swal({
 				    				  title: "페이스북 첫 로그인 ",
-				    				  text: "회원가입 창으로 이동합니다.\n페이스북으로 가입하기 버튼을 눌러주세요",
+				    				  text: "회원가입 창으로 이동합니다.",
 				    				},
 				    				function(){
-				    				  location.href ='join.html'
+				    					var facebook_email = response.email;
+					    		        var facebook_name = response.name;
+					    		          
+					    		        var image = response.picture.data.url;
+					    		        
+				  						var defaulturl = "https://scontent.xx.fbcdn.net/v/t1.0-1/c15.0.50.50/p50x50/10354686_10150004552801856_220367501106153455_n.jpg?oh=0bb129c4bacce2fd26d99c098ed48ce3&oe=5938E12F";
+				  						if (image == defaulturl) {
+				  							var fcbk_photo = image.split('/')[7].split('?')[0];
+				  						} else {
+				  							var fcbk_photo = image.split('/')[6].split('?')[0];  
+				  						}
+					    		        $.cookie('cookie_e', facebook_email, { path: '/'});
+					    		        $.cookie('cookie_n', facebook_name, { path: '/'});
+					    		        $.cookie('cookie_p', fcbk_photo, { path: '/'});
+				    				  location.href ='facebookjoin.html'
 				    				});
 					        	
 					        } 

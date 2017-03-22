@@ -174,7 +174,6 @@
        where bo.mtnum = #{meetingNo}
          and (bo.titl like concat('%',#{keyWord},'%') 
               or bo.cont like concat('%',#{keyWord},'%')
-              or fi.link like concat('%',#{keyWord},'%') 
               or mb.name like concat('%',#{keyWord},'%'));
      ]]>
 	</select>
@@ -203,6 +202,13 @@
 	<update id="updateFloc" parameterType="int">
 		update meet set floc=(select list.lname from loc left outer join list on loc.ltnum=list.ltnum where loc.mtnum=#{value} group by loc.ltnum having count(*) >=
 		(select count(*) from loc where loc.mtnum=#{value} group by loc.ltnum order by count(*) desc limit 1)) where mtnum=#{value};
+	</update>
+
+	<update id="updateFtime" parameterType="int">
+		update meet set ftime=(select ctime from cal where mtnum=#{value} and cdate=(select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >=
+		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) group by ctime having count(*) >=
+		(select count(*) from cal where mtnum=#{value} and cdate=(select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >=
+		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) group by ctime order by count(*) desc limit 1)) where mtnum=#{value};
 	</update>
 
 	<update id="updateCal">

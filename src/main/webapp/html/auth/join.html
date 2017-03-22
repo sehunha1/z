@@ -77,9 +77,9 @@
                             <div class="form-group">
                               <label class="sr-only" for="form-email">Email</label>
                                 <div class="col-sm-9" style="padding:0px;">
-                                <input type="text" name="email1" placeholder="Email" class="form-email form-control" id="email1" style="height:35px; margin-right:10px; width:390px;">
+                                <input type="text" name="email1" placeholder="Email" class="form-email form-control" id="email1" style="height:35px; margin-right:10px;">
                                 </div>
-                                 <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left; height:33px;'>
+                                 <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left; margin-left:15px; height:33px;'>
                                  <input type='hidden' id='isCheck' value="N">
                               </div>
                               <div class="form-group">
@@ -98,14 +98,13 @@
 									              <h4>사진은 선택사항입니다.</h4>
 									              
 									              <div class="form-group" >
-									              <label class="col-sm-2 control-label">사진</label>
 									             <!-- 
 									              <div class="col-sm-5">
 									                <input id='photo' type='file' name='files' class="form-control">
 									                <input id='photo-path' type='hidden'>
 									                </div>
 									                -->
-									                <div class="filebox"> <label for="photo" style="margin-top:6px;">업로드</label> 
+									                <div class="filebox"> <label for="photo" style="margin-top:6px; margin-left:15px;">사진 업로드</label> 
 									                <input type="file" id="photo" name='files' class="form-control"> 
 									                </div>
 									                <input id='photo-path' type='hidden'>
@@ -113,7 +112,7 @@
 									
 									              <div class="form-group">
 									              <!-- <label class="col-sm-4 control-label">사진 미리보기</label>  -->
-									              <div class="col-sm-5" style="margin-left:18px;">
+									              <div class="col-sm-5" style="margin-left:2px;">
 									                <img id='photo-img' height='80'>
 									                </div>
 									              </div>
@@ -129,7 +128,7 @@
                           <div class="social-login-buttons">
                             <a id="fcbklink" class="btn btn-link-1 btn-link-1-facebook" onclick="fbJoin();" href="#">
                               <i id="facebook" class="fa fa-facebook"></i> 페이스북으로 가입하기
-                              <input type="hidden" id="fcbk">
+                              <input type="hidden" id="fcbk" value="">
                             </a>
                           </div>
                         </div>
@@ -194,7 +193,7 @@
         <!-- 쿠키 -->
         <script src="../../js/jquery.cookie.js"></script>
         <!-- 페이스북 -->
-        <script src='facebook.js'></script>
+        <script src='../../js/auth/facebook.js'></script>
         
         
         
@@ -204,7 +203,7 @@
         <script type="text/javascript" src="../../node_modules/jquery-validation/dist/localization/messages_ko.js"></script>
         <script src="../../js/auth/validation.js"></script>
         
-        <script src="join.js"></script>
+        <script src="../../js/auth/join.js"></script>
         
         
         <!-- 백업 -->

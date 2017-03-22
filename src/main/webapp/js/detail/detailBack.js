@@ -23,6 +23,17 @@ try {
 		var meeting = JSON.stringify(ajaxResult.data);
 		var detailMembList;
 		
+		// 모임 상태
+//		if (ajaxResult.data.meetStat == "ing") {
+//			$(".stat-span").append("진행중");
+//		} else if (ajaxResult.data.meetStat == "wait") {
+//			$(".stat-span").append("확정대기");
+//		} else if (ajaxResult.data.meetStat == "fin") {
+//			$(".stat-span").append("완료");
+//		} else {
+//			$(".stat-span").append("에러");
+//		}
+		
 		// 모임 이미지
 		var photo = JSON.parse(meeting).photo;
 		$(".title-photo").attr('src', clientRoot + '/html/upload/' + photo);
@@ -41,7 +52,7 @@ try {
 		if (fDate == null) {
 			fDate = "";
 		}
-		pDate.append(fDate);
+		pDate.append("확정 날짜: " + fDate);
 		
 		// 확정 장소
 		var pLoc = $("#final-loc");
@@ -49,7 +60,7 @@ try {
 		if (fLoc == null) {
 			fLoc = "";
 		}
-		pLoc.append(fLoc);
+		pLoc.append("확정 장소: " + fLoc);
 		
 		// 확정 시간
 		var pTime = $("#final-time");
@@ -57,7 +68,7 @@ try {
 		if (fTime == null) {
 			fTime = "";
 		}
-		pTime.append(fTime);
+		pTime.append("확정 시간: " + fTime);
 		
 		// 모임 설명(내용)
 		var pCont = $("#final-cont");
@@ -65,7 +76,7 @@ try {
 		if (fCont == null) {
 			fCont = "";
 		}
-		pCont.append(fCont);
+		pCont.append("모임 설명: " + fCont);
 		
 		// 모임 멤버
 		$.getJSON("../detail/detailMeetList.json?meetingNo=" + meetingNo, function(ajaxResult) {
@@ -85,21 +96,18 @@ try {
 		});
 		
 		// 게시판
+		
 		$.getJSON("../detail/meetBoardList.json?meetingNo=" + meetingNo, function(ajaxResult) {
 		  var status = ajaxResult.status;
-		  
 		  if (status != "success") {
-			  $('#BoarddataNotFound').show();
-			  return false;
+			  return;
 		  }
-		  
 		  var div = $(".swiper-wrapper");
 		  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
+		  
 		  var meetBoardList = ajaxResult.data;
-		
 		  div.append(boardTemplate({"meetBoardList":meetBoardList}));
 		  swiper.onResize();
-		  
 		});
 	});
 	
@@ -108,11 +116,6 @@ try {
 } finally {
 	
 }
-
-// 게시글 클릭
-$('body').on('click', 'swiper-wrapper', function() {
-	console.log($(this));
-});
 
 // 멤버 전체보기 버튼 클릭 이벤트
 $(function() {
@@ -124,24 +127,21 @@ $(function() {
 // 게시판 검색 버튼 클릭 이벤트
 $('.board .search-btn').on('click', function(e) {
 	e.preventDefault();	
+	$(".swiper-wrapper").empty();
 	var keyWord = $('.search-keyword').val();
 	
 	$.getJSON("../detail/keywordBoardList.json?meetingNo=" + meetingNo + "&keyWord=" + keyWord, function(ajaxResult) {
 	  var status = ajaxResult.status;
-	  console.log(status);
 	  if (status != "success") {
-		  $(".swiper-wrapper").empty();
-		  $('#BoarddataNotFound').show();
-		  return false;
+		  return;
 	  }
 	  
-	  $(".swiper-wrapper").empty();
 	  var div = $(".swiper-wrapper");
 	  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
 	  var meetBoardList = ajaxResult.data;
-
-	  $('#BoarddataNotFound').css('display', 'none');
+	  console.log(ajaxResult.data);
 	  div.append(boardTemplate({"meetBoardList":meetBoardList}));
+	  
 	  swiper.onResize();
 	});
 	

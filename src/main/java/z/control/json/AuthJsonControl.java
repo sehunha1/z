@@ -104,19 +104,21 @@ public class AuthJsonControl {
         int isDuplicateCal = calendarService.isDuplicate(meetingNo[i]);
         int isDuplicateLoc = locationListService.isDuplicate(meetingNo[i]);
         String mstat = meetingService.getOneMeeting(meetingNo[i]).getMeetStat();
-        if (mstat != "ing") break;
-        if (isDuplicateCal > 1 || isDuplicateLoc > 1) {
-          meetingService.updateMstatWait(meetingNo[i]);
-          if (isDuplicateCal < 2) {
+        if (mstat.equals("ing")) {
+          if (isDuplicateCal > 1 || isDuplicateLoc > 1) {
+            meetingService.updateMstatWait(meetingNo[i]);
+            if (isDuplicateCal < 2) {
+              meetingService.updateFdate(meetingNo[i]);
+            }
+            if (isDuplicateLoc < 2) {
+              meetingService.updateFloc(meetingNo[i]);
+            }
+          } else {
+            meetingService.updateMstatFin(meetingNo[i]);
             meetingService.updateFdate(meetingNo[i]);
-          }
-          if (isDuplicateLoc < 2) {
             meetingService.updateFloc(meetingNo[i]);
+            meetingService.updateFtime(meetingNo[i]);
           }
-        } else {
-          meetingService.updateMstatFin(meetingNo[i]);
-          meetingService.updateFdate(meetingNo[i]);
-          meetingService.updateFloc(meetingNo[i]);
         }
       }
     }
@@ -124,4 +126,3 @@ public class AuthJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, member);
   }
 }
-

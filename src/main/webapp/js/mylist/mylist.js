@@ -19,15 +19,24 @@ $.getJSON("../auth/loginUser.json", function(ajaxResult) {
         }
         if (listMeetingCards[i].category == "동창회") {
             if (listMeetingCards[i].photo.length < 2)
-            listMeetingCards[i].photo = "../../image/mylist/school.jpg";
+            listMeetingCards[i].photo = "../../image/mylist/alumni.jpg";
         }
     }
     var template = Handlebars.compile($("#meeting_card").html());
     var ul = $(".meeting_list");
     ul.html(template({"listMeetingCards":listMeetingCards}));
 
-    $(".meeting_info.ing .info").text("투표진행중");
-    $(".meeting_info.wait .info").text("확정대기중");
+    $(".meeting_info.ing .item .tit").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 투표진행중");
+    $(".meeting_info.ing .date").css("display", "none");
+    $(".meeting_info.ing .location").css("display", "none");
+    $(".meeting_info.ing .time .tit").css("font-size", "20px");
+    $(".meeting_info.ing .item").css("margin", "22.5px 0px 22.5px 0px");
+
+    $(".meeting_info.wait .item .tit").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 확정대기중");
+    $(".meeting_info.wait .date").css("display", "none");
+    $(".meeting_info.wait .location").css("display", "none");
+    $(".meeting_info.wait .time .tit").css("font-size", "20px");
+    $(".meeting_info.wait .item").css("margin", "22.5px 0px 22.5px 0px");
 
     $(".item").on("click", function(e) {
       var currentMeeting = $(e.currentTarget);

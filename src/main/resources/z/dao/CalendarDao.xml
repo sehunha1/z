@@ -22,12 +22,15 @@
 		<result column="photo"		 property="userPhoto"/>
 	</resultMap>
 
-	<select id="getDateDuplication" parameterType="int" resultMap="calendar-map">
-		select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >= (select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1);
+	<select id="getDateDuplication" parameterType="int" resultMap="calendar-map2">
+		select distinct c, ctime from (select cdate as c, ctime, (select count(*) from cal where mtnum=#{value} and cdate=c)
+		as count from cal where mtnum=#{value}) as t where count=(select count(*) from cal where mtnum=#{value} group by cdate
+		order by count(*) desc limit 1) order by c asc;
 	</select>
 
 	<select id="getSelectedDateInfo" parameterType="int" resultMap="calendar-map2">
-		select cal.mtnum as m, cal.mnum, cal.cdate as c, cal.ctime, (select count(*) from cal where cal.mtnum=m and cal.cdate=c) as total, memb.name, memb.photo from cal left outer join memb on cal.mnum=memb.mnum where cal.mtnum=#{value};
+		select cal.mtnum as m, cal.mnum, cal.cdate as c, cal.ctime, (select count(*) from cal where cal.mtnum=m and cal.cdate=c)
+		as total, memb.name, memb.photo from cal left outer join memb on cal.mnum=memb.mnum where cal.mtnum=#{value};
 	</select>
 
 	<delete id="deleteCal" parameterType="int">
@@ -44,5 +47,3 @@
 	</select>
 
 </mapper>
-
-		<!--select cal.mtnum as m, cal.mnum, cal.cdate as c, cal.ctime, (select count(*) from cal where cal.mtnum=m and cal.cdate=c) as total from cal where cal.mtnum=#{value};-->
