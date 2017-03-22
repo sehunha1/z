@@ -14,6 +14,8 @@
 	href="../../node_modules/swiper/dist/css/swiper.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="../../node_modules/blueimp-file-upload/css/jquery.fileupload.css">
 <link rel="stylesheet" href="../../css/main/main.css">
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet" href="../../css/detail/detail.css">
@@ -62,8 +64,8 @@
 				<p class="tit">게시판</p>
 			</div>
 			<div class="search-board">
-			<button id="boardAddBtn" data-toggle="modal"
-      data-target="#boardAddModal" class="btn btn-info">게시글 작성</button>
+				<button id="boardAddBtn" data-toggle="modal"
+					data-target="#boardAddModal" class="btn btn-info">게시글 작성</button>
 				<form class="search-board-form">
 					<input class="search-keyword" type="text"
 						placeholder="제목, 내용, 작성자 중 검색">
@@ -84,38 +86,60 @@
 	<!-- content end -->
 
 	<div id="footer"></div>
-	
+
 	<!-- 게시판 작성 팝업 boardAddModal -->
-  <div class="modal fade" id="boardAddModal" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div id="write">
-            <span class="space"></span><br> <span class="title">게시판글쓰기</span>
-            <div id="writeform">
-              <div class="box">
-                <input type="email" class="titlename" id="titl"
-                  placeholder="     글 제목을 입력해주세요."> <input type="email"
-                  class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
-                <img id='photo-img' height='80' class='view-form'><input
-                  id='link' name='files' type='file' multiple> <input
-                  id='link-path' type='hidden'> <a id='cancel-btn' href='#'
-                  class="btn btn-success">취소</a> <a id='new-btnnn'
-                  href='#' class="btn btn-primary">저장</a><BR>
-              </div>
-            </div>
-          </div>
-          <span class="space"></span><br>
-        </div>
-      </div>
-    </div>
-  </div>
-	
+	<div class="modal fade" id="boardAddModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div id="write">
+						<span class="space"></span><br> <span class="title">게시판글쓰기</span>
+						<div id="writeform">
+							<div class="box">
+								<input type="email" class="titlename" id="titl"
+									placeholder="글 제목을 입력해주세요."> <input type="email"
+									class="titlewrite" id="cont" placeholder="글 내용을 입력해주세요.">
+								<img id='photo-img' height='80' class='view-form'><input
+									id='link' name='files' type='file' multiple> <input
+									id='link-path' type='hidden'> <a id='cancel-btn'
+									href='#' data-dismiss="modal" class="btn btn-success">취소</a> <a
+									id='new-btnnn' href='#' data-dismiss="modal" class="btn btn-primary">저장</a><BR>
+							</div>
+						</div>
+					</div>
+					<span class="space"></span><br>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
 	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+	<script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+	<script
+		src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="../../js/context.js"></script>
 	<script src="../../js/common.js"></script>
 	<script src="../../js/detail/detail.js"></script>
