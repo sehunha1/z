@@ -95,13 +95,13 @@
   border-left:1px solid black;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info.ing {
-  background-color: white;
+  background-color: #efefef;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info.wait {
-  background-color: #cccc00;
+  background-color: #a9a9a9;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info.fin {
-  background-color: #ff8000;
+  background-color: #6d7993;
 }
 #content .view_my_meeting .meeting_list > .item > a .meeting_info > .tit {
   color: #000;

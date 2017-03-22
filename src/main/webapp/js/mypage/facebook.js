@@ -53,7 +53,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 								type: "error",
 							},
 							function(){
-								return;
+								FB.logout(function(response) {
+								});
 							});
 						}
 						else if (status == "success") {
@@ -71,6 +72,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 								if (ajaxResult.status != "success") {
 									sweetAlert("오류", "오류가 발생", "error")
 									return;
+								} else if (response.email == undefined) {
+									return;
 								}
 
 								swal({
@@ -78,7 +81,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 									text: "페이스북 계정이 연동되었습니다.",
 								},
 								function(){
-									location.reload();
+									
 								});
 							});
 						} 
