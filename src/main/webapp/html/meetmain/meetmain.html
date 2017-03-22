@@ -169,9 +169,9 @@
                   class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
                 <img id='photo-img' height='80' class='view-form'><input
                   id='link' name='files' type='file' multiple> <input
-                  id='link-path' type='hidden'> <a id='cancel-btn' href='#'
-                  class="btn btn-success">취소</a> <a id='new-btnnn'
-                  href='#' class="btn btn-primary">저장</a><BR>
+                  id='link-path' type='hidden'> <button type='button' id='cancel-btn'
+                  class="btn btn-success" data-dismiss='modal'>취소</button> <button type='button' id='new-btnnn'
+                   class="btn btn-primary" data-dismiss='modal'>저장</button><BR>
               </div>
             </div>
           </div>
@@ -223,9 +223,9 @@
                   </div>
                 <div class="form-group">
                   <div class="detail_button">
-                    <button id='update-btn' type='button' class='view-form btn btn-primary'>변경</button>
-                    <button id='delete-btn' type='button' class='view-form btn btn-danger'>삭제</button>
-                    <button id='list-btn' type='button' class='btn btn-success'>목록</button>
+                    <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
+                    <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
+                    <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
                   </div>
                 </div>
               </form>
@@ -285,8 +285,8 @@
       //location.reload();
     });
   $('#cancel-btn').click(function(event) {
-      event.preventDefault();
-      location.reload();
+      /* event.preventDefault();
+      location.reload(); */
     });
   </script>
 
@@ -422,8 +422,6 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
   var mnum = ajaxResult.data.memberNo;
   
     $('#new-btnnn').click(function(event) {
-      event.preventDefault();
-
         
         var param = {
           "memberNo": mnum,
@@ -454,135 +452,136 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
           "type": 'jpg'
           }
           $.post('file.json', params, function(ajaxResult2) {
+            initCard();
             
           });
-            location.reload();
+            //location.reload();
+            
         }, 'json'); // post();
     }); // click()   
     
-  
+  initCard();
 
-    
-    $.getJSON('list.json?mtnum='+ mtnum, function(ajaxResult) {
-       if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-          return;
-        }
-       var list = ajaxResult.data;
-       var container2 = $('.container2');
-       //var container2 = $('#container2 .row');
-       var template = Handlebars.compile($('#trTemplate').html());
-       var row;
-       
-       var pageSize = 6;  
-       
-       for (var i = 0; i < list.length; i++) {
-         if (i % 3 == 0) {
-           console.log('로우생성');
-           console.log(ajaxResult.data[0].addFileList[0].filePath)
-           row = $('<div>').addClass('row').appendTo(container2);
-         
-         }
-        
-         
-         var div = $('<div>').html(template(list[i]));
-         console.log(list)
-         //$('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
-         row.append(div);
-       }
-       
-       
-       if (list.length < 7) {
-           $('#nextPgBtn').css('display', 'none');
-       } else {
-    	   for (var i = 6; i < list.length; i++) {
-    		   $('.post').eq(i).css('display','none');
-    	   }
-       }
-       
-       $('#nextPgBtn').click(function() {
-    	   var startNo = pageNo*6;
-    	   var endNo;
-    	   if ( ++pageNo*6 >= list.length) {
-    		   endNo = list.length;
-    		   $('#nextPgBtn').css('display', 'none');
-    	   } else {
-    		   endNo = pageNo*6;
-    	   }
-    		   for (var i = startNo; i < endNo; i++) {
-    			   $('.post').eq(i).css('display','block');
-    		   }
-       });
-       
-    	   
-       
-       $('.img-responsive').click(function(){
-         console.log(i);
-       });
-       
-       $(".btn-view").click(function() {
-         window.bnumber = $(this).attr('data-bnum');
-         $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
-           if (ajaxResult.status == "fail") {
-                  return;
-                }
-           var detail = ajaxResult.data;
-           console.log('디테일?',detail)
-           $('#detail_title').val(detail.title);
-           $('#detail_content').val(detail.content);
-           $('#detail_date').val(detail.boardDate);
-           $('.detail-photo').children().remove();
-           for (var i in detail.addFileList) {
-             $('<input>')
-               .attr('name','input-file-path')
-               .attr('value',detail.addFileList[i].filePath)
-               .css('display','none').appendTo($('.detail-photo'));
-             $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
-               .css('width','150px').css('height','100px').css('display','inline-block');
-           }
-          console.log( bnumber);
-         }); 
-       });
-       
-       
-       
-       
-       $('#delete-btn').click(function() {
-         console.log('비넘버 : ',bnumber);
-          $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
-            if (ajaxResult.status != "success") { 
-              alert(ajaxResult.data);
-              return;
-            }
-          
-            location.reload();
-          }); // getJSON()
-        }); // click()
-        
-        
-        $('#update-btn').click(function() {
-            var param = {
-              "boardNo": bnumber, 
-              "meetNo": mtnum,
-              "title": $('#detail_title').val(),
-              "boarddate": $('#detail_date').val(),
-              "content": $('#detail_content').val()
-            };
-            
-            $.post('update.json', param, function(ajaxResult) {
-              if (ajaxResult.status != "success") {
-                alert(ajaxResult.data);
-                return;
-              }
-              location.reload();
-            }, 'json');
-        }); // click()
-        
-          $('#list-btn').click(function() {
-                 location.reload();
-             }); 
-        
-    });
+  
 });
+
+function initCard() {
+	$.getJSON('list.json?mtnum='+ mtnum, function(ajaxResult) {
+	    if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+	      return;
+	      }
+	    
+	    $('.container2').children().remove();
+      $('#nextPgBtn').remove();
+      $('<div>').attr('id','nextPgBtn').text('더보기').appendTo('#board');
+      pageNo = 1;
+        
+	    var list = ajaxResult.data;
+	    var container2 = $('.container2');
+	    //var container2 = $('#container2 .row');
+	    var template = Handlebars.compile($('#trTemplate').html());
+	    var row;
+	    var pageSize = 6;  
+
+	    for (var i = 0; i < list.length; i++) {
+	      if (i % 3 == 0) {
+	        row = $('<div>').addClass('row').appendTo(container2);
+	      }
+	      
+	      
+	      var div = $('<div>').html(template(list[i]));
+	      //console.log(list)
+	      //$('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
+	      row.append(div);
+	    }
+
+	    if (list.length < 7) {
+	        $('#nextPgBtn').css('display', 'none');
+	    } else {
+	      for (var i = 6; i < list.length; i++) {
+	        $('.post').eq(i).css('display','none');
+	      }
+	    }
+	     
+	    $('#nextPgBtn').click(function(event) {
+	      var startNo = pageNo*6;
+	      var endNo;
+	      if ( ++pageNo*6 >= list.length) {
+	        endNo = list.length;
+	        $('#nextPgBtn').css('display', 'none');
+	      } else {
+	        endNo = pageNo*6;
+	      }
+	      for (var i = startNo; i < endNo; i++) {
+	        $('.post').eq(i).css('display','block');
+	      }
+	    });
+
+	    $('.img-responsive').click(function(){
+	      console.log(i);
+	    });
+
+	    $(".btn-view").click(function() {
+	      window.bnumber = $(this).attr('data-bnum');
+	      $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
+	        if (ajaxResult.status == "fail") {
+	          return;
+	        }
+	        var detail = ajaxResult.data;
+	        console.log('디테일?',detail)
+	        $('#detail_title').val(detail.title);
+	        $('#detail_content').val(detail.content);
+	        $('#detail_date').val(detail.boardDate);
+	        $('.detail-photo').children().remove();
+	        for (var i in detail.addFileList) {
+	          $('<input>')
+	            .attr('name','input-file-path')
+	            .attr('value',detail.addFileList[i].filePath)
+	            .css('display','none').appendTo($('.detail-photo'));
+	          $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
+	            .css('width','150px').css('height','100px').css('display','inline-block');
+	        }
+	       console.log( bnumber);
+	      }); 
+	    });
+	     
+	  $('#delete-btn').click(function() {
+	    console.log('비넘버 : ',bnumber);
+	    $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
+	      if (ajaxResult.status != "success") { 
+	        alert(ajaxResult.data);
+	        return;
+	      }
+	      initCard();
+	    }); // getJSON()
+	  }); // click()
+	  
+	  
+	  $('#update-btn').click(function() {
+	    var param = {
+	        "boardNo"   : bnumber, 
+	        "meetNo"    : mtnum,
+	        "title"     : $('#detail_title').val(),
+	        "boarddate" : $('#detail_date').val(),
+	        "content"   : $('#detail_content').val()
+	    };
+	      
+	    $.post('update.json', param, function(ajaxResult) {
+	      if (ajaxResult.status != "success") {
+	        alert(ajaxResult.data);
+	        return;
+	      }
+	      initCard();
+	      }, 'json');
+	  }); // click()
+	  
+	   /*  $('#list-btn').click(function() {
+	      location.reload();
+	    });  */
+
+	  });
+}
+
 var arrayToJson = function(list) {
     var result = '';
     if (list == null) {
