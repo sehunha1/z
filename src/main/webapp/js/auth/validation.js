@@ -40,26 +40,39 @@
         return;
       } 
     });
+	
+    if ($('#fcbk').val() == "dddd") {
+    	console.log(null);
+    }
 });
  
     $.validator.setDefaults( {
       submitHandler: function () {
+    	  var param;
     	  
     	  if ($('#isCheck').val() == 'N') {
     		  sweetAlert("경고", "이메일 사용 가능 여부를 확인하세요", 'warning');
     		  return;
     	  }
     	  
-    	  var param = {
+    	  if ($('#fcbk').val() == "") {
+    	  param = {
     		      "email": $('#email1').val(),
     		      "name": $('#username1').val(),
     		      "password": $('#password1').val(),
     		      "photo": $('#photo-path').val(),
-    		      "facebook": $("#fcbk").val()
     		      //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
     		      //"photo": $("#photo").attr('src', 'html/upload/' + val())
-    		  
     		  };
+    	  } else {
+    		  param = {
+        		      "email": $('#email1').val(),
+        		      "name": $('#username1').val(),
+        		      "password": $('#password1').val(),
+        		      "photo": $('#photo-path').val(),
+        		      "facebook": $('#fcbk').val()
+        		  };
+    	  }
 
     		  $.post('add.json', param, function(ajaxResult) {
     		    if (ajaxResult.status == "fail") {
