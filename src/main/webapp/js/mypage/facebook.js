@@ -81,7 +81,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 									text: "페이스북 계정이 연동되었습니다.",
 								},
 								function(){
-									
+									$("#facebook").css("display", "none");
+									$("#already").css("display", "inline");
 								});
 							});
 						} 

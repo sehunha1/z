@@ -77,11 +77,40 @@ div.bhoechie-tab-content{
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
+
+
+/*table*/
+table {
+  border-collapse: separate;
+  border-spacing: 0 5px;
+}
+
+thead th {
+  background-color: #006DCC;
+  color: white;
+}
+
+tbody td {
+  background-color: #EEEEEE;
+}
+
+tr td:first-child,
+tr th:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+tr td:last-child,
+tr th:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
 </style>
 </head>
 <body>
 <div id="header"></div>
-<div id="content" class="container" style="position:static; width:960px; height:500px; overflow:hidden;">
+<div id="content" class="container" style="position:static; width:960px; height:500px; overflow:auto;">
    <input type='hidden' id='memberNo'/>
    <input type='hidden' id='email'/>
    <input type='hidden' id='nameback'/>
@@ -106,21 +135,21 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
                 </a>
               </div>
             </div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab" style='margin-left:220px; height:500px;'>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab" style='margin-left:200px; height:500px;'>
                 <!-- 초대 확인 -->
                 <div class="bhoechie-tab-content active">
                 <h2 style=''>초대 확인</h2>
 					        <hr>
 					        <div>
 					        <div id="none" style="display:none;"><h3>받은 초대가 없습니다</h3></div>
-					        <table id='list-table' class='table table-hover' style='width:750px; overflow:hidden; overflow-y:auto;'>
-					        <thead>
+					        <table id='list-table' class='table table-hover' style='width:725px;'>
+					        <thead class="thead-inverse">
 					          <tr>
 					            <th>모임명</th>
 					            <th>모임설명</th>
 					            <th>모임분류</th>
 					            <th>투표마감일</th>
-					            <th>수락하기/거절하기</th>
+					            <th>수락/거절</th>
 					          </tr>
 					        <thead>
 					        <tbody></tbody>
@@ -198,7 +227,6 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 					        
 					        <hr>
 					        <h2>페이스북 계정 연동</h2>
-					        <hr>
 					        <div id="facebook">
 					        <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
 					        </div>
@@ -286,7 +314,7 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   <td style="padding-top: 12px;">{{deadline}}</td>
   <td>
     <button type="button" class="ok btn btn-success btn-sm" mtnumok="{{meetingNo}}">수락</button>
-    <button type="button" class="no btn btn-success btn-sm" mtnumno="{{meetingNo}}">거절</button>
+    <button type="button" class="no btn btn-success btn-sm" style="background-color:#F24D4D;" mtnumno="{{meetingNo}}">거절</button>
   </td>
 </tr>
 {{/each}}
