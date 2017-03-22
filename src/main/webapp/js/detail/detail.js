@@ -315,3 +315,6 @@ $('body').on('click', '#new-btnnn', function(e) {
 });
 
 
+/*$('#boardAddModal').modal({backdrop:'static'});*/
+
+
