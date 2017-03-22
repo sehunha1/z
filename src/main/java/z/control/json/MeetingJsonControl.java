@@ -68,10 +68,10 @@ public class MeetingJsonControl {
   @RequestMapping("html/detail/meetBoardList")
   public AjaxResult boardList(int meetingNo) throws Exception {
     List<Board> boardList = meetingService.boardList(meetingNo);
-    if (boardList != null) {
+    if (boardList != null && boardList.size() != 0) {
       return new AjaxResult(AjaxResult.SUCCESS, boardList);
     }
-    return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
+    return new AjaxResult(AjaxResult.FAIL, "완료 모임 상세정보 가져오기 실패");
   }
 
   // 완료 모임 특정 게시글 정보 가져오기
@@ -81,7 +81,7 @@ public class MeetingJsonControl {
     if (boardList != null && boardList.size() != 0) {
       return new AjaxResult(AjaxResult.SUCCESS, boardList);
     }
-    return new AjaxResult(AjaxResult.SUCCESS, "완료 모임 상세정보 가져오기 실패");
+    return new AjaxResult(AjaxResult.FAIL, "완료 모임 상세정보 가져오기 실패");
   }
   
   // 미수락 초대 가져오기

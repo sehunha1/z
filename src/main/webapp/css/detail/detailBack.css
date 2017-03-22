@@ -1,17 +1,6 @@
 /* detail Page 작성 - 2017.03.09 김재녕 */
 /* detail Page 수정 - 2017.03.21 김재녕 */
 
-.member .tit, .board .tit {
-  font-size:26px;
-  margin-bottom:15px;
-  font-weight:bold;
-  color:#555;
-  margin-bottom:15px;
-  padding-bottom:10px;
-  line-height:1em;
-  border-bottom:1px solid #ddd;
-}
-
 .detail-info {
   margin: 0 auto;
   height: 300px;
@@ -23,13 +12,27 @@
   overflow: hidden;
 }
 
+.detail-info .headtitle .stat-span {
+  margin: 0 auto;
+  display: inline-block;
+  float: left;
+  line-height: 200%;
+  background-color: #42C299;
+  font-size: 32px;
+  width: 150px;
+  height: 100%;
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+}
+
 .detail-info .headtitle .play-title {
   margin: 0;
   display: inline-block;
 }
 
 .detail-info>.title-photo {
-  margin: 1% 2% auto 0;
+  margin-top: 2%;
+  margin-right: 2%;
   width: 30%;
   height: 70%;
   float: left;
@@ -39,8 +42,6 @@
 }
 
 .desc-info {
-	border-left: 2px solid #ddd;
-	height: 240px;
 	overflow: auto;
 }
 
@@ -51,13 +52,14 @@
 
 .member {
   margin: 0 auto;
+  height: 300px;
   overflow: auto;
 }
 
 /**************************************************/
 
-.member_wrap {
-	position: relative;
+.section.member_wrap {
+
 }
 
 .section.member_wrap:after {
@@ -66,28 +68,19 @@
   clear:both;
 }
 
-.member_list_wrap {
+/* .member_list_wrap {
   float:left;
-  width: 900px;
-}
+} */
 
-.member_list .item {
-  float: left;
-  width: 70px;
-  position: absolute;
-  margin-right: 15px;
-  margin-bottom: 10px;
-  display: none;
-  
-}
 
 #btn_toggle_member_list {
-  float:right;
-  width:50px;
-  height:50px;
+  float:left;
+  /* margin-left:15px; */
+  width:70px;
+  height:70px;
   border:none;
   background:#000;
-  border-radius: 10px;
+  border-radius: 5px;
   color:#fff;
   cursor:pointer;
   transition: all .2s ease;
@@ -99,7 +92,7 @@
 }
 
 .member_list {
-  float: left;
+
 }
 
 .member_list:after {
@@ -213,7 +206,7 @@
 
 .board {
   margin: 0 auto;
-  /* height: 400px; */
+  height: 400px;
   overflow: hidden;
   vertical-align: middle;
 }
@@ -230,9 +223,10 @@
 }
 
 .board .search-board {
-  margin: 0;
-  margin-right: 5%;
-  width: 100%;
+  margin: 0 auto;
+  float: right;
+  /* background: #7BA7AB; */
+  width: 40%;
 }
 
 .board .search-board form {
@@ -247,7 +241,7 @@
 }
 
 .board .search-board input {
-  width: 190px;
+  width: 100px;
   height: 42px;
   padding-left: 15px;
   border-radius: 42px;
@@ -278,7 +272,7 @@
   font-family: FontAwesome;
   color: #324b4e;
 }
-/* 
+
 .board .all-down-btn {
   margin-right: 5px;
   font-size: 32px;
@@ -299,21 +293,6 @@
 .board .all-down-btn:hover:before {
   text-decoration: none;
   color: #EA4335;
-}
- */
- 
-#BoarddataNotFound {
-	display: none;
-	text-align: center;
-}
-.dataError {
-	font-size:26px;
-  margin-bottom:15px;
-  font-weight:bold;
-  color:#555;
-  margin-bottom:15px;
-  padding-bottom:10px;
-  line-height:1em;
 }
 
 .board .swiper-container {
@@ -353,7 +332,7 @@
   bottom: 10%;
   display: inline-block;
   width: 100%;
-  height: 300px;
+  height: 80%;
   border: 1px solid black;
   text-align: center;
   border-radius: 15px 15px 15px 15px;

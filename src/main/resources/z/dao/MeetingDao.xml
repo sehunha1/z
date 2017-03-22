@@ -174,7 +174,6 @@
        where bo.mtnum = #{meetingNo}
          and (bo.titl like concat('%',#{keyWord},'%') 
               or bo.cont like concat('%',#{keyWord},'%')
-              or fi.link like concat('%',#{keyWord},'%') 
               or mb.name like concat('%',#{keyWord},'%'));
      ]]>
 	</select>
