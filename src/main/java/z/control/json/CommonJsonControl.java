@@ -47,8 +47,8 @@ public class CommonJsonControl {
     String[] array = filename.split("/");
     String defaultImg = "p50x50";
     
-    System.out.println("파일 이름 " + filename);
-    System.out.println("6번쨰 " + array[6].replaceAll("\\?.*", ""));
+    //System.out.println("파일 이름 " + filename);
+    //System.out.println("6번쨰 " + array[6].replaceAll("\\?.*", ""));
     
     try {
       URL url = new URL(filename);

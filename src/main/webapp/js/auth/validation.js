@@ -104,14 +104,14 @@
     	// 이메일 정규표현식 유효성 검사
     	$.validator.addMethod("emailz", function(value, element) {
          return this.optional(element) || /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(value);
-      }, "올바른 형식의 이메일 주소를 입력하세요 ex)user01@test.com");
+      }, "올바른 형식의 이메일 주소를 입력하세요 ex)user01@gmail.com");
     
     
         
         // 이름 한글만
         $.validator.addMethod("namez", function(value, element) {
-           return this.optional(element) || /^[가-힝]{2,}$/i.test(value);
-        }, "한글로만 두 글자 이상 입력 하세요. ex)김구");
+           return this.optional(element) || /^[가-힣a-zA-Z]{2,}$/i.test(value);
+        }, "영문과 한글로만 두 글자 이상 입력 하세요.");
     
     
     	

@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import z.domain.PlaceList;
+import z.service.LinkService;
 import z.service.PlaceListService;
 
 @RestController
 public class PlaceListJsonControl {
   @Autowired ServletContext sc;
   @Autowired PlaceListService placeListService;
+  @Autowired LinkService linkService;
 
   @RequestMapping("html/meetmain/listadd")
   public AjaxResult add(PlaceList placelist, HttpSession session) throws Exception {
@@ -26,6 +28,7 @@ public class PlaceListJsonControl {
     }
     
     session.setAttribute("placelist", placelist);
+    linkService.updateStat(placelist.getMemberNo(), placelist.getMeetingNo());
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   // 페이징 처리 전
