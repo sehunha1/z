@@ -372,13 +372,23 @@
 }
 
 /* 게시글 작성 팝업 */
+#boardAddModal {
+	top: 50%;
+	margin-top: -300px;
+}
+
+.modal-content {
+	width: 690px;
+	height: 570px;
+	/* text-align: center; */
+}
 
 .modal-body {
-  position: relative;
-  width: 680px;
-  height: 565px;
-  background-color: white;
-  border-radius: 10px;
+	/* position: relative; */
+	width: 680px;
+	height: 565px;
+	background-color: white;
+	border-radius: 10px;
 }
 
 #write {
@@ -452,7 +462,6 @@
 	border-bottom-left-radius: 2px;
 	borde-color: #cfd1d3;
 } */
-
 #writeform #cancel-btn {
 	margin-left: 380px;
 	margin-top: 10px;
