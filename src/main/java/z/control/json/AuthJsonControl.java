@@ -112,6 +112,7 @@ public class AuthJsonControl {
             }
             if (isDuplicateCal == 0) {
               meetingService.updateFdateNonVote(meetingNo[i]);
+              meetingService.updateFtimeNonVote(meetingNo[i]);
             }
             if (isDuplicateLoc == 1) {
               meetingService.updateFloc(meetingNo[i]);

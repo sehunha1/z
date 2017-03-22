@@ -227,6 +227,10 @@
 		update meet set fdate=#{cal} where mtnum=#{meetingNo};
 	</update>
 
+	<update id="updateTime">
+		update meet set ftime=#{time} where mtnum=#{meetingNo};
+	</update>
+
 	<update id="updateLoc">
 		update meet set floc=#{loc} where mtnum=#{meetingNo};
 	</update>

@@ -24,5 +24,6 @@ public interface MeetingService {
   int updateFtime(int meetingNo) throws Exception;
   int updateFtimeNonVote(int meetingNo) throws Exception;
   int updateCal(int meetingNo, String cal) throws Exception;
+  int updateTime(int meetingNo, String cal) throws Exception;
   int updateLoc(int meetingNo, String loc) throws Exception;
 }

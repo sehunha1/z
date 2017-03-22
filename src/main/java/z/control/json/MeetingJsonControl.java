@@ -96,10 +96,12 @@ public class MeetingJsonControl {
   public AjaxResult updateMstat(int meetingNo, HttpServletRequest httpServletRequest) throws Exception {
     meetingService.updateMstatFin(meetingNo);
     String cal = httpServletRequest.getParameter("cal");
+    String time = httpServletRequest.getParameter("time");
     String loc = httpServletRequest.getParameter("loc");
 
     if (cal.length() > 1) {
       meetingService.updateCal(meetingNo, cal);
+      meetingService.updateTime(meetingNo, time);
     }
 
     if (loc.length() > 1) {

@@ -34,5 +34,6 @@ public interface MeetingDao {
   int updateFtime(int meetingNo) throws Exception;
   int updateFtimeNonVote(int meetingNo) throws Exception;
   int updateCal(@Param("meetingNo")int meetingNo, @Param("cal")String cal) throws Exception;
+  int updateTime(@Param("meetingNo")int meetingNo, @Param("time")String time) throws Exception;
   int updateLoc(@Param("meetingNo")int meetingNo, @Param("loc")String loc) throws Exception;
 }

@@ -51,6 +51,7 @@ $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, functio
 
       var param = {
           "cal" : $(".date_result_list .item.on .info1").text(),
+          "time" : $(".date_result_list .item.on .info2").text(),
           "loc" : $(".place_result_list .item.on .info1").text()
       };
 
