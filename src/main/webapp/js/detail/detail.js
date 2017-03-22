@@ -125,6 +125,9 @@ function getBoardList() {
 		  return false;
 	  }
 	  
+	  $('#BoarddataNotFound').css('display', 'none');
+	  $(".swiper-wrapper").empty();
+	  $('.swiper-container').show();
 	  var meetBoardList = ajaxResult.data;
 	  var div = $(".swiper-wrapper");
 	  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
@@ -133,7 +136,6 @@ function getBoardList() {
 	  mySwiper.init();
 	});
 }
-
 
 // 게시글 클릭
 $('body').on('click', '.swiper-slide', function() {
@@ -159,6 +161,12 @@ $(function() {
 // 게시판 검색 버튼 클릭 이벤트
 $('.board .search-btn').on('click', function(e) {
 	e.preventDefault();
+	boardResetSearch();
+});
+
+// 게시판 초기화 후 검색
+function boardResetSearch() {
+	
 	var keyWord = $('.search-keyword').val();
 	
 	$.getJSON("../detail/keywordBoardList.json?meetingNo=" + meetingNo + "&keyWord=" + keyWord, function(ajaxResult) {
@@ -181,7 +189,7 @@ $('.board .search-btn').on('click', function(e) {
 	  div.append(boardTemplate({"meetBoardList":meetBoardList}));
 	  mySwiper.init();
 	});
-});
+}
 
 // 게시판 작성 버튼 클릭 이벤트
 $('body').on('click', '#boardAddBtn', function(e) {
@@ -298,7 +306,7 @@ $('body').on('click', '#new-btnnn', function(e) {
    	            }
             });
 	        boardPopInit();
-            getBoardList();
+	        getBoardList();
         }, 'json');
 	    
 	} else {
