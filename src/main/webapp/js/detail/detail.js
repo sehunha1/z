@@ -1,15 +1,19 @@
-"use strict"
+'use strict'
 // 작성: 2017.03.09 김재녕
 // 수정: 2017.03.21 김재녕
 
 //Initialize Swiper - 게시글
-var swiper = new Swiper('.board .swiper-container', {
-	initialSlide: 0,
-	pagination : '.board .swiper-pagination', // 페이징 추가할 위치 지정
-	slidesPerView : 4, // 한번에 보이는 슬라이드 갯수
-	centeredSlides : false, //  
-	paginationClickable : true, // 페이지 클릭 가능 여부
-	spaceBetween : 30
+var mySwiper = new Swiper ('.swiper-container', {
+  // Optional parameters
+  nextButton: '.swiper-button-next',
+  prevButton: '.swiper-button-prev',
+  spaceBetween: 11,
+  slidesPerView: 4,
+  scrollbar: '.swiper-scrollbar',
+  scrollbarHide: false,
+  scrollbarDraggable: true,
+  scrollbarSnapOnRelease: true,
+  grabCursor: true  
 });
 
 try {
@@ -89,17 +93,17 @@ try {
 		  var status = ajaxResult.status;
 		  
 		  if (status != "success") {
+			  $('.swiper-container').css('display', 'none');
 			  $('#BoarddataNotFound').show();
 			  return false;
 		  }
 		  
+		  var meetBoardList = ajaxResult.data;
 		  var div = $(".swiper-wrapper");
 		  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
-		  var meetBoardList = ajaxResult.data;
 		
 		  div.append(boardTemplate({"meetBoardList":meetBoardList}));
-		  swiper.onResize();
-		  
+		  mySwiper.init();
 		});
 	});
 	
@@ -110,15 +114,18 @@ try {
 }
 
 // 게시글 클릭
-$('body').on('click', 'swiper-wrapper', function() {
-	console.log($(this));
+$('body').on('click', '.swiper-slide', function() {
+	console.log('swipe slide click OK');
+	console.log(mySwiper.clickedSlide);
+	if (mySwiper.clickedSlide != undefined) {
+		
+	}
 });
 
 // 멤버 전체보기 버튼 클릭 이벤트
 $(function() {
   $('#btn_toggle_member_list').on('click', function() {
 	  if ($(this).text() == "전체보기") {
-		  console.log('ss');
 		  $(this).text("닫기");
 	  } else {
 		  $(this).text("전체보기");
@@ -135,19 +142,21 @@ $('.board .search-btn').on('click', function(e) {
 	$.getJSON("../detail/keywordBoardList.json?meetingNo=" + meetingNo + "&keyWord=" + keyWord, function(ajaxResult) {
 	  var status = ajaxResult.status;
 	  if (status != "success") {
+		  mySwiper.init();
+		  $('.swiper-container').css('display', 'none');
 		  $(".swiper-wrapper").empty();
 		  $('#BoarddataNotFound').show();
 		  return false;
 	  }
 	  
+	  $('#BoarddataNotFound').css('display', 'none');
 	  $(".swiper-wrapper").empty();
+	  $('.swiper-container').show();
 	  var div = $(".swiper-wrapper");
 	  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
 	  var meetBoardList = ajaxResult.data;
-
-	  $('#BoarddataNotFound').css('display', 'none');
+	  
 	  div.append(boardTemplate({"meetBoardList":meetBoardList}));
-	  swiper.onResize();
+	  mySwiper.init();
 	});
-	
 });

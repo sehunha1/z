@@ -24,23 +24,23 @@
 	<div id="content">
 		<!-- 상단 모임 정보 -->
 		<div class="detail-info">
-		
+
 			<!-- 모임명 -->
 			<div class="headtitle">
 				<h1 id="meeting-title"></h1>
 			</div>
-			
+
 			<!-- 모임 이미지 -->
 			<img class="title-photo" alt="Image Error" title="Image Error">
 			<div class="desc-info">
 				<!-- 확정날짜 -->
-				<p id="final-date" class="tit">[날짜] </p>
+				<p id="final-date" class="tit">[날짜]</p>
 				<!-- 확정장소 -->
-				<p id="final-loc" class="tit">[장소] </p>
+				<p id="final-loc" class="tit">[장소]</p>
 				<!-- 확정시간 -->
-				<p id="final-time" class="tit">[시간] </p>
+				<p id="final-time" class="tit">[시간]</p>
 				<!-- 내용 -->
-				<p id="final-cont" class="tit">[설명] </p>
+				<p id="final-cont" class="tit">[설명]</p>
 			</div>
 		</div>
 
@@ -56,38 +56,70 @@
 			</div>
 		</div>
 
-    <!-- 게시판 -->
+		<!-- 게시판 -->
 		<div class="board">
 			<div class="headtitle">
 				<p class="tit">게시판</p>
-				<!-- <a class='all-down-btn' href='#'></a> -->
 			</div>
-				<div class="search-board">
-					<form class="search-board-form">
-						<input class="search-keyword" type="text" placeholder="제목, 내용, 작성자 중 검색">
-						<button class="search-btn" type="submit"></button>
-					</form>
-				</div>
+			<div class="search-board">
+			<button id="boardAddBtn" class="btn btn-infobtn-sm">게시글 작성</button>
+				<form class="search-board-form">
+					<input class="search-keyword" type="text"
+						placeholder="제목, 내용, 작성자 중 검색">
+					<button class="search-btn" type="submit"></button>
+				</form>
+			</div>
 			<div id="BoarddataNotFound">
-			<p class="dataError">데이터가 없습니다.</p>
+				<p class="dataError">데이터가 없습니다.</p>
 			</div>
 			<div class="swiper-container">
-				<div class="swiper-wrapper">
-				</div>
+				<div class="swiper-wrapper"></div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-scrollbar"></div>
 			</div>
 		</div>
-	</div> <!-- content end -->
+	</div>
+	<!-- content end -->
 
 	<div id="footer"></div>
+	
+	 <!-- 게시판 작성 팝업 -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div id="write">
+            <span class="space"></span><br> <span class="title">게시판글쓰기</span>
+            <div id="writeform">
+              <div class="box">
+                <input type="email" class="titlename" id="titl"
+                  placeholder="     글 제목을 입력해주세요."> <input type="email"
+                  class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
+                <img id='photo-img' height='80' class='view-form'><input
+                  id='link' name='files' type='file' multiple> <input
+                  id='link-path' type='hidden'> <a id='cancel-btn' href='#'
+                  class="btn btn-success">취소</a> <a id='new-btnnn'
+                  href='#' class="btn btn-primary">저장</a><BR>
+              </div>
+            </div>
+          </div>
+          <span class="space"></span><br>
+        </div>
+      </div>
+    </div>
+  </div>
+	
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
 	<script src="../../node_modules/swiper/dist/js/swiper.js"></script>
 	<script src="../../js/context.js"></script>
 	<script src="../../js/common.js"></script>
-  <script src="../../js/detail/detail.js"></script>
+	<script src="../../js/detail/detail.js"></script>
 
-  <!-- 멤버 템플릿 -->
+	<!-- 멤버 템플릿 -->
 	<script id="membTemplate" type="text/x-handlebars-template">
     {{#each detailMembList}}
     <li class="item">
@@ -98,19 +130,25 @@
     </li>
     {{/each}}
   </script>
-  
-  <!-- 게시판 템플릿 -->
+
+	<!-- 게시판New -->
 	<script id="boardTemplate" type="text/x-handlebars-template">
-    {{#each meetBoardList}}
-    <div class="swiper-slide">
-      <div class="board-box">
-        <img class="board-photo" src="../upload/{{link}}">
-        <p>작성자: {{name}}</p>
-        <p>제목: {{title}}</p>
+  {{#each meetBoardList}}
+    <div class="hot-listing-3 swiper-slide">
+      <div id="meetNum" style="display:none">{{meetNo}}</div>
+      <div id="boardNum" style="display:none">{{boardNo}}</div>
+      <div class="photo-test">
+        {{#each addFileList}}
+        <img class="inline-image" src="../upload/{{filePath}}" />
+        {{/each}}
+      </div>
+      <div class="details">
+        <h2>{{title}}</h2>
+        <p class="bed-bath">{{name}}</p>
+        <h3>{{content}}</h3>
       </div>
     </div>
-    {{/each}}
-    <div class="swiper-pagination"></div>
+  {{/each}}
   </script>
 
 </body>
