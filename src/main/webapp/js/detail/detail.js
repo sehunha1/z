@@ -104,12 +104,14 @@ function getBoardList() {
 	$.getJSON("../detail/meetBoardList.json?meetingNo=" + meetingNo, function(ajaxResult) {
 	  var status = ajaxResult.status;
 	  
+	  // 실패
 	  if (status != "success") {
-	  $('.swiper-container').css('display', 'none');
-	  $('#BoarddataNotFound').show();
-	  	return false;
+		  $('.swiper-container').css('display', 'none');
+		  $('#BoarddataNotFound').show();
+		  	return false;
 	  }
 	  
+	  // 성공
 	  $('#BoarddataNotFound').css('display', 'none');
 	  $(".swiper-wrapper").empty();
 	  $('.swiper-container').show();
@@ -317,8 +319,6 @@ $('body').on('click', '#new-btnnn', function(e) {
 		};
 	    
 	    $.post('../meetmain/add.json', param, function(ajaxResult) {
-	    	console.log(ajaxResult);
-	    	console.log('test01 success');
           
 	    	if (ajaxResult.status != "success") {
 	    		return;
@@ -330,8 +330,6 @@ $('body').on('click', '#new-btnnn', function(e) {
 	        }
           
             $.post('../meetmain/file.json', params, function(ajaxResult) {
-            	console.log(ajaxResult);
-    	    	console.log('test01 success');
     	        if (ajaxResult.status != "success") {
    	                return;
    	            }
@@ -347,6 +345,6 @@ $('body').on('click', '#new-btnnn', function(e) {
 
 // 뒤로 버튼 클릭 이벤트
 $("#btn_back").on("click", function(e) {
-    e.preventDefault();
-    location.href = "../mylist/mylist.html";
-  });
+	e.preventDefault();
+	location.href = "../mylist/mylist.html";
+});
