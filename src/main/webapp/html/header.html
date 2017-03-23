@@ -52,12 +52,6 @@
       style='width: 270px; height: 140px; margin-left: 20px; padding-top: 15px;'>
       <font class="_layer" style='font-size: 17px;'>내 일정</font><br>
       <div class="_layer dday" style='line-height: 180%; overflow: auto'>
-        <font class="_layer" color=#E74C3C style='font-size: 18px;'>D-1</font> <font class="_layer"
-          color=#7F7F7F style='margin-left: 20px;'>중국어 스터디</font><br>
-        <font class="_layer" color=#298000 style='font-size: 18px;'>D-3</font> <font class="_layer"
-          color=#7F7F7F style='margin-left: 20px;'>조별과제</font><br>
-        <font class="_layer" color=black style='font-size: 18px;'>D-7</font> <font class="_layer"
-          color=#7F7F7F style='margin-left: 20px;'>놀자</font>
       </div>
     </div>
   </div>
@@ -66,7 +60,9 @@
 
 <script id="ddayTemplate" type="text/x-handlebars-template">
   {{#each dday}}
-    <font class="_layer" color=#E74C3C style='font-size: 18px;'>D-{{ddayCount}}</font> <font class="_layer" color=#7F7F7F style='margin-left: 20px;'>{{ddayTitle}}</font><br>
+    <a href="../meetmain/meetmain.html?memberNo={{memberNo}}&meetingNo={{meetingNo}}" style="text-decoration: none;">
+    <font class="_layer" color=#E74C3C style='font-size: 18px;'>D-{{ddayCount}}</font> <font class="_layer" color=#7F7F7F style='margin-left: 20px;'>{{ddayTitle}}</font>
+    </a><br>
   {{/each}}
 </script>
 

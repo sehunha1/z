@@ -38,4 +38,5 @@ public interface MeetingDao {
   int updateLoc(@Param("meetingNo")int meetingNo, @Param("loc")String loc) throws Exception;
   String[] getDdayTitle(int memberNo) throws Exception;
   String[] getDdayDline(int memberNo) throws Exception;
+  int[] getDdayMeetingNo(int memberNo) throws Exception;
 }

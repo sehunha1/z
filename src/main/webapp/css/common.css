@@ -1,14 +1,13 @@
 @CHARSET "UTF-8";
 
 /* 풋터에서 사용하는 css import */
-@import
-	url("http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
-	;
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 /* 헤더 css 시작 */
 #header {
 	width: 100%;
 	border-bottom: 1px solid #ddd;
+	font-family: "RixSGo B";
 }
 
 #header .inner_header {
@@ -34,7 +33,7 @@
 
 #header .svc_name {
 	float: left;
-	margin-top: 6px;
+	margin-top: 9px;
 	font-size: 25px;
 }
 
@@ -85,7 +84,7 @@
 	text-decoration: none;
 	color: black;
 	float: right;
-	margin-top: 3px;
+	margin-top: 7px;
 	margin-left: 5px;
 }
 

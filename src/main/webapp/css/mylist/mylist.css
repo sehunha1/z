@@ -47,6 +47,7 @@
 }
 #content .view_my_meeting .meeting_list {
   *zoom: 1;
+  font-family: "RixSGo B";
 }
 #content .view_my_meeting .meeting_list:after {
   content: '';
