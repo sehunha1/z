@@ -344,3 +344,9 @@ $('body').on('click', '#new-btnnn', function(e) {
 		alert('입력 값을 확인하세요.');
 	}
 });
+
+// 뒤로 버튼 클릭 이벤트
+$("#btn_back").on("click", function(e) {
+    e.preventDefault();
+    location.href = "../mylist/mylist.html";
+  });

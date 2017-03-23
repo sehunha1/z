@@ -4,7 +4,7 @@
 
 #sidebarMenu {
 	margin-left: 5%;
-	margin-bottom: 25px;
+	margin-bottom: 5%;
 	height: 770px;
 	overflow: auto;
 }
@@ -15,15 +15,22 @@
 	list-style: none;
 }
 
+#sideEvent {
+	margin-right: 5%;
+	padding-bottom: 5%;
+	border-bottom: 2px solid #ddd;
+}
+
 #sideMembDiv {
 	margin-top: 10px;
 }
 
 .membList {
+	margin-top: 5%;
 	margin-left: 5%;
 	overflow: auto;
-	font-family: 'RixHappyVirus M';
-	font-size: 20px;
+	font-family: 'RixSGo M';
+	font-size: 12px;
 }
 
 .circle {
