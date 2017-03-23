@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import z.domain.PlaceList;
+import z.service.CalendarService;
 import z.service.LinkService;
 import z.service.PlaceListService;
 
@@ -18,6 +19,7 @@ public class PlaceListJsonControl {
   @Autowired ServletContext sc;
   @Autowired PlaceListService placeListService;
   @Autowired LinkService linkService;
+  @Autowired CalendarService calendarService;
 
   @RequestMapping("html/meetmain/listadd")
   public AjaxResult add(PlaceList placelist, HttpSession session) throws Exception {
@@ -28,7 +30,12 @@ public class PlaceListJsonControl {
     }
     
     session.setAttribute("placelist", placelist);
-    linkService.updateStat(placelist.getMemberNo(), placelist.getMeetingNo());
+    
+    int count2 = calendarService.getCheckCal(placelist.getMemberNo(), placelist.getMeetingNo());
+    if (count2 > 0) {
+      linkService.updateStat(placelist.getMemberNo(), placelist.getMeetingNo());
+    }
+    
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   // 페이징 처리 전

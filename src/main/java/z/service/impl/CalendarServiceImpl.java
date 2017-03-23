@@ -37,4 +37,9 @@ public class CalendarServiceImpl implements CalendarService {
   public int isDuplicate(int meetingNo) throws Exception {
     return calendarDao.isDuplicate(meetingNo);
   }
+
+  @Override
+  public int getCheckCal(int memberNo, int meetingNo) throws Exception {
+    return calendarDao.getCheckCal(memberNo, meetingNo);
+  }
 }

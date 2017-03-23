@@ -48,7 +48,7 @@ public class LocationJsonControl {
       return new AjaxResult(AjaxResult.FAIL, "등록 실패입니다.");
     }
     
-    int count2 = locationService.getCheckLoc(location.getMemberNo(), location.getMeetingNo());
+    int count2 = calendarService.getCheckCal(location.getMemberNo(), location.getMeetingNo());
 
     if (count2 > 0) {
       linkService.updateStat(location.getMemberNo(), location.getMeetingNo());

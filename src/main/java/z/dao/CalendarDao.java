@@ -10,4 +10,5 @@ public interface CalendarDao {
     int deleteCal(int meetingNo) throws Exception;
     int insertCal(Calendar calendar) throws Exception;
     int isDuplicate(int meetingNo) throws Exception;
+    int getCheckCal(int memberNo, int meetingNo) throws Exception;
 }

@@ -45,5 +45,9 @@
 		select count(*) from (select count(*) from (select cdate from cal left outer join meet on cal.mtnum=meet.mtnum where meet.mtnum=#{value}) as tt group by cdate having count(*) >=
 		(select count(*) from (select cdate from cal left outer join meet on cal.mtnum=meet.mtnum where meet.mtnum=#{value}) as tt group by cdate order by count(*) desc limit 1)) as ff;
 	</select>
+	
+  <select id="getCheckCal" parameterType="int" resultType="int">
+    select count(*) from cal where mnum=#{param1} and mtnum=#{param2};
+  </select>
 
 </mapper>
