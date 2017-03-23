@@ -133,4 +133,9 @@ public class MeetingServiceImpl implements MeetingService {
   public String[] getDdayDline(int memberNo) throws Exception {
     return meetingDao.getDdayDline(memberNo);
   }
+
+  @Override
+  public int[] getDdayMeetingNo(int memberNo) throws Exception {
+    return meetingDao.getDdayMeetingNo(memberNo);
+  }
 }

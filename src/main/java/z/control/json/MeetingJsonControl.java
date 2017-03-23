@@ -119,6 +119,7 @@ public class MeetingJsonControl {
   public AjaxResult getDday(int memberNo) throws Exception {
     String[] ddayTitle = meetingService.getDdayTitle(memberNo);
     String[] ddayDline = meetingService.getDdayDline(memberNo);
+    int[] meetingNo = meetingService.getDdayMeetingNo(memberNo);
     ArrayList dday = new ArrayList();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     long currentTime = System.currentTimeMillis();
@@ -132,6 +133,8 @@ public class MeetingJsonControl {
 
       dday1.put("ddayTitle", ddayTitle[i]);
       dday1.put("ddayCount", ddayCount1 + 1);
+      dday1.put("memberNo", memberNo);
+      dday1.put("meetingNo", meetingNo[i]);
 
       dday.add(dday1);
     }

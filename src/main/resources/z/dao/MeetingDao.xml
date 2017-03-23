@@ -245,4 +245,8 @@
 		select meet.dline from meet left outer join link on meet.mtnum=link.mtnum where mnum=#{value} and mstat="ing";
 	</select>
 
+	<select id="getDdayMeetingNo" parameterType="int" resultType="int">
+		select meet.mtnum from meet left outer join link on meet.mtnum=link.mtnum where mnum=#{value} and mstat="ing";
+	</select>
+
 </mapper>
