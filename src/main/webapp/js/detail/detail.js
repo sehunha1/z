@@ -1,6 +1,6 @@
 'use strict'
 // 작성: 2017.03.09 김재녕
-// 수정: 2017.03.21 김재녕
+// 수정: 2017.03.23 김재녕
 
 //Initialize Swiper - 게시글
 var mySwiper = new Swiper ('.swiper-container', {
@@ -90,22 +90,7 @@ try {
 		
 		// 게시판
 		getBoardList();
-/*		$.getJSON("../detail/meetBoardList.json?meetingNo=" + meetingNo, function(ajaxResult) {
-		  var status = ajaxResult.status;
-		  
-		  if (status != "success") {
-			  $('.swiper-container').css('display', 'none');
-			  $('#BoarddataNotFound').show();
-			  return false;
-		  }
-		  
-		  var meetBoardList = ajaxResult.data;
-		  var div = $(".swiper-wrapper");
-		  var boardTemplate = Handlebars.compile($("#boardTemplate").html());
 		
-		  div.append(boardTemplate({"meetBoardList":meetBoardList}));
-		  mySwiper.init();
-		});*/
 	});
 	
 } catch (e) {
@@ -122,7 +107,7 @@ function getBoardList() {
 	  if (status != "success") {
 	  $('.swiper-container').css('display', 'none');
 	  $('#BoarddataNotFound').show();
-		  return false;
+	  	return false;
 	  }
 	  
 	  $('#BoarddataNotFound').css('display', 'none');
@@ -137,12 +122,66 @@ function getBoardList() {
 	});
 }
 
-// 게시글 클릭
+// 해당 게시글 클릭 이벤트
 $('body').on('click', '.swiper-slide', function() {
-	console.log('swipe slide click OK');
-	console.log(mySwiper.clickedSlide);
-	if (mySwiper.clickedSlide != undefined) {
+	// 상세 팝업 초기화
+	dBoardPopInit();
+	
+	// 선택 게시글 번호
+	var bnumber = parseInt($(mySwiper.clickedSlide).find('#boardNum').text());
+
+	if (bnumber != undefined) {
 		
+		// 게시글 상세 팝업 열기
+        $.getJSON('../meetmain/detail.json?bnum=' + bnumber, function(ajaxResult) {
+	        if (ajaxResult.status == "fail") {
+	          return;
+	        }
+	        
+	        var detail = ajaxResult.data;
+	        $('#detail_title').val(detail.title);
+	        $('#detail_content').val(detail.content);
+	        $('#detail_date').val(detail.boardDate);
+	        $('.detail-photo').children().remove();
+	        for (var i in detail.addFileList) {
+	          $('<input>')
+	            .attr('name','input-file-path')
+	            .attr('value',detail.addFileList[i].filePath)
+	            .css('display','none').appendTo($('.detail-photo'));
+	          $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
+	            .css('width','150px').css('height','100px').css('display','inline-block');
+	        }
+	    });
+        
+        // 변경
+        $('#update-btn').click(function() {
+		    var param = {
+		        "boardNo"   : bnumber, 
+		        "meetNo"    : meetingNo,
+		        "title"     : $('#detail_title').val(),
+		        "boarddate" : $('#detail_date').val(),
+		        "content"   : $('#detail_content').val()
+		    };
+	      
+		    $.post('../meetmain/update.json', param, function(ajaxResult) {
+		      if (ajaxResult.status != "success") {
+		        alert(ajaxResult.data);
+		        return;
+		      }
+		      getBoardList(); // 게시판 초기화
+		    }, 'json');
+        }); 
+        
+        // 삭제
+        $('#delete-btn').click(function() {
+        	$.getJSON('../meetmain/delete.json?boardNo='+ bnumber, function(ajaxResult) {
+        		if (ajaxResult.status != "success") { 
+        			alert(ajaxResult.data);
+        			return;
+        		}
+        		getBoardList(); // 게시판 초기화
+        	});
+        });
 	}
 });
 
@@ -197,7 +236,7 @@ $('body').on('click', '#boardAddBtn', function(e) {
 	boardPopInit();
 });
 
-// 게시판 팝업 초기화
+// 게시판 작성 팝업 초기화
 function boardPopInit() {
 	$('#titl').val('');
 	$('#cont').val('');
@@ -206,32 +245,35 @@ function boardPopInit() {
 	$('#photo-img').attr('src', '');
 }
 
+// 게시판 수정 팝업 초기화
+function dBoardPopInit() {
+	$('#detail_title').val('');
+	$('#detail_date').val('');
+	$('#detail_content').val('');
+	$('#detail-photo-img').attr('src', '');
+}
+
 //게시판 작성 사진 업로드
 var filenamelist;
 
 $('#link').fileupload({
- url: '../../common/fileupload.json', // 서버에 요청할 URL
- dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
- sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
- singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
- autoUpload: true,        // 파일을 추가할 때 자동 업로딩 여부 설정. 기본은 true.
+ url: '../../common/fileupload.json',
+ dataType: 'json',
+ sequentialUploads: true,
+ singleFileUploads: false,
+ autoUpload: true,
  disableImageResize: /Android(?!.*Chrome)|Opera/
-     .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
- previewMaxWidth: 800,   // 미리보기 이미지 너비
- previewMaxHeight: 800,  // 미리보기 이미지 높이 
- previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
- done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-   console.log('done()...');
-   console.log(data.result);
+     .test(window.navigator && navigator.userAgent),
+ previewMaxWidth: 800,
+ previewMaxHeight: 800, 
+ previewCrop: true,
+ done: function (e, data) {
    filenamelist = data.result.data;
      $('#link-path').val(data.result.data[0]);
-     console.log('파일리스트 : ',filenamelist);
  },
  processalways: function(e, data) {
-     console.log('fileuploadprocessalways()...', data.files.length, data.index);
      var img = $('#photo-img');
      if (data.index == 0) {
-       console.log('미리보기 처리...');
        var canvas = data.files[0].preview;
        var dataURL = canvas.toDataURL();
        img.attr('src', dataURL).css('width', '100px');
@@ -293,12 +335,11 @@ $('body').on('click', '#new-btnnn', function(e) {
    	                return;
    	            }
             });
-	        boardPopInit();
-	        getBoardList();
+	        boardPopInit(); // 게시글 팝업 초기화
+	        getBoardList(); // 게시글 정보 가져오기
         }, 'json');
 	    
 	} else {
 		alert('입력 값을 확인하세요.');
 	}
 });
-
