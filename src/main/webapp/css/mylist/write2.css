@@ -23,6 +23,14 @@
 	max-height: 600px;
 	overflow-x: hidden;
 }
+.modal-content {
+	width: 690px;
+  height: 570px;
+  width: 680px;
+  height: 565px;
+  top: 50%;
+  margin-top: 150px;
+}
 #write {
 	font-family: 'Noto Sans KR';
 	background-color: #f5f5f5;
