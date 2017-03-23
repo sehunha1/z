@@ -19,20 +19,6 @@
 	margin-top: 10px;
 }
 
-/*#sideMembPlus {*/
-	/*display: none;*/
-	/*border-radius: 10px;*/
-	/*border-style: solid;*/
-	/*border-width: 2px;*/
-	/*border-color: grey;*/
-	/*background-color: #3ACBA3;*/
-	/*color: white;*/
-/*}*/
-
-/*#sideMembPlus:hover {*/
-	/*color: black;*/
-/*}*/
-
 .membList {
 	margin-left: 5%;
 	overflow: auto;
@@ -68,8 +54,8 @@
 	top: 50%;
 	left: 50%;
 	margin-top: -250px;
- 	margin-left: -180px;
-	background:rgba(255,255,255,0.9);
+	margin-left: -180px;
+	background: rgba(255, 255, 255, 0.9);
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 1px;
@@ -102,15 +88,9 @@
 
 #membPlusPopup #memb-close-btn {
 	display: inline-block;
-	/*width: 35px;*/
-	/*height: 35px;*/
 	margin-top: 5px;
 	margin-right: 2%;
 	float: right;
-	/*border-radius: 5px;*/
-	/*border-style: solid;*/
-	/*border-width: 2px;*/
-	/*border-color: grey;*/
 }
 
 #membPlusPopup #memb-plus-btn {
@@ -119,61 +99,21 @@
 	margin-top: 5px;
 	margin-left: 5%;
 	height: 35px;
-	/*line-height: 100%;*/
-	/*border-radius: 5px;*/
-	/*border-style: solid;*/
-	/*border-width: 2px;*/
-	/*border-color: grey;*/
-	/*background-color: #3ACBA3;*/
-	/*color: white;*/
 }
-
-/*#membPlusPopup #memb-plus-btn:hover {*/
-	/*color: black;*/
-	/*cursor: pointer;*/
-/*}*/
 
 #membPlusPopup #invite-btn {
-	/*height: 35px;*/
 	margin-top: 5%;
-	/*border-radius: 5px;*/
-	/*border-style: solid;*/
-	/*border-width: 2px;*/
-	/*border-color: grey;*/
-	/*background-color: #3ACBA3;*/
-	/*color: white;*/
 }
-
-/*#membPlusPopup #invite-btn:hover {*/
-  /*cursor: pointer;*/
-  /*color: black;*/
-/*}*/
 
 #membPlusPopup #minus-btn {
 	display: inline-block;
 	margin: 3% auto;
 	height: 30px;
-	/*line-height: 100%;*/
-	/*border-radius: 10px;*/
-	/*border-style: solid;*/
-	/*border-width: 2px;*/
-	/*border-color: grey;*/
-	/*background-color: #3ACBA3;*/
-	/*color: white;*/
 }
-
-/*#membPlusPopup #minus-btn:hover {*/
-	/*cursor: pointer;*/
-	/*color: black;*/
-/*}*/
 
 #mail-box-div {
 	height: 15%;
 }
-
-/*#membPlusPopup #memb-close-btn:hover {*/
-	/*cursor: pointer;*/
-/*}*/
 
 #membPlusPopup .inputMessage {
 	margin-left: 5%;

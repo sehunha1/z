@@ -43,10 +43,6 @@
     <div id="testwrap">
       <div id="sidebar"></div>
       <div class='conttext1' style='float: left; margin-left: 10px;'></div>
-      <div style='float: right;'>
-        <font>공유하기</font> <br> <a href='#' onclick='share()'><img
-          src='../../image/facebook-c.png' width=30 height=30></a>
-      </div>
 
       <div id='tab'
         style='float: left; width: 745px; height: 720px; margin-left: 10px;'>
@@ -193,42 +189,21 @@
             <input id='detail_date' type='datetime' class="board-date"> 
             <input id='detail_content' type='text' class="form-control" placeholder='내용'>
 
-<!--  
-      <label id='detail_photo' for="title"
-              class="col-sm-2 control-label">사진</label><br>
-            <div class="col-sm-10">
-              <input id='photo-path' type='hidden'>
-            </div>
+              <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
+              <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
+              <div class="col-sm-10 detail-photo">
+              <input name='photo-path' type='hidden' >
+                 <img class='img-responsive-detail'   /> 
+
+              </div>
             <div class="form-group">
               <div class="detail_button">
-                <button id='update-btn' type='button'
-                  class='view-form btn btn-primary'>변경</button>
-                <button id='delete-btn' type='button'
-                  class='view-form btn btn-primary'>삭제</button>
-                <button id='list-btn' type='button' class='btn btn-primary'>목록</button>
+                <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
+                <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
+                <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
               </div>
             </div>
           </form>
-        </div>
-      </div>
-    </div>
-  </div>
--->
-                  <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
-                  <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
-                  <div class="col-sm-10 detail-photo">
-                  <input name='photo-path' type='hidden' >
-                     <img class='img-responsive-detail'   /> 
-   
-                  </div>
-                <div class="form-group">
-                  <div class="detail_button">
-                    <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
-                    <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
-                    <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
-                  </div>
-                </div>
-              </form>
         </div>
       </div>
 </div>
@@ -246,6 +221,7 @@
   <script src='../../js/meetmain/tap.js'></script>
   <script
     src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <script src="../../js/sideBar.js"></script>
   <script src="../../js/meetmain/meetmain.js"></script>
   <script src="../../js/meetmain/MeetingDetail.js"></script>
   <script src="../../js/jquery.cookie.js"></script>
@@ -669,19 +645,6 @@ var arrayToJson = function(list) {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-  <script>
-  var url = document.location.href;
-function share(){
-    var share = {
-        method: 'stream.share',
-        //u: 'http://z.bitcamp.com:8080/z/html/meetmain/meetmain.html'
-        u: url
-    };
- 
-    FB.ui(share, function(response) { console.log(response); });
-}
-</script>
-
 
   <!-- 달력 js 끝 -->
 
