@@ -10,7 +10,6 @@ body > .container {
   margin: 0 auto;
 }
 
-
 /* 헤더 css 시작 */
 #header {
   width: 100%;
@@ -230,7 +229,7 @@ sec-intext {
 #sidebar {
   float:left;
   font-color:black;
-  background-color:#EBE9E9; 
+  background-color:#ECECEC; 
   width:180px; 
   height: 780px;
   /* border: 1px solid red; */
