@@ -108,10 +108,10 @@
     
     
         
-        // 이름 한글만
+        // 이름 한글 영문
         $.validator.addMethod("namez", function(value, element) {
            return this.optional(element) || /^[가-힣a-zA-Z]{2,}$/i.test(value);
-        }, "영문과 한글로만 두 글자 이상 입력 하세요.");
+        }, "영문 혹은 한글로만 두 글자 이상 입력 하세요.");
     
     
     	
@@ -160,13 +160,13 @@
             minlength: "이름은 두 글자 이상 입력하세요"
           },
           password1: {
-            required: "암호를 입력하세요",
-            minlength: "암호는 여섯 글자 이상 입력하세요"
+            required: "비밀번호를 입력하세요",
+            minlength: "비밀번호는 여섯 글자 이상 입력하세요"
           },
           confirm_password1: {
-            required: "암호 확인란을 입력하세요",
-            minlength: "암호는 여섯 글자 이상 입력하세요",
-            equalTo: "암호가 맞는지  확인하세요"
+            required: "비밀번호 확인란을 입력하세요",
+            minlength: "비밀번호는 여섯 글자 이상 입력하세요",
+            equalTo: "비밀번호가 일치하지 않습니다"
           },
           email1: {
             required:"이메일을 입력하세요.",

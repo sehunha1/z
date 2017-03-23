@@ -38,7 +38,7 @@ div.bhoechie-tab-menu div.list-group>a{
 }
 div.bhoechie-tab-menu div.list-group>a .glyphicon,
 div.bhoechie-tab-menu div.list-group>a .fa {
-  color: #5A55A3;
+  color: #2E64FE;
 }
 div.bhoechie-tab-menu div.list-group>a:first-child{
   border-top-right-radius: 0;
@@ -51,8 +51,8 @@ div.bhoechie-tab-menu div.list-group>a:last-child{
 div.bhoechie-tab-menu div.list-group>a.active,
 div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
 div.bhoechie-tab-menu div.list-group>a.active .fa{
-  background-color: #5A55A3;
-  background-image: #5A55A3;
+  background-color: #2E64FE;
+  background-image: #2E64FE;
   color: #ffffff;
 }
 div.bhoechie-tab-menu div.list-group>a.active:after{
@@ -64,7 +64,7 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
   border-left: 0;
   border-bottom: 13px solid transparent;
   border-top: 13px solid transparent;
-  border-left: 10px solid #5A55A3;
+  border-left: 10px solid #2E64FE;
 }
 
 div.bhoechie-tab-content{
@@ -105,6 +105,19 @@ tr th:last-child {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
+/* table 끝 */
+
+/* 업로드 */
+.filebox label { 
+        display: inline-block; padding: .5em .75em; color:white; font-size: inherit; 
+        line-height: normal; vertical-align: middle; background-color: #0275D8; 
+        cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em; 
+        } 
+        
+        .filebox input[type="file"] { 
+        /* 파일 필드 숨기기 */ 
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+        overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 
 </style>
 </head>
@@ -167,14 +180,20 @@ tr th:last-child {
 					            style='overflow: hidden;'>
 					            <img id='now-photo'
 					              style='float: left; width: 50px; height: 50px; margin-left:30px;'>
+					              <!-- 
+					              <div class="filebox"> <label for="photo" style="margin-top:6px; margin-left:15px;">사진 업로드</label> 
+	                       <input type="file" id="photo" name='files' class="form-control"> 
+	                       </div>
+	                        -->
 					            <div class="file_input_div" style='overflow: hidden;'>
+					            <!-- file_input_hidden -->
 					              <input type="file" id='photo' name='files'
 					                class="file_input_hidden"
 					                onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
-					                style='float: left;' />
+					                style='float: left; margin-left:2px; color: transparent; width:77px;'/>
 					            </div>
-					            <input id='photo-name' type='text' style='margin-left: 2px;'
-					              readonly /> <input id='photo-path' type='hidden' />
+					            <input id='photo-name' type='text' style='margin-left: 2px; text-overflow: ellipsis;'
+					              readonly/> <input id='photo-path' type='hidden' />
 					            <p>
 					          </div>
 					          <div class="form-group" style='overflow:hidden;'>
@@ -207,16 +226,16 @@ tr th:last-child {
 					              
 					              
 					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '> 
-					                <label class="col-sm-1 control-label" for="password1" style='margin-right:40px;'>암호</label>
+					                <label class="col-sm-1 control-label" for="password1" style='margin-right:40px;'>비밀번호</label>
 					                <div class="col-sm-5">
-					                  <input type="password" class="form-control" id="password1" name="password1" placeholder="암호" />
+					                  <input type="password" class="form-control" id="password1" name="password1" placeholder="비밀번호" />
 					                </div>
 					              </div>
 					
 					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '>
-					                <label class="col-sm-1 control-label" for="confirm_password1" style='margin-right:40px;'>암호 확인</label>
+					                <label class="col-sm-1 control-label" for="confirm_password1" style='margin-right:40px;'>비밀번호 확인</label>
 					                <div class="col-sm-5">
-					                  <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="암호 확인" />
+					                  <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="비밀번호 확인" />
 					                </div>
 					              </div>
 					              
@@ -249,9 +268,9 @@ tr th:last-child {
 						              
 						              
 						              <div class="form-group" style='overflow:hidden;'> 
-						                <label class="col-sm-2 control-label" for="passwordout">암호</label>
+						                <label class="col-sm-2 control-label" for="passwordout">비밀번호</label>
 						                <div class="col-sm-5">
-						                  <input type="password" class="form-control" id="passwordout" name="passwordout" placeholder="암호" />
+						                  <input type="password" class="form-control" id="passwordout" name="passwordout" placeholder="비밀번호" />
 						                </div>
 						              </div>
 						              

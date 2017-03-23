@@ -31,11 +31,16 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-
+    <style>
+    .form-bottom {
+      border-bottom: 1px solid black;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+    }
+    </style>
     </head>
 
     <body>
-
         <!-- Top content -->
         <div class="top-content">
         	
@@ -43,14 +48,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>LOGIN</strong></h1>
+                            <h1 style="color:black;"><strong>LOGIN</strong></h1>
                             <div class="description">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
+                        	<div class="form-top" style="border:solid 1px black;">
                         		<div class="form-top-left">
                         			<h3>로그인</h3>
                             		<p>이메일과 비밀번호를 입력하세요</p>
@@ -82,7 +87,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3>또는</h3>
+                        	<h3 style="color:black;">또는</h3>
                         	<div class="social-login-buttons">
 	                        	<a class="btn btn-link-1 btn-link-1-facebook" onclick="fbLogin();" href="#">
 	                        		<i id="facebook" class="fa fa-facebook"></i> 페이스북으로 로그인하기
@@ -95,14 +100,14 @@
             
         </div>
 
-
         <!-- Javascript -->
         <script src="../../node_modules/jquery/dist/jquery.js"></script>
         <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
         <script src="../../js/auth/jquery.backstretch.min.js"></script>
-        <script src="../../js/auth/scripts.js"></script>
+        <!-- <script src="../../js/auth/scripts.js"></script>  -->
         <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../../js/auth/login.js"></script>
+        <script src="../../js/common.js"></script>
         
         <!-- 쿠키 -->
         <script src="../../js/jquery.cookie.js"></script>
