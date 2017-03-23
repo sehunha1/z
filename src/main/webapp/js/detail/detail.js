@@ -194,22 +194,10 @@ function boardResetSearch() {
 // 게시판 작성 버튼 클릭 이벤트
 $('body').on('click', '#boardAddBtn', function(e) {
 	e.preventDefault();
-});
-
-// 게시판 작성 팝업 - 취소 버튼 이벤트
-$('body').on('click', '#cancel-btn', function(e) {
-	e.preventDefault();
 	boardPopInit();
 });
 
-// esc 버튼 
-$('body').on('keyup', function(e) {
-	if (e.which == 27) {
-		boardPopInit();
-	}
-});
-
-// 게시판 작성 팝업 취소
+// 게시판 팝업 초기화
 function boardPopInit() {
 	$('#titl').val('');
 	$('#cont').val('');
@@ -313,8 +301,4 @@ $('body').on('click', '#new-btnnn', function(e) {
 		alert('입력 값을 확인하세요.');
 	}
 });
-
-
-/*$('#boardAddModal').modal({backdrop:'static'});*/
-
 

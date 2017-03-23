@@ -138,7 +138,8 @@
           on bo.bnum = fi.bnum
         left join memb mb
           on bo.mnum = mb.mnum
-	     where bo.mtnum = #{meetingNo};
+	     where bo.mtnum = #{meetingNo}
+	     order by bo.bdate desc;
 	</select>
 	
 	<!-- 미수락 초대  가져오기 -->
@@ -174,7 +175,8 @@
        where bo.mtnum = #{meetingNo}
          and (bo.titl like concat('%',#{keyWord},'%') 
               or bo.cont like concat('%',#{keyWord},'%')
-              or mb.name like concat('%',#{keyWord},'%'));
+              or mb.name like concat('%',#{keyWord},'%'))
+       order by bo.bdate desc;
      ]]>
 	</select>
 
