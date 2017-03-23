@@ -51,7 +51,7 @@
     <div id='sec4' class="_layer"
       style='width: 270px; height: 140px; margin-left: 20px; padding-top: 15px;'>
       <font class="_layer" style='font-size: 17px;'>내 일정</font><br>
-      <div class="_layer" style='line-height: 180%;'>
+      <div class="_layer dday" style='line-height: 180%; overflow: auto'>
         <font class="_layer" color=#E74C3C style='font-size: 18px;'>D-1</font> <font class="_layer"
           color=#7F7F7F style='margin-left: 20px;'>중국어 스터디</font><br>
         <font class="_layer" color=#298000 style='font-size: 18px;'>D-3</font> <font class="_layer"
@@ -64,11 +64,11 @@
   </div>
 </div>
 
-<!--<script id="dday" type="text/x-handlebars-template">-->
-  <!--{{#each dday}}-->
-
-  <!--{{/each}}-->
-<!--</script>-->
+<script id="ddayTemplate" type="text/x-handlebars-template">
+  {{#each dday}}
+    <font class="_layer" color=#E74C3C style='font-size: 18px;'>D-{{ddayCount}}</font> <font class="_layer" color=#7F7F7F style='margin-left: 20px;'>{{ddayTitle}}</font><br>
+  {{/each}}
+</script>
 
  <!-- 
  <div id="popup" class="Pstyle" style='border:gray 3px solid;'>

@@ -282,6 +282,15 @@ $(function() {
 						.reload();
 			});
 		});
+
+		$.getJSON("../dday.json?memberNo=" + ajaxResult.data.memberNo, function(ajaxResult) {
+            var status = ajaxResult.status;
+            if (status != "success") return;
+            var dday = ajaxResult.data;
+            var template = Handlebars.compile($("#ddayTemplate").html());
+            var div = $("._layer.dday");
+            div.html(template({"dday":dday}));
+		});
 	});
 });
 

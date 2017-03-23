@@ -123,4 +123,14 @@ public class MeetingServiceImpl implements MeetingService {
   public int updateLoc(int meetingNo, String loc) throws Exception {
     return meetingDao.updateLoc(meetingNo, loc);
   }
+
+  @Override
+  public String[] getDdayTitle(int memberNo) throws Exception {
+    return meetingDao.getDdayTitle(memberNo);
+  }
+
+  @Override
+  public String[] getDdayDline(int memberNo) throws Exception {
+    return meetingDao.getDdayDline(memberNo);
+  }
 }
