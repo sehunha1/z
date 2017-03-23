@@ -3,6 +3,7 @@
 <head>
 <meta charset='UTF-8'>
 <title>New Meet</title>
+<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixSGo+B:400" />
 <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="../../css/meetmain/daummap.css">
 <link rel="stylesheet"
@@ -18,6 +19,7 @@
   href="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.css" />
 <link rel="stylesheet" href="../../css/main/sideBar.css">
 <link rel="stylesheet" href="../../css/selecttime/selecttime.css">
+<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixHappyVirus+M:400" />
 
 <style type="text/css">
 #board img {
@@ -43,10 +45,6 @@
     <div id="testwrap">
       <div id="sidebar"></div>
       <div class='conttext1' style='float: left; margin-left: 10px;'></div>
-      <div style='float: right;'>
-        <font>공유하기</font> <br> <a href='#' onclick='share()'><img
-          src='../../image/facebook-c.png' width=30 height=30></a>
-      </div>
 
       <div id='tab'
         style='float: left; width: 745px; height: 720px; margin-left: 10px;'>
@@ -155,8 +153,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -164,14 +161,13 @@
             <span class="space"></span><br> <span class="title">게시판글쓰기</span>
             <div id="writeform">
               <div class="box">
-                <input type="email" class="titlename" id="titl"
-                  placeholder="     글 제목을 입력해주세요."> <input type="email"
-                  class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
-                <img id='photo-img' height='80' class='view-form'><input
-                  id='link' name='files' type='file' multiple> <input
-                  id='link-path' type='hidden'> <button type='button' id='cancel-btn'
-                  class="btn btn-success" data-dismiss='modal'>취소</button> <button type='button' id='new-btnnn'
-                   class="btn btn-primary" data-dismiss='modal'>저장</button><BR>
+                <input type="email" class="titlename" id="titl" placeholder="     글 제목을 입력해주세요."> 
+                <input type="email" class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
+                <img id='photo-img' height='80' class='view-form'>
+                <input id='link' name='files' type='file' multiple> 
+                <input id='link-path' type='hidden'> 
+                <button type='button' id='cancel-btn' class="btn btn-success" data-dismiss='modal'>취소</button> 
+                <button type='button' id='new-btnnn' class="btn btn-primary" data-dismiss='modal'>저장</button><BR>
               </div>
             </div>
           </div>
@@ -181,31 +177,26 @@
     </div>
   </div>
 
-  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel">
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-
           <span class="space"></span><br> <span class="title">게시판상세보기</span>
           <form class='form-horizontal'>
-            <input id='detail_title' class="col-sm-2 control-label">
-            <input id='detail_date' type='datetime' class="board-date"> 
-            <input id='detail_content' type='text' class="form-control" placeholder='내용'>
-
-<!--  
-      <label id='detail_photo' for="title"
-              class="col-sm-2 control-label">사진</label><br>
-            <div class="col-sm-10">
-              <input id='photo-path' type='hidden'>
-            </div>
-            <div class="form-group">
+          <input id='detail_title' class="col-sm-2 control-label">
+          <input id='detail_date' type='datetime' class="board-date" readonly> 
+          <input id='detail_content' type='text' class="form-control" placeholder='내용'>
+          <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
+          <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
+           <div class="col-sm-10 detail-photo">
+            <input name='photo-path' type='hidden' >
+            <img class='img-responsive-detail'   /> 
+           </div>
+           <div class="form-group">
               <div class="detail_button">
-                <button id='update-btn' type='button'
-                  class='view-form btn btn-primary'>변경</button>
-                <button id='delete-btn' type='button'
-                  class='view-form btn btn-primary'>삭제</button>
-                <button id='list-btn' type='button' class='btn btn-primary'>목록</button>
+                <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
+                <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
+                <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
               </div>
             </div>
           </form>
@@ -213,26 +204,6 @@
       </div>
     </div>
   </div>
--->
-                  <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
-                  <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
-                  <div class="col-sm-10 detail-photo">
-                  <input name='photo-path' type='hidden' >
-                     <img class='img-responsive-detail'   /> 
-   
-                  </div>
-                <div class="form-group">
-                  <div class="detail_button">
-                    <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
-                    <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
-                    <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
-                  </div>
-                </div>
-              </form>
-        </div>
-      </div>
-</div>
-</div>
   
   <div id="footer"></div>
   <script src="../../js/context.js"></script>
@@ -246,6 +217,7 @@
   <script src='../../js/meetmain/tap.js'></script>
   <script
     src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <script src="../../js/sideBar.js"></script>
   <script src="../../js/meetmain/meetmain.js"></script>
   <script src="../../js/meetmain/MeetingDetail.js"></script>
   <script src="../../js/jquery.cookie.js"></script>
@@ -283,7 +255,18 @@
   $('#new-btnn').click(function(event) {
       event.preventDefault();
       //location.reload();
+      boardPopInit();
     });
+  
+  function boardPopInit() {
+	  $('#titl').val('');
+	  $('#cont').val('');
+	  $('#link').val('');
+	  $('#link-path').val('');
+	  $('#photo-img').attr('src', '');
+	}
+  
+  
   $('#cancel-btn').click(function(event) {
       /* event.preventDefault();
       location.reload(); */
@@ -403,6 +386,8 @@ $('#link').fileupload({
     } 
 });
 </script>
+
+
 
 <script>
 try {
@@ -669,19 +654,6 @@ var arrayToJson = function(list) {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-  <script>
-  var url = document.location.href;
-function share(){
-    var share = {
-        method: 'stream.share',
-        //u: 'http://z.bitcamp.com:8080/z/html/meetmain/meetmain.html'
-        u: url
-    };
- 
-    FB.ui(share, function(response) { console.log(response); });
-}
-</script>
-
 
   <!-- 달력 js 끝 -->
 

@@ -1,5 +1,9 @@
 package z.control.json;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -109,6 +113,33 @@ public class MeetingJsonControl {
     }
 
     return new AjaxResult(AjaxResult.SUCCESS, "성공");
+  }
+
+  @RequestMapping("html/dday")
+  public AjaxResult getDday(int memberNo) throws Exception {
+    String[] ddayTitle = meetingService.getDdayTitle(memberNo);
+    String[] ddayDline = meetingService.getDdayDline(memberNo);
+    int[] meetingNo = meetingService.getDdayMeetingNo(memberNo);
+    ArrayList dday = new ArrayList();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    long currentTime = System.currentTimeMillis();
+
+    for (int i = 0; i < ddayDline.length; i++) {
+      HashMap<String, Object> dday1 = new HashMap<>();
+      Date dline = dateFormat.parse(ddayDline[i]);
+      long diff = dline.getTime() - currentTime;
+      long ddayCount = diff / (24 * 60 * 60 * 1000);
+      int ddayCount1 = (int)ddayCount;
+
+      dday1.put("ddayTitle", ddayTitle[i]);
+      dday1.put("ddayCount", ddayCount1 + 1);
+      dday1.put("memberNo", memberNo);
+      dday1.put("meetingNo", meetingNo[i]);
+
+      dday.add(dday1);
+    }
+
+    return new AjaxResult(AjaxResult.SUCCESS, dday);
   }
   
   // 모임멤버 초대

@@ -116,23 +116,23 @@
 	</div>
 
 	<!-- 게시판 상세정보 팝업 -->
-	<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
+	<div class="modal fade" id="boardDetailModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
 					<span class="space"></span> <br> <span class="title">게시판상세보기</span>
 					<form class='form-horizontal'>
 						<input id='detail_title' class="col-sm-2 control-label"> <input
-							id='detail_date' type='datetime' class="board-date"> <input
-							id='detail_content' type='text' class="form-control"
+							id='detail_date' type='datetime' class="board-date" readonly>
+						<input id='detail_content' type='text' class="form-control"
 							placeholder='내용'> <label id='detail_photo' for="title"
 							class="col-sm-2 control-label">사진</label>
 						<button id='download' type='button'
 							class='download-btn btn btn-info btn-sm'>다운로드</button>
 						<div class="col-sm-10 detail-photo">
 							<input name='photo-path' type='hidden'> <img
-								class='img-responsive-detail' />
+								id='detail-photo-img' class='img-responsive-detail' />
 						</div>
 						<div class="form-group">
 							<div class="detail_button">
@@ -148,7 +148,7 @@
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 	<script src="../../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
@@ -195,7 +195,8 @@
 	<!-- 게시판New -->
 	<script id="boardTemplate" type="text/x-handlebars-template">
   {{#each meetBoardList}}
-    <div class="hot-listing-3 swiper-slide">
+    <div class="hot-listing-3 swiper-slide" data-toggle="modal"
+          data-target="#boardDetailModal">
       <div id="meetNum" style="display:none">{{meetNo}}</div>
       <div id="boardNum" style="display:none">{{boardNo}}</div>
       <div class="photo-test">
