@@ -12,7 +12,11 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	$('#passback').val(member.password);
 	$('#facebookback').val(member.facebook);
 	
-	$('#now-photo').attr('src', '../upload/' + member.photo);
+	if (member.photo == "" || null) {
+		$('#now-photo').attr('src', '../../image/mypage/' + "noimage.png");
+	} else {
+		$('#now-photo').attr('src', '../upload/' + member.photo);
+	}
 	
 	var mnum = member.memberNo;
 	
@@ -199,7 +203,7 @@ $('#out-btn').click(function() {
 				  }
 				});
 		} else {
-			sweetAlert("오류", "이메일 또는 암호가 틀립니다.", "error");
+			sweetAlert("오류", "이메일 또는 비밀번호가 틀립니다.", "error");
 		}
 	}, 'json');
 }); // click() 
@@ -257,26 +261,34 @@ $('#emailcheck').click(function() {
       // 이메일 정규표현식 유효성 검사
       $.validator.addMethod("emailz", function(value, element) {
          return this.optional(element) || /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(value);
-      }, "올바른 형식의 이메일 주소를 입력하세요 ex)user01@test.com");
+      }, "올바른 형식의 이메일 주소를 입력하세요 ex)user01@gmail.com");
     
     
         
-        // 이름 한글만
-        $.validator.addMethod("namez", function(value, element) {
-           return this.optional(element) || /^[가-힝]{2,}$/i.test(value);
-        }, "한글로만 두 글자 이상 입력 하세요. ex)김구");
-        
-        // 암호 같은지 검사
-        $.validator.addMethod("passz", function(value, element) {
-        	var passback = $('#passback').val();
-        	var password = $('#password1').val();
-        	
-        	if (passback == password) {
-        		return false;
-        	} else {
-        		return true;
-        	}
-        }, "현재 사용하는 암호와 다른 암호를 입력하세요");
+      // 이름 한글 영문
+      $.validator.addMethod("namez", function(value, element) {
+         return this.optional(element) || /^[가-힣a-zA-Z]{2,}$/i.test(value);
+      }, "영문 혹은 한글로만 두 글자 이상 입력 하세요.");
+      
+      
+      
+      
+        // 비밀번호 같은지 검사
+        $.validator.addMethod("passz", function(value) {
+        	$.getJSON('passcheck.json?memberNo=' + $('#memberNo').val(), "&password=" + $('#password1').val() , function(ajaxResult) {
+        		var data = ajaxResult.data;
+        	});
+        		var si = "bal";
+        			
+        		if (si == "bal") {
+        			return true;
+        			console.log(data);
+        		}
+        		else {
+        			return false;
+        			console.log(data);
+        		}
+        }, "현재 사용하는 비밀번호와 다른 비밀번호를 입력하세요");
     
     
       
@@ -381,7 +393,7 @@ $('#emailcheck').click(function() {
               password1: {
                 required: true,
                 minlength: 6,
-                passz: true
+                passz: true,
               },
               confirm_password1: {
                 required: true,
@@ -398,17 +410,17 @@ $('#emailcheck').click(function() {
             },
             messages: {
               password1: {
-                required: "암호를 입력하세요",
-                minlength: "암호는 여섯 글자 이상 입력하세요"
+                required: "비밀번호를 입력하세요",
+                minlength: "비밀번호는 여섯 글자 이상 입력하세요",
               },
               confirm_password1: {
-                required: "암호 확인란을 입력하세요",
-                minlength: "암호는 여섯 글자 이상 입력하세요",
-                equalTo: "암호가 맞는지  확인하세요"
+                required: "비밀번호 확인란을 입력하세요",
+                minlength: "비밀번호는 여섯 글자 이상 입력하세요",
+                equalTo: "비밀번호가 일치하지 않습니다"
               },
               email1: {
                 required:"이메일을 입력하세요.",
-                checkemail:"중복 여부를 체크하세요"
+                //checkemail:"중복 여부를 체크하세요"
                 //customemail:"올바른 형식의 이메일을 입력하세요.",
               }
             },

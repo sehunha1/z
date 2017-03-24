@@ -104,12 +104,14 @@ function getBoardList() {
 	$.getJSON("../detail/meetBoardList.json?meetingNo=" + meetingNo, function(ajaxResult) {
 	  var status = ajaxResult.status;
 	  
+	  // 실패
 	  if (status != "success") {
-	  $('.swiper-container').css('display', 'none');
-	  $('#BoarddataNotFound').show();
-	  	return false;
+		  $('.swiper-container').css('display', 'none');
+		  $('#BoarddataNotFound').show();
+		  	return false;
 	  }
 	  
+	  // 성공
 	  $('#BoarddataNotFound').css('display', 'none');
 	  $(".swiper-wrapper").empty();
 	  $('.swiper-container').show();
@@ -162,7 +164,6 @@ $('body').on('click', '.swiper-slide', function() {
 		        "boarddate" : $('#detail_date').val(),
 		        "content"   : $('#detail_content').val()
 		    };
-		    console.log(param);
 	      
 		    $.post('../meetmain/update.json', param, function(ajaxResult) {
 		      if (ajaxResult.status != "success") {
@@ -244,6 +245,7 @@ function boardPopInit() {
 	$('#link').val('');
 	$('#link-path').val('');
 	$('#photo-img').attr('src', '');
+	$('#photo-img').css('width', '');
 }
 
 // 게시판 수정 팝업 초기화
@@ -317,8 +319,6 @@ $('body').on('click', '#new-btnnn', function(e) {
 		};
 	    
 	    $.post('../meetmain/add.json', param, function(ajaxResult) {
-	    	console.log(ajaxResult);
-	    	console.log('test01 success');
           
 	    	if (ajaxResult.status != "success") {
 	    		return;
@@ -330,8 +330,6 @@ $('body').on('click', '#new-btnnn', function(e) {
 	        }
           
             $.post('../meetmain/file.json', params, function(ajaxResult) {
-            	console.log(ajaxResult);
-    	    	console.log('test01 success');
     	        if (ajaxResult.status != "success") {
    	                return;
    	            }
@@ -343,4 +341,10 @@ $('body').on('click', '#new-btnnn', function(e) {
 	} else {
 		alert('입력 값을 확인하세요.');
 	}
+});
+
+// 뒤로 버튼 클릭 이벤트
+$("#btn_back").on("click", function(e) {
+	e.preventDefault();
+	location.href = "../mylist/mylist.html";
 });

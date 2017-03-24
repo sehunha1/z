@@ -29,4 +29,5 @@ public interface MemberService {
   public String getSideMemb (String emailAddress) throws Exception; // SideBar 멤버 추가시 회원 유무 조회
   public int getSideLink (Link link) throws Exception; // SideBar 멤버 추가시 초대 여부 조회
   int updatefcbk(Member member) throws Exception;
+  int passcheck(int memberNo, String password) throws Exception;
 }

@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-    $.backstretch("../../image/loginbg.jpg");
+    $.backstretch("../../image/loginbg6.jpg");
     
     /*
         Form validation

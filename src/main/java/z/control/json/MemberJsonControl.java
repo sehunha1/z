@@ -183,6 +183,17 @@ public class MemberJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "멤버가 있습니다.");
   }
+  
+  // 암호 중복검사
+  @RequestMapping("html/mypage/passcheck")
+  public AjaxResult passcheck(int memberNo, String password) throws Exception {
+    int count = memberService.passcheck(memberNo, password);
+
+    if (count == 1) {
+      return new AjaxResult(AjaxResult.FAIL, false);
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, true);
+  }
 
   @RequestMapping("html/mypage/memberdelete")
   public AjaxResult delete(int memberNo, HttpServletRequest request, HttpSession session) throws Exception {

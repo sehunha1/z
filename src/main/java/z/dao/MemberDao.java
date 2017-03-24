@@ -44,4 +44,5 @@ public interface MemberDao {
   int getSideLink(Link link) throws Exception; // SideBar 멤버 추가시 초대 여부 조회
   int updatefcbk(Member member) throws Exception;
   int linkCheck(int no) throws Exception;
+  int passcheck(int memberNo, String password) throws Exception;
 }

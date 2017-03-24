@@ -35,6 +35,15 @@
 				/* 파일 필드 숨기기 */ 
 				position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
 				overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+				
+        .form-top {
+          border:solid 1px black;
+        }
+        .form-bottom {
+          border-bottom: 1px solid black;
+          border-left: 1px solid black;
+          border-right: 1px solid black;
+        }
         </style>
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -94,6 +103,12 @@
                                 <input type="password" name="password1" placeholder="Password" class="form-password form-control" id="password1" style="height:35px;">
                                 </div>
                               </div>
+                              <div class="form-group">
+                                <div class="col-sm-13">
+                                  <input type="password" name="confirm_password1" placeholder="Password check" 
+                                  class="form-password form-control" id="confirm_password1" style="height:35px;">
+                                </div>
+                              </div>
                               <button type="submit" id="add-btn" class="btn">회원가입</button>
                               <input type="hidden" id="fcbk">
                               <input id='photo-path' type='hidden'>
@@ -111,7 +126,7 @@
         <script src="../../node_modules/jquery/dist/jquery.js"></script>
         <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
         <script src="../../js/auth/jquery.backstretch.min.js"></script>
-        <script src="../../js/auth/scripts.js"></script>
+       <!--  <script src="../../js/auth/scripts.js"></script>-->
         <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
         
         <!-- 쿠키 -->

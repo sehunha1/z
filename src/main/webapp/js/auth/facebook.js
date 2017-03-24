@@ -63,7 +63,11 @@
 					    		          
 					    		        var image = response.picture.data.url;
 					    		        
+				            			$.getJSON("../../common/fbPhoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
+				    	                });
+					    		        
 				  						var defaulturl = "https://scontent.xx.fbcdn.net/v/t1.0-1/c15.0.50.50/p50x50/10354686_10150004552801856_220367501106153455_n.jpg?oh=0bb129c4bacce2fd26d99c098ed48ce3&oe=5938E12F";
+				  						
 				  						if (image == defaulturl) {
 				  							var fcbk_photo = image.split('/')[7].split('?')[0];
 				  						} else {
@@ -146,6 +150,8 @@
 					    	  
 					      }
 					      else if (status == "success") {
+		            			$.getJSON("../../common/fbPhoto.json?filename=" + image.replace(/&/gi, '%26'), function(ajaxResult) {
+		    	                });
 					        	 swal({
 				    				  title: "페이스북 계정으로 가입",
 				    				  text: "사진은 자동으로 받아옵니다.",

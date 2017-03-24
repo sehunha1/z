@@ -82,6 +82,10 @@
 				<div class="swiper-scrollbar"></div>
 			</div>
 		</div>
+
+		<div class="end_back">
+			<button id="btn_back" type="button" class="btn btn-success btn-lg">뒤로</button>
+		</div>
 	</div>
 	<!-- content end -->
 
@@ -97,15 +101,15 @@
 						<span class="space"></span><br> <span class="title">게시판글쓰기</span>
 						<div id="writeform">
 							<div class="box">
-								<input type="email" class="titlename" id="titl"
-									placeholder="글 제목을 입력해주세요."> <input type="email"
-									class="titlewrite" id="cont" placeholder="글 내용을 입력해주세요.">
-								<img id='photo-img' height='80' class='view-form'><input
-									id='link' name='files' type='file' multiple> <input
-									id='link-path' type='hidden'> <a id='cancel-btn'
-									href='#' data-dismiss="modal" class="btn btn-success">취소</a> <a
-									id='new-btnnn' href='#' data-dismiss="modal"
-									class="btn btn-primary">저장</a><BR>
+								<input type="text" class="titlename" id="titl"
+									placeholder="글 제목을 입력해주세요."> 
+								<textarea class="titlewrite" id="cont" placeholder="글 내용을 입력해주세요."></textarea>
+								<input id='link' name='files' type='file' multiple>
+								<input id='link-path' type='hidden'>
+								<img id='photo-img' class='view-form'>
+								<BR>
+								<a id='cancel-btn' href='#' data-dismiss="modal" class="btn btn-success">취소</a>
+								<a id='new-btnnn' href='#' data-dismiss="modal" class="btn btn-primary">저장</a>
 							</div>
 						</div>
 					</div>
@@ -204,10 +208,10 @@
         <img class="inline-image" src="../upload/{{filePath}}" />
         {{/each}}
       </div>
-      <div class="details">
-        <h2>{{title}}</h2>
+      <div id="boardDetails">
+        <h2 class="boTitl">{{title}}</h2>
         <p class="bed-bath">{{name}}</p>
-        <h3>{{content}}</h3>
+        <p class="boCont">{{content}}</h3>
       </div>
     </div>
   {{/each}}

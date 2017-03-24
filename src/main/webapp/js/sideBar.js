@@ -223,5 +223,3 @@ function share(){
  
     FB.ui(share, function(response) { console.log(response); });
 }
-
-

@@ -142,5 +142,8 @@ public class MemberServiceImpl implements MemberService {
     int count = memberDao.linkmemberdelete(memberNo);
     return count;
   }*/
-  
+
+  public int passcheck(int memberNo, String password) throws Exception {
+    return memberDao.passcheck(memberNo, password);
+  }
 }

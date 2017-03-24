@@ -165,6 +165,14 @@
 		WHERE fcbk = #{facebook}
 	</select>
 	
+	<!-- 암호 중복 검사 -->
+	<select id="passcheck" parameterType="map" resultType="int">
+	   select count(*)
+	     from memb
+	   where mnum=#{param1} and pwd=password(#{param2})
+	</select>
+	
+	
 	<!-- SideBar 멤버 추가시 회원유무 확인 -->
 	<select id="getSideMemb" resultType="String">
 	  SELECT mnum
