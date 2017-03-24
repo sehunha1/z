@@ -216,6 +216,8 @@
 }
 .author {
 	text-align : left;
+	height: 40px;
+	padding-bottom: 10px;
 }
 .block-date {
 	color :grey;
