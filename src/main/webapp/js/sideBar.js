@@ -24,7 +24,7 @@ $('body').on('click', '#invite-btn', function(e) {
 		
 		// 빈 문자열 입력 or 경고 문구 출력 시
 		if ($(this).text().trim() == "회원이 아닙니다." || $(this).text().trim() == "" || $(this).text().trim() == "이미 초대된 회원입니다.") {
-			alert("입력한 이메일을 다시 확인해주세요.");
+			sweetAlert("실패", "입력한 이메일을 다시 확인해주세요.", "error");
 			sendOk = false;
 			return false;
 		}
