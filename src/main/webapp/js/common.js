@@ -304,15 +304,13 @@ $(function() {
 			$("#userpopup").show();
 		}
 	})
-	$("body").on(
-			"click",
-			function(e) {
-				var target = $(e.target);
-				if (target.parents("#logout").attr("id") !== "logout"
-						&& target.attr("class") !== "_layer") {
-					$("#userpopup").hide();
-				}
-			})
+	$("body").on("click", function(e) {
+		var target = $(e.target);
+		if (target.parents("#logout").attr("id") !== "logout"
+				&& target.attr("class") !== "_layer") {
+			$("#userpopup").hide();
+		}
+	})
 	/*
 	 * $("body").on("click", "#login", function(e) { location.href =
 	 * "../auth/login.html"; }) $("body").on("click", "#submit_btn", function(e) {
@@ -329,16 +327,26 @@ $(function() {
 		location.href = "../mypage/main.html";
 	})
 
-	/*
-	 * $("body").on("click", "#href_out", function(e) { e.preventDefault();
-	 * location.href = "../main/main.html"; })
-	 */
+	// 모임 버튼 클릭 이벤트
 	$("body").on("click", "#new-btn", function(e) {
 		e.preventDefault();
-		// 모임명 유효성 검사
-		if ($('#exampleInputEmail3').val().trim() == "") {
-			return false;
+		createMeet();
+	});
+	
+	// 모임명 입력창 키 이벤트
+	$('body').on('keyup', "#meetTitle", function(e) {
+		e.preventDefault();
+		if (e.keyCode == 13) {
+			createMeet();
 		}
-		location.href = "write2.html?title=" + encodeURIComponent($('#exampleInputEmail3').val());
 	});
 });
+
+// 모임 생성
+function createMeet() {
+	// 모임명 유효성 검사
+	if ($('#meetTitle').val().trim() == "") {
+		return false;
+	}
+	location.href = "write2.html?title=" + encodeURIComponent($('#meetTitle').val());
+};
