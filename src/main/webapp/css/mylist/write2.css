@@ -19,6 +19,9 @@
 #board {
   height :700px;
 }
+.card-cont{
+	height: 18px;
+}
 .pre-scrollable{
 	max-height: 600px;
 	overflow-x: hidden;
