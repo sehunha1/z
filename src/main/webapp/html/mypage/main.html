@@ -122,6 +122,33 @@ tr th:last-child {
         position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
         overflow: hidden; clip:rect(0,0,0,0); border: 0; }
 
+
+
+/* 페북 버튼 */
+.btn-link-1 {
+  display: inline-block;
+  height: 50px;
+  margin: 5px;
+  padding: 16px 20px 0 20px;
+  background: #4aaf51;
+  font-size: 16px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #fff;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+}
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
+
+.btn-link-1.btn-link-1-facebook { background: #4862a3; }
+.btn-link-1.btn-link-1-twitter { background: #55acee; }
+.btn-link-1.btn-link-1-google-plus { background: #dd4b39; }
+
+.btn-link-1 i {
+  padding-right: 5px;
+  vertical-align: middle;
+  font-size: 20px;
+  line-height: 20px;
+}
 </style>
 </head>
 <body>
@@ -193,14 +220,14 @@ tr th:last-child {
 					              <input type="file" id='photo' name='files'
 					                class="file_input_hidden"
 					                onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
-					                style='float: left; margin-left:2px; color: transparent; width:77px;'/>
+					                style='float: left; color:green; margin-left:7px; color: transparent; width:76px;'/>
 					            </div>
-					            <input id='photo-name' type='text' style='margin-left: 2px; text-overflow: ellipsis;'
+					            <input id='photo-name' type='text' style='margin-left: 7px; text-overflow: ellipsis;'
 					              readonly/> <input id='photo-path' type='hidden' />
 					            <p>
 					          </div>
 					          <div class="form-group" style='overflow:hidden;'>
-					            <label class="col-sm-1 control-label" for="username1">이름</label>
+					            <label class="col-sm-1 control-label" for="username1" style='margin-left:20px;'>이름</label>
 					            <div class="col-sm-5">
 					              <input type="text" class="form-control" id="username1"
 					                name="username1" placeholder="이름" />
@@ -249,9 +276,16 @@ tr th:last-child {
 					        
 					        <hr>
 					        <h2>페이스북 계정 연동</h2>
+					        <!-- 
 					        <div id="facebook">
 					        <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
 					        </div>
+					        -->
+					        <div class="social-login-buttons">
+                            <a class="btn btn-link-1 btn-link-1-facebook" onclick="fbLogin();" href="#">
+                              <i id="facebook" class="fa fa-facebook"></i> 페이스북 연동하기
+                            </a>
+                          </div>
 					        <div id="already">
 					           <h3>이미 페이스북과 연동되어있습니다.</h3>
 					        </div>
@@ -333,20 +367,18 @@ tr th:last-child {
 {{#each list}}
 <tr>
   <td style="padding-top: 12px; max-width:50px;">{{title}}</td>
-  <td class="test1" cursor:pointer; style="padding-top: 12px; max-width:140px; text-overflow:; overflow:auto;">{{content}}</td>
+  <td class="test1" style="padding-top: 12px; max-width:180px; text-overflow:; text-overflow: ellipsis;  overflow: hidden; white-space: nowrap;">{{content}}</td>
   <td style="padding-top: 12px; max-width:20px;">{{category}}</td>
   <td style="padding-top: 12px; max-width:20px;">{{deadline}}</td>
   <td style="max-width:70px;">
     <button type="button" class="ok btn btn-success btn-sm" mtnumok="{{meetingNo}}">수락</button>
-    <button type="button" class="no btn btn-success btn-sm" style="background-color:#F24D4D;" mtnumno="{{meetingNo}}">거절</button>
+    <button type="button" class="no btn btn-danger btn-sm" mtnumno="{{meetingNo}}">거절</button>
   </td>
 </tr>
 {{/each}}
 </script>
 <script>
 $(document).ready(function() {
-	  $(".test1").ellipsis(20);
-    //$(this).hide();
     $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
         e.preventDefault();
         $(this).siblings('a.active').removeClass("active");
