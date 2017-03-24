@@ -6,7 +6,7 @@
        console, alert 정리
 
 우종 - 개인정보, 회원가입 등 UI 수정
-재녕 - 확정상세, 메인 UI, 기능 수정
+재녕 - 메인 UI, 기능 수정
 세훈 - 메인 모임설명 UI 수정, 메인투표화면 투표확정기능 추가
 희경 - header, footer, sidebar UI 수정
 
