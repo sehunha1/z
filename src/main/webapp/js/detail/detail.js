@@ -164,7 +164,6 @@ $('body').on('click', '.swiper-slide', function() {
 		        "boarddate" : $('#detail_date').val(),
 		        "content"   : $('#detail_content').val()
 		    };
-		    console.log(param);
 	      
 		    $.post('../meetmain/update.json', param, function(ajaxResult) {
 		      if (ajaxResult.status != "success") {
@@ -246,6 +245,7 @@ function boardPopInit() {
 	$('#link').val('');
 	$('#link-path').val('');
 	$('#photo-img').attr('src', '');
+	$('#photo-img').css('width', '');
 }
 
 // 게시판 수정 팝업 초기화
