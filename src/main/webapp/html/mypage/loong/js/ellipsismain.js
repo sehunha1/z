@@ -7,6 +7,7 @@
 (function($) {
 	$(".first-button").on("click", function(event){
 		$(".first-text").ellipsis(20);
+		$(".tdtext").ellipsis(20);
 		$(this).hide();
 	});
 })(jQuery);
