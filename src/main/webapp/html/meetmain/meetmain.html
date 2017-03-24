@@ -161,8 +161,8 @@
             <div id="writeform">
               <div class="box">
                 <input type="email" class="titlename" id="titl" placeholder="     글 제목을 입력해주세요."> 
-                <input type="email" class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요.">
-                <img id='photo-img' height='80' class='view-form'>
+                <textarea type="email" class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요."></textarea>
+                <img id='photo-img'  class='view-form'>
                 <input id='link' name='files' type='file' multiple> 
                 <input id='link-path' type='hidden'> 
                 <button type='button' id='cancel-btn' class="btn btn-success" data-dismiss='modal'>취소</button> 
@@ -185,7 +185,7 @@
 
           <input id='detail_title' class="col-sm-2 control-label">
           <input id='detail_date' type='datetime' class="board-date" readonly> 
-          <input id='detail_content' type='text' class="form-control" placeholder='내용'>
+          <textarea id='detail_content' type='text' class="form-control" placeholder='내용'></textarea>
           <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
           <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
            <div class="col-sm-10 detail-photo">
