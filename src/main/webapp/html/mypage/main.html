@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../css/common.css">
 	<link rel="stylesheet"
   href="../../node_modules/sweetalert/dist/sweetalert.css">
+  <link rel="stylesheet" type="text/css" href="../../css/mypage/ellipsis.css">
 <style>
 
 /*  bhoechie tab */
@@ -106,6 +107,7 @@ tr th:last-child {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
+
 /* table 끝 */
 
 /* 업로드 */
@@ -134,7 +136,7 @@ tr th:last-child {
   <div class="row">
         <!-- <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container" style="width:960px;">  -->
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu" style="margin-right:20px; position:absolute;">
-              <div class="list-group" style="width:200px;">
+              <div class="list-group" style="width:170px;">
                 <a href="#" class="list-group-item active text-center" style="height:80px;">
                  <h4 class="glyphicon glyphicon-send"></h4><br/>초대 확인
                 </a>
@@ -160,7 +162,7 @@ tr th:last-child {
 					        <thead class="thead-inverse">
 					          <tr>
 					            <th>모임명</th>
-					            <th>모임설명</th>
+					            <th class="test2">모임설명</th>
 					            <th>모임분류</th>
 					            <th>투표마감일</th>
 					            <th>수락/거절</th>
@@ -324,15 +326,17 @@ tr th:last-child {
     
     <script src="../../js/jquery.cookie.js"></script>
     <script src="../../js/common.js"></script>
-    
+    <script src="../../js/mypage/ellipsis.js"></script>
+      <script src="../../js/mypage/ellipsismain.js"></script>
+    <!-- <td class="test1" cursor:pointer; style="padding-top: 12px; max-width:140px; text-overflow:; overflow:auto;">{{content}}</td> -->
 <script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
-  <td style="padding-top: 12px;">{{title}}</td>
-  <td style="padding-top: 12px;">{{content}}</td>
-  <td style="padding-top: 12px;">{{category}}</td>
-  <td style="padding-top: 12px;">{{deadline}}</td>
-  <td>
+  <td style="padding-top: 12px; max-width:50px;">{{title}}</td>
+  <td class="test1" cursor:pointer; style="padding-top: 12px; max-width:140px; text-overflow:; overflow:auto;">{{content}}</td>
+  <td style="padding-top: 12px; max-width:20px;">{{category}}</td>
+  <td style="padding-top: 12px; max-width:20px;">{{deadline}}</td>
+  <td style="max-width:70px;">
     <button type="button" class="ok btn btn-success btn-sm" mtnumok="{{meetingNo}}">수락</button>
     <button type="button" class="no btn btn-success btn-sm" style="background-color:#F24D4D;" mtnumno="{{meetingNo}}">거절</button>
   </td>
@@ -341,6 +345,8 @@ tr th:last-child {
 </script>
 <script>
 $(document).ready(function() {
+	  $(".test1").ellipsis(20);
+    //$(this).hide();
     $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
         e.preventDefault();
         $(this).siblings('a.active').removeClass("active");
