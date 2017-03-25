@@ -19,16 +19,16 @@ $("#Go-btn").click(function(e) {
 
 	// 데이터 입력 여부 확인
 	if ($('#play-title').val().trim() == "") {
-		alert('모임명을 입력하세요.');
+		sweetAlert("실패", "모임명을 입력하세요.", "error");
 		return;
 	} else if ($('#meeting-desc').val().trim() == "") {
-		alert('모임 분류를 선택하세요.');
+		sweetAlert("실패", "모임 분류를 선택하세요.", "error");
 		return;
 	} else if ($('#limit-date').val().trim() == "") {
-		alert('투표 마감일을 선택하세요.');
+		sweetAlert("실패", "투표 마감일을 선택하세요.", "error");
 		return;
 	} else if ($('#possible-date').val().trim() == "") {
-		alert('투표 가능 기간을 선택하세요.');
+		sweetAlert("실패", "투표 가능 기간을 선택하세요.", "error");
 		return;
 	}
 

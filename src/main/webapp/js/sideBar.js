@@ -23,12 +23,9 @@ $('body').on('click', '#invite-btn', function(e) {
 	$('div').find('.inputMessage').each(function(i, e){
 		
 		// 빈 문자열 입력 or 경고 문구 출력 시
-		if ($(this).text().trim() == "" || $(this).text().trim() == null) {
-			if ($(this).css('color') != "rgb(0, 0, 0)") {
-				alert("입력한 이메일을 다시 확인해주세요.");
-				sendOk = false;
-				return false;
-			}
+		if ($(this).text().trim() == "회원이 아닙니다." || $(this).text().trim() == "" || $(this).text().trim() == "이미 초대된 회원입니다.") {
+			sweetAlert("실패", "입력한 이메일을 다시 확인해주세요.", "error");
+			sendOk = false;
 			return false;
 		}
 	});

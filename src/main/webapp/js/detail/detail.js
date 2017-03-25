@@ -246,6 +246,7 @@ function boardPopInit() {
 	$('#link-path').val('');
 	$('#photo-img').attr('src', '');
 	$('#photo-img').css('width', '');
+	$('#link-path').val('');
 }
 
 // 게시판 수정 팝업 초기화
@@ -309,6 +310,13 @@ $('body').on('click', '#new-btnnn', function(e) {
 		
 		var memberNo = JSON.parse(window.sessionStorage.getItem("member")).memberNo;
 		var meetingNo = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
+		
+		// 팝업시 파일 미선택 처리
+		if ($('#link-path').val() == '') {
+			console.log('okok');
+			filenamelist.splice(0);
+			console.log(filenamelist);
+		}
 		
 	    var param = {
 		    "memberNo": memberNo,
