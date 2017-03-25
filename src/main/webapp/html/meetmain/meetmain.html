@@ -190,17 +190,17 @@
           <textarea id='detail_content' class="form-control" placeholder='내용'></textarea>
           <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
           <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
-           <div class="col-sm-10 detail-photo">
+          <div class="col-sm-10 detail-photo">
             <input name='photo-path' type='hidden' >
             <img class='img-responsive-detail'   /> 
-           </div>
-           <div class="form-group">
-              <div class="detail_button">
-                <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
-                <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
-                <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
-              </div>
+          </div>
+          <div class="form-group">
+            <div class="detail_button">
+              <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
+              <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
+              <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
             </div>
+          </div>
           </form>
         </div>
       </div>
@@ -208,54 +208,64 @@
   </div>
   
   
-  <!-- 모아보기 팝업 -->
+  <!-- 모아보기 팝업(allView) -->
   <div class="modal fade" id="allViewPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <span class="allView">모아보기</span>
-          <form class='form-horizontal'>
-          <input id='detail_title' class="col-sm-2 control-label">
-          <input id='detail_date' type='datetime' class="board-date" readonly> 
-          <textarea id='detail_content' class="form-control" placeholder='내용'></textarea>
-          <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
-          <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
-           <div class="col-sm-10 detail-photo">
-            <input name='photo-path' type='hidden' >
-            <img class='img-responsive-detail'   /> 
-           </div>
-           <div class="form-group">
-              <div class="detail_button">
-                <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
-                <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
-                <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
-              </div>
+          
+          <!-- 헤더 -->
+          <div id="allViewHead">
+            <h2 id="allViewH2">모아보기</h2>
+            <button type="button" id="allViewClose-btn" data-dismiss="modal" class="btn btn-default">X</button>
+          </div>
+        
+          <!-- 투표날짜 목록 영역 -->
+          <div id="contentList">
+	          <div id="dateListDiv">
+	            <ul id="dateUl">
+	               <li class="dateLi">
+							    <input type="radio" id="f-option" name="selector">
+							    <label for="f-option">Pizza</label>
+							    <div class="check"></div>
+							  </li>
+							  <li class="dateLi">
+							    <input type="radio" id="s-option" name="selector">
+							    <label for="s-option">Boyfriend</label>
+							    <div class="check"><div class="inside"></div></div>
+							  </li>
+							  <li class="dateLi">
+							    <input type="radio" id="t-option" name="selector">
+							    <label for="t-option">Cats</label>
+							    <div class="check"><div class="inside"></div></div>
+							  </li>
+							  <li class="dateLi">
+                   <input type="radio" name="selector">
+                   <label>Cats</label>
+                   <div class="check"><div class="inside"></div></div>
+                 </li>
+                 <li class="dateLi">
+                   <input type="radio"  name="selector">
+                   <label >Cats</label>
+                   <div class="check"><div class="inside"></div></div>
+                 </li>
+	            </ul>
             </div>
-          </form>
+	          
+	          <!-- 투표장소 목록 영역 -->
+	          <div id="locListDiv">
+	          
+	          </div>
+          </div>
+          
+          <!-- 확정 버튼 영역 -->
+          <div id="confirmDiv">
+            <button type="button" id="allViewConfirm-btn" data-dismiss="modal" class="btn btn-primary">확정</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
-  
-  
-	<div id="allViewPopup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div id="allViewDiv" class="allViewCont" >
-		    <!-- 헤드 -->
-		    <div id="allViewHead">
-		      <button type="button" id="AllviewClose-btn" data-dismiss="modal" class="btn btn-default">X</button>
-		    </div>
-		    
-		    <!-- Body -->
-		    
-		    <!-- dateList -->
-		    <!-- locList -->
-		    <!-- footer -->
-		  </div>
-	</div>
-  
-  
   
   
   <div id="footer"></div>
@@ -273,6 +283,7 @@
     src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
   <script src="../../js/sideBar.js"></script>
   <script src="../../js/meetmain/meetmain.js"></script>
+  <script src="../../js/meetmain/allView.js"></script>
   <script src="../../js/meetmain/MeetingDetail.js"></script>
   <script src="../../js/jquery.cookie.js"></script>
 
@@ -439,8 +450,6 @@ $('#link').fileupload({
 });
 </script>
 
-
-
 <script>
 try {
     var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
@@ -504,7 +513,6 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
     
   initCard();
 
-  
 });
 
 function initCard() {
@@ -625,20 +633,21 @@ function initCard() {
 }
 
 var arrayToJson = function(list) {
-    var result = '';
-    if (list == null) {
-      return null;
-    }
-    for (var i = 0; i < list.length; i++) {
-      if (i != 0) {
-        result += ',';
-      }
-      result += list[i];
-    }
-    result += '';
-    return result;
+  var result = '';
+  if (list == null) {
+    return null;
   }
+  for (var i = 0; i < list.length; i++) {
+    if (i != 0) {
+      result += ',';
+    }
+    result += list[i];
+  }
+  result += '';
+  return result;
+}
 </script>
+
 <script>
  $('#download').click(function() {
 	 var url = $('.detail-photo').children('img');
@@ -667,6 +676,22 @@ var arrayToJson = function(list) {
    }); // click()
 </script>
 
+<!-- 모아보기 날짜리스트 템플릿 -->
+<script id="dateListTemple" type="text/x-handlebars-template">
+  {{#each}}
+    <div class="dateOne">
+      <input type="radio" name="" value={{}}>
+      <label></label>
+    </div>
+  {{/each}}
+</script>
+<!-- 모아보기 장소리스트 템플릿 -->
+<script id="locListTemple" type="text/x-handlebars-template">
+  {{#each}}
+  {{/each}}
+</script>
+
+
 <script id="trTemplate" type="text/x-handlebars-template">
 <div class="col-sm-4 col-md-4" >
  <div class="post">
@@ -691,8 +716,6 @@ var arrayToJson = function(list) {
 </div>
 </script>
 
-
-
   <div id="fb-root"></div>
   <script>
   window.fbAsyncInit = function() {
@@ -710,7 +733,7 @@ var arrayToJson = function(list) {
      js.src = "//connect.facebook.net/kr_KR/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-</script>
+  </script>
 
   <!-- 달력 js 끝 -->
 
@@ -728,7 +751,7 @@ var arrayToJson = function(list) {
     <font style='font-family:Noto Sans KR, sans-serif; margin-top:5px; font-size:15px; padding-top:5px;'>    |선택마감기한:  {{deadline}} <font color='red'><b></b></font> </font>
   </div>
   </div>
-</script>
+  </script>
 
   <script>
     $('body').on('click','.timechoice .placeholder',function(){
@@ -743,7 +766,7 @@ var arrayToJson = function(list) {
         var parent = $(this).closest('.timechoice');
         parent.removeClass('is-open').find('.placeholder').text( $(this).text() );
     });
-</script>
+  </script>
 
 </body>
 </html>

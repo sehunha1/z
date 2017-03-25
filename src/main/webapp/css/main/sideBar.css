@@ -7,6 +7,11 @@
 	margin-bottom: 5%;
 	height: 770px;
 	overflow: auto;
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 #sidebarMenu ul {
@@ -44,6 +49,7 @@
 }
 
 #sideMembDiv {
+	display: none;
 	margin-left: 3%;
 }
 

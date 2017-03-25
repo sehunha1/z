@@ -191,7 +191,7 @@ function sideBarLoad() {
             
             // 멤버초대 버튼 활성화 여부
             if (membPlusBtnHidden == true) {
-            	$('#sideMembPlus').show();
+            	$('#sideMembDiv').show();
             }
         });
         
