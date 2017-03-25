@@ -26,3 +26,4 @@
 희경 - 유저 팝업 overflow 처리, D-DAY 승락여부(accept) 확인 후 가져오기
 
 -- 모임리스트 최신 정렬 순서 수정할 것
+   meetmain: body - style="padding-right: 19px" 찾아서 막기 

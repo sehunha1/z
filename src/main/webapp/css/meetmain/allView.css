@@ -1,0 +1,23 @@
+/* 모아보기 팝업 */
+/* 작성: 2017.03.25 - 김재녕 */
+
+#li4 {
+	float: right;
+}
+
+#allViewPopup {
+  top: 50%;
+  margin-top: -400px;
+}
+
+.modal-content {
+  width: 690px;
+  height: 570px;
+}
+
+.modal-body {
+  width: 680px;
+  height: 565px;
+  background-color: white;
+  border-radius: 10px;
+}

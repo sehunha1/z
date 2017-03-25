@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../../css/mylist/write2.css" />
 <link rel="stylesheet" href="../../css/main/main.css">
 <link rel="stylesheet" href="../../css/meetmain/board.css">
+<link rel="stylesheet" href="../../css/meetmain/allView.css">
 <link rel="stylesheet"
   href="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.css" />
 <link rel="stylesheet" href="../../css/main/sideBar.css">
@@ -54,6 +55,8 @@
             onClick="menu2c()">장소투표</a></li>
           <li id='li3'><a data-toggle="tab" href="#menu3"
             onClick="menu3c()">게시판</a></li>
+          <li id='li4'><button id="allViewBtn" class="btn btn-primary" data-toggle="modal" data-target="#allViewPopup">모아보기</button></li>
+        
         </ul>
 
         <div class="tab-content">
@@ -160,8 +163,8 @@
             <span class="space"></span><br> <span class="title">게시판글쓰기</span>
             <div id="writeform">
               <div class="box">
-                <input type="email" class="titlename" id="titl" placeholder="     글 제목을 입력해주세요."> 
-                <textarea type="email" class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요."></textarea>
+                <input type="text" class="titlename" id="titl" placeholder="     글 제목을 입력해주세요."> 
+                <textarea class="titlewrite" id="cont" placeholder="     글 내용을 입력해주세요."></textarea>
                 <img id='photo-img'  class='view-form'>
                 <input id='link' name='files' type='file' multiple> 
                 <input id='link-path' type='hidden'> 
@@ -184,7 +187,7 @@
           <form class='form-horizontal'>
           <input id='detail_title' class="col-sm-2 control-label">
           <input id='detail_date' type='datetime' class="board-date" readonly> 
-          <textarea id='detail_content' type='text' class="form-control" placeholder='내용'></textarea>
+          <textarea id='detail_content' class="form-control" placeholder='내용'></textarea>
           <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
           <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
            <div class="col-sm-10 detail-photo">
@@ -203,6 +206,57 @@
       </div>
     </div>
   </div>
+  
+  
+  <!-- 모아보기 팝업 -->
+  <div class="modal fade" id="allViewPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <span class="allView">모아보기</span>
+          <form class='form-horizontal'>
+          <input id='detail_title' class="col-sm-2 control-label">
+          <input id='detail_date' type='datetime' class="board-date" readonly> 
+          <textarea id='detail_content' class="form-control" placeholder='내용'></textarea>
+          <label id='detail_photo' for="title" class="col-sm-2 control-label">사진</label>
+          <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
+           <div class="col-sm-10 detail-photo">
+            <input name='photo-path' type='hidden' >
+            <img class='img-responsive-detail'   /> 
+           </div>
+           <div class="form-group">
+              <div class="detail_button">
+                <button id='update-btn' type='button' class='view-form btn btn-primary' data-dismiss='modal'>변경</button>
+                <button id='delete-btn' type='button' class='view-form btn btn-danger' data-dismiss='modal'>삭제</button>
+                <button id='list-btn' type='button' class='btn btn-success' data-dismiss='modal'>목록</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+	<div id="allViewPopup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div id="allViewDiv" class="allViewCont" >
+		    <!-- 헤드 -->
+		    <div id="allViewHead">
+		      <button type="button" id="AllviewClose-btn" data-dismiss="modal" class="btn btn-default">X</button>
+		    </div>
+		    
+		    <!-- Body -->
+		    
+		    <!-- dateList -->
+		    <!-- locList -->
+		    <!-- footer -->
+		  </div>
+	</div>
+  
+  
+  
   
   <div id="footer"></div>
   <script src="../../js/context.js"></script>

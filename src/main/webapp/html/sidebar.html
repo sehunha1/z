@@ -2,46 +2,46 @@
 <!-- 내용: SideBar 멤버 초대. 멤버 리스트 출력 -->
 
 <!-- 멤버 초대 팝업 -->
-<div id="membPlusPopup" class="modal fade" role="dialog">
-  <div id="removePop">
+<div id="membPlusPopup" class="modal fade">
+	<div id="removePop">
 		<div id="membPlusHead">
 			<button type="button" id="memb-plus-btn" class="btn btn-success">모임원초대</button>
-			<button type="button" id="memb-close-btn" data-dismiss="modal" class="btn btn-default">X</button>
+			<button type="button" id="memb-close-btn" data-dismiss="modal"
+				class="btn btn-default">X</button>
 		</div>
-	
+
 		<!-- 멤버 초대 -->
 		<div class="memb-add">
 			<div id="mail-box-div" class="mail-box-cls">
 				<input id="memb-email" type="email" class="add-email-box"
 					placeholder="email을 입력해주세요">
-			  <div class="inputMessage" ></div>
+				<div id="firstMessage" class="inputMessage"></div>
 			</div>
-	
+
 			<!-- 멤버 추가시 input Box 삽입할 div -->
 			<div id="new-field"></div>
 		</div>
 		<div class="Ok-area">
 			<button type="button" id="invite-btn" class="btn btn-success">초대</button>
 		</div>
-  </div>
+	</div>
 </div>
 
 <!-- 멤버 리스트 -->
 <div id="sidebarMenu">
-  <div id="sideEvent">
+	<div id="sideEvent">
 		<div class="sideShare">
-			<a href='#' onclick='share()'>
-			<img id="faceImg" src='../../image/facebook-c.png' width=35 height=31.25>
-			<span>공유하기</span>
+			<a href='#' onclick='share()'> <img id="faceImg"
+				src='../../image/facebook-c.png' width=35 height=31.25> <span>공유하기</span>
 			</a>
 		</div>
-	
+
 		<div id="sideMembDiv" class="sideMemb" data-toggle="modal"
-	      data-target="#membPlusPopup">
-			<button id="sideMembPlus"  class="btn btn-info btn-sm">
+			data-target="#membPlusPopup">
+			<button id="sideMembPlus" class="btn btn-info btn-sm">
 				<i class="glyphicon glyphicon-plus"></i>
 			</button>
-			 <span>멤버초대</span>
+			<span>멤버초대</span>
 		</div>
 	</div>
 
@@ -54,6 +54,8 @@
 </div>
 
 <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+
+<!-- 방장 -->
 <script id="bossTemplate" type="text/x-handlebars-template">
 {{#each listMeetingMembBoss}}
 <li>
@@ -69,6 +71,7 @@
 {{/each}}
 </script>
 
+<!-- 방장 외 -->
 <script id="notbossTemplate" type="text/x-handlebars-template">
 {{#each listMeetingMembNotBoss}}
 <li>

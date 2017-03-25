@@ -108,6 +108,14 @@
 	display: inline-block;
 }
 
+#firstMessage {
+	margin: 5px auto;
+}
+
+#new-field {
+	margin-top: 10px;
+}
+
 #membPlusPopup #memb-close-btn {
 	display: inline-block;
 	margin-top: 5px;

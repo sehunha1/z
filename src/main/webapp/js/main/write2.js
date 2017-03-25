@@ -51,7 +51,7 @@ $('body').on('click', '#Go-btn', function(e) {
 			$('#photo-path').val('alumni.jpg');
 		} else {
 			console.log('기타');
-			$('#photo-path').val('study.jpg');
+			$('#photo-path').val('etc.jpg');
 		}
 	}
 
