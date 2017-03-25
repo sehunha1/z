@@ -11,4 +11,5 @@ public interface PlaceListDao {
   List<PlaceList> getList(int meetingNo) throws Exception; // 페이징 처리 전
   // List<PlaceList> getList(Map<String,Object> paramMap) throws Exception; // 페이징 처리 후
   int countAll() throws Exception;
+  int unvote(PlaceList placelist) throws Exception;
 }

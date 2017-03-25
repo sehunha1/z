@@ -47,6 +47,18 @@ public class PlaceListJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
+  @RequestMapping("html/meetmain/unvote")
+  public AjaxResult unvote(PlaceList placelist) throws Exception {
+    
+    int count = placeListService.unvote(placelist);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "오류가 발생하였습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "취소하였습니다.");
+  }
+  
   // 페이징 처리 적용
   /* 
   @RequestMapping("html/meetmain/placelist")

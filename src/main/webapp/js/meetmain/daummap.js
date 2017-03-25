@@ -152,6 +152,7 @@ function displayPlaces(places) {
                                   },
                                   
                                   function(){
+                                	  $.ajax(sideBarLoad());
                                 	  /*
                                       	$.ajax({
                   		  	        		type : "GET",
@@ -226,6 +227,7 @@ function displayPlaces(places) {
                                   type: "success",
                                 },
                                 function(){
+                                	$.ajax(sideBarLoad());
                                 	//location.reload();
                       			});
                             }, 'json'); // post();

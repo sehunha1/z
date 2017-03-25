@@ -12,7 +12,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	$('#passback').val(member.password);
 	$('#facebookback').val(member.facebook);
 	
-	if (member.photo == "" || null) {
+	if (member.photo == "profile-default.png") {
 		$('#now-photo').attr('src', '../../image/mypage/' + "noimage.png");
 	} else {
 		$('#now-photo').attr('src', '../upload/' + member.photo);

@@ -77,4 +77,10 @@
     from list
       ltnum
   </select>
+  
+  <delete id="unvote" parameterType="map">
+    delete from loc
+      where 
+    mnum=#{memberNo} and ltnum=#{locationNo} and mtnum=#{meetingNo} 
+  </delete>
 </mapper>

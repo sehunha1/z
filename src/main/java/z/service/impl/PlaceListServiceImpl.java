@@ -38,4 +38,8 @@ public class PlaceListServiceImpl implements PlaceListService {
   public int getSize() throws Exception {
     return placeListDao.countAll();
   }
+
+  public int unvote(PlaceList placelist) throws Exception {
+    return placeListDao.unvote(placelist);
+  }
 }

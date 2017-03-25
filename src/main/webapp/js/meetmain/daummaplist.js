@@ -37,7 +37,7 @@ $('body').on('click', '#blist', function() {
 
 			// 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
 			tbody.html(template({"list": list}));
-
+			
 			var positions = Array(list.length);
 
 			for (j = 0; j < positions.length; j++) {
@@ -62,6 +62,7 @@ $('body').on('click', '#blist', function() {
 				'                <div class="member" style="margin-left:5px; overflow-x:auto;">선택한 멤버</div>' +
 				'                <div class="votebutton" style="margin-bottom:3px;"> ' +
 				' <button class="vote btn btn-info btn-sm" type="button" style="float:right; margin-right: 20px;">투표</button>' +
+				' <button class="unvote btn btn-info btn-sm" type="button" style="float:right; margin-right: 20px; display:none; ">투표취소</button>' +
 				'</div>    ' +
 				'</div>' + 
 				'</div>';
@@ -108,7 +109,7 @@ $('body').on('click', '#blist', function() {
 					position: marker.getPosition(),
 					zIndex: 3
 				});
-
+				
 				// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 				daum.maps.event.addListener(marker, 'click', function() {
 					var place = list[num].place;
@@ -121,6 +122,8 @@ $('body').on('click', '#blist', function() {
 					
 					var movein = overlayDiv.getElementsByClassName('move')[0];
 					movein.innerHTML = "";
+					
+					var unvote = overlayDiv.getElementsByClassName('unvote')[0];
 					
 					$.getJSON('../auth/loginUser.json', function(userData) {
 						userJson = userData.data;
@@ -151,6 +154,49 @@ $('body').on('click', '#blist', function() {
 									else {
 										//console.log("upcheck=0");
 									}
+								}
+								var unvote = overlayDiv.getElementsByClassName('unvote')[0];
+								//for (var i = 0; i < list.length; i++) {
+								if (memck[j].mnum == mnum) {
+									unvote.style.display = "inline";
+								}
+								//}
+								unvote.onclick = function() {
+									swal({
+										title: place + "을(를) 투표 취소 할까요?",
+										showCancelButton: true,
+										confirmButtonColor: "#558CDF",
+										confirmButtonText: "투표취소",
+										cancelButtonText: "취소",
+										closeOnConfirm: false,
+										closeOnCancel: false
+									},
+									function(isConfirm){
+										if (isConfirm) {
+											var param = {
+													"locationNo": locationNo,
+													"memberNo": mnum,
+													"meetingNo": mtnum
+											};
+
+											$.post('unvote.json', param, function(ajaxResult) {
+												if (ajaxResult.status != "success") {
+													sweetAlert("오류", "알 수 없는 오류가 발생.", "error")
+													return;
+												}
+											});
+											swal({
+												title: "투표취소",
+												text: "투표 취소가 완료되었습니다.",
+												type: "success",
+											},
+											function(){
+												$('#blist').trigger('click'); //강제 클릭
+											});
+										} else {
+											swal("취소", "취소하였습니다.", "error");
+										}
+									});
 								}
 							}
 						}
@@ -275,7 +321,7 @@ $('body').on('click', '#blist', function() {
 						for (j = 0; j < memck.length; j++) {
 							var photopath = Array(memck.length);
 							photopathdefault = "../../image/profile-default.png";
-
+							
 							if (memck[j].ltnum == list[i].locationNo) {
 								//console.log(i);
 
@@ -287,8 +333,56 @@ $('body').on('click', '#blist', function() {
 								membin.innerHTML += memck[j].name + " ";
 								membin.innerHTML += "<img src='../upload/" + photopath[j] + "'" + "style='width:30px; height:30px; margin-right:5px;'>"
 								countdown++;
+								
+								var unvote = overlayDiv.getElementsByClassName('unvote')[0];
+								//for (var i = 0; i < list.length; i++) {
+								if (memck[j].mnum == mnum) {
+									unvote.style.display = "inline";
+								}
+								//}
+								unvote.onclick = function() {
+									swal({
+										title: place + "을(를) 투표 취소 할까요?",
+										showCancelButton: true,
+										confirmButtonColor: "#558CDF",
+										confirmButtonText: "투표취소",
+										cancelButtonText: "취소",
+										closeOnConfirm: false,
+										closeOnCancel: false
+									},
+									function(isConfirm){
+										if (isConfirm) {
+											var param = {
+													"locationNo": locationNo,
+													"memberNo": mnum,
+													"meetingNo": mtnum
+											};
+
+											$.post('unvote.json', param, function(ajaxResult) {
+												if (ajaxResult.status != "success") {
+													sweetAlert("오류", "알 수 없는 오류가 발생.", "error")
+													return;
+												}
+											});
+											swal({
+												title: "투표취소",
+												text: "투표 취소가 완료되었습니다.",
+												type: "success",
+											},
+											function(){
+												$('#blist').trigger('click'); //강제 클릭
+											});
+										} else {
+											swal("취소", "취소하였습니다.", "error");
+										}
+									});
+								}
 							}
+							
 						}
+						
+						
+						
 						
 						//console.log("아래쪽 카운터" + countdown);
 

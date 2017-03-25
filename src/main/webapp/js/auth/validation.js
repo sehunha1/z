@@ -49,10 +49,17 @@
     $.validator.setDefaults( {
       submitHandler: function () {
     	  var param;
+    	  var photopath;
     	  
     	  if ($('#isCheck').val() == 'N') {
     		  sweetAlert("경고", "이메일 사용 가능 여부를 확인하세요", 'warning');
     		  return;
+    	  }
+    	  
+    	  if ($('#photo-path').val() == "") {
+    		  photopath = "profile-default.png";
+    	  } else {
+    		  photopath = $('#photo-path').val();
     	  }
     	  
     	  if ($('#fcbk').val() == "") {
@@ -60,7 +67,7 @@
     		      "email": $('#email1').val(),
     		      "name": $('#username1').val(),
     		      "password": $('#password1').val(),
-    		      "photo": $('#photo-path').val(),
+    		      "photo": photopath,
     		      //"photo": $("#photo").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
     		      //"photo": $("#photo").attr('src', 'html/upload/' + val())
     		  };
@@ -69,7 +76,7 @@
         		      "email": $('#email1').val(),
         		      "name": $('#username1').val(),
         		      "password": $('#password1').val(),
-        		      "photo": $('#photo-path').val(),
+        		      "photo": photopath,
         		      "facebook": $('#fcbk').val()
         		  };
     	  }

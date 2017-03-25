@@ -160,14 +160,14 @@ $(function() {
 			$('#sec-intext #emailin').text(
 					ajaxResult.data.email);
 
-			if (ajaxResult.data.photo == "") {
+			/*if (ajaxResult.data.photo == "") {
 				$('#profile_photo')
 						.html(
 								'<img src="../../image/profile-default.png" height=30px; width=30px;/>');
 				$('#inprofile_photo')
 						.html(
 								'<img src="../../image/profile-default.png" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
-			} else {
+			} else {*/
 				$('#profile_photo')
 						.html(
 								'<img src="../upload/'
@@ -178,7 +178,6 @@ $(function() {
 								'<img src="../upload/'
 										+ ajaxResult.data.photo
 										+ '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
-			}
 			
 			// 초대 
 			var mainlink = "http://z.bitcamp.com:8080/z/html/main/main.html";
