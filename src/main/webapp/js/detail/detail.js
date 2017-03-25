@@ -313,9 +313,7 @@ $('body').on('click', '#new-btnnn', function(e) {
 		
 		// 팝업시 파일 미선택 처리
 		if ($('#link-path').val() == '') {
-			console.log('okok');
 			filenamelist.splice(0);
-			console.log(filenamelist);
 		}
 		
 	    var param = {

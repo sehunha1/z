@@ -263,6 +263,8 @@
 	  $('#link').val('');
 	  $('#link-path').val('');
 	  $('#photo-img').attr('src', '');
+	  $('#photo-img').css('width', '');
+	  $('#link-path').val('');
 	}
   
   
@@ -364,18 +366,18 @@ $('#link').fileupload({
     previewMaxHeight: 800,  // 미리보기 이미지 높이 
     previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
     done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-      console.log('done()...');
-      console.log(data.result);
+      //console.log('done()...');
+      //console.log(data.result);
       filenamelist = data.result.data;
         $('#link-path').val(data.result.data[0]);
-        console.log('파일리스트 : ',filenamelist);
+        //console.log('파일리스트 : ',filenamelist);
         
     }, 
     processalways: function(e, data) {
-        console.log('fileuploadprocessalways()...', data.files.length, data.index);
+        //console.log('fileuploadprocessalways()...', data.files.length, data.index);
         var img = $('#photo-img');
         if (data.index == 0) {
-          console.log('미리보기 처리...');
+          //console.log('미리보기 처리...');
           var canvas = data.files[0].preview;
           var dataURL = canvas.toDataURL();
           img.attr('src', dataURL).css('width', '100px');
@@ -405,6 +407,11 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
   var mnum = ajaxResult.data.memberNo;
   
     $('#new-btnnn').click(function(event) {
+    	
+    	  // 팝업시 파일 미선택 처리
+        if ($('#link-path').val() == '') {
+          filenamelist.splice(0);
+        }
         
         var param = {
           "memberNo": mnum,
@@ -424,9 +431,9 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
         	swal('알림','내용을 입력해주세요','warning');
             return;
           }
-        console.log('파라미터 : ',param);
+        //console.log('파라미터 : ',param);
         $.post('add.json', param, function(ajaxResult2) {
-          console.log(ajaxResult2)
+          //console.log(ajaxResult2)
             if (ajaxResult2.status != "success") {
               return;
             }
@@ -501,7 +508,7 @@ function initCard() {
 	    });
 
 	    $('.img-responsive').click(function(){
-	      console.log(i);
+	      //console.log(i);
 	    });
 
 	    $(".btn-view").click(function() {
@@ -524,12 +531,12 @@ function initCard() {
 	          $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
 	            .css('width','150px').css('height','100px').css('display','inline-block');
 	        }
-	       console.log( bnumber);
+	       //console.log(bnumber);
 	      }); 
 	    });
 	     
 	  $('#delete-btn').click(function() {
-	    console.log('비넘버 : ',bnumber);
+	    //console.log('비넘버 : ',bnumber);
 	    $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
 	      if (ajaxResult.status != "success") { 
 	        alert(ajaxResult.data);
