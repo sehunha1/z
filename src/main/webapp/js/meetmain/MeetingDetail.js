@@ -613,3 +613,10 @@ console.log('delete',htParamData)
         })
     }
 };
+
+$("body").on("click", function(e) {
+    var target = $(e.target);
+    if (target.attr("class") !== "date_user_info" && target.attr("class") !== "dateInfo _dateInfo" && target.attr("class") !== "name" && target.attr("class") !== "photo") {
+        $("._dateInfoLayer").hide();
+    }
+})
