@@ -3,6 +3,10 @@ body
     /*padding-top: 20px;*/
     /*background-color: #F7F7F7;*/
 }
+.conttext1 {
+  width: 740px; 
+  height:130px;
+}
 .post
 {
     background-color: #FFF;
@@ -68,9 +72,9 @@ body
 	width: 200px;
 	height: 25px;
 	margin-top: 5px;
-	/*border-color: darkgray;*/
-	/*background-color: white;*/
-	/*color:darkgray;*/
+	border-color: #3db39e;
+	background-color: white;
+	color:#3db39e;
 }
 
 .btn-view {

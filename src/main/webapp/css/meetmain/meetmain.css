@@ -7,6 +7,10 @@ body > .container {
 	width: 960px;
 }
 
+#img-meetmain{
+	width: 150px;
+	height: 100px;
+}
     /* 헤더 css 시작 */
 #header-login {
   width:100%;
