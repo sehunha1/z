@@ -1,5 +1,3 @@
--- 2017-03-17 18:55 memb에 quit 컬럼 추가
-
 -- 회원
 DROP TABLE IF EXISTS `memb` RESTRICT;
 
@@ -78,7 +76,7 @@ CREATE TABLE `meet` (
     `photo`  VARCHAR(255) NULL     COMMENT '사진', -- 사진
     `mstat`  VARCHAR(30)  NOT NULL COMMENT '모임진행상태', -- 모임진행상태
     `floc`   VARCHAR(255) NULL     COMMENT '확정장소', -- 확정장소
-    `fdate`  DATE         NULL     COMMENT '확정날짜', -- 확정날짜
+    `fdate`  VARCHAR(50)  NULL     COMMENT '확정날짜', -- 확정날짜
     `ftime`  VARCHAR(50)  NULL     COMMENT '확정시간' -- 확정시간
 )
 COMMENT '모임';
