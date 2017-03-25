@@ -20,10 +20,11 @@
        
 세훈 - 달력내 투표인원 보여주기 팝업 클릭 이벤트 수정
        날짜 입력 시 팝업 버튼 등 UI 수정
-       날짜 투표시 사이드바 조회 $.ajax(sideBarLoad());
+       날짜 투표시 사이드바 조회 $.ajax(sideBarLoad()); (완료)
        URL 필터(페이지이동)
        
-희경 - 유저 팝업 overflow 처리, D-DAY 승락여부(accept) 확인 후 가져오기
+희경 -  D-DAY 승락여부(accept) 확인 후 가져오기
 
--- 모임리스트 최신 정렬 순서 수정할 것
-   meetmain: body - style="padding-right: 19px" 찾아서 막기 
+-- meetmain: body - style="padding-right: 19px" 찾아서 막기 
+-- 모임리스트 최신 정렬 순서 수정할 것(완료)
+   초대확인에서 투표마감일 지나버린 모임도 뜬다??

@@ -228,6 +228,7 @@ function displayPlaces(places) {
                                 },
                                 function(){
                                 	$.ajax(sideBarLoad());
+                                	$.ajax(userpopup());
                                 	//location.reload();
                       			});
                             }, 'json'); // post();

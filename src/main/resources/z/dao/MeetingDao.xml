@@ -96,7 +96,7 @@
 		meet.photo, meet.mstat, meet.floc, meet.fdate, meet.ftime
 		from link
 		left outer join meet on link.mtnum=meet.mtnum left outer join memb on
-		link.mnum=memb.mnum where link.mnum=#{value} and link.accept="y";
+		link.mnum=memb.mnum where link.mnum=#{value} and link.accept="y" order by meet.mtnum desc;
 	</select>
 
 	<select id="getOneMeeting" parameterType="int" resultMap="meeting-map">
@@ -218,7 +218,7 @@
 		update meet set ftime=(select ctime from cal where mtnum=#{value} and cdate=(select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >=
 		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) group by ctime having count(*) >=
 		(select count(*) from cal where mtnum=#{value} and cdate=(select cal.cdate from cal where mtnum=#{value} group by cdate having count(*) >=
-		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) group by ctime order by count(*) desc limit 1)) where mtnum=#{value};
+		(select count(*) from cal where mtnum=#{value} group by cdate order by count(*) desc limit 1)) group by ctime order by count(*) desc limit 1) limit 1) where mtnum=#{value};
 	</update>
 
 	<update id="updateFtimeNonVote" parameterType="int">
