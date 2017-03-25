@@ -1,5 +1,5 @@
 "use strict";
-// 모임 생성시 설정화면 javaScript
+// 모임 생성시 설정화면
 // 작성: 2017.02.19 김재녕
 
 // 모임명 확인
@@ -14,7 +14,7 @@ if (preTitle != "") {
 }
 
 // GO 버튼 클릭시 데이터 저장 후 페이지 이동
-$("#Go-btn").click(function(e) {
+$('body').on('click', '#Go-btn', function(e) {
 	e.preventDefault();
 
 	// 데이터 입력 여부 확인
@@ -31,8 +31,29 @@ $("#Go-btn").click(function(e) {
 		sweetAlert("실패", "투표 가능 기간을 선택하세요.", "error");
 		return;
 	}
-
+	
+	// 모임일정 선택가능 기간
 	var dateList = $('#possible-date').val().split(" to ");
+	// 사진
+	var $photoImgData = $('#photo-path').val();
+	if($('#photo-path').val() == "") {
+		if ($('#meeting-desc').val() == "스터디") {
+			console.log('스터디');
+			$('#photo-path').val('study.jpg');
+		} else if ($('#meeting-desc').val() == "친목") {
+			console.log('친목');
+			$('#photo-path').val('friendship.jpg');
+		} else if ($('#meeting-desc').val() == "회식") {
+			console.log('회식');
+			$('#photo-path').val('alcohol.jpg');
+		} else if ($('#meeting-desc').val() == "동창회") {
+			console.log('동창회');
+			$('#photo-path').val('alumni.jpg');
+		} else {
+			console.log('기타');
+			$('#photo-path').val('study.jpg');
+		}
+	}
 
 	var param = {
 		"title" : $('#play-title').val(),
@@ -43,7 +64,8 @@ $("#Go-btn").click(function(e) {
 		"content" : $('#meeting-content').val(),
 		"photo" : $('#photo-path').val()
 	}
-
+	
+	// 모임 개설 및 데이터 삽입
 	$.post(serverRoot + '/html/meeting/add.json', param,function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			alert(ajaxResult.data);
@@ -55,9 +77,9 @@ $("#Go-btn").click(function(e) {
 				+ JSON.parse(meeting).meetBossNo
 				+ '&meetingNo='
 				+ JSON.parse(meeting).meetingNo;
-	}, 'json');
-
+	}, 'json');	
 });
+
 
 // 이미지 선택 시 파일 업로드
 $('#photo').fileupload({
@@ -75,13 +97,10 @@ $('#photo').fileupload({
 		$('#photo-path').val(data.result.data[0]);
 	},
 	processalways : function(e, data) {
-/*		console.log('fileuploadprocessalways()...', data.files.length,
-				data.index);*/
 		var img = $('#photo-img');
 		if (data.index == 0) {
 			var canvas = data.files[0].preview;
 			var dataURL = canvas.toDataURL();
-			/*console.log(canvas);*/
 			img.attr('src', dataURL).css('width', '100px');
 			$('#photo-label').css('display', '');
 		}
