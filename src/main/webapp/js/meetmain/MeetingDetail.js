@@ -142,7 +142,6 @@ MeetingDetail.prototype = {
                 htParamData.aUserPhoto = [this.sCurrentUserPhoto];
             }
         }
-console.log('select',htParamData)
         this.updateMeetingObject(htParamData);
         this.hideSelectInfoUI();
     },
@@ -561,6 +560,7 @@ console.log('delete',htParamData)
                         that.aCalendarData = that.makeMeetingObject(res);
                         that.drawCalendar();
                         sideBarLoad();
+                        userpopup();
                     },
                     error : function(){
                         console.warn("API 호출 실패");

@@ -243,6 +243,8 @@ $('body').on('click', '#blist', function() {
 									type: "success",
 								},
 								function(){
+                                    $.ajax(sideBarLoad());
+                                    $.ajax(userpopup());
 									$('#blist').trigger('click'); //강제 클릭
 /*									$.ajax({
 										type : "GET",
