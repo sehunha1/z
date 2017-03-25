@@ -24,6 +24,5 @@
        날짜 투표시 사이드바 조회 $.ajax(sideBarLoad());
        URL 필터(페이지이동)
        
-희경 - meetMain 모임 상세정보 UI 수정
-       유저 팝업 overflow 처리, D-DAY 승락여부(accept) 확인 후 가져오기
+희경 -유저 팝업 overflow 처리, D-DAY 승락여부(accept) 확인 후 가져오기
 
