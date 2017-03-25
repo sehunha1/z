@@ -624,7 +624,7 @@ var arrayToJson = function(list) {
              </span>
      </div>
      <div class="content">
-         <div class="author">
+         <div class="author" style="overflow:hidden;">
               <b>{{title}}</b> 
          </div>
          <div class="card-cont" style="overflow:hidden;">
@@ -663,10 +663,19 @@ var arrayToJson = function(list) {
   <!-- 달력 js 끝 -->
 
   <script id="infoTemplate" type="x-handlebars-template">
-  <font style='font-family:Noto Sans KR, sans-serif; font-size:13px;'><b>{{title}}</b></font><br>
-  <font style="font-family:Noto Sans KR, sans-serif; font-size:12px;">{{content}}</font>
-  <br><font style='font-family:Noto Sans KR, sans-serif; font-size:12px;'>모임분류:{{category}}  </font>
-  <font style='font-family:Noto Sans KR, sans-serif; margin-left:10px; font-size:12px;'> |선택마감기한:{{deadline}} <font color='red'><b></b></font> </font>
+  <div class="photo" style='float:left; margin-top:5px; height:120px; width:190px; border-radius: 5px; background-color:#e9e9e9;'>
+   <img src="../upload/{{photo}}" style='margin-top:5px; margin-left:5px; height:110px; width:180px; border-radius: 5px;  '>
+  </div>
+  <div class="info-text" style='margin-left:205px; height:113px; margin-top:10px;'>
+    <font style='font-family:Noto Sans KR, sans-serif; font-size:25px; margin-botton:10px; color:grey;'><b>{{title}}</b></font><br>
+  <div style="margin-top:4px;">
+    <font style="font-family:Noto Sans KR, sans-serif; font-size:15px;">{{content}}</font><br>
+  </div>
+  <div style="margin-top:30px;">
+    <font style='font-family:Noto Sans KR, sans-serif; font-size:15px; margin-top:5px; padding-top:5px;'>모임분류:  {{category}}     </font>
+    <font style='font-family:Noto Sans KR, sans-serif; margin-top:5px; font-size:15px; padding-top:5px;'>    |선택마감기한:  {{deadline}} <font color='red'><b></b></font> </font>
+  </div>
+  </div>
 </script>
 
   <script>
