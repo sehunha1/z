@@ -113,13 +113,12 @@ window.fbAsyncInit = function() {
 
 // -------------------------페이스북------------------------//
 
-
-$(function userpopup() {
+var userpu = function userpopup() {
     // 헤더와 풋터 갖다붙이기
-	/*
-	 * $.get("../../html/header.html", function(result) {
-	 * $("#header").html(result); })
-	 */
+    /*
+     * $.get("../../html/header.html", function(result) {
+     * $("#header").html(result); })
+     */
     // header.html을 가져와서 붙인다.
     $.get('../../html/header.html', function(result) {
         // 서버에서 로그인 사용자 정보를 가져온다.
@@ -161,14 +160,14 @@ $(function userpopup() {
                 $('#sec-intext #emailin').text(
                     ajaxResult.data.email);
 
-				/*if (ajaxResult.data.photo == "") {
-				 $('#profile_photo')
-				 .html(
-				 '<img src="../../image/profile-default.png" height=30px; width=30px;/>');
-				 $('#inprofile_photo')
-				 .html(
-				 '<img src="../../image/profile-default.png" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
-				 } else {*/
+                /*if (ajaxResult.data.photo == "") {
+                 $('#profile_photo')
+                 .html(
+                 '<img src="../../image/profile-default.png" height=30px; width=30px;/>');
+                 $('#inprofile_photo')
+                 .html(
+                 '<img src="../../image/profile-default.png" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
+                 } else {*/
                 $('#profile_photo')
                     .html(
                         '<img src="../upload/'
@@ -218,40 +217,40 @@ $(function userpopup() {
                 });
             }
 
-			/*
-			 * // 로그인 되었으면, 로그오프 상태 출력 창을 감춘다.
-			 * $('#_logout_status').css('display',
-			 * 'none'); //$('#sec-intext
-			 * img').attr('src', '../upload/' +
-			 * ajaxResult.data.photoPath);
-			 * //$('#nameo').text(ajaxResult.data.name);
-			 * $('#logout
-			 * #name').text(ajaxResult.data.name);
-			 * $('#sec-intext
-			 * #name').text(ajaxResult.data.name);
-			 * $('#sec-intext
-			 * #emailin').text(ajaxResult.data.email);
-			 *
-			 * if (ajaxResult.data.photo == "") {
-			 * $('#profile_photo').html('<img
-			 * src="../../image/profile-default.png"
-			 * height=30px; width=30px;/>');
-			 * $('#inprofile_photo').html('<img
-			 * src="../../image/profile-default.png"
-			 * style="width: 40px; height: 40px;
-			 * margin-right: 12px; position:
-			 * absolute;"/>'); } else {
-			 * $('#profile_photo').html('<img
-			 * src="../upload/' +
-			 * ajaxResult.data.photo + '"
-			 * height=30px; width=30px;/>');
-			 * $('#inprofile_photo').html('<img
-			 * src="../upload/' +
-			 * ajaxResult.data.photo + '"
-			 * style="width: 40px; height: 40px;
-			 * margin-right: 12px; position:
-			 * absolute;"/>'); }
-			 */
+            /*
+             * // 로그인 되었으면, 로그오프 상태 출력 창을 감춘다.
+             * $('#_logout_status').css('display',
+             * 'none'); //$('#sec-intext
+             * img').attr('src', '../upload/' +
+             * ajaxResult.data.photoPath);
+             * //$('#nameo').text(ajaxResult.data.name);
+             * $('#logout
+             * #name').text(ajaxResult.data.name);
+             * $('#sec-intext
+             * #name').text(ajaxResult.data.name);
+             * $('#sec-intext
+             * #emailin').text(ajaxResult.data.email);
+             *
+             * if (ajaxResult.data.photo == "") {
+             * $('#profile_photo').html('<img
+             * src="../../image/profile-default.png"
+             * height=30px; width=30px;/>');
+             * $('#inprofile_photo').html('<img
+             * src="../../image/profile-default.png"
+             * style="width: 40px; height: 40px;
+             * margin-right: 12px; position:
+             * absolute;"/>'); } else {
+             * $('#profile_photo').html('<img
+             * src="../upload/' +
+             * ajaxResult.data.photo + '"
+             * height=30px; width=30px;/>');
+             * $('#inprofile_photo').html('<img
+             * src="../upload/' +
+             * ajaxResult.data.photo + '"
+             * style="width: 40px; height: 40px;
+             * margin-right: 12px; position:
+             * absolute;"/>'); }
+             */
 
             // $('#profile_photo').text(ajaxResult.data.photo);
             // $('#sec-intext
@@ -311,11 +310,11 @@ $(function userpopup() {
             $("#userpopup").hide();
         }
     })
-	/*
-	 * $("body").on("click", "#login", function(e) { location.href =
-	 * "../auth/login.html"; }) $("body").on("click", "#submit_btn", function(e) {
-	 * location.href = "afterlogin.html"; })
-	 */
+    /*
+     * $("body").on("click", "#login", function(e) { location.href =
+     * "../auth/login.html"; }) $("body").on("click", "#submit_btn", function(e) {
+     * location.href = "afterlogin.html"; })
+     */
 
     $("body").on("click", "#href_mylist", function(e) {
         e.preventDefault();
@@ -340,7 +339,9 @@ $(function userpopup() {
             createMeet();
         }
     });
-});
+}
+
+$(userpu());
 
 // 모임 생성
 function createMeet() {

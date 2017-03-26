@@ -246,7 +246,7 @@ $('body').on('click', '#blist', function() {
 								},
 								function(){
                                     $.ajax(sideBarLoad());
-                                    $.ajax(userpopup());
+                                    $.ajax(userpu());
 									$('#blist').trigger('click'); //강제 클릭
 /*									$.ajax({
 										type : "GET",
