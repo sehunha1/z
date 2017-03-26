@@ -224,37 +224,15 @@
           <div id="contentList">
 	          <div id="dateListDiv">
 	            <ul id="dateUl">
-<!-- 	              <li class="dateLi">
-							    <input type="radio" id="f-option" name="selector">
-							    <label for="f-option">Pizza</label>
-							    <div class="check"></div>
-							  </li>
-							  <li class="dateLi">
-							    <input type="radio" id="s-option" name="selector">
-							    <label for="s-option">Boyfriend</label>
-							    <div class="check"><div class="inside"></div></div>
-							  </li>
-							  <li class="dateLi">
-							    <input type="radio" id="t-option" name="selector">
-							    <label for="t-option">Cats</label>
-							    <div class="check"><div class="inside"></div></div>
-							  </li>
-							  <li class="dateLi">
-                   <input type="radio" name="selector">
-                   <label>Cats</label>
-                   <div class="check"><div class="inside"></div></div>
-                 </li>
-                 <li class="dateLi">
-                   <input type="radio"  name="selector">
-                   <label >Cats</label>
-                   <div class="check"><div class="inside"></div></div>
-                 </li> -->
+	            <!-- 날짜 템플릿 삽입 -->
 	            </ul>
             </div>
 	          
 	          <!-- 투표장소 목록 영역 -->
 	          <div id="locListDiv">
-	          
+	            <ul id="locUl">
+	            <!-- 장소 템플릿 삽입 -->
+	            </ul>
 	          </div>
           </div>
           
@@ -678,17 +656,27 @@ var arrayToJson = function(list) {
 
 <!-- 모아보기 날짜리스트 템플릿 -->
 <script id="dateListTemple" type="text/x-handlebars-template">
-  {{#each}}
+  {{#each selectDateList}}
   <li class="dateLi">
-    <input type="radio" id={{cdate}} name="dateSelector">
-    <label for={{cdate}}>{{cdate}}</label>
+    <div class="calDate" style="display:none">{{calendarDate}}</div>
+    <div class="calTime" style="display:none">{{calendarTime}}</div>
+    <input type="radio" id={{caleanderNo}} name="dateSelector" value={{caleanderNo}}>
+    <label for={{caleanderNo}} {{calendarTime}}>{{calendarDate}} {{calendarTime}}</label>
     <div class="check"></div>
   </li>
   {{/each}}
 </script>
+
 <!-- 모아보기 장소리스트 템플릿 -->
 <script id="locListTemple" type="text/x-handlebars-template">
-  {{#each}}
+  {{#each selectLocList}}
+  <li class="locLi">
+    <div class="address" style="display:none">{{address}}</div>
+    <div class="place" style="display:none">{{place}}</div>
+    <input type="radio" id={{locationNo}} name="locSelector" value={{place}} {{address}}>
+    <label for={{locationNo}}>{{address}} {{place}}</label>
+    <div class="check"></div>
+  </li>
   {{/each}}
 </script>
 

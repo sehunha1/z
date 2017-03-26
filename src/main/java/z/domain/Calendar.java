@@ -8,6 +8,7 @@ public class Calendar implements Serializable {
   protected int memberNo;
   protected int meetingNo;
   protected int nTotalSelector;
+  protected int caleanderNo;
   protected String calendarDate;
   protected String calendarTime;
   protected String userName;
@@ -35,6 +36,14 @@ public class Calendar implements Serializable {
 
   public void setnTotalSelector(int nTotalSelector) {
     this.nTotalSelector = nTotalSelector;
+  }
+
+  public int getCaleanderNo() {
+    return caleanderNo;
+  }
+
+  public void setCaleanderNo(int caleanderNo) {
+    this.caleanderNo = caleanderNo;
   }
 
   public String getCalendarDate() {
@@ -68,4 +77,5 @@ public class Calendar implements Serializable {
   public void setUserPhoto(String userPhoto) {
     this.userPhoto = userPhoto;
   }
+
 }

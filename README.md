@@ -24,7 +24,5 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
    user-select: none;
-   
-   
-   초대확인에서 투표마감일 지나버린 모임도 뜬다??
+
 

@@ -25,10 +25,10 @@ $('body').on('click', '#Go-btn', function(e) {
 		sweetAlert("실패", "모임 분류를 선택하세요.", "error");
 		return;
 	} else if ($('#limit-date').val().trim() == "") {
-		sweetAlert("실패", "투표 마감일을 선택하세요.", "error");
+		sweetAlert("실패", "투표 종료일을 선택하세요.", "error");
 		return;
 	} else if ($('#possible-date').val().trim() == "") {
-		sweetAlert("실패", "투표 가능 기간을 선택하세요.", "error");
+		sweetAlert("실패", "모임일정 선택가능 기간을 선택하세요.", "error");
 		return;
 	}
 	
@@ -77,7 +77,7 @@ $('body').on('click', '#Go-btn', function(e) {
 				+ JSON.parse(meeting).meetBossNo
 				+ '&meetingNo='
 				+ JSON.parse(meeting).meetingNo;
-	}, 'json');	
+	}, 'json');
 });
 
 

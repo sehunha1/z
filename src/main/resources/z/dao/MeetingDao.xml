@@ -157,7 +157,7 @@
 	
 	<select id="keywordBoardList" resultMap="board-map">
 	   <![CDATA[
-	     select bo.bnum as bnum
+	    select bo.bnum as bnum
             ,bo.mnum as bmnum
             ,bo.mtnum as bmtnum
             ,bo.titl as btitl

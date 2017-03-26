@@ -16,6 +16,7 @@
 		<result column="mnum"   	 property="memberNo" />
 		<result column="m" 	 		 property="meetingNo" />
 		<result column="total" 		 property="nTotalSelector" />
+		<result column="cnum"     property="caleanderNo" />
 		<result column="c"			 property="calendarDate" />
 		<result column="ctime"  	 property="calendarTime" />
 		<result column="name"		 property="userName"/>
@@ -29,7 +30,7 @@
 	</select>
 
 	<select id="getSelectedDateInfo" parameterType="int" resultMap="calendar-map2">
-		select cal.mtnum as m, cal.mnum, cal.cdate as c, cal.ctime, (select count(*) from cal where cal.mtnum=m and cal.cdate=c)
+		select cal.cnum as cnum, cal.mtnum as m, cal.mnum, cal.cdate as c, cal.ctime, (select count(*) from cal where cal.mtnum=m and cal.cdate=c)
 		as total, memb.name, memb.photo from cal left outer join memb on cal.mnum=memb.mnum where cal.mtnum=#{value};
 	</select>
 

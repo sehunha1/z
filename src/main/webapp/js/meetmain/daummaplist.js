@@ -13,19 +13,18 @@ $('body').on('click', '#blist', function() {
 			var cookiep = ""; // 새로 투표시 추가될 파일명
 			
 			if (list != "") {
-			
-			var x = list[0].xLocation;
-			var y = list[0].yLocation;
-
-			var status = ajaxResult.status;
-
-			if (status != "success")
-				return;
-
-			var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
-			mapOption = {
-				center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
-				level: 3 // 지도의 확대 레벨
+				var x = list[0].xLocation;
+				var y = list[0].yLocation;
+	
+				var status = ajaxResult.status;
+	
+				if (status != "success")
+					return;
+	
+				var mapContainer = document.getElementById('map-2'), // 지도를 표시할 div  
+				mapOption = {
+					center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
+					level: 3 // 지도의 확대 레벨
 			};
 
 			var map2 = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
