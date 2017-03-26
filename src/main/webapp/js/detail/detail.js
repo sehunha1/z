@@ -19,6 +19,35 @@ var mySwiper = new Swiper ('.swiper-container', {
 try {
 	var memberNo = location.href.split('?')[1].split('=')[1].split('&')[0];
 	var meetingNo = location.href.split('?')[1].split('=')[2];
+    var sessionMemberNo = JSON.parse(window.sessionStorage.getItem("member")).memberNo;
+
+    if (memberNo != sessionMemberNo) {
+        swal({title: "잘못된 접근입니다.",
+            text: "1초후 내모임리스트로 이동합니다.",
+            timer: 1000,
+            showConfirmButton: false}, function(e) {
+            location.href = "../mylist/mylist.html";
+        });
+    }
+
+    $.getJSON("../isMeeting.json?memberNo=" + sessionMemberNo, function(ajaxResult) {
+        var status = ajaxResult.status;
+        if (status != "success") return;
+        var meetingNos = ajaxResult.data;
+
+        for (var i = 0; i < meetingNos.length; i++) {
+            if (meetingNo == meetingNos[i]) {
+                return;
+            }
+        }
+
+        swal({title: "잘못된 접근입니다.",
+            text: "1초후 내모임리스트로 이동합니다.",
+            timer: 1000,
+            showConfirmButton: false}, function(e) {
+            location.href = "../mylist/mylist.html";
+        });
+    });
 	
 	$.getJSON(serverRoot + '/html/detail/detailMeet.json?memberNo=' + memberNo + '&meetingNo=' + meetingNo, function(ajaxResult) {
 		if (ajaxResult.status != "success") {

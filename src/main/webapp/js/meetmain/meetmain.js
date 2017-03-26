@@ -11,7 +11,7 @@ if (urlMemberNo != sessionMemberNo) {
     });
 }
 
-$.getJSON("isMeeting.json?memberNo=" + sessionMemberNo, function(ajaxResult) {
+$.getJSON("../isMeeting.json?memberNo=" + sessionMemberNo, function(ajaxResult) {
     var status = ajaxResult.status;
     if (status != "success") return;
     var meetingNos = ajaxResult.data;
