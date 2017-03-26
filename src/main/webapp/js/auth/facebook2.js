@@ -41,10 +41,10 @@
   // 로그인
   function fbLogin() {
 	  FB.login(function(response) {
-		  console.log(response.email);
+		  //console.log(response.email);
 		  FB.api('/me', { locale: 'kr_KR', fields: 'name, email, picture' },
 	    		  function(response) {
-	    		    	console.log(response)
+	    		    	//console.log(response)
 					 //페이스북 종복검사
 					 $(function() {
 					    $.getJSON('checkFacebook.json?facebook=' + response.email, function(ajaxResult) {
