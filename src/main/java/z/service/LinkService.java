@@ -15,4 +15,5 @@ public interface LinkService {
   int refuse(int memberNo, int meetingNo) throws Exception;
   int accept(int memberNo, int meetingNo) throws Exception;
   int linkInsert(Map linkMembMap) throws Exception; // 멤버 초대시 link 테이블 데이터 삽입
+  int[] isMeeting(int memberNo) throws Exception;
 }

@@ -344,7 +344,7 @@ function userpopup() {
             createMeet();
         }
     });
-}
+};
 
 
 
@@ -417,8 +417,8 @@ $(function() {
 								'<img src="../upload/'
 										+ ajaxResult.data.photo
 										+ '" style="width: 40px; height: 40px; margin-right: 12px; position: absolute;"/>');
-			
-			// 초대 
+
+			// 초대
 			var mainlink = "http://z.bitcamp.com:8080/z/html/main/main.html";
 			var link = document.location.href;
 				var membnum = ajaxResult.data.memberNo;
@@ -447,7 +447,7 @@ $(function() {
 						}
 					}
 				});
-			
+
 			$.getJSON("../../getMyUnvoteCount.json?memberNo=" + ajaxResult.data.memberNo, function(ajaxResult) {
                 var status = ajaxResult.status;
                 if (status != "success") return;
@@ -469,7 +469,7 @@ $(function() {
 		 * #name').text(ajaxResult.data.name);
 		 * $('#sec-intext
 		 * #emailin').text(ajaxResult.data.email);
-		 * 
+		 *
 		 * if (ajaxResult.data.photo == "") {
 		 * $('#profile_photo').html('<img
 		 * src="../../image/profile-default.png"
@@ -570,7 +570,7 @@ $(function() {
 		e.preventDefault();
 		createMeet();
 	});
-	
+
 	// 모임명 입력창 키 이벤트
 	$('body').on('keyup', "#meetTitle", function(e) {
 		e.preventDefault();

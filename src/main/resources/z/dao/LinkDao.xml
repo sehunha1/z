@@ -54,4 +54,8 @@
     values(#{linkMembNo}, #{meetingNo}, 'n', 'n', 'n')
   </insert>
 
+  <select id="isMeeting" parameterType="int" resultType="int">
+    select mtnum from link where mnum=#{value} and accept="y";
+  </select>
+
 </mapper>
