@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<title>input 파일 css</title>
+<style>
+input {width:75%; height:37px; padding:7px 3%; background:#eee; border:0; font-size:17px; color:#666;}
+.input_file {float:left; width:58%;}
+.btn_file {float:left; width:17%; height:51px; background:#606060; color:#fff; line-height:50px; text-align:center; margin-bottom:20px; color:#fff;}
+</style>
+</head>
+
+
+<body>
+<input type="file" id='file1' style='display:none;'>
+<input type='text' id='file2' class='input_file' onclick='document.all.file1.click();document.all.file2.value=document.all.file1.value' style="display:none;"> 
+<a class='btn_file' href='javascript:void(0);' onclick='document.all.file1.click();document.all.file2.value=document.all.file1.value'>FILE</a>
+
+
+</body>
+</html>

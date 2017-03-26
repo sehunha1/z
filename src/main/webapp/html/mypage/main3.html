@@ -114,7 +114,8 @@ tr th:last-child {
 .filebox label { 
         display: inline-block; padding: .5em .75em; color:white; font-size: inherit; 
         line-height: normal; vertical-align: middle; background-color: #0275D8; 
-        cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em; 
+        cursor: pointer; border-bottom-color: #e2e2e2; /*border-radius: .25em;  border: 1px solid #ebebeb; */
+        text-align:center; height:100%;
         } 
         
         .filebox input[type="file"] { 
@@ -147,11 +148,6 @@ tr th:last-child {
   font-size: 20px;
   line-height: 20px;
 }
-
-/* 파일버튼 */
-input {width:75%; height:37px; padding:7px 3%; background:#eee; border:0; font-size:17px; color:#666;}
-.input_file {float:left; width:58%;}
-.btn_file {float:left; width:17%; height:51px; background:#606060; color:#fff; line-height:50px; text-align:center; margin-bottom:20px; color:#fff;}
 </style>
 </head>
 <body>
@@ -213,24 +209,24 @@ input {width:75%; height:37px; padding:7px 3%; background:#eee; border:0; font-s
 					            style='overflow: hidden;'>
 					            <img id='now-photo'
 					              style='float: left; width: 50px; height: 50px; margin-left:30px;'>
-					              <!-- 
-					              <div class="filebox"> <label for="photo" style="margin-top:6px; margin-left:15px;">사진 업로드</label> 
+					              
+					              
+					               <div class="filebox" style="height:50px;">
+					               <label for="photo" style="margin-left:5px; line-height: 35px;">사진 업로드</label> 
 	                       <input type="file" id="photo" name='files' class="form-control"> 
 	                       </div>
-	                        -->
+	                        
+	                        
 					            <div class="file_input_div" style='overflow: hidden;'>
 					            <!-- file_input_hidden -->
-					             <!--  <input type="file" id='photo' name='files'
+					            <!-- 
+					              <input type="file" id='photo' name='files'
 					                class="file_input_hidden"
 					                onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
-					                style='float: left; color:green; margin-left:7px; color: transparent; width:76px;'/> -->
-					                <input type="file" name='files' id='file1' style='display:none;'>
-<input type='text' id='file2' class='input_file' onclick='document.all.file1.click();document.all.file2.value=document.all.file1.value' style="display:none;"> 
-<a class='btn_file' href='javascript:void(0);' onclick='document.all.file1.click();document.all.file2.value=document.all.file1.value'>FILE</a>
+					                style='float: left; color:green; margin-left:7px; color: transparent; width:76px;'/>
+					                -->
 					            </div>
-					            <!-- <input id='photo-name' type='text' style='margin-left: 7px; text-overflow: ellipsis;'
-					              readonly/> --> <input id='photo-path' type='hidden' />
-					            <p>
+                      <input id='photo-path' type='hidden' />
 					          </div>
 					          <div class="form-group" style='overflow:hidden;'>
 					            <label class="col-sm-1 control-label" for="username1" style='margin-left:20px;'>이름</label>
