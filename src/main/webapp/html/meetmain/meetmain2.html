@@ -21,8 +21,6 @@
 <link rel="stylesheet" href="../../css/selecttime/selecttime.css">
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixSGo+M:400" />
 
-<link rel="stylesheet" type="text/css" href="./loong/css/ellipsis.css">
-
 <style type="text/css">
 #board img {
   width: 100%;
@@ -294,13 +292,10 @@
     src="//apis.daum.net/maps/maps3.js?apikey=972fc2cd0c0d0f176249bf894a112457&libraries=services"></script>
 
   <script src='../../node_modules/jquery/dist/jquery.js'></script>
-  <script src='./loong/js/ellipsis.js'></script>
   <script src="../../js/common.js"></script>
   <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
   <script src='../../node_modules/bootstrap/dist/js/bootstrap.js'></script>
   <script src='../../js/meetmain/tap.js'></script>
-  <script src="./loong/js/ellipsis.js"></script>
-  
   <script
     src="../../temp_node_modules/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
   <script src="../../js/sideBar.js"></script>
@@ -766,7 +761,8 @@ var arrayToJson = function(list) {
   </div>
   <div class="info-text" style='margin-left:205px; height:113px; margin-top:10px;'>
     <font style='font-family:Noto Sans KR, sans-serif; font-size:25px; margin-botton:10px; color:grey;'><b>{{title}}</b></font><br>
-  <div id="tt" title="hest" style="margin-top:4px; font-family:Noto Sans KR, sans-serif; font-size:15px;"> {{content}}
+  <div style="margin-top:4px;">
+    <font style="font-family:Noto Sans KR, sans-serif; font-size:15px;">{{content}}</font><br>
   </div>
   <div style="margin-top:30px;">
     <font style='font-family:Noto Sans KR, sans-serif; font-size:15px; margin-top:5px; padding-top:5px;'>모임분류:  {{category}}     </font>
@@ -788,7 +784,7 @@ var arrayToJson = function(list) {
         var parent = $(this).closest('.timechoice');
         parent.removeClass('is-open').find('.placeholder').text( $(this).text() );
     });
-
+    
   </script>
 
 </body>
