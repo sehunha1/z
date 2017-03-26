@@ -123,6 +123,7 @@ $('body').on('click', '#blist', function() {
 					var movein = overlayDiv.getElementsByClassName('move')[0];
 					movein.innerHTML = "";
 					
+					var vote = overlayDiv.getElementsByClassName('vote')[0];
 					var unvote = overlayDiv.getElementsByClassName('unvote')[0];
 					
 					$.getJSON('../auth/loginUser.json', function(userData) {
@@ -159,6 +160,7 @@ $('body').on('click', '#blist', function() {
 								//for (var i = 0; i < list.length; i++) {
 								if (memck[j].mnum == mnum) {
 									unvote.style.display = "inline";
+									vote.style.display = "none";
 								}
 								//}
 								unvote.onclick = function() {
@@ -337,8 +339,10 @@ $('body').on('click', '#blist', function() {
 								countdown++;
 								
 								var unvote = overlayDiv.getElementsByClassName('unvote')[0];
+								var vote = overlayDiv.getElementsByClassName('vote')[0];
 								//for (var i = 0; i < list.length; i++) {
 								if (memck[j].mnum == mnum) {
+									vote.style.display = "none";
 									unvote.style.display = "inline";
 								}
 								//}

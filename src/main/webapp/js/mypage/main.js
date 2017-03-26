@@ -278,16 +278,6 @@ $('#emailcheck').click(function() {
         	$.getJSON('passcheck.json?memberNo=' + $('#memberNo').val(), "&password=" + $('#password1').val() , function(ajaxResult) {
         		var data = ajaxResult.data;
         	});
-        		var si = "bal";
-        			
-        		if (si == "bal") {
-        			return true;
-        			console.log(data);
-        		}
-        		else {
-        			return false;
-        			console.log(data);
-        		}
         }, "현재 사용하는 비밀번호와 다른 비밀번호를 입력하세요");
     
     

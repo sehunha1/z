@@ -2,7 +2,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	var facebook = ajaxResult.data.facebook;
 
 	if (facebook != null & facebook != "") {
-		$("#facebook").css("display", "none");
+		$(".social-login-buttons").css("display", "none");
 	} else {
 		$("#already").css("display", "none");
 	}
@@ -81,7 +81,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 									text: "페이스북 계정이 연동되었습니다.",
 								},
 								function(){
-									$("#facebook").css("display", "none");
+									$(".social-login-buttons").css("display", "none");
 									$("#already").css("display", "inline");
 								});
 							});

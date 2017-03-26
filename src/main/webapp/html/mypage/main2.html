@@ -5,11 +5,9 @@
 <link rel="stylesheet"
   href="../../node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="../../css/common.css">
-	<link rel="stylesheet"
+  <link rel="stylesheet"
   href="../../node_modules/sweetalert/dist/sweetalert.css">
-  <link rel="stylesheet" type="text/css" href="../../css/mypage/ellipsis.css">
 <style>
-
 /*  bhoechie tab */
 div.bhoechie-tab-container{
   z-index: 10;
@@ -68,48 +66,38 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
   border-top: 13px solid transparent;
   border-left: 10px solid #2E64FE;
 }
-
 div.bhoechie-tab-content{
   background-color: #ffffff;
   /* border: 1px solid #eeeeee; */
   padding-left: 20px;
   padding-top: 10px;
 }
-
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
-
-
 /*table*/
 table {
   border-collapse: separate;
   border-spacing: 0 5px;
 }
-
 thead th {
-  background-color: #4146EB;
+  background-color: #006DCC;
   color: white;
 }
-
 tbody td {
-  background-color: #F9F9F2;
+  background-color: #EEEEEE;
 }
-
 tr td:first-child,
 tr th:first-child {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-
 tr td:last-child,
 tr th:last-child {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
-
 /* table 끝 */
-
 /* 업로드 */
 .filebox label { 
         display: inline-block; padding: .5em .75em; color:white; font-size: inherit; 
@@ -121,32 +109,6 @@ tr th:last-child {
         /* 파일 필드 숨기기 */ 
         position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
         overflow: hidden; clip:rect(0,0,0,0); border: 0; }
-
-
-
-/* 페북 버튼 */
-.btn-link-1 {
-  display: inline-block;
-  height: 50px;
-  margin: 5px;
-  padding: 16px 20px 0 20px;
-  background: #4aaf51;
-  font-size: 16px;
-    font-weight: 300;
-    line-height: 16px;
-    color: #fff;
-    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
-}
-.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
-
-.btn-link-1.btn-link-1-facebook { background: #4862a3; }
-
-.btn-link-1 i {
-  padding-right: 5px;
-  vertical-align: middle;
-  font-size: 20px;
-  line-height: 20px;
-}
 </style>
 </head>
 <body>
@@ -161,7 +123,7 @@ tr th:last-child {
   <div class="row">
         <!-- <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container" style="width:960px;">  -->
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu" style="margin-right:20px; position:absolute;">
-              <div class="list-group" style="width:170px;">
+              <div class="list-group" style="width:200px;">
                 <a href="#" class="list-group-item active text-center" style="height:80px;">
                  <h4 class="glyphicon glyphicon-send"></h4><br/>초대 확인
                 </a>
@@ -180,140 +142,133 @@ tr th:last-child {
                 <!-- 초대 확인 -->
                 <div class="bhoechie-tab-content active">
                 <h2 style=''>초대 확인</h2>
-					        <hr>
-					        <div>
-					        <div id="none" style="display:none;"><h3>받은 초대가 없습니다</h3></div>
-					        <table id='list-table' class='table table-hover' style='width:725px;'>
-					        <thead class="thead-inverse">
-					          <tr>
-					            <th>모임명</th>
-					            <th>모임설명</th>
-					            <th>모임분류</th>
-					            <th>투표마감일</th>
-					            <th>수락/거절</th>
-					          </tr>
-					        <thead>
-					        <tbody></tbody>
-					      </table>
-					        </div>
+                  <hr>
+                  <div>
+                  <div id="none" style="display:none;"><h3>받은 초대가 없습니다</h3></div>
+                  <table id='list-table' class='table table-hover' style='width:725px;'>
+                  <thead class="thead-inverse">
+                    <tr>
+                      <th>모임명</th>
+                      <th>모임설명</th>
+                      <th>모임분류</th>
+                      <th>투표마감일</th>
+                      <th>수락/거절</th>
+                    </tr>
+                  <thead>
+                  <tbody></tbody>
+                </table>
+                  </div>
                 </div>
                 
                 <!-- 개인 정보 변경 -->
                 <div class="bhoechie-tab-content" style="">
                         <h2 style=''>개인 정보 변경</h2>
-					        <hr>
-					        <form id="updateform1" method="post" class="form-horizontal"
-					          action="">
-					          <div class="form-group"
-					            style='overflow: hidden;'>
-					            <img id='now-photo'
-					              style='float: left; width: 50px; height: 50px; margin-left:30px;'>
-					              <!-- 
-					              <div class="filebox"> <label for="photo" style="margin-top:6px; margin-left:15px;">사진 업로드</label> 
-	                       <input type="file" id="photo" name='files' class="form-control"> 
-	                       </div>
-	                        -->
-					            <div class="file_input_div" style='overflow: hidden;'>
-					            <!-- file_input_hidden -->
-					              <input type="file" id='photo' name='files'
-					                class="file_input_hidden"
-					                onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
-					                style='float: left; color:green; margin-left:7px; color: transparent; width:76px;'/>
-					            </div>
-					            <input id='photo-name' type='text' style='margin-left: 7px; text-overflow: ellipsis;'
-					              readonly/> <input id='photo-path' type='hidden' />
-					            <p>
-					          </div>
-					          <div class="form-group" style='overflow:hidden;'>
-					            <label class="col-sm-1 control-label" for="username1" style='margin-left:20px;'>이름</label>
-					            <div class="col-sm-5">
-					              <input type="text" class="form-control" id="username1"
-					                name="username1" placeholder="이름" />
-					            </div>
-					              <div class="form-group" style='margin-top:90px; margin-left:30px; overflow:hidden;'>
-					                  <button type="submit" class="btn btn-primary" name="update" value="변경하기">변경 하기</button>
-					              </div>
-					          </div>
-					        </form>
+                  <hr>
+                  <form id="updateform1" method="post" class="form-horizontal"
+                    action="">
+                    <div class="form-group"
+                      style='overflow: hidden;'>
+                      <img id='now-photo'
+                        style='float: left; width: 50px; height: 50px; margin-left:30px;'>
+                        <!-- 
+                        <div class="filebox"> <label for="photo" style="margin-top:6px; margin-left:15px;">사진 업로드</label> 
+                         <input type="file" id="photo" name='files' class="form-control"> 
+                         </div>
+                          -->
+                      <div class="file_input_div" style='overflow: hidden;'>
+                      <!-- file_input_hidden -->
+                        <input type="file" id='photo' name='files'
+                          class="file_input_hidden"
+                          onchange="javascript: document.getElementById('photo-name').value = this.value.replace('C:\\fakepath\\', '')"
+                          style='float: left; margin-left:2px; color: transparent; width:77px;'/>
+                      </div>
+                      <input id='photo-name' type='text' style='margin-left: 2px; text-overflow: ellipsis;'
+                        readonly/> <input id='photo-path' type='hidden' />
+                      <p>
+                    </div>
+                    <div class="form-group" style='overflow:hidden;'>
+                      <label class="col-sm-1 control-label" for="username1">이름</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="username1"
+                          name="username1" placeholder="이름" />
+                      </div>
+                        <div class="form-group" style='margin-top:90px; margin-left:30px; overflow:hidden;'>
+                            <button type="submit" class="btn btn-primary" name="update" value="변경하기">변경 하기</button>
+                        </div>
+                    </div>
+                  </form>
                 </div>
     
                 <!-- 로그인 정보 변경 & 페이스북 연동 -->
                 <div class="bhoechie-tab-content">
                    <h2 style=''>로그인 정보 변경</h2>
-					        <hr>
-					        <form id="updateform2" method="post" class="form-horizontal"
-					          action="" style='margin-left:15px;'>
-					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '>
-					                <label class="col-sm-1 control-label" for="email1" style='margin-right:40px;'>이메일</label>
-					                <div class="col-sm-5">
-					                  <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" onChange="isCheck.value='N'" />
-					                </div>
-					                  <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left;'>
-					                  <input type='hidden' id='isCheck' value="N">
-					              </div>
-					              
-					              
-					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '> 
-					                <label class="col-sm-1 control-label" for="password1" style='margin-right:40px;'>비밀번호</label>
-					                <div class="col-sm-5">
-					                  <input type="password" class="form-control" id="password1" name="password1" placeholder="비밀번호" />
-					                </div>
-					              </div>
-					
-					              <div class="form-group" style='overflow:hidden; white-space:nowrap; '>
-					                <label class="col-sm-1 control-label" for="confirm_password1" style='margin-right:40px;'>비밀번호 확인</label>
-					                <div class="col-sm-5">
-					                  <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="비밀번호 확인" />
-					                </div>
-					              </div>
-					              
-					               <div class="form-group" style='margin-top:30px; overflow:hidden;'>
-					                  <button type="submit" class="btn btn-primary" name="update" value="변경하기" style="margin-left:10px;">변경 하기</button>
-					              </div>
-					        </form>
-					        
-					        <hr>
-					        <h2>페이스북 계정 연동</h2>
-					        <!-- 
-					        <div id="facebook">
-					        <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
-					        </div>
-					        -->
-					        <div class="social-login-buttons">
-                            <a class="btn btn-link-1 btn-link-1-facebook" onclick="fbLogin();" href="#">
-                              <i id="facebook" class="fa fa-facebook"></i>페이스북 연동하기
-                            </a>
+                  <hr>
+                  <form id="updateform2" method="post" class="form-horizontal"
+                    action="" style='margin-left:15px;'>
+                        <div class="form-group" style='overflow:hidden; white-space:nowrap; '>
+                          <label class="col-sm-1 control-label" for="email1" style='margin-right:40px;'>이메일</label>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" id="email1" name="email1" placeholder="이메일" onChange="isCheck.value='N'" />
                           </div>
-					        <div id="already">
-					           <h3>이미 페이스북과 연동되어있습니다.</h3>
-					        </div>
+                            <input type='button' id='emailcheck' value='중복 체크' class="btn btn-success"  style='float:left;'>
+                            <input type='hidden' id='isCheck' value="N">
+                        </div>
+                        
+                        
+                        <div class="form-group" style='overflow:hidden; white-space:nowrap; '> 
+                          <label class="col-sm-1 control-label" for="password1" style='margin-right:40px;'>비밀번호</label>
+                          <div class="col-sm-5">
+                            <input type="password" class="form-control" id="password1" name="password1" placeholder="비밀번호" />
+                          </div>
+                        </div>
+          
+                        <div class="form-group" style='overflow:hidden; white-space:nowrap; '>
+                          <label class="col-sm-1 control-label" for="confirm_password1" style='margin-right:40px;'>비밀번호 확인</label>
+                          <div class="col-sm-5">
+                            <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="비밀번호 확인" />
+                          </div>
+                        </div>
+                        
+                         <div class="form-group" style='margin-top:30px; overflow:hidden;'>
+                            <button type="submit" class="btn btn-primary" name="update" value="변경하기" style="margin-left:10px;">변경 하기</button>
+                        </div>
+                  </form>
+                  
+                  <hr>
+                  <h2>페이스북 계정 연동</h2>
+                  <div id="facebook">
+                  <a href="#" onclick="fbLogin();"><img src="../../image/fcbkapp.jpg" border="0" alt="" ></a>
+                  </div>
+                  <div id="already">
+                     <h3>이미 페이스북과 연동되어있습니다.</h3>
+                  </div>
                 </div>
                 
                 <!-- 탈퇴 -->
                 <div class="bhoechie-tab-content">
                     <h2 style=''>회원탈퇴</h2>
-						      <h4>회원 탈퇴를 하시려면 이메일 주소와 비밀번호를 한번 더 입력해주세요</h4>
-						      <hr>
-						              <div class="form-group" style='overflow:hidden;'>
-						                <label class="col-sm-2 control-label" for="emailout" >이메일</label>
-						                  <div class="col-sm-5">
-						                    <input type="text" class="form-control" id="emailout" name="emailout" placeholder="이메일"/>
-						                  </div>
-						                </div>
-						              
-						              
-						              <div class="form-group" style='overflow:hidden;'> 
-						                <label class="col-sm-2 control-label" for="passwordout">비밀번호</label>
-						                <div class="col-sm-5">
-						                  <input type="password" class="form-control" id="passwordout" name="passwordout" placeholder="비밀번호" />
-						                </div>
-						              </div>
-						              
-						               <div class="form-group" style='margin-top:50px; margin-left:20px; overflow:hidden;'>
-						                  <button type="button" class="btn btn-primary" name="out" id='out-btn'>탈퇴하기</button>
-						              </div>
-						      
-						      </div>
+                  <h4>회원 탈퇴를 하시려면 이메일 주소와 비밀번호를 한번 더 입력해주세요</h4>
+                  <hr>
+                          <div class="form-group" style='overflow:hidden;'>
+                            <label class="col-sm-2 control-label" for="emailout" >이메일</label>
+                              <div class="col-sm-5">
+                                <input type="text" class="form-control" id="emailout" name="emailout" placeholder="이메일"/>
+                              </div>
+                            </div>
+                          
+                          
+                          <div class="form-group" style='overflow:hidden;'> 
+                            <label class="col-sm-2 control-label" for="passwordout">비밀번호</label>
+                            <div class="col-sm-5">
+                              <input type="password" class="form-control" id="passwordout" name="passwordout" placeholder="비밀번호" />
+                            </div>
+                          </div>
+                          
+                           <div class="form-group" style='margin-top:50px; margin-left:20px; overflow:hidden;'>
+                              <button type="button" class="btn btn-primary" name="out" id='out-btn'>탈퇴하기</button>
+                          </div>
+                  
+                  </div>
                 </div>
             </div>
         </div>
@@ -358,20 +313,17 @@ tr th:last-child {
     
     <script src="../../js/jquery.cookie.js"></script>
     <script src="../../js/common.js"></script>
-    <script src="../../js/mypage/ellipsis.js"></script>
-      <script src="../../js/mypage/ellipsismain.js"></script>
-    <!-- <td class="test1" cursor:pointer; style="padding-top: 12px; max-width:140px; text-overflow:; overflow:auto;">{{content}}</td> -->
+    
 <script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
-  <td style="padding-top: 12px; max-width:40px;">{{title}}</td>
-  <td style="padding-top: 12px; max-width:180px; text-overflow: ellipsis;
-  overflow: hidden; white-space: nowrap;">{{content}}</td>
+  <td style="padding-top: 12px;">{{title}}</td>
+  <td style="padding-top: 12px; width:180px;">{{content}}</td>
   <td style="padding-top: 12px;">{{category}}</td>
   <td style="padding-top: 12px;">{{deadline}}</td>
-  <td style="max-width:70px;">
+  <td>
     <button type="button" class="ok btn btn-success btn-sm" mtnumok="{{meetingNo}}">수락</button>
-    <button type="button" class="no btn btn-danger btn-sm" mtnumno="{{meetingNo}}">거절</button>
+    <button type="button" class="no btn btn-success btn-sm" style="background-color:#F24D4D;" mtnumno="{{meetingNo}}">거절</button>
   </td>
 </tr>
 {{/each}}
