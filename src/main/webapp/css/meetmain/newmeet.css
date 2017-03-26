@@ -79,7 +79,6 @@ body > .container {
 #header #logout .profile_photo {
   width: 30px;
   height: 30px;
-  /*background: url("../image/user_profile.jpg") no-repeat 50% 50%;*/
   background: no-repeat 50% 50%;
   background-size: cover;
   border-radius: 50%;
@@ -159,13 +158,6 @@ sec-intext {
   display: inline-block;
 }
 
-/*
-.logo {
-  background-image: ../../image/newlogo.png;
-  float: left;
-  width: 50px;
-}
-*/
 .site img {
   float: left;
   width: 35px;
@@ -250,9 +242,7 @@ sec-intext {
   overflow: hidden;
 }
 
-
 /* 탭 시작 */
-
 ul.tabs {
     margin: 0;
     padding: 0;
@@ -311,10 +301,7 @@ ul.tabs li.active {
     margin: 0 auto;
 }
 
-
 /* 탭 종료*/
-
-
 
 /* 풋터 css 시작 - 2017.02.08 김재녕*/
 #div-header {
@@ -334,13 +321,6 @@ ul.tabs li.active {
   display: inline-block;
 }
 
-/*
-.logo {
-  background-image: ../../image/newlogo.png;
-  float: left;
-  width: 50px;
-}
-*/
 .site img {
   float: left;
   width: 35px;

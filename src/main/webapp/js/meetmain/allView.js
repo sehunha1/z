@@ -25,8 +25,7 @@ $('body').on('click', '#allViewConfirm-btn', function(e) {
 		return false;
 	}
 	
-	finalDataUpdate();
-	
+	finalDataUpdate(); // 최종 확정 처리
 });
 
 // 날짜 처리
@@ -126,11 +125,4 @@ function getBossYn() {
         	$('#allViewConfirm-btn').show();
         }
     });
-}
-
-
-try {
-	
-} catch(e) {
-	
 }
