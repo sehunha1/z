@@ -42,6 +42,15 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var template_cont = Handlebars.compile($("#contentTemplate").html());
     var p = $(".meeting_info .date");
     p.append(template_cont(oneMeeting));
+
+    if (oneMeeting.meetStat !== "wait") {
+        swal({title: "일정확정대기중인 모임이 아닙니다.",
+            text: "1초후 내모임리스트로 이동합니다.",
+            timer: 1000,
+            showConfirmButton: false}, function(e) {
+            location.href = "../mylist/mylist.html";
+        });
+    };
 });
 
 $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {

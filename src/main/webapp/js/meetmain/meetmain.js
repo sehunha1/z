@@ -134,7 +134,14 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var divs = $("#testwrap .conttext1");
     divs.append(template(oneMeeting));
 
-
+    if (oneMeeting.meetStat !== "ing") {
+        swal({title: "투표가 마감된 모임입니다.",
+              text: "1초후 내모임리스트로 이동합니다.",
+              timer: 1000,
+              showConfirmButton: false}, function(e) {
+            location.href = "../mylist/mylist.html";
+        });
+    };
 });
 
 $(function() {

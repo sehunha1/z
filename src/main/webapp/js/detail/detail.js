@@ -48,6 +48,21 @@ try {
             location.href = "../mylist/mylist.html";
         });
     });
+
+    $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
+        var status = ajaxResult.status;
+        if (status != "success") return;
+        var oneMeeting = ajaxResult.data;
+
+        if (oneMeeting.meetStat !== "fin") {
+            swal({title: "일정확정된 모임이 아닙니다.",
+                text: "1초후 내모임리스트로 이동합니다.",
+                timer: 1000,
+                showConfirmButton: false}, function(e) {
+                location.href = "../mylist/mylist.html";
+            });
+        };
+    });
 	
 	$.getJSON(serverRoot + '/html/detail/detailMeet.json?memberNo=' + memberNo + '&meetingNo=' + meetingNo, function(ajaxResult) {
 		if (ajaxResult.status != "success") {
