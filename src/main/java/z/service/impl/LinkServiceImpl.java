@@ -59,4 +59,8 @@ public class LinkServiceImpl implements LinkService {
     }
     return count;
   }
+
+  public int[] isMeeting(int memberNo) throws Exception {
+    return linkDao.isMeeting(memberNo);
+  }
 }

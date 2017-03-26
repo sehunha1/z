@@ -84,5 +84,10 @@ public class LinkJsonControl {
     }
     return new AjaxResult(AjaxResult.SUCCESS, "데이터 삽입 성공");
   }
-  
+
+  @RequestMapping("html/meetmain/isMeeting")
+  public AjaxResult isMeeting(int memberNo) throws Exception {
+    int[] meetingNos = linkService.isMeeting(memberNo);
+    return new AjaxResult(AjaxResult.SUCCESS, meetingNos);
+  }
 }
