@@ -38,8 +38,9 @@ window.fbAsyncInit = function() {
 
 	FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
-			FB.api('/me/?fields=picture', function(user) {
+			FB.api('/me/?fields=name, email', function(user) {
 				if (user) {
+					console.log(user);
 
 					/*
 					 * //var image = 'http://graph.facebook.com/' + user.id +
