@@ -28,18 +28,24 @@
 	height: 300px;
 }
 
-/* 모임명 */
+/* 모임명 영역 */
 .detail-info .headtitle {
 	text-align: center;
 	height: 20%;
-	overflow: hidden;
 }
 
+/* 모임명 문구 */
 #meeting-title {
 	font-family: 'Delius Unicase', cursive;
-	font-weight: bold; font-size : xx-large;
+	text-align: center;
+	font-weight: bold;
+	font-size: xx-large;
 	line-height: normal;
 	font-size: xx-large;
+	max-width: 99%;
+	overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* 모임이미지 */
@@ -66,6 +72,11 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+#final-cont {
+  width: 99%;
+  height: 90px;
 }
 
 /*************************멤버*************************/
