@@ -40,7 +40,6 @@ window.fbAsyncInit = function() {
 		if (response.status === 'connected') {
 			FB.api('/me/?fields=name, email', function(user) {
 				if (user) {
-					console.log(user);
 
 					/*
 					 * //var image = 'http://graph.facebook.com/' + user.id +
