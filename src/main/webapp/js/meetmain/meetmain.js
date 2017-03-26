@@ -1,4 +1,16 @@
+var urlMemberNo = window.location.search.split("&")[0].substring(10);
 var meetingNo = window.location.search.split("&")[1].substring(10); // 모임 번호
+
+var sessionMemberNo = JSON.parse(window.sessionStorage.getItem("member")).memberNo;
+if (urlMemberNo != sessionMemberNo) {
+    swal({title: "잘못된 접근입니다.",
+          text: "1초후 내모임리스트로 이동합니다.",
+          timer: 1000,
+          showConfirmButton: false}, function(e) {
+        location.href = "../mylist/mylist.html";
+    });
+}
+
 var linkMembList = new Array(); // 멤버번호
 var membPlusBtnHidden = false; // 방장 여부에 따라 멤버 초대 버튼 여부
 
