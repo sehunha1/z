@@ -224,7 +224,7 @@
           <div id="contentList">
 	          <div id="dateListDiv">
 	            <ul id="dateUl">
-	               <li class="dateLi">
+<!-- 	              <li class="dateLi">
 							    <input type="radio" id="f-option" name="selector">
 							    <label for="f-option">Pizza</label>
 							    <div class="check"></div>
@@ -248,7 +248,7 @@
                    <input type="radio"  name="selector">
                    <label >Cats</label>
                    <div class="check"><div class="inside"></div></div>
-                 </li>
+                 </li> -->
 	            </ul>
             </div>
 	          
@@ -416,7 +416,7 @@ $('#off').click(function() {
 </script>
 
 <script>
-var filenamelist;
+var filenamelist = new Array();
 $('#link').fileupload({
     url: '../../common/fileupload.json', // 서버에 요청할 URL
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
@@ -679,10 +679,11 @@ var arrayToJson = function(list) {
 <!-- 모아보기 날짜리스트 템플릿 -->
 <script id="dateListTemple" type="text/x-handlebars-template">
   {{#each}}
-    <div class="dateOne">
-      <input type="radio" name="" value={{}}>
-      <label></label>
-    </div>
+  <li class="dateLi">
+    <input type="radio" id={{cdate}} name="dateSelector">
+    <label for={{cdate}}>{{cdate}}</label>
+    <div class="check"></div>
+  </li>
   {{/each}}
 </script>
 <!-- 모아보기 장소리스트 템플릿 -->

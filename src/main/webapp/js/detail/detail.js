@@ -258,7 +258,7 @@ function dBoardPopInit() {
 }
 
 //게시판 작성 사진 업로드
-var filenamelist;
+var filenamelist = new Array();
 
 $('#link').fileupload({
  url: '../../common/fileupload.json',

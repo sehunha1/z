@@ -30,7 +30,8 @@ public class TimeJsonControl {
     Time time = timeService.getTime(meetingNo);
     return new AjaxResult(AjaxResult.SUCCESS, time);
   }
-
+  
+  // 투표 날짜 리스트
   @RequestMapping(value="html/meetmain/getSelectDate", method=RequestMethod.GET)
   public AjaxResult getSelectDate(int meetingNo) throws Exception {
     Time time = timeService.getTime(meetingNo);

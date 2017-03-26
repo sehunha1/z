@@ -1,7 +1,7 @@
 'use strict'
 // 작성: 2017.03.25 김재녕
 // 내용: 모아보기 팝업
-
+var meetingNo = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
 
 $('body').on('click', '#allViewBtn', function() {
 	getBossYn();
@@ -11,6 +11,10 @@ $('body').on('click', '#allViewBtn', function() {
 // 모아보기 - 총 리스트 가져오기
 function getTotalList() {
 	
+	// 선택 날짜 목록
+	
+	
+	// 선택 장소 목록
 }
 
 // 방장여부 확인 후 확정 버튼 활성화

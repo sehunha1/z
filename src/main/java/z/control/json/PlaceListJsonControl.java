@@ -38,6 +38,8 @@ public class PlaceListJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
+  
+  // 장소 선택 리스트
   // 페이징 처리 전
   @RequestMapping("html/meetmain/placelist")
   public AjaxResult list(int meetingNo) throws Exception {
