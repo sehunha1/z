@@ -55,7 +55,7 @@ function finalDataUpdate() {
 	var $finalTime = $('input[name=dateSelector]:checked').parents().children('.calTime').text();
 	var $finalLocAddr = $('input[name=locSelector]:checked').parents().children('.address').text();
 	var $finalLocPlace = $('input[name=locSelector]:checked').parents().children('.place').text();
-	var loc = '[' + $finalLocPlace + '] ' + $finalLocPlace; // 상호명 + 주소
+	var loc = '[' + $finalLocPlace + '] ' + $finalLocAddr; // 상호명 + 주소
 	
     var param = {
         "cal" : $finalDate,
