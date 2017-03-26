@@ -364,7 +364,7 @@ tr th:last-child {
 <script id="trTemplatelist" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
-  <td style="padding-top: 12px; max-width:40px;">{{title}}</td>
+  <td style="padding-top: 12px; max-width:40px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{title}}</td>
   <td style="padding-top: 12px; max-width:180px; text-overflow: ellipsis;
   overflow: hidden; white-space: nowrap;">{{content}}</td>
   <td style="padding-top: 12px;">{{category}}</td>

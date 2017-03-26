@@ -30,8 +30,6 @@ $.getJSON("../isMeeting.json?memberNo=" + sessionMemberNo, function(ajaxResult) 
     });
 });
 
-
-
 var linkMembList = new Array(); // 멤버번호
 var membPlusBtnHidden = false; // 방장 여부에 따라 멤버 초대 버튼 여부
 
@@ -135,6 +133,8 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var template = Handlebars.compile($("#infoTemplate").html());
     var divs = $("#testwrap .conttext1");
     divs.append(template(oneMeeting));
+
+
 });
 
 $(function() {
