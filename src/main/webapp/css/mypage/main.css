@@ -1,4 +1,5 @@
 /*  bhoechie tab */
+
 div.bhoechie-tab-container {
 	z-index: 10;
 	background-color: #ffffff;
@@ -70,8 +71,40 @@ div.bhoechie-tab-content {
 	padding-top: 10px;
 }
 
-div.bhoechie-tab div.bhoechie-tab-content:not (.active ){
-	display: none;
+div
+
+
+.bhoechie-tab
+
+ 
+
+div
+
+
+.bhoechie-tab-content
+
+
+:not
+
+ 
+
+(
+.active
+
+ 
+
+){
+display
+
+
+:
+
+ 
+
+none
+
+
+;
 }
 
 /*table*/

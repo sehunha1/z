@@ -1,100 +1,107 @@
 @CHARSET "UTF-8";
+
 body {
-  font-family: '맑은 고딕', sans-serif;
+	font-family: '맑은 고딕', sans-serif;
 }
 
-body > .container {
+body>.container {
 	width: 960px;
 }
 
-#img-meetmain{
+#img-meetmain {
 	width: 150px;
 	height: 100px;
 }
-    /* 헤더 css 시작 */
+/* 헤더 css 시작 */
 #header-login {
-  width:100%;
-  border-bottom: 1px solid #ddd;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
 }
+
 #header-login .inner_header {
-  width: 960px;
-  margin: 0 auto;
-  *zoom: 1;
+	width: 960px;
+	margin: 0 auto;
+	*zoom: 1;
 }
+
 #header-login .inner_header:after {
-  content: '';
-  display: block;
-  clear: both;
+	content: '';
+	display: block;
+	clear: both;
 }
-#header-login .logo img{
-  width:40px;
-  height:40px;
-  float:left;
-  margin-top:5px;
-  margin-bottom:5px;
+
+#header-login .logo img {
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
+
 #header-login .svc_name {
-  float:left;
-  margin-top:6px;
-  font-size:25px;
+	float: left;
+	margin-top: 6px;
+	font-size: 25px;
 }
+
 #header-login .svc_name a {
-  text-decoration:none;
-  color:black;
+	text-decoration: none;
+	color: black;
 }
+
 #header-login #join {
-  float:right;
-  margin-top:15px;
-  margin-left:20px;
+	float: right;
+	margin-top: 15px;
+	margin-left: 20px;
 }
+
 #header-login #join a {
-  text-decoration:none;
-  color:black;
+	text-decoration: none;
+	color: black;
 }
+
 #header-login #login {
-  float:right;
-  margin-top:15px;
+	float: right;
+	margin-top: 15px;
 }
+
 #header-login #login a {
-  text-decoration:none;
-  color:black;
+	text-decoration: none;
+	color: black;
 }
-    /* 헤더 css 끝 */
-
-
-
+/* 헤더 css 끝 */
 #maplist {
-  /* 스크롤 */
-  overflow-y:scroll;
-  float:right;
-  font-color: black;
-  background-color:#FFFFFF; 
-  width:280px; 
-  height:300px;
-  /* border: 1px solid red; */
+	/* 스크롤 */
+	overflow-y: scroll;
+	float: right;
+	font-color: black;
+	background-color: #FFFFFF;
+	width: 280px;
+	height: 300px;
+	/* border: 1px solid red; */
 }
 
 #sidebar {
 	position: absolute;
-	float:left;
-  color: white;
-  padding: 10px 5px;
-  margin: 0px;
-  background-color:#ECECEC; 
-  width:180px; 
-  height:700px;
-  font-weight:500;
-  padding-right:1px;
-  border: 1px solid red;
+	float: left;
+	color: white;
+	padding: 10px 5px;
+	margin: 0px;
+	background-color: #ECECEC;
+	width: 180px;
+	height: 700px;
+	font-weight: 500;
+	padding-right: 1px;
+	border: 1px solid red;
 }
 
 #sidebar a {
-  color: white;
-  text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
 
 #sidebar a:hover {
-  color: navy;
+	color: navy;
 }
 
 #content-cal {
@@ -103,13 +110,13 @@ body > .container {
 	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   */
-  overflow-y:scroll;
-  height:700px;
-  padding-left: 480px;
-  font-family: 'HanSans';
-  padding-left: 20px; /* 190px; */
-  min-height: 400px;
-  background-color:white;
+	overflow-y: scroll;
+	height: 700px;
+	padding-left: 480px;
+	font-family: 'HanSans';
+	padding-left: 20px; /* 190px; */
+	min-height: 400px;
+	background-color: white;
 }
 
 #content-card {
@@ -117,23 +124,23 @@ body > .container {
 	background: -webkit-linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   background: linear-gradient(45deg, rgba(66, 183, 245, 0.8) 0%, rgba(66, 245, 189, 0.4) 100%);
   */
-	height:500px;
+	height: 500px;
 	padding-top: 1px;
 	padding-left: 500px;
-  font-family: 'HanSans';
-  padding-left: 20px; /* 190px; */
-  min-height: 400px;
-  background-color:white;
+	font-family: 'HanSans';
+	padding-left: 20px; /* 190px; */
+	min-height: 400px;
+	background-color: white;
 }
 
 #content {
-  width: 960px;
-  margin: 0 auto;
+	width: 960px;
+	margin: 0 auto;
 }
 
 #content .main-div {
-  /* display: inline-block; */
-  float: left;
+	/* display: inline-block; */
+	float: left;
 }
 
 /* SideBar 멤버추가 팝업 시작 */
@@ -556,6 +563,3 @@ body > .container {
   width: 100%;
   border-radius: 3px;
 } */
-
-
-
