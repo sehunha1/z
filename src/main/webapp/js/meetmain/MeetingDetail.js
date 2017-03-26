@@ -560,7 +560,7 @@ console.log('delete',htParamData)
                         that.aCalendarData = that.makeMeetingObject(res);
                         that.drawCalendar();
                         sideBarLoad();
-                        userpopup();
+                        userpu();
                     },
                     error : function(){
                         console.warn("API 호출 실패");

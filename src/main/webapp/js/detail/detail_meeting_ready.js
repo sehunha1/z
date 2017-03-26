@@ -78,10 +78,12 @@ $.getJSON("../meetmain/listMeetingMembBoss.json?meetingNo=" + meetingNo, functio
         return;
       }
 
+      var loc = "[" + $(".place_result_list .item.on .info1").text() + "] " + $(".place_result_list .item.on .info2").text();
+
       var param = {
           "cal" : $(".date_result_list .item.on .info1").text(),
           "time" : $(".date_result_list .item.on .info2").text(),
-          "loc" : $(".place_result_list .item.on .info1").text()
+          "loc" : loc
       };
 
       $.post("updateMstatFin.json?meetingNo=" + meetingNo, param, function(ajaxResult) {

@@ -108,7 +108,7 @@ public class MeetingJsonControl {
       meetingService.updateTime(meetingNo, time);
     }
 
-    if (loc.length() > 1) {
+    if (loc.length() > 3) {
       meetingService.updateLoc(meetingNo, loc);
     }
 
