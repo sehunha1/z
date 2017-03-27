@@ -26,7 +26,7 @@
   </select>
 
   <select id="getMyUnvoteCount" parameterType="int" resultType="int">
-    select count(*) from link left outer join meet on link.mtnum=meet.mtnum where mnum=#{value} and stat="n" and mstat="ing";
+    select count(*) from link left outer join meet on link.mtnum=meet.mtnum where mnum=#{value} and stat="n" and mstat="ing" and accept="y";
   </select>
   
   <select id="getMyInviteCount" parameterType="int" resultType="int">

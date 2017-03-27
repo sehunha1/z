@@ -81,6 +81,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 								$("#list-table").css("display", "none");
 								$("#none").css("display", "block");
 							}
+
+                            userpu();
 						}
 					});
 				});
