@@ -8,6 +8,8 @@ if (window.sessionStorage.getItem("member") != null) {
 	var sessionMemberNo = 0;
 }
 
+if (sessionMemberNo == null) sessionMemberNo = 0;
+
 if (urlMemberNo != sessionMemberNo) {
     swal({title: "잘못된 접근입니다.",
           text: "1초후 내모임리스트로 이동합니다.",
