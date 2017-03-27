@@ -187,7 +187,6 @@
 	    FROM LINK
 	   WHERE LINK.MNUM = #{memberNo}
 	     AND LINK.MTNUM = #{meetingNo}
-	     AND ACCEPT = 'y'
 	</select>
 	
 	<update id="update" parameterType="member">

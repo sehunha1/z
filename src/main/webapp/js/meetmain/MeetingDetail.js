@@ -105,7 +105,8 @@ MeetingDetail.prototype = {
             };
 
         if(!this.checkTimeValue(sCurrentSelectedParamTime)){
-            alert("시간을 선택해 주세요");
+        	sweetAlert("실패", "시간을 선택해 주세요.", "error");
+//            alert("시간을 선택해 주세요");
             return;
         }
 
@@ -174,7 +175,8 @@ MeetingDetail.prototype = {
             };
 
         if(!aUserList.length){
-            alert("일정을 먼저 선택해 주세요.");
+        	sweetAlert("실패", "일정을 먼저 선택해 주세요.", "error");
+//            alert("일정을 먼저 선택해 주세요.");
             return;
         }
 
@@ -196,7 +198,8 @@ MeetingDetail.prototype = {
             htParamData.aUserName = aUserName;
             htParamData.aUserPhoto = aUserPhoto;
         }else{
-            alert("본인거만 수정가능합니다.");
+        	sweetAlert("실패", "본인만 수정가능합니다.", "error");
+//            alert("본인거만 수정가능합니다.");
             return;
         }
 console.log('delete',htParamData)

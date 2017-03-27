@@ -73,6 +73,7 @@ $('body').on('click', '#Go-btn', function(e) {
 		}
 		var meeting = JSON.stringify(ajaxResult.data);
 		
+		swal("성공", "모임을 개설하였습니다.", "success");
 		location.href = '../meetmain/meetmain.html'
 				+ '?memberNo='
 				+ JSON.parse(meeting).meetBossNo
