@@ -22,6 +22,20 @@
 <link rel="stylesheet" href="../../css/main/main.css">
 <link rel="stylesheet" href="../../css/common.css">
 <link rel="stylesheet" href="../../css/detail/detail.css">
+<style>
+/* 업로드 */
+.filebox label { 
+        display: inline-block; padding: .5em .75em; color:white; font-size: inherit; 
+        line-height: normal; vertical-align: middle; background-color: #0275D8; 
+        cursor: pointer; border-bottom-color: #e2e2e2; /*border-radius: .25em;  border: 1px solid #ebebeb; */
+        text-align:center; height:100%;
+        } 
+        
+        .filebox input[type="file"] { 
+        /* 파일 필드 숨기기 */ 
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; 
+        overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+</style>
 </head>
 <body>
 	<div id="header"></div>
@@ -107,7 +121,11 @@
 								<input type="text" class="titlename" id="titl"
 									placeholder="글 제목을 입력해주세요."> 
 								<textarea class="titlewrite" id="cont" placeholder="글 내용을 입력해주세요."></textarea>
-								<input id='link' name='files' type='file' multiple>
+								<!-- <input id='link' name='files' type='file' multiple> -->
+                <div class="filebox" style="height:32px;">
+                <label for="link" style="line-height: 16px;">사진 업로드</label> 
+                <input type="file" id="link" name='files' class="form-control"> 
+                </div>
 								<input id='link-path' type='hidden'>
 								<img id='photo-img' class='view-form'>
 								<BR>
