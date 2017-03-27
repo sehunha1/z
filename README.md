@@ -1,26 +1,17 @@
 # Z
 ## 남은사항
-### 2017.03.24
+### 2017.03.27
 
-전체 - console, alert 정리
-       이미지 출력 지연 확인
+언어 : Java, HTML5, CSS, JavaScript
 
-우종 - 파일첨부버튼 UI 수정
-       파비콘, 로고
-       
-재녕 - 메일 전송
-       
-세훈 - URL 필터(페이지이동)
-       
-희경 - D-DAY 승락여부(accept) 확인 후 가져오기
+DBMS : MySql
 
-- meetMain: 모임명, 설명 등 길이 확인하여 크기 수정할 것.
-- main: 스케줄 버튼 인풋박스와 맞추기
-- 마우스 드래그 막을 곳 찾아 막기
-  -ms-user-select: none;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-   user-select: none;
+frameWork & library: Spring, jQuery, Bootstrap, log4j
 
+API: FaceBook API, Daum Map API
 
+Server: Tomcat
+
+그 외 기술 및 모듈: ajax, json, HandleBars, JDBC, MyBatis, 
+                    Git, npm, gradle, datePicker, swiper, 
+                    exerd, jQuery-validation
