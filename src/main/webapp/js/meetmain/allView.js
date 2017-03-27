@@ -8,11 +8,15 @@ var meetingNo = location.href.split('?')[1].split('&')[1].split('=')[1].replace(
 var selectDateList = new Array();
 // 선택 장소 목록
 var selectLocList = new Array();
+// 방장여부 결정 변수
+var bossTrue = false;
 
 // 모아보기 버튼 클릭 이벤트
 $('body').on('click', '#allViewBtn', function() {
+	$.ajaxSetup({ async:false }); // 동기처리
 	getBossYn(); // 버튼 활성화
 	getTotalList(); // 날짜, 장소 목록 가져오기
+	console.log(bossTrue);
 });
 
 // 확정 버튼 클릭 이벤트
@@ -100,13 +104,16 @@ function getTotalList() {
 		var locTemplate = Handlebars.compile($("#locListTemple").html());
 		$locUl.append(locTemplate({"selectLocList" : selectLocList}));
 	});
+	
+	if (bossTrue == true) {
+		console.log('22' + bossTrue);
+		$('.check').show();
+		$(".bossView").attr('disabled', false);
+	}
 }
 
 // 방장여부 확인 후 확정 버튼 활성화
 function getBossYn() {
-	
-	// 방장여부 결정 변수
-	var bossTrue = false;
 	
 	$.getJSON("listMeetingMembBoss.json?meetingNo=" + meetingNo, function(ajaxResult) {
         var status = ajaxResult.status;

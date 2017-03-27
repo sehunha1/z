@@ -675,9 +675,9 @@ var arrayToJson = function(list) {
   <li class="dateLi">
     <div class="calDate" style="display:none">{{calendarDate}}</div>
     <div class="calTime" style="display:none">{{calendarTime}}</div>
-    <input type="radio" id={{caleanderNo}} name="dateSelector" value={{caleanderNo}}>
+    <input type="radio" id={{caleanderNo}} name="dateSelector" value={{caleanderNo}} class="bossView" disabled>
     <label for={{caleanderNo}} {{calendarTime}}>{{calendarDate}} {{calendarTime}}</label>
-    <div class="check"></div>
+    <div class="check" style="display:none;"></div>
   </li>
   {{/each}}
 </script>
@@ -688,9 +688,9 @@ var arrayToJson = function(list) {
   <li class="locLi">
     <div class="address" style="display:none">{{address}}</div>
     <div class="place" style="display:none">{{place}}</div>
-    <input type="radio" id={{locationNo}} name="locSelector" value={{place}} {{address}}>
+    <input type="radio" id={{locationNo}} name="locSelector" value={{place}} {{address}} class="bossView" disabled>
     <label for={{locationNo}}>{{address}} {{place}}</label>
-    <div class="check"></div>
+    <div class="check" style="display:none;"></div>
   </li>
   {{/each}}
 </script>

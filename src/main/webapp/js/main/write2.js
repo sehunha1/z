@@ -72,6 +72,7 @@ $('body').on('click', '#Go-btn', function(e) {
 			return;
 		}
 		var meeting = JSON.stringify(ajaxResult.data);
+		
 		location.href = '../meetmain/meetmain.html'
 				+ '?memberNo='
 				+ JSON.parse(meeting).meetBossNo
@@ -79,7 +80,6 @@ $('body').on('click', '#Go-btn', function(e) {
 				+ JSON.parse(meeting).meetingNo;
 	}, 'json');
 });
-
 
 // 이미지 선택 시 파일 업로드
 $('#photo').fileupload({
