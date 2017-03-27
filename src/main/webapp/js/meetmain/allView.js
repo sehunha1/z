@@ -16,13 +16,11 @@ $('body').on('click', '#allViewBtn', function() {
 	$.ajaxSetup({ async:false }); // 동기처리
 	getBossYn(); // 버튼 활성화
 	getTotalList(); // 날짜, 장소 목록 가져오기
-	console.log(bossTrue);
 });
 
 // 확정 버튼 클릭 이벤트
 $('body').on('click', '#allViewConfirm-btn', function(e) {
 	e.preventDefault();
-
 	if (dateSend() == false) {
 		return false;
 	} else if (locSend() == false) {
@@ -106,7 +104,6 @@ function getTotalList() {
 	});
 	
 	if (bossTrue == true) {
-		console.log('22' + bossTrue);
 		$('.check').show();
 		$(".bossView").attr('disabled', false);
 	}
