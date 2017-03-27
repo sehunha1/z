@@ -453,6 +453,9 @@ $('body').on('click', '#blist', function() {
 											}
 										});*/
 									});
+
+                                    sideBarLoad();
+                                    userpu();
 								} else {
 									swal("취소", "취소하였습니다.", "error");
 								}
