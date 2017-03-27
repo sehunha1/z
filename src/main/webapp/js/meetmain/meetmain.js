@@ -1,14 +1,12 @@
 var urlMemberNo = window.location.search.split("&")[0].substring(10);
 var meetingNo = window.location.search.split("&")[1].substring(10); // 모임 번호
 
-console.log(window.sessionStorage.getItem("member"));
+// session memberNo 가져오기
 if (window.sessionStorage.getItem("member") != null) {
 	var sessionMemberNo = JSON.parse(window.sessionStorage.getItem("member")).memberNo;	
 } else {
 	var sessionMemberNo = 0;
 }
-
-if (sessionMemberNo == null) sessionMemberNo = 0;
 
 if (urlMemberNo != sessionMemberNo) {
     swal({title: "잘못된 접근입니다.",
