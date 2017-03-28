@@ -477,7 +477,7 @@ console.log('delete',htParamData)
                     aDomActiveDateList.eq(i).addClass("_selectComplete");
                     aDomActiveDateList.eq(i).addClass(_renderData.currentUserSelectDate);
                     aDomActiveDateList.eq(i).find('.memberInfo').text(_renderData.aMemberNo.length +"/"+this.nTotalMember);
-                    aDomActiveDateList.eq(i).find('.dateInfo').text('!!!');
+                    aDomActiveDateList.eq(i).find('.dateInfo').text('?');
                     aDomActiveDateList.eq(i).find('._dateInfoLayer').empty();
                     var tempFragment = '';
                     for(var z=0, zlen=_renderData.aUserName.length; z<zlen; z++){
