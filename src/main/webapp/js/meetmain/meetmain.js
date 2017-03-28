@@ -138,17 +138,50 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
 
     var template = Handlebars.compile($("#infoTemplate").html());
     var divs = $("#testwrap .conttext1");
-    divs.append(template(oneMeeting));
+    divs.html(template(oneMeeting));
 
     if (oneMeeting.meetStat !== "ing") {
         swal({title: "투표가 마감된 모임입니다.",
-              text: "1초후 내모임리스트로 이동합니다.",
-              timer: 1000,
-              showConfirmButton: false}, function(e) {
+            text: "1초후 내모임리스트로 이동합니다.",
+            timer: 1000,
+            showConfirmButton: false}, function(e) {
             location.href = "../mylist/mylist.html";
         });
     };
 });
+
+var getonemeet = function() {
+    $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
+        var status = ajaxResult.status;
+        if (status != "success") return;
+        var oneMeeting = ajaxResult.data;
+
+        var template = Handlebars.compile($("#infoTemplate").html());
+        var divs = $("#testwrap .conttext1");
+        divs.html(template(oneMeeting));
+    });
+};
+
+setTimeout(function() {getonemeet()}, 3000);
+
+// $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
+//     var status = ajaxResult.status;
+//     if (status != "success") return;
+//     var oneMeeting = ajaxResult.data;
+//
+//     var template = Handlebars.compile($("#infoTemplate").html());
+//     var divs = $("#testwrap .conttext1");
+//     divs.append(template(oneMeeting));
+//
+//     if (oneMeeting.meetStat !== "ing") {
+//         swal({title: "투표가 마감된 모임입니다.",
+//               text: "1초후 내모임리스트로 이동합니다.",
+//               timer: 1000,
+//               showConfirmButton: false}, function(e) {
+//             location.href = "../mylist/mylist.html";
+//         });
+//     };
+// });
 
 $(function() {
 	

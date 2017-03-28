@@ -503,6 +503,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
             //location.reload();
             
         }, 'json'); // post();
+
+        setTimeout(function() {initCard()}, 4500);
     }); // click()   
     
   initCard();
