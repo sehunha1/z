@@ -162,7 +162,7 @@ var getonemeet = function() {
     });
 };
 
-setTimeout(function() {getonemeet()}, 3000);
+setTimeout(function() {getonemeet()}, 4500);
 
 // $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
 //     var status = ajaxResult.status;
