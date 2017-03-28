@@ -30,6 +30,7 @@ $.getJSON("../auth/loginUser.json", function(ajaxResult) {
     $(".meeting_info.ing .item").css("text-align", "center"); // 투표 진행중 문구 가운데 정렬
     $(".meeting_info.ing .date").css("display", "none");
     $(".meeting_info.ing .location").css("display", "none");
+    $(".meeting_info.ing .time .info").css("display", "none");
     $(".meeting_info.ing .time .tit").css("font-size", "20px");
     $(".meeting_info.ing .item").css("margin", "22.5px 0px 22.5px 0px");
 
