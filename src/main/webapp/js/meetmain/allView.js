@@ -70,6 +70,7 @@ function finalDataUpdate() {
 			alert(ajaxResult.data);
 			return;
 		}
+        swal("성공!", "확정되었습니다.", "success")
 		location.href = serverRoot + '/html/mylist/mylist.html';
 	}, 'json');
 }

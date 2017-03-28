@@ -1,0 +1,63 @@
+--memb
+insert into memb (email, name, pwd, photo, quit) values ("kimkw@bit.com", "김건우", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimbr@bit.com", "김보라", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimyj@bit.com", "김용진", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimwj@bit.com", "김우종", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimjn@bit.com", "김재녕", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimjh@bit.com", "김지환", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimhk@bit.com", "김희경", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("minkk@bit.com", "민경기", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("parksh@bit.com", "박수희", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("seodh@bit.com", "서동훈", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("shinjw@bit.com", "신종우", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("ohys@bit.com", "오용석", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("wonye@bit.com", "원요엘", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("yoosa@bit.com", "유신애", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("leesh@bit.com", "이석환", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("leesb@bit.com", "이성복", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jeongsk@bit.com", "정선교", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jeongyc@bit.com", "정용창", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jeongjy@bit.com", "정지연", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jijh@bit.com", "지정훈", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("cheonjy@bit.com", "천지연", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("hash@bit.com", "하세훈", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("hande@bit.com", "한동은", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("hanoj@bit.com", "한옥주", password(12341234), null, "n");
+
+--meet
+insert into meet (titl, cont, mtdesc, dline, photo, mstat) values ("산악동호회 청계산등산", "산악동호회 청계산등반 일정 정합시다~", "친목", "2017-03-27", "1490671075466_33", "ing");
+insert into meet (titl, cont, mtdesc, dline, photo, mstat) values ("위닝대회", "위닝 최강자를 가리자~ 우승상금 1만원!", "친목", "2017-03-27", "1490671730159_35", "ing");
+insert into meet (titl, cont, mtdesc, dline, photo, mstat) values ("비트 자바89기 종강회식", "비트캠프 자바89기 종강기념 회식~", "회식", "2017-03-28", "alcohol.jpg", "ing");
+insert into meet (titl, cont, mtdesc, dline, photo, mstat) values ("중미산 드라이브", "양평 중미산 드라이브 모임", "친목", "2017-03-27", "1490673046372_37", "ing");
+
+--link
+insert into link (mnum, mtnum, boss, stat, accept) values (1, 24, "y", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (1, 25, "y", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (1, 26, "y", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (1, 27, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (2, 24, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (2, 25, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (2, 26, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (2, 27, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (3, 24, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (3, 25, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (3, 26, "n", "n", "n");
+insert into link (mnum, mtnum, boss, stat, accept) values (3, 27, "y", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (4, 24, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (4, 25, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (4, 26, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (4, 27, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (5, 24, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (5, 25, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (5, 26, "n", "y", "y");
+insert into link (mnum, mtnum, boss, stat, accept) values (5, 27, "n", "y", "y");
+
+--cal
+insert into cal (mnum, mtnum, cdate, ctime) values (3, 24, "2017-03-31", "아침");
+insert into cal (mnum, mtnum, cdate, ctime) values (1, 24, "2017-04-01", "아침");
+insert into cal (mnum, mtnum, cdate, ctime) values (2, 24, "2017-04-01", "아침");
+insert into cal (mnum, mtnum, cdate, ctime) values (3, 24, "2017-04-01", "아침");
+insert into cal (mnum, mtnum, cdate, ctime) values (4, 24, "2017-04-01", "아침");
+insert into cal (mnum, mtnum, cdate, ctime) values (1, 24, "2017-04-02", "아침");
+insert into cal (mnum, mtnum, cdate, ctime) values (4, 24, "2017-04-02", "아침");
+insert into cal (mnum, mtnum, cdate, ctime) values (5, 24, "2017-04-02", "아침");
