@@ -218,5 +218,5 @@ function share(){
         u: url
     };
  
-    FB.ui(share, function(response) { console.log(response); });
+    FB.ui(share, function(response) { /*console.log(response);*/ });
 }
