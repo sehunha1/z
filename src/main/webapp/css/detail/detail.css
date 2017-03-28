@@ -2,12 +2,19 @@
 /* detail Page 수정 - 2017.03.21 김재녕 */
 
 /*************************모임 상세 정보*************************/
-#content {
-	-ms-user-select: none;
-	-moz-user-select: -moz-none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+#detailContent {
+  font-family: '맑은고딕';
+  background-color: white;
+  color: black;
+  width: 960px;
+  font-family: "Noto Sans KR", '맑은 고딕', sans-serif;
+  margin: 4% auto;
+  *zoom: 1;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* 멤버, 게시판 문구 */
