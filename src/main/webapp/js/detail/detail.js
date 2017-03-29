@@ -388,6 +388,11 @@ $('body').on('click', '#new-btnnn', function(e) {
 	        getBoardList(); // 게시글 정보 가져오기
         }, 'json');
 	    
+	    // 게시판 갱신
+	    setTimeout(function() {
+	    	$.ajax(getBoardList());
+	    }, 4500);
+	    
 	} else {
 		alert('입력 값을 확인하세요.');
 	}
