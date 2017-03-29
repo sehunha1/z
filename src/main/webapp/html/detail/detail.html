@@ -121,7 +121,6 @@
 								<input type="text" class="titlename" id="titl"
 									placeholder="글 제목을 입력해주세요."> 
 								<textarea class="titlewrite" id="cont" placeholder="글 내용을 입력해주세요."></textarea>
-								<!-- <input id='link' name='files' type='file' multiple> -->
                 <div class="filebox" style="height:32px;">
                 <label for="link" style="line-height: 16px;">사진 업로드</label> 
                 <input type="file" id="link" name='files' class="form-control"> 
@@ -226,7 +225,7 @@
       <div id="boardNum" style="display:none">{{boardNo}}</div>
       <div class="photo-test">
         {{#each addFileList}}
-        <img class="inline-image" src="../upload/{{filePath}}" />
+        <img class="inline-image" src="../upload/{{filePath}}" onerror="this.src='../upload/loading.jpg'"/>
         {{/each}}
       </div>
       <div id="boardDetails">

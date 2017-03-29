@@ -1,5 +1,6 @@
 var urlMemberNo = window.location.search.split("&")[0].substring(10);
 var meetingNo = window.location.search.split("&")[1].substring(10); // 모임 번호
+var meetPhoto; // 모임이미지
 
 // session memberNo 가져오기
 if (window.sessionStorage.getItem("member") != null) {
@@ -131,15 +132,15 @@ $("#datepicker").datepicker({
     inline: true
 });
 
+// 모임 상세 정보 출력(초기화)
 $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     var status = ajaxResult.status;
     if (status != "success") return;
     var oneMeeting = ajaxResult.data;
-
     var template = Handlebars.compile($("#infoTemplate").html());
     var divs = $("#testwrap .conttext1");
     divs.html(template(oneMeeting));
-
+    
     if (oneMeeting.meetStat !== "ing") {
         swal({title: "투표가 마감된 모임입니다.",
             text: "1초후 내모임리스트로 이동합니다.",
@@ -150,19 +151,23 @@ $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
     };
 });
 
+// 모임 상세정보 재출력
 var getonemeet = function() {
     $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
         var status = ajaxResult.status;
         if (status != "success") return;
         var oneMeeting = ajaxResult.data;
-
         var template = Handlebars.compile($("#infoTemplate").html());
         var divs = $("#testwrap .conttext1");
         divs.html(template(oneMeeting));
     });
 };
 
-setTimeout(function() {getonemeet()}, 4500);
+//$('.photo img').attr('src', '../upload/loading.jpg');
+// 이미지 로딩 시간으로 인한 reSetting
+setTimeout(function() {
+	getonemeet();
+}, 4500);
 
 // $.getJSON("../getOneMeeting.json?meetingNo=" + meetingNo, function(ajaxResult) {
 //     var status = ajaxResult.status;

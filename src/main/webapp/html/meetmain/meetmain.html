@@ -209,7 +209,7 @@
           <button id='download' type='button' class='download-btn btn btn-info btn-sm'>다운로드</button>
           <div class="col-sm-10 detail-photo">
             <input name='photo-path' type='hidden' >
-            <img class='img-responsive-detail'   /> 
+            <img class='img-responsive-detail'/> 
           </div>
           <div class="form-group">
             <div class="detail_button">
@@ -324,7 +324,6 @@
 	  $('#link-path').val('');
 	}
   
-  
   $('#cancel-btn').click(function(event) {
       /* event.preventDefault();
       location.reload(); */
@@ -340,7 +339,7 @@
   $('#bselect').click(function(){
       $(".map1").show();
       $(".map2").hide();
-    });
+  });
   
   function maphide() {
       $(".map_wrap").css("display", "none");
@@ -350,27 +349,27 @@
       
       $(".map1").hide();
       $(".map2").hide();
-}
+  }
   
   function menu1c() {
-      $(".map_wrap").css("display", "none");
-      $("#menu_wrap").css("display", "none");
-      $("#map").css("display", "none");
-      $("#buttonchoice").css("display", "none");
-      
-      $(".map1").hide();
-      $(".map2").hide();
-    }
+    $(".map_wrap").css("display", "none");
+    $("#menu_wrap").css("display", "none");
+    $("#map").css("display", "none");
+    $("#buttonchoice").css("display", "none");
+    
+    $(".map1").hide();
+    $(".map2").hide();
+  }
   
   function menu2c() {
-      $(".map_wrap").css("display", "block");
-      $("#menu_wrap").css("display", "block");
-      $("#map").css("display", "block");
-      $("#buttonchoice").css("display", "block");
-      
-      $(".map1").show();
-      $(".map2").hide();
-    }
+    $(".map_wrap").css("display", "block");
+    $("#menu_wrap").css("display", "block");
+    $("#map").css("display", "block");
+    $("#buttonchoice").css("display", "block");
+    
+    $(".map1").show();
+    $(".map2").hide();
+  }
   
   function menu3c() {
     $(".map_wrap").css("display", "none");
@@ -381,251 +380,249 @@
     $(".map1").hide();
     $(".map2").hide();
   }
-  
   </script>
 
-
   <script id="trTemplatelist" type="text/x-handlebars-template">
-{{#each list}}
-<tr>
-  <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
-  <td class="tdcount">{{count}}</td>
-</tr>
-{{/each}}
-</script>
+  {{#each list}}
+  <tr>
+    <td><a class="place-link" id='place-link' href="#" x="{{xLocation}}" y="{{yLocation}}">{{place}}</a></td>
+    <td class="tdcount">{{count}}</td>
+  </tr>
+  {{/each}}
+	</script>
 
   <script>
-$('#on').click(function() {
-    $("#menu_wrap2").css("height", "22px");
-    $("#menu_wrap2").css("overflow", "hidden");
-    $("#on").attr("type", "hidden");
-    $("#off").attr("type", "button");
-});
-$('#off').click(function() {
-    $("#menu_wrap2").css("height", "500px");
-    $("#menu_wrap2").css("overflow", "auto");
-    $("#on").attr("type", "button");
-    $("#off").attr("type", "hidden");
-});
-</script>
+	$('#on').click(function() {
+	    $("#menu_wrap2").css("height", "22px");
+	    $("#menu_wrap2").css("overflow", "hidden");
+	    $("#on").attr("type", "hidden");
+	    $("#off").attr("type", "button");
+	});
+	$('#off').click(function() {
+	    $("#menu_wrap2").css("height", "500px");
+	    $("#menu_wrap2").css("overflow", "auto");
+	    $("#on").attr("type", "button");
+	    $("#off").attr("type", "hidden");
+	});
+	</script>
 
-<script>
-var filenamelist = new Array();
-$('#link').fileupload({
-    url: '../../common/fileupload.json', // 서버에 요청할 URL
-    dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
-    sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
-    singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
-    autoUpload: true,        // 파일을 추가할 때 자동 업로딩 여부 설정. 기본은 true.
-    disableImageResize: /Android(?!.*Chrome)|Opera/
-        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
-    previewMaxWidth: 800,   // 미리보기 이미지 너비
-    previewMaxHeight: 800,  // 미리보기 이미지 높이 
-    previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
-    done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-      //console.log('done()...');
-      //console.log(data.result);
-      filenamelist = data.result.data;
-        $('#link-path').val(data.result.data[0]);
-        //console.log('파일리스트 : ',filenamelist);
-        
-    }, 
-    processalways: function(e, data) {
-        //console.log('fileuploadprocessalways()...', data.files.length, data.index);
-        var img = $('#photo-img');
-        if (data.index == 0) {
-          //console.log('미리보기 처리...');
-          var canvas = data.files[0].preview;
-          var dataURL = canvas.toDataURL();
-          img.attr('src', dataURL).css('width', '100px');
-          $('#photo-label').css('display', '');
-        }
-    } 
-});
-</script>
+	<script>
+	var filenamelist = new Array();
+	$('#link').fileupload({
+	    url: '../../common/fileupload.json', // 서버에 요청할 URL
+	    dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
+	    sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+	    singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
+	    autoUpload: true,        // 파일을 추가할 때 자동 업로딩 여부 설정. 기본은 true.
+	    disableImageResize: /Android(?!.*Chrome)|Opera/
+	        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+	    previewMaxWidth: 800,   // 미리보기 이미지 너비
+	    previewMaxHeight: 800,  // 미리보기 이미지 높이 
+	    previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+	    done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+	      //console.log('done()...');
+	      //console.log(data.result);
+	      filenamelist = data.result.data;
+	        $('#link-path').val(data.result.data[0]);
+	        //console.log('파일리스트 : ',filenamelist);
+	        
+	    }, 
+	    processalways: function(e, data) {
+	        //console.log('fileuploadprocessalways()...', data.files.length, data.index);
+	        var img = $('#photo-img');
+	        if (data.index == 0) {
+	          //console.log('미리보기 처리...');
+	          var canvas = data.files[0].preview;
+	          var dataURL = canvas.toDataURL();
+	          img.attr('src', dataURL).css('width', '100px');
+	          $('#photo-label').css('display', '');
+	        }
+	    } 
+	});
+	</script>
 
-<script>
-try {
-    var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
-} catch (error) {
-    var mtnum = -1;
-}
-
-var pageNo = 1;
-
-$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-  if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-    alert('로그인하세요');
-        return;
-      }
-  
-  var mnum = ajaxResult.data.memberNo;
-  
-    $('#new-btnnn').click(function(event) {
-    	
-    	  // 팝업시 파일 미선택 처리
-        if ($('#link-path').val() == '') {
-          filenamelist.splice(0);
-        }
-        
-        var param = {
-          "memberNo": mnum,
-          "meetNo": mtnum,
-          "title": $('#titl').val(),
-          "content": $('#cont').val(),
-          "boardDate":$('#bdate').val(),
-          "addFileList": arrayToJson(filenamelist)
-        };
-        
-        if (param.title.length == 0) {
-        	//$inputMessage.text("제목을 입력해주세요.").css("color", "red");
-        	swal('알림','제목을 입력해주세요','warning');
-        	return;
-        }
-        if (param.content.length == 0) {
-        	swal('알림','내용을 입력해주세요','warning');
-            return;
-          }
-        //console.log('파라미터 : ',param);
-        $.post('add.json', param, function(ajaxResult2) {
-          //console.log(ajaxResult2)
-            if (ajaxResult2.status != "success") {
-              return;
-            }
-          var params = {
-          "link": $('#link-path').val(),
-          "type": 'jpg'
-          }
-          $.post('file.json', params, function(ajaxResult2) {
-            initCard();
-            
-          });
-            //location.reload();
-            
-        }, 'json'); // post();
-
-        setTimeout(function() {initCard()}, 4500);
-    }); // click()   
-    
-  initCard();
-
-});
-
-function initCard() {
-	$.getJSON('list.json?mtnum='+ mtnum, function(ajaxResult) {
-	    if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
-	      return;
+	<script>
+	try {
+	    var mtnum = location.href.split('?')[1].split('&')[1].split('=')[1].replace('#','');
+	} catch (error) {
+	    var mtnum = -1;
+	}
+	
+	var pageNo = 1;
+	
+	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	  if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+	    alert('로그인하세요');
+	        return;
 	      }
+	  
+	  var mnum = ajaxResult.data.memberNo;
+	  
+	    $('#new-btnnn').click(function(event) {
+	    	
+	    	  // 팝업시 파일 미선택 처리
+	        if ($('#link-path').val() == '') {
+	          filenamelist.splice(0);
+	        }
+	        
+	        var param = {
+	          "memberNo": mnum,
+	          "meetNo": mtnum,
+	          "title": $('#titl').val(),
+	          "content": $('#cont').val(),
+	          "boardDate":$('#bdate').val(),
+	          "addFileList": arrayToJson(filenamelist)
+	        };
+	        
+	        if (param.title.length == 0) {
+	        	//$inputMessage.text("제목을 입력해주세요.").css("color", "red");
+	        	swal('알림','제목을 입력해주세요','warning');
+	        	return;
+	        }
+	        if (param.content.length == 0) {
+	        	swal('알림','내용을 입력해주세요','warning');
+	            return;
+	          }
+	        //console.log('파라미터 : ',param);
+	        $.post('add.json', param, function(ajaxResult2) {
+	          //console.log(ajaxResult2)
+	            if (ajaxResult2.status != "success") {
+	              return;
+	            }
+	          var params = {
+	          "link": $('#link-path').val(),
+	          "type": 'jpg'
+	          }
+	          $.post('file.json', params, function(ajaxResult2) {
+	            initCard();
+	            
+	          });
+	            //location.reload();
+	            
+	        }, 'json'); // post();
+	
+	        setTimeout(function() {initCard()}, 4500);
+	    }); // click()   
 	    
-	    $('.container2').children().remove();
-      $('#nextPgBtn').remove();
-      $('<div>').attr('id','nextPgBtn').text('더보기').appendTo('#board');
-      pageNo = 1;
-        
-	    var list = ajaxResult.data;
-	    var container2 = $('.container2');
-	    //var container2 = $('#container2 .row');
-	    var template = Handlebars.compile($('#trTemplate').html());
-	    var row;
-	    var pageSize = 6;  
-
-	    for (var i = 0; i < list.length; i++) {
-	      if (i % 3 == 0) {
-	        row = $('<div>').addClass('row').appendTo(container2);
-	      }
-	      
-	      
-	      var div = $('<div>').html(template(list[i]));
-	      //console.log(list)
-	      //$('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
-	      row.append(div);
-	    }
-
-	    if (list.length < 7) {
-	        $('#nextPgBtn').css('display', 'none');
-	    } else {
-	      for (var i = 6; i < list.length; i++) {
-	        $('.post').eq(i).css('display','none');
-	      }
-	    }
-	     
-	    $('#nextPgBtn').click(function(event) {
-	      var startNo = pageNo*6;
-	      var endNo;
-	      if ( ++pageNo*6 >= list.length) {
-	        endNo = list.length;
-	        $('#nextPgBtn').css('display', 'none');
-	      } else {
-	        endNo = pageNo*6;
-	      }
-	      for (var i = startNo; i < endNo; i++) {
-	        $('.post').eq(i).css('display','block');
-	      }
-	    });
-
-	    $('.img-responsive').click(function(){
-	      //console.log(i);
-	    });
-
-	    $(".btn-view").click(function() {
-	      window.bnumber = $(this).attr('data-bnum');
-	      $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
-	        if (ajaxResult.status == "fail") {
-	          return;
-	        }
-	        var detail = ajaxResult.data;
-	        $('#detail_title').val(detail.title);
-	        $('#detail_content').val(detail.content);
-	        $('#detail_date').val(detail.boardDate);
-	        $('.detail-photo').children().remove();
-	        for (var i in detail.addFileList) {
-	          $('<input>')
-	            .attr('name','input-file-path')
-	            .attr('value',detail.addFileList[i].filePath)
-	            .css('display','none').appendTo($('.detail-photo'));
-	          $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
-	            .css('width','150px').css('height','100px').css('display','inline-block');
-	        }
-	       //console.log(bnumber);
-	      }); 
-	    });
-	     
-	  $('#delete-btn').click(function() {
-	    //console.log('비넘버 : ',bnumber);
-	    $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
-	      if (ajaxResult.status != "success") { 
-	        alert(ajaxResult.data);
-	        return;
-	      }
-	      initCard();
-	    }); // getJSON()
-	  }); // click()
-	  
-	  
-	  $('#update-btn').click(function() {
-	    var param = {
-	        "boardNo"   : bnumber, 
-	        "meetNo"    : mtnum,
-	        "title"     : $('#detail_title').val(),
-	        "boarddate" : $('#detail_date').val(),
-	        "content"   : $('#detail_content').val()
-	    };
-	      
-	    $.post('update.json', param, function(ajaxResult) {
-	      if (ajaxResult.status != "success") {
-	        alert(ajaxResult.data);
-	        return;
-	      }
-	      initCard();
-	      }, 'json');
-	  }); // click()
-	  
-	   /*  $('#list-btn').click(function() {
-	      location.reload();
-	    });  */
-
-	  });
-}
+	  initCard();
+	
+	});
+	
+	function initCard() {
+		$.getJSON('list.json?mtnum='+ mtnum, function(ajaxResult) {
+		    if (ajaxResult.status == "fail") { // 로그인 되지 않았으면,
+		      return;
+		    }
+		    
+		    $('.container2').children().remove();
+	      $('#nextPgBtn').remove();
+	      $('<div>').attr('id','nextPgBtn').text('더보기').appendTo('#board');
+	      pageNo = 1;
+	        
+		    var list = ajaxResult.data;
+		    var container2 = $('.container2');
+		    //var container2 = $('#container2 .row');
+		    var template = Handlebars.compile($('#trTemplate').html());
+		    var row;
+		    var pageSize = 6;  
+	
+		    for (var i = 0; i < list.length; i++) {
+		      if (i % 3 == 0) {
+		        row = $('<div>').addClass('row').appendTo(container2);
+		      }
+		      
+		      
+		      var div = $('<div>').html(template(list[i]));
+		      //console.log(list)
+		      //$('.img-responsive').last().attr('src','../upload/'+list[i].addFileList[0].filePath);
+		      row.append(div);
+		    }
+	
+		    if (list.length < 7) {
+		        $('#nextPgBtn').css('display', 'none');
+		    } else {
+		      for (var i = 6; i < list.length; i++) {
+		        $('.post').eq(i).css('display','none');
+		      }
+		    }
+		     
+		    $('#nextPgBtn').click(function(event) {
+		      var startNo = pageNo*6;
+		      var endNo;
+		      if ( ++pageNo*6 >= list.length) {
+		        endNo = list.length;
+		        $('#nextPgBtn').css('display', 'none');
+		      } else {
+		        endNo = pageNo*6;
+		      }
+		      for (var i = startNo; i < endNo; i++) {
+		        $('.post').eq(i).css('display','block');
+		      }
+		    });
+	
+		    $('.img-responsive').click(function(){
+		      //console.log(i);
+		    });
+	
+		    $(".btn-view").click(function() {
+		      window.bnumber = $(this).attr('data-bnum');
+		      $.getJSON('detail.json?bnum='+$(this).attr('data-bnum'), function(ajaxResult) {
+		        if (ajaxResult.status == "fail") {
+		          return;
+		        }
+		        var detail = ajaxResult.data;
+		        $('#detail_title').val(detail.title);
+		        $('#detail_content').val(detail.content);
+		        $('#detail_date').val(detail.boardDate);
+		        $('.detail-photo').children().remove();
+		        for (var i in detail.addFileList) {
+		          $('<input>')
+		            .attr('name','input-file-path')
+		            .attr('value',detail.addFileList[i].filePath)
+		            .css('display','none').appendTo($('.detail-photo'));
+		          $('<img>').attr('src','../upload/'+ detail.addFileList[i].filePath).appendTo($('.detail-photo'))
+		            .css('width','150px').css('height','100px').css('display','inline-block');
+		        }
+		       //console.log(bnumber);
+		      }); 
+		    });
+		     
+		  $('#delete-btn').click(function() {
+		    //console.log('비넘버 : ',bnumber);
+		    $.getJSON('delete.json?boardNo='+ bnumber, function(ajaxResult) {
+		      if (ajaxResult.status != "success") { 
+		        alert(ajaxResult.data);
+		        return;
+		      }
+		      initCard();
+		    }); // getJSON()
+		  }); // click()
+		  
+		  
+		  $('#update-btn').click(function() {
+		    var param = {
+		        "boardNo"   : bnumber, 
+		        "meetNo"    : mtnum,
+		        "title"     : $('#detail_title').val(),
+		        "boarddate" : $('#detail_date').val(),
+		        "content"   : $('#detail_content').val()
+		    };
+		      
+		    $.post('update.json', param, function(ajaxResult) {
+		      if (ajaxResult.status != "success") {
+		        alert(ajaxResult.data);
+		        return;
+		      }
+		      initCard();
+		      }, 'json');
+		  }); // click()
+		  
+		   /*  $('#list-btn').click(function() {
+		      location.reload();
+		    });  */
+	
+		  });
+	}
 
 var arrayToJson = function(list) {
   var result = '';
@@ -702,7 +699,7 @@ var arrayToJson = function(list) {
 <div class="col-sm-4 col-md-4" >
  <div class="post">
      <div class="post-img-content">
-         <img src="../upload/{{addFileList.[0].filePath}}" class="img-responsive"  />
+         <img src="../upload/{{addFileList.[0].filePath}}" class="img-responsive" onerror="this.src='../upload/loading.jpg'" />
          <span class="post-title"><br/>
              </span>
      </div>
@@ -713,7 +710,7 @@ var arrayToJson = function(list) {
          <div class="card-cont" style="overflow:hidden;">
              {{content}}<br>
          </div>
-          <div class = "block-date">{{boardDate}}</div>
+         <div class = "block-date">{{boardDate}}</div>
          <div>
              <a href='#' type ='button' class="btn btn-warning btn-sm btn-view" data-toggle="modal" data-target="#myModal2" data-bnum='{{boardNo}}'>상세보기</a>
          </div>
@@ -745,7 +742,7 @@ var arrayToJson = function(list) {
 
   <script id="infoTemplate" type="x-handlebars-template">
   <div class="photo" style='float:left; margin-top:5px; height:120px; width:190px; border-radius: 5px; background-color:#e9e9e9;'>
-   <img src="../upload/{{photo}}" style='margin-top:5px; margin-left:5px; height:110px; width:180px; border-radius: 5px;  '>
+   <img src="../upload/{{photo}}" onerror="this.src='../upload/loading.jpg'" style='margin-top:5px; margin-left:5px; height:110px; width:180px; border-radius: 5px;'>
   </div>
   <div class="info-text" style='margin-left:205px; height:113px; margin-top:10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>
     <font style='font-family:Noto Sans KR, sans-serif; font-size:25px; margin-botton:10px; color:grey;'><b>{{title}}</b></font><br>
