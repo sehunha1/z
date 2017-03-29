@@ -46,8 +46,10 @@ $('body').on('click', '#invite-btn', function(e) {
 				// 이메일 전송
 				 var bossEmail = JSON.parse(window.sessionStorage.getItem("member")).email; // 방장 이메일
 				 var sendEmailList = memb_add_email(); // 초대 멤버 이메일 목록
-				 console.log(bossEmail);
-				 console.log(sendEmailList);
+				 
+//				 $.post(serverRoot + '/email/send.json?bossEamil=' + bossEmail + '&sendEmailList=' + sendEmailList, function(ajaxResult) {
+//				 
+//				 });
 				
 				linkMembList.splice(0); // 초대 멤버 데이터 초기화
 				closeEvent(); // 팝업 데이터 제거

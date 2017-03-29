@@ -108,9 +108,6 @@ var userpu = function userpopup() {
 
 // 초기화
 $(userpu());
-setTimeout(function() {
-	headerSetting();
-}, 4500);
 
 // 모임 생성
 function createMeet() {
@@ -162,8 +159,7 @@ function headerSetting() {
                     .html(
                         '<img src="../upload/'
                         + ajaxResult.data.photo
-                        + '" onerror=\"this.src=\"../upload/loading.jpg\"\" '
-                        + ' height=30px; width=30px;/>');
+                        + '" height=30px; width=30px;/>');
                 $('#inprofile_photo')
                     .html(
                         '<img src="../upload/'

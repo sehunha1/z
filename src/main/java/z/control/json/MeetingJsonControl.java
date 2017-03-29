@@ -132,7 +132,7 @@ public class MeetingJsonControl {
       int ddayCount1 = (int)ddayCount;
 
       dday1.put("ddayTitle", ddayTitle[i]);
-      dday1.put("ddayCount", ddayCount1 + 1);
+      dday1.put("ddayCount", ddayCount1);
       dday1.put("memberNo", memberNo);
       dday1.put("meetingNo", meetingNo[i]);
 

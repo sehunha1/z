@@ -122,10 +122,6 @@ try {
 			  return;
 		  }
 		  window.detailMembList = ajaxResult.data;
-		  for (var i = 0; i < window.detailMembList.length; i++) {
-		    if (window.detailMembList[i].photo.length < 2)
-		    	window.detailMembList[i].photo = "../../image/profile-default.png";
-		  }
 		  
 		  var ul = $(".member_list");
 		  var membTemplate = Handlebars.compile($("#membTemplate").html());

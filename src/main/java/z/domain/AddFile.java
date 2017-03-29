@@ -17,14 +17,10 @@ public class AddFile implements Serializable {
 
   public AddFile() {
   }
-  
-  
 
   public AddFile(String filePath) {
     this.filePath = filePath;
   }
-
-
 
   public int getFileNo() {
     return fileNo;
@@ -50,17 +46,12 @@ public class AddFile implements Serializable {
     this.fileDesc = fileDesc;
   }
 
-
-
   public int getBoardNo() {
     return boardNo;
   }
-
-
 
   public void setBoardNo(int boardNo) {
     this.boardNo = boardNo;
   }
 
-  
 }
