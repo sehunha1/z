@@ -23,6 +23,20 @@ insert into memb (email, name, pwd, photo, quit) values ("cheonjy@bit.com", "천
 insert into memb (email, name, pwd, photo, quit) values ("hash@bit.com", "하세훈", password(12341234), null, "n");
 insert into memb (email, name, pwd, photo, quit) values ("hande@bit.com", "한동은", password(12341234), null, "n");
 insert into memb (email, name, pwd, photo, quit) values ("hanoj@bit.com", "한옥주", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("hanji@high.com", "한재익", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("namhk@high.com", "남현구", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimth@high.com", "김태훈", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("baekh@high.com", "배기환", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jeongjy@high.com", "정준용", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("parkch@high.com", "박찬호", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jeonwy@high.com", "전우영", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("ohjh@high.com", "오지혁", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimdy@high.com", "김대용", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("kimsk@high.com", "김성규", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jeonjk@high.com", "전정근", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("jangjw@mid.com", "장재원", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("choish@mid.com", "최승환", password(12341234), null, "n");
+insert into memb (email, name, pwd, photo, quit) values ("parkkm@mid.com", "박광모", password(12341234), null, "n");
 
 --meet
 insert into meet (titl, cont, mtdesc, dline, photo, mstat) values ("산악동호회 청계산등산", "산악동호회 청계산등반 일정 정합시다~", "친목", "2017-03-27", "1490671075466_33", "ing");
