@@ -48,7 +48,7 @@ $('body').on('click', '#invite-btn', function(e) {
 
 				// 초대 멤버 이메일 목록
 				var sendEmailList = memb_add_email(); 
-				console.log(sendEmailList);
+//				console.log(sendEmailList);
 				 
 //				$.post(serverRoot + '/email/send.json?sendEmailList=' + sendEmailList, function(ajaxResult) {
 //					if (ajaxResult.status != "success") {

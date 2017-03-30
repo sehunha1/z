@@ -400,17 +400,16 @@ $("#btn_back").on("click", function(e) {
 	location.href = "../mylist/mylist.html";
 });
 
-// 게시판 팝업 다운로드
+// 게시판 팝업 - 다운로드 클릭 이벤트
 $('#download').click(function() {
 	 var url = $('.detail-photo').children('img');
 	 var a = $("<a>")
 	    .appendTo("body");
 	 console.log(url);
 	   for (var i=0; i < url.length; i++) {
-		 
 		 a.attr('href',url.eq(i).attr('src'))
 		 a.attr("download", "img"+i+".png")
 	   a[0].click();
 	  }
 	a.remove();
-  });
+});
