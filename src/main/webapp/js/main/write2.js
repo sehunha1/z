@@ -73,13 +73,19 @@ $('body').on('click', '#Go-btn', function(e) {
 		}
 		var meeting = JSON.stringify(ajaxResult.data);
 		
-		swal("성공", "모임을 개설하였습니다.", "success");
-		location.href = '../meetmain/meetmain.html'
-				+ '?memberNo='
-				+ JSON.parse(meeting).meetBossNo
-				+ '&meetingNo='
-				+ JSON.parse(meeting).meetingNo;
-	}, 'json');
+		swal({
+			title: "성공",
+			text: "개설하였습니다",
+			type: "success",
+		},
+		function(){
+				location.href = '../meetmain/meetmain.html'
+					+ '?memberNo='
+					+ JSON.parse(meeting).meetBossNo
+					+ '&meetingNo='
+					+ JSON.parse(meeting).meetingNo;
+			}, 'json');
+		});
 });
 
 // 이미지 선택 시 파일 업로드
